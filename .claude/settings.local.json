@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:/Users/lam/02project/RuniaAtlas/design-log\")",
+      "Bash(mkdir -p \"C:/Users/lam/02project/RuniaAtlas/requirement\")",
+      "Bash(mkdir -p \"C:/Users/lam/02project/RuniaAtlas/raw-requirement\")",
+      "Bash(npm create:*)",
+      "Bash(cp -r .vite-temp/runia-atlas/. .)",
+      "Bash(rm -rf .vite-temp)",
+      "Bash(npm install:*)"
+    ]
+  }
+}
