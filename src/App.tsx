@@ -1,121 +1,100 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useMemo, useCallback } from 'react';
+import { sinners } from './data/sinners';
+import { deriveEdges } from './utils/deriveEdges';
+import { LoreGraph, EDGE_COLORS, EDGE_LABELS } from './components/LoreGraph';
+import { LorePanel } from './components/LorePanel';
+import type { Sinner, EdgeType } from './types';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const ALL_EDGE_TYPES: EdgeType[] = [
+  'literary-origin',
+  'thematic-link',
+  'cross-game-continuity',
+];
+
+export default function App() {
+  const [selectedSinner, setSelectedSinner] = useState<Sinner | null>(null);
+  const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
+    new Set(ALL_EDGE_TYPES)
+  );
+
+  const edges = useMemo(() => deriveEdges(sinners), []);
+
+  const handleNodeClick = useCallback((sinner: Sinner) => {
+    setSelectedSinner((prev) => (prev?.id === sinner.id ? null : sinner));
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setSelectedSinner(null);
+  }, []);
+
+  const toggleEdgeType = (type: EdgeType) => {
+    setActiveEdgeTypes((prev) => {
+      const next = new Set(prev);
+      if (next.has(type)) next.delete(type);
+      else next.add(type);
+      return next;
+    });
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+    <div className="app">
+      <header className="app__header">
+        <div className="app__header-inner">
+          <h1 className="app__title">Runia Atlas</h1>
+          <p className="app__subtitle">
+            Literary connections of Project Moon's universe
           </p>
         </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+      </header>
+
+      <div className="app__legend">
+        <span className="app__legend-label">Edges:</span>
+        {ALL_EDGE_TYPES.map((type) => (
+          <button
+            key={type}
+            className={`app__legend-btn ${activeEdgeTypes.has(type) ? 'app__legend-btn--active' : ''}`}
+            onClick={() => toggleEdgeType(type)}
+            aria-pressed={activeEdgeTypes.has(type)}
+            style={{ '--edge-color': EDGE_COLORS[type] } as React.CSSProperties}
+          >
+            <span
+              className="app__legend-swatch"
+              style={{ backgroundColor: EDGE_COLORS[type] }}
+            />
+            {EDGE_LABELS[type]}
+          </button>
+        ))}
+        <span className="app__legend-hint">Click a node to explore</span>
+      </div>
+
+      <div className="app__main">
+        <div
+          className={`app__graph-wrap ${selectedSinner ? 'app__graph-wrap--panel-open' : ''}`}
         >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+          <LoreGraph
+            sinners={sinners}
+            edges={edges}
+            selectedSinner={selectedSinner}
+            onNodeClick={handleNodeClick}
+            activeEdgeTypes={activeEdgeTypes}
+          />
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <LorePanel sinner={selectedSinner} onClose={handleClose} />
+      </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <footer className="app__footer">
+        <span>
+          {sinners.length} Sinners · {edges.length} connections
+        </span>
+        <a
+          href="https://github.com/eldritchtools/limbus-shared-library"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Data: eldritchtools/limbus-shared-library
+        </a>
+      </footer>
+    </div>
+  );
 }
-
-export default App
