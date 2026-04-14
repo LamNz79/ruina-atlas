@@ -9,7 +9,7 @@
     {
       "id": "M1",
       "name": "Shared data layer",
-      "status": "not_started",
+      "status": "started 13/4/2026",
       "priority": "critical",
       "estimated_effort": "1 week (evenings)",
       "description": "Define the TypeScript schema and manually author 12–15 Sinner entries covering the clearest literary connections. This is the foundation everything else reads from.",

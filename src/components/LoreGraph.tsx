@@ -94,6 +94,17 @@ export function LoreGraph({
       .attr('height', height)
       .attr('viewBox', [0, 0, width, height]);
 
+    // SVG filter for edge glow
+    const defs = svg.append('defs');
+    const filter = defs.append('filter').attr('id', 'edge-glow');
+    filter
+      .append('feGaussianBlur')
+      .attr('stdDeviation', '3')
+      .attr('result', 'coloredBlur');
+    const feMerge = filter.append('feMerge');
+    feMerge.append('feMergeNode').attr('in', 'coloredBlur');
+    feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
     const zoomGroup = svg.append('g').attr('class', 'zoom-group');
 
     const zoom = d3
@@ -219,6 +230,91 @@ export function LoreGraph({
       .append('circle')
       .attr('r', 34)
       .attr('fill', 'transparent');
+
+    // ── Hover: highlight connected edges, dim the rest ──────────────────────
+    nodeEls
+      .on('mouseenter', function (_, hovered) {
+        const connectedIds = new Set<string>();
+        connectedIds.add(hovered.id);
+
+        linkEls.each(function (d) {
+          const src = (d.source as GraphNode).id;
+          const tgt = (d.target as GraphNode).id;
+          if (src === hovered.id || tgt === hovered.id) {
+            connectedIds.add(src);
+            connectedIds.add(tgt);
+          }
+        });
+
+        // Dim unconnected nodes
+        nodeEls.each(function (d) {
+          d3.select(this)
+            .select('circle:first-child')
+            .transition()
+            .duration(150)
+            .attr('opacity', connectedIds.has(d.id) ? 1 : 0.25)
+            .attr('r', connectedIds.has(d.id) ? d.crossGameContinuity ? 26 : 22 : 18);
+          d3.select(this)
+            .select('text')
+            .transition()
+            .duration(150)
+            .attr('opacity', connectedIds.has(d.id) ? 1 : 0.2);
+          // Highlight connected nodes slightly
+          if (connectedIds.has(d.id) && d.id !== hovered.id) {
+            d3.select(this)
+              .select('circle:first-child')
+              .transition()
+              .duration(150)
+              .attr('r', d.crossGameContinuity ? 28 : 24);
+          }
+        });
+
+        // Dim all edges first
+        linkEls
+          .transition()
+          .duration(150)
+          .attr('stroke-opacity', 0.08)
+          .attr('stroke-width', 1);
+
+        // Glow connected edges
+        linkEls.each(function (d) {
+          const src = (d.source as GraphNode).id;
+          const tgt = (d.target as GraphNode).id;
+          if (src === hovered.id || tgt === hovered.id) {
+            d3.select(this)
+              .raise()
+              .transition()
+              .duration(150)
+              .attr('stroke-opacity', 0.95)
+              .attr('stroke-width', 2.5)
+              .attr('filter', 'url(#edge-glow)');
+          }
+        });
+      })
+      .on('mouseleave', function () {
+        // Restore nodes
+        nodeEls.each(function (d) {
+          d3.select(this)
+            .select('circle:first-child')
+            .transition()
+            .duration(200)
+            .attr('opacity', 1)
+            .attr('r', d.crossGameContinuity ? 26 : 22);
+          d3.select(this)
+            .select('text')
+            .transition()
+            .duration(200)
+            .attr('opacity', 1);
+        });
+
+        // Restore edges
+        linkEls
+          .transition()
+          .duration(200)
+          .attr('stroke-opacity', 0.5)
+          .attr('stroke-width', 1.5)
+          .attr('filter', null);
+      });
 
     simulation.on('tick', () => {
       linkEls
