@@ -5,7 +5,6 @@
       "name": "Dante",
       "canonicalGame": "limbus",
       "appearances": [
-        "ruina",
         "limbus"
       ],
       "crossGameContinuity": true,
@@ -30,7 +29,8 @@
           "displayName": "Director's Inferno",
           "floor": "Moutheast Corner",
           "colorTheme": "#C41E3A",
-          "description": "A crimson EGO representing Dante's authority over the Sinners, styled after the Inferno layer of The Divine Comedy. Manifests as flame-wreathed equipment that reinforces his command over the group."
+          "description": "A crimson EGO representing Dante's authority over the Sinners, styled after the Inferno layer of The Divine Comedy. Manifests as flame-wreathed equipment that reinforces his command over the group.",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -39,9 +39,7 @@
       "name": "Faust",
       "canonicalGame": "limbus",
       "appearances": [
-        "lobotomy",
-        "ruina",
-        "limbus"
+        "ruina"
       ],
       "crossGameContinuity": true,
       "literarySources": [
@@ -164,63 +162,72 @@
           "displayName": "Fluid Sac",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[HE] awakening: blunt, affinity: gloom",
+          "rank": "HE"
         },
         {
           "id": "20204",
           "displayName": "Telepole",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: envy."
+          "description": "[HE] awakening: pierce, affinity: envy",
+          "rank": "HE"
         },
         {
           "id": "20208",
           "displayName": "Thoracalgia",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+          "description": "[HE] awakening: pierce, affinity: pride",
+          "rank": "HE"
         },
         {
           "id": "20209",
           "displayName": "Command : Meltdown",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: gluttony."
+          "description": "[HE] awakening: pierce, affinity: gluttony",
+          "rank": "HE"
         },
         {
           "id": "20203",
           "displayName": "Hex Nail",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+          "description": "[TETH] awakening: pierce, affinity: envy",
+          "rank": "TETH"
         },
         {
           "id": "20205",
           "displayName": "9:2",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: lust."
+          "description": "[TETH] awakening: slash, affinity: lust",
+          "rank": "TETH"
         },
         {
           "id": "20207",
           "displayName": "Lasso",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: gluttony."
+          "description": "[TETH] awakening: slash, affinity: gluttony",
+          "rank": "TETH"
         },
         {
           "id": "20206",
           "displayName": "Everlasting",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[WAW] awakening: blunt, affinity: sloth",
+          "rank": "WAW"
         },
         {
           "id": "20201",
           "displayName": "Representation Emitter",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: pride."
+          "description": "[ZAYIN] awakening: blunt, affinity: pride",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -345,70 +352,80 @@
           "displayName": "Ardor Blossom Star",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: wrath."
+          "description": "[HE] awakening: pierce, affinity: wrath",
+          "rank": "HE"
         },
         {
           "id": "20806",
           "displayName": "Wingbeat",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: gluttony."
+          "description": "[HE] awakening: slash, affinity: gluttony",
+          "rank": "HE"
         },
         {
           "id": "20808",
           "displayName": "Christmas Nightmare",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[HE] awakening: blunt, affinity: sloth",
+          "rank": "HE"
         },
         {
           "id": "20810",
           "displayName": "Tidal Elegy",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[HE] awakening: blunt, affinity: gloom",
+          "rank": "HE"
         },
         {
           "id": "20802",
           "displayName": "Roseate Desire",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: lust."
+          "description": "[TETH] awakening: pierce, affinity: lust",
+          "rank": "TETH"
         },
         {
           "id": "20804",
           "displayName": "Capote",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: wrath."
+          "description": "[TETH] awakening: blunt, affinity: wrath",
+          "rank": "TETH"
         },
         {
           "id": "20807",
           "displayName": "Bygone Days",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: gloom."
+          "description": "[TETH] awakening: slash, affinity: gloom",
+          "rank": "TETH"
         },
         {
           "id": "20805",
           "displayName": "Blind Obsession",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: pride."
+          "description": "[WAW] awakening: pierce, affinity: pride",
+          "rank": "WAW"
         },
         {
           "id": "20801",
           "displayName": "Snagharpoon",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[ZAYIN] awakening: blunt, affinity: gloom",
+          "rank": "ZAYIN"
         },
         {
           "id": "20809",
           "displayName": "Hundred-Footed Death Maggot [蝍蛆殺]",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[ZAYIN] awakening: blunt, affinity: gloom",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -541,56 +558,64 @@
           "displayName": "4th Match Flame",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: wrath."
+          "description": "[HE] awakening: slash, affinity: wrath",
+          "rank": "HE"
         },
         {
           "id": "20905",
           "displayName": "Pursuance",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: sloth."
+          "description": "[HE] awakening: slash, affinity: sloth",
+          "rank": "HE"
         },
         {
           "id": "20907",
           "displayName": "Hex Nail",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: envy."
+          "description": "[HE] awakening: slash, affinity: envy",
+          "rank": "HE"
         },
         {
           "id": "20903",
           "displayName": "Rime Shank",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[TETH] awakening: blunt, affinity: gloom",
+          "rank": "TETH"
         },
         {
           "id": "20904",
           "displayName": "Effervescent Corrosion",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gluttony."
+          "description": "[TETH] awakening: blunt, affinity: gluttony",
+          "rank": "TETH"
         },
         {
           "id": "20906",
           "displayName": "Sanguine Desire",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: lust."
+          "description": "[WAW] awakening: slash, affinity: lust",
+          "rank": "WAW"
         },
         {
           "id": "20908",
           "displayName": "Indicant's Trial",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: wrath."
+          "description": "[WAW] awakening: pierce, affinity: wrath",
+          "rank": "WAW"
         },
         {
           "id": "20901",
           "displayName": "What is Cast",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: pride."
+          "description": "[ZAYIN] awakening: slash, affinity: pride",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -723,63 +748,72 @@
           "displayName": "Fluid Sac",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[HE] awakening: blunt, affinity: gloom",
+          "rank": "HE"
         },
         {
           "id": "20303",
           "displayName": "Telepole",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: envy."
+          "description": "[HE] awakening: pierce, affinity: envy",
+          "rank": "HE"
         },
         {
           "id": "20308",
           "displayName": "Red Sheet",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: gluttony."
+          "description": "[HE] awakening: slash, affinity: gluttony",
+          "rank": "HE"
         },
         {
           "id": "20304",
           "displayName": "Lifetime Stew",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: lust."
+          "description": "[TETH] awakening: blunt, affinity: lust",
+          "rank": "TETH"
         },
         {
           "id": "20305",
           "displayName": "Wishing Cairn",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[TETH] awakening: blunt, affinity: sloth",
+          "rank": "TETH"
         },
         {
           "id": "20306",
           "displayName": "Electric Screaming",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+          "description": "[TETH] awakening: pierce, affinity: envy",
+          "rank": "TETH"
         },
         {
           "id": "20307",
           "displayName": "Yearning-Mircalla",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: lust."
+          "description": "[WAW] awakening: pierce, affinity: lust",
+          "rank": "WAW"
         },
         {
           "id": "20309",
           "displayName": "In the Name of Love and Hate",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: envy."
+          "description": "[WAW] awakening: blunt, affinity: envy",
+          "rank": "WAW"
         },
         {
           "id": "20301",
           "displayName": "La Sangre de Sancho",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: lust."
+          "description": "[ZAYIN] awakening: pierce, affinity: lust",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -905,63 +939,72 @@
           "displayName": "4th Match Flame",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: wrath."
+          "description": "[HE] awakening: slash, affinity: wrath",
+          "rank": "HE"
         },
         {
           "id": "20404",
           "displayName": "Red Eyes (Open)",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: envy."
+          "description": "[HE] awakening: slash, affinity: envy",
+          "rank": "HE"
         },
         {
           "id": "20408",
           "displayName": "Thoracalgia",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: pride."
+          "description": "[HE] awakening: slash, affinity: pride",
+          "rank": "HE"
         },
         {
           "id": "20403",
           "displayName": "Red Eyes",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: lust."
+          "description": "[TETH] awakening: slash, affinity: lust",
+          "rank": "TETH"
         },
         {
           "id": "20406",
           "displayName": "Blind Obsession",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: pride."
+          "description": "[TETH] awakening: slash, affinity: pride",
+          "rank": "TETH"
         },
         {
           "id": "20407",
           "displayName": "Contempt, Awe",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: lust."
+          "description": "[WAW] awakening: slash, affinity: lust",
+          "rank": "WAW"
         },
         {
           "id": "20409",
           "displayName": "Great Trichiliocosm [三千大世界]",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: wrath."
+          "description": "[WAW] awakening: slash, affinity: wrath",
+          "rank": "WAW"
         },
         {
           "id": "20401",
           "displayName": "Forest for the Flames",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: lust."
+          "description": "[ZAYIN] awakening: slash, affinity: lust",
+          "rank": "ZAYIN"
         },
         {
           "id": "20405",
           "displayName": "Soda",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: gloom."
+          "description": "[ZAYIN] awakening: pierce, affinity: gloom",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -1087,56 +1130,64 @@
           "displayName": "Pursuance",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[HE] awakening: blunt, affinity: sloth",
+          "rank": "HE"
         },
         {
           "id": "20504",
           "displayName": "Capote",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: wrath."
+          "description": "[HE] awakening: blunt, affinity: wrath",
+          "rank": "HE"
         },
         {
           "id": "20502",
           "displayName": "Screwloose Wallop",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: envy."
+          "description": "[TETH] awakening: blunt, affinity: envy",
+          "rank": "TETH"
         },
         {
           "id": "20505",
           "displayName": "Regret",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: wrath."
+          "description": "[TETH] awakening: blunt, affinity: wrath",
+          "rank": "TETH"
         },
         {
           "id": "20506",
           "displayName": "Electric Screaming",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+          "description": "[TETH] awakening: pierce, affinity: envy",
+          "rank": "TETH"
         },
         {
           "id": "20507",
           "displayName": "Yearning-Mircalla",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: lust."
+          "description": "[WAW] awakening: pierce, affinity: lust",
+          "rank": "WAW"
         },
         {
           "id": "20508",
           "displayName": "Crushbound Past",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[WAW] awakening: blunt, affinity: sloth",
+          "rank": "WAW"
         },
         {
           "id": "20501",
           "displayName": "Chains of Others",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: pride."
+          "description": "[ZAYIN] awakening: blunt, affinity: pride",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -1262,63 +1313,72 @@
           "displayName": "Dimension Shredder",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: pride."
+          "description": "[HE] awakening: slash, affinity: pride",
+          "rank": "HE"
         },
         {
           "id": "20605",
           "displayName": "Effervescent Corrosion",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: gluttony."
+          "description": "[HE] awakening: pierce, affinity: gluttony",
+          "rank": "HE"
         },
         {
           "id": "20609",
           "displayName": "To Remain Oneself [宁作吾]",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: pride."
+          "description": "[HE] awakening: slash, affinity: pride",
+          "rank": "HE"
         },
         {
           "id": "20602",
           "displayName": "Roseate Desire",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: lust."
+          "description": "[TETH] awakening: pierce, affinity: lust",
+          "rank": "TETH"
         },
         {
           "id": "20604",
           "displayName": "Soda",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: envy."
+          "description": "[TETH] awakening: blunt, affinity: envy",
+          "rank": "TETH"
         },
         {
           "id": "20606",
           "displayName": "Cavernous Wailing",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[TETH] awakening: blunt, affinity: sloth",
+          "rank": "TETH"
         },
         {
           "id": "20607",
           "displayName": "Lasso",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gluttony."
+          "description": "[TETH] awakening: blunt, affinity: gluttony",
+          "rank": "TETH"
         },
         {
           "id": "20608",
           "displayName": "Tears of the Tarnished Blood [汚血泣淚]",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: gluttony."
+          "description": "[WAW] awakening: pierce, affinity: gluttony",
+          "rank": "WAW"
         },
         {
           "id": "20601",
           "displayName": "Land of Illusion",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[ZAYIN] awakening: blunt, affinity: gloom",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -1451,63 +1511,72 @@
           "displayName": "Telepole",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: envy."
+          "description": "[HE] awakening: pierce, affinity: envy",
+          "rank": "HE"
         },
         {
           "id": "20704",
           "displayName": "Ya Śūnyatā Tad Rūpam",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: lust."
+          "description": "[HE] awakening: blunt, affinity: lust",
+          "rank": "HE"
         },
         {
           "id": "20708",
           "displayName": "Asymmetrical Inertia",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[HE] awakening: blunt, affinity: sloth",
+          "rank": "HE"
         },
         {
           "id": "20703",
           "displayName": "AEDD",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[TETH] awakening: blunt, affinity: gloom",
+          "rank": "TETH"
         },
         {
           "id": "20707",
           "displayName": "Fell Bullet",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: pride."
+          "description": "[TETH] awakening: pierce, affinity: pride",
+          "rank": "TETH"
         },
         {
           "id": "20709",
           "displayName": "Move-in Reg.",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: envy."
+          "description": "[TETH] awakening: blunt, affinity: envy",
+          "rank": "TETH"
         },
         {
           "id": "20706",
           "displayName": "Binds",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[WAW] awakening: blunt, affinity: gloom",
+          "rank": "WAW"
         },
         {
           "id": "20701",
           "displayName": "Bodysack",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: envy."
+          "description": "[ZAYIN] awakening: blunt, affinity: envy",
+          "rank": "ZAYIN"
         },
         {
           "id": "20705",
           "displayName": "Holiday",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gluttony."
+          "description": "[ZAYIN] awakening: blunt, affinity: gluttony",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -1646,56 +1715,64 @@
           "displayName": "Dimension Shredder",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+          "description": "[HE] awakening: pierce, affinity: pride",
+          "rank": "HE"
         },
         {
           "id": "20107",
           "displayName": "Fell Bullet",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+          "description": "[HE] awakening: pierce, affinity: pride",
+          "rank": "HE"
         },
         {
           "id": "20102",
           "displayName": "4th Match Flame",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: wrath."
+          "description": "[TETH] awakening: slash, affinity: wrath",
+          "rank": "TETH"
         },
         {
           "id": "20103",
           "displayName": "Wishing Cairn",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: sloth."
+          "description": "[TETH] awakening: pierce, affinity: sloth",
+          "rank": "TETH"
         },
         {
           "id": "20105",
           "displayName": "Sunshower",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: sloth."
+          "description": "[WAW] awakening: pierce, affinity: sloth",
+          "rank": "WAW"
         },
         {
           "id": "20108",
           "displayName": "Great Trichiliocosm [三千大世界]",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: wrath."
+          "description": "[WAW] awakening: pierce, affinity: wrath",
+          "rank": "WAW"
         },
         {
           "id": "20101",
           "displayName": "Crow’s Eye View",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: sloth."
+          "description": "[ZAYIN] awakening: pierce, affinity: sloth",
+          "rank": "ZAYIN"
         },
         {
           "id": "20106",
           "displayName": "Bygone Days",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: gloom."
+          "description": "[ZAYIN] awakening: pierce, affinity: gloom",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -1828,56 +1905,64 @@
           "displayName": "Lantern",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: gluttony."
+          "description": "[HE] awakening: slash, affinity: gluttony",
+          "rank": "HE"
         },
         {
           "id": "21005",
           "displayName": "9:2",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: lust."
+          "description": "[HE] awakening: blunt, affinity: lust",
+          "rank": "HE"
         },
         {
           "id": "21002",
           "displayName": "Impending Day",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: wrath."
+          "description": "[TETH] awakening: blunt, affinity: wrath",
+          "rank": "TETH"
         },
         {
           "id": "21003",
           "displayName": "Lifetime Stew",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: lust."
+          "description": "[TETH] awakening: blunt, affinity: lust",
+          "rank": "TETH"
         },
         {
           "id": "21007",
           "displayName": "Hex Nail",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+          "description": "[TETH] awakening: pierce, affinity: envy",
+          "rank": "TETH"
         },
         {
           "id": "21008",
           "displayName": "Tears of the Tarnished Blood [汚血泣淚]",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: gluttony."
+          "description": "[WAW] awakening: pierce, affinity: gluttony",
+          "rank": "WAW"
         },
         {
           "id": "21001",
           "displayName": "Branch of Knowledge",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: gluttony."
+          "description": "[ZAYIN] awakening: slash, affinity: gluttony",
+          "rank": "ZAYIN"
         },
         {
           "id": "21006",
           "displayName": "Cavernous Wailing",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[ZAYIN] awakening: blunt, affinity: gloom",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -2015,63 +2100,72 @@
           "displayName": "Ebony Stem",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: gluttony."
+          "description": "[HE] awakening: pierce, affinity: gluttony",
+          "rank": "HE"
         },
         {
           "id": "21105",
           "displayName": "Holiday",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: wrath."
+          "description": "[HE] awakening: blunt, affinity: wrath",
+          "rank": "HE"
         },
         {
           "id": "21107",
           "displayName": "Dimension Shredder",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: envy."
+          "description": "[HE] awakening: slash, affinity: envy",
+          "rank": "HE"
         },
         {
           "id": "21108",
           "displayName": "Magic Bullet",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+          "description": "[HE] awakening: pierce, affinity: pride",
+          "rank": "HE"
         },
         {
           "id": "21103",
           "displayName": "Ya Śūnyatā Tad Rūpam",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: lust."
+          "description": "[TETH] awakening: slash, affinity: lust",
+          "rank": "TETH"
         },
         {
           "id": "21104",
           "displayName": "Sunshower",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: gluttony."
+          "description": "[TETH] awakening: pierce, affinity: gluttony",
+          "rank": "TETH"
         },
         {
           "id": "21106",
           "displayName": "Binds",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: pride."
+          "description": "[WAW] awakening: blunt, affinity: pride",
+          "rank": "WAW"
         },
         {
           "id": "21101",
           "displayName": "To Páthos Máthos",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: pride."
+          "description": "[ZAYIN] awakening: pierce, affinity: pride",
+          "rank": "ZAYIN"
         },
         {
           "id": "21109",
           "displayName": "I'll Go fer Scissors. How 'Bout You?",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: envy."
+          "description": "[ZAYIN] awakening: slash, affinity: envy",
+          "rank": "ZAYIN"
         }
       ]
     },
@@ -2199,63 +2293,72 @@
           "displayName": "AEDD",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[HE] awakening: blunt, affinity: gloom",
+          "rank": "HE"
         },
         {
           "id": "21207",
           "displayName": "Solemn Lament",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+          "description": "[HE] awakening: blunt, affinity: gloom",
+          "rank": "HE"
         },
         {
           "id": "21208",
           "displayName": "Christmas Nightmare",
           "floor": "",
           "colorTheme": "#FF6347",
-          "description": "A HE tier EGO. Awakening damage: slash. Affinity: sloth."
+          "description": "[HE] awakening: slash, affinity: sloth",
+          "rank": "HE"
         },
         {
           "id": "21203",
           "displayName": "Lantern",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: gluttony."
+          "description": "[TETH] awakening: pierce, affinity: gluttony",
+          "rank": "TETH"
         },
         {
           "id": "21206",
           "displayName": "Bygone Days",
           "floor": "",
           "colorTheme": "#1E90FF",
-          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: gloom."
+          "description": "[TETH] awakening: pierce, affinity: gloom",
+          "rank": "TETH"
         },
         {
           "id": "21205",
           "displayName": "Garden of Thorns",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: lust."
+          "description": "[WAW] awakening: slash, affinity: lust",
+          "rank": "WAW"
         },
         {
           "id": "21209",
           "displayName": "Unbrilliant Glory",
           "floor": "",
           "colorTheme": "#8B0000",
-          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: sloth."
+          "description": "[WAW] awakening: slash, affinity: sloth",
+          "rank": "WAW"
         },
         {
           "id": "21201",
           "displayName": "Suddenly, One Day",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: sloth."
+          "description": "[ZAYIN] awakening: blunt, affinity: sloth",
+          "rank": "ZAYIN"
         },
         {
           "id": "21202",
           "displayName": "Legerdemain",
           "floor": "",
           "colorTheme": "#3CB371",
-          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gluttony."
+          "description": "[ZAYIN] awakening: blunt, affinity: gluttony",
+          "rank": "ZAYIN"
         }
       ]
     }

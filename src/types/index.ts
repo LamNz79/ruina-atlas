@@ -91,6 +91,7 @@ export interface Identity {
 export interface EGO {
   id: string;
   displayName: string;
+  rank: string;        // ZAYIN | TETH | HE | WAW | ALEPH
   floor: string;      // e.g. "Moutheast Corner" — raw string, may become union later
   colorTheme: string; // hex accent color, e.g. '#7A3B8C'
   description: string;
