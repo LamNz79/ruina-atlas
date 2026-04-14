@@ -146,3 +146,8 @@ export interface GraphEdge {
   target: string; // Sinner.id
   type: EdgeType;
 }
+
+// ── Asset Map ────────────────────────────────────────────────────────────────
+
+/** Maps identity ID → image path (null = no image available). */
+export type IdentityImageMap = Record<string, string | null>;

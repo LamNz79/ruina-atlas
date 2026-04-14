@@ -1,5 +1,6 @@
 import type { Sinner, Game } from '../types';
 import { literarySources } from '../data/literarySources';
+import { identityImages } from '../data/identityImages';
 
 interface LorePanelProps {
   sinner: Sinner | null;
@@ -132,7 +133,7 @@ export function LorePanel({ sinner, onClose }: LorePanelProps) {
             </div>
           </div>
 
-          {/* Identities count */}
+          {/* Identities grid */}
           <div className="lore-panel__section">
             <h3 className="lore-panel__section-title">
               Identities
@@ -141,21 +142,32 @@ export function LorePanel({ sinner, onClose }: LorePanelProps) {
               </span>
             </h3>
             {sinner.identities.length > 0 ? (
-              <div className="lore-panel__identity-chips">
-                {sinner.identities.slice(0, 6).map((id) => (
-                  <span
-                    key={id.id}
-                    className={`lore-panel__identity-chip lore-panel__identity-chip--${id.sourceGame}`}
-                    title={`${id.displayName} — ${id.damageType ?? 'unknown'}`}
-                  >
-                    {id.displayName}
-                  </span>
-                ))}
-                {sinner.identities.length > 6 && (
-                  <span className="lore-panel__identity-more">
-                    +{sinner.identities.length - 6} more
-                  </span>
-                )}
+              <div className="lore-panel__identity-grid">
+                {sinner.identities.map((id) => {
+                  const img = identityImages[id.id];
+                  return (
+                    <div
+                      key={id.id}
+                      className={`lore-panel__identity-card lore-panel__identity-card--${id.sourceGame}`}
+                      title={id.displayName}
+                    >
+                      {img ? (
+                        <img
+                          src={img}
+                          alt={id.displayName}
+                          className="lore-panel__identity-img"
+                        />
+                      ) : (
+                        <div className="lore-panel__identity-placeholder">
+                          {id.displayName.slice(0, 2)}
+                        </div>
+                      )}
+                      <span className="lore-panel__identity-name">
+                        {id.displayName}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             ) : (
               <p className="lore-panel__empty">No identities (manager role)</p>
