@@ -23,23 +23,14 @@
       "loreSummary": "Dante is the manager of Limbus Company's bus, responsible for guiding twelve Sinners through fixed LCB routes to recover lost memories and locate the Golden boughs. He is characterized by his sharp tongue, dramatic flair, and an enigmatic relationship with Vergilius. A central mystery surrounds his true nature — whether he is truly headless, and if so, what that means for his existence.",
       "literaryConnectionNotes": "Named directly after Dante Alighieri, the 14th-century Florentine poet. In The Divine Comedy, Dante the pilgrim is led through the afterlife by the poet Virgil (Vergilius in Limbus) and ultimately by his love Beatrice. Project Moon reverses the dynamic: Dante manages Sinners rather than being managed, though he too is guided by someone (Vergilius). His headless state may parallel the 'no one' interpretation of the name 'Outis' given his connection to Odysseus, or may reference Dante's own 'lost' state in the afterlife narrative.",
       "identities": [],
-      "egos": [
-        {
-          "id": "dante-inferno",
-          "displayName": "Director's Inferno",
-          "floor": "Moutheast Corner",
-          "colorTheme": "#C41E3A",
-          "description": "A crimson EGO representing Dante's authority over the Sinners, styled after the Inferno layer of The Divine Comedy. Manifests as flame-wreathed equipment that reinforces his command over the group.",
-          "rank": "ZAYIN"
-        }
-      ]
+      "egos": []
     },
     {
       "id": "faust",
       "name": "Faust",
       "canonicalGame": "limbus",
       "appearances": [
-        "ruina"
+        "limbus"
       ],
       "crossGameContinuity": true,
       "literarySources": [
