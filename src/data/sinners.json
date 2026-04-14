@@ -1,0 +1,2263 @@
+{
+  "sinners": [
+    {
+      "id": "dante",
+      "name": "Dante",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "crossGameContinuity": true,
+      "literarySources": [
+        {
+          "id": "divine-comedy",
+          "role": "primary",
+          "specificConnection": "Dante himself is the protagonist of The Divine Comedy, making this the most direct literary mapping in the entire franchise. His role as a manager guiding Sinners mirrors Dante Alighieri being guided through Hell, Purgatory, and Paradise by Virgil and Beatrice."
+        }
+      ],
+      "themes": [
+        "guilt",
+        "futility",
+        "faith"
+      ],
+      "loreSummary": "Dante is the manager of Limbus Company's bus, responsible for guiding twelve Sinners through fixed LCB routes to recover lost memories and locate the Golden boughs. He is characterized by his sharp tongue, dramatic flair, and an enigmatic relationship with Vergilius. A central mystery surrounds his true nature — whether he is truly headless, and if so, what that means for his existence.",
+      "literaryConnectionNotes": "Named directly after Dante Alighieri, the 14th-century Florentine poet. In The Divine Comedy, Dante the pilgrim is led through the afterlife by the poet Virgil (Vergilius in Limbus) and ultimately by his love Beatrice. Project Moon reverses the dynamic: Dante manages Sinners rather than being managed, though he too is guided by someone (Vergilius). His headless state may parallel the 'no one' interpretation of the name 'Outis' given his connection to Odysseus, or may reference Dante's own 'lost' state in the afterlife narrative.",
+      "identities": [],
+      "egos": [
+        {
+          "id": "dante-inferno",
+          "displayName": "Director's Inferno",
+          "floor": "Moutheast Corner",
+          "colorTheme": "#C41E3A",
+          "description": "A crimson EGO representing Dante's authority over the Sinners, styled after the Inferno layer of The Divine Comedy. Manifests as flame-wreathed equipment that reinforces his command over the group."
+        }
+      ]
+    },
+    {
+      "id": "faust",
+      "name": "Faust",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
+      "crossGameContinuity": true,
+      "literarySources": [
+        {
+          "id": "faust-goethe",
+          "role": "primary",
+          "specificConnection": "Faust is a recurring figure across all three Project Moon games, and like Goethe's Faust, her arc centers on a bargain — she trades something (her memories, her identity) for knowledge or power. She is the one Sinner who appears in every game, making her the closest to Faust's transcendent, across-worlds existence."
+        }
+      ],
+      "themes": [
+        "guilt",
+        "redemption",
+        "futility"
+      ],
+      "loreSummary": "Faust is a mysterious Sinner who claims to have no memory of her past, only goals she intends to achieve. She is knowledgeable about abnormalities, the City, and seemingly the true nature of Limbus Company's operations. She speaks in a formal, detached manner and has been shown to act independently of the other Sinners. Her identity is among the most opaque in the group.",
+      "literaryConnectionNotes": "Faust in Goethe's tragedy makes a bargain with the Devil (Mephistopheles) — in exchange for unlimited knowledge and worldly pleasures, he pledges his soul. Limbus Company's Faust has made bargains of her own, with Ayin (in Library of Ruina) and possibly others. Her persistent presence across all three games mirrors Faust's timeless, almost meta-fictional existence. The question of whether she remembers, regrets, or would undo her bargains is the central tension of her character.",
+      "identities": [
+        {
+          "id": "10208",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "slash"
+        },
+        {
+          "id": "10212",
+          "displayName": "Heishou Pack - Mao Branch Adept",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10211",
+          "displayName": "LCE E.G.O:: Ardor Blossom Star",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10207",
+          "displayName": "Lobotomy E.G.O::Regret",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10210",
+          "displayName": "MultiCrack Office Rep",
+          "sourceGame": "limbus",
+          "wingOrGroup": "MultiCrack Office",
+          "damageType": "slash"
+        },
+        {
+          "id": "10206",
+          "displayName": "Seven Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Seven Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10213",
+          "displayName": "Shi Assoc. East Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Shi Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10214",
+          "displayName": "The Index Proselyte: 【Paper Slip】",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "slash"
+        },
+        {
+          "id": "10204",
+          "displayName": "The One Who Grips",
+          "sourceGame": "limbus",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10203",
+          "displayName": "Lobotomy Corp. Remnant",
+          "sourceGame": "limbus",
+          "wingOrGroup": "L Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10202",
+          "displayName": "W Corp. L2 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10209",
+          "displayName": "Wuthering Heights Butler",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "slash"
+        },
+        {
+          "id": "10205",
+          "displayName": "Zwei Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10201",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20202",
+          "displayName": "Fluid Sac",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "20204",
+          "displayName": "Telepole",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: envy."
+        },
+        {
+          "id": "20208",
+          "displayName": "Thoracalgia",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+        },
+        {
+          "id": "20209",
+          "displayName": "Command : Meltdown",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: gluttony."
+        },
+        {
+          "id": "20203",
+          "displayName": "Hex Nail",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+        },
+        {
+          "id": "20205",
+          "displayName": "9:2",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: lust."
+        },
+        {
+          "id": "20207",
+          "displayName": "Lasso",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: gluttony."
+        },
+        {
+          "id": "20206",
+          "displayName": "Everlasting",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "20201",
+          "displayName": "Representation Emitter",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: pride."
+        }
+      ]
+    },
+    {
+      "id": "ishmael",
+      "name": "Ishmael",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "moby-dick",
+          "role": "primary",
+          "specificConnection": "Ishmael's name and background as a seafarer who survived a catastrophic voyage are lifted directly from Moby-Dick. In Limbus, she is a veteran sailor who insists she is not running from her past — but the ocean metaphor persists throughout her Canto."
+        }
+      ],
+      "themes": [
+        "vengeance",
+        "obsession",
+        "futility"
+      ],
+      "loreSummary": "Ishmael is an experienced sailor with a long history in the City, having sailed on numerous vessels including the PM regular ship L'Manhattan. She is pragmatic, cynical, and initially distant from the other Sinners. Her Canto reveals a deep connection to Captain Bram and the events aboard the Pequod, driving a personal arc of confronting rather than fleeing her past.",
+      "literaryConnectionNotes": "In Herman Melville's Moby-Dick, Ishmael is the sole survivor of the whaling ship Pequod, which is destroyed after Captain Ahab's obsessive pursuit of the white whale. Ishmael narrates the story, making him both witness and survivor. Limbus Company's Ishmael parallels this — she alone survived whatever happened on the Pequod-equivalent voyage, and her journey in Canto 7 is about whether she will repeat Ahab's mistake (vengeance leading to destruction) or choose differently.",
+      "identities": [
+        {
+          "id": "10812",
+          "displayName": "Family Hierarch Candidate",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Family Hierarch Candidate",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10813",
+          "displayName": "Jeong's Office Rep",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Associate Office - Öufi",
+          "damageType": "slash"
+        },
+        {
+          "id": "10811",
+          "displayName": "Kurokumo Clan Captain",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10806",
+          "displayName": "Liu Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10807",
+          "displayName": "Molar Boatworks Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Molar Office",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10802",
+          "displayName": "R Corp. 4th Pack Reindeer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10808",
+          "displayName": "The Pequod Captain",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Pequod Captain",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10810",
+          "displayName": "Zwei Assoc. West Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10809",
+          "displayName": "Edgar Family Butler",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Edgar Family",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10804",
+          "displayName": "LCCB Assistant Manager",
+          "sourceGame": "limbus",
+          "wingOrGroup": "LCC",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10805",
+          "displayName": "Lobotomy E.G.O::Sloshing",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10803",
+          "displayName": "Shi Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Shi Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10801",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20803",
+          "displayName": "Ardor Blossom Star",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: wrath."
+        },
+        {
+          "id": "20806",
+          "displayName": "Wingbeat",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: gluttony."
+        },
+        {
+          "id": "20808",
+          "displayName": "Christmas Nightmare",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "20810",
+          "displayName": "Tidal Elegy",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "20802",
+          "displayName": "Roseate Desire",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: lust."
+        },
+        {
+          "id": "20804",
+          "displayName": "Capote",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: wrath."
+        },
+        {
+          "id": "20807",
+          "displayName": "Bygone Days",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: gloom."
+        },
+        {
+          "id": "20805",
+          "displayName": "Blind Obsession",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: pride."
+        },
+        {
+          "id": "20801",
+          "displayName": "Snagharpoon",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "20809",
+          "displayName": "Hundred-Footed Death Maggot [蝍蛆殺]",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+        }
+      ]
+    },
+    {
+      "id": "sinclair",
+      "name": "Sinclair",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "demian",
+          "role": "primary",
+          "specificConnection": "Emil Sinclair is the protagonist of Hesse's Demian — a young man caught between two worlds (conventional bourgeois life and a deeper, more primal spiritual reality) guided by the enigmatic Demian. Limbus Sinclair undergoes a similar transformation from an innocent into someone capable of violence, with his 'Kromer' moment echoing Sinclair's awakening in the novel."
+        }
+      ],
+      "themes": [
+        "metamorphosis",
+        "identity-fragmentation",
+        "guilt",
+        "redemption"
+      ],
+      "loreSummary": "Sinclair is the youngest Sinner, initially appearing soft, bookish, and deeply uncomfortable with violence. His arc across Cantos 1–4 charts a violent transformation — from a child who believed in light to someone who has seen and committed dark acts. He struggles with guilt and the fear that he is not the person he thought he was. His EGO 'Nobles' is both literally and figuratively his darker self made manifest.",
+      "literaryConnectionNotes": "In Demian, Sinclair is a young boy who is欺负ed by a bully named Kromer. He is rescued and introduced to a deeper worldview by Demian, who teaches him that the world is not divided simply into light and dark — that both exist in all people, and that becoming whole requires accepting one's shadow. Limbus Sinclair's arc follows this almost exactly: Kromer's bullying forces him to confront his darker potential, and his 'Nobles' EGO represents his awakening to the darker half of himself. His eventual acceptance of both sides is his metamorphosis.",
+      "identities": [
+        {
+          "id": "10910",
+          "displayName": "Devyat' Assoc. North Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Devyat' Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10907",
+          "displayName": "Dieci Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dieci Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10912",
+          "displayName": "Heishou Pack - Si Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10902",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10908",
+          "displayName": "Liu Assoc. South Section 4 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10913",
+          "displayName": "Lobotomy E.G.O:: The Sword Sharpened with Tears",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10914",
+          "displayName": "R Corp. 4th Pack Reindeer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10905",
+          "displayName": "Rosespanner Workshop Rep",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Rosespanner Workshop",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10911",
+          "displayName": "The Princess of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10903",
+          "displayName": "LCCB Assistant Manager",
+          "sourceGame": "limbus",
+          "wingOrGroup": "LCC",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10904",
+          "displayName": "N Corp. Mittelhammer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10909",
+          "displayName": "T Corp. Class 2 Collection Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "T Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10906",
+          "displayName": "Zwei Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10901",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "slash"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20902",
+          "displayName": "4th Match Flame",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: wrath."
+        },
+        {
+          "id": "20905",
+          "displayName": "Pursuance",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: sloth."
+        },
+        {
+          "id": "20907",
+          "displayName": "Hex Nail",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: envy."
+        },
+        {
+          "id": "20903",
+          "displayName": "Rime Shank",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "20904",
+          "displayName": "Effervescent Corrosion",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gluttony."
+        },
+        {
+          "id": "20906",
+          "displayName": "Sanguine Desire",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: lust."
+        },
+        {
+          "id": "20908",
+          "displayName": "Indicant's Trial",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: wrath."
+        },
+        {
+          "id": "20901",
+          "displayName": "What is Cast",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: pride."
+        }
+      ]
+    },
+    {
+      "id": "don-quixote",
+      "name": "Don Quixote",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "don-quixote",
+          "role": "primary",
+          "specificConnection": "Don Quixote is named directly after Cervantes's knight-errant. Like her literary namesake, she has a romantic, delusional worldview that sees windmills as giants and the mundane City as a chivalric landscape. Her ' crusade' in her Canto involves literal combat against what she perceives as injustice — and the tragic gap between her perception and reality."
+        }
+      ],
+      "themes": [
+        "absurdity",
+        "identity-fragmentation",
+        "futility",
+        "faith"
+      ],
+      "loreSummary": "Don Quixote is an exuberant, slightly unhinged Sinner with a fiercely moral worldview. She believes the world is full of evil that must be vanquished and has a habit of charging into dangerous situations with absolute conviction. Her optimism is both her greatest strength and her most dangerous flaw — she genuinely cannot see the world as it is, and this refusal to be cynical is both admirable and costly.",
+      "literaryConnectionNotes": "Cervantes's Don Quixote is a man who, having read too many chivalric romances, loses his grip on reality and rides out to fight giants (which are, in reality, windmills). He is both comedic and tragic — his delusions are symptoms of a profound dissatisfaction with the modern world, and his sincerity makes him sympathetic despite his absurdity. Limbus Don Quixote operates the same way: her worldview is objectively delusional, but her moral conviction is real and costs her personally. The absurdity is not in her lack of sincerity but in the world's refusal to match it.",
+      "identities": [
+        {
+          "id": "10311",
+          "displayName": "Cinq Assoc. East Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10305",
+          "displayName": "Cinq Assoc. South Section 5 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10313",
+          "displayName": "Heishou Pack - Wei Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10312",
+          "displayName": "Lobotomy E.G.O:: In the Name of Love and Hate",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10309",
+          "displayName": "T Corp. Class 3 Collection Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "T Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10314",
+          "displayName": "The Index Proxy -  Effloresced E.G.O:: Procuration",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10310",
+          "displayName": "The Manager of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10306",
+          "displayName": "The Middle Little Sister",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10302",
+          "displayName": "W Corp. L3 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10308",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10307",
+          "displayName": "Lobotomy E.G.O::Lantern",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10304",
+          "displayName": "N Corp. Mittelhammer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10303",
+          "displayName": "Shi Assoc. South Section 5 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Shi Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10301",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "pierce"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20302",
+          "displayName": "Fluid Sac",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "20303",
+          "displayName": "Telepole",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: envy."
+        },
+        {
+          "id": "20308",
+          "displayName": "Red Sheet",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: gluttony."
+        },
+        {
+          "id": "20304",
+          "displayName": "Lifetime Stew",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: lust."
+        },
+        {
+          "id": "20305",
+          "displayName": "Wishing Cairn",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "20306",
+          "displayName": "Electric Screaming",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+        },
+        {
+          "id": "20307",
+          "displayName": "Yearning-Mircalla",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: lust."
+        },
+        {
+          "id": "20309",
+          "displayName": "In the Name of Love and Hate",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: envy."
+        },
+        {
+          "id": "20301",
+          "displayName": "La Sangre de Sancho",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: lust."
+        }
+      ]
+    },
+    {
+      "id": "ryoshu",
+      "name": "Ryoshu",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "crossGameContinuity": true,
+      "literarySources": [
+        {
+          "id": "utai-rashomon",
+          "role": "primary",
+          "specificConnection": "Ryoshu is heavily inspired by the 'Rashomon effect' — multiple perspectives producing contradictory truths — and by ukiyo-e artist Tōka Yoshida (the 'Rashomon' painter), whose art depicted violence and decay with unsettling beauty. Her EGO 'Warning' features imagery that echoes the brutal, beautiful aesthetic of Edo-period woodblock prints and the moral ambiguity of Akutagawa's Rashomon stories."
+        }
+      ],
+      "themes": [
+        "decay",
+        "absurdity",
+        "identity-fragmentation"
+      ],
+      "loreSummary": "Ryoshu is an artist who sees the world in terms of compositions — beauty, violence, and meaning. She is aloof, sardonic, and deeply unconventional, often making cryptic statements about what she finds 'beautiful' or 'composed correctly.' Her art is literal in the City — she literally manifests her paintings as combat abilities. Her emotional range appears narrow, but she is not unfeeling; she simply processes the world through an aesthetic lens that others find disturbing.",
+      "literaryConnectionNotes": "Ryunosuke Akutagawa's 'Rashomon' centers on the unreliability of truth — multiple witnesses to a crime give contradictory accounts, and the 'real' truth cannot be established. Limbus Ryoshu embodies this: her 'art' is her interpretation of reality, and it is as valid and as distorted as any other perspective. The violence in her art (her EGO projections, her combat style) echoes the brutal imagery of Edo-period woodblock prints, where beauty and gore coexisted in the same frame. Project Moon has described her as the 'artist of the group' — she is genuinely talented, genuinely dangerous, and genuinely indifferent to conventional morality.",
+      "identities": [
+        {
+          "id": "10413",
+          "displayName": "Drifting Blade of Hongyuan",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10408",
+          "displayName": "Edgar Family Chief Butler",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Edgar Family",
+          "damageType": "slash"
+        },
+        {
+          "id": "10411",
+          "displayName": "Heishou Pack - Mao Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10403",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10410",
+          "displayName": "Lobotomy E.G.O:: Red Eyes & Penitence",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10412",
+          "displayName": "N Corp. E.G.O:: Contempt, Awe",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10404",
+          "displayName": "R.B. Chef de Cuisine",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R.B.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10405",
+          "displayName": "W Corp. L3 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10409",
+          "displayName": "District 20 Yurodivy",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10406",
+          "displayName": "LCCB Assistant Manager",
+          "sourceGame": "limbus",
+          "wingOrGroup": "LCC",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10407",
+          "displayName": "Liu Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10402",
+          "displayName": "Seven Assoc. South Section 6",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Seven Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10401",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "slash"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20402",
+          "displayName": "4th Match Flame",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: wrath."
+        },
+        {
+          "id": "20404",
+          "displayName": "Red Eyes (Open)",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: envy."
+        },
+        {
+          "id": "20408",
+          "displayName": "Thoracalgia",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: pride."
+        },
+        {
+          "id": "20403",
+          "displayName": "Red Eyes",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: lust."
+        },
+        {
+          "id": "20406",
+          "displayName": "Blind Obsession",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: pride."
+        },
+        {
+          "id": "20407",
+          "displayName": "Contempt, Awe",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: lust."
+        },
+        {
+          "id": "20409",
+          "displayName": "Great Trichiliocosm [三千大世界]",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: wrath."
+        },
+        {
+          "id": "20401",
+          "displayName": "Forest for the Flames",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: lust."
+        },
+        {
+          "id": "20405",
+          "displayName": "Soda",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: gloom."
+        }
+      ]
+    },
+    {
+      "id": "meursault",
+      "name": "Meursault",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "the-stranger",
+          "role": "primary",
+          "specificConnection": "Meursault's name, emotional detachment, and judicial execution are lifted directly from Camus's The Stranger. In Limbus, he is the most emotionally flat of all Sinners — he speaks minimally, reacts little, and seems genuinely indifferent to most social cues. His eventual fate in his Canto mirrors the novel's ending, making his arc the most direct literary adaptation in the game."
+        }
+      ],
+      "themes": [
+        "absurdity",
+        "nihilism",
+        "guilt",
+        "identity-fragmentation"
+      ],
+      "loreSummary": "Meursault is characterized by his extreme emotional flatness — he rarely speaks beyond monosyllables, shows little visible reaction to events that would distress others, and is completely literal in his thinking. He is not cruel, but his lack of emotional response makes him unpredictable. His Canto reveals the cause of this detachment and forces him to confront a reckoning he has been avoiding.",
+      "literaryConnectionNotes": "Albert Camus's The Stranger opens with the iconic line: 'Mother died today. Or, maybe, yesterday — I can't be sure.' Meursault's narration is emotionally detached, describing events with clinical precision. He is tried and executed not for killing a man (the crime) but for not crying at his mother's funeral — for failing to perform the social emotions that society expects. Limbus Meursault has this same quality of existing outside the emotional scripts others follow. His literary connection is not just thematic — it is structural: his Canto is structured around a trial, a reckoning, and an ending that forces meaning onto what Meursault himself experienced as meaninglessness.",
+      "identities": [
+        {
+          "id": "10508",
+          "displayName": "Blade Lineage Mentor",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "slash"
+        },
+        {
+          "id": "10511",
+          "displayName": "Cinq Assoc. West Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10510",
+          "displayName": "Dieci Assoc. South Section 4 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dieci Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10504",
+          "displayName": "N Corp. Großhammer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10506",
+          "displayName": "R Corp. 4th Pack Rhino",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10513",
+          "displayName": "The Prince of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
+          "damageType": "slash"
+        },
+        {
+          "id": "10512",
+          "displayName": "The Thumb East Capo IIII",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "slash"
+        },
+        {
+          "id": "10503",
+          "displayName": "W Corp. L2 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10509",
+          "displayName": "Dead Rabbits Boss",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10502",
+          "displayName": "Liu Assoc. South Section 6",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10505",
+          "displayName": "Rosespanner Workshop Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Rosespanner Workshop",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10507",
+          "displayName": "The Middle Little Brother",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10501",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20503",
+          "displayName": "Pursuance",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "20504",
+          "displayName": "Capote",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: wrath."
+        },
+        {
+          "id": "20502",
+          "displayName": "Screwloose Wallop",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: envy."
+        },
+        {
+          "id": "20505",
+          "displayName": "Regret",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: wrath."
+        },
+        {
+          "id": "20506",
+          "displayName": "Electric Screaming",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+        },
+        {
+          "id": "20507",
+          "displayName": "Yearning-Mircalla",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: lust."
+        },
+        {
+          "id": "20508",
+          "displayName": "Crushbound Past",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "20501",
+          "displayName": "Chains of Others",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: pride."
+        }
+      ]
+    },
+    {
+      "id": "hong-lu",
+      "name": "Hong Lu",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "dream-of-the-red-chamber",
+          "role": "primary",
+          "specificConnection": "Hong Lu is adapted from a character in Cao Xueqin's Dream of the Red Chamber (红楼梦), one of China's Four Great Classical Novels. He comes from a wealthy, powerful family (the Jia household) that is secretly corrupt and in decline — a perfect parallel to Limbus Company's fixation on 'noble' bloodlines and the Wing system. His mild demeanor hides a family history of violence and betrayal."
+        }
+      ],
+      "themes": [
+        "decay",
+        "family",
+        "futility",
+        "identity-fragmentation"
+      ],
+      "loreSummary": "Hong Lu is polite, soft-spoken, and deferential to others — he speaks in a formal, archaic register that sets him apart from the other Sinners. He has a habit of smiling even in disturbing situations. His Canto explores his family background and the rot beneath the surface of his seemingly gentle demeanor. He is deeply aware of the corruption around him and chooses to participate minimally rather than fight it.",
+      "literaryConnectionNotes": "Dream of the Red Chamber follows the decline of the Jia family — a wealthy, powerful household sustained by connections and corruption rather than merit. It is a novel about the decay of aristocratic systems, the entrapment of individuals within family structures, and the futility of trying to maintain appearances as the foundation crumbles. Limbus Hong Lu inherits this thematic core: he is trapped by his family name, aware of the rot, and too pragmatic (or too fatalistic) to resist. His smile is the most unsettling thing about him — it is both the mask of a child trained to perform pleasantness and a genuine expression of acceptance of a world he knows is doomed.",
+      "identities": [
+        {
+          "id": "10608",
+          "displayName": "Dieci Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dieci Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10609",
+          "displayName": "District 20 Yurodivy",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10611",
+          "displayName": "Full-Stop Office Rep",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Full-Stop Office",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10605",
+          "displayName": "K Corp. Class 3 Excision Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "K Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10612",
+          "displayName": "R Corp. 4th Pack Reindeer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10613",
+          "displayName": "The Lord of Hongyuan",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Jia Family",
+          "damageType": "slash"
+        },
+        {
+          "id": "10603",
+          "displayName": "Tingtang Gang Gangleader",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "slash"
+        },
+        {
+          "id": "10610",
+          "displayName": "Fanghunt Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Fanghunt Office",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10607",
+          "displayName": "Hook Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Hook Office",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10602",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10604",
+          "displayName": "Liu Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10606",
+          "displayName": "W Corp. L2 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10601",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20603",
+          "displayName": "Dimension Shredder",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: pride."
+        },
+        {
+          "id": "20605",
+          "displayName": "Effervescent Corrosion",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: gluttony."
+        },
+        {
+          "id": "20609",
+          "displayName": "To Remain Oneself [宁作吾]",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: pride."
+        },
+        {
+          "id": "20602",
+          "displayName": "Roseate Desire",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: lust."
+        },
+        {
+          "id": "20604",
+          "displayName": "Soda",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: envy."
+        },
+        {
+          "id": "20606",
+          "displayName": "Cavernous Wailing",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "20607",
+          "displayName": "Lasso",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gluttony."
+        },
+        {
+          "id": "20608",
+          "displayName": "Tears of the Tarnished Blood [汚血泣淚]",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: gluttony."
+        },
+        {
+          "id": "20601",
+          "displayName": "Land of Illusion",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+        }
+      ]
+    },
+    {
+      "id": "heathcliff",
+      "name": "Heathcliff",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "wuthering-heights",
+          "role": "primary",
+          "specificConnection": "Heathcliff is named directly after Emily Brontë's Byronic antihero from Wuthering Heights — a man driven by class humiliation, obsessive love, and a desire for vengeance that ultimately destroys everyone around him. Limbus Heathcliff carries the same core wounds: childhood abuse, class degradation, and a love that curdles into something darker. His arc is about whether he will repeat or break the cycle."
+        }
+      ],
+      "themes": [
+        "vengeance",
+        "obsession",
+        "futility",
+        "family"
+      ],
+      "loreSummary": "Heathcliff is hot-tempered, prone to violence when pushed, and harbors deep resentment toward those he perceives as privileged or cruel. He is fiercely loyal to those he considers 'his people' and will go to extreme lengths to protect or avenge them. His Canto reveals that this fury has specific roots — a history of class-based abuse and betrayal that created the wound he carries.",
+      "literaryConnectionNotes": "In Wuthering Heights, Heathcliff is a foundling taken in by Mr. Earnshaw, who bestows great affection on him — to the intense resentment of Hindley Earnshaw, who sees Heathcliff as a usurper of his birthright. Hindley's abuse turns Heathcliff from a spirited child into a vengeful adult who systematically destroys both the Earnshaw and Linton families. The novel asks whether Heathcliff's vengeance is justified (it destroys cruel people) or monstrous (it destroys innocent people too). Limbus Heathcliff asks the same question: his rage is earned, but what he does with it may not be.",
+      "identities": [
+        {
+          "id": "10711",
+          "displayName": "Full-Stop Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Full-Stop Office",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10714",
+          "displayName": "Heishou Pack - You Branch Adept",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10712",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10705",
+          "displayName": "Lobotomy E.G.O:: Sunshower",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10703",
+          "displayName": "R Corp. 4th Pack Rabbit",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10707",
+          "displayName": "The Pequod Harpooneer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Pequod",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10713",
+          "displayName": "W Corp. L4 Cleanup Agent - CCA",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10710",
+          "displayName": "Wild Hunt",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Wild Hunt",
+          "damageType": "slash"
+        },
+        {
+          "id": "10708",
+          "displayName": "Öufi Assoc. South Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Öufi Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10709",
+          "displayName": "MultiCrack Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "MultiCrack Office",
+          "damageType": "slash"
+        },
+        {
+          "id": "10704",
+          "displayName": "N Corp. Kleinhammer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10706",
+          "displayName": "Seven Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Seven Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10702",
+          "displayName": "Shi Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Shi Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10701",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20702",
+          "displayName": "Telepole",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: envy."
+        },
+        {
+          "id": "20704",
+          "displayName": "Ya Śūnyatā Tad Rūpam",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: lust."
+        },
+        {
+          "id": "20708",
+          "displayName": "Asymmetrical Inertia",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "20703",
+          "displayName": "AEDD",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "20707",
+          "displayName": "Fell Bullet",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: pride."
+        },
+        {
+          "id": "20709",
+          "displayName": "Move-in Reg.",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: envy."
+        },
+        {
+          "id": "20706",
+          "displayName": "Binds",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "20701",
+          "displayName": "Bodysack",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: envy."
+        },
+        {
+          "id": "20705",
+          "displayName": "Holiday",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gluttony."
+        }
+      ]
+    },
+    {
+      "id": "yi-sang",
+      "name": "Yi Sang",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "kim-yi-sang",
+          "role": "primary",
+          "specificConnection": "Yi Sang is named after the pen name of Korean author Kim Hyeok (pen name: Yi Sang, 1907–1937), whose works — especially the novel The Flight of Earth (iqug-ui Han-Yang) and the short story 'Fog' (Angae) — deal with themes of illness, existential despair, dissolution of the self, and the inability to love. Limbus Yi Sang is a poet dealing with a similar condition — a metaphorical 'fog' that obscures his connection to himself and others."
+        },
+        {
+          "id": "dream-of-the-red-chamber",
+          "role": "secondary",
+          "specificConnection": "The name 'Yi Sang' is Chinese-Korean: 'Yi' (里/Earth) and 'Sang' (哀/Grief/Mourn) — literally 'Earthly Grief.' This etymology connects to Dream of the Red Chamber's themes of family decay and the mourning of a lost world, while Yi Sang's lung disease (literary: author Yi Sang died of tuberculosis; in Limbus: related to his abilities) mirrors the consumption-as-metaphor tradition in both the novel and Eastern literature broadly."
+        }
+      ],
+      "themes": [
+        "decay",
+        "futility",
+        "nihilism",
+        "metamorphosis",
+        "identity-fragmentation"
+      ],
+      "loreSummary": "Yi Sang is quiet, introspective, and physically unwell — he coughs frequently and is often seen writing in a notebook. He is the group's resident poet, and his poetry serves as both a coping mechanism and a lens through which he processes the world. He is the most philosophically withdrawn of the Sinners, seemingly accepting of his own deterioration. His Canto confronts the origins of his condition and whether his art justifies or merely documents his suffering.",
+      "literaryConnectionNotes": "Real-world Yi Sang (1907–1937) was a Korean author whose literary career lasted only a decade before tuberculosis killed him at 30. His work is characterized by extreme emotional intensity, a focus on death and decay, and a recurring motif of the self dissolving into fog or absence. In The Flight of Earth, the protagonist's relationship with existence is one of repulsion and simultaneous dependence — 'If there were no earth, I would not have to love.' Limbus Yi Sang's character operates on the same paradox: he is a poet because he feels too much, but the only thing he can write about is the dissolution of feeling. His fog is both his illness and his art — impenetrable, obscuring, and strangely beautiful.",
+      "identities": [
+        {
+          "id": "10103",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "slash"
+        },
+        {
+          "id": "10104",
+          "displayName": "Effloresced E.G.O::Spicebush",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "pierce"
+        },
+        {
+          "id": "10114",
+          "displayName": "Heishou Pack - Wu Branch Adept",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10112",
+          "displayName": "Liu Assoc. South Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10110",
+          "displayName": "Lobotomy E.G.O:: Solemn Lament",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10113",
+          "displayName": "N Corp. E.G.O:: Fell Bullet",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10109",
+          "displayName": "The Ring Pointillist Student",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10106",
+          "displayName": "W Corp. L3 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10108",
+          "displayName": "Dieci Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dieci Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10111",
+          "displayName": "LCE E.G.O:: Lantern",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10105",
+          "displayName": "Molar Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Molar Office",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10102",
+          "displayName": "Seven Assoc. South Section 6",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Seven Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10107",
+          "displayName": "The Pequod First Mate",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Pequod",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10101",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "slash"
+        }
+      ],
+      "egos": [
+        {
+          "id": "20104",
+          "displayName": "Dimension Shredder",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+        },
+        {
+          "id": "20107",
+          "displayName": "Fell Bullet",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+        },
+        {
+          "id": "20102",
+          "displayName": "4th Match Flame",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: wrath."
+        },
+        {
+          "id": "20103",
+          "displayName": "Wishing Cairn",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: sloth."
+        },
+        {
+          "id": "20105",
+          "displayName": "Sunshower",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: sloth."
+        },
+        {
+          "id": "20108",
+          "displayName": "Great Trichiliocosm [三千大世界]",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: wrath."
+        },
+        {
+          "id": "20101",
+          "displayName": "Crow’s Eye View",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: sloth."
+        },
+        {
+          "id": "20106",
+          "displayName": "Bygone Days",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: gloom."
+        }
+      ]
+    },
+    {
+      "id": "rodion",
+      "name": "Rodion",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "crime-and-punishment",
+          "role": "primary",
+          "specificConnection": "Rodya/Rodion is directly adapted from Raskolnikov — Roddy Romanovich Raskolnikov — the protagonist of Dostoevsky's Crime and Punishment. Like Raskolnikov, Rodion commits a crime (motivated by a 'theory' that certain people are entitled to transcend conventional morality), and the psychological aftermath of that crime — guilt, paranoia, and ultimately confession — forms the core of her arc."
+        }
+      ],
+      "themes": [
+        "guilt",
+        "redemption",
+        "futility",
+        "nihilism"
+      ],
+      "loreSummary": "Rodion is upbeat, charming, and constantly scheming — she presents herself as a 'big shot' who is destined for greatness and isn't afraid to cut corners to get there. Beneath this bravado, however, is a sharp intelligence that is working through a personal theory about who deserves what in the world. Her Canto tests this theory against reality and forces her to confront the cost of living by it.",
+      "literaryConnectionNotes": "Dostoevsky's Raskolnikov invents a theory: great men (Napoleon, Lycurgus) are above conventional morality — they can transgress laws because their ends justify their means. He tests this theory by murdering a pawnbroker. The novel is not really about the murder — it is about the psychological consequences of believing that some people are permitted to do terrible things 'for the greater good.' Limbus Rodion has a similar theory, and her arc tests it. The 'punishment' in the title refers not to the legal consequences but to the self-destruction that Raskolnikov brings upon himself through guilt. Rodion's arc will likely follow the same trajectory.",
+      "identities": [
+        {
+          "id": "11002",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11008",
+          "displayName": "Cinq Assoc. South Section 4 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11009",
+          "displayName": "Dawn Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dawn Office",
+          "damageType": "slash"
+        },
+        {
+          "id": "11011",
+          "displayName": "Devyat' Assoc. North Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Devyat' Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11014",
+          "displayName": "Heishou Pack - You Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "11012",
+          "displayName": "The Middle Little Brother",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11005",
+          "displayName": "The One Who Shall Grip",
+          "sourceGame": "limbus",
+          "wingOrGroup": "N Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11013",
+          "displayName": "The Thumb East Soldato II",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11006",
+          "displayName": "Lobotomy E.G.O::Red Sheet",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "11004",
+          "displayName": "Los Mariachis Jefe",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11007",
+          "displayName": "Molar Boatworks Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Molar Office",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11003",
+          "displayName": "Zwei Assoc. South Section 6",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11010",
+          "displayName": "Zwei Assoc. West Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "11001",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "slash"
+        }
+      ],
+      "egos": [
+        {
+          "id": "21004",
+          "displayName": "Lantern",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: gluttony."
+        },
+        {
+          "id": "21005",
+          "displayName": "9:2",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: lust."
+        },
+        {
+          "id": "21002",
+          "displayName": "Impending Day",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: wrath."
+        },
+        {
+          "id": "21003",
+          "displayName": "Lifetime Stew",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: blunt. Affinity: lust."
+        },
+        {
+          "id": "21007",
+          "displayName": "Hex Nail",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: envy."
+        },
+        {
+          "id": "21008",
+          "displayName": "Tears of the Tarnished Blood [汚血泣淚]",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: pierce. Affinity: gluttony."
+        },
+        {
+          "id": "21001",
+          "displayName": "Branch of Knowledge",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: gluttony."
+        },
+        {
+          "id": "21006",
+          "displayName": "Cavernous Wailing",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gloom."
+        }
+      ]
+    },
+    {
+      "id": "outis",
+      "name": "Outis",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "crossGameContinuity": false,
+      "literarySources": [
+        {
+          "id": "odyssey",
+          "role": "primary",
+          "specificConnection": "'Outis' is Greek for 'nobody' — Odysseus's self-introduction to the Cyclops Polyphemus, which blinds the Cyclops. When Polyphemus tells the other Cyclopes that 'nobody' hurt him, they don't come to help. Odysseus's 'nobody' trick is one of the most famous examples of identity deception in Western literature, and Limbus Outis uses a similar deception — her real name and identity are deliberately obscured."
+        },
+        {
+          "id": "divine-comedy",
+          "role": "secondary",
+          "specificConnection": "Outis shares the Divine Comedy literary reference with Dante — in The Divine Comedy, Odysseus (rendered as 'Ulysses' in the Italian) appears in the Eighth Circle of Hell for his role in the Trojan Horse deception. Outis's connection to both the Odyssey and the Divine Comedy places her at the intersection of two texts that deal with deception, identity, and the cost of cunning."
+        }
+      ],
+      "themes": [
+        "futility",
+        "family",
+        "identity-fragmentation",
+        "guilt"
+      ],
+      "loreSummary": "Outis is the most recently revealed Sinner in Limbus Company, and her true identity is a significant plot point. She presents as a reliable, somewhat cold strategist who prioritizes group efficiency. Her personal Canto reveals layers of deception around her name, her history, and her motivations. She is the Sinner whose identity is most explicitly tied to lying about who she is.",
+      "literaryConnectionNotes": "Odysseus in Homer's Odyssey is defined by his cunning (Greek: mētis) — he is 'the man of twists and turns.' His signature achievement (the Trojan Horse) and his greatest failure (blinding Polyphemus) both depend on deception about his identity. In Dante's Inferno, Ulysses is consigned to the Eighth Circle for fraud — specifically for the Trojan Horse deception. Outis as a name is a meta-joke: 'I am nobody' said the man who was most definitely somebody. Limbus Outis plays the same game — her false identity conceals someone real, and the revelation of who she actually is has implications for the LCB's larger mission.",
+      "identities": [
+        {
+          "id": "11112",
+          "displayName": "Heishou Pack - Mao Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "11114",
+          "displayName": "LCA Udjat Vanguard Team 3 Leader",
+          "sourceGame": "limbus",
+          "wingOrGroup": "LCA",
+          "damageType": "slash"
+        },
+        {
+          "id": "11107",
+          "displayName": "Lobotomy E.G.O::Magic Bullet",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11105",
+          "displayName": "Molar Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Molar Office",
+          "damageType": "slash"
+        },
+        {
+          "id": "11104",
+          "displayName": "Seven Assoc. South Section 6 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Seven Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11113",
+          "displayName": "T Corp. Class 3 VDCU Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "T Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11111",
+          "displayName": "The Barber of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
+          "damageType": "slash"
+        },
+        {
+          "id": "11110",
+          "displayName": "W Corp. L3 Cleanup Captain",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11108",
+          "displayName": "Wuthering Heights Chief Butler",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "11102",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "slash"
+        },
+        {
+          "id": "11106",
+          "displayName": "Cinq Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11103",
+          "displayName": "G Corp. Head Manager",
+          "sourceGame": "limbus",
+          "wingOrGroup": "G Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11109",
+          "displayName": "The Ring Pointillist Student",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11101",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "pierce"
+        }
+      ],
+      "egos": [
+        {
+          "id": "21102",
+          "displayName": "Ebony Stem",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: gluttony."
+        },
+        {
+          "id": "21105",
+          "displayName": "Holiday",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: wrath."
+        },
+        {
+          "id": "21107",
+          "displayName": "Dimension Shredder",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: envy."
+        },
+        {
+          "id": "21108",
+          "displayName": "Magic Bullet",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: pierce. Affinity: pride."
+        },
+        {
+          "id": "21103",
+          "displayName": "Ya Śūnyatā Tad Rūpam",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: slash. Affinity: lust."
+        },
+        {
+          "id": "21104",
+          "displayName": "Sunshower",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: gluttony."
+        },
+        {
+          "id": "21106",
+          "displayName": "Binds",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: blunt. Affinity: pride."
+        },
+        {
+          "id": "21101",
+          "displayName": "To Páthos Máthos",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: pierce. Affinity: pride."
+        },
+        {
+          "id": "21109",
+          "displayName": "I'll Go fer Scissors. How 'Bout You?",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: slash. Affinity: envy."
+        }
+      ]
+    },
+    {
+      "id": "gregor",
+      "name": "Gregor",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "crossGameContinuity": true,
+      "literarySources": [
+        {
+          "id": "metamorphosis-kafka",
+          "role": "primary",
+          "specificConnection": "Gregor's identity is built around literal metamorphosis. In Kafka's The Metamorphosis, Gregor Samsa wakes up as a giant insect; in Limbus, Gregor has literally lost an arm (replaced with a prosthetic bug-arm that he can transform). His arc explores what it means to be 'changed' into something you didn't choose to be — and whether the changed self is still 'you.'"
+        }
+      ],
+      "themes": [
+        "metamorphosis",
+        "guilt",
+        "family",
+        "decay",
+        "futility"
+      ],
+      "loreSummary": "Gregor is a friendly, somewhat self-deprecating man who has lost his left arm and replaced it with a prosthetic 'bug arm' — a living, insectoid limb that he can transform into various weapons. He is the most 'everyman' of the Sinners in personality, which makes his physical transformation (the bug arm) all the more stark. His Canto explores the circumstances of losing his arm and the social stigma of being visibly 'other' in the City.",
+      "literaryConnectionNotes": "Kafka's The Metamorphosis opens with Gregor's transformation, which he initially accepts with more equanimity than his horrified family. The story is less about the horror of transformation than about how the transformed person is treated by those around them — Gregor becomes an inconvenience, then a burden, and is ultimately treated as something less than human. Limbus Gregor inherits this social dimension: his bug arm marks him as 'different,' and his Canto deals with how society treats those who are visibly changed. The arm itself — a living thing grafted onto a human body — also connects to the Project Moon universe's obsession with technology, abnormality, and the boundary between human and machine.",
+      "identities": [
+        {
+          "id": "11209",
+          "displayName": "Edgar Family Heir",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Edgar Family",
+          "damageType": "slash"
+        },
+        {
+          "id": "11211",
+          "displayName": "Firefist Office Survivor",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Firefist Office",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11203",
+          "displayName": "G Corp. Manager Corporal",
+          "sourceGame": "limbus",
+          "wingOrGroup": "G Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "11212",
+          "displayName": "Heishou Pack - Si Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "11213",
+          "displayName": "Night Awls Capitano",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Night Awls",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11210",
+          "displayName": "The Priest of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11207",
+          "displayName": "Twinhook Pirates First Mate",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11206",
+          "displayName": "Zwei Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "11208",
+          "displayName": "Kurokumo Clan Captain",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "11202",
+          "displayName": "Liu Assoc. South Section 6",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11204",
+          "displayName": "R.B. Sous-chef",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R.B.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11205",
+          "displayName": "Rosespanner Workshop Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Rosespanner Workshop",
+          "damageType": "slash"
+        },
+        {
+          "id": "11201",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "slash"
+        }
+      ],
+      "egos": [
+        {
+          "id": "21204",
+          "displayName": "AEDD",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "21207",
+          "displayName": "Solemn Lament",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: blunt. Affinity: gloom."
+        },
+        {
+          "id": "21208",
+          "displayName": "Christmas Nightmare",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "A HE tier EGO. Awakening damage: slash. Affinity: sloth."
+        },
+        {
+          "id": "21203",
+          "displayName": "Lantern",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: gluttony."
+        },
+        {
+          "id": "21206",
+          "displayName": "Bygone Days",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "A TETH tier EGO. Awakening damage: pierce. Affinity: gloom."
+        },
+        {
+          "id": "21205",
+          "displayName": "Garden of Thorns",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: lust."
+        },
+        {
+          "id": "21209",
+          "displayName": "Unbrilliant Glory",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "A WAW tier EGO. Awakening damage: slash. Affinity: sloth."
+        },
+        {
+          "id": "21201",
+          "displayName": "Suddenly, One Day",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: sloth."
+        },
+        {
+          "id": "21202",
+          "displayName": "Legerdemain",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "A ZAYIN tier EGO. Awakening damage: blunt. Affinity: gluttony."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "literarySources": [
+    {
+      "id": "divine-comedy",
+      "title": "The Divine Comedy",
+      "author": "Dante Alighieri",
+      "year": 1320,
+      "language": "Italian",
+      "passage": "All hope abandon, ye who enter in.",
+      "passageContext": "Inscription above the gates of Hell, Divine Comedy — Inferno",
+      "sharedGroup": "divine-comedy",
+      "themes": ["guilt", "futility", "faith"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Divine_Comedy"
+    },
+    {
+      "id": "faust-goethe",
+      "title": "Faust",
+      "author": "Johann Wolfgang von Goethe",
+      "year": 1808,
+      "language": "German",
+      "passage": "Whoever constantly and restlessly yearns — him we may redeem.",
+      "passageContext": "Mephistopheles, on his wager with Faust",
+      "themes": ["guilt", "vengeance", "redemption", "futility"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Goethe%27s_Faust"
+    },
+    {
+      "id": "moby-dick",
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "year": 1851,
+      "language": "English",
+      "passage": "It is a fair wind, the West Wind, the loveliest wind of all.",
+      "passageContext": "Ishmael, reflecting on the sea after returning from his voyage",
+      "themes": ["vengeance", "obsession", "futility"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Moby-Dick"
+    },
+    {
+      "id": "demian",
+      "title": "Demian",
+      "author": "Hermann Hesse",
+      "year": 1919,
+      "language": "German",
+      "passage": "The bird fights its way out of the egg. The egg is the world.",
+      "passageContext": "Emil Sinclair, recalling a story told by Demian",
+      "themes": ["metamorphosis", "identity-fragmentation", "guilt", "redemption"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Demian"
+    },
+    {
+      "id": "don-quixote",
+      "title": "Don Quixote",
+      "author": "Miguel de Cervantes",
+      "year": 1605,
+      "language": "Spanish",
+      "passage": "When life itself seems lunatic, who knows where madness lies?",
+      "passageContext": "Don Quixote, on the nature of his quest",
+      "themes": ["absurdity", "identity-fragmentation", "futility", "faith"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Don_Quixote"
+    },
+    {
+      "id": "the-stranger",
+      "title": "The Stranger (L'Étranger)",
+      "author": "Albert Camus",
+      "year": 1942,
+      "language": "French",
+      "passage": "Mother died today. Or, maybe, yesterday; I can't be sure.",
+      "passageContext": "Meursault's opening lines — establishing his emotional detachment",
+      "themes": ["absurdity", "nihilism", "guilt", "identity-fragmentation"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Stranger"
+    },
+    {
+      "id": "wuthering-heights",
+      "title": "Wuthering Heights",
+      "author": "Emily Brontë",
+      "year": 1847,
+      "language": "English",
+      "passage": "Whatever our souls are made of, his and mine are the same.",
+      "passageContext": "Catherine Earnshaw to Nelly Dean, on her bond with Heathcliff",
+      "themes": ["vengeance", "obsession", "futility", "family"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Wuthering_Heights"
+    },
+    {
+      "id": "metamorphosis-kafka",
+      "title": "The Metamorphosis",
+      "author": "Franz Kafka",
+      "year": 1915,
+      "language": "German",
+      "passage": "One morning, when Gregor Samsa woke from uneasy dreams, he found himself transformed in his bed into a monstrous vermin.",
+      "passageContext": "Opening line of The Metamorphosis — Gregor's literal transformation",
+      "themes": ["metamorphosis", "guilt", "family", "futility", "decay"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Metamorphosis"
+    },
+    {
+      "id": "crime-and-punishment",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "year": 1866,
+      "language": "Russian",
+      "passage": "Pain and suffering are always inevitable for a large intelligence and a deep heart.",
+      "passageContext": "Raskolnikov's internal justification for his crime",
+      "themes": ["guilt", "redemption", "futility", "nihilism"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Crime_and_Punishment"
+    },
+    {
+      "id": "dream-of-the-red-chamber",
+      "title": "Dream of the Red Chamber (红楼梦)",
+      "author": "Cao Xueqin",
+      "year": 1791,
+      "language": "Classical Chinese",
+      "passage": "Truth from fiction — Dream of the Red Chamber; happiness from sorrow — Flowers beneath the Mirror.",
+      "passageContext": "A couplet from the novel's opening verses, referring to its nature as both a dream and a mirror of reality",
+      "themes": ["decay", "family", "futility", "identity-fragmentation"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber"
+    },
+    {
+      "id": "kim-yi-sang",
+      "title": "The Flight of Earth (iqug-ui Han-Yang)",
+      "author": "Yi Sang (이grammar상)",
+      "year": 1939,
+      "language": "Korean",
+      "passage": "If there were no earth, I would not have to love.",
+      "passageContext": "From 'Fog' (안개), expressing the speaker's entangled relationship with existence and dissolution",
+      "themes": ["decay", "futility", "nihilism", "metamorphosis", "identity-fragmentation"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Yi_Sang"
+    },
+    {
+      "id": "utai-rashomon",
+      "title": "Rashomon and Seventeen Other Stories",
+      "author": "Ryunosuke Akutagawa",
+      "year": 1915,
+      "language": "Japanese",
+      "passage": "The Rashomon gate — a gate which served as the door to the criminal court of Heian-kyō.",
+      "passageContext": "Opening of 'In a Grove' — multiple conflicting accounts of a single event",
+      "themes": ["identity-fragmentation", "guilt", "futility"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Rashomon_(short_story)"
+    },
+    {
+      "id": "odyssey",
+      "title": "The Odyssey",
+      "author": "Homer",
+      "year": -800,
+      "language": "Ancient Greek",
+      "passage": "Tell me, O muse, of that ingenious hero who travelled far and wide.",
+      "passageContext": "Opening invocation — Odysseus's long journey home after the Trojan War",
+      "themes": ["vengeance", "family", "futility", "identity-fragmentation"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Odyssey"
+    }
+  ]
+}
