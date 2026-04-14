@@ -1,22 +1,13 @@
 import { useState, useMemo, useCallback } from 'react';
 import { sinners } from './data/sinners';
 import { deriveEdges } from './utils/deriveEdges';
-import { LoreGraph, EDGE_COLORS, EDGE_LABELS } from './components/LoreGraph';
+import { LoreGraph } from './components/LoreGraph';
 import { LorePanel } from './components/LorePanel';
-import type { Sinner, EdgeType } from './types';
+import type { Sinner } from './types';
 import './App.css';
-
-const ALL_EDGE_TYPES: EdgeType[] = [
-  'literary-origin',
-  'thematic-link',
-  'cross-game-continuity',
-];
 
 export default function App() {
   const [selectedSinner, setSelectedSinner] = useState<Sinner | null>(null);
-  const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
-    new Set(ALL_EDGE_TYPES)
-  );
 
   const edges = useMemo(() => deriveEdges(sinners), []);
 
@@ -27,15 +18,6 @@ export default function App() {
   const handleClose = useCallback(() => {
     setSelectedSinner(null);
   }, []);
-
-  const toggleEdgeType = (type: EdgeType) => {
-    setActiveEdgeTypes((prev) => {
-      const next = new Set(prev);
-      if (next.has(type)) next.delete(type);
-      else next.add(type);
-      return next;
-    });
-  };
 
   return (
     <div className="app">
@@ -48,26 +30,6 @@ export default function App() {
         </div>
       </header>
 
-      <div className="app__legend">
-        <span className="app__legend-label">Edges:</span>
-        {ALL_EDGE_TYPES.map((type) => (
-          <button
-            key={type}
-            className={`app__legend-btn ${activeEdgeTypes.has(type) ? 'app__legend-btn--active' : ''}`}
-            onClick={() => toggleEdgeType(type)}
-            aria-pressed={activeEdgeTypes.has(type)}
-            style={{ '--edge-color': EDGE_COLORS[type] } as React.CSSProperties}
-          >
-            <span
-              className="app__legend-swatch"
-              style={{ backgroundColor: EDGE_COLORS[type] }}
-            />
-            {EDGE_LABELS[type]}
-          </button>
-        ))}
-        <span className="app__legend-hint">Click a node to explore</span>
-      </div>
-
       <div className="app__main">
         <div
           className={`app__graph-wrap ${selectedSinner ? 'app__graph-wrap--panel-open' : ''}`}
@@ -77,7 +39,6 @@ export default function App() {
             edges={edges}
             selectedSinner={selectedSinner}
             onNodeClick={handleNodeClick}
-            activeEdgeTypes={activeEdgeTypes}
           />
         </div>
         <LorePanel sinner={selectedSinner} onClose={handleClose} />
