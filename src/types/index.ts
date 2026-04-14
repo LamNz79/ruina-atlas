@@ -151,3 +151,38 @@ export interface GraphEdge {
 
 /** Maps identity ID → image path (null = no image available). */
 export type IdentityImageMap = Record<string, string | null>;
+
+// ── Identity Game Data (Prydwen) ───────────────────────────────────────────────
+
+export interface IdentityStats {
+  hp_1: string;
+  hp_30: string;
+  def_1: string;
+  def_30: string;
+  speed_1: string;
+  speed_30: string;
+}
+
+export interface IdentityResistances {
+  blunt: string;
+  slash: string;
+  pierce: string;
+}
+
+export interface IdentityRatings {
+  beg: string;
+  end: string;
+}
+
+export interface IdentityDetail {
+  attackType: string[];
+  speciality: string[];
+  affinity: string[];
+  stats: IdentityStats;
+  resistances: IdentityResistances;
+  ratings: IdentityRatings;
+  tierCategory: string; // 'dps' | 'support' | 'tank' | 'status'
+}
+
+/** Maps eldritchtools identity ID → prydwen game detail data. */
+export type IdentityDetailMap = Record<string, IdentityDetail>;

@@ -9,8 +9,6 @@ interface GraphNode extends d3.SimulationNodeDatum {
   literarySourceIds: string[];
   themes: string[];
   crossGameContinuity: boolean;
-  appearances: string[];
-  isSelected: boolean;
 }
 
 interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
@@ -35,6 +33,7 @@ const ALL_EDGE_TYPES: EdgeType[] = [
   'literary-origin',
   'thematic-link',
   'cross-game-continuity',
+  'shared-literary-group',
 ];
 
 export interface PhysicsSettings {
@@ -66,10 +65,75 @@ export function LoreGraph({
   const containerRef = useRef<HTMLDivElement>(null);
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
 
+  // ── Stable mutable refs — updated without triggering re-renders ─────────────
+  const simulationRef = useRef<d3.Simulation<GraphNode, GraphLink> | null>(null);
+  const linkElsRef = useRef<d3.Selection<SVGLineElement, GraphLink, SVGGElement, unknown> | null>(null);
+  const nodeElsRef = useRef<d3.Selection<SVGGElement, GraphNode, SVGGElement, unknown> | null>(null);
+  const zoomGroupRef = useRef<d3.Selection<SVGGElement, unknown, null, undefined> | null>(null);
+  const selectedIdRef = useRef<string | null>(null);
+  const onNodeClickRef = useRef(onNodeClick);
+  const sinnersRef = useRef(sinners);
+  const activeEdgeTypesRef = useRef<Set<EdgeType>>(new Set(ALL_EDGE_TYPES));
+
+  // Keep onNodeClick ref fresh without re-render dependency
+  useEffect(() => { onNodeClickRef.current = onNodeClick; }, [onNodeClick]);
+  useEffect(() => { sinnersRef.current = sinners; }, [sinners]);
+
+  // Sync selected ID ref on prop change
+  useEffect(() => {
+    selectedIdRef.current = selectedSinner?.id ?? null;
+    highlightSelected();
+  }, [selectedSinner]);
+
   const [physics, setPhysics] = useState<PhysicsSettings>(DEFAULTS);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
     new Set(ALL_EDGE_TYPES),
   );
+
+  // ── Style selected node in-place ────────────────────────────────────────────
+  const highlightSelected = useCallback(() => {
+    if (!nodeElsRef.current) return;
+    const selId = selectedIdRef.current;
+    nodeElsRef.current.each(function (d) {
+      const isSel = d.id === selId;
+      const hitSel = d3.select(this).select<SVGCircleElement>('.node-hit');
+      hitSel
+        .attr('fill', isSel ? '#e63946' : d.crossGameContinuity ? '#1a1a2e' : '#16213e')
+        .attr('stroke', isSel ? '#e63946' : '#4895ef')
+        .attr('stroke-width', isSel ? 3 : 2);
+      d3.select(this)
+        .select('.node-ring')
+        .attr('visibility', d.crossGameContinuity || isSel ? 'visible' : 'hidden')
+        .attr('stroke', isSel ? '#e63946' : '#f9c74f');
+    });
+  }, []);
+
+  // ── Apply physics changes in-place ───────────────────────────────────────────
+  const applyPhysics = useCallback((p: PhysicsSettings) => {
+    if (!simulationRef.current) return;
+    const sim = simulationRef.current;
+    const linkForce = sim.force('link') as d3.ForceLink<GraphNode, GraphLink>;
+    if (linkForce) linkForce.distance(p.nodeSpacing);
+    sim.force('charge', d3.forceManyBody().strength(p.repulsion));
+    sim.force('center', d3.forceCenter(
+      (containerRef.current?.clientWidth ?? 800) / 2,
+      (containerRef.current?.clientHeight ?? 600) / 2,
+    ).strength(p.centering));
+    sim.alpha(0.5).restart();
+  }, []);
+
+  // ── Apply edge visibility in-place ─────────────────────────────────────────
+  const applyEdgeTypes = useCallback((active: Set<EdgeType>) => {
+    if (!linkElsRef.current) return;
+    activeEdgeTypesRef.current = active;
+    linkElsRef.current
+      .attr('visibility', (d) => active.has(d.type) ? 'visible' : 'hidden');
+  }, []);
+
+  // Sync edge types ref
+  useEffect(() => {
+    activeEdgeTypesRef.current = activeEdgeTypes;
+  }, [activeEdgeTypes]);
 
   const toggleEdgeType = useCallback((type: EdgeType) => {
     setActiveEdgeTypes((prev) => {
@@ -80,12 +144,17 @@ export function LoreGraph({
     });
   }, []);
 
-  const buildGraph = useCallback(() => {
+  useEffect(() => { applyPhysics(physics); }, [physics, applyPhysics]);
+  useEffect(() => { applyEdgeTypes(activeEdgeTypes); }, [activeEdgeTypes, applyEdgeTypes]);
+
+  // ── Build graph once (only when sinners or edges data change) ───────────────
+  useEffect(() => {
     if (!svgRef.current || !containerRef.current) return;
     const container = containerRef.current;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
+    simulationRef.current?.stop();
     d3.select(svgRef.current).selectAll('*').remove();
 
     const svg = d3
@@ -94,18 +163,15 @@ export function LoreGraph({
       .attr('height', height)
       .attr('viewBox', [0, 0, width, height]);
 
-    // SVG filter for edge glow
     const defs = svg.append('defs');
     const filter = defs.append('filter').attr('id', 'edge-glow');
-    filter
-      .append('feGaussianBlur')
-      .attr('stdDeviation', '3')
-      .attr('result', 'coloredBlur');
+    filter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
     const feMerge = filter.append('feMerge');
     feMerge.append('feMergeNode').attr('in', 'coloredBlur');
     feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
 
     const zoomGroup = svg.append('g').attr('class', 'zoom-group');
+    zoomGroupRef.current = zoomGroup;
 
     const zoom = d3
       .zoom<SVGSVGElement, unknown>()
@@ -116,23 +182,19 @@ export function LoreGraph({
     zoomRef.current = zoom;
     svg.call(zoom);
 
+    // Use the mutable refs — no stale closure issues
+    const active = activeEdgeTypesRef.current;
+    const links: GraphLink[] = edges
+      .filter((e) => active.has(e.type))
+      .map((e) => ({ source: e.source, target: e.target, type: e.type }));
+
     const nodes: GraphNode[] = sinners.map((s) => ({
       id: s.id,
       name: s.name,
       literarySourceIds: s.literarySources.map((ls) => ls.id),
       themes: [...s.themes],
       crossGameContinuity: s.crossGameContinuity,
-      appearances: [...s.appearances],
-      isSelected: selectedSinner?.id === s.id,
     }));
-
-    const links: GraphLink[] = edges
-      .filter((e) => activeEdgeTypes.has(e.type))
-      .map((e) => ({
-        source: e.source,
-        target: e.target,
-        type: e.type,
-      }));
 
     const simulation = d3
       .forceSimulation<GraphNode>(nodes)
@@ -141,12 +203,14 @@ export function LoreGraph({
         d3
           .forceLink<GraphNode, GraphLink>(links)
           .id((d) => d.id)
-          .distance(physics.nodeSpacing)
+          .distance(DEFAULTS.nodeSpacing)
           .strength(0.4),
       )
-      .force('charge', d3.forceManyBody().strength(physics.repulsion))
-      .force('center', d3.forceCenter(width / 2, height / 2).strength(physics.centering))
+      .force('charge', d3.forceManyBody().strength(DEFAULTS.repulsion))
+      .force('center', d3.forceCenter(width / 2, height / 2).strength(DEFAULTS.centering))
       .force('collision', d3.forceCollide().radius(55));
+
+    simulationRef.current = simulation;
 
     const linkGroup = zoomGroup.append('g').attr('class', 'links');
     const linkEls = linkGroup
@@ -159,13 +223,13 @@ export function LoreGraph({
       .attr('stroke-dasharray', (d) =>
         d.type === 'cross-game-continuity' ? '6,4' : 'none',
       );
+    linkElsRef.current = linkEls;
 
     const nodeGroup = zoomGroup.append('g').attr('class', 'nodes');
     const nodeEls = nodeGroup
       .selectAll<SVGGElement, GraphNode>('g')
       .data(nodes)
       .join('g')
-      .attr('class', 'node')
       .style('cursor', 'pointer')
       .call(
         d3
@@ -184,38 +248,37 @@ export function LoreGraph({
             d.fx = null;
             d.fy = null;
           }),
-      )
-      .on('click', (_, d) => {
-        const s = sinners.find((s) => s.id === d.id);
-        if (s) onNodeClick(s);
-      });
+      );
 
+    // Click — use refs so it's always current (no stale closure)
+    nodeEls.on('click', (_, d) => {
+      const found = sinnersRef.current.find((s) => s.id === d.id);
+      if (found) onNodeClickRef.current(found);
+    });
+
+    nodeElsRef.current = nodeEls;
+
+    // Hit circle
     nodeEls
       .append('circle')
+      .attr('class', 'node-hit')
       .attr('r', (d) => (d.crossGameContinuity ? 26 : 22))
-      .attr('fill', (d) =>
-        d.isSelected
-          ? '#e63946'
-          : d.crossGameContinuity
-          ? '#1a1a2e'
-          : '#16213e',
-      )
-      .attr('stroke', (d) =>
-        d.isSelected ? '#e63946' : '#4895ef',
-      )
-      .attr('stroke-width', (d) => (d.isSelected ? 3 : 2));
+      .attr('fill', (d) => d.crossGameContinuity ? '#1a1a2e' : '#16213e')
+      .attr('stroke', '#4895ef')
+      .attr('stroke-width', 2);
 
+    // Ring (cross-game only)
     nodeEls
       .filter((d) => d.crossGameContinuity)
       .append('circle')
-      .attr('r', (d) => (d.crossGameContinuity ? 30 : 26))
+      .attr('class', 'node-ring')
+      .attr('r', 30)
       .attr('fill', 'none')
-      .attr('stroke', (d) =>
-        d.isSelected ? '#e63946' : '#f9c74f',
-      )
+      .attr('stroke', '#f9c74f')
       .attr('stroke-width', 1.5)
       .attr('stroke-opacity', 0.5);
 
+    // Label
     nodeEls
       .append('text')
       .text((d) => d.name)
@@ -226,12 +289,13 @@ export function LoreGraph({
       .attr('font-family', '"Space Grotesk", sans-serif')
       .attr('pointer-events', 'none');
 
+    // Transparent hit area
     nodeEls
       .append('circle')
       .attr('r', 34)
       .attr('fill', 'transparent');
 
-    // ── Hover: highlight connected edges, dim the rest ──────────────────────
+    // ── Hover ────────────────────────────────────────────────────────────────
     nodeEls
       .on('mouseenter', function (_, hovered) {
         const connectedIds = new Set<string>();
@@ -246,37 +310,34 @@ export function LoreGraph({
           }
         });
 
-        // Dim unconnected nodes
         nodeEls.each(function (d) {
+          const isConn = connectedIds.has(d.id);
           d3.select(this)
-            .select('circle:first-child')
+            .select('.node-hit')
             .transition()
             .duration(150)
-            .attr('opacity', connectedIds.has(d.id) ? 1 : 0.25)
-            .attr('r', connectedIds.has(d.id) ? d.crossGameContinuity ? 26 : 22 : 18);
+            .attr('opacity', isConn ? 1 : 0.25)
+            .attr('r', isConn ? (d.crossGameContinuity ? 26 : 22) : 18);
           d3.select(this)
             .select('text')
             .transition()
             .duration(150)
-            .attr('opacity', connectedIds.has(d.id) ? 1 : 0.2);
-          // Highlight connected nodes slightly
-          if (connectedIds.has(d.id) && d.id !== hovered.id) {
+            .attr('opacity', isConn ? 1 : 0.2);
+          if (isConn && d.id !== hovered.id) {
             d3.select(this)
-              .select('circle:first-child')
+              .select('.node-hit')
               .transition()
               .duration(150)
               .attr('r', d.crossGameContinuity ? 28 : 24);
           }
         });
 
-        // Dim all edges first
         linkEls
           .transition()
           .duration(150)
           .attr('stroke-opacity', 0.08)
           .attr('stroke-width', 1);
 
-        // Glow connected edges
         linkEls.each(function (d) {
           const src = (d.source as GraphNode).id;
           const tgt = (d.target as GraphNode).id;
@@ -292,10 +353,9 @@ export function LoreGraph({
         });
       })
       .on('mouseleave', function () {
-        // Restore nodes
         nodeEls.each(function (d) {
           d3.select(this)
-            .select('circle:first-child')
+            .select('.node-hit')
             .transition()
             .duration(200)
             .attr('opacity', 1)
@@ -307,7 +367,6 @@ export function LoreGraph({
             .attr('opacity', 1);
         });
 
-        // Restore edges
         linkEls
           .transition()
           .duration(200)
@@ -316,25 +375,18 @@ export function LoreGraph({
           .attr('filter', null);
       });
 
+    // Initial selected state
+    highlightSelected();
+
     simulation.on('tick', () => {
       linkEls
         .attr('x1', (d) => (d.source as GraphNode).x!)
         .attr('y1', (d) => (d.source as GraphNode).y!)
         .attr('x2', (d) => (d.target as GraphNode).x!)
         .attr('y2', (d) => (d.target as GraphNode).y!);
-
       nodeEls.attr('transform', (d) => `translate(${d.x},${d.y})`);
     });
-
-    return () => {
-      simulation.stop();
-    };
-  }, [sinners, edges, selectedSinner, onNodeClick, activeEdgeTypes, physics]);
-
-  useEffect(() => {
-    const cleanup = buildGraph();
-    return () => cleanup?.();
-  }, [buildGraph]);
+  }, [sinners, edges, highlightSelected]);
 
   const handleResetLayout = useCallback(() => {
     setPhysics(DEFAULTS);

@@ -1,0 +1,4861 @@
+{
+  "11203": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Sloth",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "68",
+      "hp_30": "203",
+      "def_1": "12",
+      "def_30": "58",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10902": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Poise",
+      "Bleed"
+    ],
+    "affinity": [
+      "Gloom",
+      "Lust",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "89",
+      "hp_30": "264",
+      "def_1": "14",
+      "def_30": "62",
+      "speed_1": "2-5",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10802": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking",
+      "Charge"
+    ],
+    "affinity": [
+      "Envy",
+      "Gloom",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "240",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "37",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10703": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Charge",
+      "Bleed",
+      "Fragile",
+      "Rupture",
+      "Haste",
+      "Ammo"
+    ],
+    "affinity": [
+      "Wrath",
+      "Gluttony",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "56",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9"
+    },
+    "tierCategory": "support"
+  },
+  "10603": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed"
+    ],
+    "affinity": [
+      "Envy",
+      "Gluttony",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "79",
+      "hp_30": "232",
+      "def_1": "15",
+      "def_30": "62",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "8"
+    },
+    "tierCategory": "dps"
+  },
+  "10503": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Charge",
+      "Rupture"
+    ],
+    "affinity": [
+      "Gloom",
+      "Pride",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "82",
+      "hp_30": "243",
+      "def_1": "16",
+      "def_30": "64",
+      "speed_1": "4-8",
+      "speed_30": "4-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "support"
+  },
+  "10403": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Paralyze",
+      "Bleed"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Lust",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "76",
+      "hp_30": "224",
+      "def_1": "13",
+      "def_30": "60",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "7"
+    },
+    "tierCategory": "status"
+  },
+  "10302": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Charge",
+      "Rupture",
+      "Fragile"
+    ],
+    "affinity": [
+      "Sloth",
+      "Envy",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "76",
+      "hp_30": "224",
+      "def_1": "13",
+      "def_30": "59",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "8"
+    },
+    "tierCategory": "dps"
+  },
+  "10103": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Poise"
+    ],
+    "affinity": [
+      "Pride",
+      "Wrath",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "56",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "11002": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Poise",
+      "Paralyze",
+      "Bleed"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Wrath",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "264",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "2-5",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "11202": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Wrath",
+      "Lust",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "193",
+      "def_1": "12",
+      "def_30": "56",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "11103": {
+    "attackType": [
+      "Pierce",
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking"
+    ],
+    "affinity": [
+      "Sloth",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "79",
+      "hp_30": "232",
+      "def_1": "79",
+      "def_30": "62",
+      "speed_1": "4-8",
+      "speed_30": "4-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "11003": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor",
+      "Aggro"
+    ],
+    "affinity": [
+      "Sloth",
+      "Wrath",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "91",
+      "hp_30": "271",
+      "def_1": "16",
+      "def_30": "63",
+      "speed_1": "2-4",
+      "speed_30": "2-4"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "tank"
+  },
+  "10903": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Paralyze"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Envy",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "193",
+      "def_1": "",
+      "def_30": "56",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "10804": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Paralyze",
+      "Ammo",
+      "Tremor",
+      "Rupture",
+      "Fragile",
+      "Aggro"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Gloom",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "85",
+      "hp_30": "251",
+      "def_1": "16",
+      "def_30": "63",
+      "speed_1": "2-6",
+      "speed_30": "2-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10702": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Poise"
+    ],
+    "affinity": [
+      "Envy",
+      "Lust",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "61",
+      "speed_1": "2-5",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10602": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed",
+      "Paralyze"
+    ],
+    "affinity": [
+      "Lust",
+      "Sloth",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "79",
+      "hp_30": "232",
+      "def_1": "15",
+      "def_30": "61",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "7"
+    },
+    "tierCategory": "status"
+  },
+  "10502": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Wrath",
+      "Lust",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "85",
+      "hp_30": "251",
+      "def_1": "14",
+      "def_30": "61",
+      "speed_1": "2-5",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "5"
+    },
+    "tierCategory": "status"
+  },
+  "10402": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "193",
+      "def_1": "12",
+      "def_30": "56",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "10303": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Poise",
+      "Haste"
+    ],
+    "affinity": [
+      "Wrath",
+      "Lust",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "71",
+      "hp_30": "212",
+      "def_1": "13",
+      "def_30": "56",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10203": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Poise",
+      "Rupture",
+      "Haste"
+    ],
+    "affinity": [
+      "Gloom",
+      "Lust",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "71",
+      "hp_30": "212",
+      "def_1": "13",
+      "def_30": "56",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10202": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Charge",
+      "Bind",
+      "Paralyze"
+    ],
+    "affinity": [
+      "Envy",
+      "Gloom",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "91",
+      "hp_30": "271",
+      "def_1": "16",
+      "def_30": "63",
+      "speed_1": "2-4",
+      "speed_30": "2-4"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "11004": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking",
+      "Poise"
+    ],
+    "affinity": [
+      "Envy",
+      "Sloth",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "98",
+      "hp_30": "291",
+      "def_1": "17",
+      "def_30": "63",
+      "speed_1": "2-3",
+      "speed_30": "2-3"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "tank"
+  },
+  "10102": {
+    "attackType": [
+      "Pierce",
+      "Blunt"
+    ],
+    "speciality": [
+      "Rupture",
+      "Fragile",
+      "Paralyze"
+    ],
+    "affinity": [
+      "Gloom",
+      "Sloth",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "85",
+      "hp_30": "251",
+      "def_1": "15",
+      "def_30": "62",
+      "speed_1": "5-8",
+      "speed_30": "5-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "10101": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Sinking",
+      "Fragile"
+    ],
+    "affinity": [
+      "Gloom",
+      "Envy",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "72",
+      "hp_30": "221",
+      "def_1": "14",
+      "def_30": "58",
+      "speed_1": "4-6",
+      "speed_30": "4-8"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "status"
+  },
+  "10201": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Paralyze"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "84",
+      "hp_30": "258",
+      "def_1": "14",
+      "def_30": "61",
+      "speed_1": "1-3",
+      "speed_30": "2-4"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "10301": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Haste"
+    ],
+    "affinity": [
+      "Envy",
+      "Gluttony",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "66",
+      "hp_30": "203",
+      "def_1": "11",
+      "def_30": "58",
+      "speed_1": "2-5",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "dps"
+  },
+  "10401": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Poise"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Lust",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "66",
+      "hp_30": "203",
+      "def_1": "11",
+      "def_30": "56",
+      "speed_1": "2-5",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10501": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor"
+    ],
+    "affinity": [
+      "Pride",
+      "Gloom",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "90",
+      "hp_30": "276",
+      "def_1": "15",
+      "def_30": "63",
+      "speed_1": "1-2",
+      "speed_30": "2-3"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "tank"
+  },
+  "10601": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Sinking",
+      "Rupture"
+    ],
+    "affinity": [
+      "Pride",
+      "Sloth",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "66",
+      "hp_30": "203",
+      "def_1": "11",
+      "def_30": "58",
+      "speed_1": "2-5",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10701": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor"
+    ],
+    "affinity": [
+      "Wrath",
+      "Envy",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "78",
+      "hp_30": "239",
+      "def_1": "12",
+      "def_30": "60",
+      "speed_1": "1-4",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10801": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor"
+    ],
+    "affinity": [
+      "Wrath",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "78",
+      "hp_30": "239",
+      "def_1": "13",
+      "def_30": "60",
+      "speed_1": "5-8",
+      "speed_30": "5-8"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "tank"
+  },
+  "10901": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed"
+    ],
+    "affinity": [
+      "Wrath",
+      "Gluttony",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "78",
+      "hp_30": "239",
+      "def_1": "12",
+      "def_30": "60",
+      "speed_1": "2-5",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "dps"
+  },
+  "11001": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Wrath",
+      "Pride",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "60",
+      "hp_30": "184",
+      "def_1": "10",
+      "def_30": "56",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "11101": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Pride",
+      "Gloom",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "60",
+      "hp_30": "184",
+      "def_1": "10",
+      "def_30": "56",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "11201": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Gloom",
+      "Gluttony",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "72",
+      "hp_30": "221",
+      "def_1": "13",
+      "def_30": "60",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "tank"
+  },
+  "10803": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Poise"
+    ],
+    "affinity": [
+      "Envy",
+      "Wrath",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "82",
+      "hp_30": "251",
+      "def_1": "13",
+      "def_30": "61",
+      "speed_1": "2-5",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10904": {
+    "attackType": [
+      "Pierce",
+      "Blunt"
+    ],
+    "speciality": [
+      "Bleed",
+      "Paralyze",
+      "Haste",
+      "Nails"
+    ],
+    "affinity": [
+      "Pride",
+      "Lust",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "71",
+      "hp_30": "212",
+      "def_1": "13",
+      "def_30": "60",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "10704": {
+    "attackType": [
+      "Pierce",
+      "Blunt"
+    ],
+    "speciality": [
+      "Bleed",
+      "Nails"
+    ],
+    "affinity": [
+      "Lust",
+      "Envy",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "79",
+      "hp_30": "232",
+      "def_1": "15",
+      "def_30": "61",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "10204": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed",
+      "Nails",
+      "Paralyze"
+    ],
+    "affinity": [
+      "Envy",
+      "Lust",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "68",
+      "hp_30": "203",
+      "def_1": "13",
+      "def_30": "59",
+      "speed_1": "4-7",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9"
+    },
+    "tierCategory": "support"
+  },
+  "10604": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Wrath",
+      "Lust",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "79",
+      "hp_30": "232",
+      "def_1": "15",
+      "def_30": "61",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "5"
+    },
+    "tierCategory": "status"
+  },
+  "11104": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Paralyze",
+      "Rupture",
+      "Haste"
+    ],
+    "affinity": [
+      "Lust",
+      "Sloth",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "89",
+      "hp_30": "264",
+      "def_1": "17",
+      "def_30": "63",
+      "speed_1": "5-8",
+      "speed_30": "5-8"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "11204": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Paralyze",
+      "Bleed",
+      "Bind"
+    ],
+    "affinity": [
+      "Envy",
+      "Lust",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "79",
+      "hp_30": "238",
+      "def_1": "15",
+      "def_30": "60",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "support"
+  },
+  "11005": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Burn",
+      "Bleed"
+    ],
+    "affinity": [
+      "Lust",
+      "Wrath",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "82",
+      "hp_30": "243",
+      "def_1": "12",
+      "def_30": "56",
+      "speed_1": "3-8",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "8"
+    },
+    "tierCategory": "dps"
+  },
+  "10304": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Tremor",
+      "Nails",
+      "Paralyze"
+    ],
+    "affinity": [
+      "Lust",
+      "Gluttony",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "85",
+      "hp_30": "251",
+      "def_1": "15",
+      "def_30": "61",
+      "speed_1": "2-5",
+      "speed_30": "2-5"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "10505": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor",
+      "Charge"
+    ],
+    "affinity": [
+      "Pride",
+      "Gloom",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "79",
+      "hp_30": "238",
+      "def_1": "16",
+      "def_30": "60",
+      "speed_1": "3-8",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "10905": {
+    "attackType": [
+      "Pierce",
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor",
+      "Charge"
+    ],
+    "affinity": [
+      "Envy",
+      "Pride",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "76",
+      "hp_30": "224",
+      "def_1": "13",
+      "def_30": "59",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "status"
+  },
+  "10705": {
+    "attackType": [
+      "Pierce",
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking",
+      "Rupture",
+      "Tremor",
+      "Paralyze"
+    ],
+    "affinity": [
+      "Envy",
+      "Sloth",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "264",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "3-5",
+      "speed_30": "3-5"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "11205": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Charge",
+      "Rupture",
+      "Tremor"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Envy",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "212",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "4-6",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Slash"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "10805": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor",
+      "Rupture",
+      "Aggro"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Gloom",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "276",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "2-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "tank"
+  },
+  "10605": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Rupture",
+      "Aggro"
+    ],
+    "affinity": [
+      "Pride",
+      "Gluttony",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "304",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "2-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "7"
+    },
+    "tierCategory": "tank"
+  },
+  "10404": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed",
+      "Bind",
+      "Paralyze"
+    ],
+    "affinity": [
+      "Envy",
+      "Wrath",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "72",
+      "hp_30": "214",
+      "def_1": "13",
+      "def_30": "58",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "8"
+    },
+    "tierCategory": "dps"
+  },
+  "11006": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Pride",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "238",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "5"
+    },
+    "tierCategory": "status"
+  },
+  "10407": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Wrath",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "232",
+      "def_1": "12",
+      "def_30": "59",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "10104": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Tremor",
+      "Sinking"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "56",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10506": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Charge",
+      "Bleed",
+      "Aggro"
+    ],
+    "affinity": [
+      "Envy",
+      "Gloom",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "275",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "3-5"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "11206": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Aggro",
+      "Haste"
+    ],
+    "affinity": [
+      "Sloth",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "76",
+      "hp_30": "270",
+      "def_1": "13",
+      "def_30": "65",
+      "speed_1": "3-6",
+      "speed_30": "4-8"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "6"
+    },
+    "tierCategory": "tank"
+  },
+  "10205": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Aggro",
+      "Haste"
+    ],
+    "affinity": [
+      "Envy",
+      "Gloom",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "76",
+      "hp_30": "251",
+      "def_1": "13",
+      "def_30": "62",
+      "speed_1": "3-6",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "5"
+    },
+    "tierCategory": "tank"
+  },
+  "10606": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Charge",
+      "Rupture",
+      "Barrier"
+    ],
+    "affinity": [
+      "Pride",
+      "Wrath",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "5"
+    },
+    "tierCategory": "support"
+  },
+  "10405": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Haste",
+      "Charge",
+      "Barrier"
+    ],
+    "affinity": [
+      "Lust",
+      "Pride",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "56",
+      "speed_1": "",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "8"
+    },
+    "tierCategory": "dps"
+  },
+  "10105": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Tremor",
+      "Discard"
+    ],
+    "affinity": [
+      "Lust",
+      "Sloth",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "224",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "11105": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor",
+      "Discard"
+    ],
+    "affinity": [
+      "Wrath",
+      "Lust",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "211",
+      "def_1": "",
+      "def_30": "57",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9"
+    },
+    "tierCategory": "status"
+  },
+  "10207": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Tremor"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "61",
+      "speed_1": "",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "8"
+    },
+    "tierCategory": "status"
+  },
+  "10607": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed",
+      "Haste"
+    ],
+    "affinity": [
+      "Wrath",
+      "Lust",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "211",
+      "def_1": "",
+      "def_30": "57",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal.",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "10106": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Charge",
+      "Rupture",
+      "Barrier",
+      "Haste",
+      "Bind"
+    ],
+    "affinity": [
+      "Sloth",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "243",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9"
+    },
+    "tierCategory": "status"
+  },
+  "10406": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Ammo",
+      "Poise",
+      "Rupture",
+      "Tremor"
+    ],
+    "affinity": [
+      "Lust",
+      "Gluttony",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "232",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "support"
+  },
+  "11207": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Ammo",
+      "Bleed",
+      "Poise"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "57",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "10306": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Bleed"
+    ],
+    "affinity": [
+      "Wrath",
+      "Envy",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "76",
+      "hp_30": "264",
+      "def_1": "13",
+      "def_30": "65",
+      "speed_1": "3-6",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "10507": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Bleed"
+    ],
+    "affinity": [
+      "Sloth",
+      "Envy",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "9"
+    },
+    "tierCategory": "support"
+  },
+  "10107": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Bind",
+      "Bleed",
+      "Poise"
+    ],
+    "affinity": [
+      "Pride",
+      "Envy",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "212",
+      "def_1": "",
+      "def_30": "57",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "11107": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Burn",
+      "Poise"
+    ],
+    "affinity": [
+      "Wrath",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "57",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "10"
+    },
+    "tierCategory": "status"
+  },
+  "10307": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Aggro",
+      "Rupture"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Lust",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "64",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "8"
+    },
+    "tierCategory": "status"
+  },
+  "10108": {
+    "attackType": [
+      "Pierce",
+      "Blunt"
+    ],
+    "speciality": [
+      "Aggro",
+      "Discard",
+      "Sinking"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Lust",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "tank"
+  },
+  "10608": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Discard",
+      "Sinking"
+    ],
+    "affinity": [
+      "Wrath",
+      "Gloom",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "230",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "3 - 7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "10808": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed",
+      "Burn",
+      "Poise"
+    ],
+    "affinity": [
+      "Envy",
+      "Pride",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "206",
+      "def_1": "",
+      "def_30": "57",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "7"
+    },
+    "tierCategory": "support"
+  },
+  "10208": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Bind",
+      "Bleed",
+      "Poise"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "226",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "7"
+    },
+    "tierCategory": "support"
+  },
+  "10308": {
+    "attackType": [
+      "Pierce",
+      "Slash"
+    ],
+    "speciality": [
+      "Poise"
+    ],
+    "affinity": [
+      "Pride",
+      "Envy",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "217",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "4-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "support"
+  },
+  "10508": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Aggro",
+      "Bleed",
+      "Paralyze",
+      "Poise"
+    ],
+    "affinity": [
+      "Pride",
+      "Wrath",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "246",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10908": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Pride",
+      "Wrath",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "243",
+      "def_1": "12",
+      "def_30": "60",
+      "speed_1": "3-7",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9"
+    },
+    "tierCategory": "status"
+  },
+  "10509": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Lust",
+      "Wrath",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "232",
+      "def_1": "12",
+      "def_30": "62",
+      "speed_1": "4-6",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "6"
+    },
+    "tierCategory": "dps"
+  },
+  "11108": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking"
+    ],
+    "affinity": [
+      "Pride",
+      "Gloom",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "203",
+      "def_1": "12",
+      "def_30": "57",
+      "speed_1": "4-6",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "11209": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Sinking",
+      "Haste"
+    ],
+    "affinity": [
+      "Envy",
+      "Gloom",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "203",
+      "def_1": "12",
+      "def_30": "56",
+      "speed_1": "4-6",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9"
+    },
+    "tierCategory": "status"
+  },
+  "10209": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking"
+    ],
+    "affinity": [
+      "Gloom",
+      "Lust",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "238",
+      "def_1": "12",
+      "def_30": "59",
+      "speed_1": "4-6",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10408": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bind",
+      "Haste",
+      "Poise"
+    ],
+    "affinity": [
+      "Lust",
+      "Pride",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "214",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "10809": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Bind",
+      "Haste",
+      "Poise",
+      "Sinking"
+    ],
+    "affinity": [
+      "Sloth",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "224",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "6"
+    },
+    "tierCategory": "status"
+  },
+  "11009": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Gloom",
+      "Envy",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10109": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed",
+      "Burn",
+      "Rupture",
+      "Sinking",
+      "Tremor"
+    ],
+    "affinity": [
+      "Gloom",
+      "Lust",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "214",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "9"
+    },
+    "tierCategory": "status"
+  },
+  "11109": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed",
+      "Burn",
+      "Haste",
+      "Rupture",
+      "Sinking",
+      "Tremor"
+    ],
+    "affinity": [
+      "Lust",
+      "Wrath",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "205",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "7"
+    },
+    "tierCategory": "status"
+  },
+  "10609": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Tremor"
+    ],
+    "affinity": [
+      "Gloom",
+      "Sloth",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "214",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "8"
+    },
+    "tierCategory": "status"
+  },
+  "10409": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Tremor"
+    ],
+    "affinity": [
+      "Lust",
+      "Sloth",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "215",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "7"
+    },
+    "tierCategory": "status"
+  },
+  "10309": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Aggro",
+      "Tremor",
+      "Bind"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Pride",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "291",
+      "def_1": "",
+      "def_30": "64",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10909": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Bind",
+      "Tremor"
+    ],
+    "affinity": [
+      "Envy",
+      "Wrath",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "264",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10510": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Sinking",
+      "Discard"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Sloth",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "76",
+      "hp_30": "251",
+      "def_1": "13",
+      "def_30": "62",
+      "speed_1": "3-6",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "7"
+    },
+    "tierCategory": "status"
+  },
+  "11110": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Charge",
+      "Bind",
+      "Barrier"
+    ],
+    "affinity": [
+      "Pride",
+      "Envy",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "209",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "7"
+    },
+    "tierCategory": "support"
+  },
+  "10210": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Charge"
+    ],
+    "affinity": [
+      "Lust",
+      "Envy",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10709": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Charge"
+    ],
+    "affinity": [
+      "Wrath",
+      "Envy",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "224",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Pierce"
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "7"
+    },
+    "tierCategory": "support"
+  },
+  "10710": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking"
+    ],
+    "affinity": [
+      "Wrath",
+      "Envy",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "224",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10110": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Haste",
+      "Sinking",
+      "Ammo"
+    ],
+    "affinity": [
+      "Pride",
+      "Gloom",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10910": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Haste",
+      "Rupture"
+    ],
+    "affinity": [
+      "Lust",
+      "Wrath",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "254",
+      "def_1": "12",
+      "def_30": "62",
+      "speed_1": "3-7",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10810": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Aggro",
+      "Tremor"
+    ],
+    "affinity": [
+      "Pride",
+      "Envy",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "286",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "8"
+    },
+    "tierCategory": "tank"
+  },
+  "11010": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Aggro",
+      "Tremor"
+    ],
+    "affinity": [
+      "Lust",
+      "Gloom",
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "264",
+      "def_1": "",
+      "def_30": "64",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "6"
+    },
+    "tierCategory": "tank"
+  },
+  "10511": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Haste",
+      "Poise",
+      "Rupture"
+    ],
+    "affinity": [
+      "Pride",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "212",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "8"
+    },
+    "tierCategory": "status"
+  },
+  "11111": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Lust",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "207",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10610": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Rupture"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Pride",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "224",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "6",
+      "end": "7"
+    },
+    "tierCategory": "status"
+  },
+  "11210": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Aggro",
+      "Bleed",
+      "Rupture"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Pride",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "313",
+      "def_1": "12",
+      "def_30": "65",
+      "speed_1": "4-6",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "7"
+    },
+    "tierCategory": "support"
+  },
+  "10911": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed",
+      "Rupture"
+    ],
+    "affinity": [
+      "Pride",
+      "Envy",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "65",
+      "hp_30": "243",
+      "def_1": "12",
+      "def_30": "63",
+      "speed_1": "4-6",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9.5"
+    },
+    "tierCategory": "support"
+  },
+  "11011": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Rupture",
+      "Haste"
+    ],
+    "affinity": [
+      "Lust",
+      "Gluttony",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "216",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10310": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed"
+    ],
+    "affinity": [
+      "Sloth",
+      "Wrath",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "193",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "10"
+    },
+    "tierCategory": "dps"
+  },
+  "10711": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Ammo",
+      "Haste",
+      "Fragile",
+      "Poise"
+    ],
+    "affinity": [
+      "Gloom",
+      "Envy",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "208",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normall",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10611": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Ammo",
+      "Bind",
+      "Fragile",
+      "Poise"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "214",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10111": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Aggro",
+      "Rupture"
+    ],
+    "affinity": [
+      "Sloth",
+      "Envy",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "224",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Fatal",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "5",
+      "end": "10"
+    },
+    "tierCategory": "status"
+  },
+  "10211": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10712": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed"
+    ],
+    "affinity": [
+      "Wrath",
+      "Pride",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "261",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10811": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed",
+      "Fragile"
+    ],
+    "affinity": [
+      "Envy",
+      "Pride",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "230",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10112": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Sloth",
+      "Wrath",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "230",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9"
+    },
+    "tierCategory": "support"
+  },
+  "11211": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Burn"
+    ],
+    "affinity": [
+      "Lust",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "259",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10411": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Rupture",
+      "Haste"
+    ],
+    "affinity": [
+      "Lust",
+      "Gluttony",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "209",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "11112": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Haste",
+      "Rupture"
+    ],
+    "affinity": [
+      "Sloth",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "209",
+      "def_1": "",
+      "def_30": "57",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "11012": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Bleed",
+      "Barrier",
+      "Aggro"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "275",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10612": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Charge",
+      "Sinking"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Envy",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "208",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "11212": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Poise",
+      "Rupture"
+    ],
+    "affinity": [
+      "Pride",
+      "Gluttony",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "212",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10912": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Poise",
+      "Rupture"
+    ],
+    "affinity": [
+      "Envy",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "212",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "7",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "10212": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bind",
+      "Haste",
+      "Poise",
+      "Rupture"
+    ],
+    "affinity": [
+      "Sloth",
+      "Pride",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "267",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "11"
+    },
+    "tierCategory": "dps"
+  },
+  "10812": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Poise",
+      "Rupture"
+    ],
+    "affinity": [
+      "Gloom",
+      "Gluttony",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "207",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10512": {
+    "attackType": [
+      "Slash",
+      "Blunt"
+    ],
+    "speciality": [
+      "Burn",
+      "Ammo",
+      "Tremor"
+    ],
+    "affinity": [
+      "Sloth",
+      "Lust",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "10",
+      "end": "10"
+    },
+    "tierCategory": "dps"
+  },
+  "10113": {
+    "attackType": [
+      "Blunt",
+      "Pierce"
+    ],
+    "speciality": [
+      "Bleed",
+      "Poise"
+    ],
+    "affinity": [
+      "Wrath",
+      "Lust",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10312": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Charge",
+      "Rupture",
+      "Sinking"
+    ],
+    "affinity": [
+      "Wrath",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "212",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Fatal",
+      "pierce": "Ineff"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "10"
+    },
+    "tierCategory": "dps"
+  },
+  "10913": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Aggro",
+      "Sinking",
+      "Charge"
+    ],
+    "affinity": [
+      "Gloom",
+      "Envy",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "278",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "10"
+    },
+    "tierCategory": "status"
+  },
+  "11113": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Haste",
+      "Bind",
+      "Tremor"
+    ],
+    "affinity": [
+      "Pride",
+      "Sloth",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "216",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9.5"
+    },
+    "tierCategory": "status"
+  },
+  "10613": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Haste",
+      "Rupture",
+      "Poise"
+    ],
+    "affinity": [
+      "Gloom",
+      "Gluttony",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "192",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "4-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "9",
+      "end": "11"
+    },
+    "tierCategory": "support"
+  },
+  "11014": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Rupture",
+      "Burn"
+    ],
+    "affinity": [
+      "Lust",
+      "Gluttony",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "225",
+      "def_1": "",
+      "def_30": "56",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "8",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10114": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bind",
+      "Haste",
+      "Rupture",
+      "Tremor"
+    ],
+    "affinity": [
+      "Sloth",
+      "Envy",
+      "Gluttony"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "271",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "9.5",
+      "end": "9"
+    },
+    "tierCategory": "support"
+  },
+  "10713": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Aggro",
+      "Charge",
+      "Rupture"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Gloom",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "304",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10513": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed",
+      "Rupture"
+    ],
+    "affinity": [
+      "Envy",
+      "Pride",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "271",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9.5"
+    },
+    "tierCategory": "support"
+  },
+  "10813": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Sinking",
+      "Tremor"
+    ],
+    "affinity": [
+      "Wrath",
+      "Sloth",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "225",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "10"
+    },
+    "tierCategory": "dps"
+  },
+  "10313": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Sinking",
+      "Rupture"
+    ],
+    "affinity": [
+      "Lust",
+      "Gluttony",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "251",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "10714": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Burn",
+      "Rupture"
+    ],
+    "affinity": [
+      "Envy",
+      "Gluttony",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "243",
+      "def_1": "",
+      "def_30": "59",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "10"
+    },
+    "tierCategory": "dps"
+  },
+  "10914": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Charge",
+      "Sinking"
+    ],
+    "affinity": [
+      "Gloom",
+      "Envy",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "230",
+      "def_1": "",
+      "def_30": "61",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "8"
+    },
+    "tierCategory": "dps"
+  },
+  "10214": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Poise",
+      "Sinking"
+    ],
+    "affinity": [
+      "Sloth"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "218",
+      "def_1": "",
+      "def_30": "61",
+      "speed_1": "",
+      "speed_30": "3-7"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "7"
+    },
+    "tierCategory": "dps"
+  },
+  "11114": {
+    "attackType": [
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Aggro",
+      "Ammo",
+      "Sinking",
+      "Tremor"
+    ],
+    "affinity": [
+      "Pride",
+      "Sloth",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "244",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9.5"
+    },
+    "tierCategory": "support"
+  },
+  "10314": {
+    "attackType": [
+      "Blunt",
+      "Slash"
+    ],
+    "speciality": [
+      "Sinking",
+      "Poise"
+    ],
+    "affinity": [
+      "Lust",
+      "Pride",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "219",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "10"
+    },
+    "tierCategory": "dps"
+  },
+  "ho_spiders_middle": {
+    "attackType": [
+      "Blunt"
+    ],
+    "speciality": [
+      "Bleed",
+      "Burn"
+    ],
+    "affinity": [
+      "Lust",
+      "Wrath",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "275",
+      "def_1": "",
+      "def_30": "64",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Ineff.",
+      "slash": "Normal",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "ho_spiders_pinky": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bleed",
+      "Poise"
+    ],
+    "affinity": [
+      "Gloom",
+      "Pride",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "203",
+      "def_1": "",
+      "def_30": "58",
+      "speed_1": "",
+      "speed_30": "4-6"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "lobotomy_ego_lamp": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Aggro",
+      "Burn",
+      "Sinking"
+    ],
+    "affinity": [
+      "Wrath",
+      "Gloom",
+      "Pride"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "274",
+      "def_1": "",
+      "def_30": "65",
+      "speed_1": "",
+      "speed_30": "1-4"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9"
+    },
+    "tierCategory": "support"
+  },
+  "ho_spiders_index": {
+    "attackType": [
+      "Blunt",
+      "Slash",
+      "Pierce"
+    ],
+    "speciality": [
+      "Poise",
+      "Sinking"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Pride",
+      "Gloom"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "248",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "3-8"
+    },
+    "resistances": {
+      "blunt": "Normal",
+      "slash": "Ineff.",
+      "pierce": "Fatal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "11"
+    },
+    "tierCategory": "dps"
+  },
+  "lobotomy_ego_hornet": {
+    "attackType": [
+      "Pierce"
+    ],
+    "speciality": [
+      "Ammo",
+      "Bleed",
+      "Burn"
+    ],
+    "affinity": [
+      "Lust",
+      "Wrath"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "223",
+      "def_1": "",
+      "def_30": "60",
+      "speed_1": "",
+      "speed_30": "4-8"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Normal",
+      "pierce": "Ineff."
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9"
+    },
+    "tierCategory": "dps"
+  },
+  "lce_ego_aedd_gregor": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Rupture",
+      "Charge"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Gloom",
+      "Envy"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "274",
+      "def_1": "",
+      "def_30": "63",
+      "speed_1": "",
+      "speed_30": "5-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9"
+    },
+    "tierCategory": "support"
+  },
+  "ho_spiders_ring": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Aggro",
+      "Bleed",
+      "Bind"
+    ],
+    "affinity": [
+      "Gluttony",
+      "Envy",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "283",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "3-6"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "9.5"
+    },
+    "tierCategory": "dps"
+  },
+  "ho_spiders_nurse": {
+    "attackType": [
+      "Slash"
+    ],
+    "speciality": [
+      "Bind",
+      "Bleed",
+      "Charge"
+    ],
+    "affinity": [
+      "Pride",
+      "Envy",
+      "Lust"
+    ],
+    "stats": {
+      "hp_1": "",
+      "hp_30": "248",
+      "def_1": "",
+      "def_30": "62",
+      "speed_1": "",
+      "speed_30": "4-7"
+    },
+    "resistances": {
+      "blunt": "Fatal",
+      "slash": "Ineff.",
+      "pierce": "Normal"
+    },
+    "ratings": {
+      "beg": "1",
+      "end": "10"
+    },
+    "tierCategory": "support"
+  }
+}

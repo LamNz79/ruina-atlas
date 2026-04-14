@@ -33,6 +33,7 @@ const EDGE_TYPES: EdgeType[] = [
   'literary-origin',
   'thematic-link',
   'cross-game-continuity',
+  'shared-literary-group',
 ];
 
 export function GraphSettings({
