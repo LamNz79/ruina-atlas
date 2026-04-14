@@ -1141,6 +1141,13 @@
           "sourceGame": "limbus",
           "wingOrGroup": "Blade Lineage",
           "damageType": "slash"
+        },
+        {
+          "id": "night_awl_capitano",
+          "displayName": "Night Awl Capitano",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Nightmare Discord",
+          "damageType": "slash"
         }
       ],
       "egos": [
