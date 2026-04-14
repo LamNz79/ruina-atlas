@@ -49,38 +49,24 @@
       "literaryConnectionNotes": "Faust in Goethe's tragedy makes a bargain with the Devil (Mephistopheles) — in exchange for unlimited knowledge and worldly pleasures, he pledges his soul. Limbus Company's Faust has made bargains of her own, with Ayin (in Library of Ruina) and possibly others. Her persistent presence across all three games mirrors Faust's timeless, almost meta-fictional existence. The question of whether she remembers, regrets, or would undo her bargains is the central tension of her character.",
       "identities": [
         {
-          "id": "10208",
-          "displayName": "Blade Lineage Salsu",
+          "id": "10202",
+          "displayName": "W Corp. L2 Cleanup Agent",
           "sourceGame": "limbus",
-          "wingOrGroup": "Blade Lineage",
-          "damageType": "slash"
-        },
-        {
-          "id": "10212",
-          "displayName": "Heishou Pack - Mao Branch Adept",
-          "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10211",
-          "displayName": "LCE E.G.O:: Ardor Blossom Star",
-          "sourceGame": "ruina",
-          "wingOrGroup": null,
+          "wingOrGroup": "W Corp.",
           "damageType": "blunt"
         },
         {
-          "id": "10207",
-          "displayName": "Lobotomy E.G.O::Regret",
+          "id": "10203",
+          "displayName": "Lobotomy Corp. Remnant",
           "sourceGame": "lobotomy",
           "wingOrGroup": "L Corp.",
-          "damageType": "blunt"
+          "damageType": "slash"
         },
         {
-          "id": "10210",
-          "displayName": "MultiCrack Office Rep",
+          "id": "10209",
+          "displayName": "Wuthering Heights Butler",
           "sourceGame": "limbus",
-          "wingOrGroup": "MultiCrack Office",
+          "wingOrGroup": null,
           "damageType": "slash"
         },
         {
@@ -91,10 +77,38 @@
           "damageType": "slash"
         },
         {
-          "id": "10213",
-          "displayName": "Shi Assoc. East Section 3",
+          "id": "10205",
+          "displayName": "Zwei Assoc. South Section 4",
           "sourceGame": "limbus",
-          "wingOrGroup": "Shi Association",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10208",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "slash"
+        },
+        {
+          "id": "10207",
+          "displayName": "Lobotomy E.G.O::Regret",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "shi_east_3_faust",
+          "displayName": "Shi East Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": ""
+        },
+        {
+          "id": "10210",
+          "displayName": "MultiCrack Office Rep",
+          "sourceGame": "limbus",
+          "wingOrGroup": "MultiCrack Office",
           "damageType": "slash"
         },
         {
@@ -105,38 +119,24 @@
           "damageType": "slash"
         },
         {
-          "id": "10204",
-          "displayName": "The One Who Grips",
-          "sourceGame": "limbus",
-          "wingOrGroup": "N Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10203",
-          "displayName": "Lobotomy Corp. Remnant",
-          "sourceGame": "limbus",
-          "wingOrGroup": "L Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10202",
-          "displayName": "W Corp. L2 Cleanup Agent",
-          "sourceGame": "limbus",
-          "wingOrGroup": "W Corp.",
+          "id": "10211",
+          "displayName": "LCE E.G.O:: Ardor Blossom Star",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
           "damageType": "blunt"
         },
         {
-          "id": "10209",
-          "displayName": "Wuthering Heights Butler",
+          "id": "10212",
+          "displayName": "Heishou Pack - Mao Branch Adept",
           "sourceGame": "limbus",
-          "wingOrGroup": null,
+          "wingOrGroup": "H Corp.",
           "damageType": "slash"
         },
         {
-          "id": "10205",
-          "displayName": "Zwei Assoc. South Section 4",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Zwei Association",
+          "id": "10204",
+          "displayName": "The One Who Grips",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
           "damageType": "pierce"
         },
         {
@@ -145,6 +145,13 @@
           "sourceGame": "limbus",
           "wingOrGroup": null,
           "damageType": "blunt"
+        },
+        {
+          "id": "ho_spiders_ring",
+          "displayName": "The House of Spiders: The Ring Apprentice",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The House of Spiders",
+          "damageType": "slash"
         }
       ],
       "egos": [
@@ -246,32 +253,32 @@
       "literaryConnectionNotes": "In Herman Melville's Moby-Dick, Ishmael is the sole survivor of the whaling ship Pequod, which is destroyed after Captain Ahab's obsessive pursuit of the white whale. Ishmael narrates the story, making him both witness and survivor. Limbus Company's Ishmael parallels this — she alone survived whatever happened on the Pequod-equivalent voyage, and her journey in Canto 7 is about whether she will repeat Ahab's mistake (vengeance leading to destruction) or choose differently.",
       "identities": [
         {
-          "id": "10812",
-          "displayName": "Family Hierarch Candidate",
+          "id": "10804",
+          "displayName": "LCCB Assistant Manager",
           "sourceGame": "limbus",
-          "wingOrGroup": "Family Hierarch Candidate",
+          "wingOrGroup": "LCC",
           "damageType": "blunt"
         },
         {
-          "id": "10813",
-          "displayName": "Jeong's Office Rep",
+          "id": "10809",
+          "displayName": "Edgar Family Butler",
           "sourceGame": "limbus",
-          "wingOrGroup": "Associate Office - Öufi",
-          "damageType": "slash"
-        },
-        {
-          "id": "10811",
-          "displayName": "Kurokumo Clan Captain",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Kurokumo Clan",
-          "damageType": "slash"
-        },
-        {
-          "id": "10806",
-          "displayName": "Liu Assoc. South Section 4",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Liu Association",
+          "wingOrGroup": "Edgar Family",
           "damageType": "blunt"
+        },
+        {
+          "id": "10805",
+          "displayName": "Lobotomy E.G.O::Sloshing",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10803",
+          "displayName": "Shi Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Shi Association",
+          "damageType": "pierce"
         },
         {
           "id": "10807",
@@ -279,13 +286,6 @@
           "sourceGame": "limbus",
           "wingOrGroup": "Molar Office",
           "damageType": "pierce"
-        },
-        {
-          "id": "10802",
-          "displayName": "R Corp. 4th Pack Reindeer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "R Corp.",
-          "damageType": "blunt"
         },
         {
           "id": "10808",
@@ -302,38 +302,52 @@
           "damageType": "blunt"
         },
         {
-          "id": "10809",
-          "displayName": "Edgar Family Butler",
+          "id": "10812",
+          "displayName": "Family Hierarch Candidate",
           "sourceGame": "limbus",
-          "wingOrGroup": "Edgar Family",
+          "wingOrGroup": "Family Hierarch Candidate",
           "damageType": "blunt"
         },
         {
-          "id": "10804",
-          "displayName": "LCCB Assistant Manager",
+          "id": "10813",
+          "displayName": "Jeong's Office Rep",
           "sourceGame": "limbus",
-          "wingOrGroup": "LCC",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10805",
-          "displayName": "Lobotomy E.G.O::Sloshing",
-          "sourceGame": "lobotomy",
-          "wingOrGroup": null,
-          "damageType": "blunt"
-        },
-        {
-          "id": "10803",
-          "displayName": "Shi Assoc. South Section 5",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Shi Association",
-          "damageType": "pierce"
+          "wingOrGroup": "Associate Office - Öufi",
+          "damageType": "slash"
         },
         {
           "id": "10801",
           "displayName": "LCB Sinner",
           "sourceGame": "limbus",
           "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10811",
+          "displayName": "Kurokumo Clan Captain",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10802",
+          "displayName": "R Corp. 4th Pack Reindeer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10806",
+          "displayName": "Liu Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "ho_spiders_middle",
+          "displayName": "The House of Spiders: The Middle Apprentice",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The House of Spiders",
           "damageType": "blunt"
         }
       ],
@@ -445,102 +459,102 @@
       "literaryConnectionNotes": "In Demian, Sinclair is a young boy who is欺负ed by a bully named Kromer. He is rescued and introduced to a deeper worldview by Demian, who teaches him that the world is not divided simply into light and dark — that both exist in all people, and that becoming whole requires accepting one's shadow. Limbus Sinclair's arc follows this almost exactly: Kromer's bullying forces him to confront his darker potential, and his 'Nobles' EGO represents his awakening to the darker half of himself. His eventual acceptance of both sides is his metamorphosis.",
       "identities": [
         {
-          "id": "10910",
-          "displayName": "Devyat' Assoc. North Section 3",
+          "id": "11004",
+          "displayName": "Los Mariachis Jefe",
           "sourceGame": "limbus",
-          "wingOrGroup": "Devyat' Association",
-          "damageType": "slash"
-        },
-        {
-          "id": "10907",
-          "displayName": "Dieci Assoc. South Section 4",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Dieci Association",
+          "wingOrGroup": "Syndicate",
           "damageType": "blunt"
         },
         {
-          "id": "10912",
-          "displayName": "Heishou Pack - Si Branch",
-          "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10902",
-          "displayName": "Kurokumo Clan Wakashu",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Kurokumo Clan",
-          "damageType": "slash"
-        },
-        {
-          "id": "10908",
-          "displayName": "Liu Assoc. South Section 4 Director",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Liu Association",
+          "id": "11006",
+          "displayName": "Lobotomy E.G.O::Red Sheet",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
           "damageType": "blunt"
         },
         {
-          "id": "10913",
-          "displayName": "Lobotomy E.G.O:: The Sword Sharpened with Tears",
-          "sourceGame": "lobotomy",
-          "wingOrGroup": "L Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10914",
-          "displayName": "R Corp. 4th Pack Reindeer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "R Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10905",
-          "displayName": "Rosespanner Workshop Rep",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Rosespanner Workshop",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10911",
-          "displayName": "The Princess of La Manchaland",
-          "sourceGame": "limbus",
-          "wingOrGroup": "La Manchaland",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10903",
-          "displayName": "LCCB Assistant Manager",
-          "sourceGame": "limbus",
-          "wingOrGroup": "LCC",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10904",
-          "displayName": "N Corp. Mittelhammer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "N Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10909",
-          "displayName": "T Corp. Class 2 Collection Staff",
-          "sourceGame": "limbus",
-          "wingOrGroup": "T Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10906",
-          "displayName": "Zwei Assoc. South Section 5",
+          "id": "11003",
+          "displayName": "Zwei Assoc. South Section 6",
           "sourceGame": "limbus",
           "wingOrGroup": "Zwei Association",
           "damageType": "blunt"
         },
         {
-          "id": "10901",
+          "id": "11005",
+          "displayName": "The One Who Shall Grip",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11010",
+          "displayName": "Zwei Assoc. West Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "11007",
+          "displayName": "Molar Boatworks Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Molar Office",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11011",
+          "displayName": "Devyat' Assoc. North Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Devyat' Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11012",
+          "displayName": "The Middle Little Brother",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11009",
+          "displayName": "Dawn Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dawn Office",
+          "damageType": "slash"
+        },
+        {
+          "id": "11014",
+          "displayName": "Heishou Pack - You Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "11001",
           "displayName": "LCB Sinner",
           "sourceGame": "limbus",
           "wingOrGroup": null,
           "damageType": "slash"
+        },
+        {
+          "id": "11008",
+          "displayName": "Cinq Assoc. South Section 4 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11002",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "pierce"
+        },
+        {
+          "id": "ho_spiders_pinky",
+          "displayName": "The House of Spiders: The Pinky Apprentice",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The House of Spiders",
+          "damageType": "blunt"
         }
       ],
       "egos": [
@@ -635,76 +649,6 @@
       "literaryConnectionNotes": "Cervantes's Don Quixote is a man who, having read too many chivalric romances, loses his grip on reality and rides out to fight giants (which are, in reality, windmills). He is both comedic and tragic — his delusions are symptoms of a profound dissatisfaction with the modern world, and his sincerity makes him sympathetic despite his absurdity. Limbus Don Quixote operates the same way: her worldview is objectively delusional, but her moral conviction is real and costs her personally. The absurdity is not in her lack of sincerity but in the world's refusal to match it.",
       "identities": [
         {
-          "id": "10311",
-          "displayName": "Cinq Assoc. East Section 3",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Cinq Association",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10305",
-          "displayName": "Cinq Assoc. South Section 5 Director",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Cinq Association",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10313",
-          "displayName": "Heishou Pack - Wei Branch",
-          "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10312",
-          "displayName": "Lobotomy E.G.O:: In the Name of Love and Hate",
-          "sourceGame": "lobotomy",
-          "wingOrGroup": "L Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10309",
-          "displayName": "T Corp. Class 3 Collection Staff",
-          "sourceGame": "limbus",
-          "wingOrGroup": "T Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10314",
-          "displayName": "The Index Proxy -  Effloresced E.G.O:: Procuration",
-          "sourceGame": "limbus",
-          "wingOrGroup": "The Fingers",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10310",
-          "displayName": "The Manager of La Manchaland",
-          "sourceGame": "limbus",
-          "wingOrGroup": "La Manchaland",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10306",
-          "displayName": "The Middle Little Sister",
-          "sourceGame": "limbus",
-          "wingOrGroup": "The Fingers",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10302",
-          "displayName": "W Corp. L3 Cleanup Agent",
-          "sourceGame": "limbus",
-          "wingOrGroup": "W Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10308",
-          "displayName": "Blade Lineage Salsu",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Blade Lineage",
-          "damageType": "pierce"
-        },
-        {
           "id": "10307",
           "displayName": "Lobotomy E.G.O::Lantern",
           "sourceGame": "lobotomy",
@@ -714,7 +658,7 @@
         {
           "id": "10304",
           "displayName": "N Corp. Mittelhammer",
-          "sourceGame": "limbus",
+          "sourceGame": "ruina",
           "wingOrGroup": "N Corp.",
           "damageType": "pierce"
         },
@@ -726,10 +670,80 @@
           "damageType": "slash"
         },
         {
+          "id": "10308",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10305",
+          "displayName": "Cinq Assoc. South Section 5 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10302",
+          "displayName": "W Corp. L3 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10309",
+          "displayName": "T Corp. Class 3 Collection Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "T Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "cinq_east_3_dq",
+          "displayName": "Cinq East Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": ""
+        },
+        {
+          "id": "10312",
+          "displayName": "Lobotomy E.G.O:: In the Name of Love and Hate",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10313",
+          "displayName": "Heishou Pack - Wei Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10306",
+          "displayName": "The Middle Little Sister",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10314",
+          "displayName": "The Index Proxy -  Effloresced E.G.O:: Procuration",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "blunt"
+        },
+        {
           "id": "10301",
           "displayName": "LCB Sinner",
           "sourceGame": "limbus",
           "wingOrGroup": null,
+          "damageType": "pierce"
+        },
+        {
+          "id": "10310",
+          "displayName": "The Manager of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
           "damageType": "pierce"
         }
       ],
@@ -833,67 +847,11 @@
       "literaryConnectionNotes": "Ryunosuke Akutagawa's 'Rashomon' centers on the unreliability of truth — multiple witnesses to a crime give contradictory accounts, and the 'real' truth cannot be established. Limbus Ryoshu embodies this: her 'art' is her interpretation of reality, and it is as valid and as distorted as any other perspective. The violence in her art (her EGO projections, her combat style) echoes the brutal imagery of Edo-period woodblock prints, where beauty and gore coexisted in the same frame. Project Moon has described her as the 'artist of the group' — she is genuinely talented, genuinely dangerous, and genuinely indifferent to conventional morality.",
       "identities": [
         {
-          "id": "10413",
-          "displayName": "Drifting Blade of Hongyuan",
+          "id": "10401",
+          "displayName": "LCB Sinner",
           "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10408",
-          "displayName": "Edgar Family Chief Butler",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Edgar Family",
+          "wingOrGroup": null,
           "damageType": "slash"
-        },
-        {
-          "id": "10411",
-          "displayName": "Heishou Pack - Mao Branch",
-          "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10403",
-          "displayName": "Kurokumo Clan Wakashu",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Kurokumo Clan",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10410",
-          "displayName": "Lobotomy E.G.O:: Red Eyes & Penitence",
-          "sourceGame": "lobotomy",
-          "wingOrGroup": "L Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10412",
-          "displayName": "N Corp. E.G.O:: Contempt, Awe",
-          "sourceGame": "ruina",
-          "wingOrGroup": "N Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10404",
-          "displayName": "R.B. Chef de Cuisine",
-          "sourceGame": "limbus",
-          "wingOrGroup": "R.B.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10405",
-          "displayName": "W Corp. L3 Cleanup Agent",
-          "sourceGame": "limbus",
-          "wingOrGroup": "W Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10409",
-          "displayName": "District 20 Yurodivy",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Syndicate",
-          "damageType": "blunt"
         },
         {
           "id": "10406",
@@ -910,6 +868,69 @@
           "damageType": "slash"
         },
         {
+          "id": "10409",
+          "displayName": "District 20 Yurodivy",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10404",
+          "displayName": "R.B. Chef de Cuisine",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R.B.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10405",
+          "displayName": "W Corp. L3 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10403",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10412",
+          "displayName": "N Corp. E.G.O:: Contempt, Awe",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10413",
+          "displayName": "Drifting Blade of Hongyuan",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10411",
+          "displayName": "Heishou Pack - Mao Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10410",
+          "displayName": "Lobotomy E.G.O:: Red Eyes & Penitence",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10408",
+          "displayName": "Edgar Family Chief Butler",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Edgar Family",
+          "damageType": "slash"
+        },
+        {
           "id": "10402",
           "displayName": "Seven Assoc. South Section 6",
           "sourceGame": "limbus",
@@ -917,11 +938,11 @@
           "damageType": "blunt"
         },
         {
-          "id": "10401",
-          "displayName": "LCB Sinner",
-          "sourceGame": "limbus",
-          "wingOrGroup": null,
-          "damageType": "slash"
+          "id": "lobotomy_ego_faint",
+          "displayName": "Lobotomy E.G.O::Faint Aroma & Solitude",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "Lobotomy Corp. Headquarters",
+          "damageType": "blunt"
         }
       ],
       "egos": [
@@ -1024,48 +1045,6 @@
       "literaryConnectionNotes": "Albert Camus's The Stranger opens with the iconic line: 'Mother died today. Or, maybe, yesterday — I can't be sure.' Meursault's narration is emotionally detached, describing events with clinical precision. He is tried and executed not for killing a man (the crime) but for not crying at his mother's funeral — for failing to perform the social emotions that society expects. Limbus Meursault has this same quality of existing outside the emotional scripts others follow. His literary connection is not just thematic — it is structural: his Canto is structured around a trial, a reckoning, and an ending that forces meaning onto what Meursault himself experienced as meaninglessness.",
       "identities": [
         {
-          "id": "10508",
-          "displayName": "Blade Lineage Mentor",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Blade Lineage",
-          "damageType": "slash"
-        },
-        {
-          "id": "10511",
-          "displayName": "Cinq Assoc. West Section 3",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Cinq Association",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10510",
-          "displayName": "Dieci Assoc. South Section 4 Director",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Dieci Association",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10504",
-          "displayName": "N Corp. Großhammer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "N Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10506",
-          "displayName": "R Corp. 4th Pack Rhino",
-          "sourceGame": "limbus",
-          "wingOrGroup": "R Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10513",
-          "displayName": "The Prince of La Manchaland",
-          "sourceGame": "limbus",
-          "wingOrGroup": "La Manchaland",
-          "damageType": "slash"
-        },
-        {
           "id": "10512",
           "displayName": "The Thumb East Capo IIII",
           "sourceGame": "limbus",
@@ -1073,31 +1052,10 @@
           "damageType": "slash"
         },
         {
-          "id": "10503",
-          "displayName": "W Corp. L2 Cleanup Agent",
+          "id": "10501",
+          "displayName": "LCB Sinner",
           "sourceGame": "limbus",
-          "wingOrGroup": "W Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10509",
-          "displayName": "Dead Rabbits Boss",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Syndicate",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10502",
-          "displayName": "Liu Assoc. South Section 6",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Liu Association",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10505",
-          "displayName": "Rosespanner Workshop Fixer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Rosespanner Workshop",
+          "wingOrGroup": null,
           "damageType": "blunt"
         },
         {
@@ -1108,11 +1066,81 @@
           "damageType": "blunt"
         },
         {
-          "id": "10501",
-          "displayName": "LCB Sinner",
+          "id": "10509",
+          "displayName": "Dead Rabbits Boss",
           "sourceGame": "limbus",
-          "wingOrGroup": null,
+          "wingOrGroup": "Syndicate",
           "damageType": "blunt"
+        },
+        {
+          "id": "10505",
+          "displayName": "Rosespanner Workshop Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Rosespanner Workshop",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10504",
+          "displayName": "N Corp. Großhammer",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10503",
+          "displayName": "W Corp. L2 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "10506",
+          "displayName": "R Corp. 4th Pack Rhino",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "lobotomy_ego_hornet",
+          "displayName": "Lobotomy E.G.O::Hornet Alteration",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": null,
+          "damageType": ""
+        },
+        {
+          "id": "10513",
+          "displayName": "The Prince of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
+          "damageType": "slash"
+        },
+        {
+          "id": "10511",
+          "displayName": "Cinq Assoc. West Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10502",
+          "displayName": "Liu Assoc. South Section 6",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10510",
+          "displayName": "Dieci Assoc. South Section 4 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dieci Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10508",
+          "displayName": "Blade Lineage Mentor",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "slash"
         }
       ],
       "egos": [
@@ -1207,10 +1235,52 @@
       "literaryConnectionNotes": "Dream of the Red Chamber follows the decline of the Jia family — a wealthy, powerful household sustained by connections and corruption rather than merit. It is a novel about the decay of aristocratic systems, the entrapment of individuals within family structures, and the futility of trying to maintain appearances as the foundation crumbles. Limbus Hong Lu inherits this thematic core: he is trapped by his family name, aware of the rot, and too pragmatic (or too fatalistic) to resist. His smile is the most unsettling thing about him — it is both the mask of a child trained to perform pleasantness and a genuine expression of acceptance of a world he knows is doomed.",
       "identities": [
         {
-          "id": "10608",
-          "displayName": "Dieci Assoc. South Section 4",
+          "id": "10601",
+          "displayName": "LCB Sinner",
           "sourceGame": "limbus",
-          "wingOrGroup": "Dieci Association",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10602",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10604",
+          "displayName": "Liu Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10607",
+          "displayName": "Hook Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Hook Office",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10603",
+          "displayName": "Tingtang Gang Gangleader",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Syndicate",
+          "damageType": "slash"
+        },
+        {
+          "id": "10606",
+          "displayName": "W Corp. L2 Cleanup Agent",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10605",
+          "displayName": "K Corp. Class 3 Excision Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "K Corp.",
           "damageType": "slash"
         },
         {
@@ -1228,20 +1298,6 @@
           "damageType": "pierce"
         },
         {
-          "id": "10605",
-          "displayName": "K Corp. Class 3 Excision Staff",
-          "sourceGame": "limbus",
-          "wingOrGroup": "K Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "10612",
-          "displayName": "R Corp. 4th Pack Reindeer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "R Corp.",
-          "damageType": "blunt"
-        },
-        {
           "id": "10613",
           "displayName": "The Lord of Hongyuan",
           "sourceGame": "limbus",
@@ -1249,10 +1305,10 @@
           "damageType": "slash"
         },
         {
-          "id": "10603",
-          "displayName": "Tingtang Gang Gangleader",
+          "id": "10608",
+          "displayName": "Dieci Assoc. South Section 4",
           "sourceGame": "limbus",
-          "wingOrGroup": "Syndicate",
+          "wingOrGroup": "Dieci Association",
           "damageType": "slash"
         },
         {
@@ -1263,38 +1319,17 @@
           "damageType": "blunt"
         },
         {
-          "id": "10607",
-          "displayName": "Hook Office Fixer",
+          "id": "10612",
+          "displayName": "R Corp. 4th Pack Reindeer",
           "sourceGame": "limbus",
-          "wingOrGroup": "Hook Office",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10602",
-          "displayName": "Kurokumo Clan Wakashu",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Kurokumo Clan",
-          "damageType": "slash"
-        },
-        {
-          "id": "10604",
-          "displayName": "Liu Assoc. South Section 5",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Liu Association",
+          "wingOrGroup": "R Corp.",
           "damageType": "blunt"
         },
         {
-          "id": "10606",
-          "displayName": "W Corp. L2 Cleanup Agent",
+          "id": "ho_spiders_nurse",
+          "displayName": "The House of Spiders: The Ring Nursefather",
           "sourceGame": "limbus",
-          "wingOrGroup": "W Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10601",
-          "displayName": "LCB Sinner",
-          "sourceGame": "limbus",
-          "wingOrGroup": null,
+          "wingOrGroup": "The House of Spiders",
           "damageType": "blunt"
         }
       ],
@@ -1398,6 +1433,83 @@
       "literaryConnectionNotes": "In Wuthering Heights, Heathcliff is a foundling taken in by Mr. Earnshaw, who bestows great affection on him — to the intense resentment of Hindley Earnshaw, who sees Heathcliff as a usurper of his birthright. Hindley's abuse turns Heathcliff from a spirited child into a vengeful adult who systematically destroys both the Earnshaw and Linton families. The novel asks whether Heathcliff's vengeance is justified (it destroys cruel people) or monstrous (it destroys innocent people too). Limbus Heathcliff asks the same question: his rage is earned, but what he does with it may not be.",
       "identities": [
         {
+          "id": "10702",
+          "displayName": "Shi Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Shi Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10706",
+          "displayName": "Seven Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Seven Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10709",
+          "displayName": "MultiCrack Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "MultiCrack Office",
+          "damageType": "slash"
+        },
+        {
+          "id": "10707",
+          "displayName": "The Pequod Harpooneer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Pequod",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10705",
+          "displayName": "Lobotomy E.G.O:: Sunshower",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10713",
+          "displayName": "W Corp. L4 Cleanup Agent - CCA",
+          "sourceGame": "limbus",
+          "wingOrGroup": "W Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10701",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10704",
+          "displayName": "N Corp. Kleinhammer",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10703",
+          "displayName": "R Corp. 4th Pack Rabbit",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10712",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10710",
+          "displayName": "Wild Hunt",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Wild Hunt",
+          "damageType": "slash"
+        },
+        {
           "id": "10711",
           "displayName": "Full-Stop Office Fixer",
           "sourceGame": "limbus",
@@ -1412,88 +1524,11 @@
           "damageType": "slash"
         },
         {
-          "id": "10712",
-          "displayName": "Kurokumo Clan Wakashu",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Kurokumo Clan",
-          "damageType": "slash"
-        },
-        {
-          "id": "10705",
-          "displayName": "Lobotomy E.G.O:: Sunshower",
-          "sourceGame": "lobotomy",
-          "wingOrGroup": null,
-          "damageType": "blunt"
-        },
-        {
-          "id": "10703",
-          "displayName": "R Corp. 4th Pack Rabbit",
-          "sourceGame": "limbus",
-          "wingOrGroup": "R Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10707",
-          "displayName": "The Pequod Harpooneer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "The Pequod",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10713",
-          "displayName": "W Corp. L4 Cleanup Agent - CCA",
-          "sourceGame": "limbus",
-          "wingOrGroup": "W Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "10710",
-          "displayName": "Wild Hunt",
-          "sourceGame": "limbus",
-          "wingOrGroup": "The Wild Hunt",
-          "damageType": "slash"
-        },
-        {
-          "id": "10708",
-          "displayName": "Öufi Assoc. South Section 3",
+          "id": "oufi_south_3_heathcliff",
+          "displayName": "Öufi South Section 3",
           "sourceGame": "limbus",
           "wingOrGroup": "Öufi Association",
           "damageType": "slash"
-        },
-        {
-          "id": "10709",
-          "displayName": "MultiCrack Office Fixer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "MultiCrack Office",
-          "damageType": "slash"
-        },
-        {
-          "id": "10704",
-          "displayName": "N Corp. Kleinhammer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "N Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10706",
-          "displayName": "Seven Assoc. South Section 4",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Seven Association",
-          "damageType": "slash"
-        },
-        {
-          "id": "10702",
-          "displayName": "Shi Assoc. South Section 5",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Shi Association",
-          "damageType": "slash"
-        },
-        {
-          "id": "10701",
-          "displayName": "LCB Sinner",
-          "sourceGame": "limbus",
-          "wingOrGroup": null,
-          "damageType": "blunt"
         }
       ],
       "egos": [
@@ -1602,24 +1637,45 @@
       "literaryConnectionNotes": "Real-world Yi Sang (1907–1937) was a Korean author whose literary career lasted only a decade before tuberculosis killed him at 30. His work is characterized by extreme emotional intensity, a focus on death and decay, and a recurring motif of the self dissolving into fog or absence. In The Flight of Earth, the protagonist's relationship with existence is one of repulsion and simultaneous dependence — 'If there were no earth, I would not have to love.' Limbus Yi Sang's character operates on the same paradox: he is a poet because he feels too much, but the only thing he can write about is the dissolution of feeling. His fog is both his illness and his art — impenetrable, obscuring, and strangely beautiful.",
       "identities": [
         {
-          "id": "10103",
-          "displayName": "Blade Lineage Salsu",
+          "id": "10111",
+          "displayName": "LCE E.G.O:: Lantern",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
+          "damageType": "blunt"
+        },
+        {
+          "id": "10108",
+          "displayName": "Dieci Assoc. South Section 4",
           "sourceGame": "limbus",
-          "wingOrGroup": "Blade Lineage",
-          "damageType": "slash"
+          "wingOrGroup": "Dieci Association",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10107",
+          "displayName": "The Pequod First Mate",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Pequod",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10109",
+          "displayName": "The Ring Pointillist Student",
+          "sourceGame": "limbus",
+          "wingOrGroup": "The Fingers",
+          "damageType": "pierce"
         },
         {
           "id": "10104",
           "displayName": "Effloresced E.G.O::Spicebush",
-          "sourceGame": "limbus",
+          "sourceGame": "ruina",
           "wingOrGroup": null,
           "damageType": "pierce"
         },
         {
-          "id": "10114",
-          "displayName": "Heishou Pack - Wu Branch Adept",
+          "id": "10106",
+          "displayName": "W Corp. L3 Cleanup Agent",
           "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
+          "wingOrGroup": "W Corp.",
           "damageType": "slash"
         },
         {
@@ -1644,32 +1700,11 @@
           "damageType": "blunt"
         },
         {
-          "id": "10109",
-          "displayName": "The Ring Pointillist Student",
+          "id": "10114",
+          "displayName": "Heishou Pack - Wu Branch Adept",
           "sourceGame": "limbus",
-          "wingOrGroup": "The Fingers",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10106",
-          "displayName": "W Corp. L3 Cleanup Agent",
-          "sourceGame": "limbus",
-          "wingOrGroup": "W Corp.",
+          "wingOrGroup": "H Corp.",
           "damageType": "slash"
-        },
-        {
-          "id": "10108",
-          "displayName": "Dieci Assoc. South Section 4",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Dieci Association",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10111",
-          "displayName": "LCE E.G.O:: Lantern",
-          "sourceGame": "ruina",
-          "wingOrGroup": null,
-          "damageType": "blunt"
         },
         {
           "id": "10105",
@@ -1679,6 +1714,20 @@
           "damageType": "pierce"
         },
         {
+          "id": "10101",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "slash"
+        },
+        {
+          "id": "10103",
+          "displayName": "Blade Lineage Salsu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Blade Lineage",
+          "damageType": "slash"
+        },
+        {
           "id": "10102",
           "displayName": "Seven Assoc. South Section 6",
           "sourceGame": "limbus",
@@ -1686,18 +1735,11 @@
           "damageType": "pierce"
         },
         {
-          "id": "10107",
-          "displayName": "The Pequod First Mate",
+          "id": "ho_spiders_index",
+          "displayName": "The House of Spiders: The Index Nursefather",
           "sourceGame": "limbus",
-          "wingOrGroup": "The Pequod",
-          "damageType": "pierce"
-        },
-        {
-          "id": "10101",
-          "displayName": "LCB Sinner",
-          "sourceGame": "limbus",
-          "wingOrGroup": null,
-          "damageType": "slash"
+          "wingOrGroup": "The House of Spiders",
+          "damageType": "blunt"
         }
       ],
       "egos": [
@@ -1792,101 +1834,101 @@
       "literaryConnectionNotes": "Dostoevsky's Raskolnikov invents a theory: great men (Napoleon, Lycurgus) are above conventional morality — they can transgress laws because their ends justify their means. He tests this theory by murdering a pawnbroker. The novel is not really about the murder — it is about the psychological consequences of believing that some people are permitted to do terrible things 'for the greater good.' Limbus Rodion has a similar theory, and her arc tests it. The 'punishment' in the title refers not to the legal consequences but to the self-destruction that Raskolnikov brings upon himself through guilt. Rodion's arc will likely follow the same trajectory.",
       "identities": [
         {
-          "id": "11002",
-          "displayName": "Blade Lineage Salsu",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Blade Lineage",
-          "damageType": "pierce"
-        },
-        {
-          "id": "11008",
-          "displayName": "Cinq Assoc. South Section 4 Director",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Cinq Association",
-          "damageType": "pierce"
-        },
-        {
-          "id": "11009",
-          "displayName": "Dawn Office Fixer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Dawn Office",
-          "damageType": "slash"
-        },
-        {
-          "id": "11011",
-          "displayName": "Devyat' Assoc. North Section 3",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Devyat' Association",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11014",
-          "displayName": "Heishou Pack - You Branch",
-          "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
-          "damageType": "slash"
-        },
-        {
-          "id": "11012",
-          "displayName": "The Middle Little Brother",
-          "sourceGame": "limbus",
-          "wingOrGroup": "The Fingers",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11005",
-          "displayName": "The One Who Shall Grip",
-          "sourceGame": "limbus",
-          "wingOrGroup": "N Corp.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11013",
-          "displayName": "The Thumb East Soldato II",
-          "sourceGame": "limbus",
-          "wingOrGroup": "The Fingers",
-          "damageType": "pierce"
-        },
-        {
-          "id": "11006",
-          "displayName": "Lobotomy E.G.O::Red Sheet",
-          "sourceGame": "lobotomy",
-          "wingOrGroup": null,
-          "damageType": "blunt"
-        },
-        {
-          "id": "11004",
-          "displayName": "Los Mariachis Jefe",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Syndicate",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11007",
-          "displayName": "Molar Boatworks Fixer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Molar Office",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11003",
-          "displayName": "Zwei Assoc. South Section 6",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Zwei Association",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11010",
-          "displayName": "Zwei Assoc. West Section 3",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Zwei Association",
-          "damageType": "slash"
-        },
-        {
-          "id": "11001",
+          "id": "10901",
           "displayName": "LCB Sinner",
           "sourceGame": "limbus",
           "wingOrGroup": null,
+          "damageType": "slash"
+        },
+        {
+          "id": "10903",
+          "displayName": "LCCB Assistant Manager",
+          "sourceGame": "limbus",
+          "wingOrGroup": "LCC",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10904",
+          "displayName": "N Corp. Mittelhammer",
+          "sourceGame": "ruina",
+          "wingOrGroup": "N Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10902",
+          "displayName": "Kurokumo Clan Wakashu",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Kurokumo Clan",
+          "damageType": "slash"
+        },
+        {
+          "id": "10905",
+          "displayName": "Rosespanner Workshop Rep",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Rosespanner Workshop",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10906",
+          "displayName": "Zwei Assoc. South Section 5",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10908",
+          "displayName": "Liu Assoc. South Section 4 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Liu Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10911",
+          "displayName": "The Princess of La Manchaland",
+          "sourceGame": "limbus",
+          "wingOrGroup": "La Manchaland",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10910",
+          "displayName": "Devyat' Assoc. North Section 3",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Devyat' Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "10913",
+          "displayName": "Lobotomy E.G.O:: The Sword Sharpened with Tears",
+          "sourceGame": "lobotomy",
+          "wingOrGroup": "L Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "10914",
+          "displayName": "R Corp. 4th Pack Reindeer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "R Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10909",
+          "displayName": "T Corp. Class 2 Collection Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "T Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10907",
+          "displayName": "Dieci Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Dieci Association",
+          "damageType": "blunt"
+        },
+        {
+          "id": "10912",
+          "displayName": "Heishou Pack - Si Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
           "damageType": "slash"
         }
       ],
@@ -1987,17 +2029,31 @@
       "literaryConnectionNotes": "Odysseus in Homer's Odyssey is defined by his cunning (Greek: mētis) — he is 'the man of twists and turns.' His signature achievement (the Trojan Horse) and his greatest failure (blinding Polyphemus) both depend on deception about his identity. In Dante's Inferno, Ulysses is consigned to the Eighth Circle for fraud — specifically for the Trojan Horse deception. Outis as a name is a meta-joke: 'I am nobody' said the man who was most definitely somebody. Limbus Outis plays the same game — her false identity conceals someone real, and the revelation of who she actually is has implications for the LCB's larger mission.",
       "identities": [
         {
-          "id": "11112",
-          "displayName": "Heishou Pack - Mao Branch",
+          "id": "11106",
+          "displayName": "Cinq Assoc. South Section 4",
           "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
-          "damageType": "slash"
+          "wingOrGroup": "Cinq Association",
+          "damageType": "pierce"
         },
         {
-          "id": "11114",
-          "displayName": "LCA Udjat Vanguard Team 3 Leader",
+          "id": "11103",
+          "displayName": "G Corp. Head Manager",
           "sourceGame": "limbus",
-          "wingOrGroup": "LCA",
+          "wingOrGroup": "G Corp.",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11101",
+          "displayName": "LCB Sinner",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": "pierce"
+        },
+        {
+          "id": "11105",
+          "displayName": "Molar Office Fixer",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Molar Office",
           "damageType": "slash"
         },
         {
@@ -2008,25 +2064,18 @@
           "damageType": "blunt"
         },
         {
-          "id": "11105",
-          "displayName": "Molar Office Fixer",
+          "id": "11109",
+          "displayName": "The Ring Pointillist Student",
           "sourceGame": "limbus",
-          "wingOrGroup": "Molar Office",
+          "wingOrGroup": "The Fingers",
+          "damageType": "pierce"
+        },
+        {
+          "id": "11112",
+          "displayName": "Heishou Pack - Mao Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
           "damageType": "slash"
-        },
-        {
-          "id": "11104",
-          "displayName": "Seven Assoc. South Section 6 Director",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Seven Association",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11113",
-          "displayName": "T Corp. Class 3 VDCU Staff",
-          "sourceGame": "limbus",
-          "wingOrGroup": "T Corp.",
-          "damageType": "blunt"
         },
         {
           "id": "11111",
@@ -2043,11 +2092,11 @@
           "damageType": "blunt"
         },
         {
-          "id": "11108",
-          "displayName": "Wuthering Heights Chief Butler",
+          "id": "11114",
+          "displayName": "LCA Udjat Vanguard Team 3 Leader",
           "sourceGame": "limbus",
-          "wingOrGroup": null,
-          "damageType": "blunt"
+          "wingOrGroup": "LCA",
+          "damageType": "slash"
         },
         {
           "id": "11102",
@@ -2057,32 +2106,25 @@
           "damageType": "slash"
         },
         {
-          "id": "11106",
-          "displayName": "Cinq Assoc. South Section 4",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Cinq Association",
-          "damageType": "pierce"
-        },
-        {
-          "id": "11103",
-          "displayName": "G Corp. Head Manager",
-          "sourceGame": "limbus",
-          "wingOrGroup": "G Corp.",
-          "damageType": "pierce"
-        },
-        {
-          "id": "11109",
-          "displayName": "The Ring Pointillist Student",
-          "sourceGame": "limbus",
-          "wingOrGroup": "The Fingers",
-          "damageType": "pierce"
-        },
-        {
-          "id": "11101",
-          "displayName": "LCB Sinner",
+          "id": "11108",
+          "displayName": "Wuthering Heights Chief Butler",
           "sourceGame": "limbus",
           "wingOrGroup": null,
-          "damageType": "pierce"
+          "damageType": "blunt"
+        },
+        {
+          "id": "11113",
+          "displayName": "T Corp. Class 3 VDCU Staff",
+          "sourceGame": "limbus",
+          "wingOrGroup": "T Corp.",
+          "damageType": "blunt"
+        },
+        {
+          "id": "11104",
+          "displayName": "Seven Assoc. South Section 6 Director",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Seven Association",
+          "damageType": "blunt"
         }
       ],
       "egos": [
@@ -2187,39 +2229,32 @@
       "literaryConnectionNotes": "Kafka's The Metamorphosis opens with Gregor's transformation, which he initially accepts with more equanimity than his horrified family. The story is less about the horror of transformation than about how the transformed person is treated by those around them — Gregor becomes an inconvenience, then a burden, and is ultimately treated as something less than human. Limbus Gregor inherits this social dimension: his bug arm marks him as 'different,' and his Canto deals with how society treats those who are visibly changed. The arm itself — a living thing grafted onto a human body — also connects to the Project Moon universe's obsession with technology, abnormality, and the boundary between human and machine.",
       "identities": [
         {
-          "id": "11209",
-          "displayName": "Edgar Family Heir",
+          "id": "11202",
+          "displayName": "Liu Assoc. South Section 6",
           "sourceGame": "limbus",
-          "wingOrGroup": "Edgar Family",
-          "damageType": "slash"
-        },
-        {
-          "id": "11211",
-          "displayName": "Firefist Office Survivor",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Firefist Office",
+          "wingOrGroup": "Liu Association",
           "damageType": "blunt"
         },
         {
-          "id": "11203",
-          "displayName": "G Corp. Manager Corporal",
+          "id": "11205",
+          "displayName": "Rosespanner Workshop Fixer",
           "sourceGame": "limbus",
-          "wingOrGroup": "G Corp.",
+          "wingOrGroup": "Rosespanner Workshop",
           "damageType": "slash"
         },
         {
-          "id": "11212",
-          "displayName": "Heishou Pack - Si Branch",
+          "id": "11208",
+          "displayName": "Kurokumo Clan Captain",
           "sourceGame": "limbus",
-          "wingOrGroup": "H Corp.",
+          "wingOrGroup": "Kurokumo Clan",
           "damageType": "slash"
         },
         {
-          "id": "11213",
-          "displayName": "Night Awls Capitano",
+          "id": "11204",
+          "displayName": "R.B. Sous-chef",
           "sourceGame": "limbus",
-          "wingOrGroup": "Night Awls",
-          "damageType": "pierce"
+          "wingOrGroup": "R.B.",
+          "damageType": "blunt"
         },
         {
           "id": "11210",
@@ -2236,39 +2271,18 @@
           "damageType": "pierce"
         },
         {
-          "id": "11206",
-          "displayName": "Zwei Assoc. South Section 4",
+          "id": "11209",
+          "displayName": "Edgar Family Heir",
           "sourceGame": "limbus",
-          "wingOrGroup": "Zwei Association",
+          "wingOrGroup": "Edgar Family",
           "damageType": "slash"
         },
         {
-          "id": "11208",
-          "displayName": "Kurokumo Clan Captain",
+          "id": "11211",
+          "displayName": "Firefist Office Survivor",
           "sourceGame": "limbus",
-          "wingOrGroup": "Kurokumo Clan",
-          "damageType": "slash"
-        },
-        {
-          "id": "11202",
-          "displayName": "Liu Assoc. South Section 6",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Liu Association",
+          "wingOrGroup": "Firefist Office",
           "damageType": "blunt"
-        },
-        {
-          "id": "11204",
-          "displayName": "R.B. Sous-chef",
-          "sourceGame": "limbus",
-          "wingOrGroup": "R.B.",
-          "damageType": "blunt"
-        },
-        {
-          "id": "11205",
-          "displayName": "Rosespanner Workshop Fixer",
-          "sourceGame": "limbus",
-          "wingOrGroup": "Rosespanner Workshop",
-          "damageType": "slash"
         },
         {
           "id": "11201",
@@ -2276,6 +2290,41 @@
           "sourceGame": "limbus",
           "wingOrGroup": null,
           "damageType": "slash"
+        },
+        {
+          "id": "11212",
+          "displayName": "Heishou Pack - Si Branch",
+          "sourceGame": "limbus",
+          "wingOrGroup": "H Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "11206",
+          "displayName": "Zwei Assoc. South Section 4",
+          "sourceGame": "limbus",
+          "wingOrGroup": "Zwei Association",
+          "damageType": "slash"
+        },
+        {
+          "id": "11203",
+          "displayName": "G Corp. Manager Corporal",
+          "sourceGame": "limbus",
+          "wingOrGroup": "G Corp.",
+          "damageType": "slash"
+        },
+        {
+          "id": "lobotomy_ego_lamp",
+          "displayName": "Lobotomy E.G.O::Lamp",
+          "sourceGame": "limbus",
+          "wingOrGroup": null,
+          "damageType": ""
+        },
+        {
+          "id": "lce_ego_aedd_gregor",
+          "displayName": "LCE E.G.O::AEDD",
+          "sourceGame": "ruina",
+          "wingOrGroup": null,
+          "damageType": ""
         }
       ],
       "egos": [
