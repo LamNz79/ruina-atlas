@@ -106,9 +106,6 @@ export function LoreGraph({
     highlightSelected();
   }, [selectedSinner]);
 
-  // ── Sync filter refs ────────────────────────────────────────────────────────
-  useEffect(() => { filtersRef.current = filters; }, [filters]);
-
   const [physics, setPhysics] = useState<PhysicsSettings>(DEFAULTS);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
     new Set(ALL_EDGE_TYPES),
@@ -118,6 +115,9 @@ export function LoreGraph({
     themes: new Set(THEMES as unknown as Theme[]),
     literarySources: new Set(literarySources.map(s => s.id)),
   });
+
+  // ── Sync filter refs ────────────────────────────────────────────────────────
+  useEffect(() => { filtersRef.current = filters; }, [filters]);
 
   // ── Style selected node in-place ────────────────────────────────────────────
   const highlightSelected = useCallback(() => {
