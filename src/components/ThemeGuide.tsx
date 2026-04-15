@@ -16,13 +16,13 @@ interface ThemeGuideProps {
 export function ThemeGuide({ open, onClose }: ThemeGuideProps) {
   return (
     <Dialog open={open} onOpenChange={(val) => !val && onClose()}>
-      <DialogContent className="sm:max-w-[480px] flex flex-col">
-        <DialogHeader className="flex-row items-center gap-3 space-y-0">
+      <DialogContent className="sm:max-w-[480px] grid-rows-[auto_1fr]">
+        <DialogHeader className="flex-row items-center gap-3 space-y-0 row-span-1">
           <DialogTitle className="text-base font-bold tracking-tight">Theme Guide</DialogTitle>
         </DialogHeader>
 
-        <ScrollArea className="flex-1">
-          <div className="space-y-4 pr-4">
+        <ScrollArea className="row-span-1 min-h-0">
+          <div className="space-y-4 pr-4 pb-2">
             {THEMES.map((theme) => {
               const meta = THEME_META[theme];
               return (
