@@ -135,7 +135,7 @@ export function LoreGraph({
     themes: new Set(THEMES as unknown as Theme[]),
     literarySources: new Set(literarySources.map(s => s.id)),
   });
-  const [tooltip, setTooltip] = useState({ visible: false, text: '', x: 0, y: 0 });
+  const [tooltip, setTooltip] = useState<{ visible: boolean; type: 'node' | 'edge'; name: string; game?: string; themes?: string[]; x: number; y: number }>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
 
   // True when user has narrowed at least one filter category from "all"
   const allGamesSelected = filters.games.size === (['limbus', 'ruina', 'lobotomy'] as Game[]).length;
@@ -346,7 +346,7 @@ export function LoreGraph({
       .on('mouseenter', function (event, d) {
         if (d.label) {
           const rect = containerRef.current!.getBoundingClientRect();
-          setTooltip({ visible: true, text: d.label, x: event.clientX - rect.left, y: event.clientY - rect.top });
+          setTooltip({ visible: true, type: 'edge', name: d.label, x: event.clientX - rect.left, y: event.clientY - rect.top });
         }
       })
       .on('mousemove', function (event) {
@@ -479,7 +479,30 @@ export function LoreGraph({
 
     // ── Hover ────────────────────────────────────────────────────────────────
     nodeEls
-      .on('mouseenter', function (_, hovered) {
+      .on('mouseenter', function (event, hovered) {
+        const rect = containerRef.current!.getBoundingClientRect();
+        if (hovered.nodeType === 'sinner') {
+          setTooltip({
+            visible: true,
+            type: 'node',
+            name: hovered.name,
+            game: hovered.canonicalGame,
+            themes: hovered.themes.slice(0, 2),
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+          });
+        } else {
+          setTooltip({
+            visible: true,
+            type: 'node',
+            name: hovered.name,
+            game: undefined,
+            themes: hovered.themes.slice(0, 2),
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+          });
+        }
+
         const connectedIds = new Set<string>();
         connectedIds.add(hovered.id);
 
@@ -522,6 +545,7 @@ export function LoreGraph({
         });
       })
       .on('mouseleave', function () {
+        setTooltip((t) => ({ ...t, visible: false }));
         nodeEls.each(function (d) {
           d3.select(this)
             .transition()
@@ -567,16 +591,36 @@ export function LoreGraph({
     <div ref={containerRef} className="h-full w-full relative">
       <svg ref={svgRef} className="block w-full h-full bg-background/50" />
 
-      {/* Edge hover tooltip */}
+      {/* Hover tooltip */}
       {tooltip.visible && (
         <div
           className="absolute pointer-events-none z-50"
           style={{ left: tooltip.x + 14, top: tooltip.y - 28 }}
         >
-          <div className="flex items-center gap-2 rounded-lg border border-border/80 bg-card/95 px-3 py-1.5 shadow-xl backdrop-blur-sm">
-            <div className="h-1.5 w-1.5 rounded-full bg-edge-crossgame" />
-            <span className="text-xs font-semibold text-foreground">{tooltip.text}</span>
-          </div>
+          {tooltip.type === 'edge' ? (
+            <div className="flex items-center gap-2 rounded-lg border border-border/80 bg-card/95 px-3 py-1.5 shadow-xl backdrop-blur-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-edge-crossgame" />
+              <span className="text-xs font-semibold text-foreground">{tooltip.name}</span>
+            </div>
+          ) : (
+            <div className="space-y-1.5 rounded-lg border border-border/80 bg-card/95 px-3 py-2 shadow-xl backdrop-blur-sm min-w-[140px]">
+              <p className="text-sm font-bold text-foreground leading-tight">{tooltip.name}</p>
+              {tooltip.game && (
+                <div className="flex items-center gap-1.5">
+                  <div
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ backgroundColor: NODE_GAME_COLORS[tooltip.game] ?? '#888' }}
+                  />
+                  <span className="text-[10px] font-medium text-muted-foreground capitalize">{tooltip.game}</span>
+                </div>
+              )}
+              {tooltip.themes && tooltip.themes.length > 0 && (
+                <p className="text-[10px] text-muted-foreground/70">
+                  {tooltip.themes.map(t => t.replace('-', ' ')).join(' · ')}
+                </p>
+              )}
+            </div>
+          )}
         </div>
       )}
 
