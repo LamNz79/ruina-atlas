@@ -7,7 +7,6 @@ import crossGameEntities from '../data/crossGameEntities.json';
 import { GraphSettings } from './GraphSettings';
 import { FilterPanel } from './FilterPanel';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { Badge } from '@/components/ui/badge';
 
 interface GraphNode extends d3.SimulationNodeDatum {
   id: string;
@@ -206,7 +205,7 @@ export function LoreGraph({
       .attr('visibility', (d) => active.has(d.type) ? 'visible' : 'hidden');
   }, []);
 
-  // ── Apply filter dimming in-place (sinners only — entities have no literary sources) ─
+  // ── Apply filter dimming in-place (sinners only — entities always visible) ─
   const applyFilters = useCallback((f: FilterState) => {
     if (!nodeElsRef.current) return;
     nodeElsRef.current
