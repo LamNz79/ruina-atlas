@@ -92,6 +92,27 @@ button { cursor: pointer; font-family: inherit; }
   font-weight: 400;
 }
 
+/* ── Header toggle button ─────────────────────────────────────────────────── */
+.app__toggle-panel {
+  margin-left: auto;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-m);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.app__toggle-panel:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ── Main Area ──────────────────────────────────────────────────────────────── */
 .app__main {
   position: relative;
@@ -101,11 +122,6 @@ button { cursor: pointer; font-family: inherit; }
 .app__graph-wrap {
   width: 100%;
   height: 100%;
-  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.app__graph-wrap--panel-open {
-  width: calc(100% - var(--panel-w));
 }
 
 /* ── SVG Global ────────────────────────────────────────────────────────────── */
@@ -123,7 +139,7 @@ svg text { user-select: none; }
   overflow-y: auto;
   transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 20;
+  z-index: 35;
   display: flex;
   flex-direction: column;
 }

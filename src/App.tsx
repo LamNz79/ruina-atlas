@@ -4,35 +4,57 @@ import { deriveEdges } from './utils/deriveEdges';
 import { LoreGraph } from './components/LoreGraph';
 import { LorePanel } from './components/LorePanel';
 import type { Sinner } from './types';
-import './App.css';
+import { Button } from '@/components/ui/button';
+import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
+import './index.css';
 
 export default function App() {
   const [selectedSinner, setSelectedSinner] = useState<Sinner | null>(null);
+  const [panelOpen, setPanelOpen] = useState(false);
 
   const edges = useMemo(() => deriveEdges(sinners), []);
 
   const handleNodeClick = useCallback((sinner: Sinner) => {
     setSelectedSinner((prev) => (prev?.id === sinner.id ? null : sinner));
+    setPanelOpen(true);
   }, []);
 
   const handleClose = useCallback(() => {
-    setSelectedSinner(null);
+    setPanelOpen(false);
   }, []);
 
   return (
-    <div className="app">
-      <header className="app__header">
-        <div className="app__header-inner">
-          <h1 className="app__title">Runia Atlas</h1>
-          <p className="app__subtitle">
+    <div className="dark flex h-screen w-full flex-col overflow-hidden bg-background font-sans text-foreground">
+      {/* Header */}
+      <header className="sticky top-0 z-50 flex h-14 w-full items-center justify-between border-b border-border/40 bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex items-baseline gap-4">
+          <h1 className="text-lg font-bold tracking-tight text-foreground">Runia Atlas</h1>
+          <p className="hidden text-xs font-medium text-muted-foreground sm:block">
             Literary connections of Project Moon's universe
           </p>
         </div>
+
+        <div className="flex items-center gap-2">
+          {selectedSinner && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setPanelOpen((o) => !o)}
+              className="h-8 gap-1.5 text-xs font-medium"
+            >
+              {panelOpen ? <ChevronRight className="h-3.5 w-3.5" /> : <ChevronLeft className="h-3.5 w-3.5" />}
+              {panelOpen ? 'Hide' : 'Details'}
+            </Button>
+          )}
+        </div>
       </header>
 
-      <div className="app__main">
+      {/* Main Content */}
+      <main className="relative flex flex-1 overflow-hidden">
         <div
-          className={`app__graph-wrap ${selectedSinner ? 'app__graph-wrap--panel-open' : ''}`}
+          className={`relative h-full w-full transition-all duration-300 ease-in-out ${
+            panelOpen ? 'pr-[400px]' : ''
+          } max-md:pr-0`}
         >
           <LoreGraph
             sinners={sinners}
@@ -40,18 +62,48 @@ export default function App() {
             selectedSinner={selectedSinner}
             onNodeClick={handleNodeClick}
           />
-        </div>
-        <LorePanel sinner={selectedSinner} onClose={handleClose} />
-      </div>
 
-      <footer className="app__footer">
-        <span>
-          {sinners.length} Sinners · {edges.length} connections
-        </span>
+          {/* Welcome Overlay (shown when no sinner is selected) */}
+          {!selectedSinner && (
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-6">
+              <div className="pointer-events-auto max-w-sm rounded-xl border border-border/50 bg-background/80 p-6 text-center shadow-2xl backdrop-blur-md">
+                <div className="mb-4 flex justify-center">
+                  <div className="rounded-full bg-primary/10 p-3 ring-1 ring-primary/20">
+                    <Info className="h-6 w-6 text-primary" />
+                  </div>
+                </div>
+                <h2 className="mb-2 text-xl font-semibold tracking-tight">Welcome to Runia Atlas</h2>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  Explore the literary origins and thematic connections of the Sinners across the Project Moon universe.
+                </p>
+                <p className="mt-4 text-xs font-medium text-primary">
+                  Select a node to view detailed lore analysis
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Detail Panel */}
+        <LorePanel
+          sinner={selectedSinner}
+          onClose={handleClose}
+          isOpen={panelOpen}
+        />
+      </main>
+
+      {/* Footer */}
+      <footer className="flex h-8 w-full items-center justify-between border-t border-border/40 bg-background/95 px-6 text-[11px] font-medium text-muted-foreground backdrop-blur">
+        <div className="flex items-center gap-4">
+          <span>{sinners.length} Sinners</span>
+          <span className="h-3 w-[1px] bg-border/50" />
+          <span>{edges.length} Connections</span>
+        </div>
         <a
           href="https://github.com/eldritchtools/limbus-shared-library"
           target="_blank"
           rel="noopener noreferrer"
+          className="hover:text-primary transition-colors hover:underline"
         >
           Data: eldritchtools/limbus-shared-library
         </a>

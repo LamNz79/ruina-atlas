@@ -3,10 +3,22 @@ import type { Sinner, Game, Identity } from '../types';
 import { literarySources } from '../data/literarySources';
 import { identityImages } from '../data/identityImages';
 import { identityDetailData } from '../data/identityDetailData';
+import { X, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
 
 interface LorePanelProps {
   sinner: Sinner | null;
   onClose: () => void;
+  isOpen: boolean;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -63,74 +75,60 @@ const TIER_LABELS: Record<string, string> = {
 
 // ── Identity Modal ────────────────────────────────────────────────────────────
 
-function IdentityModal({ id, onClose }: { id: Identity; onClose: () => void }) {
+function IdentityModal({ id, open, onClose }: { id: Identity; open: boolean; onClose: () => void }) {
   const detail = identityDetailData[id.id];
   const img = identityImages[id.id];
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) onClose();
-  };
-
   return (
-    <div className="id-modal-overlay" onClick={handleOverlayClick}>
-      <div className="id-modal" role="dialog" aria-modal="true">
-        {/* Header */}
-        <div className="id-modal__header">
-          {img ? (
-            <img src={img} alt={id.displayName} className="id-modal__portrait" />
-          ) : (
-            <div
-              className="id-modal__portrait"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1rem',
-                fontWeight: 700,
-                color: 'var(--text-d)',
-              }}
-            >
-              {id.displayName.slice(0, 2)}
-            </div>
-          )}
-          <div className="id-modal__title-group">
-            <div className="id-modal__name">{id.displayName}</div>
-            <div className="id-modal__game-tag">{GAME_LABELS[id.sourceGame]}</div>
+    <Dialog open={open} onOpenChange={(val) => !val && onClose()}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader className="flex-row items-center gap-4 space-y-0">
+          <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border border-border bg-muted/50">
+            {img ? (
+              <img src={img} alt={id.displayName} className="h-full w-full object-contain" />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center text-xs font-bold uppercase text-muted-foreground">
+                {id.displayName.slice(0, 2)}
+              </div>
+            )}
           </div>
-          <button className="id-modal__close" onClick={onClose} aria-label="Close">
-            ✕
-          </button>
-        </div>
+          <div className="flex flex-col">
+            <DialogTitle className="text-lg leading-tight">{id.displayName}</DialogTitle>
+            <span className="mt-1 text-xs font-medium text-muted-foreground">{GAME_LABELS[id.sourceGame]}</span>
+          </div>
+        </DialogHeader>
 
-        {/* Body */}
-        <div className="id-modal__body">
+        <div className="mt-4 flex flex-col gap-6">
           {detail ? (
             <>
-              {/* Tier + Attack Types */}
-              <div className="id-modal__badges">
-                <span
-                  className="id-modal__badge id-modal__badge--tier"
+              {/* Badges */}
+              <div className="flex flex-wrap gap-2">
+                <Badge
+                  variant="outline"
+                  className="font-bold tracking-wider"
                   style={{ color: TIER_COLORS[detail.tierCategory] ?? '#888', borderColor: TIER_COLORS[detail.tierCategory] ?? '#888' }}
                 >
                   {TIER_LABELS[detail.tierCategory] ?? detail.tierCategory.toUpperCase()}
-                </span>
+                </Badge>
                 {detail.attackType.map((t) => (
-                  <span key={t} className="id-modal__badge id-modal__badge--type">{t}</span>
+                  <Badge key={t} variant="secondary" className="px-2 py-0 text-[10px] font-bold uppercase transition-all">
+                    {t}
+                  </Badge>
                 ))}
               </div>
 
               {/* Stats */}
-              <div>
-                <div className="id-modal__section-title">Stats</div>
-                <div className="id-modal__stat-grid">
+              <div className="space-y-3">
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Stats</h4>
+                <div className="grid grid-cols-3 gap-3">
                   {(['HP', 'DEF', 'SPD'] as const).map((label) => {
                     const s30 = detail.stats[`${label.toLowerCase()}_30` as keyof typeof detail.stats];
                     const s1 = detail.stats[`${label.toLowerCase()}_1` as keyof typeof detail.stats];
                     return (
-                      <div key={label} className="id-modal__stat-box">
-                        <div className="id-modal__stat-label">{label}</div>
-                        <div className="id-modal__stat-lv1">Lv1 {s1}</div>
-                        <div className="id-modal__stat-lv30">Lv30 {s30}</div>
+                      <div key={label} className="rounded-md border border-border/60 bg-muted/30 p-2 text-center">
+                        <div className="text-[9px] font-bold text-muted-foreground">{label}</div>
+                        <div className="mt-1 text-[10px] text-muted-foreground">Lv1 <span className="font-mono text-foreground">{s1}</span></div>
+                        <div className="text-sm font-bold tabular-nums tracking-tight">Lv30 {s30}</div>
                       </div>
                     );
                   })}
@@ -138,16 +136,16 @@ function IdentityModal({ id, onClose }: { id: Identity; onClose: () => void }) {
               </div>
 
               {/* Resistances */}
-              <div>
-                <div className="id-modal__section-title">Resistances</div>
-                <div className="id-modal__resistances">
+              <div className="space-y-3">
+                <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Resistances</h4>
+                <div className="flex divide-x divide-border overflow-hidden rounded-md border border-border/60">
                   {(['blunt', 'slash', 'pierce'] as const).map((type) => {
                     const val = detail.resistances[type];
                     return (
-                      <div key={type} className="id-modal__resist">
-                        <div className="id-modal__resist-type">{type}</div>
+                      <div key={type} className="flex-1 bg-muted/30 p-2 text-center">
+                        <div className="text-[9px] font-bold uppercase text-muted-foreground">{type}</div>
                         <div
-                          className="id-modal__resist-val"
+                          className="mt-1 text-xs font-bold"
                           style={{ color: RESISTANCE_COLORS[val] ?? '#888' }}
                         >
                           {val}
@@ -157,193 +155,215 @@ function IdentityModal({ id, onClose }: { id: Identity; onClose: () => void }) {
                   })}
                 </div>
               </div>
-
-              {/* Speciality */}
-              {detail.speciality.length > 0 && (
-                <div>
-                  <div className="id-modal__section-title">Speciality</div>
-                  <div className="id-modal__badges">
-                    {detail.speciality.map((s) => (
-                      <span key={s} className="id-modal__badge id-modal__badge--spec">{s}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Affinity */}
-              {detail.affinity.length > 0 && (
-                <div>
-                  <div className="id-modal__section-title">Affinities</div>
-                  <div className="id-modal__badges">
-                    {detail.affinity.map((a) => (
-                      <span key={a} className="id-modal__badge id-modal__badge--aff">{a}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
             </>
           ) : (
-            <div className="id-modal__no-data">No game data available for this identity.</div>
+            <p className="py-8 text-center text-sm italic text-muted-foreground">No game data available for this identity.</p>
           )}
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }
 
 // ── Main Panel ────────────────────────────────────────────────────────────────
 
-export function LorePanel({ sinner, onClose }: LorePanelProps) {
+export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
   const [activeIdentity, setActiveIdentity] = useState<Identity | null>(null);
-  const isOpen = sinner !== null;
 
   return (
     <>
       <div
-        className={`lore-panel ${isOpen ? 'lore-panel--open' : ''}`}
+        className={`absolute right-0 top-0 z-[45] h-full w-[400px] border-l border-border bg-card shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        } max-md:w-full`}
         aria-hidden={!isOpen}
       >
         {sinner && (
-          <>
+          <div className="flex h-full flex-col">
             {/* Header */}
-            <div className="lore-panel__header">
-              <div>
-                <h2 className="lore-panel__name">{sinner.name}</h2>
-                <p className="lore-panel__games">
-                  {sinner.appearances.map((g) => GAME_LABELS[g]).join(' · ')}
+            <header className="sticky top-0 z-10 flex items-start justify-between border-b border-border bg-muted/40 p-5 backdrop-blur-md">
+              <div className="space-y-1">
+                <h2 className="text-xl font-bold tracking-tight text-foreground">{sinner.name}</h2>
+                <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
+                  {sinner.appearances.map((g) => GAME_LABELS[g]).join(' \u00B7 ')}
                 </p>
               </div>
-              <button className="lore-panel__close" onClick={onClose} aria-label="Close">
-                ✕
-              </button>
-            </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted"
+                onClick={onClose}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </header>
 
-            {/* Lore Summary */}
-            <div className="lore-panel__section">
-              <p className="lore-panel__summary">{sinner.loreSummary}</p>
-            </div>
+            {/* Scrollable Body */}
+            <ScrollArea className="flex-1 px-5 py-6">
+              <div className="space-y-8 pb-10">
+                {/* Lore Summary */}
+                <section>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{sinner.loreSummary}</p>
+                </section>
 
-            {/* Literary Connections */}
-            <div className="lore-panel__section">
-              <h3 className="lore-panel__section-title">Literary Sources</h3>
-              {sinner.literarySources.map((ref) => {
-                const source = literarySources.find((s) => s.id === ref.id);
-                return (
-                  <div key={ref.id} className="lore-panel__source">
-                    <div className="lore-panel__source-header">
-                      <span className="lore-panel__source-title">
-                        {source?.title ?? ref.id}
-                      </span>
-                      <span className={`lore-panel__role-badge lore-panel__role-badge--${ref.role}`}>
-                        {ref.role}
-                      </span>
-                    </div>
-                    {source?.passage && (
-                      <blockquote className="lore-panel__passage">
-                        {source.passage}
-                      </blockquote>
-                    )}
-                    {source?.author && (
-                      <p className="lore-panel__passage-meta">
-                        — {source.author}
-                        {source.year ? `, ${source.year}` : ''}
-                        {source.language ? ` [${source.language}]` : ''}
-                      </p>
-                    )}
-                    <p className="lore-panel__connection">{ref.specificConnection}</p>
-                    {source?.wikiUrl && (
-                      <a
-                        href={source.wikiUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="lore-panel__wiki-link"
-                      >
-                        Wikipedia ↗
-                      </a>
-                    )}
+                {/* Literary Connections */}
+                <section className="space-y-4">
+                  <h3 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    Literary Sources
+                  </h3>
+                  <div className="space-y-5">
+                    {sinner.literarySources.map((ref) => {
+                      const source = literarySources.find((s) => s.id === ref.id);
+                      return (
+                        <div key={ref.id} className="space-y-3 group">
+                          <header className="flex flex-wrap items-center gap-3">
+                            <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                              {source?.title ?? ref.id}
+                            </span>
+                            <Badge
+                              variant="outline"
+                              className={`text-[9px] font-bold uppercase tracking-wider ${
+                                ref.role === 'primary' ? 'border-edge-literary/40 bg-edge-literary/10 text-edge-literary' :
+                                ref.role === 'secondary' ? 'border-edge-theme/40 bg-edge-theme/10 text-edge-theme' :
+                                'border-edge-crossgame/40 bg-edge-crossgame/10 text-edge-crossgame'
+                              }`}
+                            >
+                              {ref.role}
+                            </Badge>
+                          </header>
+
+                          {source?.passage && (
+                            <blockquote className="relative border-l-2 border-primary/30 pl-4 text-[13px] italic leading-relaxed text-foreground/90">
+                              "{source.passage}"
+                            </blockquote>
+                          )}
+
+                          {source?.author && (
+                            <p className="text-[11px] font-medium text-muted-foreground/70">
+                              \u2014 {source.author}{source.year ? `, ${source.year}` : ''}
+                            </p>
+                          )}
+
+                          <p className="text-[13px] leading-relaxed text-muted-foreground line-clamp-3 hover:line-clamp-none cursor-default transition-all">
+                            {ref.specificConnection}
+                          </p>
+
+                          {source?.wikiUrl && (
+                            <a
+                              href={source.wikiUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-[11px] font-bold text-primary hover:underline transition-all"
+                            >
+                              Library of information <ExternalLink className="h-3 w-3" />
+                            </a>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
+                </section>
 
-            {/* Literary Notes */}
-            <div className="lore-panel__section">
-              <h3 className="lore-panel__section-title">Literary Analysis</h3>
-              <p className="lore-panel__notes">{sinner.literaryConnectionNotes}</p>
-            </div>
+                {/* Literary Analysis */}
+                <section className="space-y-3 rounded-lg border border-border/40 bg-muted/20 p-4">
+                  <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80">
+                    Depth Analysis
+                  </h3>
+                  <p className="text-[13px] italic leading-relaxed text-muted-foreground/90">
+                    {sinner.literaryConnectionNotes}
+                  </p>
+                </section>
 
-            {/* Themes */}
-            <div className="lore-panel__section">
-              <h3 className="lore-panel__section-title">Themes</h3>
-              <div className="lore-panel__themes">
-                {sinner.themes.map((t) => (
-                  <span key={t} className="lore-panel__theme-tag">
-                    {THEME_LABELS[t] ?? t}
-                  </span>
-                ))}
-              </div>
-            </div>
+                {/* Themes */}
+                <section className="space-y-3">
+                  <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Themes</h3>
+                  <div className="flex flex-wrap gap-2 text-foreground">
+                    {sinner.themes.map((t) => (
+                      <Badge key={t} variant="secondary" className="px-2 py-0.5 text-[11px] font-medium transition-transform active:scale-95">
+                        {THEME_LABELS[t] ?? t}
+                      </Badge>
+                    ))}
+                  </div>
+                </section>
 
-            {/* Identities grid */}
-            <div className="lore-panel__section">
-              <h3 className="lore-panel__section-title">
-                Identities
-                <span className="lore-panel__count">{sinner.identities.length}</span>
-              </h3>
-              {sinner.identities.length > 0 ? (
-                <div className="lore-panel__identity-grid">
-                  {sinner.identities.map((id) => {
-                    const img = identityImages[id.id];
-                    return (
-                      <div
-                        key={id.id}
-                        className={`lore-panel__identity-card lore-panel__identity-card--${id.sourceGame}`}
-                        onClick={() => setActiveIdentity(id)}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => e.key === 'Enter' && setActiveIdentity(id)}
-                      >
-                        {img ? (
-                          <img src={img} alt={id.displayName} className="lore-panel__identity-img" />
-                        ) : (
-                          <div className="lore-panel__identity-placeholder">
-                            {id.displayName.slice(0, 2)}
-                          </div>
-                        )}
-                        <span className="lore-panel__identity-name">{id.displayName}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <p className="lore-panel__empty">No identities (manager role)</p>
-              )}
-            </div>
+                {/* Identities grid */}
+                <section className="space-y-4">
+                  <h3 className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    <span>Identities</span>
+                    <Badge variant="outline" className="h-5 rounded-full bg-muted/50 px-2 font-mono text-[9px]">
+                      {sinner.identities.length}
+                    </Badge>
+                  </h3>
 
-            {/* EGOs */}
-            <div className="lore-panel__section">
-              <h3 className="lore-panel__section-title">
-                EGOs
-                <span className="lore-panel__count">{sinner.egos.length}</span>
-              </h3>
-              {sinner.egos.length > 0 ? (
-                <div className="lore-panel__ego-list">
-                  {sinner.egos.map((ego) => (
-                    <div key={ego.id} className="lore-panel__ego-item">
-                      <span
-                        className="lore-panel__ego-dot"
-                        style={{ backgroundColor: RANK_COLORS[ego.rank] ?? '#888' }}
-                      />
-                      <span className="lore-panel__ego-name">{ego.displayName}</span>
-                      <span className="lore-panel__ego-rank">{ego.rank}</span>
+                  {sinner.identities.length > 0 ? (
+                    <div className="grid grid-cols-3 gap-2">
+                      {sinner.identities.map((id) => {
+                        const img = identityImages[id.id];
+                        return (
+                          <Card
+                            key={id.id}
+                            className={`group cursor-pointer overflow-hidden border transition-all active:scale-[0.98] ${
+                              id.sourceGame === 'limbus' ? 'hover:border-edge-theme/50' :
+                              id.sourceGame === 'lobotomy' ? 'hover:border-edge-literary/50' :
+                              'hover:border-edge-crossgame/50'
+                            }`}
+                            onClick={() => setActiveIdentity(id)}
+                          >
+                            <CardHeader className="p-0">
+                              <div className="aspect-square bg-muted/40 flex items-center justify-center overflow-hidden">
+                                {img ? (
+                                  <img
+                                    src={img}
+                                    alt={id.displayName}
+                                    className="h-full w-full object-contain p-1 transition-transform group-hover:scale-105"
+                                  />
+                                ) : (
+                                  <span className="text-xs font-bold text-muted-foreground/50">{id.displayName.slice(0, 2)}</span>
+                                )}
+                              </div>
+                            </CardHeader>
+                            <CardContent className="p-2 text-center">
+                              <p className="truncate text-[9px] font-bold leading-none text-muted-foreground group-hover:text-foreground transition-colors">
+                                {id.displayName}
+                              </p>
+                            </CardContent>
+                          </Card>
+                        );
+                      })}
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="lore-panel__empty">No EGOs</p>
-              )}
-            </div>
-          </>
+                  ) : (
+                    <p className="text-xs italic text-muted-foreground/60 p-4 border border-dashed rounded-lg text-center">No specialized identities recorded</p>
+                  )}
+                </section>
+
+                {/* EGOs */}
+                <section className="space-y-4">
+                  <h3 className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    <span>EGO Arsenal</span>
+                    <Badge variant="outline" className="h-5 rounded-full bg-muted/50 px-2 font-mono text-[9px]">
+                      {sinner.egos.length}
+                    </Badge>
+                  </h3>
+                  {sinner.egos.length > 0 ? (
+                    <div className="space-y-2">
+                      {sinner.egos.map((ego) => (
+                        <div key={ego.id} className="flex items-center gap-3 rounded-lg border border-border/40 bg-muted/30 p-2.5 transition-colors hover:border-border/80">
+                          <div
+                            className="h-2.5 w-2.5 shrink-0 rounded-full shadow-sm"
+                            style={{ backgroundColor: RANK_COLORS[ego.rank] ?? '#888' }}
+                          />
+                          <span className="flex-1 truncate text-xs font-semibold">{ego.displayName}</span>
+                          <span className="text-[10px] font-bold text-muted-foreground/60">{ego.rank}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-xs italic text-muted-foreground/60">No EGO manifestations listed</p>
+                  )}
+                </section>
+              </div>
+            </ScrollArea>
+          </div>
         )}
       </div>
 
@@ -351,6 +371,7 @@ export function LorePanel({ sinner, onClose }: LorePanelProps) {
       {activeIdentity && (
         <IdentityModal
           id={activeIdentity}
+          open={!!activeIdentity}
           onClose={() => setActiveIdentity(null)}
         />
       )}

@@ -6,6 +6,7 @@ import { GraphSettings } from './GraphSettings';
 interface GraphNode extends d3.SimulationNodeDatum {
   id: string;
   name: string;
+  canonicalGame: string;
   literarySourceIds: string[];
   themes: string[];
   crossGameContinuity: boolean;
@@ -15,11 +16,17 @@ interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
   type: EdgeType;
 }
 
+const NODE_GAME_COLORS: Record<string, string> = {
+  limbus:    '#cba6f7',  // Mauve — Limbus Company (default primary)
+  ruina:     '#89b4fa',  // Blue — Library of Ruina
+  lobotomy:  '#fab387',  // Peach — Lobotomy Corporation
+};
+
 const EDGE_COLORS: Record<EdgeType, string> = {
-  'literary-origin': '#f5c2e7',
-  'thematic-link': '#89b4fa',
-  'cross-game-continuity': '#f9e2af',
-  'shared-literary-group': '#a6e3a1',
+  'literary-origin': 'var(--edge-literary)',
+  'thematic-link': 'var(--edge-theme)',
+  'cross-game-continuity': 'var(--edge-crossgame)',
+  'shared-literary-group': 'var(--edge-group)',
 };
 
 const EDGE_LABELS: Record<EdgeType, string> = {
@@ -98,13 +105,13 @@ export function LoreGraph({
       const isSel = d.id === selId;
       const hitSel = d3.select(this).select<SVGCircleElement>('.node-hit');
       hitSel
-        .attr('fill', isSel ? '#e63946' : d.crossGameContinuity ? '#1a1a2e' : '#16213e')
-        .attr('stroke', isSel ? '#e63946' : '#4895ef')
-        .attr('stroke-width', isSel ? 3 : 2);
+        .attr('fill', isSel ? '#f5e3d0' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
+        .attr('stroke', isSel ? '#fab387' : 'var(--ring)')
+        .attr('stroke-width', isSel ? 3 : 1.5);
       d3.select(this)
         .select('.node-ring')
         .attr('visibility', d.crossGameContinuity || isSel ? 'visible' : 'hidden')
-        .attr('stroke', isSel ? '#e63946' : '#f9c74f');
+        .attr('stroke', isSel ? '#fab387' : 'var(--edge-crossgame)');
     });
   }, []);
 
@@ -191,6 +198,7 @@ export function LoreGraph({
     const nodes: GraphNode[] = sinners.map((s) => ({
       id: s.id,
       name: s.name,
+      canonicalGame: s.canonicalGame,
       literarySourceIds: s.literarySources.map((ls) => ls.id),
       themes: [...s.themes],
       crossGameContinuity: s.crossGameContinuity,
@@ -218,8 +226,8 @@ export function LoreGraph({
       .data(links)
       .join('line')
       .attr('stroke', (d) => EDGE_COLORS[d.type])
-      .attr('stroke-opacity', 0.5)
-      .attr('stroke-width', 1.5)
+      .attr('stroke-opacity', 0.4)
+      .attr('stroke-width', 1.2)
       .attr('stroke-dasharray', (d) =>
         d.type === 'cross-game-continuity' ? '6,4' : 'none',
       );
@@ -263,9 +271,10 @@ export function LoreGraph({
       .append('circle')
       .attr('class', 'node-hit')
       .attr('r', (d) => (d.crossGameContinuity ? 26 : 22))
-      .attr('fill', (d) => d.crossGameContinuity ? '#1a1a2e' : '#16213e')
-      .attr('stroke', '#4895ef')
-      .attr('stroke-width', 2);
+      .attr('fill', (d) => NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
+      .attr('stroke', 'var(--ring)')
+      .attr('stroke-width', 1.5)
+      .attr('stroke-opacity', 0.8);
 
     // Ring (cross-game only)
     nodeEls
@@ -274,9 +283,9 @@ export function LoreGraph({
       .attr('class', 'node-ring')
       .attr('r', 30)
       .attr('fill', 'none')
-      .attr('stroke', '#f9c74f')
-      .attr('stroke-width', 1.5)
-      .attr('stroke-opacity', 0.5);
+      .attr('stroke', 'var(--edge-crossgame)')
+      .attr('stroke-width', 1)
+      .attr('stroke-opacity', 0.4);
 
     // Label
     nodeEls
@@ -284,9 +293,10 @@ export function LoreGraph({
       .text((d) => d.name)
       .attr('text-anchor', 'middle')
       .attr('dy', (d) => (d.crossGameContinuity ? 42 : 38))
-      .attr('font-size', '11px')
-      .attr('fill', '#c8d6e5')
-      .attr('font-family', '"Space Grotesk", sans-serif')
+      .attr('font-size', '10px')
+      .attr('font-weight', '500')
+      .attr('fill', 'var(--muted-foreground)')
+      .attr('font-family', 'var(--sans)')
       .attr('pointer-events', 'none');
 
     // Transparent hit area
@@ -322,7 +332,8 @@ export function LoreGraph({
             .select('text')
             .transition()
             .duration(150)
-            .attr('opacity', isConn ? 1 : 0.2);
+            .attr('opacity', isConn ? 1 : 0.2)
+            .attr('fill', isConn ? 'var(--foreground)' : 'var(--muted-foreground)');
           if (isConn && d.id !== hovered.id) {
             d3.select(this)
               .select('.node-hit')
@@ -346,8 +357,8 @@ export function LoreGraph({
               .raise()
               .transition()
               .duration(150)
-              .attr('stroke-opacity', 0.95)
-              .attr('stroke-width', 2.5)
+              .attr('stroke-opacity', 0.9)
+              .attr('stroke-width', 2)
               .attr('filter', 'url(#edge-glow)');
           }
         });
@@ -364,14 +375,15 @@ export function LoreGraph({
             .select('text')
             .transition()
             .duration(200)
-            .attr('opacity', 1);
+            .attr('opacity', 1)
+            .attr('fill', 'var(--muted-foreground)');
         });
 
         linkEls
           .transition()
           .duration(200)
-          .attr('stroke-opacity', 0.5)
-          .attr('stroke-width', 1.5)
+          .attr('stroke-opacity', 0.4)
+          .attr('stroke-width', 1.2)
           .attr('filter', null);
       });
 
@@ -401,8 +413,8 @@ export function LoreGraph({
   }, []);
 
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
-      <svg ref={svgRef} style={{ display: 'block' }} />
+    <div ref={containerRef} className="h-full w-full relative">
+      <svg ref={svgRef} className="block w-full h-full bg-background/50" />
       <GraphSettings
         nodeSpacing={physics.nodeSpacing}
         repulsion={physics.repulsion}
