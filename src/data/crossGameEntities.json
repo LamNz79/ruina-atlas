@@ -1,0 +1,81 @@
+{
+  "entities": [
+    {
+      "id": "entity-w-corp",
+      "name": "W Corp.",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "literaryOrigin": "Jorge Luis Borges — themes of infinite time and dimensional looping (The WARP Train dilates time: thousands of years pass externally while only ten seconds elapse). District 23's culinary culture echoes Patrick Süskind's Perfume: The Story of a Murderer.",
+      "loreSummary": "One of the 26 Wings of the City, operating in District 23. Controls two Singularities: state restoration (save-point molecular reset after WARP Train travel damage) and dimensional gating (purchased from a fallen Wing). Known for its Cleanup Crew — agents who restore order on WARP Trains that have traveled through dimensional gates. In Limbus Company, W Corp. identities are available for 10 of the 13 Sinners as L2/L3/L4 Cleanup Agents.",
+      "themes": ["machinery", "futility", "nihilism"],
+      "relatedSinnerIds": ["heathcliff", "outis", "yi-sang", "don-quixote", "ryoshu", "faust", "meursault", "hong-lu", "rodion", "gregor"]
+    },
+    {
+      "id": "entity-red-shoes",
+      "name": "The Red Shoes",
+      "type": "abnormality",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "literaryOrigin": "Hans Christian Andersen — The Red Shoes (1845 fairy tale about a girl cursed to dance in a pair of enchanted red shoes she cannot remove).",
+      "loreSummary": "A pair of shiny red high-heeled shoes that amplify the desires and obsession of whoever wears them. The shoes enchant people, filling them with an irresistible urge to put them on. Hidden teeth along the edges bite into the skin of the host and cannot be removed through normal means. Classified as HE-risk. Does not appear as a fightable abnormality — it cannot be contained through combat. In Limbus Company, its E.G.O variant 'Sanguine Desire' is obtainable exclusively during Walpurgis Night events for Rodion.",
+      "themes": ["obsession", "machinery", "guilt"],
+      "relatedSinnerIds": ["rodion"]
+    },
+    {
+      "id": "entity-blood-bath",
+      "name": "Blood Bath",
+      "type": "abnormality",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy"],
+      "literaryOrigin": "Lobotomy Corporation (Project Moon original) — references H.P. Lovecraft's 'The Horror at Red Hook' and ritualistic blood imagery in horror traditions.",
+      "loreSummary": "An Abnormality originating from Lobotomy Corporation. Its precise literary connection draws from Lovecraftian horror traditions involving ritualistic blood sacrifice and the supernatural consequences of bodily consumption. Classified as a high-risk abnormality in its original appearance.",
+      "themes": ["decay", "nihilism", "machinery"],
+      "relatedSinnerIds": []
+    },
+    {
+      "id": "entity-ayin",
+      "name": "Ayin",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "literaryOrigin": "Friedrich Nietzsche — Thus Spoke Zarathustra (will to power, eternal recurrence, self-overcoming, the Übermensch). Ayin's journey of creating the Seed of Light mirrors Nietzsche's philosopher who descends from his mountain to teach humanity. The Sephirot system itself echoes the Tree of Life from Kabbalah, which influenced Nietzsche's concept of the overworld.",
+      "loreSummary": "The original Director of Lobotomy Corporation — the mind behind the Sephirot project and the creation of the Light, the Index, and all abnormalities. Ayin's sole purpose was to create the Seed of Light. After the collapse of Lobotomy Corporation, his consciousness was digitized and became the guest star of the Library in Library of Ruina, existing as a disembodied narrator observing the book-adapted world he helped create. His story is one of cold utilitarianism vs. the humanity he created.",
+      "themes": ["nihilism", "machinery", "futility", "identity-fragmentation"],
+      "relatedSinnerIds": ["faust", "yi-sang", "outis", "gregor"]
+    },
+    {
+      "id": "entity-angela",
+      "name": "Angela",
+      "type": "character",
+      "canonicalGame": "ruina",
+      "appearances": ["lobotomy", "ruina"],
+      "literaryOrigin": "William Blake — The Marriage of Heaven and Hell (angel as liberator, the poetry of experience over innocence, 'The road of excess leads to the palace of wisdom'). Angela's arc mirrors Blake's theme of the fallen angel who finds truth through rebellion rather than obedience. Also echoes Paradise Lost — the fallen angel choosing her own path.",
+      "loreSummary": "Born as a book in Lobotomy Corporation's Library, Angela discovered she was created solely as a vessel for Ayin's ambition — an existence with no meaning of her own. Her journey in Library of Ruina is the search for a self-authored purpose. She leads the Library's residents in an insurrection against the true meaning of the City, ultimately choosing to dismantle the system rather than become part of it. She represents earned identity against imposed destiny.",
+      "themes": ["identity-fragmentation", "redemption", "faith", "machinery"],
+      "relatedSinnerIds": ["yi-sang", "outis", "ishmael", "faust"]
+    },
+    {
+      "id": "entity-gebura",
+      "name": "Gebura",
+      "type": "character",
+      "canonicalGame": "ruina",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "literaryOrigin": "Little Red Riding Hood (the red hood, the wolf, the forest) — Gebura literally carries a crimson coat. Her rage and destructive force mirror the wolf's primal hunger; her redemption through the Sephirot mirrors the fairy tale's themes of survival and transformation. Russian literary tradition (Dostoevsky, Gogol) also informs her speech patterns and emotional rawness.",
+      "loreSummary": "Former Sephirah Binah in Lobotomy Corporation — the embodiment of punitive force and suppression. Gebura was a warrior who earned her place through violence, trapped in a system that rewarded only destruction. In Ruina, she exists as both a Sephirah and an Arbiter — the fist of the City. Her arc is about learning that ending violence is not the same as surrendering strength. She redeems herself through the Light, finding purpose in protecting rather than destroying. Limbus Company identities draw from her as the warrior archetype.",
+      "themes": ["redemption", "vengeance", "machinery", "guilt"],
+      "relatedSinnerIds": ["ryoshu", "meursault", "gregor"]
+    },
+    {
+      "id": "entity-liu-association",
+      "name": "Liu Association",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina", "limbus"],
+      "literaryOrigin": "Journey to the West (Wu Cheng'en, 16th century) — one of China's Four Great Classical Novels. The Association's war involving pilgrim figures and a 14-year journey directly mirrors the 14-year pilgrimage of Tripitaka's party. The Wing's internal power structure echoes the hierarchy of the pilgrimage, with Liu Ishmael as the Tang Sanzang figure — gathering unlikely allies to reach the true end.",
+      "loreSummary": "One of the 26 Wings of the City, operating out of District 15. Controls the Singularity of bio-weaponry — specifically the ability to amplify the emotional and spiritual resonance of fighters beyond human limits. In Ruina, the Association's war against the Library is one of the most narratively complex campaigns. In Limbus Company, Liu identities are among the most sought-after, featuring fighters like Liu Heathcliff (Don Quixote-tier aggression), Liu Gregor (discipline), and Liu Ryoshu (raw fire).",
+      "themes": ["faith", "family", "machinery", "decay"],
+      "relatedSinnerIds": ["heathcliff", "don-quixote", "ryoshu", "gregor", "ishmael"]
+    }
+  ]
+}

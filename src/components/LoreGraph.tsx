@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import type { Sinner, GraphEdge, EdgeType, Game, Theme } from '../types';
 import { THEMES } from '../types';
 import { literarySources } from '../data/literarySources';
+import crossGameEntities from '../data/crossGameEntities.json';
 import { GraphSettings } from './GraphSettings';
 import { FilterPanel } from './FilterPanel';
 
@@ -13,6 +14,8 @@ interface GraphNode extends d3.SimulationNodeDatum {
   literarySourceIds: string[];
   themes: string[];
   crossGameContinuity: boolean;
+  nodeType: 'sinner' | 'entity';
+  entityType?: 'wing' | 'abnormality' | 'character';
 }
 
 interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
@@ -23,6 +26,12 @@ const NODE_GAME_COLORS: Record<string, string> = {
   limbus:    '#cba6f7',  // Mauve — Limbus Company (default primary)
   ruina:     '#89b4fa',  // Blue — Library of Ruina
   lobotomy:  '#fab387',  // Peach — Lobotomy Corporation
+};
+
+const ENTITY_COLORS: Record<string, string> = {
+  wing:        '#94e2d5', // Teal — Wings (City infrastructure)
+  abnormality:  '#f5c2e7', // Pink — Abnormalities (eldritch entities)
+  character:   '#f9e2af', // Yellow — Recurring characters
 };
 
 const EDGE_COLORS: Record<EdgeType, string> = {
@@ -62,7 +71,9 @@ interface LoreGraphProps {
   sinners: Sinner[];
   edges: GraphEdge[];
   selectedSinner: Sinner | null;
+  selectedEntity: string | null;
   onNodeClick: (sinner: Sinner) => void;
+  onEntityClick?: (entityId: string) => void;
 }
 
 interface FilterState {
@@ -75,7 +86,9 @@ export function LoreGraph({
   sinners,
   edges,
   selectedSinner,
+  selectedEntity,
   onNodeClick,
+  onEntityClick,
 }: LoreGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -87,7 +100,9 @@ export function LoreGraph({
   const nodeElsRef = useRef<d3.Selection<SVGGElement, GraphNode, SVGGElement, unknown> | null>(null);
   const zoomGroupRef = useRef<d3.Selection<SVGGElement, unknown, null, undefined> | null>(null);
   const selectedIdRef = useRef<string | null>(null);
+  const selectedEntityRef = useRef<string | null>(null);
   const onNodeClickRef = useRef(onNodeClick);
+  const onEntityClickRef = useRef(onEntityClick);
   const sinnersRef = useRef(sinners);
   const activeEdgeTypesRef = useRef<Set<EdgeType>>(new Set(ALL_EDGE_TYPES));
   const filtersRef = useRef<FilterState>({
@@ -95,16 +110,19 @@ export function LoreGraph({
     themes: new Set(THEMES as unknown as Theme[]),
     literarySources: new Set(literarySources.map(s => s.id)),
   });
+  const entityElsRef = useRef<d3.Selection<SVGGElement, GraphNode, SVGGElement, unknown> | null>(null);
 
   // Keep onNodeClick ref fresh without re-render dependency
   useEffect(() => { onNodeClickRef.current = onNodeClick; }, [onNodeClick]);
+  useEffect(() => { onEntityClickRef.current = onEntityClick; }, [onEntityClick]);
   useEffect(() => { sinnersRef.current = sinners; }, [sinners]);
 
   // Sync selected ID ref on prop change
   useEffect(() => {
     selectedIdRef.current = selectedSinner?.id ?? null;
+    selectedEntityRef.current = selectedEntity;
     highlightSelected();
-  }, [selectedSinner]);
+  }, [selectedSinner, selectedEntity]);
 
   const [physics, setPhysics] = useState<PhysicsSettings>(DEFAULTS);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
@@ -119,21 +137,31 @@ export function LoreGraph({
   // ── Sync filter refs ────────────────────────────────────────────────────────
   useEffect(() => { filtersRef.current = filters; }, [filters]);
 
-  // ── Style selected node in-place ────────────────────────────────────────────
+  // ── Style selected node in-place ──────────────────────────────────────────────
   const highlightSelected = useCallback(() => {
     if (!nodeElsRef.current) return;
     const selId = selectedIdRef.current;
+    const selEntity = selectedEntityRef.current;
     nodeElsRef.current.each(function (d) {
-      const isSel = d.id === selId;
-      const hitSel = d3.select(this).select<SVGCircleElement>('.node-hit');
-      hitSel
-        .attr('fill', isSel ? '#f5e3d0' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
-        .attr('stroke', isSel ? '#fab387' : 'var(--ring)')
-        .attr('stroke-width', isSel ? 3 : 1.5);
-      d3.select(this)
-        .select('.node-ring')
-        .attr('visibility', d.crossGameContinuity || isSel ? 'visible' : 'hidden')
-        .attr('stroke', isSel ? '#fab387' : 'var(--edge-crossgame)');
+      if (d.nodeType === 'sinner') {
+        const isSel = d.id === selId;
+        const hitSel = d3.select(this).select('.node-hit');
+        hitSel
+          .attr('fill', isSel ? '#f5e3d0' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
+          .attr('stroke', isSel ? '#fab387' : 'var(--ring)')
+          .attr('stroke-width', isSel ? 3 : 1.5);
+        d3.select(this)
+          .select('.node-ring')
+          .attr('visibility', d.crossGameContinuity || isSel ? 'visible' : 'hidden')
+          .attr('stroke', isSel ? '#fab387' : 'var(--edge-crossgame)');
+      } else {
+        // Entity diamond
+        const isSel = d.id === selEntity;
+        const defaultColor = ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing;
+        d3.select(this).select('.node-hit')
+          .attr('stroke', isSel ? '#f5e3d0' : defaultColor)
+          .attr('stroke-width', isSel ? 3 : 2);
+      }
     });
   }, []);
 
@@ -159,19 +187,21 @@ export function LoreGraph({
       .attr('visibility', (d) => active.has(d.type) ? 'visible' : 'hidden');
   }, []);
 
-  // ── Apply filter dimming in-place ─────────────────────────────────────────
+  // ── Apply filter dimming in-place (sinners only — entities have no literary sources) ─
   const applyFilters = useCallback((f: FilterState) => {
     if (!nodeElsRef.current) return;
-    nodeElsRef.current.each(function (d) {
-      const matchGame = f.games.has(d.canonicalGame as Game);
-      const matchTheme = d.themes.some(t => f.themes.has(t as Theme));
-      const matchSource = d.literarySourceIds.some(id => f.literarySources.has(id));
-      const visible = matchGame && matchTheme && matchSource;
-      d3.select(this)
-        .select('.node-hit')
-        .transition().duration(200)
-        .attr('opacity', visible ? 1 : 0.15);
-    });
+    nodeElsRef.current
+      .filter((d) => d.nodeType === 'sinner')
+      .each(function (d) {
+        const matchGame = f.games.has(d.canonicalGame as Game);
+        const matchTheme = d.themes.some(t => f.themes.has(t as Theme));
+        const matchSource = d.literarySourceIds.some(id => f.literarySources.has(id));
+        const visible = matchGame && matchTheme && matchSource;
+        d3.select(this)
+          .select('.node-hit')
+          .transition().duration(200)
+          .attr('opacity', visible ? 1 : 0.15);
+      });
   }, []);
 
   // Sync edge types ref
@@ -240,14 +270,38 @@ export function LoreGraph({
       literarySourceIds: s.literarySources.map((ls) => ls.id),
       themes: [...s.themes],
       crossGameContinuity: s.crossGameContinuity,
+      nodeType: 'sinner' as const,
     }));
 
+    // ── Entity nodes + entity-to-sinner edges ──────────────────────────────────
+    const entityNodes: GraphNode[] = crossGameEntities.entities.map((e) => ({
+      id: e.id,
+      name: e.name,
+      canonicalGame: e.canonicalGame,
+      literarySourceIds: [],
+      themes: [...e.themes],
+      crossGameContinuity: false,
+      nodeType: 'entity' as const,
+      entityType: e.type,
+    }));
+
+    const entityLinks: GraphLink[] = crossGameEntities.entities.flatMap((e) =>
+      (e.relatedSinnerIds ?? []).map((sid) => ({
+        source: e.id,
+        target: sid,
+        type: 'cross-game-continuity' as EdgeType,
+      })),
+    );
+
+    const allNodes = [...nodes, ...entityNodes];
+    const allLinks = [...links, ...entityLinks];
+
     const simulation = d3
-      .forceSimulation<GraphNode>(nodes)
+      .forceSimulation<GraphNode>(allNodes)
       .force(
         'link',
         d3
-          .forceLink<GraphNode, GraphLink>(links)
+          .forceLink<GraphNode, GraphLink>(allLinks)
           .id((d) => d.id)
           .distance(DEFAULTS.nodeSpacing)
           .strength(0.4),
@@ -261,9 +315,9 @@ export function LoreGraph({
     const linkGroup = zoomGroup.append('g').attr('class', 'links');
     const linkEls = linkGroup
       .selectAll<SVGLineElement, GraphLink>('line')
-      .data(links)
+      .data(allLinks)
       .join('line')
-      .attr('stroke', (d) => EDGE_COLORS[d.type])
+      .attr('stroke', (d) => EDGE_COLORS[d.type] ?? '#f9e2af')
       .attr('stroke-opacity', 0.4)
       .attr('stroke-width', 1.2)
       .attr('stroke-dasharray', (d) =>
@@ -274,7 +328,7 @@ export function LoreGraph({
     const nodeGroup = zoomGroup.append('g').attr('class', 'nodes');
     const nodeEls = nodeGroup
       .selectAll<SVGGElement, GraphNode>('g')
-      .data(nodes)
+      .data(allNodes)
       .join('g')
       .style('cursor', 'pointer')
       .call(
@@ -298,50 +352,97 @@ export function LoreGraph({
 
     // Click — use refs so it's always current (no stale closure)
     nodeEls.on('click', (_, d) => {
-      const found = sinnersRef.current.find((s) => s.id === d.id);
-      if (found) onNodeClickRef.current(found);
+      if (d.nodeType === 'entity') {
+        if (onEntityClickRef.current) onEntityClickRef.current(d.id);
+      } else {
+        const found = sinnersRef.current.find((s) => s.id === d.id);
+        if (found) onNodeClickRef.current(found);
+      }
     });
 
     nodeElsRef.current = nodeEls;
 
-    // Hit circle
+    // ── Sinner nodes: circle ─────────────────────────────────────────────────
     nodeEls
-      .append('circle')
-      .attr('class', 'node-hit')
-      .attr('r', (d) => (d.crossGameContinuity ? 26 : 22))
-      .attr('fill', (d) => NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
-      .attr('stroke', 'var(--ring)')
-      .attr('stroke-width', 1.5)
-      .attr('stroke-opacity', 0.8);
+      .filter((d) => d.nodeType === 'sinner')
+      .each(function (d) {
+        const g = d3.select(this);
+        // Hit circle
+        g.append('circle')
+          .attr('class', 'node-hit')
+          .attr('r', d.crossGameContinuity ? 26 : 22)
+          .attr('fill', NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
+          .attr('stroke', 'var(--ring)')
+          .attr('stroke-width', 1.5)
+          .attr('stroke-opacity', 0.8);
+        // Ring (cross-game only)
+        if (d.crossGameContinuity) {
+          g.append('circle')
+            .attr('class', 'node-ring')
+            .attr('r', 30)
+            .attr('fill', 'none')
+            .attr('stroke', 'var(--edge-crossgame)')
+            .attr('stroke-width', 1)
+            .attr('stroke-opacity', 0.4);
+        }
+        // Label
+        g.append('text')
+          .text(d.name)
+          .attr('text-anchor', 'middle')
+          .attr('dy', d.crossGameContinuity ? 42 : 38)
+          .attr('font-size', '10px')
+          .attr('font-weight', '500')
+          .attr('fill', 'var(--text-bright)')
+          .attr('font-family', 'var(--sans)')
+          .attr('pointer-events', 'none');
+        // Transparent hit area
+        g.append('circle').attr('r', 34).attr('fill', 'transparent');
+      });
 
-    // Ring (cross-game only)
+    // ── Entity nodes: diamond ────────────────────────────────────────────────
     nodeEls
-      .filter((d) => d.crossGameContinuity)
-      .append('circle')
-      .attr('class', 'node-ring')
-      .attr('r', 30)
-      .attr('fill', 'none')
-      .attr('stroke', 'var(--edge-crossgame)')
-      .attr('stroke-width', 1)
-      .attr('stroke-opacity', 0.4);
-
-    // Label
-    nodeEls
-      .append('text')
-      .text((d) => d.name)
-      .attr('text-anchor', 'middle')
-      .attr('dy', (d) => (d.crossGameContinuity ? 42 : 38))
-      .attr('font-size', '10px')
-      .attr('font-weight', '500')
-      .attr('fill', 'var(--muted-foreground)')
-      .attr('font-family', 'var(--sans)')
-      .attr('pointer-events', 'none');
-
-    // Transparent hit area
-    nodeEls
-      .append('circle')
-      .attr('r', 34)
-      .attr('fill', 'transparent');
+      .filter((d) => d.nodeType === 'entity')
+      .each(function (d) {
+        const g = d3.select(this);
+        const size = 20;
+        const color = ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing;
+        // Diamond shape (rotated square)
+        g.append('rect')
+          .attr('class', 'node-hit')
+          .attr('width', size)
+          .attr('height', size)
+          .attr('x', -size / 2)
+          .attr('y', -size / 2)
+          .attr('fill', 'none')
+          .attr('stroke', color)
+          .attr('stroke-width', 2)
+          .attr('transform', 'rotate(45)');
+        // Inner fill
+        g.append('rect')
+          .attr('width', size - 4)
+          .attr('height', size - 4)
+          .attr('x', -size / 2 + 2)
+          .attr('y', -size / 2 + 2)
+          .attr('fill', 'var(--bg-surface)')
+          .attr('transform', 'rotate(45)');
+        // Label
+        g.append('text')
+          .text(d.name)
+          .attr('text-anchor', 'middle')
+          .attr('dy', 34)
+          .attr('font-size', '10px')
+          .attr('font-weight', '500')
+          .attr('fill', color)
+          .attr('font-family', 'var(--sans)')
+          .attr('pointer-events', 'none');
+        // Transparent hit area
+        g.append('rect')
+          .attr('width', size + 12)
+          .attr('height', size + 12)
+          .attr('x', -(size + 12) / 2)
+          .attr('y', -(size + 12) / 2)
+          .attr('fill', 'transparent');
+      });
 
     // ── Hover ────────────────────────────────────────────────────────────────
     nodeEls
@@ -360,25 +461,11 @@ export function LoreGraph({
 
         nodeEls.each(function (d) {
           const isConn = connectedIds.has(d.id);
+          // Use opacity on the group so it works for both circles (sinners) and rects (entities)
           d3.select(this)
-            .select('.node-hit')
             .transition()
             .duration(150)
-            .attr('opacity', isConn ? 1 : 0.25)
-            .attr('r', isConn ? (d.crossGameContinuity ? 26 : 22) : 18);
-          d3.select(this)
-            .select('text')
-            .transition()
-            .duration(150)
-            .attr('opacity', isConn ? 1 : 0.2)
-            .attr('fill', isConn ? 'var(--foreground)' : 'var(--muted-foreground)');
-          if (isConn && d.id !== hovered.id) {
-            d3.select(this)
-              .select('.node-hit')
-              .transition()
-              .duration(150)
-              .attr('r', d.crossGameContinuity ? 28 : 24);
-          }
+            .attr('opacity', isConn ? 1 : 0.15);
         });
 
         linkEls
@@ -404,17 +491,9 @@ export function LoreGraph({
       .on('mouseleave', function () {
         nodeEls.each(function (d) {
           d3.select(this)
-            .select('.node-hit')
             .transition()
             .duration(200)
-            .attr('opacity', 1)
-            .attr('r', d.crossGameContinuity ? 26 : 22);
-          d3.select(this)
-            .select('text')
-            .transition()
-            .duration(200)
-            .attr('opacity', 1)
-            .attr('fill', 'var(--muted-foreground)');
+            .attr('opacity', 1);
         });
 
         linkEls

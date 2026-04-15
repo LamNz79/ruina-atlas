@@ -1,0 +1,218 @@
+import crossGameEntities from '../data/crossGameEntities.json';
+import { sinners } from '../data/sinners';
+import type { CrossGameEntity } from '../types';
+import { X, ExternalLink, Hexagon, Users, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+interface EntityPanelProps {
+  entityId: string | null;
+  onClose: () => void;
+  onSinnerClick: (sinnerId: string) => void;
+}
+
+const TYPE_ICONS: Record<string, React.ReactNode> = {
+  wing:        <Hexagon className="h-3.5 w-3.5" />,
+  abnormality: <Star className="h-3.5 w-3.5" />,
+  character:   <Users className="h-3.5 w-3.5" />,
+};
+
+const TYPE_LABELS: Record<string, string> = {
+  wing:        'Wing',
+  abnormality: 'Abnormality',
+  character:   'Character',
+};
+
+const TYPE_BADGE_COLORS: Record<string, string> = {
+  wing:        'border-edge-crossgame/40 bg-edge-crossgame/10 text-edge-crossgame',
+  abnormality: 'border-[#f5c2e7]/40 bg-[#f5c2e7]/10 text-[#f5c2e7]',
+  character:   'border-edge-theme/40 bg-edge-theme/10 text-edge-theme',
+};
+
+const ENTITY_COLORS: Record<string, string> = {
+  wing:        '#94e2d5',
+  abnormality:  '#f5c2e7',
+  character:   '#f9e2af',
+};
+
+const GAME_LABELS: Record<string, string> = {
+  lobotomy: 'Lobotomy Corporation',
+  ruina:    'Library of Ruina',
+  limbus:   'Limbus Company',
+};
+
+const GAME_COLORS: Record<string, string> = {
+  limbus:    '#cba6f7',
+  ruina:     '#89b4fa',
+  lobotomy:  '#fab387',
+};
+
+const THEME_LABELS: Record<string, string> = {
+  guilt:                   'Guilt',
+  vengeance:               'Vengeance',
+  decay:                   'Decay',
+  metamorphosis:           'Metamorphosis',
+  absurdity:               'Absurdism',
+  redemption:              'Redemption',
+  futility:                'Futility',
+  'identity-fragmentation':'Identity Fragmentation',
+  machinery:               'Machinery',
+  nihilism:                'Nihilism',
+  faith:                   'Faith',
+  family:                  'Family',
+};
+
+export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelProps) {
+  const entity: CrossGameEntity | undefined = (
+    crossGameEntities.entities as CrossGameEntity[]
+  ).find((e) => e.id === entityId);
+
+  const connectedSinners = entity?.relatedSinnerIds
+    ? sinners.filter((s) => entity.relatedSinnerIds!.includes(s.id))
+    : [];
+
+  return (
+    <div
+      className={`absolute right-0 top-0 z-[45] h-full w-[400px] border-l border-border bg-card shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        entityId ? 'translate-x-0' : 'translate-x-full'
+      }`}
+      aria-hidden={!entityId}
+    >
+      {entity && (
+        <div className="flex h-full flex-col">
+          {/* Header */}
+          <header className="sticky top-0 z-10 flex items-start justify-between border-b border-border bg-muted/40 p-5 backdrop-blur-md">
+            <div className="flex items-start gap-3">
+              {/* Diamond icon matching the graph node */}
+              <div
+                className="mt-1 rotate-45 border-2 p-1.5"
+                style={{
+                  borderColor: ENTITY_COLORS[entity.type] ?? '#888',
+                  backgroundColor: `${ENTITY_COLORS[entity.type] ?? '#888'}14`,
+                }}
+              >
+                <div className="rotate-[-45deg]">
+                  {TYPE_ICONS[entity.type]}
+                </div>
+              </div>
+              <div className="space-y-1">
+                <h2 className="text-xl font-bold tracking-tight text-foreground leading-tight">{entity.name}</h2>
+                <div className="flex items-center gap-2">
+                  <Badge
+                    variant="outline"
+                    className={`text-[9px] font-bold uppercase tracking-wider ${TYPE_BADGE_COLORS[entity.type] ?? 'border-muted/40 text-muted'}`}
+                    style={{
+                      borderColor: ENTITY_COLORS[entity.type] ?? '#888',
+                      color: ENTITY_COLORS[entity.type] ?? '#888',
+                    }}
+                  >
+                    {TYPE_ICONS[entity.type]}
+                    <span className="ml-1">{TYPE_LABELS[entity.type] ?? entity.type}</span>
+                  </Badge>
+                  <span className="text-[10px] font-medium text-muted-foreground/60">
+                    {GAME_LABELS[entity.canonicalGame]}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted shrink-0"
+              onClick={onClose}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </header>
+
+          {/* Scrollable Body */}
+          <ScrollArea className="flex-1 px-5 py-6">
+            <div className="space-y-8 pb-10">
+
+              {/* Cross-Game Appearances */}
+              <section className="space-y-3">
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                  Appears In
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {entity.appearances.map((g) => (
+                    <Badge
+                      key={g}
+                      variant="outline"
+                      className="px-2 py-0.5 text-[10px] font-medium"
+                      style={{ borderColor: GAME_COLORS[g] ?? '#888', color: GAME_COLORS[g] ?? '#888' }}
+                    >
+                      {GAME_LABELS[g]}
+                    </Badge>
+                  ))}
+                </div>
+              </section>
+
+              {/* Lore Summary */}
+              <section>
+                <p className="text-sm leading-relaxed text-muted-foreground">{entity.loreSummary}</p>
+              </section>
+
+              {/* Literary Origin */}
+              {entity.literaryOrigin && (
+                <section className="space-y-3 rounded-lg border border-border/40 bg-muted/20 p-4">
+                  <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80">
+                    Literary Origin
+                  </h3>
+                  <p className="text-[13px] italic leading-relaxed text-muted-foreground/90">
+                    {entity.literaryOrigin}
+                  </p>
+                </section>
+              )}
+
+              {/* Themes */}
+              <section className="space-y-3">
+                <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                  Themes
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {entity.themes.map((t) => (
+                    <Badge key={t} variant="secondary" className="px-2 py-0.5 text-[11px] font-medium">
+                      {THEME_LABELS[t] ?? t}
+                    </Badge>
+                  ))}
+                </div>
+              </section>
+
+              {/* Connected Sinners */}
+              {connectedSinners.length > 0 && (
+                <section className="space-y-3">
+                  <h3 className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    <span>Connected Sinners</span>
+                    <Badge variant="outline" className="h-5 rounded-full bg-muted/50 px-2 font-mono text-[9px]">
+                      {connectedSinners.length}
+                    </Badge>
+                  </h3>
+                  <div className="space-y-2">
+                    {connectedSinners.map((s) => (
+                      <button
+                        key={s.id}
+                        className="flex w-full items-center gap-3 rounded-md border border-border/40 bg-muted/20 p-2.5 text-left transition-all hover:border-primary/30 hover:bg-muted/30 active:scale-[0.98]"
+                        onClick={() => onSinnerClick(s.id)}
+                      >
+                        <div
+                          className="h-2.5 w-2.5 shrink-0 rounded-full"
+                          style={{ backgroundColor: GAME_COLORS[s.canonicalGame] ?? '#888' }}
+                        />
+                        <span className="flex-1 text-sm font-semibold text-foreground truncate">{s.name}</span>
+                        <span className="text-[10px] font-medium text-muted-foreground/60 shrink-0">
+                          {GAME_LABELS[s.canonicalGame]}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+          </ScrollArea>
+        </div>
+      )}
+    </div>
+  );
+}

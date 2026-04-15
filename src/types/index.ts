@@ -167,6 +167,28 @@ export interface Canto {
   spoilerLevel: number;
 }
 
+/**
+ * Cross-game entities — Wings, Abnormalities, and recurring characters
+ * that appear across Lobotomy Corporation, Library of Ruina, and Limbus Company.
+ * Rendered as distinct diamond-shaped nodes in the lore graph.
+ * @see src/data/crossGameEntities.json
+ */
+export type CrossGameEntityType = 'character' | 'wing' | 'abnormality';
+
+export interface CrossGameEntity {
+  id: string;                 // prefixed 'entity-{slug}', e.g. 'entity-w-corp'
+  name: string;
+  type: CrossGameEntityType;
+  canonicalGame: Game;
+  appearances: GameAppearance;
+  /** Literary origin book/author if applicable */
+  literaryOrigin?: string;
+  loreSummary: string;
+  themes: Theme[];
+  /** Sinner IDs connected to this entity (produces graph edges) */
+  relatedSinnerIds?: string[];
+}
+
 // ── Graph Edge (Derived at Runtime) ─────────────────────────────────────────
 
 /**

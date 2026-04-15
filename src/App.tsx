@@ -3,6 +3,7 @@ import { sinners } from './data/sinners';
 import { deriveEdges } from './utils/deriveEdges';
 import { LoreGraph } from './components/LoreGraph';
 import { LorePanel } from './components/LorePanel';
+import { EntityPanel } from './components/EntityPanel';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
@@ -10,6 +11,7 @@ import './index.css';
 
 export default function App() {
   const [selectedSinner, setSelectedSinner] = useState<Sinner | null>(null);
+  const [selectedEntity, setSelectedEntity] = useState<string | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
 
   const edges = useMemo(() => deriveEdges(sinners), []);
@@ -21,6 +23,10 @@ export default function App() {
 
   const handleClose = useCallback(() => {
     setPanelOpen(false);
+  }, []);
+
+  const handleEntityClick = useCallback((entityId: string) => {
+    setSelectedEntity(entityId);
   }, []);
 
   return (
@@ -60,7 +66,9 @@ export default function App() {
             sinners={sinners}
             edges={edges}
             selectedSinner={selectedSinner}
+            selectedEntity={selectedEntity}
             onNodeClick={handleNodeClick}
+            onEntityClick={handleEntityClick}
           />
 
           {/* Welcome Overlay (shown when no sinner is selected) */}
@@ -89,6 +97,20 @@ export default function App() {
           sinner={selectedSinner}
           onClose={handleClose}
           isOpen={panelOpen}
+        />
+
+        {/* Entity Detail Panel */}
+        <EntityPanel
+          entityId={selectedEntity}
+          onClose={() => setSelectedEntity(null)}
+          onSinnerClick={(id) => {
+            const found = sinners.find((s) => s.id === id);
+            if (found) {
+              setSelectedEntity(null);
+              setSelectedSinner(found);
+              setPanelOpen(true);
+            }
+          }}
         />
       </main>
 
