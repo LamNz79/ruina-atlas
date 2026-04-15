@@ -82,8 +82,6 @@ export const THEME_META: Record<Theme, { label: string; description: string }> =
     description: 'Blood and chosen bonds — the weight of kinship and its betrayals',
   },
 };
-  'family',
-] as const;
 
 // ── Literary Source ──────────────────────────────────────────────────────────
 
