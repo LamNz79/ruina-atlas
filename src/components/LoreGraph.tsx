@@ -6,6 +6,8 @@ import { literarySources } from '../data/literarySources';
 import crossGameEntities from '../data/crossGameEntities.json';
 import { GraphSettings } from './GraphSettings';
 import { FilterPanel } from './FilterPanel';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { Badge } from '@/components/ui/badge';
 
 interface GraphNode extends d3.SimulationNodeDatum {
   id: string;
@@ -20,6 +22,7 @@ interface GraphNode extends d3.SimulationNodeDatum {
 
 interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
   type: EdgeType;
+  label?: string;
 }
 
 const NODE_GAME_COLORS: Record<string, string> = {
@@ -133,6 +136,22 @@ export function LoreGraph({
     themes: new Set(THEMES as unknown as Theme[]),
     literarySources: new Set(literarySources.map(s => s.id)),
   });
+  const [tooltip, setTooltip] = useState({ visible: false, text: '', x: 0, y: 0 });
+
+  // True when user has narrowed at least one filter category from "all"
+  const allGamesSelected = filters.games.size === (['limbus', 'ruina', 'lobotomy'] as Game[]).length;
+  const allThemesSelected = filters.themes.size === (THEMES as unknown as Theme[]).length;
+  const allSourcesSelected = filters.literarySources.size === literarySources.length;
+  const isFiltering = !allGamesSelected || !allThemesSelected || !allSourcesSelected;
+
+  // True when NO sinners would match the current filters
+  const hasVisibleSinner = sinners.some((s) => {
+    const matchGame = filters.games.has(s.canonicalGame as Game);
+    const matchTheme = s.themes.some((t) => filters.themes.has(t as Theme));
+    const matchSource = s.literarySources.some((ls) => filters.literarySources.has(ls.id));
+    return matchGame && matchTheme && matchSource;
+  });
+  const showEmptyHint = isFiltering && !hasVisibleSinner;
 
   // ── Sync filter refs ────────────────────────────────────────────────────────
   useEffect(() => { filtersRef.current = filters; }, [filters]);
@@ -290,6 +309,7 @@ export function LoreGraph({
         source: e.id,
         target: sid,
         type: 'cross-game-continuity' as EdgeType,
+        label: e.name,
       })),
     );
 
@@ -322,7 +342,21 @@ export function LoreGraph({
       .attr('stroke-width', 1.2)
       .attr('stroke-dasharray', (d) =>
         d.type === 'cross-game-continuity' ? '6,4' : 'none',
-      );
+      )
+      .style('cursor', (d) => d.label ? 'pointer' : 'default')
+      .on('mouseenter', function (event, d) {
+        if (d.label) {
+          const rect = containerRef.current!.getBoundingClientRect();
+          setTooltip({ visible: true, text: d.label, x: event.clientX - rect.left, y: event.clientY - rect.top });
+        }
+      })
+      .on('mousemove', function (event) {
+        const rect = containerRef.current!.getBoundingClientRect();
+        setTooltip((t) => ({ ...t, x: event.clientX - rect.left, y: event.clientY - rect.top }));
+      })
+      .on('mouseleave', function () {
+        setTooltip((t) => ({ ...t, visible: false }));
+      });
     linkElsRef.current = linkEls;
 
     const nodeGroup = zoomGroup.append('g').attr('class', 'nodes');
@@ -530,8 +564,33 @@ export function LoreGraph({
   }, []);
 
   return (
+    <TooltipProvider>
     <div ref={containerRef} className="h-full w-full relative">
       <svg ref={svgRef} className="block w-full h-full bg-background/50" />
+
+      {/* Edge hover tooltip */}
+      {tooltip.visible && (
+        <div
+          className="absolute pointer-events-none z-50"
+          style={{ left: tooltip.x + 14, top: tooltip.y - 28 }}
+        >
+          <div className="flex items-center gap-2 rounded-lg border border-border/80 bg-card/95 px-3 py-1.5 shadow-xl backdrop-blur-sm">
+            <div className="h-1.5 w-1.5 rounded-full bg-edge-crossgame" />
+            <span className="text-xs font-semibold text-foreground">{tooltip.text}</span>
+          </div>
+        </div>
+      )}
+
+      {/* Empty filter state hint */}
+      {showEmptyHint && (
+        <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center">
+          <div className="rounded-xl border border-border/50 bg-card/80 px-6 py-4 text-center shadow-xl backdrop-blur-sm">
+            <p className="text-sm font-semibold text-foreground">No nodes match current filters</p>
+            <p className="mt-1 text-xs text-muted-foreground">Try widening your selection in the filter panel</p>
+          </div>
+        </div>
+      )}
+
       <FilterPanel
         filters={filters}
         onFiltersChange={(f) => setFilters(f)}
@@ -549,6 +608,7 @@ export function LoreGraph({
         onResetZoom={handleResetZoom}
       />
     </div>
+    </TooltipProvider>
   );
 }
 
