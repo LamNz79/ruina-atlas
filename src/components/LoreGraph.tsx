@@ -289,6 +289,11 @@ export function LoreGraph({
       themes: [...s.themes],
       crossGameContinuity: s.crossGameContinuity,
       nodeType: 'sinner' as const,
+      // Lock Dante at center
+      x: s.id === 'dante' ? width / 2 : undefined,
+      y: s.id === 'dante' ? height / 2 : undefined,
+      fx: s.id === 'dante' ? width / 2 : undefined,
+      fy: s.id === 'dante' ? height / 2 : undefined,
     }));
 
     // ── Entity nodes + entity-to-sinner edges ──────────────────────────────────
@@ -337,7 +342,9 @@ export function LoreGraph({
       .data(allLinks)
       .join('line')
       .attr('stroke', (d) => EDGE_COLORS[d.type] ?? '#f9e2af')
-      .attr('stroke-opacity', 0.4)
+      .attr('stroke-opacity', (d) =>
+        d.type === 'cross-game-continuity' ? 0.2 : 0.4,
+      )
       .attr('stroke-width', 1.2)
       .attr('stroke-dasharray', (d) =>
         d.type === 'cross-game-continuity' ? '6,4' : 'none',
@@ -556,13 +563,22 @@ export function LoreGraph({
         linkEls
           .transition()
           .duration(200)
-          .attr('stroke-opacity', 0.4)
+          .attr('stroke-opacity', (d) => d.type === 'cross-game-continuity' ? 0.2 : 0.4)
           .attr('stroke-width', 1.2)
           .attr('filter', null);
       });
 
     // Initial selected state
     highlightSelected();
+
+    // Unpin Dante after layout settles (only once — not on physics resets)
+    let danteUnpinned = false;
+    simulation.on('end', () => {
+      if (!danteUnpinned) {
+        danteUnpinned = true;
+        allNodes.forEach((n) => { if (n.id === 'dante') { n.fx = null; n.fy = null; } });
+      }
+    });
 
     simulation.on('tick', () => {
       linkEls

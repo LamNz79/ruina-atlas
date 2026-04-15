@@ -32,6 +32,59 @@ export const THEMES = [
   'family',
 ] as const;
 
+export const THEME_META: Record<Theme, { label: string; description: string }> = {
+  guilt: {
+    label: 'Guilt',
+    description: 'The weight of moral transgression and the drive to atone',
+  },
+  vengeance: {
+    label: 'Vengeance',
+    description: 'Retaliation as identity — violence justified by past wrongs',
+  },
+  decay: {
+    label: 'Decay',
+    description: 'Systems, bodies, and hope eroding under the weight of the City',
+  },
+  metamorphosis: {
+    label: 'Metamorphosis',
+    description: 'Transformation forced upon the self — bug, machine, or something else',
+  },
+  absurdity: {
+    label: 'Absurdism',
+    description: 'The City demands meaning from a universe that offers none',
+  },
+  redemption: {
+    label: 'Redemption',
+    description: 'Earning forgiveness — for others or for the self',
+  },
+  futility: {
+    label: 'Futility',
+    description: 'The Sisyphean cycle — effort that changes nothing',
+  },
+  'identity-fragmentation': {
+    label: 'Identity Fragmentation',
+    description: 'The self fracturing under trauma, memory loss, or competing roles',
+  },
+  machinery: {
+    label: 'Machinery',
+    description: 'Technology as trap — the City weaponizes progress against its people',
+  },
+  nihilism: {
+    label: 'Nihilism',
+    description: 'The absence of inherent meaning — and the choice to create it anyway',
+  },
+  faith: {
+    label: 'Faith',
+    description: 'Belief in something beyond the self — in a god, a person, or a cause',
+  },
+  family: {
+    label: 'Family',
+    description: 'Blood and chosen bonds — the weight of kinship and its betrayals',
+  },
+};
+  'family',
+] as const;
+
 // ── Literary Source ──────────────────────────────────────────────────────────
 
 /**

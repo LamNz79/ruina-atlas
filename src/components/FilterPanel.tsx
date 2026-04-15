@@ -2,11 +2,12 @@ import { useState, useRef, useEffect } from 'react';
 import type { Game, Theme } from '../types';
 import { THEMES } from '../types';
 import { literarySources } from '../data/literarySources';
-import { Filter, ChevronDown, ChevronUp, X } from 'lucide-react';
+import { Filter, ChevronDown, ChevronUp, X, HelpCircle } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { ThemeGuide } from './ThemeGuide';
 
 interface FilterState {
   games: Set<Game>;
@@ -33,6 +34,7 @@ const GAME_COLORS: Record<Game, string> = {
 
 export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
   const [open, setOpen] = useState(false);
+  const [themeGuideOpen, setThemeGuideOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -136,9 +138,18 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
 
           {/* By Theme */}
           <div className="space-y-2.5">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
-              By Theme
-            </h4>
+            <div className="flex items-center justify-between">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
+                By Theme
+              </h4>
+              <button
+                onClick={() => setThemeGuideOpen(true)}
+                className="flex items-center gap-1 text-[10px] text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+                title="Theme Guide"
+              >
+                <HelpCircle className="h-3 w-3" />
+              </button>
+            </div>
             <div className="flex flex-wrap gap-1.5">
               {THEMES.map(theme => (
                 <button
@@ -194,6 +205,8 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
           )}
         </CardContent>
       </Card>
+
+      <ThemeGuide open={themeGuideOpen} onClose={() => setThemeGuideOpen(false)} />
     </div>
   );
 }
