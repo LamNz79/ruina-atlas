@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import type { Sinner, Game, Identity } from '../types';
+import { cantos } from '../data/cantos';
 import { literarySources } from '../data/literarySources';
 import { identityImages } from '../data/identityImages';
 import { identityDetailData } from '../data/identityDetailData';
-import { X, ExternalLink } from 'lucide-react';
+import { X, ExternalLink, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -14,6 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { SourceExplorer } from './SourceExplorer';
 
 interface LorePanelProps {
   sinner: Sinner | null;
@@ -169,6 +172,8 @@ function IdentityModal({ id, open, onClose }: { id: Identity; open: boolean; onC
 
 export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
   const [activeIdentity, setActiveIdentity] = useState<Identity | null>(null);
+  const [spoilerEnabled, setSpoilerEnabled] = useState(false);
+  const [sourceExplorerId, setSourceExplorerId] = useState<string | null>(null);
 
   return (
     <>
@@ -188,14 +193,30 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                   {sinner.appearances.map((g) => GAME_LABELS[g]).join(' \u00B7 ')}
                 </p>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted"
-                onClick={onClose}
-              >
-                <X className="h-4 w-4" />
-              </Button>
+              <div className="flex items-center gap-3">
+                {/* Spoiler toggle */}
+                {sinner.cantos && sinner.cantos.length > 0 && (
+                  <div className="flex items-center gap-1.5" title={spoilerEnabled ? 'Hide future cantos' : 'Show all cantos'}>
+                    <span className="text-[10px] font-medium text-muted-foreground">
+                      {spoilerEnabled ? <Eye className="h-3.5 w-3.5 text-primary" /> : <EyeOff className="h-3.5 w-3.5" />}
+                    </span>
+                    <Switch
+                      size="sm"
+                      checked={spoilerEnabled}
+                      onCheckedChange={setSpoilerEnabled}
+                      className="scale-75"
+                    />
+                  </div>
+                )}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted"
+                  onClick={onClose}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
             </header>
 
             {/* Scrollable Body */}
@@ -217,9 +238,12 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                       return (
                         <div key={ref.id} className="space-y-3 group">
                           <header className="flex flex-wrap items-center gap-3">
-                            <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                            <button
+                              className="text-sm font-semibold text-foreground hover:text-primary transition-colors text-left"
+                              onClick={() => setSourceExplorerId(ref.id)}
+                            >
                               {source?.title ?? ref.id}
-                            </span>
+                            </button>
                             <Badge
                               variant="outline"
                               className={`text-[9px] font-bold uppercase tracking-wider ${
@@ -285,6 +309,65 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                     ))}
                   </div>
                 </section>
+
+                {/* Canto Annotations */}
+                {sinner.cantos && sinner.cantos.length > 0 && (
+                  <section className="space-y-3">
+                    <h3 className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                      <span>Story Appearances</span>
+                      {!spoilerEnabled && (
+                        <Badge variant="outline" className="h-4 px-1.5 text-[9px] font-mono text-muted-foreground border-muted-foreground/30">
+                          Canto 9+
+                        </Badge>
+                      )}
+                    </h3>
+                    <div className="space-y-2">
+                      {sinner.cantos
+                        .filter(c => {
+                          const meta = cantos.find(m => m.id === c.id);
+                          return spoilerEnabled || (meta && meta.spoilerLevel <= 9);
+                        })
+                        .sort((a, b) => {
+                          const metaA = cantos.find(m => m.id === a.id);
+                          const metaB = cantos.find(m => m.id === b.id);
+                          return (metaA?.spoilerLevel ?? 0) - (metaB?.spoilerLevel ?? 0);
+                        })
+                        .map(c => {
+                          const meta = cantos.find(m => m.id === c.id);
+                          return (
+                            <div key={c.id} className="flex items-start gap-2.5 rounded-md border border-border/40 bg-muted/20 p-2.5 transition-colors hover:border-border/60">
+                              <div className="flex flex-col items-center justify-start pt-0.5 w-10 shrink-0">
+                                <span className="text-[10px] font-mono font-bold text-muted-foreground/60">
+                                  {typeof meta?.displayNumber === 'number'
+                                    ? meta.displayNumber.toString().padStart(2, '0')
+                                    : meta?.displayNumber ?? c.id}
+                                </span>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-0.5">
+                                  <p className="text-[11px] font-semibold text-foreground">{meta?.title ?? c.id}</p>
+                                  {c.isMajor && (
+                                    <Badge variant="outline" className="h-4 px-1.5 text-[8px] font-bold uppercase border-edge-literary/40 bg-edge-literary/10 text-edge-literary">
+                                      Focus
+                                    </Badge>
+                                  )}
+                                </div>
+                                <p className="text-[11px] leading-relaxed text-muted-foreground">{c.summary}</p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      {!spoilerEnabled && sinner.cantos.some(c => {
+                        const meta = cantos.find(m => m.id === c.id);
+                        return meta && meta.spoilerLevel > 9;
+                      }) && (
+                        <p className="text-[10px] text-center italic text-muted-foreground/50 py-1">
+                          Enable spoiler mode to see Canto 10+ appearances
+                        </p>
+                      )}
+                    </div>
+                  </section>
+                )}
 
                 {/* Identities grid */}
                 <section className="space-y-4">
@@ -375,6 +458,16 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
           onClose={() => setActiveIdentity(null)}
         />
       )}
+
+      {/* Literary Source Explorer Modal */}
+      <SourceExplorer
+        sourceId={sourceExplorerId ?? ''}
+        open={!!sourceExplorerId}
+        onClose={() => setSourceExplorerId(null)}
+        onSinnerClick={(id) => {
+          // handled by parent App — emit upward via callback if needed
+        }}
+      />
     </>
   );
 }

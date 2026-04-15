@@ -1,7 +1,10 @@
 import { useEffect, useRef, useCallback, useState } from 'react';
 import * as d3 from 'd3';
-import type { Sinner, GraphEdge, EdgeType } from '../types';
+import type { Sinner, GraphEdge, EdgeType, Game, Theme } from '../types';
+import { THEMES } from '../types';
+import { literarySources } from '../data/literarySources';
 import { GraphSettings } from './GraphSettings';
+import { FilterPanel } from './FilterPanel';
 
 interface GraphNode extends d3.SimulationNodeDatum {
   id: string;
@@ -62,6 +65,12 @@ interface LoreGraphProps {
   onNodeClick: (sinner: Sinner) => void;
 }
 
+interface FilterState {
+  games: Set<Game>;
+  themes: Set<Theme>;
+  literarySources: Set<string>;
+}
+
 export function LoreGraph({
   sinners,
   edges,
@@ -81,6 +90,11 @@ export function LoreGraph({
   const onNodeClickRef = useRef(onNodeClick);
   const sinnersRef = useRef(sinners);
   const activeEdgeTypesRef = useRef<Set<EdgeType>>(new Set(ALL_EDGE_TYPES));
+  const filtersRef = useRef<FilterState>({
+    games: new Set(['limbus', 'ruina', 'lobotomy'] as Game[]),
+    themes: new Set(THEMES as unknown as Theme[]),
+    literarySources: new Set(literarySources.map(s => s.id)),
+  });
 
   // Keep onNodeClick ref fresh without re-render dependency
   useEffect(() => { onNodeClickRef.current = onNodeClick; }, [onNodeClick]);
@@ -92,10 +106,18 @@ export function LoreGraph({
     highlightSelected();
   }, [selectedSinner]);
 
+  // ── Sync filter refs ────────────────────────────────────────────────────────
+  useEffect(() => { filtersRef.current = filters; }, [filters]);
+
   const [physics, setPhysics] = useState<PhysicsSettings>(DEFAULTS);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
     new Set(ALL_EDGE_TYPES),
   );
+  const [filters, setFilters] = useState<FilterState>({
+    games: new Set(['limbus', 'ruina', 'lobotomy'] as Game[]),
+    themes: new Set(THEMES as unknown as Theme[]),
+    literarySources: new Set(literarySources.map(s => s.id)),
+  });
 
   // ── Style selected node in-place ────────────────────────────────────────────
   const highlightSelected = useCallback(() => {
@@ -137,6 +159,21 @@ export function LoreGraph({
       .attr('visibility', (d) => active.has(d.type) ? 'visible' : 'hidden');
   }, []);
 
+  // ── Apply filter dimming in-place ─────────────────────────────────────────
+  const applyFilters = useCallback((f: FilterState) => {
+    if (!nodeElsRef.current) return;
+    nodeElsRef.current.each(function (d) {
+      const matchGame = f.games.has(d.canonicalGame as Game);
+      const matchTheme = d.themes.some(t => f.themes.has(t as Theme));
+      const matchSource = d.literarySourceIds.some(id => f.literarySources.has(id));
+      const visible = matchGame && matchTheme && matchSource;
+      d3.select(this)
+        .select('.node-hit')
+        .transition().duration(200)
+        .attr('opacity', visible ? 1 : 0.15);
+    });
+  }, []);
+
   // Sync edge types ref
   useEffect(() => {
     activeEdgeTypesRef.current = activeEdgeTypes;
@@ -153,6 +190,7 @@ export function LoreGraph({
 
   useEffect(() => { applyPhysics(physics); }, [physics, applyPhysics]);
   useEffect(() => { applyEdgeTypes(activeEdgeTypes); }, [activeEdgeTypes, applyEdgeTypes]);
+  useEffect(() => { applyFilters(filters); }, [filters, applyFilters]);
 
   // ── Build graph once (only when sinners or edges data change) ───────────────
   useEffect(() => {
@@ -415,6 +453,10 @@ export function LoreGraph({
   return (
     <div ref={containerRef} className="h-full w-full relative">
       <svg ref={svgRef} className="block w-full h-full bg-background/50" />
+      <FilterPanel
+        filters={filters}
+        onFiltersChange={(f) => setFilters(f)}
+      />
       <GraphSettings
         nodeSpacing={physics.nodeSpacing}
         repulsion={physics.repulsion}
