@@ -23,6 +23,7 @@ export default function App() {
 
   const handleClose = useCallback(() => {
     setPanelOpen(false);
+    setSelectedSinner(null);
   }, []);
 
   const handleEntityClick = useCallback((entityId: string) => {
@@ -82,7 +83,10 @@ export default function App() {
         {/* Entity Detail Panel */}
         <EntityPanel
           entityId={selectedEntity}
-          onClose={() => setSelectedEntity(null)}
+          onClose={() => {
+            setSelectedEntity(null);
+            setSelectedSinner(null);
+          }}
           onSinnerClick={(id) => {
             const found = sinners.find((s) => s.id === id);
             if (found) {
