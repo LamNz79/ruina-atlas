@@ -1,6 +1,4 @@
 import { THEMES, THEME_META } from '../types';
-import { X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -18,13 +16,13 @@ interface ThemeGuideProps {
 export function ThemeGuide({ open, onClose }: ThemeGuideProps) {
   return (
     <Dialog open={open} onOpenChange={(val) => !val && onClose()}>
-      <DialogContent className="sm:max-w-[480px] max-h-[75vh] flex flex-col">
+      <DialogContent className="sm:max-w-[480px] flex flex-col">
         <DialogHeader className="flex-row items-center gap-3 space-y-0">
           <DialogTitle className="text-base font-bold tracking-tight">Theme Guide</DialogTitle>
         </DialogHeader>
 
-        <ScrollArea className="flex-1 -mx-6 px-6">
-          <div className="space-y-4 py-2">
+        <ScrollArea className="flex-1">
+          <div className="space-y-4 pr-4">
             {THEMES.map((theme) => {
               const meta = THEME_META[theme];
               return (
@@ -35,7 +33,7 @@ export function ThemeGuide({ open, onClose }: ThemeGuideProps) {
                   >
                     {meta.label}
                   </Badge>
-                  <p className="text-[12px] leading-relaxed text-muted-foreground pl-0.5">
+                  <p className="text-[12px] leading-relaxed text-muted-foreground">
                     {meta.description}
                   </p>
                 </div>
@@ -43,12 +41,6 @@ export function ThemeGuide({ open, onClose }: ThemeGuideProps) {
             })}
           </div>
         </ScrollArea>
-
-        <div className="flex justify-end pt-2">
-          <Button variant="secondary" size="sm" onClick={onClose} className="text-xs">
-            Close
-          </Button>
-        </div>
       </DialogContent>
     </Dialog>
   );
