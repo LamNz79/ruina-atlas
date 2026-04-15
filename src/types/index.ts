@@ -129,6 +129,28 @@ export interface Sinner {
    * If omitted, size is derived from number of literary sources.
    */
   graphNodeSize?: number;
+
+  /**
+   * Canto annotation layer — M3 scope.
+   * Each entry describes this Sinner's presence/role in a specific canto or intervallo.
+   * Spoiler-gated: filtered by spoiler toggle in the UI.
+   */
+  cantos?: CantoAnnotation[];
+}
+
+/**
+ * A single canto or intervallo annotation for a Sinner.
+ * @see Sinner.cantos
+ */
+export interface CantoAnnotation {
+  /** Canto number. Intervallos use decimal notation (e.g. 4.5 = Intervallo II, 4.3 = Intervallo III-1). */
+  number: number;
+  /** Canto title, e.g. "The Unconfronting" or "Intervallo II: S.E.A." */
+  title: string;
+  /** 1–2 sentence description of this Sinner's role in this canto. */
+  summary: string;
+  /** True = this Sinner is the focus character of this canto. */
+  isMajor: boolean;
 }
 
 // ── Graph Edge (Derived at Runtime) ─────────────────────────────────────────

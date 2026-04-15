@@ -9,7 +9,7 @@
     {
       "id": "M1",
       "name": "Shared data layer",
-      "status": "started 13/4/2026",
+      "status": "completed 13/4/2026",
       "priority": "critical",
       "estimated_effort": "1 week (evenings)",
       "description": "Define the TypeScript schema and manually author 12–15 Sinner entries covering the clearest literary connections. This is the foundation everything else reads from.",
@@ -28,7 +28,7 @@
     {
       "id": "M2",
       "name": "Lore graph MVP",
-      "status": "not_started",
+      "status": "completed 15/4/2026",
       "priority": "high",
       "estimated_effort": "2–3 weeks (evenings)",
       "description": "Minimal D3 force-directed graph in React rendering the 12–15 seed Sinners as nodes, with edges representing literary connections, shared themes, and cross-game continuity.",
@@ -44,7 +44,7 @@
     {
       "id": "M3",
       "name": "Lore graph full content",
-      "status": "not_started",
+      "status": "in_progress 15/4/2026",
       "priority": "medium",
       "estimated_effort": "2–4 weeks (data entry + polish)",
       "description": "Expand the graph with richer data: all Cantos annotated, cross-game entity connections (Wings, Abnormalities, recurring characters), spoiler-gating toggle.",
@@ -55,6 +55,8 @@
         "Literary source explorer panel (book title, author, themes adapted)",
         "Filter by: game, theme, literary origin"
       ],
+      "design_log": "docs/design-log/003-lore-graph-full-content-design-log.md",
+      "requirement": "requirement/002-lore-graph-full-content-requirement.md",
       "notes": "This is the long-tail content work. Can be done incrementally — ship M2 first, then add data patch by patch."
     },
     {
