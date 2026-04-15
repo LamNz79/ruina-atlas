@@ -26,62 +26,52 @@
       "egos": [],
       "cantos": [
         {
-          "number": 0,
-          "title": "Selva Oscura",
+          "id": "canto-0",
           "summary": "Dante's past personality revealed — snarky and aggressive before wiping their own memory and replacing their head with a prosthetic clock.",
           "isMajor": false
         },
         {
-          "number": 1,
-          "title": "The Outcast",
+          "id": "canto-1",
           "summary": "Gregor's focus — Dante manages the bus and guides the team through their first real mission.",
           "isMajor": false
         },
         {
-          "number": 2,
-          "title": "The Unloving",
+          "id": "canto-2",
           "summary": "Rodion's focus — Dante observes Rodya's moral conflict with the Yurodiviye.",
           "isMajor": false
         },
         {
-          "number": 3,
-          "title": "The Unconfronting",
+          "id": "canto-3",
           "summary": "Sinclair's focus — Dante's encouragement of Sinclair is delayed and awkward; a turning point in Dante's management style.",
           "isMajor": false
         },
         {
-          "number": 4,
-          "title": "The Unchanging",
+          "id": "canto-4",
           "summary": "Yi Sang's focus — Dante manages the team through the dungeon and observes Meursault's peculiar behavior.",
           "isMajor": false
         },
         {
-          "number": 5,
-          "title": "The Evil Defining",
+          "id": "canto-5",
           "summary": "Ishmael's focus — Dante refines leadership as Ishmael's frenzy arc peaks and she confronts Captain Ahab.",
           "isMajor": false
         },
         {
-          "number": 6,
-          "title": "The Heartbreaking",
+          "id": "canto-6",
           "summary": "Heathcliff's focus — Dante observes Heathcliff choose love over mission objective.",
           "isMajor": false
         },
         {
-          "number": 7,
-          "title": "The Dream Ending",
+          "id": "canto-7",
           "summary": "Don Quixote's focus — Dante uses the Superbia ability to strengthen Don Quixote; clock hands advance.",
           "isMajor": false
         },
         {
-          "number": 8,
-          "title": "The Surrendered Witnessing",
+          "id": "canto-8",
           "summary": "Hong Lu's focus — Dante participates in the Xichun rescue plan.",
           "isMajor": false
         },
         {
-          "number": 9,
-          "title": "The Unsevering",
+          "id": "canto-9",
           "summary": "Gregor's past explored — Dante gains Remote Sight ability, uses Ira to enhance Ryoshu, and attempts the Malthael ability.",
           "isMajor": false
         }
@@ -498,20 +488,17 @@
       ],
       "cantos": [
         {
-          "number": 4,
-          "title": "The Unchanging",
+          "id": "canto-4",
           "summary": "Takes a harsh blow for Dante — demonstrates willingness to protect colleagues despite prior complaints about management.",
           "isMajor": false
         },
         {
-          "number": 4.5,
-          "title": "Intervallo II: S.E.A.",
+          "id": "intervallo-1",
           "summary": "Falls into neurosis when forced back to the Great Lake waters where her crew died — devotes herself ceaselessly to preparations.",
           "isMajor": false
         },
         {
-          "number": 5,
-          "title": "The Evil Defining",
+          "id": "canto-5",
           "summary": "Focus character — propensity for frenzy, excessive anger, violence, instability, and obsession peaks as she confronts Captain Ahab.",
           "isMajor": true
         }
@@ -708,14 +695,12 @@
       ],
       "cantos": [
         {
-          "number": 3,
-          "title": "The Unconfronting",
+          "id": "canto-3",
           "summary": "Focus character — demonstrates rougher side capable of grudges, violence, and disdain; confronts Kromer and develops self-confidence.",
           "isMajor": true
         },
         {
-          "number": 5,
-          "title": "The Evil Defining",
+          "id": "canto-5",
           "summary": "Empathy particularly prominent — assists Ishmael during the Ahab confrontation.",
           "isMajor": false
         }
@@ -920,20 +905,17 @@
       ],
       "cantos": [
         {
-          "number": 3,
-          "title": "The Unconfronting",
+          "id": "canto-3",
           "summary": "Impulsive desire to protect others causes unnecessary conflict during the LCB's attempt to enter K Corp.'s Nest.",
           "isMajor": false
         },
         {
-          "number": 5,
-          "title": "The Evil Defining",
+          "id": "canto-5",
           "summary": "One of her '863 dreams' fulfilled — sailing the Great Lake in U Corp.'s District.",
           "isMajor": false
         },
         {
-          "number": 7,
-          "title": "The Dream Ending",
+          "id": "canto-7",
           "summary": "Focus character — true identity as Sancho revealed; backstory as former Bloodfiend of La Manchaland explored; reconciles Sancho self with Don Quixote persona.",
           "isMajor": true
         }
@@ -1138,14 +1120,12 @@
       ],
       "cantos": [
         {
-          "number": 2,
-          "title": "The Unloving",
+          "id": "canto-2",
           "summary": "Present — described as mysterious and calm, sketching while others panic.",
           "isMajor": false
         },
         {
-          "number": 9,
-          "title": "The Unsevering",
+          "id": "canto-9",
           "summary": "Accepts an EGO gift from Yi Sang; cryptic dialogue throughout.",
           "isMajor": false
         }
@@ -1349,44 +1329,37 @@
       ],
       "cantos": [
         {
-          "number": 4,
-          "title": "The Unchanging",
+          "id": "canto-4",
           "summary": "Noted for reciting 'irrelevant emoticons' while reading an email aloud — peculiar behavior observed by the team.",
           "isMajor": false
         },
         {
-          "number": 5,
-          "title": "The Evil Defining",
+          "id": "canto-5",
           "summary": "Mentions wandering 'in search of life's joys'; assists during the Ahab confrontation.",
           "isMajor": false
         },
         {
-          "number": 6,
-          "title": "The Heartbreaking",
+          "id": "canto-6",
           "summary": "Weighs mission success against Heathcliff's safety — ultimately chooses Heathcliff's survival over the Golden Bough.",
           "isMajor": false
         },
         {
-          "number": 9,
-          "title": "The Unsevering",
+          "id": "canto-9",
           "summary": "Past explored: activities deemed 'right' and 'wrong' by society; time at N Corp; familiarity with Vespa Crabro.",
           "isMajor": false
         },
         {
-          "number": 10,
-          "title": "The Gaze Bearing",
+          "id": "canto-10",
           "summary": "Confirmed focus character.",
           "isMajor": true
         },
         {
-          "number": 4.3,
-          "title": "Intervallo III-1: Yield My Flesh to Claim Their Bones",
+          "id": "intervallo-3-1",
           "summary": "Fails to report the sudden disappearance of Limbus Company's target.",
           "isMajor": false
         },
         {
-          "number": 4.4,
-          "title": "Intervallo III-2: Miracle in District 20",
+          "id": "intervallo-3-2",
           "summary": "Childhood described — mother scolded him similarly to how Outis reprimands others.",
           "isMajor": false
         }
@@ -1591,26 +1564,22 @@
       ],
       "cantos": [
         {
-          "number": 4,
-          "title": "The Unchanging",
+          "id": "canto-4",
           "summary": "Takes the role of Young-ji in the League of Nine Littérateurs play; demonstrates emotional maturity and insight into Yi Sang's mental state.",
           "isMajor": false
         },
         {
-          "number": 6,
-          "title": "The Heartbreaking",
+          "id": "canto-6",
           "summary": "Empathetic and delicate side further developed through interactions with other characters.",
           "isMajor": false
         },
         {
-          "number": 4.5,
-          "title": "Intervallo V: Nocturnal Sweeping",
+          "id": "intervallo-1",
           "summary": "Character depth continues to build.",
           "isMajor": false
         },
         {
-          "number": 8,
-          "title": "The Surrendered Witnessing",
+          "id": "canto-8",
           "summary": "Focus character — backstory and family explored.",
           "isMajor": true
         }
@@ -1815,14 +1784,12 @@
       ],
       "cantos": [
         {
-          "number": 6,
-          "title": "The Heartbreaking",
+          "id": "canto-6",
           "summary": "Focus character — processes trauma surrounding Catherine; shifts from vengeful anger to purposeful remembrance; weapon inscription changes from 'REVENGE' to 'REmember'.",
           "isMajor": true
         },
         {
-          "number": 4.4,
-          "title": "Intervallo III-2: Miracle in District 20",
+          "id": "intervallo-3-2",
           "summary": "Opens up to Dante and Don Quixote about his situation.",
           "isMajor": false
         }
@@ -2032,20 +1999,17 @@
       ],
       "cantos": [
         {
-          "number": 4,
-          "title": "The Unchanging",
+          "id": "canto-4",
           "summary": "Focus character — depressive state, suicidal thoughts, and the dissolution of the League of Nine Littérateurs revealed.",
           "isMajor": true
         },
         {
-          "number": 6,
-          "title": "The Heartbreaking",
+          "id": "canto-6",
           "summary": "Jokingly accused by Ishmael and Hong Lu of mocking a love letter Heathcliff received.",
           "isMajor": false
         },
         {
-          "number": 8,
-          "title": "The Surrendered Witnessing",
+          "id": "canto-8",
           "summary": "Addressed as 'Ha Yung' by Gubo.",
           "isMajor": false
         }
@@ -2242,8 +2206,7 @@
       ],
       "cantos": [
         {
-          "number": 2,
-          "title": "The Unloving",
+          "id": "canto-2",
           "summary": "Focus character — backstory with the Yurodiviye and District 25 explored; struggles with guilt tied to her past with her friend Sonya and a tragedy in her hometown.",
           "isMajor": true
         }
@@ -2453,26 +2416,22 @@
       ],
       "cantos": [
         {
-          "number": 4,
-          "title": "The Unchanging",
+          "id": "canto-4",
           "summary": "Dungeon play scenario involving Shrenne.",
           "isMajor": false
         },
         {
-          "number": 5,
-          "title": "Insubordination",
+          "id": "canto-5",
           "summary": "References years of wandering before joining Limbus Company.",
           "isMajor": false
         },
         {
-          "number": 7,
-          "title": "The Dream Ending",
+          "id": "canto-7",
           "summary": "Debates Don Quixote's nature with other Sinners.",
           "isMajor": false
         },
         {
-          "number": 8,
-          "title": "The Surrendered Witnessing",
+          "id": "canto-8",
           "summary": "Expresses apprehension about Xichun's rescue plan.",
           "isMajor": false
         }
@@ -2679,14 +2638,12 @@
       ],
       "cantos": [
         {
-          "number": 1,
-          "title": "The Outcast",
+          "id": "canto-1",
           "summary": "Focus character — background revealed; insectile bio-prosthetic arm; complicated relationship with mother Hermann.",
           "isMajor": true
         },
         {
-          "number": 9,
-          "title": "The Unsevering",
+          "id": "canto-9",
           "summary": "Central figure — undergoes 'Roach Emperor' transformation; past with Hermann comes to the forefront.",
           "isMajor": false
         }

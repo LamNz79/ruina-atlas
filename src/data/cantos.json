@@ -1,0 +1,106 @@
+{
+  "cantos": [
+    {
+      "id": "canto-0",
+      "displayNumber": 0,
+      "title": "Selva Oscura",
+      "spoilerLevel": 0
+    },
+    {
+      "id": "canto-1",
+      "displayNumber": 1,
+      "title": "The Outcast",
+      "spoilerLevel": 1
+    },
+    {
+      "id": "canto-2",
+      "displayNumber": 2,
+      "title": "The Unloving",
+      "spoilerLevel": 2
+    },
+    {
+      "id": "canto-3",
+      "displayNumber": 3,
+      "title": "The Unconfronting",
+      "spoilerLevel": 3
+    },
+    {
+      "id": "canto-4",
+      "displayNumber": 4,
+      "title": "The Unchanging",
+      "spoilerLevel": 4
+    },
+    {
+      "id": "intervallo-1",
+      "displayNumber": "Intervallo I",
+      "title": "S.E.A.",
+      "spoilerLevel": 4
+    },
+    {
+      "id": "intervallo-2",
+      "displayNumber": "Intervallo II",
+      "title": "??",
+      "spoilerLevel": 5
+    },
+    {
+      "id": "canto-5",
+      "displayNumber": 5,
+      "title": "The Evil Defining",
+      "spoilerLevel": 5
+    },
+    {
+      "id": "intervallo-3-1",
+      "displayNumber": "Intervallo III-1",
+      "title": "Yield My Flesh to Claim Their Bones",
+      "spoilerLevel": 5
+    },
+    {
+      "id": "intervallo-3-2",
+      "displayNumber": "Intervallo III-2",
+      "title": "Miracle in District 20",
+      "spoilerLevel": 5
+    },
+    {
+      "id": "canto-6",
+      "displayNumber": 6,
+      "title": "The Heartbreaking",
+      "spoilerLevel": 6
+    },
+    {
+      "id": "intervallo-4",
+      "displayNumber": "Intervallo IV",
+      "title": "??",
+      "spoilerLevel": 7
+    },
+    {
+      "id": "canto-7",
+      "displayNumber": 7,
+      "title": "The Dream Ending",
+      "spoilerLevel": 7
+    },
+    {
+      "id": "intervallo-5",
+      "displayNumber": "Intervallo V",
+      "title": "Nocturnal Sweeping",
+      "spoilerLevel": 8
+    },
+    {
+      "id": "canto-8",
+      "displayNumber": 8,
+      "title": "The Surrendered Witnessing",
+      "spoilerLevel": 8
+    },
+    {
+      "id": "canto-9",
+      "displayNumber": 9,
+      "title": "The Unsevering",
+      "spoilerLevel": 9
+    },
+    {
+      "id": "canto-10",
+      "displayNumber": 10,
+      "title": "The Gaze Bearing",
+      "spoilerLevel": 10
+    }
+  ]
+}

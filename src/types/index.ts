@@ -141,16 +141,30 @@ export interface Sinner {
 /**
  * A single canto or intervallo annotation for a Sinner.
  * @see Sinner.cantos
+ * @see src/data/cantos.json — canonical canto list (title, displayNumber, spoilerLevel)
  */
 export interface CantoAnnotation {
-  /** Canto number. Intervallos use decimal notation (e.g. 4.5 = Intervallo II, 4.3 = Intervallo III-1). */
-  number: number;
-  /** Canto title, e.g. "The Unconfronting" or "Intervallo II: S.E.A." */
-  title: string;
+  /**
+   * Canto ID — key into cantos.json.
+   * e.g. 'canto-4', 'intervallo-1', 'intervallo-3-1', 'canto-9'
+   */
+  id: string;
   /** 1–2 sentence description of this Sinner's role in this canto. */
   summary: string;
   /** True = this Sinner is the focus character of this canto. */
   isMajor: boolean;
+}
+
+/**
+ * Canonical canto/intervallo metadata — single source of truth for all canto titles,
+ * display numbers, and spoiler levels.
+ * @see src/data/cantos.json
+ */
+export interface Canto {
+  id: string;
+  displayNumber: number | string;
+  title: string;
+  spoilerLevel: number;
 }
 
 // ── Graph Edge (Derived at Runtime) ─────────────────────────────────────────
