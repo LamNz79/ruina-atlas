@@ -6,7 +6,7 @@ import { LorePanel } from './components/LorePanel';
 import { EntityPanel } from './components/EntityPanel';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Info } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './index.css';
 
 export default function App() {
@@ -70,26 +70,6 @@ export default function App() {
             onNodeClick={handleNodeClick}
             onEntityClick={handleEntityClick}
           />
-
-          {/* Welcome Overlay (shown when no sinner is selected) */}
-          {!selectedSinner && (
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-6">
-              <div className="pointer-events-auto max-w-sm rounded-xl border border-border/50 bg-background/80 p-6 text-center shadow-2xl backdrop-blur-md">
-                <div className="mb-4 flex justify-center">
-                  <div className="rounded-full bg-primary/10 p-3 ring-1 ring-primary/20">
-                    <Info className="h-6 w-6 text-primary" />
-                  </div>
-                </div>
-                <h2 className="mb-2 text-xl font-semibold tracking-tight">Welcome to Runia Atlas</h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Explore the literary origins and thematic connections of the Sinners across the Project Moon universe.
-                </p>
-                <p className="mt-4 text-xs font-medium text-primary">
-                  Select a node to view detailed lore analysis
-                </p>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Detail Panel */}
