@@ -7,6 +7,7 @@ import { EntityPanel } from './components/EntityPanel';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import logoSvg from '../public/favicon.svg';
 import './index.css';
 
 export default function App() {
@@ -22,8 +23,8 @@ export default function App() {
   }, []);
 
   const handleClose = useCallback(() => {
+    // Keep selectedSinner in state — just close the panel, don't deselect
     setPanelOpen(false);
-    setSelectedSinner(null);
   }, []);
 
   const handleEntityClick = useCallback((entityId: string) => {
@@ -34,25 +35,37 @@ export default function App() {
     <div className="dark flex h-screen w-full flex-col overflow-hidden bg-background font-sans text-foreground">
       {/* Header */}
       <header className="sticky top-0 z-50 flex h-14 w-full items-center justify-between border-b border-border/40 bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="flex items-baseline gap-4">
-          <h1 className="text-lg font-bold tracking-tight text-foreground">Runia Atlas</h1>
-          <p className="hidden text-xs font-medium text-muted-foreground sm:block">
-            Literary connections of Project Moon's universe
-          </p>
+        <div className="flex items-center gap-3">
+          <img
+            src={logoSvg}
+            alt="Ruina Atlas"
+            className="h-8 w-8 object-contain"
+          />
+          <div className="flex flex-col">
+            <h1 className="text-lg font-bold tracking-tight text-foreground leading-none">Ruina Atlas</h1>
+            <p className="hidden text-[10px] font-medium text-muted-foreground sm:block leading-none mt-0.5">
+              Literary connections of Project Moon's universe
+            </p>
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
-          {selectedSinner && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setPanelOpen((o) => !o)}
-              className="h-8 gap-1.5 text-xs font-medium"
-            >
-              {panelOpen ? <ChevronRight className="h-3.5 w-3.5" /> : <ChevronLeft className="h-3.5 w-3.5" />}
-              {panelOpen ? 'Hide' : 'Details'}
-            </Button>
-          )}
+          {selectedSinner ? (
+            <>
+              <span className="text-xs font-medium text-muted-foreground hidden sm:block">
+                / {selectedSinner.name}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPanelOpen((o) => !o)}
+                className="h-8 gap-1.5 text-xs font-medium"
+              >
+                {panelOpen ? <ChevronRight className="h-3.5 w-3.5" /> : <ChevronLeft className="h-3.5 w-3.5" />}
+                {panelOpen ? 'Hide' : 'Details'}
+              </Button>
+            </>
+          ) : null}
         </div>
       </header>
 
@@ -84,8 +97,8 @@ export default function App() {
         <EntityPanel
           entityId={selectedEntity}
           onClose={() => {
+            // Keep selectedSinner — just close the entity panel
             setSelectedEntity(null);
-            setSelectedSinner(null);
           }}
           onSinnerClick={(id) => {
             const found = sinners.find((s) => s.id === id);
