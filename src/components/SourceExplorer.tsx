@@ -1,6 +1,5 @@
 import { literarySources } from '../data/literarySources';
 import { sinners } from '../data/sinners';
-import type { LiterarySource } from '../types';
 import { X, ExternalLink, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';

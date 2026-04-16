@@ -112,7 +112,6 @@ export function LoreGraph({
     themes: new Set(THEMES as unknown as Theme[]),
     literarySources: new Set(literarySources.map(s => s.id)),
   });
-  const entityElsRef = useRef<d3.Selection<SVGGElement, GraphNode, SVGGElement, unknown> | null>(null);
 
   // Keep onNodeClick ref fresh without re-render dependency
   useEffect(() => { onNodeClickRef.current = onNodeClick; }, [onNodeClick]);
@@ -305,7 +304,7 @@ export function LoreGraph({
       themes: [...e.themes],
       crossGameContinuity: false,
       nodeType: 'entity' as const,
-      entityType: e.type,
+      entityType: e.type as 'character' | 'wing' | 'abnormality',
     }));
 
     const entityLinks: GraphLink[] = crossGameEntities.entities.flatMap((e) =>
@@ -553,7 +552,7 @@ export function LoreGraph({
       })
       .on('mouseleave', function () {
         setTooltip((t) => ({ ...t, visible: false }));
-        nodeEls.each(function (d) {
+        nodeEls.each(function () {
           d3.select(this)
             .transition()
             .duration(200)

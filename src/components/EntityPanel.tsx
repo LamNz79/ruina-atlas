@@ -1,7 +1,7 @@
 import crossGameEntities from '../data/crossGameEntities.json';
 import { sinners } from '../data/sinners';
 import type { CrossGameEntity } from '../types';
-import { X, ExternalLink, Hexagon, Users, Star } from 'lucide-react';
+import { X, Hexagon, Users, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';

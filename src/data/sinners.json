@@ -213,7 +213,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: gloom",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "21"
         },
         {
           "id": "20204",
@@ -221,7 +222,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: envy",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "33"
         },
         {
           "id": "20208",
@@ -229,7 +231,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: pride",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "90"
         },
         {
           "id": "20209",
@@ -237,7 +240,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: gluttony",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "101"
         },
         {
           "id": "20203",
@@ -245,7 +249,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: envy",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "4"
         },
         {
           "id": "20205",
@@ -253,7 +258,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: slash, affinity: lust",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "51"
         },
         {
           "id": "20207",
@@ -261,7 +267,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: slash, affinity: gluttony",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "79"
         },
         {
           "id": "20206",
@@ -269,7 +276,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: blunt, affinity: sloth",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "72"
         },
         {
           "id": "20201",
@@ -277,7 +285,17 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: pride",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "8"
+        },
+        {
+          "id": "107",
+          "displayName": "Ardor Blossom Star",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] Ardor Blossom Star — Gacha, Wrath affinity",
+          "egoId": "107"
         }
       ],
       "cantos": []
@@ -411,7 +429,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: wrath",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "2"
         },
         {
           "id": "20806",
@@ -419,7 +438,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: gluttony",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "68"
         },
         {
           "id": "20808",
@@ -427,7 +447,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: sloth",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "86"
         },
         {
           "id": "20810",
@@ -435,7 +456,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: gloom",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "99"
         },
         {
           "id": "20802",
@@ -443,7 +465,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: lust",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "26"
         },
         {
           "id": "20804",
@@ -451,7 +474,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: wrath",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "40"
         },
         {
           "id": "20807",
@@ -459,7 +483,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: slash, affinity: gloom",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "77"
         },
         {
           "id": "20805",
@@ -467,7 +492,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: pierce, affinity: pride",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "54"
         },
         {
           "id": "20801",
@@ -475,7 +501,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: gloom",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "14"
         },
         {
           "id": "20809",
@@ -484,6 +511,15 @@
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: gloom",
           "rank": "ZAYIN"
+        },
+        {
+          "id": "93",
+          "displayName": "Hundred-Footed Death Maggot",
+          "rank": "ZAYIN",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "[ZAYIN] Hundred-Footed Death Maggot — Battle Pass (paid), Gloom affinity",
+          "egoId": "93"
         }
       ],
       "cantos": [
@@ -634,7 +670,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: wrath",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "19"
         },
         {
           "id": "20905",
@@ -642,7 +679,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: sloth",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "1"
         },
         {
           "id": "20907",
@@ -650,7 +688,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: envy",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "81"
         },
         {
           "id": "20903",
@@ -658,7 +697,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: gloom",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "27"
         },
         {
           "id": "20904",
@@ -666,7 +706,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: gluttony",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "55"
         },
         {
           "id": "20906",
@@ -674,7 +715,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: slash, affinity: lust",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "69"
         },
         {
           "id": "20908",
@@ -682,7 +724,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: pierce, affinity: wrath",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "91"
         },
         {
           "id": "20901",
@@ -690,7 +733,80 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: slash, affinity: pride",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "15"
+        },
+        {
+          "id": "16",
+          "displayName": "Branch of Knowledge",
+          "rank": "ZAYIN",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "[ZAYIN] Branch of Knowledge — Base, Gluttony affinity",
+          "egoId": "16"
+        },
+        {
+          "id": "29",
+          "displayName": "Impending Day",
+          "rank": "TETH",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "[TETH] Impending Day — Battle Pass (free), Wrath affinity",
+          "egoId": "29"
+        },
+        {
+          "id": "35",
+          "displayName": "Lifetime Stew",
+          "rank": "TETH",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "[TETH] Lifetime Stew — Event, Lust affinity",
+          "egoId": "35"
+        },
+        {
+          "id": "48",
+          "displayName": "Lantern",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] Lantern — Base, Gluttony affinity",
+          "egoId": "48"
+        },
+        {
+          "id": "56",
+          "displayName": "9:2",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] 9:2 — Battle Pass (free), Lust affinity",
+          "egoId": "56"
+        },
+        {
+          "id": "71",
+          "displayName": "Cavernous Wailing",
+          "rank": "ZAYIN",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "[ZAYIN] Cavernous Wailing — Gacha, Gloom affinity",
+          "egoId": "71"
+        },
+        {
+          "id": "94",
+          "displayName": "Tears of the Tarnished Blood",
+          "rank": "WAW",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "[WAW] Tears of the Tarnished Blood — Battle Pass (free), Gluttony affinity",
+          "egoId": "94"
+        },
+        {
+          "id": "106",
+          "displayName": "Harmony",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] Harmony — Gacha, Wrath affinity",
+          "egoId": "106"
         }
       ],
       "cantos": [
@@ -836,7 +952,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: gloom",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "22"
         },
         {
           "id": "20303",
@@ -844,7 +961,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: envy",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "32"
         },
         {
           "id": "20308",
@@ -852,7 +970,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: gluttony",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "92"
         },
         {
           "id": "20304",
@@ -860,7 +979,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: lust",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "34"
         },
         {
           "id": "20305",
@@ -868,7 +988,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: sloth",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "60"
         },
         {
           "id": "20306",
@@ -876,7 +997,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: envy",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "64"
         },
         {
           "id": "20307",
@@ -884,7 +1006,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: pierce, affinity: lust",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "83"
         },
         {
           "id": "20309",
@@ -892,7 +1015,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: blunt, affinity: envy",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "96"
         },
         {
           "id": "20301",
@@ -900,7 +1024,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: pierce, affinity: lust",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "9"
         }
       ],
       "cantos": [
@@ -1051,7 +1176,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: wrath",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "19"
         },
         {
           "id": "20404",
@@ -1059,7 +1185,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: envy",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "43"
         },
         {
           "id": "20408",
@@ -1067,7 +1194,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: pride",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "89"
         },
         {
           "id": "20403",
@@ -1075,7 +1203,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: slash, affinity: lust",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "42"
         },
         {
           "id": "20406",
@@ -1083,7 +1212,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: slash, affinity: pride",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "53"
         },
         {
           "id": "20407",
@@ -1091,7 +1221,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: slash, affinity: lust",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "73"
         },
         {
           "id": "20409",
@@ -1107,7 +1238,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: slash, affinity: lust",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "10"
         },
         {
           "id": "20405",
@@ -1115,7 +1247,26 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: pierce, affinity: gloom",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "46"
+        },
+        {
+          "id": "89",
+          "displayName": "[Thoracalgia] Ryōshū",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] [Thoracalgia] Ryōshū — Event, Pride affinity",
+          "egoId": "89"
+        },
+        {
+          "id": "105",
+          "displayName": "Great Trichiliocosm (三千大世界)",
+          "rank": "WAW",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "[WAW] Great Trichiliocosm (三千大世界) — Battle Pass (paid), Wrath affinity",
+          "egoId": "105"
         }
       ],
       "cantos": [
@@ -1268,7 +1419,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: sloth",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "1"
         },
         {
           "id": "20504",
@@ -1276,7 +1428,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: wrath",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "41"
         },
         {
           "id": "20502",
@@ -1284,7 +1437,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: envy",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "23"
         },
         {
           "id": "20505",
@@ -1292,7 +1446,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: wrath",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "50"
         },
         {
           "id": "20506",
@@ -1300,7 +1455,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: envy",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "65"
         },
         {
           "id": "20507",
@@ -1308,7 +1464,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: pierce, affinity: lust",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "82"
         },
         {
           "id": "20508",
@@ -1316,7 +1473,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: blunt, affinity: sloth",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "97"
         },
         {
           "id": "20501",
@@ -1325,6 +1483,15 @@
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: pride",
           "rank": "ZAYIN"
+        },
+        {
+          "id": "11",
+          "displayName": "Chain of Others",
+          "rank": "ZAYIN",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "[ZAYIN] Chain of Others — Base, Pride affinity",
+          "egoId": "11"
         }
       ],
       "cantos": [
@@ -1495,7 +1662,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: pride",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "37"
         },
         {
           "id": "20605",
@@ -1503,7 +1671,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: gluttony",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "52"
         },
         {
           "id": "20609",
@@ -1519,7 +1688,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: lust",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "24"
         },
         {
           "id": "20604",
@@ -1527,7 +1697,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: envy",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "47"
         },
         {
           "id": "20606",
@@ -1535,7 +1706,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: sloth",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "70"
         },
         {
           "id": "20607",
@@ -1543,7 +1715,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: gluttony",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "78"
         },
         {
           "id": "20608",
@@ -1559,7 +1732,26 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: gloom",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "12"
+        },
+        {
+          "id": "95",
+          "displayName": "Tears of the Tarnished Blood",
+          "rank": "WAW",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "[WAW] Tears of the Tarnished Blood — Battle Pass (paid), Gluttony affinity",
+          "egoId": "95"
+        },
+        {
+          "id": "100",
+          "displayName": "To Remain Oneself",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] To Remain Oneself — Collab, Pride affinity",
+          "egoId": "100"
         }
       ],
       "cantos": [
@@ -1715,7 +1907,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: envy",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "25"
         },
         {
           "id": "20704",
@@ -1723,7 +1916,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: lust",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "49"
         },
         {
           "id": "20708",
@@ -1731,7 +1925,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: sloth",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "85"
         },
         {
           "id": "20703",
@@ -1739,7 +1934,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: gloom",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "38"
         },
         {
           "id": "20707",
@@ -1747,7 +1943,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: pride",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "74"
         },
         {
           "id": "20709",
@@ -1755,7 +1952,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: envy",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "103"
         },
         {
           "id": "20706",
@@ -1763,7 +1961,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: blunt, affinity: gloom",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "67"
         },
         {
           "id": "20701",
@@ -1771,7 +1970,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: envy",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "13"
         },
         {
           "id": "20705",
@@ -1779,7 +1979,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: gluttony",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "59"
         }
       ],
       "cantos": [
@@ -1938,7 +2139,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: pride",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "36"
         },
         {
           "id": "20107",
@@ -1946,7 +2148,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: pride",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "84"
         },
         {
           "id": "20102",
@@ -1954,7 +2157,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: slash, affinity: wrath",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "20"
         },
         {
           "id": "20103",
@@ -1962,7 +2166,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: sloth",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "3"
         },
         {
           "id": "20105",
@@ -1970,7 +2175,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: pierce, affinity: sloth",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "44"
         },
         {
           "id": "20108",
@@ -1994,7 +2200,26 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: pierce, affinity: gloom",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "63"
+        },
+        {
+          "id": "7",
+          "displayName": "Crows's Eye View",
+          "rank": "ZAYIN",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "[ZAYIN] Crows's Eye View — Base, Sloth affinity",
+          "egoId": "7"
+        },
+        {
+          "id": "104",
+          "displayName": "Great Trichiliocosm (三千大世界)",
+          "rank": "WAW",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "[WAW] Great Trichiliocosm (三千大世界) — Battle Pass (free), Wrath affinity",
+          "egoId": "104"
         }
       ],
       "cantos": [
@@ -2145,7 +2370,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: gluttony",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "48"
         },
         {
           "id": "21005",
@@ -2153,7 +2379,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: lust",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "56"
         },
         {
           "id": "21002",
@@ -2161,7 +2388,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: wrath",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "29"
         },
         {
           "id": "21003",
@@ -2169,7 +2397,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: blunt, affinity: lust",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "34"
         },
         {
           "id": "21007",
@@ -2177,7 +2406,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: envy",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "80"
         },
         {
           "id": "21008",
@@ -2193,7 +2423,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: slash, affinity: gluttony",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "16"
         },
         {
           "id": "21006",
@@ -2201,7 +2432,71 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: gloom",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "71"
+        },
+        {
+          "id": "15",
+          "displayName": "What is Cast",
+          "rank": "ZAYIN",
+          "floor": "",
+          "colorTheme": "#3CB371",
+          "description": "[ZAYIN] What is Cast — Base, Pride affinity",
+          "egoId": "15"
+        },
+        {
+          "id": "27",
+          "displayName": "Rime Shank",
+          "rank": "TETH",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "[TETH] Rime Shank — Battle Pass (free), Gloom affinity",
+          "egoId": "27"
+        },
+        {
+          "id": "28",
+          "displayName": "4th Match Flame",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] 4th Match Flame — Battle Pass (paid), Wrath affinity",
+          "egoId": "28"
+        },
+        {
+          "id": "55",
+          "displayName": "Effervescent Corrosion",
+          "rank": "TETH",
+          "floor": "",
+          "colorTheme": "#1E90FF",
+          "description": "[TETH] Effervescent Corrosion — Battle Pass (paid), Gluttony affinity",
+          "egoId": "55"
+        },
+        {
+          "id": "57",
+          "displayName": "Pursuance",
+          "rank": "HE",
+          "floor": "",
+          "colorTheme": "#FF6347",
+          "description": "[HE] Pursuance — Gacha, Sloth affinity",
+          "egoId": "57"
+        },
+        {
+          "id": "69",
+          "displayName": "Sanguine Desire",
+          "rank": "WAW",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "[WAW] Sanguine Desire — Gacha, Lust affinity",
+          "egoId": "69"
+        },
+        {
+          "id": "91",
+          "displayName": "Indicant's Trial",
+          "rank": "WAW",
+          "floor": "",
+          "colorTheme": "#8B0000",
+          "description": "[WAW] Indicant's Trial — Gacha, Wrath affinity",
+          "egoId": "91"
         }
       ],
       "cantos": [
@@ -2347,7 +2642,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: gluttony",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "31"
         },
         {
           "id": "21105",
@@ -2355,7 +2651,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: wrath",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "58"
         },
         {
           "id": "21107",
@@ -2363,7 +2660,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: envy",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "75"
         },
         {
           "id": "21108",
@@ -2371,7 +2669,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: pierce, affinity: pride",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "88"
         },
         {
           "id": "21103",
@@ -2379,7 +2678,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: slash, affinity: lust",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "5"
         },
         {
           "id": "21104",
@@ -2387,7 +2687,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: gluttony",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "39"
         },
         {
           "id": "21106",
@@ -2395,7 +2696,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: blunt, affinity: pride",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "66"
         },
         {
           "id": "21101",
@@ -2403,7 +2705,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: pierce, affinity: pride",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "17"
         },
         {
           "id": "21109",
@@ -2411,7 +2714,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: slash, affinity: envy",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "102"
         }
       ],
       "cantos": [
@@ -2569,7 +2873,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: gloom",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "45"
         },
         {
           "id": "21207",
@@ -2577,7 +2882,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: blunt, affinity: gloom",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "76"
         },
         {
           "id": "21208",
@@ -2585,7 +2891,8 @@
           "floor": "",
           "colorTheme": "#FF6347",
           "description": "[HE] awakening: slash, affinity: sloth",
-          "rank": "HE"
+          "rank": "HE",
+          "egoId": "87"
         },
         {
           "id": "21203",
@@ -2593,7 +2900,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: gluttony",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "6"
         },
         {
           "id": "21206",
@@ -2601,7 +2909,8 @@
           "floor": "",
           "colorTheme": "#1E90FF",
           "description": "[TETH] awakening: pierce, affinity: gloom",
-          "rank": "TETH"
+          "rank": "TETH",
+          "egoId": "62"
         },
         {
           "id": "21205",
@@ -2609,7 +2918,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: slash, affinity: lust",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "61"
         },
         {
           "id": "21209",
@@ -2617,7 +2927,8 @@
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: slash, affinity: sloth",
-          "rank": "WAW"
+          "rank": "WAW",
+          "egoId": "98"
         },
         {
           "id": "21201",
@@ -2625,7 +2936,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: sloth",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "18"
         },
         {
           "id": "21202",
@@ -2633,7 +2945,8 @@
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: blunt, affinity: gluttony",
-          "rank": "ZAYIN"
+          "rank": "ZAYIN",
+          "egoId": "30"
         }
       ],
       "cantos": [

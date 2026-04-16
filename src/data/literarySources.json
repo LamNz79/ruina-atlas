@@ -9,7 +9,11 @@
       "passage": "All hope abandon, ye who enter in.",
       "passageContext": "Inscription above the gates of Hell, Divine Comedy — Inferno",
       "sharedGroup": "divine-comedy",
-      "themes": ["guilt", "futility", "faith"],
+      "themes": [
+        "guilt",
+        "futility",
+        "faith"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Divine_Comedy"
     },
     {
@@ -20,7 +24,12 @@
       "language": "German",
       "passage": "Whoever constantly and restlessly yearns — him we may redeem.",
       "passageContext": "Mephistopheles, on his wager with Faust",
-      "themes": ["guilt", "vengeance", "redemption", "futility"],
+      "themes": [
+        "guilt",
+        "vengeance",
+        "redemption",
+        "futility"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Goethe%27s_Faust"
     },
     {
@@ -31,7 +40,11 @@
       "language": "English",
       "passage": "It is a fair wind, the West Wind, the loveliest wind of all.",
       "passageContext": "Ishmael, reflecting on the sea after returning from his voyage",
-      "themes": ["vengeance", "obsession", "futility"],
+      "themes": [
+        "vengeance",
+        "obsession",
+        "futility"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Moby-Dick"
     },
     {
@@ -42,7 +55,12 @@
       "language": "German",
       "passage": "The bird fights its way out of the egg. The egg is the world.",
       "passageContext": "Emil Sinclair, recalling a story told by Demian",
-      "themes": ["metamorphosis", "identity-fragmentation", "guilt", "redemption"],
+      "themes": [
+        "metamorphosis",
+        "identity-fragmentation",
+        "guilt",
+        "redemption"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Demian"
     },
     {
@@ -53,7 +71,12 @@
       "language": "Spanish",
       "passage": "When life itself seems lunatic, who knows where madness lies?",
       "passageContext": "Don Quixote, on the nature of his quest",
-      "themes": ["absurdity", "identity-fragmentation", "futility", "faith"],
+      "themes": [
+        "absurdity",
+        "identity-fragmentation",
+        "futility",
+        "faith"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Don_Quixote"
     },
     {
@@ -64,7 +87,12 @@
       "language": "French",
       "passage": "Mother died today. Or, maybe, yesterday; I can't be sure.",
       "passageContext": "Meursault's opening lines — establishing his emotional detachment",
-      "themes": ["absurdity", "nihilism", "guilt", "identity-fragmentation"],
+      "themes": [
+        "absurdity",
+        "nihilism",
+        "guilt",
+        "identity-fragmentation"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Stranger"
     },
     {
@@ -75,7 +103,12 @@
       "language": "English",
       "passage": "Whatever our souls are made of, his and mine are the same.",
       "passageContext": "Catherine Earnshaw to Nelly Dean, on her bond with Heathcliff",
-      "themes": ["vengeance", "obsession", "futility", "family"],
+      "themes": [
+        "vengeance",
+        "obsession",
+        "futility",
+        "family"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Wuthering_Heights"
     },
     {
@@ -86,7 +119,13 @@
       "language": "German",
       "passage": "One morning, when Gregor Samsa woke from uneasy dreams, he found himself transformed in his bed into a monstrous vermin.",
       "passageContext": "Opening line of The Metamorphosis — Gregor's literal transformation",
-      "themes": ["metamorphosis", "guilt", "family", "futility", "decay"],
+      "themes": [
+        "metamorphosis",
+        "guilt",
+        "family",
+        "futility",
+        "decay"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Metamorphosis"
     },
     {
@@ -97,7 +136,12 @@
       "language": "Russian",
       "passage": "Pain and suffering are always inevitable for a large intelligence and a deep heart.",
       "passageContext": "Raskolnikov's internal justification for his crime",
-      "themes": ["guilt", "redemption", "futility", "nihilism"],
+      "themes": [
+        "guilt",
+        "redemption",
+        "futility",
+        "nihilism"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Crime_and_Punishment"
     },
     {
@@ -108,7 +152,12 @@
       "language": "Classical Chinese",
       "passage": "Truth from fiction — Dream of the Red Chamber; happiness from sorrow — Flowers beneath the Mirror.",
       "passageContext": "A couplet from the novel's opening verses, referring to its nature as both a dream and a mirror of reality",
-      "themes": ["decay", "family", "futility", "identity-fragmentation"],
+      "themes": [
+        "decay",
+        "family",
+        "futility",
+        "identity-fragmentation"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber"
     },
     {
@@ -119,19 +168,14 @@
       "language": "Korean",
       "passage": "If there were no earth, I would not have to love.",
       "passageContext": "From 'Fog' (안개), expressing the speaker's entangled relationship with existence and dissolution",
-      "themes": ["decay", "futility", "nihilism", "metamorphosis", "identity-fragmentation"],
+      "themes": [
+        "decay",
+        "futility",
+        "nihilism",
+        "metamorphosis",
+        "identity-fragmentation"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Yi_Sang"
-    },
-    {
-      "id": "utai-rashomon",
-      "title": "Rashomon and Seventeen Other Stories",
-      "author": "Ryunosuke Akutagawa",
-      "year": 1915,
-      "language": "Japanese",
-      "passage": "The Rashomon gate — a gate which served as the door to the criminal court of Heian-kyō.",
-      "passageContext": "Opening of 'In a Grove' — multiple conflicting accounts of a single event",
-      "themes": ["identity-fragmentation", "guilt", "futility"],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Rashomon_(short_story)"
     },
     {
       "id": "odyssey",
@@ -141,8 +185,74 @@
       "language": "Ancient Greek",
       "passage": "Tell me, O muse, of that ingenious hero who travelled far and wide.",
       "passageContext": "Opening invocation — Odysseus's long journey home after the Trojan War",
-      "themes": ["vengeance", "family", "futility", "identity-fragmentation"],
+      "themes": [
+        "vengeance",
+        "family",
+        "futility",
+        "identity-fragmentation"
+      ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Odyssey"
+    },
+    {
+      "id": "in-a-grove",
+      "title": "In a Grove",
+      "author": "Ryunosuke Akutagawa",
+      "year": 1922,
+      "language": "Japanese",
+      "passage": "I demand the murderer's head.",
+      "passageContext": "The woodcutter's testimony — opening one of seven contradictory accounts of a single murder",
+      "themes": [
+        "identity-fragmentation",
+        "guilt"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/In_a_Grove"
+    },
+    {
+      "id": "the-wings",
+      "title": "The Wings",
+      "author": "Yi Sang",
+      "year": 1936,
+      "language": "Korean",
+      "passage": "Have you ever seen a stuffed genius?",
+      "passageContext": "Opening line — the painter Yong-chol confronting the decay of his own talent and identity",
+      "themes": [
+        "decay",
+        "futility",
+        "nihilism",
+        "metamorphosis",
+        "identity-fragmentation"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Wings_(novel)"
+    },
+    {
+      "id": "hell-screen",
+      "title": "Hell Screen",
+      "author": "Ryunosuke Akutagawa",
+      "year": 1918,
+      "language": "Japanese",
+      "passage": "I am certain that he did it to punish the twisted personality of an artist who would go so far as to burn a carriage and kill a human being to complete the painting of a screen.",
+      "passageContext": "The narrator revealing the Lord of Horikawa's motive for burning Yoshihide's daughter — art at the cost of everything human",
+      "themes": [
+        "obsession",
+        "guilt",
+        "futility"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Hell_Screen"
+    },
+    {
+      "id": "sorrows-of-young-werther",
+      "title": "The Sorrows of Young Werther",
+      "author": "Johann Wolfgang von Goethe",
+      "year": 1774,
+      "language": "German",
+      "passage": "The fountains of the great, deep, joyful Springs of Hope have dried up within me.",
+      "passageContext": "Werther to Wilhelm — the moment of emotional collapse as passion overwhelms purpose",
+      "themes": [
+        "guilt",
+        "identity-fragmentation",
+        "decay"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Sorrows_of_Young_Werther"
     }
   ]
 }

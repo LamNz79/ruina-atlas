@@ -4,6 +4,7 @@ import { cantos } from '../data/cantos';
 import { literarySources } from '../data/literarySources';
 import { identityImages } from '../data/identityImages';
 import { identityDetailData } from '../data/identityDetailData';
+import { getEgoImage } from '../data/ego';
 import { X, ExternalLink, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
@@ -201,10 +202,9 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                       {spoilerEnabled ? <Eye className="h-3.5 w-3.5 text-primary" /> : <EyeOff className="h-3.5 w-3.5" />}
                     </span>
                     <Switch
-                      size="sm"
                       checked={spoilerEnabled}
                       onCheckedChange={setSpoilerEnabled}
-                      className="scale-75"
+                      className="h-4 w-8 scale-75"
                     />
                   </div>
                 )}
@@ -324,16 +324,16 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                     <div className="space-y-2">
                       {sinner.cantos
                         .filter(c => {
-                          const meta = cantos.find(m => m.id === c.id);
+                          const meta = cantos.find((m: { id: string }) => m.id === c.id);
                           return spoilerEnabled || (meta && meta.spoilerLevel <= 9);
                         })
                         .sort((a, b) => {
-                          const metaA = cantos.find(m => m.id === a.id);
-                          const metaB = cantos.find(m => m.id === b.id);
+                          const metaA = cantos.find((m: { id: string }) => m.id === a.id);
+                          const metaB = cantos.find((m: { id: string }) => m.id === b.id);
                           return (metaA?.spoilerLevel ?? 0) - (metaB?.spoilerLevel ?? 0);
                         })
                         .map(c => {
-                          const meta = cantos.find(m => m.id === c.id);
+                          const meta = cantos.find((m: { id: string }) => m.id === c.id);
                           return (
                             <div key={c.id} className="flex items-start gap-2.5 rounded-md border border-border/40 bg-muted/20 p-2.5 transition-colors hover:border-border/60">
                               <div className="flex flex-col items-center justify-start pt-0.5 w-10 shrink-0">
@@ -358,7 +358,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                           );
                         })}
                       {!spoilerEnabled && sinner.cantos.some(c => {
-                        const meta = cantos.find(m => m.id === c.id);
+                        const meta = cantos.find((m: { id: string }) => m.id === c.id);
                         return meta && meta.spoilerLevel > 9;
                       }) && (
                         <p className="text-[10px] text-center italic text-muted-foreground/50 py-1">
@@ -428,15 +428,40 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                     </Badge>
                   </h3>
                   {sinner.egos.length > 0 ? (
-                    <div className="space-y-2">
+                    <div className="grid grid-cols-3 gap-2">
                       {sinner.egos.map((ego) => (
-                        <div key={ego.id} className="flex items-center gap-3 rounded-lg border border-border/40 bg-muted/30 p-2.5 transition-colors hover:border-border/80">
-                          <div
-                            className="h-2.5 w-2.5 shrink-0 rounded-full shadow-sm"
-                            style={{ backgroundColor: RANK_COLORS[ego.rank] ?? '#888' }}
-                          />
-                          <span className="flex-1 truncate text-xs font-semibold">{ego.displayName}</span>
-                          <span className="text-[10px] font-bold text-muted-foreground/60">{ego.rank}</span>
+                        <div
+                          key={ego.id}
+                          className="group flex flex-col items-center gap-1.5 rounded-lg border border-border/40 bg-muted/20 p-2 transition-colors hover:border-border/80"
+                        >
+                          {ego.egoId ? (
+                            <div className="h-10 w-10 overflow-hidden rounded-md border border-border/50 bg-background/50">
+                              <img
+                                src={getEgoImage(ego.egoId)}
+                                alt={ego.displayName}
+                                className="h-full w-full object-contain"
+                                loading="lazy"
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              className="h-10 w-10 rounded-md border border-border/50 bg-muted/30"
+                              style={{ backgroundColor: (ego.colorTheme ?? '#888') + '20', borderColor: (ego.colorTheme ?? '#888') + '40' }}
+                            >
+                              <div className="flex h-full w-full items-center justify-center">
+                                <div
+                                  className="h-3 w-3 rounded-full"
+                                  style={{ backgroundColor: ego.colorTheme ?? '#888' }}
+                                />
+                              </div>
+                            </div>
+                          )}
+                          <span className="w-full truncate text-center text-[10px] font-semibold leading-tight text-foreground">
+                            {ego.displayName}
+                          </span>
+                          <span className="text-[9px] font-bold" style={{ color: RANK_COLORS[ego.rank] ?? '#888' }}>
+                            {ego.rank}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -464,7 +489,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
         sourceId={sourceExplorerId ?? ''}
         open={!!sourceExplorerId}
         onClose={() => setSourceExplorerId(null)}
-        onSinnerClick={(id) => {
+        onSinnerClick={(_id) => {
           // handled by parent App — emit upward via callback if needed
         }}
       />
