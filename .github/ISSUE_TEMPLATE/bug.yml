@@ -1,0 +1,57 @@
+name: Bug Report
+description: Report something that is broken or incorrect
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Found a bug?
+
+        Thanks for taking the time to report it!
+
+        **Please note:** Lore corrections (e.g. "Gregor should also connect to Kafka's *The Trial*") are data issues, not bugs. Use the [Feature Request](?template=feature.yml) template instead.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear description of the bug.
+      placeholder: "Describe what went wrong..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error / unexpected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen instead?
+      placeholder: "Expected: ..."
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser & OS
+      description: e.g. Chrome on Windows, Safari on macOS
+      placeholder: "Chrome 122 / Windows 11"
+
+  - type: checkboxes
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - label: "Minor — visual glitch, doesn't affect functionality"
+        - label: "Moderate — feature is broken or missing data"
+        - label: "Critical — app crashes or shows incorrect lore"
