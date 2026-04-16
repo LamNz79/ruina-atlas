@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback, useState } from 'react';
 import * as d3 from 'd3';
 import type { Sinner, GraphEdge, EdgeType, Game, Theme } from '../types';
-import { THEMES } from '../types';
+import { THEMES, THEME_META } from '../types';
 import { literarySources } from '../data/literarySources';
 import crossGameEntities from '../data/crossGameEntities.json';
 import { GraphSettings } from './GraphSettings';
@@ -565,6 +565,9 @@ export function LoreGraph({
           .attr('stroke-opacity', (d) => d.type === 'cross-game-continuity' ? 0.2 : 0.4)
           .attr('stroke-width', 1.2)
           .attr('filter', null);
+
+        // Restore selected node highlight (in case mouseleave reset it)
+        highlightSelected();
       });
 
     // Initial selected state
@@ -631,7 +634,7 @@ export function LoreGraph({
               )}
               {tooltip.themes && tooltip.themes.length > 0 && (
                 <p className="text-[10px] text-muted-foreground/70">
-                  {tooltip.themes.map(t => t.replace('-', ' ')).join(' · ')}
+                  {tooltip.themes.map(t => THEME_META[t as Theme]?.label ?? t.replace('-', ' ')).join(' · ')}
                 </p>
               )}
             </div>

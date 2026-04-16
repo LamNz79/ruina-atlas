@@ -27,9 +27,14 @@ export default function App() {
   const edges = useMemo(() => deriveEdges(sinners), []);
 
   const handleNodeClick = useCallback((sinner: Sinner) => {
-    setSelectedSinner((prev) => (prev?.id === sinner.id ? null : sinner));
-    setPanelOpen(true);
-  }, []);
+    if (selectedSinner?.id === sinner.id) {
+      // Clicking already-selected node — just toggle panel, keep selection
+      setPanelOpen((o) => !o);
+    } else {
+      setSelectedSinner(sinner);
+      setPanelOpen(true);
+    }
+  }, [selectedSinner]);
 
   const handleClose = useCallback(() => {
     setPanelOpen(false);
