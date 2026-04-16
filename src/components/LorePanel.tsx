@@ -435,12 +435,18 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                           className="group flex flex-col items-center gap-1.5 rounded-lg border border-border/40 bg-muted/20 p-2 transition-colors hover:border-border/80"
                         >
                           {ego.egoId ? (
-                            <div className="h-10 w-10 overflow-hidden rounded-md border border-border/50 bg-background/50">
+                            <div
+                              className="h-10 w-10 overflow-hidden rounded-md border border-border/50"
+                              style={{ backgroundColor: (ego.colorTheme ?? '#888') + '33', borderColor: (ego.colorTheme ?? '#888') + '66' }}
+                            >
                               <img
                                 src={getEgoImage(ego.egoId)}
                                 alt={ego.displayName}
                                 className="h-full w-full object-contain"
                                 loading="lazy"
+                                onError={(e) => {
+                                  e.currentTarget.style.visibility = 'hidden';
+                                }}
                               />
                             </div>
                           ) : (
