@@ -146,6 +146,12 @@ export interface EGO {
   floor: string;      // e.g. "Moutheast Corner" — raw string, may become union later
   colorTheme: string; // hex accent color, e.g. '#7A3B8C'
   description: string;
+  /**
+   * Cross-reference ID into public/assets/ego_output/ego.json.
+   * Used to look up image path and additional EGO metadata.
+   * Not present on pre-existing entries that haven't been matched.
+   */
+  egoId?: string;
 }
 
 // ── Sinner (Core Entity) ──────────────────────────────────────────────────────
