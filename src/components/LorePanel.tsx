@@ -317,7 +317,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                       <span>Story Appearances</span>
                       {!spoilerEnabled && (
                         <Badge variant="outline" className="h-4 px-1.5 text-[9px] font-mono text-muted-foreground border-muted-foreground/30">
-                          Canto 9+
+                          Canto 10+
                         </Badge>
                       )}
                     </h3>
@@ -325,7 +325,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                       {sinner.cantos
                         .filter(c => {
                           const meta = cantos.find((m: { id: string }) => m.id === c.id);
-                          return spoilerEnabled || (meta && meta.spoilerLevel <= 9);
+                          return spoilerEnabled || (meta && meta.spoilerLevel <= 8);
                         })
                         .sort((a, b) => {
                           const metaA = cantos.find((m: { id: string }) => m.id === a.id);
@@ -359,10 +359,10 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                         })}
                       {!spoilerEnabled && sinner.cantos.some(c => {
                         const meta = cantos.find((m: { id: string }) => m.id === c.id);
-                        return meta && meta.spoilerLevel > 9;
+                        return meta && meta.spoilerLevel > 8;
                       }) && (
                         <p className="text-[10px] text-center italic text-muted-foreground/50 py-1">
-                          Enable spoiler mode to see Canto 10+ appearances
+                          Enable spoiler mode to see Canto 9+ appearances
                         </p>
                       )}
                     </div>
