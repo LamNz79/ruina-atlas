@@ -206,7 +206,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
                         </svg>
                       )}
                     </span>
-                    {source.title}
+                    <span className="truncate">{source.title}</span>
                   </button>
                 );
               })}
