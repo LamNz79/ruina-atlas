@@ -17,6 +17,7 @@ interface GraphNode extends d3.SimulationNodeDatum {
   crossGameContinuity: boolean;
   nodeType: 'sinner' | 'entity';
   entityType?: 'wing' | 'abnormality' | 'character';
+  icon?: string;
 }
 
 interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
@@ -25,15 +26,15 @@ interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
 }
 
 const NODE_GAME_COLORS: Record<string, string> = {
-  limbus:    '#cba6f7',  // Mauve — Limbus Company (default primary)
-  ruina:     '#89b4fa',  // Blue — Library of Ruina
-  lobotomy:  '#fab387',  // Peach — Lobotomy Corporation
+  limbus:    '#b8202f',  // Deep Crimson — Limbus Company (Sinners are the heart)
+  ruina:     '#a08a70',  // Warm Bronze — Library of Ruina
+  lobotomy:  '#7a5c3a',  // Dark Bronze — Lobotomy Corporation
 };
 
 const ENTITY_COLORS: Record<string, string> = {
-  wing:        '#94e2d5', // Teal — Wings (City infrastructure)
-  abnormality:  '#f5c2e7', // Pink — Abnormalities (eldritch entities)
-  character:   '#f9e2af', // Yellow — Recurring characters
+  wing:        '#a08a70', // Warm Bronze — Wings (City infrastructure)
+  abnormality:  '#8a4a5a', // Muted Crimson — Abnormalities (eldritch entities)
+  character:   '#f5c518', // Electric Gold — Recurring characters (shine brightest)
 };
 
 const EDGE_COLORS: Record<EdgeType, string> = {
@@ -164,19 +165,19 @@ export function LoreGraph({
         const isSel = d.id === selId;
         const hitSel = d3.select(this).select('.node-hit');
         hitSel
-          .attr('fill', isSel ? '#f5e3d0' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
-          .attr('stroke', isSel ? '#fab387' : 'var(--ring)')
+          .attr('fill', isSel ? '#e8e0d5' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
+          .attr('stroke', isSel ? '#f5c518' : 'var(--ring)')
           .attr('stroke-width', isSel ? 3 : 1.5);
         d3.select(this)
           .select('.node-ring')
           .attr('visibility', d.crossGameContinuity || isSel ? 'visible' : 'hidden')
-          .attr('stroke', isSel ? '#fab387' : 'var(--edge-crossgame)');
+          .attr('stroke', isSel ? '#f5c518' : 'var(--edge-crossgame)');
       } else {
         // Entity diamond
         const isSel = d.id === selEntity;
         const defaultColor = ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing;
         d3.select(this).select('.node-hit')
-          .attr('stroke', isSel ? '#f5e3d0' : defaultColor)
+          .attr('stroke', isSel ? '#f5c518' : defaultColor)
           .attr('stroke-width', isSel ? 3 : 2);
       }
     });
@@ -305,6 +306,7 @@ export function LoreGraph({
       crossGameContinuity: false,
       nodeType: 'entity' as const,
       entityType: e.type as 'character' | 'wing' | 'abnormality',
+      icon: e.icon,
     }));
 
     const entityLinks: GraphLink[] = crossGameEntities.entities.flatMap((e) =>
@@ -438,49 +440,71 @@ export function LoreGraph({
         g.append('circle').attr('r', 34).attr('fill', 'transparent');
       });
 
-    // ── Entity nodes: diamond ────────────────────────────────────────────────
+    // ── Entity nodes: icon or diamond ────────────────────────────────────────
     nodeEls
       .filter((d) => d.nodeType === 'entity')
       .each(function (d) {
         const g = d3.select(this);
-        const size = 20;
         const color = ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing;
-        // Diamond shape (rotated square)
-        g.append('rect')
-          .attr('class', 'node-hit')
-          .attr('width', size)
-          .attr('height', size)
-          .attr('x', -size / 2)
-          .attr('y', -size / 2)
-          .attr('fill', 'none')
-          .attr('stroke', color)
-          .attr('stroke-width', 2)
-          .attr('transform', 'rotate(45)');
-        // Inner fill
-        g.append('rect')
-          .attr('width', size - 4)
-          .attr('height', size - 4)
-          .attr('x', -size / 2 + 2)
-          .attr('y', -size / 2 + 2)
-          .attr('fill', 'var(--bg-surface)')
-          .attr('transform', 'rotate(45)');
+
+        if (d.icon) {
+          // Icon image node
+          const size = 36;
+          g.append('image')
+            .attr('class', 'node-hit')
+            .attr('href', d.icon)
+            .attr('width', size)
+            .attr('height', size)
+            .attr('x', -size / 2)
+            .attr('y', -size / 2)
+            .attr('preserveAspectRatio', 'xMidYMid meet');
+          // Transparent hit area
+          g.append('rect')
+            .attr('width', size + 12)
+            .attr('height', size + 12)
+            .attr('x', -(size + 12) / 2)
+            .attr('y', -(size + 12) / 2)
+            .attr('fill', 'transparent');
+        } else {
+          // Diamond shape (rotated square)
+          const size = 20;
+          g.append('rect')
+            .attr('class', 'node-hit')
+            .attr('width', size)
+            .attr('height', size)
+            .attr('x', -size / 2)
+            .attr('y', -size / 2)
+            .attr('fill', 'none')
+            .attr('stroke', color)
+            .attr('stroke-width', 2)
+            .attr('transform', 'rotate(45)');
+          // Inner fill
+          g.append('rect')
+            .attr('width', size - 4)
+            .attr('height', size - 4)
+            .attr('x', -size / 2 + 2)
+            .attr('y', -size / 2 + 2)
+            .attr('fill', 'var(--bg-surface)')
+            .attr('transform', 'rotate(45)');
+          // Transparent hit area
+          g.append('rect')
+            .attr('width', size + 12)
+            .attr('height', size + 12)
+            .attr('x', -(size + 12) / 2)
+            .attr('y', -(size + 12) / 2)
+            .attr('fill', 'transparent');
+        }
+
         // Label
         g.append('text')
           .text(d.name)
           .attr('text-anchor', 'middle')
-          .attr('dy', 34)
+          .attr('dy', d.icon ? 34 : 34)
           .attr('font-size', '10px')
           .attr('font-weight', '500')
           .attr('fill', color)
           .attr('font-family', 'var(--sans)')
           .attr('pointer-events', 'none');
-        // Transparent hit area
-        g.append('rect')
-          .attr('width', size + 12)
-          .attr('height', size + 12)
-          .attr('x', -(size + 12) / 2)
-          .attr('y', -(size + 12) / 2)
-          .attr('fill', 'transparent');
       });
 
     // ── Hover ────────────────────────────────────────────────────────────────
