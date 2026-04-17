@@ -317,7 +317,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                       <span>Story Appearances</span>
                       {!spoilerEnabled && (
                         <Badge variant="outline" className="h-4 px-1.5 text-[9px] font-mono text-muted-foreground border-muted-foreground/30">
-                          Canto 10+
+                          Canto 9+
                         </Badge>
                       )}
                     </h3>

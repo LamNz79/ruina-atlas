@@ -105,7 +105,7 @@ src/
 public/
   assets/
     identities/              ← Identity card images
-    ego_output/images/        ← EGO images
+    ego/images/        ← EGO images
 ```
 
 ---
