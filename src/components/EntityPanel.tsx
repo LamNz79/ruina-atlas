@@ -43,9 +43,9 @@ const GAME_LABELS: Record<string, string> = {
 };
 
 const GAME_COLORS: Record<string, string> = {
-  limbus:    '#cba6f7',
-  ruina:     '#89b4fa',
-  lobotomy:  '#fab387',
+  limbus:    '#b8202f',  // Deep Crimson
+  ruina:     '#a08a70',  // Warm Bronze
+  lobotomy:  '#7a5c3a',  // Dark Bronze
 };
 
 const THEME_LABELS: Record<string, string> = {
