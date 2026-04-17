@@ -434,7 +434,7 @@ export function LoreGraph({
           .attr('font-size', '10px')
           .attr('font-weight', '500')
           .attr('fill', 'var(--text-bright)')
-          .attr('font-family', 'var(--sans)')
+          .attr('font-family', 'Space Grotesk, monospace')
           .attr('pointer-events', 'none');
         // Transparent hit area
         g.append('circle').attr('r', 34).attr('fill', 'transparent');
@@ -503,7 +503,7 @@ export function LoreGraph({
           .attr('font-size', '10px')
           .attr('font-weight', '500')
           .attr('fill', color)
-          .attr('font-family', 'var(--sans)')
+          .attr('font-family', 'Space Grotesk, monospace')
           .attr('pointer-events', 'none');
       });
 

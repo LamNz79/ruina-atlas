@@ -59,6 +59,12 @@
     /* Glassmorphism base */
     --glass-bg: rgba(30, 35, 48, 0.6);
 
+    /* Text hierarchy — Warm Ivory tones on dark */
+    --text-bright: #e8e0d5;   /* Primary text */
+    --text-d: #c4bdb3;        /* Secondary */
+    --text-faint: #8a847a;   /* Metadata */
+    --sans: 'Space Grotesk', monospace;
+
     /* Edge colors for D3 graph */
     --edge-literary: #f5c2e7;
     --edge-theme: #89b4fa;
