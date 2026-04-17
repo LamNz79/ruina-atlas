@@ -151,19 +151,23 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
               </button>
             </div>
             <div className="flex flex-wrap gap-1.5">
-              {THEMES.map(theme => (
-                <button
-                  key={theme}
-                  onClick={() => toggleTheme(theme)}
-                  className={`rounded-full border px-2 py-0.5 text-[10px] font-medium transition-all active:scale-95 ${
-                    filters.themes.has(theme)
-                      ? 'border-primary/40 bg-primary/10 text-primary'
-                      : 'border-border/40 bg-muted/30 text-muted-foreground'
-                  }`}
-                >
-                  {theme.replace('-', ' ')}
-                </button>
-              ))}
+              {THEMES.map(theme => {
+                const isActive = filters.themes.has(theme);
+                return (
+                  <button
+                    key={theme}
+                    onClick={() => toggleTheme(theme)}
+                    className="px-2 py-0.5 text-[10px] font-semibold border transition-all active:scale-95"
+                    style={{
+                      borderColor: isActive ? '#f5c518' : 'rgba(200,193,180,0.18)',
+                      backgroundColor: isActive ? 'rgba(245,197,24,0.12)' : 'transparent',
+                      color: isActive ? '#f5c518' : '#8a847a',
+                    }}
+                  >
+                    {theme.replace('-', ' ')}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -174,20 +178,38 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
               By Literary Source
             </h4>
-            <div className="max-h-36 space-y-1 overflow-y-auto scroll-bronze pr-1">
-              {literarySources.map(source => (
-                <button
-                  key={source.id}
-                  onClick={() => toggleSource(source.id)}
-                  className={`w-full text-left rounded px-2 py-1 text-[11px] transition-all active:scale-[0.98] ${
-                    filters.literarySources.has(source.id)
-                      ? 'text-foreground font-medium'
-                      : 'text-muted-foreground'
-                  }`}
-                >
-                  {source.title}
-                </button>
-              ))}
+            <div className="max-h-36 space-y-0.5 overflow-y-auto scroll-bronze pr-1">
+              {literarySources.map(source => {
+                const isActive = filters.literarySources.has(source.id);
+                return (
+                  <button
+                    key={source.id}
+                    onClick={() => toggleSource(source.id)}
+                    className={`w-full flex items-center gap-2 px-2 py-1.5 text-[11px] transition-all active:scale-[0.98] ${
+                      isActive
+                        ? 'text-[#e8e0d5] font-semibold'
+                        : 'text-[#8a847a]'
+                    }`}
+                    style={isActive ? { backgroundColor: 'rgba(160,138,112,0.12)' } : {}}
+                  >
+                    {/* Checkbox indicator */}
+                    <span
+                      className="flex-shrink-0 w-2.5 h-2.5 border flex items-center justify-center transition-colors"
+                      style={{
+                        borderColor: isActive ? '#a08a70' : '#8a847a',
+                        backgroundColor: isActive ? '#a08a70' : 'transparent',
+                      }}
+                    >
+                      {isActive && (
+                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                          <path d="M1 4L3 6L7 2" stroke="#111318" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
+                    </span>
+                    {source.title}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
