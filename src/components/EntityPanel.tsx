@@ -25,15 +25,15 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 const TYPE_BADGE_COLORS: Record<string, string> = {
-  wing:        'border-edge-crossgame/40 bg-edge-crossgame/10 text-edge-crossgame',
-  abnormality: 'border-[#f5c2e7]/40 bg-[#f5c2e7]/10 text-[#f5c2e7]',
-  character:   'border-edge-theme/40 bg-edge-theme/10 text-edge-theme',
+  wing:        'border-[#a08a70]/40 bg-[#a08a70]/10 text-[#a08a70]',
+  abnormality: 'border-[#8a4a5a]/40 bg-[#8a4a5a]/10 text-[#e06070]',
+  character:   'border-[#f5c518]/40 bg-[#f5c518]/10 text-[#f5c518]',
 };
 
 const ENTITY_COLORS: Record<string, string> = {
-  wing:        '#94e2d5',
-  abnormality:  '#f5c2e7',
-  character:   '#f9e2af',
+  wing:        '#a08a70',   // Warm Bronze
+  abnormality:  '#8a4a5a',  // Muted Crimson
+  character:   '#f5c518',   // Electric Gold
 };
 
 const GAME_LABELS: Record<string, string> = {
@@ -43,9 +43,9 @@ const GAME_LABELS: Record<string, string> = {
 };
 
 const GAME_COLORS: Record<string, string> = {
-  limbus:    '#cba6f7',
-  ruina:     '#89b4fa',
-  lobotomy:  '#fab387',
+  limbus:    '#b8202f',  // Deep Crimson
+  ruina:     '#a08a70',  // Warm Bronze
+  lobotomy:  '#7a5c3a',  // Dark Bronze
 };
 
 const THEME_LABELS: Record<string, string> = {

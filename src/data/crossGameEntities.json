@@ -203,7 +203,8 @@
       ],
       "relatedSinnerIds": [
         "ryoshu"
-      ]
+      ],
+      "icon": "/node/wings/ShiAsso.png"
     },
     {
       "id": "entity-zwei-association",
@@ -245,7 +246,8 @@
       "relatedSinnerIds": [
         "meursault",
         "sinclair"
-      ]
+      ],
+      "icon": "/node/wings/cinqIcon.png"
     },
     {
       "id": "entity-tres-association",

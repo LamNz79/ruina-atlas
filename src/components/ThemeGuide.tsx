@@ -29,7 +29,8 @@ export function ThemeGuide({ open, onClose }: ThemeGuideProps) {
                 <div key={theme} className="space-y-1.5">
                   <Badge
                     variant="secondary"
-                    className="px-2 py-0.5 text-[11px] font-semibold text-foreground border border-border/60"
+                    className="px-2 py-0.5 text-[11px] font-semibold border-0"
+                    style={{ backgroundColor: '#f5c518', color: '#111318' }}
                   >
                     {meta.label}
                   </Badge>

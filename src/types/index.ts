@@ -260,6 +260,8 @@ export interface CrossGameEntity {
   themes: Theme[];
   /** Sinner IDs connected to this entity (produces graph edges) */
   relatedSinnerIds?: string[];
+  /** Icon image path relative to public/, e.g. '/wings/cinqIcon.png' */
+  icon?: string;
 }
 
 // ── Graph Edge (Derived at Runtime) ─────────────────────────────────────────
