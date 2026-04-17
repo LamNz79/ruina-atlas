@@ -5,32 +5,66 @@
       "name": "W Corp.",
       "type": "wing",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "literaryOrigin": "Jorge Luis Borges — themes of infinite time and dimensional looping (The WARP Train dilates time: thousands of years pass externally while only ten seconds elapse). District 23's culinary culture echoes Patrick Süskind's Perfume: The Story of a Murderer.",
       "loreSummary": "One of the 26 Wings of the City, operating in District 23. Controls two Singularities: state restoration (save-point molecular reset after WARP Train travel damage) and dimensional gating (purchased from a fallen Wing). Known for its Cleanup Crew — agents who restore order on WARP Trains that have traveled through dimensional gates. In Limbus Company, W Corp. identities are available for 10 of the 13 Sinners as L2/L3/L4 Cleanup Agents.",
-      "themes": ["machinery", "futility", "nihilism"],
-      "relatedSinnerIds": ["heathcliff", "outis", "yi-sang", "don-quixote", "ryoshu", "faust", "meursault", "hong-lu", "rodion", "gregor"]
+      "themes": [
+        "machinery",
+        "futility",
+        "nihilism"
+      ],
+      "relatedSinnerIds": [
+        "heathcliff",
+        "outis",
+        "yi-sang",
+        "don-quixote",
+        "ryoshu",
+        "faust",
+        "meursault",
+        "hong-lu",
+        "rodion",
+        "gregor"
+      ]
     },
     {
       "id": "entity-red-shoes",
       "name": "The Red Shoes",
       "type": "abnormality",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "literaryOrigin": "Hans Christian Andersen — The Red Shoes (1845 fairy tale about a girl cursed to dance in a pair of enchanted red shoes she cannot remove).",
       "loreSummary": "A pair of shiny red high-heeled shoes that amplify the desires and obsession of whoever wears them. The shoes enchant people, filling them with an irresistible urge to put them on. Hidden teeth along the edges bite into the skin of the host and cannot be removed through normal means. Classified as HE-risk. Does not appear as a fightable abnormality — it cannot be contained through combat. In Limbus Company, its E.G.O variant 'Sanguine Desire' is obtainable exclusively during Walpurgis Night events for Rodion.",
-      "themes": ["obsession", "machinery", "guilt"],
-      "relatedSinnerIds": ["rodion"]
+      "themes": [
+        "obsession",
+        "machinery",
+        "guilt"
+      ],
+      "relatedSinnerIds": [
+        "rodion"
+      ]
     },
     {
       "id": "entity-blood-bath",
       "name": "Blood Bath",
       "type": "abnormality",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy"],
+      "appearances": [
+        "lobotomy"
+      ],
       "literaryOrigin": "Lobotomy Corporation (Project Moon original) — references H.P. Lovecraft's 'The Horror at Red Hook' and ritualistic blood imagery in horror traditions.",
       "loreSummary": "An Abnormality originating from Lobotomy Corporation. Its precise literary connection draws from Lovecraftian horror traditions involving ritualistic blood sacrifice and the supernatural consequences of bodily consumption. Classified as a high-risk abnormality in its original appearance.",
-      "themes": ["decay", "nihilism", "machinery"],
+      "themes": [
+        "decay",
+        "nihilism",
+        "machinery"
+      ],
       "relatedSinnerIds": []
     },
     {
@@ -38,44 +72,200 @@
       "name": "Ayin",
       "type": "character",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "literaryOrigin": "Friedrich Nietzsche — Thus Spoke Zarathustra (will to power, eternal recurrence, self-overcoming, the Übermensch). Ayin's journey of creating the Seed of Light mirrors Nietzsche's philosopher who descends from his mountain to teach humanity. The Sephirot system itself echoes the Tree of Life from Kabbalah, which influenced Nietzsche's concept of the overworld.",
       "loreSummary": "The original Director of Lobotomy Corporation — the mind behind the Sephirot project and the creation of the Light, the Index, and all abnormalities. Ayin's sole purpose was to create the Seed of Light. After the collapse of Lobotomy Corporation, his consciousness was digitized and became the guest star of the Library in Library of Ruina, existing as a disembodied narrator observing the book-adapted world he helped create. His story is one of cold utilitarianism vs. the humanity he created.",
-      "themes": ["nihilism", "machinery", "futility", "identity-fragmentation"],
-      "relatedSinnerIds": ["faust", "yi-sang", "outis", "gregor"]
+      "themes": [
+        "nihilism",
+        "machinery",
+        "futility",
+        "identity-fragmentation"
+      ],
+      "relatedSinnerIds": [
+        "faust",
+        "yi-sang",
+        "outis",
+        "gregor"
+      ]
     },
     {
       "id": "entity-angela",
       "name": "Angela",
       "type": "character",
       "canonicalGame": "ruina",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "literaryOrigin": "William Blake — The Marriage of Heaven and Hell (angel as liberator, the poetry of experience over innocence, 'The road of excess leads to the palace of wisdom'). Angela's arc mirrors Blake's theme of the fallen angel who finds truth through rebellion rather than obedience. Also echoes Paradise Lost — the fallen angel choosing her own path.",
       "loreSummary": "Born as a book in Lobotomy Corporation's Library, Angela discovered she was created solely as a vessel for Ayin's ambition — an existence with no meaning of her own. Her journey in Library of Ruina is the search for a self-authored purpose. She leads the Library's residents in an insurrection against the true meaning of the City, ultimately choosing to dismantle the system rather than become part of it. She represents earned identity against imposed destiny.",
-      "themes": ["identity-fragmentation", "redemption", "faith", "machinery"],
-      "relatedSinnerIds": ["yi-sang", "outis", "ishmael", "faust"]
+      "themes": [
+        "identity-fragmentation",
+        "redemption",
+        "faith",
+        "machinery"
+      ],
+      "relatedSinnerIds": [
+        "yi-sang",
+        "outis",
+        "ishmael",
+        "faust"
+      ]
     },
     {
       "id": "entity-gebura",
       "name": "Gebura",
       "type": "character",
       "canonicalGame": "ruina",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "literaryOrigin": "Little Red Riding Hood (the red hood, the wolf, the forest) — Gebura literally carries a crimson coat. Her rage and destructive force mirror the wolf's primal hunger; her redemption through the Sephirot mirrors the fairy tale's themes of survival and transformation. Russian literary tradition (Dostoevsky, Gogol) also informs her speech patterns and emotional rawness.",
       "loreSummary": "Former Sephirah Binah in Lobotomy Corporation — the embodiment of punitive force and suppression. Gebura was a warrior who earned her place through violence, trapped in a system that rewarded only destruction. In Ruina, she exists as both a Sephirah and an Arbiter — the fist of the City. Her arc is about learning that ending violence is not the same as surrendering strength. She redeems herself through the Light, finding purpose in protecting rather than destroying. Limbus Company identities draw from her as the warrior archetype.",
-      "themes": ["redemption", "vengeance", "machinery", "guilt"],
-      "relatedSinnerIds": ["ryoshu", "meursault", "gregor"]
+      "themes": [
+        "redemption",
+        "vengeance",
+        "machinery",
+        "guilt"
+      ],
+      "relatedSinnerIds": [
+        "ryoshu",
+        "meursault",
+        "gregor"
+      ]
     },
     {
       "id": "entity-liu-association",
       "name": "Liu Association",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "literaryOrigin": "Journey to the West (Wu Cheng'en, 16th century) — one of China's Four Great Classical Novels. The Association's war involving pilgrim figures and a 14-year journey directly mirrors the 14-year pilgrimage of Tripitaka's party. The Wing's internal power structure echoes the hierarchy of the pilgrimage, with Liu Ishmael as the Tang Sanzang figure — gathering unlikely allies to reach the true end.",
       "loreSummary": "One of the 26 Wings of the City, operating out of District 15. Controls the Singularity of bio-weaponry — specifically the ability to amplify the emotional and spiritual resonance of fighters beyond human limits. In Ruina, the Association's war against the Library is one of the most narratively complex campaigns. In Limbus Company, Liu identities are among the most sought-after, featuring fighters like Liu Heathcliff (Don Quixote-tier aggression), Liu Gregor (discipline), and Liu Ryoshu (raw fire).",
-      "themes": ["faith", "family", "machinery", "decay"],
-      "relatedSinnerIds": ["heathcliff", "don-quixote", "ryoshu", "gregor", "ishmael"]
+      "themes": [
+        "faith",
+        "family",
+        "machinery",
+        "decay"
+      ],
+      "relatedSinnerIds": [
+        "heathcliff",
+        "don-quixote",
+        "ryoshu",
+        "gregor",
+        "ishmael"
+      ]
+    },
+    {
+      "id": "entity-hana-association",
+      "name": "Hana Association",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "literaryOrigin": "Korean flag symbolism — the four cardinal trigrams (qián, duì, lí, zhèn) are embedded in South Korea's national flag. The Hana Association's logo uses either the Arabic numeral 1 or Roman numeral I, placed at the center of a trigram design, directly mirroring this national symbol.",
+      "loreSummary": "The highest-ranking of the 26 Wings — responsible for administering all other Wings and Fixer Offices. Issues Fixer licenses, assigns Grades 1–9 and Colors, and classifies the threat levels of Syndicates and Phenomena (Urban Myth → Urban Legend → Urban Plague → Urban Nightmare → Star of the City → Impurity). Their equipment consists of trigrams that can morph into any shape in combat. When threats exceed even Star of the City classification, they are labeled Impurity and handled directly by The Head.",
+      "themes": [
+        "machinery",
+        "faith",
+        "family",
+        "decay"
+      ],
+      "relatedSinnerIds": [
+        "yi-sang"
+      ]
+    },
+    {
+      "id": "entity-shi-association",
+      "name": "Shi Association",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "literaryOrigin": "死 (shi) — the Japanese kanji for death, featured prominently in the Association's logo. The wordplay links to the Shi Association's philosophy: all people are equal in death, making any target viable for assassination.",
+      "loreSummary": "Specializes in covert assassination — completing requests silently without witnesses. Shi Fixers cultivate an eye for weak points and execute plans promptly. Each branch uses different weapons suited to their environment: southern branch wields long katanas, eastern branch uses bowblades. The Association's uniform is black with red highlights. Following the events of Library of Ruina, the southern branch remains depleted and at risk of annihilation. Their fighting style emphasizes critical hits through Poise generation, primarily using Slash and Pierce Skills.",
+      "themes": [
+        "vengeance",
+        "guilt",
+        "decay"
+      ],
+      "relatedSinnerIds": [
+        "ryoshu"
+      ]
+    },
+    {
+      "id": "entity-zwei-association",
+      "name": "Zwei Association",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "literaryOrigin": "German word for the number two — reflected in the Association's logo which contains the Arabic numeral 2 within a shield design. This echoes Faust's Germanic origins and placement as Limbus Company's second Sinner.",
+      "loreSummary": "Operates as the City\\'s \"shield\" — providing civil protection, peacekeeping, and proximity protection to clients in assigned territories. The South Section specializes in covert operations and major crimes investigation; the West Section values an imposing presence during contracts. Equipped with Zwei handers or batons and navy-blue coats (South) or knight-style armor (West). Fixers can patrol territories for days without relief. Appeared in Library of Ruina during Urban Legend, eventually losing Walter and Isadora to the Library.",
+      "themes": [
+        "family",
+        "machinery",
+        "guilt"
+      ],
+      "relatedSinnerIds": [
+        "faust",
+        "ishmael"
+      ]
+    },
+    {
+      "id": "entity-cinq-association",
+      "name": "Cinq Association",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "literaryOrigin": "French word for the number five — reflected in the Association's logo featuring a stylized \"5\" around a rapier design. The Association's dueling culture draws from The Three Musketeers, the French historical novel by Alexandre Dumas featuring swashbuckling combat, strict dueling protocols, and aristocratic swordsmanship.",
+      "loreSummary": "Specializes in one-on-one duels and close combat — substituting into fights on behalf of clients who request a Fixer to fight in their place. Duels have various \"levels,\" with Level 3 indicating a duel to the death. The Western branch uses rapiers and follows strict combat rules; the Eastern branch uses martial arts enhanced by pyrojade bangles that can melt steel weapons. Identities focus on gaining Haste through high Speed to outspeed opponents. The South and West traditionally declare duels by throwing a glove.",
+      "themes": [
+        "vengeance",
+        "guilt",
+        "decay"
+      ],
+      "relatedSinnerIds": [
+        "meursault",
+        "sinclair"
+      ]
+    },
+    {
+      "id": "entity-tres-association",
+      "name": "Tres Association",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "literaryOrigin": "Spanish word for the number three — reflected in Don Quixote's Spanish origins and placement as Limbus Company's third Sinner. The connection extends the pattern of Wings reflecting the Sinner order through language and origin.",
+      "loreSummary": "Manages all Workshops in the City — reviewing newly designed weapons, filing patent applications to The Head, and charging relative taxes. Their domain spans weapons, gadgets, and prosthetic models. Designs rejected by the Association cannot be produced commercially in their current state. The Association also runs qualification exams, including Workshop exams, for Fixers who wish to operate Workshops. The South branch has suffered heavy losses from Distortions, particularly the Blood-red Night and L'Heure du Loup events.",
+      "themes": [
+        "family",
+        "machinery",
+        "decay"
+      ],
+      "relatedSinnerIds": [
+        "don-quixote"
+      ]
     }
   ]
 }
