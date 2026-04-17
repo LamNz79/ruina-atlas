@@ -178,35 +178,21 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
               By Literary Source
             </h4>
-            <div className="max-h-36 space-y-0.5 overflow-y-auto scroll-bronze pr-1">
+            <div className="flex flex-wrap gap-1.5">
               {literarySources.map(source => {
                 const isActive = filters.literarySources.has(source.id);
                 return (
                   <button
                     key={source.id}
                     onClick={() => toggleSource(source.id)}
-                    className={`w-full flex items-center gap-2 px-2 py-1.5 text-[11px] transition-all active:scale-[0.98] ${
-                      isActive
-                        ? 'text-[#e8e0d5] font-semibold'
-                        : 'text-[#8a847a]'
-                    }`}
-                    style={isActive ? { backgroundColor: 'rgba(160,138,112,0.12)' } : {}}
+                    className="px-2 py-0.5 text-[10px] font-semibold border transition-all active:scale-95"
+                    style={{
+                      borderColor: isActive ? '#a08a70' : 'rgba(200,193,180,0.18)',
+                      backgroundColor: isActive ? 'rgba(160,138,112,0.12)' : 'transparent',
+                      color: isActive ? '#e8e0d5' : '#8a847a',
+                    }}
                   >
-                    {/* Checkbox indicator */}
-                    <span
-                      className="flex-shrink-0 w-2.5 h-2.5 border flex items-center justify-center transition-colors"
-                      style={{
-                        borderColor: isActive ? '#a08a70' : '#8a847a',
-                        backgroundColor: isActive ? '#a08a70' : 'transparent',
-                      }}
-                    >
-                      {isActive && (
-                        <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                          <path d="M1 4L3 6L7 2" stroke="#111318" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      )}
-                    </span>
-                    <span className="truncate">{source.title}</span>
+                    {source.title}
                   </button>
                 );
               })}
