@@ -12,7 +12,22 @@
         {
           "id": "divine-comedy",
           "role": "primary",
-          "specificConnection": "Dante himself is the protagonist of The Divine Comedy, making this the most direct literary mapping in the entire franchise. His role as a manager guiding Sinners mirrors Dante Alighieri being guided through Hell, Purgatory, and Paradise by Virgil and Beatrice."
+          "specificConnection": "Dante is the protagonist of The Divine Comedy, making this the most direct literary mapping in the entire franchise. His role as a manager guiding Sinners mirrors Dante Alighieri being guided through Hell, Purgatory, and Paradise by Virgil and Beatrice. Every aspect of his design nods to the original: his name (Durante, the poet's birth name), the Cantos (mimicking the 100 cantos of the poem), and the numbering of Sinners mirroring circles of Hell."
+        },
+        {
+          "id": "odyssey",
+          "role": "secondary",
+          "specificConnection": "The Odyssey provides a structural parallel — Odysseus's long journey home after the Trojan War mirrors Dante's quest to collect the Golden Boughs and reach the Star. Both are Odyssean journeys through hostile territory, and both protagonists require a guide (Vergilius for Dante, Athena's divine intervention for Odysseus). The connection is further reinforced by the Outis deception in Canto IX."
+        },
+        {
+          "id": "aeneid",
+          "role": "secondary",
+          "specificConnection": "The Golden Boughs are a direct reference to The Aeneid — in the myth, Aeneas must find and pluck a Golden Bough to safely enter and return from the Underworld. In Limbus Company, Dante uses the Golden Boughs to navigate the City's branches and resonate with the Sinners' memories. Vergilius's role as guide mirrors the guidance Aeneas receives, and the concept of a destined journey through a hostile world echoes across all three texts."
+        },
+        {
+          "id": "outis",
+          "role": "influence",
+          "specificConnection": "Outis means Nobody in Ancient Greek — when Odysseus blinds the Cyclops Polyphemus, he tells the other Cyclopes his name is Outis. When Polyphemus calls for help saying No-man blinded him, no one comes. In Canto IX, Dante encounters the same deception — the mysterious Outis helmet, a direct reference to the original trick. Dante's headless state (a clock replacing their face) mirrors the \"no one\" interpretation — someone neither fully alive nor dead, trapped between worlds, guided through the City as Dante Alighieri was guided through the afterlife."
         }
       ],
       "themes": [
@@ -21,7 +36,7 @@
         "faith"
       ],
       "loreSummary": "Dante is the manager of Limbus Company's bus, responsible for guiding twelve Sinners through fixed LCB routes to recover lost memories and locate the Golden boughs. He is characterized by his sharp tongue, dramatic flair, and an enigmatic relationship with Vergilius. A central mystery surrounds his true nature — whether he is truly headless, and if so, what that means for his existence.",
-      "literaryConnectionNotes": "Named directly after Dante Alighieri, the 14th-century Florentine poet. In The Divine Comedy, Dante the pilgrim is led through the afterlife by the poet Virgil (Vergilius in Limbus) and ultimately by his love Beatrice. Project Moon reverses the dynamic: Dante manages Sinners rather than being managed, though he too is guided by someone (Vergilius). His headless state may parallel the 'no one' interpretation of the name 'Outis' given his connection to Odysseus, or may reference Dante's own 'lost' state in the afterlife narrative.",
+      "literaryConnectionNotes": "Dante is the narrative anchor for all twelve Sinners — every character in Limbus Company represents a literary masterpiece, and Dante is the one who manages these stories. Named directly after Dante Alighieri, his design is layered with references to the Divine Comedy: his full name (Durante, the poet's actual birth name), the Canto structure mirroring the poem's 100 cantos, and the Sinners' numbering echoing circles of Hell. Project Moon inverts the Divine Comedy's dynamic — where Dante Alighieri was guided through the afterlife by Virgil and Beatrice, Limbus Company's Dante guides twelve Sinners through the City's branches. Vergilius serves as Dante's own Virgil, a protector and guide in a role reversal of the original. The Aeneid connection is woven through the Golden Boughs themselves — Aeneas must find a Golden Bough to enter the Underworld, just as Dante uses the Golden Boughs to resonate with the Sinners' memories. The Outis connection ties to Dante's headless state — a clock replacing their face symbolizes the \"winding\" of time, resurrection at the cost of pain, and the Contrapasso concept (poetic justice) where Dante feels the collective pain of every Sinner's death. Dante has no identities or EGOs — instead, his power manifests through the Golden Bough contract system, telepathy, resurrection, and various Sapling of Light abilities.",
       "identities": [],
       "egos": [],
       "cantos": [
@@ -74,6 +89,56 @@
           "id": "canto-9",
           "summary": "Gregor's past explored — Dante gains Remote Sight ability, uses Ira to enhance Ryoshu, and attempts the Malthael ability.",
           "isMajor": false
+        }
+      ],
+      "powers": [
+        {
+          "name": "Turning Back the Clock",
+          "description": "Dante can heal injuries and revive Sinners from death by winding back time. The cost is that Dante physically feels how each Sinner died — the pain writhes through their body as time reverses. Dante describes opening a foreboding door filled with the wails of unknown sufferers and pulling the Sinners' hands out from the gateway."
+        },
+        {
+          "name": "Golden Bough Resonance",
+          "description": "Dante can sense where the Golden Boughs are by \"following their star.\" They perceive the Boughs as shining stars in a swirling sky and can share these visions with the Sinners through their telepathic link."
+        },
+        {
+          "name": "Telepathy",
+          "description": "Dante communicates only through a ticking sound, altering its frequency and intensity. Only the Sinners and a select few can understand the meaning behind the ticks. When agitated, the speech may include bell chimes and/or steam whistles. Dante can selectively address one Sinner or the entire group at once."
+        },
+        {
+          "name": "Distortion Speech",
+          "description": "Dante can understand Distortions who have lost the ability to speak human language, extending to their subordinate entities. Acting as interpreter, they relay invaluable information to the Sinners — possibly due to resonance with the Golden Boughs."
+        },
+        {
+          "name": "Remote Sight",
+          "description": "Gained during the events of Canto IX. Dante can watch over Sinners separated from them, though cannot verbally communicate. They can also \"lend strength\" and revive distant Sinners."
+        },
+        {
+          "name": "Sapling of Light: Pigritia",
+          "description": "In Canto VI, Dante creates a field that slows everything except the Sinners within a certain radius. In game, this halves the Speed of all enemies, rounded down."
+        },
+        {
+          "name": "Sapling of Light: Superbia",
+          "description": "In Canto VII, Dante appears to strengthen the power of a Sinner. In game, this allows an E.G.O. Skill to be slotted without spending any E.G.O Resources."
+        },
+        {
+          "name": "Sapling of Light: Morositas",
+          "description": "In Canto VIII, Dante uses the strength-averaging aspect of their contract to bring an enemy down to the Sinners' level. In game, this sets the Offense and Defense levels of all units to the average of all units' values for three turns."
+        },
+        {
+          "name": "Sapling of Light: Ira",
+          "description": "In Canto IX, Dante uses the strength-enhancing aspect of their contract to drastically raise a Sinner's capabilities for the duration of the fight. In game: unbreakable coins, no stagger, minimum HP fixed to 10, and base attacks heal HP. All effects last one turn."
+        },
+        {
+          "name": "Last Resort",
+          "description": "A preventative measure to prevent the Golden Boughs from falling into wrong hands. By inputting a sequence into the back of their clock head, Dante can self-detonate a charge hot enough to \"melt even the Stars of the City.\" The Golden Boughs cannot survive this explosion."
+        },
+        {
+          "name": "Golden Bough Synchronization",
+          "description": "Used once during Canto 6-48 to perform an otherwise impossible feat with the help of a Golden Bough, leaving it \"burnt\" afterwards."
+        },
+        {
+          "name": "Immunity to Memory Wiping",
+          "description": "Dante can resist memory removal from various sources. They retained their memory of K Corp.'s Singularity after the wipe at the end of Canto IV, and retain memories of characters erased from existence, such as Catherine (Canto VI) and Ren and Sora (Relic Arayashiki effect)."
         }
       ]
     },

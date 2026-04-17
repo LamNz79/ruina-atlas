@@ -253,6 +253,36 @@
         "decay"
       ],
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Sorrows_of_Young_Werther"
+    },
+    {
+      "id": "aeneid",
+      "title": "The Aeneid",
+      "author": "Virgil",
+      "year": -29,
+      "language": "Latin",
+      "passage": "I sing of warfare and a man at war, who came to Italy by destiny.",
+      "passageContext": "Opening lines — Aeneas's journey from Troy to found Rome",
+      "themes": [
+        "fate",
+        "vengeance",
+        "faith"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Aeneid"
+    },
+    {
+      "id": "outis",
+      "title": "Outis",
+      "author": "Homer",
+      "year": -800,
+      "language": "Ancient Greek",
+      "passage": "My name is Outis — 'No-man' — and No-man am I called.",
+      "passageContext": "Odysseus to the Cyclops Polyphemus — the deception that blinds the monster",
+      "themes": [
+        "identity-fragmentation",
+        "deception",
+        "futility"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Odyssey"
     }
   ]
 }

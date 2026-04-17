@@ -193,6 +193,22 @@ export interface Sinner {
    * Spoiler-gated: filtered by spoiler toggle in the UI.
    */
   cantos?: CantoAnnotation[];
+
+  /**
+   * Named abilities — currently used for Dante, who has no identities/EGOs
+   * but manifests unique powers through the Golden Bough contract system.
+   */
+  powers?: DantePower[];
+}
+
+/**
+ * A named ability or power associated with a Sinner.
+ * Used primarily for Dante — whose unique clock-head mechanics produce
+ * abilities beyond the standard Identity/EGO Arsenal framework.
+ */
+export interface DantePower {
+  name: string;
+  description: string;
 }
 
 /**
