@@ -53,7 +53,7 @@ export function SourceExplorer({ sourceId, open, onClose, onSinnerClick }: Sourc
 
   return (
     <Dialog open={open} onOpenChange={val => !val && onClose()}>
-      <DialogContent className="sm:max-w-[520px] max-h-[80vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-[520px] max-h-[80vh] overflow-y-auto scroll-bronze">
         <DialogHeader className="flex-row items-start gap-3 space-y-0">
           <div className="rounded-lg bg-primary/10 p-2.5 ring-1 ring-primary/20">
             <BookOpen className="h-5 w-5 text-primary" />

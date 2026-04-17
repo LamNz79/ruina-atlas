@@ -65,11 +65,16 @@
     --text-faint: #8a847a;   /* Metadata */
     --sans: 'Space Grotesk', monospace;
 
-    /* Edge colors for D3 graph */
-    --edge-literary: #f5c2e7;
-    --edge-theme: #89b4fa;
-    --edge-crossgame: #f9e2af;
-    --edge-group: #a6e3a1;
+    /* Edge colors for D3 graph — Archive palette */
+    --edge-literary: #a08a70;   /* Bronze — literary origin */
+    --edge-theme: #c4bdb3;      /* Ivory — thematic link */
+    --edge-crossgame: #f5c518;  /* Electric Gold — cross-game continuity */
+    --edge-group: #8a847a;       /* Subtle Ivory — shared literary group */
+
+    /* Game node colors — match Archive palette */
+    --game-limbus: #b8202f;     /* Deep Crimson */
+    --game-ruina: #a08a70;       /* Warm Bronze */
+    --game-lobotomy: #7a5c3a;   /* Dark Bronze */
 
     /* Typography tokens */
     --font-newsreader: 'Newsreader', Georgia, serif;

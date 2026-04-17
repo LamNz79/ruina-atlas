@@ -64,10 +64,10 @@ const RESISTANCE_COLORS: Record<string, string> = {
 };
 
 const TIER_COLORS: Record<string, string> = {
-  dps:     '#f5c2e7',
-  support: '#89b4fa',
-  tank:    '#a6e3a1',
-  status:  '#f9e2af',
+  dps:     '#8a4a5a',    // Muted Crimson
+  support: '#a08a70',    // Warm Bronze
+  tank:    '#7a5c3a',    // Dark Bronze
+  status:  '#f5c518',    // Electric Gold
 };
 
 const TIER_LABELS: Record<string, string> = {

@@ -1,28 +1,33 @@
-/* ── CSS Variables — Obsidian-Inspired ─────────────────────────────────────── */
+/* ── CSS Variables — Archive of the Infinite Rail ──────────────────────────── */
 :root {
-  /* Core surfaces */
-  --bg:            #1a1a2e;
-  --bg-surface:     #16161f;
-  --bg-elevated:    #1f1f2e;
-  --bg-hover:       #252538;
-  --border:         #2a2a40;
-  --border-subtle:  #222235;
+  /* Core surfaces — Navy Black hierarchy */
+  --bg:              #111318;
+  --bg-surface:      #131620;
+  --bg-elevated:     #181c27;
+  --bg-hover:        #1e2330;
+  --border:          rgba(200, 193, 180, 0.12);
+  --border-subtle:   rgba(200, 193, 180, 0.07);
 
-  /* Text */
-  --text-h:         #cdd6f4;
-  --text-m:         #a6adc8;
-  --text-d:         #585b70;
-  --text-faint:     #45475a;
+  /* Text — Warm Ivory hierarchy */
+  --text-h:          #e8e0d5;   /* Primary */
+  --text-m:          #c4bdb3;   /* Secondary */
+  --text-d:          #8a847a;   /* Tertiary/metadata */
+  --text-faint:      #6b665e;   /* Disabled/subtle */
 
-  /* Edge colors — soft pastels matching Obsidian's palette */
-  --edge-literary:  #f5c2e7;
-  --edge-theme:     #89b4fa;
-  --edge-crossgame: #f9e2af;
-  --edge-group:     #a6e3a1;
+  /* Edge colors — Archive palette */
+  --edge-literary:   #a08a70;    /* Bronze — literary origin */
+  --edge-theme:      #c4bdb3;    /* Ivory — thematic link */
+  --edge-crossgame:  #f5c518;    /* Gold — cross-game continuity */
+  --edge-group:      #8a847a;    /* Subtle Ivory — shared group */
 
-  /* Accent */
-  --accent:         #cba6f7;
-  --accent-hover:   #d4b3ff;
+  /* Game colors */
+  --game-limbus:     #b8202f;    /* Deep Crimson */
+  --game-ruina:      #a08a70;    /* Warm Bronze */
+  --game-lobotomy:   #7a5c3a;    /* Dark Bronze */
+
+  /* Accent — Deep Crimson */
+  --accent:          #b8202f;
+  --accent-hover:    #d42a3d;
 
   /* Layout */
   --panel-w:        400px;
@@ -30,15 +35,15 @@
   --footer-h:       32px;
   --font:           'Space Grotesk', system-ui, sans-serif;
 
-  /* Graph settings panel (Obsidian-flavored) */
-  --settings-bg:           #1c1c2b;
-  --settings-bg-hover:     #222235;
-  --settings-bg-active:    #24243a;
-  --settings-border:       #2e2e46;
-  --settings-border-active:#3d3d60;
-  --settings-text:         #cdd6f4;
-  --settings-text-muted:   #7c7fa8;
-  --settings-accent:      #cba6f7;
+  /* Graph settings panel */
+  --settings-bg:           #131620;
+  --settings-bg-hover:     #1e2330;
+  --settings-bg-active:    #252d3d;
+  --settings-border:       rgba(200, 193, 180, 0.12);
+  --settings-border-active: rgba(200, 193, 180, 0.25);
+  --settings-text:         #e8e0d5;
+  --settings-text-muted:    #8a847a;
+  --settings-accent:       #f5c518;
 }
 
 /* ── Reset & Base ───────────────────────────────────────────────────────────── */
@@ -53,7 +58,7 @@ body {
   height: 100dvh;
 }
 
-a { color: var(--accent); text-decoration: none; }
+a { color: var(--settings-accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 button { cursor: pointer; font-family: inherit; }
@@ -101,7 +106,6 @@ button { cursor: pointer; font-family: inherit; }
   font-size: 0.72rem;
   font-weight: 500;
   padding: 5px 12px;
-  border-radius: 6px;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s, color 0.15s;
   flex-shrink: 0;
@@ -146,10 +150,11 @@ svg text { user-select: none; }
 
 .lore-panel--open { transform: translateX(0); }
 
-/* Scrollbar */
-.lore-panel::-webkit-scrollbar { width: 4px; }
+/* Scrollbar — Archive palette */
+.lore-panel::-webkit-scrollbar { width: 3px; }
 .lore-panel::-webkit-scrollbar-track { background: transparent; }
-.lore-panel::-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.lore-panel::-webkit-scrollbar-thumb { background: #a08a70; }
+.lore-panel::-webkit-scrollbar-thumb:hover { background: #f5c518; }
 
 /* Header */
 .lore-panel__header {
@@ -185,7 +190,6 @@ svg text { user-select: none; }
   color: var(--text-m);
   width: 28px;
   height: 28px;
-  border-radius: 50%;
   font-size: 0.75rem;
   flex-shrink: 0;
   display: flex;
@@ -197,7 +201,7 @@ svg text { user-select: none; }
 .lore-panel__close:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  background: rgba(184, 32, 47, 0.1);
 }
 
 /* Sections */
@@ -224,7 +228,6 @@ svg text { user-select: none; }
   font-size: 0.62rem;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: 10px;
   padding: 1px 7px;
   color: var(--text-m);
   font-weight: 500;
@@ -269,27 +272,26 @@ svg text { user-select: none; }
   font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  border-radius: 4px;
   padding: 2px 6px;
   font-weight: 600;
 }
 
 .lore-panel__role-badge--primary {
-  background: color-mix(in srgb, var(--edge-literary) 15%, transparent);
-  color: var(--edge-literary);
-  border: 1px solid color-mix(in srgb, var(--edge-literary) 35%, transparent);
+  background: rgba(184, 32, 47, 0.15);
+  color: #e06070;
+  border: 1px solid rgba(184, 32, 47, 0.35);
 }
 
 .lore-panel__role-badge--secondary {
-  background: color-mix(in srgb, var(--edge-theme) 12%, transparent);
-  color: var(--edge-theme);
-  border: 1px solid color-mix(in srgb, var(--edge-theme) 30%, transparent);
+  background: rgba(160, 138, 112, 0.12);
+  color: #c4a882;
+  border: 1px solid rgba(160, 138, 112, 0.30);
 }
 
 .lore-panel__role-badge--influence {
-  background: color-mix(in srgb, var(--edge-crossgame) 10%, transparent);
-  color: var(--edge-crossgame);
-  border: 1px solid color-mix(in srgb, var(--edge-crossgame) 25%, transparent);
+  background: rgba(245, 197, 24, 0.10);
+  color: #f5c518;
+  border: 1px solid rgba(245, 197, 24, 0.25);
 }
 
 .lore-panel__passage {
@@ -331,7 +333,6 @@ svg text { user-select: none; }
 .lore-panel__theme-tag {
   font-size: 0.72rem;
   padding: 3px 10px;
-  border-radius: 12px;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   color: var(--text-m);
@@ -351,7 +352,6 @@ svg text { user-select: none; }
   align-items: center;
   gap: 4px;
   padding: 6px 4px 5px;
-  border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--bg-elevated);
   cursor: pointer;
@@ -364,24 +364,24 @@ svg text { user-select: none; }
 }
 
 .lore-panel__identity-card--limbus {
-  border-color: color-mix(in srgb, var(--edge-theme) 25%, transparent);
+  border-color: rgba(184, 32, 47, 0.4);
 }
 .lore-panel__identity-card--limbus:hover {
-  border-color: color-mix(in srgb, var(--edge-theme) 50%, transparent);
+  border-color: rgba(184, 32, 47, 0.7);
 }
 
 .lore-panel__identity-card--lobotomy {
-  border-color: color-mix(in srgb, var(--edge-literary) 25%, transparent);
+  border-color: rgba(160, 138, 112, 0.35);
 }
 .lore-panel__identity-card--lobotomy:hover {
-  border-color: color-mix(in srgb, var(--edge-literary) 50%, transparent);
+  border-color: rgba(160, 138, 112, 0.6);
 }
 
 .lore-panel__identity-card--ruina {
-  border-color: color-mix(in srgb, var(--edge-crossgame) 25%, transparent);
+  border-color: rgba(138, 74, 90, 0.4);
 }
 .lore-panel__identity-card--ruina:hover {
-  border-color: color-mix(in srgb, var(--edge-crossgame) 50%, transparent);
+  border-color: rgba(138, 74, 90, 0.7);
 }
 
 .lore-panel__identity-img {
@@ -389,13 +389,12 @@ svg text { user-select: none; }
   height: 60px;
   object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
-  border-radius: 4px;
+  background: var(--bg-hover);
 }
 
 .lore-panel__identity-placeholder {
   width: 60px;
   height: 60px;
-  border-radius: 4px;
   background: var(--bg-hover);
   border: 1px solid var(--border);
   display: flex;
@@ -441,8 +440,8 @@ svg text { user-select: none; }
 .id-modal {
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
   max-height: 80vh;
   overflow-y: auto;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
@@ -466,7 +465,6 @@ svg text { user-select: none; }
   width: 64px;
   height: 64px;
   object-fit: contain;
-  border-radius: 8px;
   background: var(--bg-hover);
   flex-shrink: 0;
   border: 1px solid var(--border);
@@ -496,7 +494,6 @@ svg text { user-select: none; }
   color: var(--text-m);
   width: 26px;
   height: 26px;
-  border-radius: 50%;
   font-size: 0.7rem;
   display: flex;
   align-items: center;
@@ -527,7 +524,6 @@ svg text { user-select: none; }
 .id-modal__badge {
   font-size: 0.65rem;
   padding: 2px 8px;
-  border-radius: 5px;
   font-weight: 600;
 }
 
@@ -536,21 +532,21 @@ svg text { user-select: none; }
 }
 
 .id-modal__badge--type {
-  background: color-mix(in srgb, var(--edge-theme) 12%, transparent);
-  color: var(--edge-theme);
-  border: 1px solid color-mix(in srgb, var(--edge-theme) 30%, transparent);
+  background: rgba(196, 189, 179, 0.12);
+  color: var(--text-m);
+  border-color: rgba(196, 189, 179, 0.30);
 }
 
 .id-modal__badge--spec {
-  background: color-mix(in srgb, var(--edge-literary) 12%, transparent);
-  color: var(--edge-literary);
-  border: 1px solid color-mix(in srgb, var(--edge-literary) 30%, transparent);
+  background: rgba(160, 138, 112, 0.12);
+  color: #c4a882;
+  border-color: rgba(160, 138, 112, 0.30);
 }
 
 .id-modal__badge--aff {
-  background: color-mix(in srgb, var(--edge-crossgame) 10%, transparent);
-  color: var(--edge-crossgame);
-  border: 1px solid color-mix(in srgb, var(--edge-crossgame) 25%, transparent);
+  background: rgba(245, 197, 24, 0.10);
+  color: #f5c518;
+  border-color: rgba(245, 197, 24, 0.25);
 }
 
 .id-modal__section-title {
@@ -571,7 +567,6 @@ svg text { user-select: none; }
 .id-modal__stat-box {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: 6px;
   padding: 8px 6px;
   text-align: center;
 }
@@ -602,7 +597,6 @@ svg text { user-select: none; }
   display: flex;
   gap: 0;
   border: 1px solid var(--border);
-  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -640,7 +634,7 @@ svg text { user-select: none; }
 /* Scrollbar for modal */
 .id-modal::-webkit-scrollbar { width: 4px; }
 .id-modal::-webkit-scrollbar-track { background: transparent; }
-.id-modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.id-modal::-webkit-scrollbar-thumb { background: var(--border); }
 
 .lore-panel__empty {
   font-size: 0.78rem;
@@ -660,7 +654,6 @@ svg text { user-select: none; }
   align-items: center;
   gap: 8px;
   padding: 5px 8px;
-  border-radius: 6px;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
 }
@@ -668,7 +661,6 @@ svg text { user-select: none; }
 .lore-panel__ego-dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
   flex-shrink: 0;
 }
 
@@ -686,6 +678,53 @@ svg text { user-select: none; }
   font-weight: 700;
   color: var(--text-d);
   letter-spacing: 0.05em;
+}
+
+/* ── Powers section (Dante) ───────────────────────────────────────────────── */
+.lore-panel__powers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lore-panel__power-item {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+}
+
+.lore-panel__power-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 4px;
+}
+
+.lore-panel__power-desc {
+  font-size: 0.75rem;
+  color: var(--text-m);
+  line-height: 1.5;
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────────────────────────── */
+/* Archive palette: thin Bronze thumb, invisible track */
+.scroll-bronze::-webkit-scrollbar {
+  width: 3px;
+}
+.scroll-bronze::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-bronze::-webkit-scrollbar-thumb {
+  background: #a08a70;
+}
+.scroll-bronze::-webkit-scrollbar-thumb:hover {
+  background: #f5c518;
+}
+
+/* Firefox */
+.scroll-bronze {
+  scrollbar-width: thin;
+  scrollbar-color: #a08a70 transparent;
 }
 
 /* ── Footer ───────────────────────────────────────────────────────────────── */

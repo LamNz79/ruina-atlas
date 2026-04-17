@@ -27,9 +27,9 @@ const GAME_LABELS: Record<Game, string> = {
 };
 
 const GAME_COLORS: Record<Game, string> = {
-  limbus: '#cba6f7',
-  ruina: '#89b4fa',
-  lobotomy: '#fab387',
+  limbus: '#b8202f',    // Deep Crimson
+  ruina:  '#a08a70',    // Warm Bronze
+  lobotomy: '#7a5c3a',  // Dark Bronze
 };
 
 export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
@@ -174,7 +174,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
               By Literary Source
             </h4>
-            <div className="max-h-36 space-y-1 overflow-y-auto pr-1">
+            <div className="max-h-36 space-y-1 overflow-y-auto scroll-bronze pr-1">
               {literarySources.map(source => (
                 <button
                   key={source.id}
