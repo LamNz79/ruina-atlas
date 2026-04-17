@@ -4,75 +4,158 @@
 
 @layer base {
   :root {
-    /* Base shadcn colors - adapted for Ruina Atlas */
-    --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 262.1 83.3% 57.8%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 262.1 83.3% 57.8%;
-    --radius: 0.5rem;
+    /* Base shadcn colors — Archive of the Infinite Rail design system */
+    /* Surface: Navy Black foundation */
+    --background: 230 15% 7%;           /* #111318 — base surface */
+    --foreground: 35 20% 91%;            /* Warm Ivory — primary text */
 
-    /* Legacy variables for compatibility / bespoke tweaks */
-    --sans: 'Space Grotesk', system-ui, sans-serif;
-    --mono: ui-monospace, Consolas, monospace;
-  }
+    --card: 230 15% 7%;
+    --card-foreground: 35 20% 91%;
 
-  .dark {
-    /* Obsidian-Inspired Dark Theme */
-    --background: 240 30% 14.5%; /* #1a1a2e */
-    --foreground: 226 70% 88%;   /* #cdd6f4 */
-    --card: 240 17% 10%;        /* #16161f */
-    --card-foreground: 226 70% 88%;
-    --popover: 240 17% 10%;
-    --popover-foreground: 226 70% 88%;
-    --primary: 267 84% 81%;      /* #cba6f7 */
-    --primary-foreground: 240 30% 14.5%;
-    --secondary: 240 19% 15%;    /* #1f1f2e */
-    --secondary-foreground: 226 70% 88%;
-    --muted: 240 19% 15%;
-    --muted-foreground: 228 15% 72%; /* #a6adc8 */
-    --accent: 240 20% 18%;       /* #252538 */
-    --accent-foreground: 226 70% 88%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 226 70% 88%;
-    --border: 240 20% 21%;       /* #2a2a40 */
-    --input: 240 20% 21%;
-    --ring: 267 84% 81%;
+    --popover: 230 15% 8%;
+    --popover-foreground: 35 20% 91%;
 
-    /* Design Tokens from App.css */
-    --bg-surface: #16161f;
-    --bg-elevated: #1f1f2e;
-    --border-subtle: #222235;
-    --text-d: #585b70;
-    --text-faint: #45475a;
-    --text-bright: #cdd6f4;
+    /* Primary: Deep Crimson */
+    --primary: 353 76% 42%;              /* #b8202f */
+    --primary-foreground: 35 25% 96%;   /* Warm Ivory on crimson */
+
+    /* Secondary: Electric Gold — sparse use */
+    --secondary: 48 93% 56%;            /* #f5c518 */
+    --secondary-foreground: 230 15% 7%;
+
+    --muted: 230 12% 11%;
+    --muted-foreground: 35 10% 58%;      /* Subtle Ivory */
+
+    --accent: 230 12% 11%;
+    --accent-foreground: 35 20% 91%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 35 25% 96%;
+
+    /* Ghost Border — 15% opacity Ivory outline per DESIGN.md */
+    --border: 35 15% 18%;
+    --input: 230 15% 11%;
+    --ring: 353 76% 42%;                 /* Crimson ring */
+
+    /* 0px radius — Industrial Toggle per DESIGN.md */
+    --radius: 0px;
+
+    /* Surface hierarchy — The Archive layered depth */
+    --surface-base: #111318;
+    --surface-container-lowest: #0c0e12;
+    --surface-container-low: #131620;
+    --surface-container: #181c27;
+    --surface-container-high: #1e2330;
+    --surface-container-highest: #252d3d;
+
+    /* Extended palette */
+    --ivory: #e8e0d5;                    /* Primary text */
+    --ivory-muted: #c4bdb3;              /* Secondary text */
+    --ivory-subtle: #8a847a;             /* Metadata */
+    --gold: #f5c518;                     /* Electric Gold */
+    --crimson: #b8202f;                  /* Deep Crimson */
+    --bronze: #a08a70;                   /* Warm Bronze accent */
+
+    /* Glassmorphism base */
+    --glass-bg: rgba(30, 35, 48, 0.6);
+
+    /* Edge colors for D3 graph */
     --edge-literary: #f5c2e7;
     --edge-theme: #89b4fa;
     --edge-crossgame: #f9e2af;
     --edge-group: #a6e3a1;
+
+    /* Typography tokens */
+    --font-newsreader: 'Newsreader', Georgia, serif;
+    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --font-space: 'Space Grotesk', monospace;
+  }
+
+  /* No light theme — Archive of the Infinite Rail is always dark */
+  .dark {
+    --background: 230 15% 7%;
+    --foreground: 35 20% 91%;
+    --card: 230 15% 8%;
+    --card-foreground: 35 20% 91%;
+    --popover: 230 15% 8%;
+    --popover-foreground: 35 20% 91%;
+    --primary: 353 76% 42%;
+    --primary-foreground: 35 25% 96%;
+    --secondary: 48 93% 56%;
+    --secondary-foreground: 230 15% 7%;
+    --muted: 230 12% 11%;
+    --muted-foreground: 35 10% 58%;
+    --accent: 230 12% 11%;
+    --accent-foreground: 35 20% 91%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 35 25% 96%;
+    --border: 35 15% 18%;
+    --input: 230 15% 11%;
+    --ring: 353 76% 42%;
   }
 }
+
+/* ─── Global Base ─────────────────────────────────────────────────────────── */
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-family: var(--sans);
+    font-family: var(--font-manrope);
   }
+
+  /* Typography scale — Newsreader for display/headlines */
+  h1, h2, h3, .font-display {
+    font-family: var(--font-newsreader);
+  }
+
+  /* Space Grotesk for labels and data */
+  .font-label, .font-mono {
+    font-family: var(--font-space);
+  }
+
+  /* Override shadcn rounded-md → 0px globally */
+  .rounded-md,
+  .rounded-lg,
+  .rounded-sm {
+    border-radius: 0 !important;
+  }
+}
+
+/* ─── Utility Classes — The Archive of the Infinite Rail ─────────────────── */
+
+/* Glassmorphism overlay — for modals, floating menus */
+.glass {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Ghost Border — 15% opacity outline per DESIGN.md */
+.ghost-border {
+  outline: 1px solid rgba(200, 193, 180, 0.15);
+  outline-offset: 2px;
+}
+
+/* Lore Fragment card — Warm Bronze left-accent bar */
+.lore-fragment {
+  border-left: 4px solid var(--bronze);
+  padding-left: 1rem;
+  background-color: var(--surface-container-high);
+}
+
+/* Scan Line — input focus animation in Electric Gold */
+.scan-line {
+  position: relative;
+}
+.scan-line:focus-within {
+  border-bottom: 2px solid var(--gold);
+}
+
+/* Gold inner-glow for powered-on button hover */
+.btn-primary-glow:hover {
+  box-shadow: inset 0 0 12px rgba(245, 197, 24, 0.3);
 }

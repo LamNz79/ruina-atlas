@@ -7,11 +7,43 @@ export default {
   ],
   theme: {
   	extend: {
+      /* 0px border-radius — Industrial Toggle per DESIGN.md */
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: '0px',
+  			md: '0px',
+  			sm: '0px'
   		},
+      /* Typography — The Scholar's Contrast */
+      fontFamily: {
+        newsreader: ['Newsreader', 'Georgia', 'serif'],
+        manrope: ['Manrope', 'system-ui', 'sans-serif'],
+        space: ['Space Grotesk', 'monospace'],
+      },
+      /* Surface hierarchy colors */
+      surface: {
+        base: 'var(--surface-base)',
+        'container-lowest': 'var(--surface-container-lowest)',
+        'container-low': 'var(--surface-container-low)',
+        DEFAULT: 'var(--surface-container)',
+        'container-high': 'var(--surface-container-high)',
+        'container-highest': 'var(--surface-container-highest)',
+      },
+      /* Extended palette */
+      ivory: {
+        DEFAULT: 'var(--ivory)',
+        muted: 'var(--ivory-muted)',
+        subtle: 'var(--ivory-subtle)',
+      },
+      gold: 'var(--gold)',
+      crimson: 'var(--crimson)',
+      bronze: 'var(--bronze)',
+      /* D3 edge colors */
+      edge: {
+        literary: 'var(--edge-literary)',
+        theme: 'var(--edge-theme)',
+        crossgame: 'var(--edge-crossgame)',
+        group: 'var(--edge-group)'
+      },
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
@@ -46,15 +78,8 @@ export default {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
-  			edge: {
-  				literary: 'var(--edge-literary)',
-  				theme: 'var(--edge-theme)',
-  				crossgame: 'var(--edge-crossgame)',
-  				group: 'var(--edge-group)'
-  			}
   		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
 }
-
