@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Sinner, Game, Identity } from '../types';
+import type { Sinner, Game, Identity, DantePower } from '../types';
 import { cantos } from '../data/cantos';
 import { literarySources } from '../data/literarySources';
 import { identityImages } from '../data/identityImages';
@@ -475,6 +475,29 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                     <p className="text-xs italic text-muted-foreground/60">No EGO manifestations listed</p>
                   )}
                 </section>
+
+                {/* Powers (Dante only) */}
+                {sinner.powers && sinner.powers.length > 0 && (
+                  <section className="space-y-3">
+                    <h3 className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                      <span>Abilities</span>
+                      <Badge variant="outline" className="h-5 rounded-full bg-muted/50 px-2 font-mono text-[9px]">
+                        {sinner.powers.length}
+                      </Badge>
+                    </h3>
+                    <div className="space-y-2">
+                      {sinner.powers.map((power: DantePower) => (
+                        <div
+                          key={power.name}
+                          className="rounded-md border border-border/40 bg-muted/20 p-2.5"
+                        >
+                          <p className="text-[11px] font-semibold text-foreground leading-tight mb-1">{power.name}</p>
+                          <p className="text-[10px] leading-relaxed text-muted-foreground">{power.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
               </div>
             </ScrollArea>
           </div>
