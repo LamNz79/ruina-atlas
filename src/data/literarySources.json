@@ -283,6 +283,147 @@
         "futility"
       ],
       "wikiUrl": "https://en.wikipedia.org/wiki/Odyssey"
+    },
+    {
+      "id": "the-sea-wolf",
+      "title": "The Sea-Wolf",
+      "author": "Jack London",
+      "year": 1904,
+      "language": "English",
+      "passage": "I do not paint things, I paint only their effects.",
+      "passageContext": "Wolf Larsen, on the tension between appearance and reality — a captain who writes poetry while commanding through brute force",
+      "themes": [
+        "survival",
+        "individualism",
+        "nature",
+        "civilization"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Sea-Wolf"
+    },
+    {
+      "id": "tartuffe",
+      "title": "Tartuffe",
+      "author": "Molière",
+      "year": 1664,
+      "language": "French",
+      "passage": "The holy cause of Heaven is a coat of mail that serves to screen under shelter of which it's fine to act unscrupulously.",
+      "passageContext": "Mariane, revealing how Tartuffe weaponizes piety for personal gain",
+      "themes": [
+        "hypocrisy",
+        "faith",
+        "self-deception"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Tartuffe"
+    },
+    {
+      "id": "picture-dorian-gray",
+      "title": "The Picture of Dorian Gray",
+      "author": "Oscar Wilde",
+      "year": 1890,
+      "language": "English",
+      "passage": "The portrait will bear the burden of his shame — and he will be spared its weight.",
+      "passageContext": "Basil Hallward, on the portrait bearing Dorian's sins while he remains beautiful",
+      "themes": [
+        "aestheticism",
+        "corruption",
+        "youth",
+        "duality"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Picture_of_Dorian_Gray"
+    },
+    {
+      "id": "waiting-godot",
+      "title": "Waiting for Godot",
+      "author": "Samuel Beckett",
+      "year": 1953,
+      "language": "English / French",
+      "passage": "We are all born mad. Some remain so.",
+      "passageContext": "Vladimir, on the human condition — a statement of absurdist philosophy dressed as casual observation",
+      "themes": [
+        "absurdism",
+        "stasis",
+        "ritual"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Waiting_for_Godot"
+    },
+    {
+      "id": "journey-west",
+      "title": "Journey to the West",
+      "author": "Wu Cheng'en",
+      "year": 1592,
+      "language": "Classical Chinese",
+      "passage": "The monkey who познаниe the heavens shook the mountain of spines.",
+      "passageContext": "A quatrain from the novels opening verses — introducing Sun Wukong and the journey that follows",
+      "themes": [
+        "redemption",
+        "duty",
+        "companionship",
+        "corruption"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Journey_to_the_West"
+    },
+    {
+      "id": "burns-poetry",
+      "title": "Poems and Songs",
+      "author": "Robert Burns",
+      "year": 1793,
+      "language": "Scots / English",
+      "passage": "My love is like a red, red rose that's newly springing in June.",
+      "passageContext": "From 'A Red, Red Rose' — Burns's most celebrated love poem, quoted by Brontë as Wuthering Heights epigraph",
+      "themes": [
+        "love",
+        "nature",
+        "rebellion",
+        "romanticism"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Robert_Burns"
+    },
+    {
+      "id": "kafka-letters",
+      "title": "Letters to Milena",
+      "author": "Franz Kafka",
+      "year": 1952,
+      "language": "German",
+      "passage": "Sometimes I can overcome the hellish thought, sometimes it overcomes me.",
+      "passageContext": "Kafka to Milena — the gap between rational thought and the impossibility of connection",
+      "themes": [
+        "isolation",
+        "communication",
+        "desire",
+        "impossibility"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Letters_to_Milena"
+    },
+    {
+      "id": "mephistopheles",
+      "title": "Mephistopheles",
+      "author": "Devil's Bargain (Archetype)",
+      "year": 0,
+      "language": "Folklore / Cultural",
+      "passage": "I am the spirit that constantly denies.",
+      "passageContext": "Mephistopheles introduces himself to Faust — the principle of negation, the devil who serves through obstruction",
+      "themes": [
+        "guilt",
+        "deception",
+        "futility"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Mephistopheles"
+    },
+    {
+      "id": "brothers-karamazov",
+      "title": "The Brothers Karamazov",
+      "author": "Fyodor Dostoevsky",
+      "year": 1880,
+      "language": "Russian",
+      "passage": "I go to encounter in the fathomless sea, a drop of new sweetness.",
+      "passageContext": "Dmitri Karamazov, on the moment he chooses love over flight — embracing suffering as the only path to truth",
+      "themes": [
+        "guilt",
+        "redemption",
+        "faith",
+        "family"
+      ],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Brothers_Karamazov"
     }
   ]
 }

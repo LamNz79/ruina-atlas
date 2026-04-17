@@ -147,7 +147,7 @@ export interface EGO {
   colorTheme: string; // hex accent color, e.g. '#7A3B8C'
   description: string;
   /**
-   * Cross-reference ID into public/assets/ego_output/ego.json.
+   * Cross-reference ID into public/assets/ego/ego.json.
    * Used to look up image path and additional EGO metadata.
    * Not present on pre-existing entries that haven't been matched.
    */

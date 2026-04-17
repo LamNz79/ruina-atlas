@@ -25,5 +25,5 @@ export function getEgoImage(egoId: string): string {
   console.log(egoById[egoIdAsNumber-1]?.image);
 
 
-  return egoById[egoIdAsNumber - 1]?.image ?? `/assets/ego_output/images/ego_${egoId}_sm.jpg`;
+  return egoById[egoIdAsNumber - 1]?.image ?? `/assets/ego/images/ego_${egoIdAsNumber - 1}_sm.jpg`;
 }

@@ -1,0 +1,2416 @@
+[
+  {
+    "id": "1",
+    "name": "[Pursuance] Meursault",
+    "slug": "pursuance-meursault",
+    "rarity": "HE",
+    "character": "Meursault",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Sloth",
+    "source": "Gacha",
+    "speciality": [
+      "Tremor",
+      "Fragile"
+    ],
+    "cost": {
+      "Sloth": 4,
+      "Gloom": 1,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/2cf725da91409d85dadabd3ce97a0d33/41624/ego_1_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_1"
+  },
+  {
+    "id": "2",
+    "name": "[Ardor Blossom Star] Ishmael",
+    "slug": "ardor-blossom-star-ishmael",
+    "rarity": "HE",
+    "character": "Ishmael",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Gacha",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 4,
+      "Lust": 2,
+      "Envy": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/0db4768b4478068611586457a469fcf6/41624/ego_2_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_2"
+  },
+  {
+    "id": "3",
+    "name": "[Wishing Cairn] Yi Sang",
+    "slug": "wishing-cairn-yi-sang",
+    "rarity": "TETH",
+    "character": "Yi Sang",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Sloth",
+    "source": "Gacha",
+    "speciality": [
+      "Paralyze",
+      "Bind"
+    ],
+    "cost": {
+      "Gloom": 1,
+      "Sloth": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/a12b2dfd07df729f35eef35ba83d0c89/41624/ego_3_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_3"
+  },
+  {
+    "id": "4",
+    "name": "[Hex Nail] Faust",
+    "slug": "hex-nail-faust",
+    "rarity": "TETH",
+    "character": "Faust",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Envy",
+    "source": "Gacha",
+    "speciality": [
+      "Nails"
+    ],
+    "cost": {
+      "Envy": 6
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/dfa53cabd007f4e024580115f53607c9/41624/ego_4_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_4"
+  },
+  {
+    "id": "5",
+    "name": "[Ya Śūnyatā Tad Rūpam] Outis",
+    "slug": "ya-sunyata-tad-rupam-outis",
+    "rarity": "TETH",
+    "character": "Outis",
+    "season": "0",
+    "sanityCost": "15",
+    "affinity": "Lust",
+    "source": "Gacha",
+    "speciality": [
+      "Fragile"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Sloth": 2,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/f406ed562fa37fb9d751decd160c0007/41624/ego_5_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_5"
+  },
+  {
+    "id": "6",
+    "name": "[Lantern] Gregor",
+    "slug": "lantern-gregor",
+    "rarity": "TETH",
+    "character": "Gregor",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Gluttony",
+    "source": "Gacha",
+    "speciality": [
+      "Rupture"
+    ],
+    "cost": {
+      "Sloth": 1,
+      "Gluttony": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/3ba77c645e3b91b2cea40fbfd40f9bb1/41624/ego_6_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_6"
+  },
+  {
+    "id": "7",
+    "name": "[Crows's Eye View] Yi Sang",
+    "slug": "crowss-eye-view-yi-sang",
+    "rarity": "ZAYIN",
+    "character": "Yi Sang",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Sloth",
+    "source": "Base",
+    "speciality": [
+      "Bind",
+      "Haste"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Sloth": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/e49aa22da2de8568d7f009ee82ff8861/41624/ego_7_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_7"
+  },
+  {
+    "id": "8",
+    "name": "[Representation Emitter] Faust",
+    "slug": "representation-emitter-faust",
+    "rarity": "ZAYIN",
+    "character": "Faust",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Pride",
+    "source": "Base",
+    "speciality": [],
+    "cost": {
+      "Gluttony": 2,
+      "Pride": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/bb743d351c62c124070ce530705dc78c/41624/ego_8_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_8"
+  },
+  {
+    "id": "9",
+    "name": "[La Sangre de Sancho] Don Quixote",
+    "slug": "la-sangre-de-sancho-don-quixote",
+    "rarity": "ZAYIN",
+    "character": "Don Quixote",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Lust",
+    "source": "Base",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/80378d492f1082773c1f9f82c114f220/41624/ego_9_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_9"
+  },
+  {
+    "id": "10",
+    "name": "[Forest for the Flames] Ryoshu",
+    "slug": "forest-for-the-flames-ryoshu",
+    "rarity": "ZAYIN",
+    "character": "Ryoshu",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Lust",
+    "source": "Base",
+    "speciality": [
+      "Burn",
+      "Fragile"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/47910f9cce5e3662292b41b60f8c6923/41624/ego_10_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_10"
+  },
+  {
+    "id": "11",
+    "name": "[Chain of Others] Meursault",
+    "slug": "chain-of-others-meursault",
+    "rarity": "ZAYIN",
+    "character": "Meursault",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Pride",
+    "source": "Base",
+    "speciality": [
+      "Bind"
+    ],
+    "cost": {
+      "Sloth": 1,
+      "Gloom": 1,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/ff1b9117250725a664318fc88a864d1c/41624/ego_11_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_11"
+  },
+  {
+    "id": "12",
+    "name": "[Land of Illusion] Hong Lu",
+    "slug": "land-of-illusion-hong-lu",
+    "rarity": "ZAYIN",
+    "character": "Hong Lu",
+    "season": "0",
+    "sanityCost": "15",
+    "affinity": "Gloom",
+    "source": "Base",
+    "speciality": [
+      "Sinking"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Gloom": 5
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/758759ed45ec8770301fc113aedf0d1d/41624/ego_12_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_12"
+  },
+  {
+    "id": "13",
+    "name": "[Bodysack] Heathcliff",
+    "slug": "bodysack-heathcliff",
+    "rarity": "ZAYIN",
+    "character": "Heathcliff",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Envy",
+    "source": "Base",
+    "speciality": [
+      "Haste"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/1d5c2d49080543e02d79bfe347fa311c/41624/ego_13_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_13"
+  },
+  {
+    "id": "14",
+    "name": "[Snagharpoon] Ishmael",
+    "slug": "snagharpoon-ishmael",
+    "rarity": "ZAYIN",
+    "character": "Ishmael",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Gloom",
+    "source": "Base",
+    "speciality": [
+      "Tremor",
+      "Bind"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Gloom": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/d255aac61550e89a4617d59116f3b923/41624/ego_14_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_14"
+  },
+  {
+    "id": "15",
+    "name": "[What is Cast] Rodion",
+    "slug": "what-is-cast-rodion",
+    "rarity": "ZAYIN",
+    "character": "Rodion",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Pride",
+    "source": "Base",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Gloom": 1,
+      "Pride": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/eddbb7f19f10ba8bc842461ba309a5b7/41624/ego_15_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_15"
+  },
+  {
+    "id": "16",
+    "name": "[Branch of Knowledge] Sinclair",
+    "slug": "branch-of-knowledge-sinclair",
+    "rarity": "ZAYIN",
+    "character": "Sinclair",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Gluttony",
+    "source": "Base",
+    "speciality": [
+      "Rupture"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Gluttony": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/b4cc41a37e3fd714ef66c9d265e64559/41624/ego_16_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_16"
+  },
+  {
+    "id": "17",
+    "name": "[To Páthos Máthos] Outis",
+    "slug": "to-pathos-mathos-outis",
+    "rarity": "ZAYIN",
+    "character": "Outis",
+    "season": "0",
+    "sanityCost": "10",
+    "affinity": "Pride",
+    "source": "Base",
+    "speciality": [
+      "Rupture"
+    ],
+    "cost": {
+      "Sloth": 2,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/21767fdbac7f4201e8f5f49720562333/41624/ego_17_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_17"
+  },
+  {
+    "id": "18",
+    "name": "[Suddenly, One Day] Gregor",
+    "slug": "suddenly-one-day-gregor",
+    "rarity": "ZAYIN",
+    "character": "Gregor",
+    "season": "10",
+    "sanityCost": "10",
+    "affinity": "Sloth",
+    "source": "Base",
+    "speciality": [
+      "Burn",
+      "Bleed",
+      "Tremor",
+      "Rupture",
+      "Sinking"
+    ],
+    "cost": {
+      "Lust": 3,
+      "Gloom": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/d2d9b3536103f890c4f65c3b271e12be/41624/ego_18_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_18"
+  },
+  {
+    "id": "19",
+    "name": "[4th Match Flame] Ryoshu",
+    "slug": "4th-match-flame-ryoshu",
+    "rarity": "HE",
+    "character": "Ryoshu",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 4,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/6d5449aa2aaa971ea5a500a70f552906/41624/ego_19_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_19"
+  },
+  {
+    "id": "20",
+    "name": "[4th Match Flame] Yi Sang",
+    "slug": "4th-match-flame-yi-sang",
+    "rarity": "TETH",
+    "character": "Yi Sang",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 5,
+      "Sloth": 1,
+      "Gluttony": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/846571b32abb96d6c28913096c345dbc/41624/ego_20_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_20"
+  },
+  {
+    "id": "21",
+    "name": "[Fluid Sac] Faust",
+    "slug": "fluid-sac-faust",
+    "rarity": "HE",
+    "character": "Faust",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Gloom",
+    "source": "Battle Pass (paid)",
+    "speciality": [],
+    "cost": {
+      "Lust": 2,
+      "Gloom": 4,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/4c0f9724f153d17ec66c59288cfabea4/41624/ego_21_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_21"
+  },
+  {
+    "id": "22",
+    "name": "[Fluid Sac] Don Quixote",
+    "slug": "fluid-sac-don-quixote",
+    "rarity": "HE",
+    "character": "Don Quixote",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Gloom",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Sinking",
+      "Tremor"
+    ],
+    "cost": {
+      "Gloom": 4,
+      "Pride": 2,
+      "Lust": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/da2ef70fcae303c49978caaffc914244/41624/ego_22_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_22"
+  },
+  {
+    "id": "23",
+    "name": "[Screwloose Wallop] Meursault",
+    "slug": "screwloose-wallop-meursault",
+    "rarity": "TETH",
+    "character": "Meursault",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Envy",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Paralyze"
+    ],
+    "cost": {
+      "Sloth": 2,
+      "Pride": 1,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/178a5ff9d934a60738c48260ac0e8170/41624/ego_23_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_23"
+  },
+  {
+    "id": "24",
+    "name": "[Roseate Desire] Hong Lu",
+    "slug": "roseate-desire-hong-lu",
+    "rarity": "TETH",
+    "character": "Hong Lu",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Lust",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Bind"
+    ],
+    "cost": {
+      "Lust": 4,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/c76918e02ecc437ca73f57513843d971/41624/ego_24_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_24"
+  },
+  {
+    "id": "25",
+    "name": "[Telepole] Heathcliff",
+    "slug": "telepole-heathcliff",
+    "rarity": "HE",
+    "character": "Heathcliff",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Envy",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Fragile",
+      "Charge"
+    ],
+    "cost": {
+      "Wrath": 3,
+      "Lust": 2,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/9d596f207c3ea353852dc7ecb2c0f0a9/41624/ego_25_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_25"
+  },
+  {
+    "id": "26",
+    "name": "[Roseate Desire] Ishmael",
+    "slug": "roseate-desire-ishmael",
+    "rarity": "TETH",
+    "character": "Ishmael",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Lust",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Paralyze",
+      "Bind"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Lust": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/41fe7ccfee65d60cc15bdc73d489e6d0/41624/ego_26_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_26"
+  },
+  {
+    "id": "27",
+    "name": "[Rime Shank] Rodion",
+    "slug": "rime-shank-rodion",
+    "rarity": "TETH",
+    "character": "Rodion",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Gloom",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Sinking",
+      "Tremor"
+    ],
+    "cost": {
+      "Gloom": 5,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/d6dc1ed86b0ae21400534d32f6df1aad/41624/ego_27_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_27"
+  },
+  {
+    "id": "28",
+    "name": "[4th Match Flame] Rodion",
+    "slug": "4th-match-flame-rodion",
+    "rarity": "HE",
+    "character": "Rodion",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 3,
+      "Pride": 2,
+      "Envy": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/c97ea63d84cd1be86d3de9a2bfaa57c9/41624/ego_28_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_28"
+  },
+  {
+    "id": "29",
+    "name": "[Impending Day] Sinclair",
+    "slug": "impending-day-sinclair",
+    "rarity": "TETH",
+    "character": "Sinclair",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Wrath": 3,
+      "Lust": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/d083a3646b8daf9537fa792f8dbc20a2/41624/ego_29_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_29"
+  },
+  {
+    "id": "30",
+    "name": "[Legerdemain] Gregor",
+    "slug": "legerdemain-gregor",
+    "rarity": "ZAYIN",
+    "character": "Gregor",
+    "season": "1",
+    "sanityCost": "10",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Paralyze",
+      "Tremor",
+      "Bleed"
+    ],
+    "cost": {
+      "Sloth": 1,
+      "Gluttony": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/34a0335fa23ba04ff0efa57ad6eae3ed/41624/ego_30_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_30"
+  },
+  {
+    "id": "31",
+    "name": "[Ebony Stem] Outis",
+    "slug": "ebony-stem-outis",
+    "rarity": "HE",
+    "character": "Outis",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Rupture",
+      "Bleed",
+      "Bind"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Gluttony": 3,
+      "Gloom": 1,
+      "Pride": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/fddc7b06ec512575d103a10fe26766ff/41624/ego_31_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_31"
+  },
+  {
+    "id": "32",
+    "name": "[Telepole] Don Quixote ",
+    "slug": "telepole-don-quixote",
+    "rarity": "HE",
+    "character": "Don Quixote",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Envy",
+    "source": "Gacha",
+    "speciality": [
+      "Charge",
+      "Fragile",
+      "Rupture"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Gloom": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/b184e675583c4b979b312d5e37a88bdc/41624/ego_32_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_32"
+  },
+  {
+    "id": "33",
+    "name": "[Telepole] Faust",
+    "slug": "telepole-faust",
+    "rarity": "HE",
+    "character": "Faust",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Envy",
+    "source": "Gacha",
+    "speciality": [
+      "Paralyze",
+      "Charge",
+      "Bind"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Lust": 3,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/72e314ae9ad4b8ad73b758263f88517e/41624/ego_33_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_33"
+  },
+  {
+    "id": "34",
+    "name": "[Lifetime Stew] Don Quixote",
+    "slug": "lifetime-stew-don-quixote",
+    "rarity": "TETH",
+    "character": "Don Quixote",
+    "season": "1",
+    "sanityCost": "20",
+    "affinity": "Lust",
+    "source": "Event",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Lust": 5
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/2dfc2d03ff2d0e0ce42931fd20732aac/41624/ego_34_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_34"
+  },
+  {
+    "id": "35",
+    "name": "[Lifetime Stew] Sinclair",
+    "slug": "lifetime-stew-sinclair",
+    "rarity": "TETH",
+    "character": "Sinclair",
+    "season": "1",
+    "sanityCost": "15/20",
+    "affinity": "Lust",
+    "source": "Event",
+    "speciality": [
+      "Burn",
+      "Haste"
+    ],
+    "cost": {
+      "Wrath": 3,
+      "Lust": 2,
+      "Gluttony": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/687aaa3b57af3913f4ec7c0a88c40f3f/41624/ego_35_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_35"
+  },
+  {
+    "id": "36",
+    "name": "[Dimension Shredder] Yi Sang",
+    "slug": "dimension-shredder-yi-sang",
+    "rarity": "HE",
+    "character": "Yi Sang",
+    "season": "0",
+    "sanityCost": "25",
+    "affinity": "Pride",
+    "source": "Gacha",
+    "speciality": [
+      "Charge",
+      "Rupture"
+    ],
+    "cost": {
+      "Sloth": 3,
+      "Gluttony": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/31cf0231c86785faaa1204e40298915f/41624/ego_36_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_36"
+  },
+  {
+    "id": "37",
+    "name": "[Dimension Shredder] Hong Lu",
+    "slug": "dimension-shredder-hong-lu",
+    "rarity": "HE",
+    "character": "Hong Lu",
+    "season": "0",
+    "sanityCost": "25",
+    "affinity": "Pride",
+    "source": "Gacha",
+    "speciality": [
+      "Fragile",
+      "Haste",
+      "Charge"
+    ],
+    "cost": {
+      "Pride": 3,
+      "Gluttony": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/bb7ff398ca283629b1109764b208149d/41624/ego_37_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_37"
+  },
+  {
+    "id": "38",
+    "name": "[AEDD] Heathcliff",
+    "slug": "aedd-heathcliff",
+    "rarity": "TETH",
+    "character": "Heathcliff",
+    "season": "2",
+    "sanityCost": "20",
+    "affinity": "Gloom",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Haste",
+      "Paralyze",
+      "Charge"
+    ],
+    "cost": {
+      "Gloom": 3,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/829a9212570138c517623df12c6c2b10/41624/ego_38_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_38"
+  },
+  {
+    "id": "39",
+    "name": "[Sunshower] Outis",
+    "slug": "sunshower-outis",
+    "rarity": "TETH",
+    "character": "Outis",
+    "season": "2",
+    "sanityCost": "20",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Bind",
+      "Sinking",
+      "Tremor",
+      "Poise"
+    ],
+    "cost": {
+      "Sloth": 2,
+      "Gluttony": 2,
+      "Gloom": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/b04f60d1287f19eb84e584b18f76529b/41624/ego_39_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_39"
+  },
+  {
+    "id": "40",
+    "name": "[Capote] Ishmael",
+    "slug": "capote-ishmael",
+    "rarity": "TETH",
+    "character": "Ishmael",
+    "season": "2",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Tremor",
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 2,
+      "Sloth": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/fc8a17479706608dc4f62d970123c6f4/41624/ego_40_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_40"
+  },
+  {
+    "id": "41",
+    "name": "[Capote] Meursault",
+    "slug": "capote-meursault",
+    "rarity": "HE",
+    "character": "Meursault",
+    "season": "2",
+    "sanityCost": "20/25",
+    "affinity": "Wrath",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Burn",
+      "Tremor"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 1,
+      "Sloth": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/8b82832508b3b28a3e225a872f21e32f/41624/ego_41_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_41"
+  },
+  {
+    "id": "42",
+    "name": "[Red Eyes] Ryoshu",
+    "slug": "red-eyes-ryoshu",
+    "rarity": "TETH",
+    "character": "Ryoshu",
+    "season": null,
+    "sanityCost": "20",
+    "affinity": "Lust",
+    "source": "Gacha",
+    "speciality": [
+      "Bind"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Gluttony": 2,
+      "Envy": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/f9700ea3e5003d9befc32e5350ff3b56/41624/ego_42_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_42"
+  },
+  {
+    "id": "43",
+    "name": "[Red Eyes (Open)] Ryoshu",
+    "slug": "red-eyes-open-ryoshu",
+    "rarity": "HE",
+    "character": "Ryoshu",
+    "season": null,
+    "sanityCost": "20",
+    "affinity": "Envy",
+    "source": "Gacha",
+    "speciality": [
+      "Bind"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 2,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/7bdae03d947b533973ebb6cba6f95234/41624/ego_43_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_43"
+  },
+  {
+    "id": "44",
+    "name": "[Sunshower] Yi Sang",
+    "slug": "sunshower-yi-sang",
+    "rarity": "WAW",
+    "character": "Yi Sang",
+    "season": "2",
+    "sanityCost": "35",
+    "affinity": "Sloth",
+    "source": "Battle Pass (free)",
+    "speciality": [],
+    "cost": {
+      "Sloth": 4,
+      "Gluttony": 2,
+      "Gloom": 2,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/834d9e66264f2a81b330a4dc02762800/41624/ego_44_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_44"
+  },
+  {
+    "id": "45",
+    "name": "[AEDD] Gregor",
+    "slug": "aedd-gregor",
+    "rarity": "HE",
+    "character": "Gregor",
+    "season": "2",
+    "sanityCost": "20",
+    "affinity": "Gloom",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Charge",
+      "Rupture"
+    ],
+    "cost": {
+      "Gloom": 3,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/5915eadf3ba5674c01ac627bd071c4c9/41624/ego_45_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_45"
+  },
+  {
+    "id": "46",
+    "name": "[Soda] Ryoshu",
+    "slug": "soda",
+    "rarity": "ZAYIN",
+    "character": "Ryoshu",
+    "season": "2",
+    "sanityCost": "15",
+    "affinity": "Gloom",
+    "source": "Event",
+    "speciality": [
+      "Haste",
+      "Sinking"
+    ],
+    "cost": {
+      "Gluttony": 2,
+      "Pride": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/8c4d62c7d69fa623a3f18eff7488b109/41624/ego_46_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_46"
+  },
+  {
+    "id": "47",
+    "name": "[Soda] Hong Lu",
+    "slug": "soda-hong-lu",
+    "rarity": "TETH",
+    "character": "Hong Lu",
+    "season": "2",
+    "sanityCost": "2",
+    "affinity": "Envy",
+    "source": "Event",
+    "speciality": [
+      "Bind",
+      "Tremor"
+    ],
+    "cost": {
+      "Gluttony": 3,
+      "Gloom": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/e184d6f64d528c45db627a997598e6fa/41624/ego_47_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_47"
+  },
+  {
+    "id": "48",
+    "name": "[Lantern] Sinclair",
+    "slug": "lantern-sinclair",
+    "rarity": "HE",
+    "character": "Sinclair",
+    "season": "0",
+    "sanityCost": "25",
+    "affinity": "Gluttony",
+    "source": "Base",
+    "speciality": [
+      "Rupture"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Gluttony": 4,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/28448373c3626bfcc41fc720518d713c/41624/ego_48_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_48"
+  },
+  {
+    "id": "49",
+    "name": "[Ya Śūnyatā Tad Rūpam] Heathcliff",
+    "slug": "ya-sunyata-tad-rupam-heathcliff",
+    "rarity": "HE",
+    "character": "Heathcliff",
+    "season": "0",
+    "sanityCost": "25",
+    "affinity": "Lust",
+    "source": "Gacha",
+    "speciality": [
+      "Fragile"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 2,
+      "Sloth": 2,
+      "Gloom": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/542eda997bd74d552a5b3fd6c090ed48/41624/ego_49_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_49"
+  },
+  {
+    "id": "50",
+    "name": "[Regret] Meursault",
+    "slug": "regret-meursault",
+    "rarity": "TETH",
+    "character": "Meursault",
+    "season": "Walpurgisnacht 1",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Event",
+    "speciality": [
+      "Tremor",
+      "Bind"
+    ],
+    "cost": {
+      "Wrath": 3,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/2c2105e735884b139749e40952420142/41624/ego_50_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_50"
+  },
+  {
+    "id": "51",
+    "name": "[9:2] Faust",
+    "slug": "9-2-faust",
+    "rarity": "TETH",
+    "character": "Faust",
+    "season": "3",
+    "sanityCost": "20",
+    "affinity": "Lust",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Burn",
+      "Bind"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Gluttony": 3,
+      "Pride": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/345d8f2ac4bd2311a1762b0f191e8663/41624/ego_51_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_51"
+  },
+  {
+    "id": "52",
+    "name": "[Effervescent Corrosion] Hong Lu",
+    "slug": "effervescent-corrosion-hong-lu",
+    "rarity": "HE",
+    "character": "Hong Lu",
+    "season": "3",
+    "sanityCost": "20/25",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Rupture",
+      "Bind"
+    ],
+    "cost": {
+      "Gluttony": 6,
+      "Gloom": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/14f88ab79fc95d3172e60e0c78bb9ec1/41624/ego_52_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_52"
+  },
+  {
+    "id": "53",
+    "name": "[Blind Obsession] Ryoshu",
+    "slug": "blind-obsession-ryoshu",
+    "rarity": "TETH",
+    "character": "Ryoshu",
+    "season": "3",
+    "sanityCost": "20/25",
+    "affinity": "Pride",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Poise",
+      "Charge"
+    ],
+    "cost": {
+      "Gloom": 2,
+      "Pride": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/f9a11012d90b9229b823c2a660c44691/41624/ego_53_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_53"
+  },
+  {
+    "id": "54",
+    "name": "[Blind Obsession] Ishmael",
+    "slug": "blind-obsession-ishmael",
+    "rarity": "WAW",
+    "character": "Ishmael",
+    "season": "3",
+    "sanityCost": "35",
+    "affinity": "Pride",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Poise",
+      "Charge"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Gloom": 3,
+      "Pride": 3,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/0ab2f6b2d76e6942d5754eda39cd4b56/41624/ego_54_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_54"
+  },
+  {
+    "id": "55",
+    "name": "[Effervescent Corrosion] Rodion",
+    "slug": "effervescent-corrosion-rodion",
+    "rarity": "TETH",
+    "character": "Rodion",
+    "season": "3",
+    "sanityCost": "20",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Tremor",
+      "Bind"
+    ],
+    "cost": {
+      "Sloth": 2,
+      "Gloom": 2,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/a397e723cf47abd06ccf55b0d84c06d5/41624/ego_55_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_55"
+  },
+  {
+    "id": "56",
+    "name": "[9:2] Sinclair",
+    "slug": "9-2-sinclair",
+    "rarity": "HE",
+    "character": "Sinclair",
+    "season": "3",
+    "sanityCost": "25/30",
+    "affinity": "Lust",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 5,
+      "Envy": 1
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/7525d100c3a5510b6829f5a6c2d519df/41624/ego_56_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_56"
+  },
+  {
+    "id": "57",
+    "name": "[Pursuance] Rodion",
+    "slug": "pursuance-rodion",
+    "rarity": "HE",
+    "character": "Rodion",
+    "season": "0",
+    "sanityCost": "25",
+    "affinity": "Sloth",
+    "source": "Gacha",
+    "speciality": [
+      "Tremor"
+    ],
+    "cost": {
+      "Sloth": 4,
+      "Pride": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/79090c4432476382935c5d2b9ec70abf/41624/ego_57_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_57"
+  },
+  {
+    "id": "58",
+    "name": "[Holiday] Outis",
+    "slug": "holiday-outis",
+    "rarity": "HE",
+    "character": "Outis",
+    "season": "3",
+    "sanityCost": "25",
+    "affinity": "Wrath",
+    "source": "Gacha",
+    "speciality": [
+      "Tremor"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Sloth": 1,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/1ffad58f4259519ad0cf7d919d69f32c/41624/ego_58_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_58"
+  },
+  {
+    "id": "59",
+    "name": "[Holiday] Heathcliff",
+    "slug": "holiday-heathcliff",
+    "rarity": "ZAYIN",
+    "character": "Heathcliff",
+    "season": "3",
+    "sanityCost": "20",
+    "affinity": "Gluttony",
+    "source": "Event",
+    "speciality": [
+      "Bleed",
+      "Burn",
+      "Tremor",
+      "Sinking",
+      "Rupture",
+      "Poise",
+      "Charge",
+      "Haste"
+    ],
+    "cost": {
+      "Gluttony": 3,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/6384311b4d5ae9dc16f4897a37d5754f/41624/ego_59_sm.jpg",
+    "url": "https://gll-fun.com/limbus/en/ego/id_59"
+  },
+  {
+    "id": "60",
+    "name": "[Wishing Cairn] Don Quixote",
+    "slug": "wishing-cairn-don-quixote",
+    "rarity": "TETH",
+    "character": "Don Quixote",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Sloth",
+    "source": "Gacha",
+    "speciality": [
+      "Bleed",
+      "Tremor",
+      "Paralyze"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Pride": 1,
+      "Sloth": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/525df99d94474da838aa6ea1c41aa60e/60b4d/ego_60_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_60"
+  },
+  {
+    "id": "61",
+    "name": "[Garden of Thorns] Gregor",
+    "slug": "garden-of-thorns-gregor",
+    "rarity": "WAW",
+    "character": "Gregor",
+    "season": "3",
+    "sanityCost": "30/35",
+    "affinity": "Lust",
+    "source": "Gacha",
+    "speciality": [
+      "Bind",
+      "Rupture"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 2,
+      "Sloth": 2,
+      "Gluttony": 2,
+      "Gloom": 2,
+      "Pride": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/b2ec60992f934d650d0c8442b5cb8ce0/60b4d/ego_61_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_61"
+  },
+  {
+    "id": "62",
+    "name": "[Bygone Days] Gregor",
+    "slug": "bygone-days-gregor",
+    "rarity": "TETH",
+    "character": "Gregor",
+    "season": "4",
+    "sanityCost": "20",
+    "affinity": "Gloom",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Sinking"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Gloom": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/a2f3a825a85efa270d13b0c5850af733/60b4d/ego_62_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_62"
+  },
+  {
+    "id": "63",
+    "name": "[Bygone Days] Yi Sang",
+    "slug": "bygone-days-yi-sang",
+    "rarity": "ZAYIN",
+    "character": "Yi Sang",
+    "season": "4",
+    "sanityCost": "15",
+    "affinity": "Gloom",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Sinking",
+      "Bind"
+    ],
+    "cost": {
+      "Sloth": 3,
+      "Gloom": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/74107f610cc164cc92c92c7cb7312226/60b4d/ego_63_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_63"
+  },
+  {
+    "id": "64",
+    "name": "[Electric Screaming] Don Quixote",
+    "slug": "electric-screaming-don-quixote",
+    "rarity": "TETH",
+    "character": "Don Quixote",
+    "season": "4",
+    "sanityCost": "20/25",
+    "affinity": "Envy",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Charge"
+    ],
+    "cost": {
+      "Pride": 2,
+      "Envy": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/ccd3858cb8d71a7456d096540e43d885/60b4d/ego_64_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_64"
+  },
+  {
+    "id": "65",
+    "name": "[Electric Screaming] Meursault",
+    "slug": "electric-screaming-meursault",
+    "rarity": "TETH",
+    "character": "Meursault",
+    "season": "4",
+    "sanityCost": "25",
+    "affinity": "Envy",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Charge",
+      "Rupture"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Envy": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/59afa3e658bfcdbcf1fc613b5b2b877a/60b4d/ego_65_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_65"
+  },
+  {
+    "id": "66",
+    "name": "[Binds] Outis",
+    "slug": "binds-outis",
+    "rarity": "WAW",
+    "character": "Outis",
+    "season": "4",
+    "sanityCost": "10/30",
+    "affinity": "Pride",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Tremor"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Lust": 1,
+      "Sloth": 4,
+      "Pride": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/f85ac2cf3576e15a915cb25bcc8cb3eb/60b4d/ego_66_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_66"
+  },
+  {
+    "id": "67",
+    "name": "[Binds] Heathcliff",
+    "slug": "binds-heathcliff",
+    "rarity": "WAW",
+    "character": "Heathcliff",
+    "season": "4",
+    "sanityCost": "10/35",
+    "affinity": "Gloom",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Bind",
+      "Sinking",
+      "Tremor"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Gloom": 4,
+      "Pride": 2,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/57b55320bb6ed630da452568fb202c11/60b4d/ego_67_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_67"
+  },
+  {
+    "id": "68",
+    "name": "[Wingbeat] Ishmael",
+    "slug": "wingbeat-ishmael",
+    "rarity": "HE",
+    "character": "Ishmael",
+    "season": "Walpurgisnach 3",
+    "sanityCost": "25",
+    "affinity": "Gluttony",
+    "source": "Event",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Gluttony": 3,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/a3306935968748b1b010d77de6c8b2c8/60b4d/ego_68_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_68"
+  },
+  {
+    "id": "69",
+    "name": "[Sanguine Desire] Rodion",
+    "slug": "sanguine-desire-rodion",
+    "rarity": "WAW",
+    "character": "Rodion",
+    "season": "Walpurgisnacht 3",
+    "sanityCost": "15/30",
+    "affinity": "Lust",
+    "source": "Gacha",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Lust": 3,
+      "Pride": 3,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/0312d8ebb9a0f7db27549810b9d6e6b9/60b4d/ego_69_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_69"
+  },
+  {
+    "id": "70",
+    "name": "[Cavernous Wailing] Hong Lu",
+    "slug": "cavernous-wailing-hong-lu",
+    "rarity": "TETH",
+    "character": "Hong Lu",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Sloth",
+    "source": "Gacha",
+    "speciality": [
+      "Tremor"
+    ],
+    "cost": {
+      "Sloth": 3,
+      "Gloom": 3,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/fc27fb619a2b0483ccef7af409181e66/60b4d/ego_70_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_70"
+  },
+  {
+    "id": "71",
+    "name": "[Cavernous Wailing] Sinclair",
+    "slug": "cavernous-wailing-sinclair",
+    "rarity": "ZAYIN",
+    "character": "Sinclair",
+    "season": "0",
+    "sanityCost": "15",
+    "affinity": "Gloom",
+    "source": "Gacha",
+    "speciality": [
+      "Barrier",
+      "Aggro",
+      "Sinking"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Sloth": 2,
+      "Gloom": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/1ae300891be25afe1ab48aa514554d82/60b4d/ego_71_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_71"
+  },
+  {
+    "id": "72",
+    "name": "[Everlasting] Faust",
+    "slug": "everlasting-faust",
+    "rarity": "WAW",
+    "character": "Faust",
+    "season": "4",
+    "sanityCost": "10/40",
+    "affinity": "Sloth",
+    "source": "Event",
+    "speciality": [
+      "Tremor",
+      "Haste"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Sloth": 4,
+      "Gloom": 2,
+      "Pride": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/ebff6df772c96d4fe021025a16cab9b4/60b4d/ego_72_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_72"
+  },
+  {
+    "id": "73",
+    "name": "[Contempt, Awe] Ryoshu",
+    "slug": "contempt-awe-ryoshu",
+    "rarity": "WAW",
+    "character": "Ryoshu",
+    "season": "4",
+    "sanityCost": "20 / 40",
+    "affinity": "Lust",
+    "source": "Gacha",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Wrath": 3,
+      "Lust": 4,
+      "Pride": 4,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/bf2acb947f7ff04c2f11f544342c50d8/60b4d/ego_73_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_73"
+  },
+  {
+    "id": "74",
+    "name": "[Fell Bullet] Heathcliff",
+    "slug": "fell-bullet-heathcliff",
+    "rarity": "TETH",
+    "character": "Heathcliff",
+    "season": "0",
+    "sanityCost": "20/25",
+    "affinity": "Pride",
+    "source": "Gacha",
+    "speciality": [
+      "Poise",
+      "Bleed",
+      "Sinking"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Pride": 3,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_74"
+  },
+  {
+    "id": "75",
+    "name": "[Dimension Shredder] Outis",
+    "slug": "dimension-shredder-outis",
+    "rarity": "HE",
+    "character": "Outis",
+    "season": "4",
+    "sanityCost": "25 / 30",
+    "affinity": "Envy",
+    "source": "Gacha",
+    "speciality": [
+      "Haste",
+      "Charge"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Gloom": 3,
+      "Envy": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/f252031485ba797a120e3b10148db3ee/60b4d/ego_75_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_75"
+  },
+  {
+    "id": "76",
+    "name": "[Solemn Lament] Gregor",
+    "slug": "solemn-lament-gregor",
+    "rarity": "HE",
+    "character": "Gregor",
+    "season": "Walpurgis Night 4",
+    "sanityCost": "25 / 30",
+    "affinity": "Gloom",
+    "source": "Event",
+    "speciality": [
+      "Sinking"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Sloth": 2,
+      "Gloom": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/fed5a50f1331007855100af6112d5c09/60b4d/ego_76_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_76"
+  },
+  {
+    "id": "77",
+    "name": "[Bygone Days] Ishmael",
+    "slug": "bygone-days",
+    "rarity": "TETH",
+    "character": "Ishmael",
+    "season": "0",
+    "sanityCost": "20/30",
+    "affinity": "Gloom",
+    "source": "Gacha",
+    "speciality": [
+      "Sinking"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Sloth": 1,
+      "Gloom": 3
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_77"
+  },
+  {
+    "id": "78",
+    "name": "[Lasso] Hong Lu",
+    "slug": "lasso-hong-lu",
+    "rarity": "TETH",
+    "character": "Hong Lu",
+    "season": "5",
+    "sanityCost": "20",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Rupture",
+      "Haste"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Gluttony": 4,
+      "Pride": 1
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_78"
+  },
+  {
+    "id": "79",
+    "name": "[Lasso] Faust",
+    "slug": "lasso-faust",
+    "rarity": "TETH",
+    "character": "Faust",
+    "season": "5",
+    "sanityCost": "20/20",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Rupture",
+      "Haste"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Gluttony": 3,
+      "Envy": 2
+    },
+    "isNew": null,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_79"
+  },
+  {
+    "id": "80",
+    "name": "[Hex Nail] Rodion",
+    "slug": "hex-nail-rodion",
+    "rarity": "HE",
+    "character": "Rodion",
+    "season": "5",
+    "sanityCost": "25/30",
+    "affinity": "Envy",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Bleed",
+      "Nails"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Pride": 1,
+      "Envy": 5
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_80"
+  },
+  {
+    "id": "81",
+    "name": "[Hex Nail] Sinclair",
+    "slug": "hex-nail-sinclair",
+    "rarity": "TETH",
+    "character": "Sinclair",
+    "season": "5",
+    "sanityCost": "20/25",
+    "affinity": "Envy",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Bleed",
+      "Bind",
+      "Nails"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Pride": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_81"
+  },
+  {
+    "id": "82",
+    "name": "[Yearning-Mircalla] Meursault",
+    "slug": "yearning-mircalla-meursault",
+    "rarity": "WAW",
+    "character": "Meursault",
+    "season": "5",
+    "sanityCost": "10/30",
+    "affinity": "Lust",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Lust": 4,
+      "Pride": 3,
+      "Envy": 4
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_82"
+  },
+  {
+    "id": "83",
+    "name": "[Yearning-Mircalla] Don Quixote",
+    "slug": "yearning-mircalla-don-quixote",
+    "rarity": "WAW",
+    "character": "Don Quixote",
+    "season": "5",
+    "sanityCost": "15/40",
+    "affinity": "Lust",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Bleed"
+    ],
+    "cost": {
+      "Lust": 5,
+      "Gluttony": 3,
+      "Pride": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_83"
+  },
+  {
+    "id": "84",
+    "name": "[Fell Bullet] Yi Sang",
+    "slug": "fell-bullet-yi-sang",
+    "rarity": "HE",
+    "character": "Yi Sang",
+    "season": "5",
+    "sanityCost": "25/30",
+    "affinity": "Pride",
+    "source": "Gacha",
+    "speciality": [
+      "Poise",
+      "Bleed"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Pride": 6
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/7f3a618aef61e5fd1177493ef13fdafc/60b4d/ego_84_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_84"
+  },
+  {
+    "id": "85",
+    "name": "[Asymmetrical Inertia] Heathcliff",
+    "slug": "asymmetrical-inertia-heathcliff",
+    "rarity": "HE",
+    "character": "Heathcliff",
+    "season": "0",
+    "sanityCost": "20",
+    "affinity": "Sloth",
+    "source": "Gacha",
+    "speciality": [
+      "Tremor",
+      "Fragile"
+    ],
+    "cost": {
+      "Sloth": 2,
+      "Gloom": 1,
+      "Pride": 2,
+      "Envy": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_85"
+  },
+  {
+    "id": "86",
+    "name": "[Christmas Nightmare] Ishmael",
+    "slug": "christmas-nightmare-ishmael",
+    "rarity": "HE",
+    "character": "Ishmael",
+    "season": "5",
+    "sanityCost": "20",
+    "affinity": "Sloth",
+    "source": "Event",
+    "speciality": [
+      "Tremor",
+      "Sinking"
+    ],
+    "cost": {
+      "Sloth": 4,
+      "Gluttony": 1,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_86"
+  },
+  {
+    "id": "87",
+    "name": "[Christmas Nightmare] Gregor",
+    "slug": "christmas-nightmare-gregor",
+    "rarity": "HE",
+    "character": "Gregor",
+    "season": "5",
+    "sanityCost": "20",
+    "affinity": "Sloth",
+    "source": "Event",
+    "speciality": [
+      "Sinking",
+      "Tremor"
+    ],
+    "cost": {
+      "Sloth": 2,
+      "Gluttony": 2,
+      "Gloom": 2,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_87"
+  },
+  {
+    "id": "88",
+    "name": "[Magic Bullet] Outis",
+    "slug": "magic-bullet-outis",
+    "rarity": "HE",
+    "character": "Outis",
+    "season": "Walpurgisnacht - V",
+    "sanityCost": "25 / 30",
+    "affinity": "Pride",
+    "source": "Gacha",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 2,
+      "Pride": 4
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/7720ef5b47647dc8199789f18594b0a3/60b4d/ego_88_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_88"
+  },
+  {
+    "id": "89",
+    "name": "[Thoracalgia] Ryōshū",
+    "slug": "thoracalgia-ry-shu",
+    "rarity": "HE",
+    "character": "Ryoshu",
+    "season": "5",
+    "sanityCost": "25",
+    "affinity": "Pride",
+    "source": "Event",
+    "speciality": [
+      "Poise"
+    ],
+    "cost": {
+      "Wrath": 1,
+      "Lust": 1,
+      "Pride": 5
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_89"
+  },
+  {
+    "id": "90",
+    "name": "[Thoracalgia] Faust",
+    "slug": "thoracalgia-faust",
+    "rarity": "HE",
+    "character": "Faust",
+    "season": "6",
+    "sanityCost": "20",
+    "affinity": "Pride",
+    "source": "Event",
+    "speciality": [
+      "Poise"
+    ],
+    "cost": {
+      "Sloth": 1,
+      "Gloom": 1,
+      "Pride": 5
+    },
+    "isNew": false,
+    "image": "https://www.prydwen.gg/static/832848a1d74167aeb8f6083bb7dccb25/60b4d/ego_90_sm.webp",
+    "url": "https://gll-fun.com/limbus/en/ego/id_90"
+  },
+  {
+    "id": "91",
+    "name": "[Indicant's Trial] Rodion",
+    "slug": "indicants-trial-rodion",
+    "rarity": "WAW",
+    "character": "Rodion",
+    "season": "5",
+    "sanityCost": "15 / 40",
+    "affinity": "Wrath",
+    "source": "Gacha",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 7,
+      "Pride": 3
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_91"
+  },
+  {
+    "id": "92",
+    "name": "[Red Sheet] Don Quixote",
+    "slug": "red-sheet-don-quixote",
+    "rarity": "HE",
+    "character": "Don Quixote",
+    "season": "6",
+    "sanityCost": "25 / 30",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Rupture"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Gluttony": 5,
+      "Gloom": 2,
+      "Pride": 1
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_92"
+  },
+  {
+    "id": "93",
+    "name": "[Hundred-Footed Death Maggot] Ishmael",
+    "slug": "hundred-footed-death-maggot-ishmael",
+    "rarity": "ZAYIN",
+    "character": "Ishmael",
+    "season": "6",
+    "sanityCost": "20",
+    "affinity": "Gloom",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Sinking",
+      "Rupture"
+    ],
+    "cost": {
+      "Sloth": 2,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_93"
+  },
+  {
+    "id": "94",
+    "name": "[Tears of the Tarnished Blood] Sinclair",
+    "slug": "tears-of-the-tarnished-blood-sinclair",
+    "rarity": "WAW",
+    "character": "Sinclair",
+    "season": "6",
+    "sanityCost": "10 / 20",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Rupture"
+    ],
+    "cost": {
+      "Lust": 2,
+      "Gluttony": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_94"
+  },
+  {
+    "id": "95",
+    "name": "[Tears of the Tarnished Blood] Hong Lu",
+    "slug": "tears-of-the-tarnished-blood-hong-lu",
+    "rarity": "WAW",
+    "character": "Hong Lu",
+    "season": "6",
+    "sanityCost": "10 / 25",
+    "affinity": "Gluttony",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Rupture"
+    ],
+    "cost": {
+      "Gluttony": 5,
+      "Gloom": 1,
+      "Envy": 1
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_95"
+  },
+  {
+    "id": "96",
+    "name": "[In the Name of Love and Hate] Don Quixote",
+    "slug": "in-the-name-of-love-and-hate-don-quixote",
+    "rarity": "WAW",
+    "character": "Don Quixote",
+    "season": "6",
+    "sanityCost": "30 / 30",
+    "affinity": "Envy",
+    "source": "Gacha",
+    "speciality": [
+      "Charge",
+      "Rupture"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Gloom": 2,
+      "Pride": 2,
+      "Envy": 6
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_96"
+  },
+  {
+    "id": "97",
+    "name": "[Crushbound Past] Meursault",
+    "slug": "crushbound-past-meursault",
+    "rarity": "WAW",
+    "character": "Meursault",
+    "season": "6",
+    "sanityCost": "10/30",
+    "affinity": "Sloth",
+    "source": "Gacha",
+    "speciality": [
+      "Tremor"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 2,
+      "Sloth": 6,
+      "Envy": 1
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_97"
+  },
+  {
+    "id": "98",
+    "name": "[Unbrilliant Glory] Gregor",
+    "slug": "unbrilliant-glory-gregor",
+    "rarity": "WAW",
+    "character": "Gregor",
+    "season": null,
+    "sanityCost": "30 / 35",
+    "affinity": "Sloth",
+    "source": "Collab",
+    "speciality": [
+      "Burn",
+      "Tremor"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Sloth": 3,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_98"
+  },
+  {
+    "id": "99",
+    "name": "[Tidal Elegy] Ishmael",
+    "slug": "tidal-elegy-ishmael",
+    "rarity": "HE",
+    "character": "Ishmael",
+    "season": null,
+    "sanityCost": "20 / 25",
+    "affinity": "Gloom",
+    "source": "Collab",
+    "speciality": [
+      "Sinking",
+      "Tremor"
+    ],
+    "cost": {
+      "Gloom": 4,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_99"
+  },
+  {
+    "id": "100",
+    "name": "[To Remain Oneself] Hong Lu",
+    "slug": "to-remain-oneself-hong-lu",
+    "rarity": "HE",
+    "character": "Hong Lu",
+    "season": null,
+    "sanityCost": "20 / 25",
+    "affinity": "Pride",
+    "source": "Collab",
+    "speciality": [
+      "Poise",
+      "Sinking"
+    ],
+    "cost": {
+      "Sloth": 1,
+      "Gloom": 2,
+      "Pride": 4
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_100"
+  },
+  {
+    "id": "101",
+    "name": "[Command : Meltdown] Faust",
+    "slug": "command-meltdown-faust",
+    "rarity": "HE",
+    "character": "Faust",
+    "season": null,
+    "sanityCost": "20 / 25",
+    "affinity": "Gluttony",
+    "source": "Collab",
+    "speciality": [
+      "Burn",
+      "Rupture"
+    ],
+    "cost": {
+      "Sloth": 1,
+      "Gluttony": 5,
+      "Pride": 2
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_101"
+  },
+  {
+    "id": "102",
+    "name": "[I'll Go fer Scissors. How 'Bout You?] Outis",
+    "slug": "ill-go-fer-scissors-how-bout-you-outis",
+    "rarity": "ZAYIN",
+    "character": "Outis",
+    "season": "7",
+    "sanityCost": "15 / 20",
+    "affinity": "Envy",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Nails",
+      "Bleed"
+    ],
+    "cost": {
+      "Lust": 1,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_102"
+  },
+  {
+    "id": "103",
+    "name": "[Move-in Reg.] Heathcliff",
+    "slug": "move-in-reg-heathcliff",
+    "rarity": "TETH",
+    "character": "Heathcliff",
+    "season": "7",
+    "sanityCost": "20",
+    "affinity": "Envy",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Bind",
+      "Charge",
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Gluttony": 1,
+      "Envy": 3
+    },
+    "isNew": false,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_103"
+  },
+  {
+    "id": "104",
+    "name": "[Great Trichiliocosm (三千大世界)] Yi Sang",
+    "slug": "great-trichiliocosm-yi-sang",
+    "rarity": "WAW",
+    "character": "Yi Sang",
+    "season": "7",
+    "sanityCost": "30 / 35",
+    "affinity": "Wrath",
+    "source": "Battle Pass (free)",
+    "speciality": [
+      "Burn",
+      "Sinking",
+      "Poise"
+    ],
+    "cost": {
+      "Wrath": 4,
+      "Gloom": 4,
+      "Envy": 2
+    },
+    "isNew": true,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_104"
+  },
+  {
+    "id": "105",
+    "name": "[Great Trichiliocosm (三千大世界)] Ryoshu",
+    "slug": "great-trichiliocosm-ryoshu",
+    "rarity": "WAW",
+    "character": "Ryoshu",
+    "season": "7",
+    "sanityCost": "10 / 30",
+    "affinity": "Wrath",
+    "source": "Battle Pass (paid)",
+    "speciality": [
+      "Bind",
+      "Bleed",
+      "Burn",
+      "Poise"
+    ],
+    "cost": {
+      "Wrath": 4,
+      "Lust": 4,
+      "Pride": 4
+    },
+    "isNew": true,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_105"
+  },
+  {
+    "id": "106",
+    "name": "[Harmony] Sinclair",
+    "slug": "harmony-sinclair",
+    "rarity": "HE",
+    "character": "Sinclair",
+    "season": "Walpurgisnacht - VIII",
+    "sanityCost": "10 / 30",
+    "affinity": "Wrath",
+    "source": "Gacha",
+    "speciality": [
+      "Bleed",
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 2,
+      "Lust": 1,
+      "Sloth": 1,
+      "Pride": 1,
+      "Envy": 1
+    },
+    "isNew": true,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_106"
+  },
+  {
+    "id": "107",
+    "name": "[Ardor Blossom Star] Faust",
+    "slug": "ardor-blossom-star-faust",
+    "rarity": "HE",
+    "character": "Faust",
+    "season": "7",
+    "sanityCost": "20",
+    "affinity": "Wrath",
+    "source": "Gacha",
+    "speciality": [
+      "Burn"
+    ],
+    "cost": {
+      "Wrath": 3,
+      "Sloth": 2,
+      "Pride": 2
+    },
+    "isNew": true,
+    "image": null,
+    "url": "https://gll-fun.com/limbus/en/ego/id_107"
+  }
+]

@@ -19,7 +19,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_1_sm.jpg",
+    "image": "/assets/ego/images/ego_1_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_1"
   },
   {
@@ -41,7 +41,7 @@
       "Envy": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_2_sm.jpg",
+    "image": "/assets/ego/images/ego_2_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_2"
   },
   {
@@ -63,7 +63,7 @@
       "Sloth": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_3_sm.jpg",
+    "image": "/assets/ego/images/ego_3_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_3"
   },
   {
@@ -83,7 +83,7 @@
       "Envy": 6
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_4_sm.jpg",
+    "image": "/assets/ego/images/ego_4_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_4"
   },
   {
@@ -105,7 +105,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_5_sm.jpg",
+    "image": "/assets/ego/images/ego_5_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_5"
   },
   {
@@ -126,7 +126,7 @@
       "Gluttony": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_6_sm.jpg",
+    "image": "/assets/ego/images/ego_6_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_6"
   },
   {
@@ -148,7 +148,7 @@
       "Sloth": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_7_sm.jpg",
+    "image": "/assets/ego/images/ego_7_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_7"
   },
   {
@@ -167,7 +167,7 @@
       "Pride": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_8_sm.jpg",
+    "image": "/assets/ego/images/ego_8_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_8"
   },
   {
@@ -188,7 +188,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_9_sm.jpg",
+    "image": "/assets/ego/images/ego_9_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_9"
   },
   {
@@ -210,7 +210,7 @@
       "Lust": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_10_sm.jpg",
+    "image": "/assets/ego/images/ego_10_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_10"
   },
   {
@@ -232,7 +232,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_11_sm.jpg",
+    "image": "/assets/ego/images/ego_11_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_11"
   },
   {
@@ -253,7 +253,7 @@
       "Gloom": 5
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_12_sm.jpg",
+    "image": "/assets/ego/images/ego_12_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_12"
   },
   {
@@ -274,7 +274,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_13_sm.jpg",
+    "image": "/assets/ego/images/ego_13_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_13"
   },
   {
@@ -296,7 +296,7 @@
       "Gloom": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_14_sm.jpg",
+    "image": "/assets/ego/images/ego_14_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_14"
   },
   {
@@ -317,7 +317,7 @@
       "Pride": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_15_sm.jpg",
+    "image": "/assets/ego/images/ego_15_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_15"
   },
   {
@@ -338,7 +338,7 @@
       "Gluttony": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_16_sm.jpg",
+    "image": "/assets/ego/images/ego_16_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_16"
   },
   {
@@ -359,7 +359,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_17_sm.jpg",
+    "image": "/assets/ego/images/ego_17_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_17"
   },
   {
@@ -384,7 +384,7 @@
       "Gloom": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_18_sm.jpg",
+    "image": "/assets/ego/images/ego_18_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_18"
   },
   {
@@ -405,7 +405,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_19_sm.jpg",
+    "image": "/assets/ego/images/ego_19_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_19"
   },
   {
@@ -427,7 +427,7 @@
       "Gluttony": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_20_sm.jpg",
+    "image": "/assets/ego/images/ego_20_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_20"
   },
   {
@@ -447,7 +447,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_21_sm.jpg",
+    "image": "/assets/ego/images/ego_21_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_21"
   },
   {
@@ -470,7 +470,7 @@
       "Lust": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_22_sm.jpg",
+    "image": "/assets/ego/images/ego_22_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_22"
   },
   {
@@ -492,7 +492,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_23_sm.jpg",
+    "image": "/assets/ego/images/ego_23_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_23"
   },
   {
@@ -513,7 +513,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_24_sm.jpg",
+    "image": "/assets/ego/images/ego_24_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_24"
   },
   {
@@ -536,7 +536,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_25_sm.jpg",
+    "image": "/assets/ego/images/ego_25_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_25"
   },
   {
@@ -558,7 +558,7 @@
       "Lust": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_26_sm.jpg",
+    "image": "/assets/ego/images/ego_26_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_26"
   },
   {
@@ -580,7 +580,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_27_sm.jpg",
+    "image": "/assets/ego/images/ego_27_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_27"
   },
   {
@@ -602,7 +602,7 @@
       "Envy": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_28_sm.jpg",
+    "image": "/assets/ego/images/ego_28_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_28"
   },
   {
@@ -623,7 +623,7 @@
       "Lust": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_29_sm.jpg",
+    "image": "/assets/ego/images/ego_29_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_29"
   },
   {
@@ -646,7 +646,7 @@
       "Gluttony": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_30_sm.jpg",
+    "image": "/assets/ego/images/ego_30_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_30"
   },
   {
@@ -671,7 +671,7 @@
       "Pride": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_31_sm.jpg",
+    "image": "/assets/ego/images/ego_31_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_31"
   },
   {
@@ -695,7 +695,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_32_sm.jpg",
+    "image": "/assets/ego/images/ego_32_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_32"
   },
   {
@@ -719,7 +719,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_33_sm.jpg",
+    "image": "/assets/ego/images/ego_33_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_33"
   },
   {
@@ -739,7 +739,7 @@
       "Lust": 5
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_34_sm.jpg",
+    "image": "/assets/ego/images/ego_34_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_34"
   },
   {
@@ -762,7 +762,7 @@
       "Gluttony": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_35_sm.jpg",
+    "image": "/assets/ego/images/ego_35_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_35"
   },
   {
@@ -784,7 +784,7 @@
       "Gluttony": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_36_sm.jpg",
+    "image": "/assets/ego/images/ego_36_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_36"
   },
   {
@@ -807,7 +807,7 @@
       "Gluttony": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_37_sm.jpg",
+    "image": "/assets/ego/images/ego_37_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_37"
   },
   {
@@ -830,7 +830,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_38_sm.jpg",
+    "image": "/assets/ego/images/ego_38_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_38"
   },
   {
@@ -855,7 +855,7 @@
       "Gloom": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_39_sm.jpg",
+    "image": "/assets/ego/images/ego_39_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_39"
   },
   {
@@ -878,7 +878,7 @@
       "Sloth": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_40_sm.jpg",
+    "image": "/assets/ego/images/ego_40_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_40"
   },
   {
@@ -901,7 +901,7 @@
       "Sloth": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_41_sm.jpg",
+    "image": "/assets/ego/images/ego_41_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_41"
   },
   {
@@ -923,7 +923,7 @@
       "Envy": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_42_sm.jpg",
+    "image": "/assets/ego/images/ego_42_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_42"
   },
   {
@@ -945,7 +945,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_43_sm.jpg",
+    "image": "/assets/ego/images/ego_43_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_43"
   },
   {
@@ -966,7 +966,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_44_sm.jpg",
+    "image": "/assets/ego/images/ego_44_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_44"
   },
   {
@@ -988,7 +988,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_45_sm.jpg",
+    "image": "/assets/ego/images/ego_45_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_45"
   },
   {
@@ -1011,7 +1011,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_46_sm.jpg",
+    "image": "/assets/ego/images/ego_46_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_46"
   },
   {
@@ -1034,7 +1034,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_47_sm.jpg",
+    "image": "/assets/ego/images/ego_47_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_47"
   },
   {
@@ -1056,7 +1056,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_48_sm.jpg",
+    "image": "/assets/ego/images/ego_48_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_48"
   },
   {
@@ -1079,7 +1079,7 @@
       "Gloom": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_49_sm.jpg",
+    "image": "/assets/ego/images/ego_49_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_49"
   },
   {
@@ -1101,7 +1101,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_50_sm.jpg",
+    "image": "/assets/ego/images/ego_50_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_50"
   },
   {
@@ -1124,7 +1124,7 @@
       "Pride": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_51_sm.jpg",
+    "image": "/assets/ego/images/ego_51_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_51"
   },
   {
@@ -1146,7 +1146,7 @@
       "Gloom": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_52_sm.jpg",
+    "image": "/assets/ego/images/ego_52_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_52"
   },
   {
@@ -1169,7 +1169,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_53_sm.jpg",
+    "image": "/assets/ego/images/ego_53_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_53"
   },
   {
@@ -1193,7 +1193,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_54_sm.jpg",
+    "image": "/assets/ego/images/ego_54_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_54"
   },
   {
@@ -1216,7 +1216,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_55_sm.jpg",
+    "image": "/assets/ego/images/ego_55_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_55"
   },
   {
@@ -1238,7 +1238,7 @@
       "Envy": 1
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_56_sm.jpg",
+    "image": "/assets/ego/images/ego_56_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_56"
   },
   {
@@ -1259,7 +1259,7 @@
       "Pride": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_57_sm.jpg",
+    "image": "/assets/ego/images/ego_57_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_57"
   },
   {
@@ -1281,7 +1281,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_58_sm.jpg",
+    "image": "/assets/ego/images/ego_58_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_58"
   },
   {
@@ -1309,7 +1309,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_59_sm.jpg",
+    "image": "/assets/ego/images/ego_59_sm.jpg",
     "url": "https://gll-fun.com/limbus/en/ego/id_59"
   },
   {
@@ -1333,7 +1333,7 @@
       "Sloth": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_60_sm.webp",
+    "image": "/assets/ego/images/ego_60_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_60"
   },
   {
@@ -1360,7 +1360,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_61_sm.webp",
+    "image": "/assets/ego/images/ego_61_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_61"
   },
   {
@@ -1381,7 +1381,7 @@
       "Gloom": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_62_sm.webp",
+    "image": "/assets/ego/images/ego_62_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_62"
   },
   {
@@ -1403,7 +1403,7 @@
       "Gloom": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_63_sm.webp",
+    "image": "/assets/ego/images/ego_63_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_63"
   },
   {
@@ -1424,7 +1424,7 @@
       "Envy": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_64_sm.webp",
+    "image": "/assets/ego/images/ego_64_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_64"
   },
   {
@@ -1446,7 +1446,7 @@
       "Envy": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_65_sm.webp",
+    "image": "/assets/ego/images/ego_65_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_65"
   },
   {
@@ -1469,7 +1469,7 @@
       "Pride": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_66_sm.webp",
+    "image": "/assets/ego/images/ego_66_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_66"
   },
   {
@@ -1494,7 +1494,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_67_sm.webp",
+    "image": "/assets/ego/images/ego_67_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_67"
   },
   {
@@ -1516,7 +1516,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_68_sm.webp",
+    "image": "/assets/ego/images/ego_68_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_68"
   },
   {
@@ -1539,7 +1539,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_69_sm.webp",
+    "image": "/assets/ego/images/ego_69_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_69"
   },
   {
@@ -1561,7 +1561,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_70_sm.webp",
+    "image": "/assets/ego/images/ego_70_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_70"
   },
   {
@@ -1585,7 +1585,7 @@
       "Gloom": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_71_sm.webp",
+    "image": "/assets/ego/images/ego_71_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_71"
   },
   {
@@ -1609,7 +1609,7 @@
       "Pride": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_72_sm.webp",
+    "image": "/assets/ego/images/ego_72_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_72"
   },
   {
@@ -1632,7 +1632,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_73_sm.webp",
+    "image": "/assets/ego/images/ego_73_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_73"
   },
   {
@@ -1679,7 +1679,7 @@
       "Envy": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_75_sm.webp",
+    "image": "/assets/ego/images/ego_75_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_75"
   },
   {
@@ -1702,7 +1702,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_76_sm.webp",
+    "image": "/assets/ego/images/ego_76_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_76"
   },
   {
@@ -1884,7 +1884,7 @@
       "Pride": 6
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_84_sm.webp",
+    "image": "/assets/ego/images/ego_84_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_84"
   },
   {
@@ -1977,7 +1977,7 @@
       "Pride": 4
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_88_sm.webp",
+    "image": "/assets/ego/images/ego_88_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_88"
   },
   {
@@ -2021,7 +2021,7 @@
       "Pride": 5
     },
     "isNew": false,
-    "image": "/assets/ego_output/images/ego_90_sm.webp",
+    "image": "/assets/ego/images/ego_90_sm.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_90"
   },
   {
