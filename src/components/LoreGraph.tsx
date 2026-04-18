@@ -18,6 +18,7 @@ interface GraphNode extends d3.SimulationNodeDatum {
   nodeType: 'sinner' | 'entity';
   entityType?: 'wing' | 'abnormality' | 'character';
   icon?: string;
+  connectionCount?: number;
 }
 
 interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
@@ -138,7 +139,7 @@ export function LoreGraph({
     themes: new Set(THEMES as unknown as Theme[]),
     literarySources: new Set(literarySources.map(s => s.id)),
   });
-  const [tooltip, setTooltip] = useState<{ visible: boolean; type: 'node' | 'edge'; name: string; game?: string; themes?: string[]; x: number; y: number }>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
+  const [tooltip, setTooltip] = useState<{ visible: boolean; type: 'node' | 'edge'; name: string; game?: string; themes?: string[]; literarySources?: string[]; x: number; y: number }>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
 
   // True when user has narrowed at least one filter category from "all"
   const allGamesSelected = filters.games.size === (['limbus', 'ruina', 'lobotomy'] as Game[]).length;
@@ -288,34 +289,7 @@ export function LoreGraph({
       .filter((e) => active.has(e.type))
       .map((e) => ({ source: e.source, target: e.target, type: e.type }));
 
-    const nodes: GraphNode[] = sinners.map((s) => ({
-      id: s.id,
-      name: s.name,
-      canonicalGame: s.canonicalGame,
-      literarySourceIds: s.literarySources.map((ls) => ls.id),
-      themes: [...s.themes],
-      crossGameContinuity: s.crossGameContinuity,
-      nodeType: 'sinner' as const,
-      // Lock Dante at center
-      x: s.id === 'dante' ? width / 2 : undefined,
-      y: s.id === 'dante' ? height / 2 : undefined,
-      fx: s.id === 'dante' ? width / 2 : undefined,
-      fy: s.id === 'dante' ? height / 2 : undefined,
-    }));
-
-    // ── Entity nodes + entity-to-sinner edges ──────────────────────────────────
-    const entityNodes: GraphNode[] = crossGameEntities.entities.map((e) => ({
-      id: e.id,
-      name: e.name,
-      canonicalGame: e.canonicalGame,
-      literarySourceIds: [],
-      themes: [...e.themes],
-      crossGameContinuity: false,
-      nodeType: 'entity' as const,
-      entityType: e.type as 'character' | 'wing' | 'abnormality',
-      icon: e.icon,
-    }));
-
+    // ── Entity-to-sinner edges ────────────────────────────────────────────────
     const entityLinks: GraphLink[] = crossGameEntities.entities.flatMap((e) =>
       (e.relatedSinnerIds ?? []).map((sid) => ({
         source: e.id,
@@ -326,6 +300,48 @@ export function LoreGraph({
         label: e.name,
       })),
     );
+
+    // ── Count connections per node ──────────────────────────────────────────
+    const connectionCount: Record<string, number> = {};
+    for (const link of edges) {
+      connectionCount[link.source] = (connectionCount[link.source] ?? 0) + 1;
+      connectionCount[link.target] = (connectionCount[link.target] ?? 0) + 1;
+    }
+    for (const link of entityLinks) {
+      connectionCount[link.source as string] = (connectionCount[link.source as string] ?? 0) + 1;
+      connectionCount[link.target as string] = (connectionCount[link.target as string] ?? 0) + 1;
+    }
+
+    // ── Build sinner nodes ──────────────────────────────────────────────────
+    const nodes: GraphNode[] = sinners.map((s) => ({
+      id: s.id,
+      name: s.name,
+      canonicalGame: s.canonicalGame,
+      literarySourceIds: s.literarySources.map((ls) => ls.id),
+      themes: [...s.themes],
+      crossGameContinuity: s.crossGameContinuity,
+      nodeType: 'sinner' as const,
+      connectionCount: connectionCount[s.id] ?? 0,
+      // Lock Dante at center
+      x: s.id === 'dante' ? width / 2 : undefined,
+      y: s.id === 'dante' ? height / 2 : undefined,
+      fx: s.id === 'dante' ? width / 2 : undefined,
+      fy: s.id === 'dante' ? height / 2 : undefined,
+    }));
+
+    // ── Entity nodes ──────────────────────────────────────────────────────────
+    const entityNodes: GraphNode[] = crossGameEntities.entities.map((e) => ({
+      id: e.id,
+      name: e.name,
+      canonicalGame: e.canonicalGame,
+      literarySourceIds: [],
+      themes: [...e.themes],
+      crossGameContinuity: false,
+      nodeType: 'entity' as const,
+      entityType: e.type as 'character' | 'wing' | 'abnormality',
+      icon: e.icon,
+      connectionCount: connectionCount[e.id] ?? 0,
+    }));
 
     const allNodes = [...nodes, ...entityNodes];
     const allLinks = [...links, ...entityLinks];
@@ -447,6 +463,26 @@ export function LoreGraph({
           .attr('font-family', 'Space Grotesk, monospace')
           .attr('pointer-events', 'none')
           .attr('opacity', 1);
+        // Connection count badge
+        const count = d.connectionCount ?? 0;
+        if (count > 0) {
+          const r = d.crossGameContinuity ? 26 : 22;
+          g.append('text')
+            .attr('class', 'conn-badge')
+            .text(count > 9 ? '9+' : String(count))
+            .attr('text-anchor', 'middle')
+            .attr('dy', '0.35em')
+            .attr('x', r * 0.65)
+            .attr('y', -r * 0.65)
+            .attr('font-size', '8px')
+            .attr('font-weight', '700')
+            .attr('font-family', 'Space Grotesk, monospace')
+            .attr('fill', 'var(--gold)')
+            .attr('stroke', 'var(--bg-surface)')
+            .attr('stroke-width', '2px')
+            .attr('paint-order', 'stroke')
+            .attr('pointer-events', 'none');
+        }
         // Transparent hit area
         g.append('circle').attr('r', 34).attr('fill', 'transparent');
       });
@@ -550,12 +586,16 @@ export function LoreGraph({
       .on('mouseenter', function (event, hovered) {
         const rect = containerRef.current!.getBoundingClientRect();
         if (hovered.nodeType === 'sinner') {
+          // Find the actual sinner to get literary source names
+          const sinner = sinners.find(s => s.id === hovered.id);
+          const topSources = sinner?.literarySources.slice(0, 2).map(ls => ls.id) ?? [];
           setTooltip({
             visible: true,
             type: 'node',
             name: hovered.name,
             game: hovered.canonicalGame,
             themes: hovered.themes.slice(0, 2),
+            literarySources: topSources,
             x: event.clientX - rect.left,
             y: event.clientY - rect.top,
           });
@@ -692,6 +732,17 @@ export function LoreGraph({
                     style={{ backgroundColor: NODE_GAME_COLORS[tooltip.game] ?? '#888' }}
                   />
                   <span className="text-[10px] font-medium text-muted-foreground capitalize">{tooltip.game}</span>
+                </div>
+              )}
+              {tooltip.literarySources && tooltip.literarySources.length > 0 && (
+                <div className="space-y-0.5">
+                  <p className="text-[9px] font-semibold uppercase tracking-wider text-muted-foreground/60">Sources</p>
+                  <p className="text-[10px] text-muted-foreground/80 leading-tight">
+                    {tooltip.literarySources.map(id => {
+                      const src = literarySources.find(s => s.id === id);
+                      return src?.title ?? id;
+                    }).join(' · ')}
+                  </p>
                 </div>
               )}
               {tooltip.themes && tooltip.themes.length > 0 && (
