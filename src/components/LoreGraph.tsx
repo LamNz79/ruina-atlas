@@ -15,10 +15,12 @@ interface GraphNode extends d3.SimulationNodeDatum {
   literarySourceIds: string[];
   themes: string[];
   crossGameContinuity: boolean;
-  nodeType: 'sinner' | 'entity';
+  nodeType: 'sinner' | 'entity' | 'zone-anchor';
   entityType?: 'wing' | 'abnormality' | 'character';
   icon?: string;
   connectionCount?: number;
+  zone?: 'limbus' | 'ruina' | 'lobotomy';
+  isAnchor?: boolean;
 }
 
 interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
@@ -347,7 +349,17 @@ export function LoreGraph({
       connectionCount: connectionCount[e.id] ?? 0,
     }));
 
-    const allNodes = [...nodes, ...entityNodes];
+    // ── Zone anchor nodes (invisible gravity wells) ──────────────────────────
+    const cx = width / 2;
+    const cy = height / 2;
+    const spread = Math.min(width, height) * 0.28;
+    const zoneAnchors: GraphNode[] = [
+      { id: 'zone-limbus',   name: '', canonicalGame: 'limbus',   literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'limbus',   isAnchor: true, x: cx, y: cy },
+      { id: 'zone-ruina',    name: '', canonicalGame: 'ruina',    literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'ruina',    isAnchor: true, x: cx - spread, y: cy },
+      { id: 'zone-lobotomy', name: '', canonicalGame: 'lobotomy', literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'lobotomy', isAnchor: true, x: cx + spread, y: cy },
+    ];
+
+    const allNodes = [...nodes, ...entityNodes, ...zoneAnchors];
     const allLinks = [...links, ...entityLinks];
 
     const simulation = d3
@@ -362,7 +374,19 @@ export function LoreGraph({
       )
       .force('charge', d3.forceManyBody().strength(DEFAULTS.repulsion))
       .force('center', d3.forceCenter(width / 2, height / 2).strength(DEFAULTS.centering))
-      .force('collision', d3.forceCollide().radius(55));
+      .force('collision', d3.forceCollide().radius(55))
+      // Zone gravity — pull sinners toward their game zone
+      .force('zone', d3.forceRadial<GraphNode>(
+        (d) => {
+          if (d.isAnchor) return 0;
+          return spread * 0.01;
+        },
+        (d) => {
+          const ax: Record<string, number> = { limbus: cx, ruina: cx - spread, lobotomy: cx + spread };
+          return ax[d.canonicalGame] ?? cx;
+        },
+        (_d) => cy,
+      ).strength(0.06));
 
     simulationRef.current = simulation;
 
@@ -431,6 +455,9 @@ export function LoreGraph({
     });
 
     nodeElsRef.current = nodeEls;
+
+    // ── Hide zone anchor nodes (they're invisible gravity wells) ─────────────
+    nodeEls.filter((d) => d.nodeType === 'zone-anchor').remove();
 
     // ── Sinner nodes: circle ─────────────────────────────────────────────────
     nodeEls
