@@ -42,6 +42,7 @@ const EDGE_COLORS: Record<EdgeType, string> = {
   'thematic-link': 'var(--edge-theme)',
   'cross-game-continuity': 'var(--edge-crossgame)',
   'shared-literary-group': 'var(--edge-group)',
+  'wing-affiliation': '#a08a70', // Warm Bronze — Wings (identity availability via Mirror Dungeon)
 };
 
 const EDGE_LABELS: Record<EdgeType, string> = {
@@ -49,6 +50,7 @@ const EDGE_LABELS: Record<EdgeType, string> = {
   'thematic-link': 'Shared Theme',
   'cross-game-continuity': 'Cross-Game',
   'shared-literary-group': 'Shared Group',
+  'wing-affiliation': 'Wing Affiliation',
 };
 
 const ALL_EDGE_TYPES: EdgeType[] = [
@@ -313,7 +315,9 @@ export function LoreGraph({
       (e.relatedSinnerIds ?? []).map((sid) => ({
         source: e.id,
         target: sid,
-        type: 'cross-game-continuity' as EdgeType,
+        type: (e.type === 'wing')
+          ? ('wing-affiliation' as EdgeType)
+          : ('cross-game-continuity' as EdgeType),
         label: e.name,
       })),
     );
@@ -344,11 +348,11 @@ export function LoreGraph({
       .join('line')
       .attr('stroke', (d) => EDGE_COLORS[d.type] ?? '#f9e2af')
       .attr('stroke-opacity', (d) =>
-        d.type === 'cross-game-continuity' ? 0.2 : 0.4,
+        (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4,
       )
       .attr('stroke-width', 1.2)
       .attr('stroke-dasharray', (d) =>
-        d.type === 'cross-game-continuity' ? '6,4' : 'none',
+        (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? '6,4' : 'none',
       )
       .style('cursor', (d) => d.label ? 'pointer' : 'default')
       .on('mouseenter', function (event, d) {
@@ -586,7 +590,7 @@ export function LoreGraph({
         linkEls
           .transition()
           .duration(200)
-          .attr('stroke-opacity', (d) => d.type === 'cross-game-continuity' ? 0.2 : 0.4)
+          .attr('stroke-opacity', (d) => (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4)
           .attr('stroke-width', 1.2)
           .attr('filter', null);
 

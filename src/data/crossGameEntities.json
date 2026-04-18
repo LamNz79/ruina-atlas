@@ -202,7 +202,11 @@
         "decay"
       ],
       "relatedSinnerIds": [
-        "ryoshu"
+        "faust",
+        "rodion",
+        "don-quixote",
+        "heathcliff",
+        "ishmael"
       ],
       "icon": "/node/wings/ShiAsso.png"
     },

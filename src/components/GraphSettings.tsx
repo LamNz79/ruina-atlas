@@ -28,6 +28,7 @@ const EDGE_COLORS: Record<EdgeType, string> = {
   'thematic-link': 'var(--edge-theme)',
   'cross-game-continuity': 'var(--edge-crossgame)',
   'shared-literary-group': 'var(--edge-group)',
+  'wing-affiliation': '#a08a70',
 };
 
 const EDGE_LABELS: Record<EdgeType, string> = {
@@ -35,6 +36,7 @@ const EDGE_LABELS: Record<EdgeType, string> = {
   'thematic-link': 'Shared theme',
   'cross-game-continuity': 'Cross-game',
   'shared-literary-group': 'Shared group',
+  'wing-affiliation': 'Wing affiliation',
 };
 
 const EDGE_TYPES: EdgeType[] = [
@@ -42,6 +44,7 @@ const EDGE_TYPES: EdgeType[] = [
   'thematic-link',
   'cross-game-continuity',
   'shared-literary-group',
+  'wing-affiliation',
 ];
 
 export function GraphSettings({

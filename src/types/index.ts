@@ -272,7 +272,7 @@ export interface CrossGameEntity {
  *
  * @see src/utils/deriveEdges.ts
  */
-export type EdgeType = 'literary-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group';
+export type EdgeType = 'literary-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group' | 'wing-affiliation';
 
 export interface GraphEdge {
   source: string; // Sinner.id
