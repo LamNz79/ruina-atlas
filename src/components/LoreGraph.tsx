@@ -301,15 +301,19 @@ export function LoreGraph({
       })),
     );
 
-    // ── Count connections per node ──────────────────────────────────────────
+    // ── Count literary-origin connections per node ───────────────────────────
     const connectionCount: Record<string, number> = {};
     for (const link of edges) {
-      connectionCount[link.source] = (connectionCount[link.source] ?? 0) + 1;
-      connectionCount[link.target] = (connectionCount[link.target] ?? 0) + 1;
+      if (link.type === 'literary-origin') {
+        connectionCount[link.source] = (connectionCount[link.source] ?? 0) + 1;
+        connectionCount[link.target] = (connectionCount[link.target] ?? 0) + 1;
+      }
     }
     for (const link of entityLinks) {
-      connectionCount[link.source as string] = (connectionCount[link.source as string] ?? 0) + 1;
-      connectionCount[link.target as string] = (connectionCount[link.target as string] ?? 0) + 1;
+      if (link.type === 'literary-origin') {
+        connectionCount[link.source as string] = (connectionCount[link.source as string] ?? 0) + 1;
+        connectionCount[link.target as string] = (connectionCount[link.target as string] ?? 0) + 1;
+      }
     }
 
     // ── Build sinner nodes ──────────────────────────────────────────────────
