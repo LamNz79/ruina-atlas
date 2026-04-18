@@ -274,6 +274,10 @@ export function LoreGraph({
       .scaleExtent([0.3, 3])
       .on('zoom', (event) => {
         zoomGroup.attr('transform', event.transform);
+        // Reveal entity labels when zoomed in enough
+        const scale = event.transform.k;
+        const labelOpacity = scale >= 0.6 ? 1 : 0;
+        zoomGroup.selectAll('.node-label').attr('opacity', labelOpacity);
       });
     zoomRef.current = zoom;
     svg.call(zoom);
@@ -431,8 +435,9 @@ export function LoreGraph({
             .attr('stroke-width', 1)
             .attr('stroke-opacity', 0.4);
         }
-        // Label
+        // Label — always visible
         g.append('text')
+          .attr('class', 'sinner-label')
           .text(d.name)
           .attr('text-anchor', 'middle')
           .attr('dy', d.crossGameContinuity ? 42 : 38)
@@ -440,20 +445,22 @@ export function LoreGraph({
           .attr('font-weight', '500')
           .attr('fill', 'var(--text-bright)')
           .attr('font-family', 'Space Grotesk, monospace')
-          .attr('pointer-events', 'none');
+          .attr('pointer-events', 'none')
+          .attr('opacity', 1);
         // Transparent hit area
         g.append('circle').attr('r', 34).attr('fill', 'transparent');
       });
 
-    // ── Entity nodes: icon or diamond ────────────────────────────────────────
+    // ── Entity nodes: shape by type ────────────────────────────────────────────
     nodeEls
       .filter((d) => d.nodeType === 'entity')
       .each(function (d) {
         const g = d3.select(this);
-        const color = ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing;
+        const entityType = d.entityType ?? 'wing';
+        const color = ENTITY_COLORS[entityType] ?? ENTITY_COLORS.wing;
 
-        if (d.icon) {
-          // Icon image node
+        if (d.icon && entityType !== 'character') {
+          // Icon image node — label hidden (icon is label)
           const size = 36;
           g.append('image')
             .attr('class', 'node-hit')
@@ -463,7 +470,6 @@ export function LoreGraph({
             .attr('x', -size / 2)
             .attr('y', -size / 2)
             .attr('preserveAspectRatio', 'xMidYMid meet');
-          // Transparent hit area
           g.append('rect')
             .attr('width', size + 12)
             .attr('height', size + 12)
@@ -471,45 +477,72 @@ export function LoreGraph({
             .attr('y', -(size + 12) / 2)
             .attr('fill', 'transparent');
         } else {
-          // Diamond shape (rotated square)
-          const size = 20;
+          const shapeGroup = g.append('g').attr('class', 'node-shape');
+
+          if (entityType === 'abnormality') {
+            // Hexagon — 6-sided polygon
+            const r = 18;
+            const hexPoints = Array.from({ length: 6 }, (_, i) => {
+              const angle = (Math.PI / 3) * i - Math.PI / 6;
+              return `${r * Math.cos(angle)},${r * Math.sin(angle)}`;
+            }).join(' ');
+            shapeGroup
+              .append('polygon')
+              .attr('class', 'node-hit')
+              .attr('points', hexPoints)
+              .attr('fill', 'var(--bg-surface)')
+              .attr('stroke', color)
+              .attr('stroke-width', 2);
+          } else if (entityType === 'character') {
+            // Square — character entity (Angela, Ayin, Gebura)
+            const size = 20;
+            shapeGroup
+              .append('rect')
+              .attr('class', 'node-hit')
+              .attr('width', size)
+              .attr('height', size)
+              .attr('x', -size / 2)
+              .attr('y', -size / 2)
+              .attr('fill', 'var(--bg-surface)')
+              .attr('stroke', color)
+              .attr('stroke-width', 2);
+          } else {
+            // Diamond — Wings (default for other/unknown)
+            const size = 20;
+            shapeGroup
+              .append('rect')
+              .attr('class', 'node-hit')
+              .attr('width', size)
+              .attr('height', size)
+              .attr('x', -size / 2)
+              .attr('y', -size / 2)
+              .attr('fill', 'var(--bg-surface)')
+              .attr('stroke', color)
+              .attr('stroke-width', 2)
+              .attr('transform', 'rotate(45)');
+          }
+
+          // Invisible hit area
           g.append('rect')
-            .attr('class', 'node-hit')
-            .attr('width', size)
-            .attr('height', size)
-            .attr('x', -size / 2)
-            .attr('y', -size / 2)
-            .attr('fill', 'none')
-            .attr('stroke', color)
-            .attr('stroke-width', 2)
-            .attr('transform', 'rotate(45)');
-          // Inner fill
-          g.append('rect')
-            .attr('width', size - 4)
-            .attr('height', size - 4)
-            .attr('x', -size / 2 + 2)
-            .attr('y', -size / 2 + 2)
-            .attr('fill', 'var(--bg-surface)')
-            .attr('transform', 'rotate(45)');
-          // Transparent hit area
-          g.append('rect')
-            .attr('width', size + 12)
-            .attr('height', size + 12)
-            .attr('x', -(size + 12) / 2)
-            .attr('y', -(size + 12) / 2)
+            .attr('width', 48)
+            .attr('height', 48)
+            .attr('x', -24)
+            .attr('y', -24)
             .attr('fill', 'transparent');
         }
 
-        // Label
+        // Label — zoom-threshold reveal (show when zoom >= 0.6)
         g.append('text')
+          .attr('class', 'node-label')
           .text(d.name)
           .attr('text-anchor', 'middle')
-          .attr('dy', d.icon ? 34 : 34)
+          .attr('dy', d.icon ? 34 : 36)
           .attr('font-size', '10px')
           .attr('font-weight', '500')
           .attr('fill', color)
           .attr('font-family', 'Space Grotesk, monospace')
-          .attr('pointer-events', 'none');
+          .attr('pointer-events', 'none')
+          .attr('opacity', 'var(--label-opacity, 0)');
       });
 
     // ── Hover ────────────────────────────────────────────────────────────────
