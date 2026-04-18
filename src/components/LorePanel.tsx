@@ -343,11 +343,11 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                                     : meta?.displayNumber ?? c.id}
                                 </span>
                               </div>
-                              <div className="flex-1 min-w-0">
+                              <div className="flex-1 min-w-0 overflow-hidden">
                                 <div className="flex items-center gap-2 mb-0.5 min-w-0">
-                                  <p className="text-[11px] font-semibold text-foreground truncate">{meta?.title ?? c.id}</p>
+                                  <span className="text-[11px] font-semibold text-foreground block w-full truncate">{meta?.title ?? c.id}</span>
                                   {c.isMajor && (
-                                    <Badge variant="outline" className="h-4 px-1.5 text-[8px] font-bold uppercase border-edge-literary/40 bg-edge-literary/10 text-edge-literary">
+                                    <Badge variant="outline" className="h-4 px-1.5 text-[8px] font-bold uppercase border-edge-literary/40 bg-edge-literary/10 text-edge-literary shrink-0">
                                       Focus
                                     </Badge>
                                   )}
