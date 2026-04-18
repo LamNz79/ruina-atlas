@@ -58,6 +58,7 @@ const ALL_EDGE_TYPES: EdgeType[] = [
   'thematic-link',
   'cross-game-continuity',
   'shared-literary-group',
+  'wing-affiliation',
 ];
 
 export interface PhysicsSettings {
