@@ -391,10 +391,11 @@ export function LoreGraph({
       )
       .attr('stroke-width', (d) => {
         const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
-        if (d.type === 'literary-origin' && count > 0) {
-          return Math.min(1.5 + count * 0.5, 4);
-        }
-        return 1.2;
+        if (count === 0) return 1;
+        if (d.type === 'literary-origin') return Math.min(3 + count * 1.5, 8);
+        if (d.type === 'thematic-link')   return Math.min(1 + count * 1.5, 7);
+        if (d.type === 'shared-literary-group') return Math.min(2 + count * 1.2, 6);
+        return 1;
       })
       .attr('stroke-dasharray', (d) =>
         (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? '6,4' : 'none',
@@ -691,8 +692,10 @@ export function LoreGraph({
           .attr('stroke-opacity', (d) => (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4)
           .attr('stroke-width', (d) => {
             const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
-            if (d.type === 'literary-origin' && count > 0) return Math.min(1.5 + count * 0.5, 4);
-            return 1.2;
+            if (d.type === 'literary-origin' && count > 0) return Math.min(2.5 + count * 0.8, 6);
+            if (d.type === 'thematic-link' && count > 0) return Math.min(1 + count * 0.8, 5);
+            if (d.type === 'shared-literary-group' && count > 0) return Math.min(1.5 + count * 0.5, 4);
+            return 1;
           })
           .attr('filter', null);
 
