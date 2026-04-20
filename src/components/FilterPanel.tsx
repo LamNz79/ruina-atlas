@@ -28,7 +28,7 @@ const GAME_LABELS: Record<Game, string> = {
 
 const GAME_COLORS: Record<Game, string> = {
   limbus: '#b8202f',    // Deep Crimson
-  ruina:  '#a08a70',    // Warm Bronze
+  ruina: '#a08a70',    // Warm Bronze
   lobotomy: '#7a5c3a',  // Dark Bronze
 };
 
@@ -50,19 +50,29 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
 
   const toggleGame = (game: Game) => {
     const next = new Set(filters.games);
-    next.has(game) ? next.delete(game) : next.add(game);
+    if (next.has(game)) {
+      next.delete(game);
+    } else {
+      next.add(game);
+    }
     onFiltersChange({ ...filters, games: next });
   };
 
   const toggleTheme = (theme: Theme) => {
     const next = new Set(filters.themes);
-    next.has(theme) ? next.delete(theme) : next.add(theme);
+    if (next.has(theme)) {
+      next.delete(theme);
+    }
+    else { next.add(theme) }
     onFiltersChange({ ...filters, themes: next });
   };
 
   const toggleSource = (id: string) => {
     const next = new Set(filters.literarySources);
-    next.has(id) ? next.delete(id) : next.add(id);
+    if (next.has(id)) {
+      next.delete(id);
+    }
+    else { next.add(id) }
     onFiltersChange({ ...filters, literarySources: next });
   };
 
@@ -85,9 +95,8 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
       <Button
         variant="secondary"
         size="sm"
-        className={`w-full justify-between shadow-lg ring-1 ring-border/50 backdrop-blur-md transition-all ${
-          open ? 'rounded-b-none bg-accent text-accent-foreground' : 'rounded-md'
-        } ${activeCount > 0 ? 'border-primary/30' : ''}`}
+        className={`w-full justify-between shadow-lg ring-1 ring-border/50 backdrop-blur-md transition-all ${open ? 'rounded-b-none bg-accent text-accent-foreground' : 'rounded-md'
+          } ${activeCount > 0 ? 'border-primary/30' : ''}`}
         onClick={() => setOpen(o => !o)}
       >
         <div className="flex items-center gap-2">
@@ -105,9 +114,8 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
       </Button>
 
       {/* Panel */}
-      <Card className={`overflow-hidden border-t-0 shadow-xl transition-all duration-300 ease-in-out ${
-        open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 border-none shadow-none'
-      }`}>
+      <Card className={`overflow-hidden border-t-0 shadow-xl transition-all duration-300 ease-in-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 border-none shadow-none'
+        }`}>
         <CardContent className="space-y-5 pt-5">
           {/* By Game */}
           <div className="space-y-2.5">

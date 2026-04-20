@@ -318,6 +318,8 @@ export function LoreGraph({
       }
     }
 
+    // ── Count shared themes per edge (needs allNodes, calculated after nodes/entities) ─
+
     // ── Build sinner nodes ──────────────────────────────────────────────────
     const nodes: GraphNode[] = sinners.map((s) => ({
       id: s.id,
@@ -361,6 +363,18 @@ export function LoreGraph({
 
     const allNodes = [...nodes, ...entityNodes, ...zoneAnchors];
     const allLinks = [...links, ...entityLinks];
+
+    // ── Count shared themes per edge (for stroke-width) ─────────────────────────
+    const sharedThemeCount: Record<string, number> = {};
+    for (const link of allLinks) {
+      const src = allNodes.find((n) => n.id === link.source);
+      const tgt = allNodes.find((n) => n.id === link.target);
+      if (src && tgt) {
+        const count = new Set(src.themes.filter((t) => tgt.themes.includes(t))).size;
+        sharedThemeCount[`${link.source}-${link.target}`] = count;
+        sharedThemeCount[`${link.target}-${link.source}`] = count;
+      }
+    }
 
     const simulation = d3
       .forceSimulation<GraphNode>(allNodes)
@@ -410,7 +424,14 @@ export function LoreGraph({
       .attr('stroke-opacity', (d) =>
         (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4,
       )
-      .attr('stroke-width', 1.2)
+      .attr('stroke-width', (d) => {
+        const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
+        if (count === 0) return 1;
+        if (d.type === 'literary-origin') return Math.min(3 + count * 1.5, 8);
+        if (d.type === 'thematic-link')   return Math.min(1 + count * 1.5, 7);
+        if (d.type === 'shared-literary-group') return Math.min(2 + count * 1.2, 6);
+        return 1;
+      })
       .attr('stroke-dasharray', (d) =>
         (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? '6,4' : 'none',
       )
@@ -704,7 +725,13 @@ export function LoreGraph({
           .transition()
           .duration(200)
           .attr('stroke-opacity', (d) => (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4)
-          .attr('stroke-width', 1.2)
+          .attr('stroke-width', (d) => {
+            const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
+            if (d.type === 'literary-origin' && count > 0) return Math.min(2.5 + count * 0.8, 6);
+            if (d.type === 'thematic-link' && count > 0) return Math.min(1 + count * 0.8, 5);
+            if (d.type === 'shared-literary-group' && count > 0) return Math.min(1.5 + count * 0.5, 4);
+            return 1;
+          })
           .attr('filter', null);
 
         // Restore selected node highlight (in case mouseleave reset it)
