@@ -15,12 +15,10 @@ interface GraphNode extends d3.SimulationNodeDatum {
   literarySourceIds: string[];
   themes: string[];
   crossGameContinuity: boolean;
-  nodeType: 'sinner' | 'entity' | 'zone-anchor';
+  nodeType: 'sinner' | 'entity';
   entityType?: 'wing' | 'abnormality' | 'character';
   icon?: string;
   connectionCount?: number;
-  zone?: 'limbus' | 'ruina' | 'lobotomy';
-  isAnchor?: boolean;
 }
 
 interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
@@ -318,6 +316,8 @@ export function LoreGraph({
       }
     }
 
+    // ── Count shared themes per edge (needs allNodes, calculated after nodes/entities) ─
+
     // ── Build sinner nodes ──────────────────────────────────────────────────
     const nodes: GraphNode[] = sinners.map((s) => ({
       id: s.id,
@@ -349,18 +349,20 @@ export function LoreGraph({
       connectionCount: connectionCount[e.id] ?? 0,
     }));
 
-    // ── Zone anchor nodes (invisible gravity wells) ──────────────────────────
-    const cx = width / 2;
-    const cy = height / 2;
-    const spread = Math.min(width, height) * 0.28;
-    const zoneAnchors: GraphNode[] = [
-      { id: 'zone-limbus',   name: '', canonicalGame: 'limbus',   literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'limbus',   isAnchor: true, x: cx, y: cy },
-      { id: 'zone-ruina',    name: '', canonicalGame: 'ruina',    literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'ruina',    isAnchor: true, x: cx - spread, y: cy },
-      { id: 'zone-lobotomy', name: '', canonicalGame: 'lobotomy', literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'lobotomy', isAnchor: true, x: cx + spread, y: cy },
-    ];
-
-    const allNodes = [...nodes, ...entityNodes, ...zoneAnchors];
+    const allNodes = [...nodes, ...entityNodes];
     const allLinks = [...links, ...entityLinks];
+
+    // ── Count shared themes per edge (for stroke-width) ─────────────────────────
+    const sharedThemeCount: Record<string, number> = {};
+    for (const link of allLinks) {
+      const src = allNodes.find((n) => n.id === link.source);
+      const tgt = allNodes.find((n) => n.id === link.target);
+      if (src && tgt) {
+        const count = new Set(src.themes.filter((t) => tgt.themes.includes(t))).size;
+        sharedThemeCount[`${link.source}-${link.target}`] = count;
+        sharedThemeCount[`${link.target}-${link.source}`] = count;
+      }
+    }
 
     const simulation = d3
       .forceSimulation<GraphNode>(allNodes)
@@ -374,19 +376,7 @@ export function LoreGraph({
       )
       .force('charge', d3.forceManyBody().strength(DEFAULTS.repulsion))
       .force('center', d3.forceCenter(width / 2, height / 2).strength(DEFAULTS.centering))
-      .force('collision', d3.forceCollide().radius(55))
-      // Zone gravity — pull sinners toward their game zone
-      .force('zone', d3.forceRadial<GraphNode>(
-        (d) => {
-          if (d.isAnchor) return 0;
-          return spread * 0.01;
-        },
-        (d) => {
-          const ax: Record<string, number> = { limbus: cx, ruina: cx - spread, lobotomy: cx + spread };
-          return ax[d.canonicalGame] ?? cx;
-        },
-        (_d) => cy,
-      ).strength(0.06));
+      .force('collision', d3.forceCollide().radius(55));
 
     simulationRef.current = simulation;
 
@@ -399,7 +389,13 @@ export function LoreGraph({
       .attr('stroke-opacity', (d) =>
         (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4,
       )
-      .attr('stroke-width', 1.2)
+      .attr('stroke-width', (d) => {
+        const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
+        if (d.type === 'literary-origin' && count > 0) {
+          return Math.min(1.5 + count * 0.5, 4);
+        }
+        return 1.2;
+      })
       .attr('stroke-dasharray', (d) =>
         (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? '6,4' : 'none',
       )
@@ -455,9 +451,6 @@ export function LoreGraph({
     });
 
     nodeElsRef.current = nodeEls;
-
-    // ── Hide zone anchor nodes (they're invisible gravity wells) ─────────────
-    nodeEls.filter((d) => d.nodeType === 'zone-anchor').remove();
 
     // ── Sinner nodes: circle ─────────────────────────────────────────────────
     nodeEls
@@ -696,7 +689,11 @@ export function LoreGraph({
           .transition()
           .duration(200)
           .attr('stroke-opacity', (d) => (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4)
-          .attr('stroke-width', 1.2)
+          .attr('stroke-width', (d) => {
+            const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
+            if (d.type === 'literary-origin' && count > 0) return Math.min(1.5 + count * 0.5, 4);
+            return 1.2;
+          })
           .attr('filter', null);
 
         // Restore selected node highlight (in case mouseleave reset it)
