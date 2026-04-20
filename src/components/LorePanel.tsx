@@ -56,6 +56,21 @@ const RANK_COLORS: Record<string, string> = {
   ALEPH: '#800080',
 };
 
+// Rarity tier order (weakest → strongest)
+const RARITY_ORDER = ['ZAYIN', 'HE', 'TETH', 'WAW', 'ALEPH'] as const;
+type Rarity = typeof RARITY_ORDER[number];
+
+// Group EGOs by rarity tier
+const groupEgosByRarity = (egos: Sinner['egos']) => {
+  const groups: Partial<Record<Rarity, typeof egos>> = {};
+  for (const ego of egos) {
+    const tier = (ego.rank ?? 'ZAYIN') as Rarity;
+    if (!groups[tier]) groups[tier] = [];
+    groups[tier].push(ego);
+  }
+  return RARITY_ORDER.filter(t => groups[t]?.length).map(t => ({ tier: t, egos: groups[t] ?? [] }));
+};
+
 const RESISTANCE_COLORS: Record<string, string> = {
   Normal:  '#3CB371',
   Fatal:   '#e63946',
@@ -419,7 +434,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                   )}
                 </section>
 
-                {/* EGOs */}
+                {/* EGOs grouped by rarity */}
                 <section className="space-y-4">
                   <h3 className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                     <span>EGO Arsenal</span>
@@ -428,46 +443,64 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                     </Badge>
                   </h3>
                   {sinner.egos.length > 0 ? (
-                    <div className="grid grid-cols-3 gap-2">
-                      {sinner.egos.map((ego) => (
-                        <div
-                          key={ego.id}
-                          className="group flex flex-col items-center gap-1.5 rounded-lg border border-border/40 bg-muted/20 p-2 transition-colors hover:border-border/80"
-                        >
-                          {ego.egoId ? (
-                            <div
-                              className="h-10 w-10 overflow-hidden rounded-md border border-border/50"
-                              style={{ backgroundColor: (ego.colorTheme ?? '#888') + '33', borderColor: (ego.colorTheme ?? '#888') + '66' }}
+                    <div className="space-y-4">
+                      {groupEgosByRarity(sinner.egos).map(({ tier, egos }) => (
+                        <div key={tier} className="space-y-2">
+                          {/* Rarity group header */}
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="text-[9px] font-black uppercase tracking-widest"
+                              style={{ color: RANK_COLORS[tier] ?? '#888' }}
                             >
-                              <img
-                                src={getEgoImage(ego.egoId)}
-                                alt={ego.displayName}
-                                className="h-full w-full object-contain"
-                                loading="lazy"
-                                onError={(e) => {
-                                  e.currentTarget.style.visibility = 'hidden';
-                                }}
-                              />
-                            </div>
-                          ) : (
-                            <div
-                              className="h-10 w-10 rounded-md border border-border/50 bg-muted/30"
-                              style={{ backgroundColor: (ego.colorTheme ?? '#888') + '20', borderColor: (ego.colorTheme ?? '#888') + '40' }}
-                            >
-                              <div className="flex h-full w-full items-center justify-center">
-                                <div
-                                  className="h-3 w-3 rounded-full"
-                                  style={{ backgroundColor: ego.colorTheme ?? '#888' }}
-                                />
+                              {tier}
+                            </span>
+                            <div className="h-px flex-1 bg-border/30" />
+                            <span className="text-[9px] font-mono text-muted-foreground/50">{egos.length}</span>
+                          </div>
+                          {/* EGO grid */}
+                          <div className="grid grid-cols-3 gap-2">
+                            {egos.map((ego) => (
+                              <div
+                                key={ego.id}
+                                className="group relative flex flex-col items-center gap-1.5 rounded-lg border border-border/40 bg-muted/15 p-2.5 transition-all hover:border-border/80 hover:bg-muted/25"
+                              >
+                                {/* Rarity badge top-left */}
+                                <span
+                                  className="absolute left-1.5 top-1.5 text-[8px] font-black uppercase tracking-wider"
+                                  style={{ color: RANK_COLORS[ego.rank] ?? '#888', opacity: 0.7 }}
+                                >
+                                  {ego.rank}
+                                </span>
+                                {/* Image */}
+                                {ego.egoId ? (
+                                  <div
+                                    className="mt-2 h-14 w-14 overflow-hidden rounded border border-border/50"
+                                    style={{ backgroundColor: (ego.colorTheme ?? '#888') + '25', borderColor: (ego.colorTheme ?? '#888') + '50' }}
+                                  >
+                                    <img
+                                      src={getEgoImage(ego.egoId)}
+                                      alt={ego.displayName}
+                                      className="h-full w-full object-contain"
+                                      loading="lazy"
+                                      onError={(e) => {
+                                        e.currentTarget.style.visibility = 'hidden';
+                                      }}
+                                    />
+                                  </div>
+                                ) : (
+                                  <div
+                                    className="mt-2 flex h-14 w-14 items-center justify-center rounded border border-border/50"
+                                    style={{ backgroundColor: (ego.colorTheme ?? '#888') + '20', borderColor: (ego.colorTheme ?? '#888') + '40' }}
+                                  >
+                                    <div className="h-4 w-4 rounded-full" style={{ backgroundColor: ego.colorTheme ?? '#888' }} />
+                                  </div>
+                                )}
+                                <span className="mt-0.5 w-full truncate text-center text-[10px] font-semibold leading-tight text-foreground">
+                                  {ego.displayName}
+                                </span>
                               </div>
-                            </div>
-                          )}
-                          <span className="w-full truncate text-center text-[10px] font-semibold leading-tight text-foreground">
-                            {ego.displayName}
-                          </span>
-                          <span className="text-[9px] font-bold" style={{ color: RANK_COLORS[ego.rank] ?? '#888' }}>
-                            {ego.rank}
-                          </span>
+                            ))}
+                          </div>
                         </div>
                       ))}
                     </div>
