@@ -1,252 +1,140 @@
 # 003-lore-graph-full-content-design-log.md
 
-> **Immutability note:** This log records decisions made on 2026-04-15. Future revisions append to **Revision History**. Core sections are not retroactively rewritten.
+> **Immutability note:** This log records the M3 direction and later editorial corrections. Revisions should append rather than silently rewrite the decision trail.
 
 - **ID:** `003`
-- **Date:** 2026-04-15
-- **Feature:** M3 — Lore Graph Full Content
-- **Status:** Draft
-- **Roadmap ref:** `roadmap.json` → M3
+- **Date:** `2026-04-15`
+- **Feature:** `M3 - Lore Graph Full Content`
+- **Status:** `active`
+- **Roadmap ref:** `docs/roadmap.json` -> `M3`
 
 ---
 
-## 1. Context & Problem
+## 1. Context
 
-The current M1 data layer has 13 Sinners with seed lore and basic identity/EGO counts — but:
+M3 started as a content-completeness milestone: more canto coverage, more entity nodes, more literary source data, and stronger browse flows around the graph.
 
-1. **Dante is empty** — no identities, no EGOs, minimal lore depth
-2. **Most Sinners have only one literary source** — the rich multi-source connections (secondary + influence) are absent
-3. **No canto data** — the story progression layer is missing entirely
-4. **No cross-game entity coverage** — Angela, Ayin, Wings, Abnormalities are absent from the graph
-5. **No filter system** — users can browse but not narrow
-6. **The literary source is hidden** — you can only reach it through a Sinner's detail, not browse books independently
+As the repo matured, one editorial problem became obvious:
 
-M3 is the content-completeness milestone. The UI from M2 is already capable — this is filling the data and adding the filter layer.
+- a hard quota for literary sources pushes the data toward weak or speculative connections
+
+That is the wrong tradeoff for Ruina Atlas. The project is more useful as a trustworthy literary map than as an artificially complete graph.
 
 ---
 
-## 2. Design Decisions
+## 2. Decision
 
-### 2.1 Data Structure — Canto Annotations
+### 2.1 Literary Source Standard
 
-Extend `Sinner` type with a new optional field:
+The old editorial target was effectively:
 
-```typescript
-interface CantoAnnotation {
-  number: number;         // 1, 2, 3, ...
-  summary: string;        // 1–2 sentence description
-  isMajor: boolean;       // true = major character role, false = minor/cameo
-}
+- every Sinner should have 3 or more literary source entries
 
-interface Sinner {
-  // ... existing fields
-  cantos?: CantoAnnotation[];  // new — optional, M3 scope
-}
-```
+The revised standard is:
 
-**Why optional?** Prevents breaking changes if some Sinners have no canto data yet. Existing JSON entries without `cantos` field continue to work.
+- every Sinner must have 1 strong `primary` source
+- add `secondary` only when the connection is specific and explainable
+- add `influence` only when the connection is still genuinely defensible
+- do not add entries just to satisfy a numeric target
 
-### 2.2 Data Structure — Cross-Game Entities
+This is the correct bar for the project because the graph is interpretive. Weak edges damage trust faster than missing optional edges.
 
-New file: `src/data/crossGameEntities.json`
+### 2.2 Source Categories
 
-```typescript
-interface CrossGameEntity {
-  id: string;             // e.g. 'entity-angela'
-  name: string;
-  type: 'character' | 'wing' | 'abnormality';
-  canonicalGame: Game;
-  appearances: GameAppearance;
-  literaryOrigin?: string;    // book/author if applicable
-  loreSummary: string;         // 2–3 sentences
-  themes: Theme[];
-  relatedSinnerIds?: string[]; // links to connected Sinners
-}
-```
+`primary`
+- the central literary basis for the Sinner
 
-**Why a separate file?** Cross-game entities are not Sinners — they have different fields and a different visual treatment in the graph. Keeping them in `crossGameEntities.json` keeps `sinners.json` clean and lets the D3 component route to different render paths by type.
+`secondary`
+- a clearly adjacent text, authorial work, or closely related literary frame that strengthens interpretation
 
-### 2.3 Data Structure — Literary Source Explorer
+`influence`
+- a looser but still defensible connection that helps explain the adaptation
 
-No new file. The literary source explorer is a **UI layer over `literarySources.json`**. The same data that powers Sinner connections also powers the standalone explorer. This is an architectural win — one source of truth, two access patterns.
+If a candidate source cannot be defended in one or two specific sentences, it should not be added.
 
-### 2.4 Filter Panel Architecture
+### 2.3 Canto Data Standard
 
-Filters live in `LoreGraph.tsx` as local React state:
+Canto annotations must reflect released content only.
 
-```typescript
-interface FilterState {
-  games: Set<Game>;           // which games to show
-  themes: Set<Theme>;         // which themes to show
-  literarySources: Set<string>; // which source IDs to show
-}
-```
+This means:
 
-- Filters are **inclusive** — a node must match at least one active filter in each category to remain visible
-- **Between categories** (game × theme × source): all three must match = AND logic
-- **Within each category**: any match = OR logic (e.g. "Moby-Dick" OR "Faust" = show both)
+- no pre-authoring released summaries for unreleased cantos
+- no implying a future focus canto has already happened
+- use `src/data/cantos.json` as the release-gated source of valid canto ids
 
-**Dim, don't remove:** Nodes outside the filter set get `opacity: 0.15` — the graph structure remains visible, making filter exploration intuitive rather than jarring.
+### 2.4 Entity Standard
 
-### 2.5 Spoiler Toggle Architecture
+Cross-game entities should be treated with the same editorial caution:
 
-```typescript
-interface SpoilerState {
-  enabled: boolean;   // false = hide Canto 9+, true = show all
-}
-```
-
-- Default: `enabled: false` (new-player-safe)
-- Toggle is a simple `Switch` component in the graph header
-- **No localStorage in M3** — state resets on refresh. localStorage persistence deferred to M5 alongside URL param sharing.
-
-### 2.6 Cross-Game Entities in the Graph
-
-New `entityType` field on graph nodes:
-
-```typescript
-interface GraphNode {
-  // ... existing fields
-  nodeType: 'sinner' | 'entity';   // new — determines render style
-}
-```
-
-Visual treatment:
-- **Sinner nodes:** colored circle, size proportional to number of literary sources (existing behavior)
-- **Entity nodes:** diamond/rhombus shape, outlined rather than filled, distinct color family
-
-Edge behavior: entity nodes can connect to Sinners via `relatedSinnerIds[]`. These edges render with a distinct dashed style.
+- use literary origin only when the connection is meaningful
+- keep Project Moon original entities marked as such when appropriate
+- prefer an explicit empty state over invented Sinner relationships
 
 ---
 
-## 3. Technical Implementation
+## 3. Current Editorial Classification
 
-### 3.1 File Structure
+After the M3 consistency pass, the remaining 2-source Sinners are:
 
-```
-src/
-  data/
-    sinners.json          ← extend with cantos[]
-    literarySources.json  ← already exists, no changes needed
-    crossGameEntities.json  ← new — M3
-  components/
-    LoreGraph.tsx         ← extend with filter state + entity nodes
-    LorePanel.tsx         ← extend with spoiler toggle + source explorer
-    FilterPanel.tsx       ← new — collapsible filter UI
-    SourceExplorer.tsx    ← new — literary source browse modal
-    CrossGameEntityPanel.tsx ← new — entity detail panel
-```
+- Ishmael
+- Sinclair
+- Don Quixote
+- Meursault
+- Hong Lu
+- Heathcliff
+- Rodion
+- Outis
+- Gregor
 
-### 3.2 New Types (src/types/index.ts)
+Working classification:
 
-```typescript
-// Add to existing Sinner interface via intersection type
-interface CantoAnnotation {
-  number: number;
-  summary: string;
-  isMajor: boolean;
-}
+- `solid at 2 for now`: Ishmael, Don Quixote, Meursault, Hong Lu, Heathcliff, Rodion, Outis, Gregor
+- `likely has a defensible 3rd source`: Sinclair
 
-// New — cross-game entity
-interface CrossGameEntity {
-  id: string;             // prefixed 'entity-{slug}'
-  name: string;
-  type: 'character' | 'wing' | 'abnormality';
-  canonicalGame: Game;
-  appearances: GameAppearance;
-  literaryOrigin?: string;
-  loreSummary: string;
-  themes: Theme[];
-  relatedSinnerIds?: string[];
-}
-
-type NodeType = 'sinner' | 'entity';
-```
-
-### 3.3 Filter State in LoreGraph
-
-```typescript
-const [filters, setFilters] = useState<FilterState>({
-  games: new Set(['lobotomy', 'ruina', 'limbus']),
-  themes: new Set(THEMES),
-  literarySources: new Set(literarySources.map(s => s.id)),
-});
-```
-
-Filter application at render time — nodes receive opacity based on whether they match the current filter set. No re-simulation needed.
-
-### 3.4 Dependencies
-
-- No new runtime dependencies in M3
-- Uses existing shadcn `Switch` for spoiler toggle
-- Uses existing shadcn `Card` for filter panel sections
-- No D3 API changes — same force layout, new node type
+This classification is not a promise that more entries are needed. It is only a research queue.
 
 ---
 
-## 4. Constraints & Considerations
+## 4. Implementation Notes
 
-- **Dante's identities/EGOs** are the highest-risk data gap. Dante has no playable identity in Limbus — research whether any exist in LC or Ruina, or whether this is expected to remain empty.
-- **Canto data is spoilery by nature.** Annotations must be clearly marked and gated. The toggle default must be safe for new players.
-- **Cross-game entity count** — start with 5–8 entities (Angela, Ayin, 3 Wings, 2 Abnormalities). Expand in future patches.
-- **Literary source explorer** — keep it lightweight in M3. A modal is sufficient. A dedicated tab within the detail panel adds complexity and is deferred.
-- **No backend.** All data is static JSON. Cross-game entities are added to the JSON file, not fetched dynamically.
+The M3 consistency pass established a few concrete rules in the code and data:
 
----
-
-## 5. Integration Notes
-
-### LoreGraph.tsx
-- Reads `crossGameEntities.json` alongside `sinners.json`
-- Renders two node types: `sinner` and `entity`
-- Filter state passed down from `LoreGraph` to sub-components
-- Filtered nodes get `opacity: 0.15` via D3 `.attr('opacity', ...)`
-
-### LorePanel.tsx
-- Receives `spoilerEnabled` prop from `App.tsx` (or manages locally in panel)
-- Renders canto annotations conditionally based on spoiler state
-- Literary source badges link to `SourceExplorer` modal
-
-### FilterPanel.tsx (new)
-- Self-contained component
-- Reads `literarySources` and `THEMES` from `src/index.ts` barrel
-- Emits `onFilterChange` to parent
-
-### SourceExplorer.tsx (new)
-- Modal triggered from `LorePanel` literary source badge click
-- Reads `literarySources.json` directly
-- Shows all Sinners with `role: 'primary' | 'secondary'` for that source
+- shared-group graph nodes should only exist when they actually group multiple Sinners
+- invalid source ids should fail gracefully in the source explorer
+- invalid entity ids should fail gracefully in the entity panel
+- entities with zero linked Sinners should show an explicit authored empty state
+- canto ids in `sinners.json` should be validated against `src/data/cantos.json`
 
 ---
 
-## 6. Related Components
+## 5. Consequences
 
-| Component | Changes |
-|-----------|---------|
-| `src/types/index.ts` | Add `CantoAnnotation`, `CrossGameEntity`, `NodeType` |
-| `src/data/sinners.json` | Add `cantos[]` to all 13 entries, fix Dante identities/EGOs |
-| `src/data/crossGameEntities.json` | New — 5–8 entity entries |
-| `src/components/LoreGraph.tsx` | Filter state, entity node rendering, dimming logic |
-| `src/components/LorePanel.tsx` | Spoiler toggle, canto rendering, source badge → modal |
-| `src/components/FilterPanel.tsx` | New — filter UI |
-| `src/components/SourceExplorer.tsx` | New — literary source modal |
-| `src/components/CrossGameEntityPanel.tsx` | New — entity detail panel |
+Positive:
+
+- the graph becomes more trustworthy
+- future literary additions are easier to defend
+- release-sensitive story data is less likely to drift into misinformation
+
+Tradeoff:
+
+- some Sinners will remain at 2 sources for now
+- the graph may look less dense than a quota-driven version
+
+This is acceptable. Accuracy is the better product decision.
+
+---
+
+## 6. Next Editorial Work
+
+- review Sinclair first for a possible defensible third source
+- leave the `solid at 2 for now` group alone unless better evidence appears
+- continue improving entity summaries and release-sensitive canto coverage as story content actually ships
 
 ---
 
 ## 7. Revision History
 
-| Date | Change | Log |
-|------|--------|-----|
-| 2026-04-15 | Initial draft — M3 full content scope | 003 |
-
----
-
-## 8. Questions & Open Items
-
-- [ ] **Dante identities/EGOs** — how many expected? Does Dante appear as a playable character in Lobotomy Corporation or Library of Ruina at all? Need fan research before data entry.
-- [ ] **Spoiler gate threshold** — default OFF hides Canto 9+. Does the community standard consider "Canto 8 complete" as spoiler-free, or is it lower (Canto 7)?
-- [ ] **Literary source explorer UX** — modal overlay vs. tab within existing detail panel?
-- [ ] **Which 5 Wings to cover first?** W Corp, Liu, R Corp, Index, N Corp are the most prominent. Confirm or prioritize.
-- [ ] **Which 2–3 Abnormalities for M3?** Suggestions: The Silent Girl (LC → Ruina), The Red Shoes (LC → Ruina), Blood Bath (LC → Ruina) — all have notable literary connections. Confirm.
-- [ ] **Filter state persistence** — confirmed no localStorage in M3. Confirm this is acceptable for the MVP scope.
+| Date | Change | Note |
+|------|--------|------|
+| 2026-04-15 | Initial M3 design log | Original draft |
+| 2026-04-21 | Reframed literary-source standard around defensibility instead of quota | Post-consistency-pass correction |
