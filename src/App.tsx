@@ -43,6 +43,7 @@ export default function App() {
   }, []);
 
   const handleNodeClick = useCallback((sinner: Sinner) => {
+    setSelectedEntity(null);
     if (selectedSinner?.id === sinner.id) {
       // Clicking already-selected node — just toggle panel, keep selection
       setPanelOpen((o) => !o);
@@ -54,9 +55,12 @@ export default function App() {
 
   const handleClose = useCallback(() => {
     setPanelOpen(false);
+    setSelectedSinner(null);
   }, []);
 
   const handleEntityClick = useCallback((entityId: string) => {
+    setSelectedSinner(null);
+    setPanelOpen(false);
     setSelectedEntity(entityId);
   }, []);
 
@@ -223,6 +227,7 @@ export default function App() {
                 onSinnerClick={(id) => {
                   const found = sinners.find(s => s.id === id);
                   if (found) {
+                    setSelectedEntity(null);
                     setSelectedSinner(found);
                     setPanelOpen(true);
                   }

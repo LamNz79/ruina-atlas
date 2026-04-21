@@ -165,6 +165,11 @@
           "id": "mephistopheles",
           "role": "influence",
           "specificConnection": "Mephistopheles is a figure who bargains for souls across folklore, legend, and literature beyond Goethe's play alone — the devil's bargain as cultural archetype. Limbus Faust doesn't just reference Goethe's Faust; she embodies the idea of the devil's bargain itself. Her signature manipulation of the Index and her morally ambiguous contracts throughout Limbus Company are the Mephistopheles archetype in action — a figure who sees through human weakness and exploits it with cold precision."
+        },
+        {
+          "id": "sorrows-of-young-werther",
+          "role": "secondary",
+          "specificConnection": "The Sorrows of Young Werther supplies the emotional precursor to Goethe's later Faust: a brilliant mind consumed by longing, self-consciousness, and the inability to live normally within the world around him. Limbus Faust suppresses that emotional volatility behind composure and certainty, but the same dangerous hunger for transcendence still defines her."
         }
       ],
       "themes": [
@@ -373,7 +378,28 @@
           "egoId": "107"
         }
       ],
-      "cantos": []
+      "cantos": [
+        {
+          "id": "canto-0",
+          "summary": "Introduced as the bus crew's calmest and most informed member, establishing her role as Dante's most unsettling source of answers.",
+          "isMajor": false
+        },
+        {
+          "id": "canto-3",
+          "summary": "Acts as a detached adviser through the K Corp incident, reinforcing how much she knows about the City while revealing little about herself.",
+          "isMajor": false
+        },
+        {
+          "id": "intervallo-4",
+          "summary": "The WARP Train incident exposes unusual vulnerability when her access to the Gesellschaft is disrupted, without making the story a dedicated Faust canto.",
+          "isMajor": false
+        },
+        {
+          "id": "canto-8",
+          "summary": "Remains one of the crew's most composed strategists during Hong Lu's family conflict, continuing the pattern of influence without a primary focus canto.",
+          "isMajor": false
+        }
+      ]
     },
     {
       "id": "ishmael",
@@ -1160,6 +1186,11 @@
           "id": "picture-dorian-gray",
           "role": "secondary",
           "specificConnection": "Dorian Gray's portrait bears his sins while he remains beautiful — art externalizing moral corruption. Ryoshu treats art as more real than reality, using violence and madness as raw material. Her EGO and identity art literally manifests her inner world externally. Both characters use art to externalize and hide their true nature simultaneously — the portrait and the painting as moral mirrors. The art as corruption vehicle theme is shared across both Wilde and Akutagawa."
+        },
+        {
+          "id": "in-a-grove",
+          "role": "influence",
+          "specificConnection": "Akutagawa's In a Grove turns murder into layered testimony, with every witness shaping reality to protect pride, desire, or shame. Ryoshu approaches violence the same way: not as a stable fact, but as a composition that changes depending on who frames it. The story's fractured truth tradition fits her habit of treating atrocity as interpretation."
         }
       ],
       "themes": [
@@ -1168,7 +1199,7 @@
         "identity-fragmentation"
       ],
       "loreSummary": "Ryoshu is an artist who sees the world in terms of compositions — beauty, violence, and meaning. She is aloof, sardonic, and deeply unconventional, often making cryptic statements about what she finds 'beautiful' or 'composed correctly.' Her art is literal in the City — she literally manifests her paintings as combat abilities. Her emotional range appears narrow, but she is not unfeeling; she simply processes the world through an aesthetic lens that others find disturbing.",
-      "literaryConnectionNotes": "Ryunosuke Akutagawa's 'Rashomon' centers on the unreliability of truth — multiple witnesses to a crime give contradictory accounts, and the 'real' truth cannot be established. Limbus Ryoshu embodies this: her 'art' is her interpretation of reality, and it is as valid and as distorted as any other perspective. The violence in her art (her EGO projections, her combat style) echoes the brutal imagery of Edo-period woodblock prints, where beauty and gore coexisted in the same frame. Project Moon has described her as the 'artist of the group' — she is genuinely talented, genuinely dangerous, and genuinely indifferent to conventional morality.",
+      "literaryConnectionNotes": "Ryoshu draws most directly from Akutagawa's Hell Screen, where artistic perfection is inseparable from cruelty, but her wider literary frame also includes Akutagawa's fascination with fractured testimony and moral ugliness. In a Grove matters because Ryoshu never treats violence as neutral fact; she reframes it, edits it, and turns it into an aesthetic statement. The violence in her art echoes the brutal imagery of Edo-period woodblock prints, where beauty and gore coexist in the same frame. Project Moon's version keeps that tension intact: she is genuinely talented, genuinely dangerous, and genuinely indifferent to conventional morality.",
       "identities": [
         {
           "id": "10401",
@@ -1619,11 +1650,6 @@
           "id": "canto-9",
           "summary": "Past explored: activities deemed 'right' and 'wrong' by society; time at N Corp; familiarity with Vespa Crabro.",
           "isMajor": false
-        },
-        {
-          "id": "canto-10",
-          "summary": "Confirmed focus character.",
-          "isMajor": true
         },
         {
           "id": "intervallo-3-1",
@@ -2129,6 +2155,11 @@
           "id": "dream-of-the-red-chamber",
           "role": "secondary",
           "specificConnection": "The name 'Yi Sang' is Chinese-Korean: 'Yi' (里/Earth) and 'Sang' (哀/Grief/Mourn) — literally 'Earthly Grief.' This etymology connects to Dream of the Red Chamber's themes of family decay and the mourning of a lost world, while Yi Sang's lung disease (literary: author Yi Sang died of tuberculosis; in Limbus: related to his abilities) mirrors the consumption-as-metaphor tradition in both the novel and Eastern literature broadly."
+        },
+        {
+          "id": "the-wings",
+          "role": "influence",
+          "specificConnection": "The Wings is one of Yi Sang's clearest portraits of dissociation: a narrator trapped between paralysis, humiliation, and the fantasy of escape. That split self is central to Limbus Yi Sang. His quiet affect and poetic detachment are not calm so much as a survival posture, mirroring the story's sense of a mind observing its own collapse from a distance."
         }
       ],
       "themes": [
@@ -2139,7 +2170,7 @@
         "identity-fragmentation"
       ],
       "loreSummary": "Yi Sang is quiet, introspective, and physically unwell — he coughs frequently and is often seen writing in a notebook. He is the group's resident poet, and his poetry serves as both a coping mechanism and a lens through which he processes the world. He is the most philosophically withdrawn of the Sinners, seemingly accepting of his own deterioration. His Canto confronts the origins of his condition and whether his art justifies or merely documents his suffering.",
-      "literaryConnectionNotes": "Real-world Yi Sang (1907–1937) was a Korean author whose literary career lasted only a decade before tuberculosis killed him at 30. His work is characterized by extreme emotional intensity, a focus on death and decay, and a recurring motif of the self dissolving into fog or absence. In The Flight of Earth, the protagonist's relationship with existence is one of repulsion and simultaneous dependence — 'If there were no earth, I would not have to love.' Limbus Yi Sang's character operates on the same paradox: he is a poet because he feels too much, but the only thing he can write about is the dissolution of feeling. His fog is both his illness and his art — impenetrable, obscuring, and strangely beautiful.",
+      "literaryConnectionNotes": "Real-world Yi Sang (1907-1937) was a Korean author whose literary career lasted only a decade before tuberculosis killed him at 30. His work is characterized by extreme emotional intensity, a focus on death and decay, and a recurring motif of the self dissolving into fog or absence. The Flight of Earth provides the cosmically exhausted side of the character, while The Wings adds the intimate, dissociative side: a mind trapped in self-observation, humiliation, and fantasy. Limbus Yi Sang is built from both. His fog is both illness and art: impenetrable, obscuring, and strangely beautiful.",
       "identities": [
         {
           "id": "10111",

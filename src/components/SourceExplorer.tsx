@@ -41,7 +41,21 @@ const THEME_LABELS: Record<string, string> = {
 
 export function SourceExplorer({ sourceId, open, onClose, onSinnerClick }: SourceExplorerProps) {
   const source = literarySources.find(s => s.id === sourceId);
-  if (!source) return null;
+  if (!open) return null;
+  if (!source) {
+    return (
+      <Dialog open={open} onOpenChange={val => !val && onClose()}>
+        <DialogContent className="sm:max-w-[420px]">
+          <DialogHeader>
+            <DialogTitle>Literary source unavailable</DialogTitle>
+          </DialogHeader>
+          <p className="text-sm text-muted-foreground">
+            This source id does not resolve to an entry in <code>literarySources.json</code>.
+          </p>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   // Find all Sinners connected to this source
   const connected = sinners.filter(s =>

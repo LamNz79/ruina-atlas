@@ -411,13 +411,24 @@ export function LoreGraph({
     ];
     // ── Shared Literary Groups (Dante, etc) ──────────────────────────────────
     const groupMap = new Map<string, string>();
+    const groupMembers = new Map<string, Set<string>>();
     literarySources.forEach(ls => {
       if (ls.sharedGroup) {
         groupMap.set(ls.sharedGroup, ls.sharedGroupName || ls.sharedGroup);
       }
     });
+    sinners.forEach(s => {
+      s.literarySources.forEach(ref => {
+        const source = literarySources.find(ls => ls.id === ref.id);
+        if (!source?.sharedGroup) return;
+        const members = groupMembers.get(source.sharedGroup) ?? new Set<string>();
+        members.add(s.id);
+        groupMembers.set(source.sharedGroup, members);
+      });
+    });
 
-    const groupNodes: GraphNode[] = Array.from(groupMap.entries()).map(([slug, name]) => ({
+    const activeGroups = Array.from(groupMap.entries()).filter(([slug]) => (groupMembers.get(slug)?.size ?? 0) > 1);
+    const groupNodes: GraphNode[] = activeGroups.map(([slug, name]) => ({
       id: `group-${slug}`,
       name: name,
       canonicalGame: 'limbus' as any,
@@ -432,7 +443,7 @@ export function LoreGraph({
     sinners.forEach(s => {
       s.literarySources.forEach(ref => {
         const source = literarySources.find(ls => ls.id === ref.id);
-        if (source?.sharedGroup) {
+        if (source?.sharedGroup && (groupMembers.get(source.sharedGroup)?.size ?? 0) > 1) {
           groupLinks.push({
             source: `group-${source.sharedGroup}`,
             target: s.id,
@@ -539,7 +550,7 @@ export function LoreGraph({
       .selectAll<SVGGElement, GraphNode>('g')
       .data(allNodes)
       .join('g')
-      .style('cursor', 'pointer')
+      .style('cursor', (d) => d.nodeType === 'shared-group' ? 'default' : 'pointer')
       .call(
         d3
           .drag<SVGGElement, GraphNode>()
@@ -563,7 +574,7 @@ export function LoreGraph({
     nodeEls.on('click', (_, d) => {
       if (d.nodeType === 'entity') {
         if (onEntityClickRef.current) onEntityClickRef.current(d.id);
-      } else {
+      } else if (d.nodeType === 'sinner') {
         const found = sinnersRef.current.find((s) => s.id === d.id);
         if (found) onNodeClickRef.current(found);
       }
@@ -722,6 +733,38 @@ export function LoreGraph({
           .attr('font-family', 'Space Grotesk, monospace')
           .attr('pointer-events', 'none')
           .attr('opacity', 'var(--label-opacity, 0)');
+      });
+
+    // ── Shared-group nodes: explicit endpoint so links do not float into empty space ──
+    nodeEls
+      .filter((d) => d.nodeType === 'shared-group')
+      .each(function (d) {
+        const g = d3.select(this);
+
+        g.append('circle')
+          .attr('class', 'node-hit')
+          .attr('r', 18)
+          .attr('fill', 'var(--bg-surface)')
+          .attr('stroke', 'var(--edge-group)')
+          .attr('stroke-width', 2)
+          .attr('stroke-dasharray', '4,3')
+          .attr('opacity', 0.95);
+
+        g.append('text')
+          .attr('class', 'shared-group-label')
+          .text(d.name)
+          .attr('text-anchor', 'middle')
+          .attr('dy', 34)
+          .attr('font-size', '10px')
+          .attr('font-weight', '600')
+          .attr('fill', 'var(--edge-group)')
+          .attr('font-family', 'Space Grotesk, monospace')
+          .attr('pointer-events', 'none')
+          .attr('opacity', 1);
+
+        g.append('circle')
+          .attr('r', 30)
+          .attr('fill', 'transparent');
       });
 
     // ── Hover ────────────────────────────────────────────────────────────────

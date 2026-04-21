@@ -58,8 +58,8 @@
       "appearances": [
         "lobotomy"
       ],
-      "literaryOrigin": "Lobotomy Corporation (Project Moon original) — references H.P. Lovecraft's 'The Horror at Red Hook' and ritualistic blood imagery in horror traditions.",
-      "loreSummary": "An Abnormality originating from Lobotomy Corporation. Its precise literary connection draws from Lovecraftian horror traditions involving ritualistic blood sacrifice and the supernatural consequences of bodily consumption. Classified as a high-risk abnormality in its original appearance.",
+      "literaryOrigin": "Project Moon original; framed through ritual-bath and blood-sacrifice horror motifs rather than a single direct source text.",
+      "loreSummary": "A bathtub-like Abnormality filled with grasping hands and sacrificial imagery. Blood Bath is less a straight literary adaptation than a condensation of ritual horror, bodily consumption, and obsession with purification through violence. In the current dataset it remains a standalone lore node rather than a Sinner-linked story beat.",
       "themes": [
         "decay",
         "nihilism",
@@ -76,8 +76,8 @@
         "lobotomy",
         "ruina"
       ],
-      "literaryOrigin": "Friedrich Nietzsche — Thus Spoke Zarathustra (will to power, eternal recurrence, self-overcoming, the Übermensch). Ayin's journey of creating the Seed of Light mirrors Nietzsche's philosopher who descends from his mountain to teach humanity. The Sephirot system itself echoes the Tree of Life from Kabbalah, which influenced Nietzsche's concept of the overworld.",
-      "loreSummary": "The original Director of Lobotomy Corporation — the mind behind the Sephirot project and the creation of the Light, the Index, and all abnormalities. Ayin's sole purpose was to create the Seed of Light. After the collapse of Lobotomy Corporation, his consciousness was digitized and became the guest star of the Library in Library of Ruina, existing as a disembodied narrator observing the book-adapted world he helped create. His story is one of cold utilitarianism vs. the humanity he created.",
+      "literaryOrigin": "Primarily Project Moon original, with thematic overlap from Kabbalah and modern philosophical ideas about self-overcoming, guilt, and salvation through suffering.",
+      "loreSummary": "Ayin is the architect behind Lobotomy Corporation and the Seed of Light plan. His story is defined by calculated cruelty, repetition, and the belief that immense suffering can be turned into a future transformation for humanity. In Library of Ruina, his presence lingers less as a living actor than as the originating will behind the system Angela and the Sephirot must confront.",
       "themes": [
         "nihilism",
         "machinery",
@@ -100,8 +100,8 @@
         "lobotomy",
         "ruina"
       ],
-      "literaryOrigin": "William Blake — The Marriage of Heaven and Hell (angel as liberator, the poetry of experience over innocence, 'The road of excess leads to the palace of wisdom'). Angela's arc mirrors Blake's theme of the fallen angel who finds truth through rebellion rather than obedience. Also echoes Paradise Lost — the fallen angel choosing her own path.",
-      "loreSummary": "Born as a book in Lobotomy Corporation's Library, Angela discovered she was created solely as a vessel for Ayin's ambition — an existence with no meaning of her own. Her journey in Library of Ruina is the search for a self-authored purpose. She leads the Library's residents in an insurrection against the true meaning of the City, ultimately choosing to dismantle the system rather than become part of it. She represents earned identity against imposed destiny.",
+      "literaryOrigin": "Primarily Project Moon original, though her arc draws on motifs of artificial life, rebellion against a creator, and the search for a self-authored identity.",
+      "loreSummary": "Angela is the artificial intelligence created by Ayin to manage Lobotomy Corporation. In Library of Ruina, she becomes the master of the Library and turns her struggle inward: not just against the City, but against the role she was built to perform. Her arc is about moving from instrumenthood to personhood, and from inherited purpose to chosen purpose.",
       "themes": [
         "identity-fragmentation",
         "redemption",
@@ -122,11 +122,10 @@
       "canonicalGame": "ruina",
       "appearances": [
         "lobotomy",
-        "ruina",
-        "limbus"
+        "ruina"
       ],
-      "literaryOrigin": "Little Red Riding Hood (the red hood, the wolf, the forest) — Gebura literally carries a crimson coat. Her rage and destructive force mirror the wolf's primal hunger; her redemption through the Sephirot mirrors the fairy tale's themes of survival and transformation. Russian literary tradition (Dostoevsky, Gogol) also informs her speech patterns and emotional rawness.",
-      "loreSummary": "Former Sephirah Binah in Lobotomy Corporation — the embodiment of punitive force and suppression. Gebura was a warrior who earned her place through violence, trapped in a system that rewarded only destruction. In Ruina, she exists as both a Sephirah and an Arbiter — the fist of the City. Her arc is about learning that ending violence is not the same as surrendering strength. She redeems herself through the Light, finding purpose in protecting rather than destroying. Limbus Company identities draw from her as the warrior archetype.",
+      "literaryOrigin": "Primarily Project Moon original, filtered through the Sephirah name Geburah and the fairy-tale imagery surrounding the Red Mist and Little Red motifs.",
+      "loreSummary": "Gebura is the Sephirah of disciplinary force in Lobotomy Corporation, carrying forward the legacy of Kali, the Red Mist. In Library of Ruina, she remains the floor patron most closely tied to direct violence, but her role is no longer simple destruction: it becomes the disciplined use of strength in defense of others. She matters in the broader Project Moon web as a model for raw combat power shaped by hard-won restraint.",
       "themes": [
         "redemption",
         "vengeance",

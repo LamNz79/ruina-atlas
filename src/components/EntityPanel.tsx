@@ -15,54 +15,54 @@ interface EntityPanelProps {
 }
 
 const TYPE_ICONS: Record<string, React.ReactNode> = {
-  wing:        <Hexagon className="h-3.5 w-3.5" />,
+  wing: <Hexagon className="h-3.5 w-3.5" />,
   abnormality: <Star className="h-3.5 w-3.5" />,
-  character:   <Users className="h-3.5 w-3.5" />,
+  character: <Users className="h-3.5 w-3.5" />,
 };
 
 const TYPE_LABELS: Record<string, string> = {
-  wing:        'Wing',
+  wing: 'Wing',
   abnormality: 'Abnormality',
-  character:   'Character',
+  character: 'Character',
 };
 
 const TYPE_BADGE_COLORS: Record<string, string> = {
-  wing:        'border-[#a08a70]/40 bg-[#a08a70]/10 text-[#a08a70]',
+  wing: 'border-[#a08a70]/40 bg-[#a08a70]/10 text-[#a08a70]',
   abnormality: 'border-[#8a4a5a]/40 bg-[#8a4a5a]/10 text-[#e06070]',
-  character:   'border-[#f5c518]/40 bg-[#f5c518]/10 text-[#f5c518]',
+  character: 'border-[#f5c518]/40 bg-[#f5c518]/10 text-[#f5c518]',
 };
 
 const ENTITY_COLORS: Record<string, string> = {
-  wing:        '#a08a70',   // Warm Bronze
-  abnormality:  '#8a4a5a',  // Muted Crimson
-  character:   '#f5c518',   // Electric Gold
+  wing: '#a08a70',   // Warm Bronze
+  abnormality: '#8a4a5a',  // Muted Crimson
+  character: '#f5c518',   // Electric Gold
 };
 
 const GAME_LABELS: Record<string, string> = {
   lobotomy: 'Lobotomy Corporation',
-  ruina:    'Library of Ruina',
-  limbus:   'Limbus Company',
+  ruina: 'Library of Ruina',
+  limbus: 'Limbus Company',
 };
 
 const GAME_COLORS: Record<string, string> = {
-  limbus:    '#b8202f',  // Deep Crimson
-  ruina:     '#a08a70',  // Warm Bronze
-  lobotomy:  '#7a5c3a',  // Dark Bronze
+  limbus: '#b8202f',  // Deep Crimson
+  ruina: '#a08a70',  // Warm Bronze
+  lobotomy: '#7a5c3a',  // Dark Bronze
 };
 
 const THEME_LABELS: Record<string, string> = {
-  guilt:                   'Guilt',
-  vengeance:               'Vengeance',
-  decay:                   'Decay',
-  metamorphosis:           'Metamorphosis',
-  absurdity:               'Absurdism',
-  redemption:              'Redemption',
-  futility:                'Futility',
-  'identity-fragmentation':'Identity Fragmentation',
-  machinery:               'Machinery',
-  nihilism:                'Nihilism',
-  faith:                   'Faith',
-  family:                  'Family',
+  guilt: 'Guilt',
+  vengeance: 'Vengeance',
+  decay: 'Decay',
+  metamorphosis: 'Metamorphosis',
+  absurdity: 'Absurdism',
+  redemption: 'Redemption',
+  futility: 'Futility',
+  'identity-fragmentation': 'Identity Fragmentation',
+  machinery: 'Machinery',
+  nihilism: 'Nihilism',
+  faith: 'Faith',
+  family: 'Family',
 };
 
 export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelProps) {
@@ -89,12 +89,11 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
 
   return (
     <div
-      className={`absolute right-0 top-0 z-[45] h-full w-[400px] shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] glass-v2 ${
-        entityId ? 'translate-x-0' : 'translate-x-full'
-      }`}
+      className={`absolute right-0 top-0 z-[45] h-full w-[400px] shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] glass-v2 ${entityId ? 'translate-x-0' : 'translate-x-full'
+        }`}
       aria-hidden={!entityId}
     >
-      {entity && (
+      {entity ? (
         <div className="flex h-full flex-col">
           {/* Header */}
           <header className="sticky top-0 z-10 flex items-start justify-between border-b border-border bg-muted/40 p-5 backdrop-blur-md">
@@ -196,14 +195,14 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
               </section>
 
               {/* Connected Sinners */}
-              {connectedSinners.length > 0 && (
-                <section className="space-y-3">
-                  <h3 className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                    <span>Connected Sinners</span>
-                    <Badge variant="outline" className="h-5 rounded-full bg-muted/50 px-2 font-mono text-[9px]">
-                      {connectedSinners.length}
-                    </Badge>
-                  </h3>
+              <section className="space-y-3">
+                <h3 className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                  <span>Connected Sinners</span>
+                  <Badge variant="outline" className="h-5 rounded-full bg-muted/50 px-2 font-mono text-[9px]">
+                    {connectedSinners.length}
+                  </Badge>
+                </h3>
+                {connectedSinners.length > 0 ? (
                   <div className="space-y-2">
                     {connectedSinners.map((s) => (
                       <button
@@ -225,12 +224,22 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
                       </button>
                     ))}
                   </div>
-                </section>
-              )}
+                ) : (
+                  <p className="text-xs italic text-muted-foreground">
+                    No direct Sinner links have been authored for this entity yet.
+                  </p>
+                )}
+              </section>
             </div>
           </ScrollArea>
         </div>
-      )}
+      ) : entityId ? (
+        <div className="flex h-full items-center justify-center px-6 text-center">
+          <p className="text-sm text-muted-foreground">
+            This entity id does not resolve to an entry in <code>crossGameEntities.json</code>.
+          </p>
+        </div>
+      ) : null}
     </div>
   );
 }
