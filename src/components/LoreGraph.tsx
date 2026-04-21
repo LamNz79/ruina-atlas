@@ -900,13 +900,13 @@ export function LoreGraph({
 
   return (
     <TooltipProvider>
-    <div ref={containerRef} className="h-full w-full relative">
+    <div ref={containerRef} className="relative h-full w-full overflow-hidden max-md:pb-24">
       <svg ref={svgRef} className="block w-full h-full bg-background/50" />
 
       {/* Hover tooltip */}
       {tooltip.visible && (
         <div
-          className="absolute pointer-events-none z-50"
+          className="absolute pointer-events-none z-50 max-md:hidden"
           style={{ left: tooltip.x + 14, top: tooltip.y - 28 }}
         >
           {tooltip.type === 'edge' ? (
@@ -949,8 +949,8 @@ export function LoreGraph({
 
       {/* Empty filter state hint */}
       {showEmptyHint && (
-        <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center">
-          <div className="rounded-xl border border-border/50 bg-card/80 px-6 py-4 text-center shadow-xl backdrop-blur-sm">
+        <div className="pointer-events-none absolute inset-x-0 top-1/2 z-20 flex -translate-y-1/2 justify-center px-4 max-md:top-[42%]">
+          <div className="rounded-xl border border-border/50 bg-card/80 px-6 py-4 text-center shadow-xl backdrop-blur-sm max-md:max-w-[20rem]">
             <p className="text-sm font-semibold text-foreground">No nodes match current filters</p>
             <p className="mt-1 text-xs text-muted-foreground">Try widening your selection in the filter panel</p>
           </div>

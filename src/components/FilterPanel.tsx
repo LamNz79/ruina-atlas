@@ -90,12 +90,24 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
     (filters.literarySources.size < literarySources.length ? 1 : 0);
 
   return (
-    <div className="absolute left-4 top-4 z-40 w-60 select-none font-sans" ref={panelRef}>
+    <>
+      {open && (
+        <div
+          className="absolute inset-0 z-30 bg-black/25 backdrop-blur-[1px] md:hidden"
+          onClick={() => setOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+    <div
+      className="absolute left-4 top-4 z-40 w-60 max-w-[calc(100vw-2rem)] select-none font-sans max-md:inset-x-3 max-md:top-auto max-md:bottom-3 max-md:w-auto"
+      ref={panelRef}
+    >
       {/* Toggle */}
       <Button
         variant="secondary"
         size="sm"
-        className={`w-full justify-between shadow-lg ring-1 ring-border/50 backdrop-blur-md transition-all ${open ? 'rounded-b-none bg-accent text-accent-foreground' : 'rounded-md'
+        className={`w-full justify-between shadow-lg ring-1 ring-border/50 backdrop-blur-md transition-all ${
+          open ? 'rounded-b-none bg-accent text-accent-foreground max-md:rounded-b-md max-md:rounded-t-none' : 'rounded-md'
           } ${activeCount > 0 ? 'border-primary/30' : ''}`}
         onClick={() => setOpen(o => !o)}
       >
@@ -114,9 +126,10 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
       </Button>
 
       {/* Panel */}
-      <Card className={`overflow-hidden border-t-0 shadow-xl transition-all duration-300 ease-in-out ${open ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0 border-none shadow-none'
+      <Card className={`overflow-hidden border-t-0 shadow-xl transition-all duration-300 ease-in-out ${
+        open ? 'max-h-[min(70vh,640px)] opacity-100 max-md:max-h-[70dvh]' : 'max-h-0 opacity-0 border-none shadow-none'
         }`}>
-        <CardContent className="space-y-5 pt-5">
+        <CardContent className="space-y-5 pt-5 max-md:max-h-[calc(70dvh-3rem)] max-md:overflow-y-auto scroll-bronze">
           {/* By Game */}
           <div className="space-y-2.5">
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
@@ -186,7 +199,8 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
               By Literary Source
             </h4>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="max-h-44 overflow-y-auto pr-1 scroll-bronze max-md:max-h-56">
+              <div className="flex flex-wrap gap-1.5">
               {literarySources.map(source => {
                 const isActive = filters.literarySources.has(source.id);
                 return (
@@ -204,6 +218,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
                   </button>
                 );
               })}
+              </div>
             </div>
           </div>
 
@@ -224,5 +239,6 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
 
       <ThemeGuide open={themeGuideOpen} onClose={() => setThemeGuideOpen(false)} />
     </div>
+    </>
   );
 }

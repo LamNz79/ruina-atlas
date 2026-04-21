@@ -75,7 +75,7 @@ export function GraphSettings({
   }, [open]);
 
   return (
-    <div className="absolute right-4 top-4 z-40 w-64 select-none font-sans" ref={panelRef}>
+    <div className="absolute right-4 top-4 z-40 w-64 max-w-[calc(100vw-2rem)] select-none font-sans max-md:right-3 max-md:top-3 max-md:w-[min(18rem,calc(100vw-1.5rem))]" ref={panelRef}>
       {/* Collapse / expand toggle */}
       <Button
         variant="secondary"
@@ -94,9 +94,9 @@ export function GraphSettings({
 
       {/* Panel body */}
       <Card className={`overflow-hidden border-t-0 shadow-xl transition-all duration-300 ease-in-out ${
-        open ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 border-none shadow-none'
+        open ? 'max-h-[500px] opacity-100 max-md:max-h-[60dvh]' : 'max-h-0 opacity-0 border-none shadow-none'
       }`}>
-        <CardContent className="space-y-6 pt-5">
+        <CardContent className="space-y-6 pt-5 max-md:max-h-[calc(60dvh-3rem)] max-md:overflow-y-auto scroll-bronze">
           {/* Physics Section */}
           <div className="space-y-4">
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">Engine Physics</h4>
