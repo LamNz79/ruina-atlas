@@ -6,8 +6,10 @@
   :root {
     /* Base shadcn colors — Archive of the Infinite Rail design system */
     /* Surface: Navy Black foundation */
-    --background: 230 15% 7%;           /* #111318 — base surface */
-    --foreground: 35 20% 91%;            /* Warm Ivory — primary text */
+    --background: 230 15% 7%;
+    /* #111318 — base surface */
+    --foreground: 35 20% 91%;
+    /* Warm Ivory — primary text */
 
     --card: 230 15% 7%;
     --card-foreground: 35 20% 91%;
@@ -16,15 +18,19 @@
     --popover-foreground: 35 20% 91%;
 
     /* Primary: Deep Crimson */
-    --primary: 353 76% 42%;              /* #b8202f */
-    --primary-foreground: 35 25% 96%;   /* Warm Ivory on crimson */
+    --primary: 353 76% 42%;
+    /* #b8202f */
+    --primary-foreground: 35 25% 96%;
+    /* Warm Ivory on crimson */
 
     /* Secondary: Electric Gold — sparse use */
-    --secondary: 48 93% 56%;            /* #f5c518 */
+    --secondary: 48 93% 56%;
+    /* #f5c518 */
     --secondary-foreground: 230 15% 7%;
 
     --muted: 230 12% 11%;
-    --muted-foreground: 35 10% 58%;      /* Subtle Ivory */
+    --muted-foreground: 35 10% 58%;
+    /* Subtle Ivory */
 
     --accent: 230 12% 11%;
     --accent-foreground: 35 20% 91%;
@@ -35,7 +41,8 @@
     /* Ghost Border — 15% opacity Ivory outline per DESIGN.md */
     --border: 35 15% 18%;
     --input: 230 15% 11%;
-    --ring: 353 76% 42%;                 /* Crimson ring */
+    --ring: 353 76% 42%;
+    /* Crimson ring */
 
     /* 0px radius — Industrial Toggle per DESIGN.md */
     --radius: 0px;
@@ -49,12 +56,18 @@
     --surface-container-highest: #252d3d;
 
     /* Extended palette */
-    --ivory: #e8e0d5;                    /* Primary text */
-    --ivory-muted: #c4bdb3;              /* Secondary text */
-    --ivory-subtle: #8a847a;             /* Metadata */
-    --gold: #f5c518;                     /* Electric Gold */
-    --crimson: #b8202f;                  /* Deep Crimson */
-    --bronze: #a08a70;                   /* Warm Bronze accent */
+    --ivory: #e8e0d5;
+    /* Primary text */
+    --ivory-muted: #c4bdb3;
+    /* Secondary text */
+    --ivory-subtle: #8a847a;
+    /* Metadata */
+    --gold: #f5c518;
+    /* Electric Gold */
+    --crimson: #b8202f;
+    /* Deep Crimson */
+    --bronze: #a08a70;
+    /* Warm Bronze accent */
 
     /* Glassmorphism base */
     --glass-bg: rgba(17, 19, 24, 0.75);
@@ -62,21 +75,31 @@
     --glass-highlight: rgba(245, 197, 24, 0.05);
 
     /* Text hierarchy — Warm Ivory tones on dark */
-    --text-bright: #e8e0d5;   /* Primary text */
-    --text-d: #c4bdb3;        /* Secondary */
-    --text-faint: #8a847a;   /* Metadata */
+    --text-bright: #e8e0d5;
+    /* Primary text */
+    --text-d: #c4bdb3;
+    /* Secondary */
+    --text-faint: #8a847a;
+    /* Metadata */
     --sans: 'Space Grotesk', monospace;
 
     /* Edge colors for D3 graph — Archive palette */
-    --edge-literary: #a08a70;   /* Bronze — literary origin */
-    --edge-theme: #c4bdb3;      /* Ivory — thematic link */
-    --edge-crossgame: #f5c518;  /* Electric Gold — cross-game continuity */
-    --edge-group: #8a847a;       /* Subtle Ivory — shared literary group */
+    --edge-literary: #a08a70;
+    /* Bronze — literary origin */
+    --edge-theme: #c4bdb3;
+    /* Ivory — thematic link */
+    --edge-crossgame: #f5c518;
+    /* Electric Gold — cross-game continuity */
+    --edge-group: #8a847a;
+    /* Subtle Ivory — shared literary group */
 
     /* Game node colors — match Archive palette */
-    --game-limbus: #b8202f;     /* Deep Crimson */
-    --game-ruina: #a08a70;       /* Warm Bronze */
-    --game-lobotomy: #7a5c3a;   /* Dark Bronze */
+    --game-limbus: #b8202f;
+    /* Deep Crimson */
+    --game-ruina: #a08a70;
+    /* Warm Bronze */
+    --game-lobotomy: #7a5c3a;
+    /* Dark Bronze */
 
     /* Typography tokens */
     --font-newsreader: 'Newsreader', Georgia, serif;
@@ -110,26 +133,35 @@
 
 /* ─── Global Base ─────────────────────────────────────────────────────────── */
 
+.layout-locked {
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+}
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground overflow-hidden h-screen w-screen;
+    @apply bg-background text-foreground  w-screen;
     font-family: var(--font-manrope);
-    background-image: 
+    background-image:
       radial-gradient(circle at 50% 50%, rgba(184, 32, 47, 0.05) 0%, transparent 50%),
       radial-gradient(circle at 10% 20%, rgba(245, 197, 24, 0.03) 0%, transparent 30%);
   }
 
   /* Typography scale — Newsreader for display/headlines */
-  h1, h2, h3, .font-display {
+  h1,
+  h2,
+  h3,
+  .font-display {
     font-family: var(--font-newsreader);
   }
 
   /* Space Grotesk for labels and data */
-  .font-label, .font-mono {
+  .font-label,
+  .font-mono {
     font-family: var(--font-space);
   }
 
@@ -162,13 +194,13 @@
   left: 0;
   width: 200%;
   height: 200%;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
   background-repeat: repeat;
   background-size: 200px 200px;
   animation: starfield-move 100s linear infinite;
@@ -176,8 +208,13 @@
 }
 
 @keyframes starfield-move {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-100px, -100px); }
+  from {
+    transform: translate(0, 0);
+  }
+
+  to {
+    transform: translate(-100px, -100px);
+  }
 }
 
 /* ─── Utility Classes — The Archive of the Infinite Rail ─────────────────── */
@@ -217,6 +254,7 @@
 .scan-line {
   position: relative;
 }
+
 .scan-line:focus-within::after {
   content: "";
   position: absolute;
@@ -230,8 +268,15 @@
 }
 
 @keyframes scan-line-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 /* active-item-glow: Archive active selection look */
@@ -257,13 +302,16 @@
 .scroll-bronze::-webkit-scrollbar {
   width: 5px;
 }
+
 .scroll-bronze::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.2);
 }
+
 .scroll-bronze::-webkit-scrollbar-thumb {
   background: var(--bronze);
   border-radius: 10px;
 }
+
 .scroll-bronze::-webkit-scrollbar-thumb:hover {
   background: var(--gold);
 }

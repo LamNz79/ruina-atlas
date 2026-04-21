@@ -1,74 +1,100 @@
 /* ── CSS Variables — Archive of the Infinite Rail ──────────────────────────── */
 :root {
   /* Core surfaces — Navy Black hierarchy */
-  --bg:              #111318;
-  --bg-surface:      #131620;
-  --bg-elevated:     #181c27;
-  --bg-hover:        #1e2330;
-  --border:          rgba(200, 193, 180, 0.12);
-  --border-subtle:   rgba(200, 193, 180, 0.07);
+  --bg: #111318;
+  --bg-surface: #131620;
+  --bg-elevated: #181c27;
+  --bg-hover: #1e2330;
+  --border: rgba(200, 193, 180, 0.12);
+  --border-subtle: rgba(200, 193, 180, 0.07);
 
   /* Text — Warm Ivory hierarchy */
-  --text-h:          #e8e0d5;   /* Primary */
-  --text-m:          #c4bdb3;   /* Secondary */
-  --text-d:          #8a847a;   /* Tertiary/metadata */
-  --text-faint:      #6b665e;   /* Disabled/subtle */
+  --text-h: #e8e0d5;
+  /* Primary */
+  --text-m: #c4bdb3;
+  /* Secondary */
+  --text-d: #8a847a;
+  /* Tertiary/metadata */
+  --text-faint: #6b665e;
+  /* Disabled/subtle */
 
   /* Edge colors — Archive palette */
-  --edge-literary:   #a08a70;    /* Bronze — literary origin */
-  --edge-theme:      #c4bdb3;    /* Ivory — thematic link */
-  --edge-crossgame:  #f5c518;    /* Gold — cross-game continuity */
-  --edge-group:      #8a847a;    /* Subtle Ivory — shared group */
+  --edge-literary: #a08a70;
+  /* Bronze — literary origin */
+  --edge-theme: #c4bdb3;
+  /* Ivory — thematic link */
+  --edge-crossgame: #f5c518;
+  /* Gold — cross-game continuity */
+  --edge-group: #8a847a;
+  /* Subtle Ivory — shared group */
 
   /* Game colors */
-  --game-limbus:     #b8202f;    /* Deep Crimson */
-  --game-ruina:      #a08a70;    /* Warm Bronze */
-  --game-lobotomy:   #7a5c3a;    /* Dark Bronze */
+  --game-limbus: #b8202f;
+  /* Deep Crimson */
+  --game-ruina: #a08a70;
+  /* Warm Bronze */
+  --game-lobotomy: #7a5c3a;
+  /* Dark Bronze */
 
   /* Accent — Deep Crimson */
-  --accent:          #b8202f;
-  --accent-hover:    #d42a3d;
+  --accent: #b8202f;
+  --accent-hover: #d42a3d;
 
   /* Layout */
-  --panel-w:        400px;
-  --header-h:       52px;
-  --footer-h:       32px;
-  --font:           'Space Grotesk', system-ui, sans-serif;
+  --panel-w: 400px;
+  --header-h: 52px;
+  --footer-h: 32px;
+  --font: 'Space Grotesk', system-ui, sans-serif;
 
   /* Graph settings panel */
-  --settings-bg:           #131620;
-  --settings-bg-hover:     #1e2330;
-  --settings-bg-active:    #252d3d;
-  --settings-border:       rgba(200, 193, 180, 0.12);
+  --settings-bg: #131620;
+  --settings-bg-hover: #1e2330;
+  --settings-bg-active: #252d3d;
+  --settings-border: rgba(200, 193, 180, 0.12);
   --settings-border-active: rgba(200, 193, 180, 0.25);
-  --settings-text:         #e8e0d5;
-  --settings-text-muted:    #8a847a;
-  --settings-accent:       #f5c518;
+  --settings-text: #e8e0d5;
+  --settings-text-muted: #8a847a;
+  --settings-accent: #f5c518;
 }
 
 /* ── Reset & Base ───────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: var(--font);
   background: var(--bg);
   color: var(--text-m);
   line-height: 1.6;
-  overflow: hidden;
-  height: 100dvh;
+  overflow-y: auto;
+  min-height: 100vh;
 }
 
-a { color: var(--settings-accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a {
+  color: var(--settings-accent);
+  text-decoration: none;
+}
 
-button { cursor: pointer; font-family: inherit; }
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
 
 /* ── App Shell ──────────────────────────────────────────────────────────────── */
 .app {
   display: grid;
   grid-template-rows: var(--header-h) 1fr var(--footer-h);
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100vh;
+  /* overflow: hidden; */
 }
 
 /* ── Header ───────────────────────────────────────────────────────────────── */
@@ -82,7 +108,11 @@ button { cursor: pointer; font-family: inherit; }
   gap: 20px;
 }
 
-.app__header-inner { display: flex; align-items: baseline; gap: 14px; }
+.app__header-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
 
 .app__title {
   font-size: 1.1rem;
@@ -129,7 +159,9 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* ── SVG Global ────────────────────────────────────────────────────────────── */
-svg text { user-select: none; }
+svg text {
+  user-select: none;
+}
 
 /* ── Lore Panel ───────────────────────────────────────────────────────────── */
 .lore-panel {
@@ -148,13 +180,26 @@ svg text { user-select: none; }
   flex-direction: column;
 }
 
-.lore-panel--open { transform: translateX(0); }
+.lore-panel--open {
+  transform: translateX(0);
+}
 
 /* Scrollbar — Archive palette */
-.lore-panel::-webkit-scrollbar { width: 3px; }
-.lore-panel::-webkit-scrollbar-track { background: transparent; }
-.lore-panel::-webkit-scrollbar-thumb { background: #a08a70; }
-.lore-panel::-webkit-scrollbar-thumb:hover { background: #f5c518; }
+.lore-panel::-webkit-scrollbar {
+  width: 3px;
+}
+
+.lore-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lore-panel::-webkit-scrollbar-thumb {
+  background: #a08a70;
+}
+
+.lore-panel::-webkit-scrollbar-thumb:hover {
+  background: #f5c518;
+}
 
 /* Header */
 .lore-panel__header {
@@ -210,7 +255,9 @@ svg text { user-select: none; }
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.lore-panel__section:last-child { border-bottom: none; }
+.lore-panel__section:last-child {
+  border-bottom: none;
+}
 
 .lore-panel__section-title {
   font-size: 0.68rem;
@@ -251,8 +298,13 @@ svg text { user-select: none; }
 }
 
 /* Literary Sources */
-.lore-panel__source { margin-bottom: 14px; }
-.lore-panel__source:last-child { margin-bottom: 0; }
+.lore-panel__source {
+  margin-bottom: 14px;
+}
+
+.lore-panel__source:last-child {
+  margin-bottom: 0;
+}
 
 .lore-panel__source-header {
   display: flex;
@@ -366,6 +418,7 @@ svg text { user-select: none; }
 .lore-panel__identity-card--limbus {
   border-color: rgba(184, 32, 47, 0.4);
 }
+
 .lore-panel__identity-card--limbus:hover {
   border-color: rgba(184, 32, 47, 0.7);
 }
@@ -373,6 +426,7 @@ svg text { user-select: none; }
 .lore-panel__identity-card--lobotomy {
   border-color: rgba(160, 138, 112, 0.35);
 }
+
 .lore-panel__identity-card--lobotomy:hover {
   border-color: rgba(160, 138, 112, 0.6);
 }
@@ -380,6 +434,7 @@ svg text { user-select: none; }
 .lore-panel__identity-card--ruina {
   border-color: rgba(138, 74, 90, 0.4);
 }
+
 .lore-panel__identity-card--ruina:hover {
   border-color: rgba(138, 74, 90, 0.7);
 }
@@ -433,8 +488,13 @@ svg text { user-select: none; }
 }
 
 @keyframes id-modal-fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .id-modal {
@@ -449,8 +509,15 @@ svg text { user-select: none; }
 }
 
 @keyframes id-modal-slide {
-  from { transform: translateY(12px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .id-modal__header {
@@ -608,7 +675,9 @@ svg text { user-select: none; }
   border-right: 1px solid var(--border);
 }
 
-.id-modal__resist:last-child { border-right: none; }
+.id-modal__resist:last-child {
+  border-right: none;
+}
 
 .id-modal__resist-type {
   font-size: 0.58rem;
@@ -632,9 +701,17 @@ svg text { user-select: none; }
 }
 
 /* Scrollbar for modal */
-.id-modal::-webkit-scrollbar { width: 4px; }
-.id-modal::-webkit-scrollbar-track { background: transparent; }
-.id-modal::-webkit-scrollbar-thumb { background: var(--border); }
+.id-modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.id-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.id-modal::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
 
 .lore-panel__empty {
   font-size: 0.78rem;
@@ -711,12 +788,15 @@ svg text { user-select: none; }
 .scroll-bronze::-webkit-scrollbar {
   width: 3px;
 }
+
 .scroll-bronze::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .scroll-bronze::-webkit-scrollbar-thumb {
   background: #a08a70;
 }
+
 .scroll-bronze::-webkit-scrollbar-thumb:hover {
   background: #f5c518;
 }
@@ -741,8 +821,15 @@ svg text { user-select: none; }
 
 /* ── Responsive ────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  :root { --panel-w: 100vw; }
+  :root {
+    --panel-w: 100vw;
+  }
 
-  .app__graph-wrap--panel-open { width: 0; }
-  .lore-panel { width: 100%; }
+  .app__graph-wrap--panel-open {
+    width: 0;
+  }
+
+  .lore-panel {
+    width: 100%;
+  }
 }

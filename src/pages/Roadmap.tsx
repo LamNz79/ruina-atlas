@@ -82,8 +82,7 @@ function getPriorityTone(priority: string) {
 
 export default function Roadmap() {
   return (
-    <div className="dark flex min-h-screen w-full flex-col overflow-auto bg-background font-sans text-foreground">
-      <header className="sticky top-0 z-50 flex h-14 w-full items-center justify-between border-b border-border/40 bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div className="dark flex w-full flex-col bg-background font-sans text-foreground">      <header className="sticky top-0 z-50 flex h-14 w-full items-center justify-between border-b border-border/40 bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="flex items-center gap-3">
           <img
             src="/favicon.svg"
