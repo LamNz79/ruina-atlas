@@ -1,34 +1,49 @@
 # Ruina Atlas
 
-> Map the world of Project Moon
+> Map the literary and lore connections of Project Moon.
 
-**Ruina Atlas** is an open-source fan tool for [Lobotomy Corporation](https://store.steampowered.com/app/568220/Lobotomy_Corporation/), [Library of Ruina](https://store.steampowered.com/app/1123810/Library_Of_Ruina/), and [Limbus Company](https://store.steampowered.com/app/1973530/Limbus_Company/) — the Project Moon trilogy.
+**Ruina Atlas** is an open-source fan tool for [Lobotomy Corporation](https://store.steampowered.com/app/568220/Lobotomy_Corporation/), [Library of Ruina](https://store.steampowered.com/app/1123810/Library_Of_Ruina/), and [Limbus Company](https://store.steampowered.com/app/1973530/Limbus_Company/).
 
-It does two things no existing wiki or database tool does:
+It focuses on the part other databases usually skip: the literary layer. The app connects Sinners, books, themes, cantos, and cross-game entities in one graph-first interface.
 
-1. **Lore graph** — an interactive map connecting each Sinner to their real-world literary origin, cross-game continuity, and thematic DNA spanning all three games.
-2. **Lore-aware team builder** — build Limbus Company teams filtered not just by damage type, but by literary origin, thematic cluster, and Wing affiliation.
-
-> ⚠️ **Work in progress.** The data model and seed data are being authored now. Contributions and lore corrections are very welcome.
+> Work in progress. The graph and core data model are live, and M3 content expansion is underway.
 
 ---
 
-## Why this exists
+## Current status
 
-Existing tools like [Prydwen](https://www.prydwen.gg/limbus-company/) and [Great Limbus Library](https://gll-fun.com/) cover mechanical data extremely well. What they don't have is the literary layer — the connections between Ishmael and *Moby Dick*, Sinclair and *Demian*, Ryōshū and Akutagawa, and how those source texts shaped each character's arc across three games.
-
-Ruina Atlas is built for the player who finishes a Canto and immediately wants to know what they just read.
-
----
-
-## Features (planned)
-
-- [x] TypeScript data schema (Sinners, Identities, EGOs, literary sources, themes)
-- [ ] Seed data — all 13 Sinners with literary origins and cross-game appearances
-- [ ] D3 force-directed lore graph (nodes = entities, edges = literary / thematic connections)
-- [ ] Canto reading companion with spoiler-gated literary annotations
-- [ ] Cross-game entity search (search "Angela" → see her full arc across all three games)
+- [x] Shared TypeScript data model
+- [x] 13 Sinner entries in `src/data/sinners.json`
+- [x] Lore graph MVP in React + TypeScript + D3
+- [x] Literary source explorer modal
+- [x] Filter panel for game, theme, and literary source
+- [x] Cross-game entity nodes and entity detail panel
+- [x] Spoiler-gated canto annotations in the Sinner panel
+- [ ] M3 content polish and consistency pass
+- [ ] Sinner profile card/page expansion
 - [ ] Lore-aware team builder
+
+Current data snapshot:
+
+- 13 Sinners
+- 27 literary sources
+- 12 cross-game entities
+
+---
+
+## What the app does
+
+1. **Lore graph**
+   Explore a force-directed graph linking Sinners to shared themes, literary roots, and cross-game continuity.
+
+2. **Literary source explorer**
+   Open a source such as *The Divine Comedy* or *Crime and Punishment* and see the author, themes, passage, and connected Sinners.
+
+3. **Cross-game entity layer**
+   Browse non-Sinner nodes such as Wings, abnormalities, and recurring characters with their own detail panel.
+
+4. **Spoiler-aware canto view**
+   Read canto appearances in the Sinner panel with spoiler gating enabled by default for later content.
 
 ---
 
@@ -38,63 +53,55 @@ Ruina Atlas is built for the player who finishes a Canto and immediately wants t
 |---|---|
 | Framework | React + TypeScript |
 | Build tool | Vite |
-| Graph | D3.js (force-directed) |
+| Graph | D3.js |
 | Search | Fuse.js |
-| Styling | TBD (Mantine or Tailwind) |
-| Hosting | Vercel |
-| Data | Static JSON (no backend) |
+| Styling | Tailwind + shadcn/ui |
+| Data | Static JSON files |
+| Hosting target | Vercel |
 
 ---
 
-## Data model
+## Data layout
 
-All game data lives as static typed JSON under `/src/data`. The core schema:
+Core data lives under `src/data`:
 
-```ts
-type Sinner = {
-  id: string
-  name: string
-  literarySource: LiterarySource
-  themes: Theme[]
-  appearances: GameAppearance[]
-  identities: Identity[]
-  egos: EGO[]
-}
+- `sinners.json`: main Sinner entries, literary mappings, canto notes, identities, EGOs
+- `literarySources.json`: books, authors, passages, themes, shared-group metadata
+- `crossGameEntities.json`: Wings, abnormalities, and recurring characters
+- `cantos.json`: canto metadata and spoiler levels
 
-type LiterarySource = {
-  title: string
-  author: string
-  year?: number
-  connection: string   // how the source maps to the character
-}
-
-type Theme = 'nihilism' | 'identity' | 'redemption' | 'isolation' | 'obsession' | 'guilt' | string
-```
-
-> Full schema in [`/src/types/index.ts`](/src/types/index.ts) *(coming soon)*
-
----
-
-## Contributing
-
-The most valuable contribution right now is **lore data** — not code.
-
-If you know the Project Moon games well and want to help author or correct Sinner entries, open an issue or PR against `/src/data/sinners/`. Each entry is a plain JSON file, no coding required.
-
-For code contributions, please open an issue first to discuss what you'd like to change.
-
----
-
-## Disclaimer
-
-Ruina Atlas is an unofficial fan project. All game content, characters, and lore belong to [Project Moon](https://projectmoon.studio/). This tool is non-commercial and made with respect for their work.
+Type definitions live in `src/types/index.ts`.
 
 ---
 
 ## Roadmap
 
-See [`/docs/roadmap.json`](/docs/roadmap.json) for the full milestone plan.
+The project is currently in **M3: Lore graph full content**.
+
+Main remaining work in M3:
+
+- complete data quality and consistency pass across Sinners, sources, and entity links
+- tighten shared literary group behavior and edge semantics
+- expand and verify cross-game entity coverage
+- refresh project docs as implementation changes land
+
+Full milestone tracking lives in [`docs/roadmap.json`](docs/roadmap.json).
 
 ---
 
-*Built by a Manager who got too deep into the lore.*
+## Contributing
+
+The highest-value contributions right now are data and correctness:
+
+- lore corrections
+- source attribution fixes
+- missing literary connections
+- graph/UI bug reports
+
+If you want to contribute code, open an issue or PR with the exact behavior you want to improve.
+
+---
+
+## Disclaimer
+
+Ruina Atlas is an unofficial, non-commercial fan project. All game content, characters, and lore belong to [Project Moon](https://projectmoon.studio/).

@@ -1,136 +1,116 @@
 {
   "project": "Ruina Atlas",
   "created": "2026-04-13",
-  "status": "planning",
-  "recommended_order": ["data_layer", "lore_graph", "team_builder"],
-  "summary": "A React/TypeScript fan tool for Project Moon (Lobotomy Corporation → Library of Ruina → Limbus Company) with two main features: an interactive lore graph connecting Sinners to their literary origins across all three games, and a lore-aware team builder. Both tools share one underlying data model.",
+  "last_updated": "2026-04-21",
+  "status": "active-development",
+  "recommended_order": ["data_layer", "lore_graph", "full_content", "team_builder"],
+  "summary": "A React and TypeScript fan tool for Project Moon focused on literary origins, canto context, and cross-game lore connections. The shared data layer and lore graph MVP are implemented. The current milestone is M3 content completion and consistency.",
 
   "milestones": [
     {
       "id": "M1",
       "name": "Shared data layer",
-      "status": "completed 13/4/2026",
+      "status": "completed 2026-04-13",
       "priority": "critical",
-      "estimated_effort": "1 week (evenings)",
-      "description": "Define the TypeScript schema and manually author 12–15 Sinner entries covering the clearest literary connections. This is the foundation everything else reads from.",
+      "description": "Define the TypeScript schema and ship the initial static data model used by the graph and panels.",
       "deliverables": [
-        "TypeScript types file (Sinner, Identity, EGO, LiterarySource, Theme)",
-        "JSON seed data: 12–15 Sinners with literary sources and themes",
-        "Cross-game appearance flags (lobotomy, ruina, limbus)"
-      ],
-      "sinners_to_cover_first": [
-        "Dante", "Faust", "Ishmael", "Sinclair", "Don Quixote",
-        "Ryoshu", "Meursault", "Hong Lu", "Heathcliff", "Yi Sang",
-        "Rodion", "Outis", "Gregor"
-      ],
-      "notes": "The data work requires fan knowledge, not coding skill. Do this before any UI. Even publishing the schema as open source would be a meaningful community contribution."
+        "TypeScript types for Sinners, literary sources, themes, canto annotations, and entities",
+        "Static JSON data structure under src/data",
+        "Base Sinner dataset used by the graph"
+      ]
     },
     {
       "id": "M2",
       "name": "Lore graph MVP",
-      "status": "completed 15/4/2026",
+      "status": "completed 2026-04-15",
       "priority": "high",
-      "estimated_effort": "2–3 weeks (evenings)",
-      "description": "Minimal D3 force-directed graph in React rendering the 12–15 seed Sinners as nodes, with edges representing literary connections, shared themes, and cross-game continuity.",
+      "description": "Interactive D3 lore graph in React with detail panels and shared graph interactions.",
       "deliverables": [
-        "React + D3 force graph component",
-        "Node click → detail panel (literary source, themes, game appearances)",
-        "Edge types: literary origin, thematic link, cross-game continuity",
-        "Deployed to Vercel (public URL)"
-      ],
-      "tech": ["React", "TypeScript", "D3.js (force-directed)", "Vite", "Vercel"],
-      "notes": "This is the proof-of-concept milestone. Once deployed, share with r/LimbusCompany or the wiki Discord to get early feedback and community attention."
+        "Force-directed graph component",
+        "Sinner detail panel",
+        "Cross-game entity node rendering and entity panel",
+        "Search entry point and graph selection flow"
+      ]
     },
     {
       "id": "M3",
       "name": "Lore graph full content",
-      "status": "in_progress 15/4/2026",
-      "priority": "medium",
-      "estimated_effort": "2–4 weeks (data entry + polish)",
-      "description": "Expand the graph with richer data: all Cantos annotated, cross-game entity connections (Wings, Abnormalities, recurring characters), spoiler-gating toggle.",
-      "deliverables": [
-        "All 13 Sinners fully authored",
-        "Canto-by-canto annotation layer (spoiler-gated)",
-        "Cross-game entities: Angela/Ayin, Wings, key Abnormalities",
-        "Literary source explorer panel (book title, author, themes adapted)",
-        "Filter by: game, theme, literary origin"
+      "status": "in_progress",
+      "priority": "high",
+      "description": "Expand the graph into a reliable reference tool with richer data, spoiler-aware canto context, source browsing, and consistency cleanup.",
+      "implemented_now": [
+        "13 Sinners present in src/data/sinners.json",
+        "Canto annotations with spoiler gating in the UI",
+        "Cross-game entities in src/data/crossGameEntities.json",
+        "Literary source explorer modal",
+        "Filter panel for game, theme, and literary source",
+        "Shared literary group nodes in the graph"
       ],
-      "design_log": "docs/design-log/003-lore-graph-full-content-design-log.md",
-      "requirement": "requirement/002-lore-graph-full-content-requirement.md",
-      "notes": "This is the long-tail content work. Can be done incrementally — ship M2 first, then add data patch by patch."
+      "remaining_work": [
+        "Data quality pass across Sinner literary sources and canto summaries",
+        "Consistency audit for graph links, shared groups, and panel interactions",
+        "Cross-game entity coverage review and cleanup",
+        "README and roadmap maintenance as the implementation changes"
+      ],
+      "references": {
+        "design_log": "docs/design-log/003-lore-graph-full-content-design-log.md",
+        "requirement": "requirement/002-lore-graph-full-content-requirement.md"
+      }
     },
     {
       "id": "M4",
       "name": "Sinner profile cards",
       "status": "not_started",
       "priority": "medium",
-      "estimated_effort": "1 week",
-      "description": "Rich per-Sinner pages showing: base lore summary, literary source, all available Identities and EGOs, cross-game timeline. Cross-linked from graph nodes.",
-      "deliverables": [
-        "Sinner detail page / panel",
-        "Identity and EGO list per Sinner",
-        "Link out to existing wikis (limbuscompany.wiki.gg) for mechanical detail"
-      ],
-      "notes": "Don't compete with Prydwen on mechanical data — link out. Focus on the lore layer that they don't have."
+      "description": "Richer per-Sinner profile pages or expanded panels with cleaner presentation of lore, identities, EGOs, and timeline context."
     },
     {
       "id": "M5",
       "name": "Team builder (lore-aware)",
       "status": "not_started",
       "priority": "medium",
-      "estimated_effort": "2–3 weeks",
-      "description": "Team composition tool that filters Identities and EGOs by literary origin, thematic cluster, and Wing affiliation — not just damage type. The unique angle vs Prydwen/GLL.",
-      "deliverables": [
-        "Team slot UI (6 Sinners, 1 Identity + 1 EGO each)",
-        "Filter panel: damage type, literary origin, theme, game",
-        "Resonance highlight: pairs sharing literary source or thematic arc",
-        "Save/share team via URL params"
-      ],
-      "tech": ["React state / useReducer", "URL search params for sharing"],
-      "notes": "Build this after M3. By then you may have community users who can tell you exactly what filters they want."
+      "description": "Team composition tooling filtered by literary origin, theme, and affiliation rather than only combat mechanics."
     },
     {
       "id": "M6",
-      "name": "Cross-game entity search",
+      "name": "Cross-game entity search polish",
       "status": "not_started",
       "priority": "low",
-      "estimated_effort": "3–5 days",
-      "description": "Single search box that spans all three games. Search 'Angela' → see her Lobotomy origin, Library arc, and Limbus appearances all in one result.",
-      "deliverables": [
-        "Fuse.js fuzzy search over unified entity data",
-        "Result cards grouped by game",
-        "Deep link into graph nodes or profile pages"
-      ],
-      "tech": ["Fuse.js"]
+      "description": "Improve search, deep links, and browse flows across Sinners, sources, and entity nodes."
     }
   ],
 
   "tech_stack": {
     "frontend": ["React", "TypeScript", "Vite"],
-    "graph": ["D3.js (force-directed graph)"],
+    "graph": ["D3.js"],
     "search": ["Fuse.js"],
-    "styling": "TBD — Mantine (familiar from work) or Tailwind",
-    "hosting": "Vercel (free tier)",
-    "data": "Static JSON files in repo (no backend needed for MVP)"
+    "styling": ["Tailwind CSS", "shadcn/ui"],
+    "hosting": "Vercel",
+    "data": "Static JSON files in repo"
   },
 
-  "portfolio_notes": {
-    "why_it_stands_out": "No existing tool maps literary sources → game adaptation for Project Moon. This is the gap only a fan-developer fills.",
-    "cv_framing": "Built a full-stack fan tool with D3 force graph, TypeScript data modeling, and React UI for a 70k+ Discord community.",
-    "repo_visibility": "Public GitHub repo. Pin it. Write an English README explaining the project and the literary connection layer."
+  "current_snapshot": {
+    "sinners": 13,
+    "literary_sources": 27,
+    "cross_game_entities": 12,
+    "major_ui_surfaces": [
+      "Lore graph",
+      "Sinner panel",
+      "Entity panel",
+      "Source explorer",
+      "Filter panel",
+      "Global search"
+    ]
   },
 
-  "next_action": "Ask Claude to write the TypeScript data model for the shared data layer (M1).",
+  "next_action": "Finish the M3 consistency pass: audit literary source links, shared-group behavior, canto coverage, and entity data quality before starting M4.",
 
   "conversation_context": {
-    "discussed_on": "2026-04-13",
-    "assistant": "Claude Sonnet 4.6",
-    "key_decisions": [
-      "Start with data layer before any UI",
-      "Lore graph first — more unique than team builder",
-      "Team builder added later as second tab once community attention exists",
-      "Do not compete with Prydwen/GLL on mechanical data — link out, focus on lore layer",
-      "Static JSON data is fine for MVP, no backend needed"
+    "last_reviewed_on": "2026-04-21",
+    "notes": [
+      "README and roadmap were refreshed to match the implemented repo state.",
+      "M1 and M2 are complete.",
+      "M3 is partially implemented and now primarily a content-quality and consistency milestone."
     ]
   }
 }
