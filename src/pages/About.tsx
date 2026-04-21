@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ExternalLink, BookOpen, Compass, Sparkles } from 'lucide-react';
+import { ArrowLeft, ExternalLink, BookOpen, Compass, Sparkles, Map } from 'lucide-react';
 
 export default function About() {
   return (
@@ -110,6 +110,12 @@ export default function About() {
               <Link to="/">
                 <ArrowLeft className="h-4 w-4" />
                 Back to the Atlas
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="w-full sm:w-auto">
+              <Link to="/roadmap">
+                <Map className="h-4 w-4" />
+                View Roadmap
               </Link>
             </Button>
             <Button asChild variant="outline" className="w-full sm:w-auto">

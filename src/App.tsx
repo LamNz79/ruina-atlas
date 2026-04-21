@@ -6,9 +6,10 @@ import { LoreGraph } from './components/LoreGraph';
 import { LorePanel } from './components/LorePanel';
 import { EntityPanel } from './components/EntityPanel';
 import About from './pages/About';
+import Roadmap from './pages/Roadmap';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -156,6 +157,12 @@ export default function App() {
                         About
                       </Link>
                     </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to="/roadmap" className="flex items-center gap-2 cursor-pointer">
+                        <Map className="h-4 w-4" />
+                        Roadmap
+                      </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
                       <a
@@ -257,6 +264,7 @@ export default function App() {
 
       {/* About page */}
       <Route path="/about" element={<About />} />
+      <Route path="/roadmap" element={<Roadmap />} />
     </Routes>
   );
 }
