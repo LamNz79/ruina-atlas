@@ -87,7 +87,12 @@
         },
         {
           "id": "canto-9",
-          "summary": "Gregor's past explored — Dante gains Remote Sight ability, uses Ira to enhance Ryoshu, and attempts the Malthael ability.",
+          "summary": "Gregor's past explored — Dante gains Remote Sight ability and explores the Malthael ability.",
+          "isMajor": false
+        },
+        {
+          "id": "intervallo-9.5",
+          "summary": "Current event — Details pending lore progression.",
           "isMajor": false
         }
       ],
@@ -1128,6 +1133,11 @@
           "id": "canto-7",
           "summary": "Focus character — true identity as Sancho revealed; backstory as former Bloodfiend of La Manchaland explored; reconciles Sancho self with Don Quixote persona.",
           "isMajor": true
+        },
+        {
+          "id": "intervallo-9.5",
+          "summary": "Current focus — Don Quixote's role in the current seasonal transition.",
+          "isMajor": false
         }
       ]
     },

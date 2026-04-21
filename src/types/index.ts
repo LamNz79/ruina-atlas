@@ -102,6 +102,8 @@ export interface LiterarySource {
    * e.g. 'divine-comedy' groups Inferno / Purgatorio / Paradiso refs.
    */
   sharedGroup?: string;
+  /** Human-readable name for the shared group node. */
+  sharedGroupName?: string;
   themes: Theme[];
   wikiUrl?: string;
 }

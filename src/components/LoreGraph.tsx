@@ -15,7 +15,7 @@ interface GraphNode extends d3.SimulationNodeDatum {
   literarySourceIds: string[];
   themes: string[];
   crossGameContinuity: boolean;
-  nodeType: 'sinner' | 'entity' | 'zone-anchor';
+  nodeType: 'sinner' | 'entity' | 'zone-anchor' | 'shared-group';
   entityType?: 'wing' | 'abnormality' | 'character';
   icon?: string;
   connectionCount?: number;
@@ -125,12 +125,88 @@ export function LoreGraph({
   useEffect(() => { onEntityClickRef.current = onEntityClick; }, [onEntityClick]);
   useEffect(() => { sinnersRef.current = sinners; }, [sinners]);
 
-  // Sync selected ID ref on prop change
+  const highlightSelected = useCallback(() => {
+    if (!nodeElsRef.current || !linkElsRef.current) return;
+    const selId = selectedIdRef.current;
+    const selEntity = selectedEntityRef.current;
+    const activeId = selId || selEntity;
+
+    const connectedIds = new Set<string>();
+    if (activeId) {
+      connectedIds.add(activeId);
+      linkElsRef.current.each(function (d) {
+        const src = (typeof d.source === 'string') ? d.source : (d.source as any).id;
+        const tgt = (typeof d.target === 'string') ? d.target : (d.target as any).id;
+        if (src === activeId || tgt === activeId) {
+          connectedIds.add(src);
+          connectedIds.add(tgt);
+        }
+      });
+    }
+
+    // Update nodes
+    nodeElsRef.current.each(function (d) {
+      const isSel = d.id === selId || d.id === selEntity;
+      const isConn = !activeId || connectedIds.has(d.id);
+      
+      d3.select(this)
+        .transition().duration(300)
+        .attr('opacity', isConn ? 1 : 0.15);
+
+      if (d.nodeType === 'sinner') {
+        const hitSel = d3.select(this).select('.node-hit');
+        hitSel
+          .attr('fill', isSel ? '#e8e0d5' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
+          .attr('stroke', isSel ? '#f5c518' : 'var(--ring)')
+          .attr('stroke-width', isSel ? 3 : 1.5);
+      } else if (d.nodeType === 'entity') {
+        const defaultColor = ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing;
+        d3.select(this).select('.node-hit')
+          .attr('stroke', isSel ? '#f5c518' : defaultColor)
+          .attr('stroke-width', isSel ? 3 : 2);
+      }
+    });
+
+    // Update links
+    linkElsRef.current.each(function (d) {
+      if (!activeId) {
+        d3.select(this).transition().duration(300).attr('stroke-opacity', (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4);
+        return;
+      }
+      const src = (typeof d.source === 'string') ? d.source : (d.source as any).id;
+      const tgt = (typeof d.target === 'string') ? d.target : (d.target as any).id;
+      const isConn = src === activeId || tgt === activeId;
+      d3.select(this)
+        .transition().duration(300)
+        .attr('stroke-opacity', isConn ? 0.8 : 0.05)
+        .attr('filter', isConn ? 'url(#edge-glow)' : null);
+    });
+  }, []);
+
+  // Sync selection refs and handle zoom-to-node
   useEffect(() => {
     selectedIdRef.current = selectedSinner?.id ?? null;
     selectedEntityRef.current = selectedEntity;
     highlightSelected();
-  }, [selectedSinner, selectedEntity]);
+
+    // Zoom to node if something is selected
+    const targetId = selectedSinner?.id || selectedEntity;
+    if (targetId && simulationRef.current && svgRef.current && zoomRef.current) {
+      const node = (simulationRef.current.nodes() as GraphNode[]).find(n => n.id === targetId);
+      if (node && node.x !== undefined && node.y !== undefined) {
+        const container = containerRef.current;
+        if (container) {
+          d3.select(svgRef.current)
+            .transition()
+            .duration(750)
+            .call(
+              zoomRef.current.transform,
+              d3.zoomIdentity.translate(container.clientWidth / 2, container.clientHeight / 2).scale(1.2).translate(-node.x, -node.y)
+            );
+        }
+      }
+    }
+  }, [selectedSinner, selectedEntity, highlightSelected]);
 
   const [physics, setPhysics] = useState<PhysicsSettings>(DEFAULTS);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
@@ -161,33 +237,6 @@ export function LoreGraph({
   // ── Sync filter refs ────────────────────────────────────────────────────────
   useEffect(() => { filtersRef.current = filters; }, [filters]);
 
-  // ── Style selected node in-place ──────────────────────────────────────────────
-  const highlightSelected = useCallback(() => {
-    if (!nodeElsRef.current) return;
-    const selId = selectedIdRef.current;
-    const selEntity = selectedEntityRef.current;
-    nodeElsRef.current.each(function (d) {
-      if (d.nodeType === 'sinner') {
-        const isSel = d.id === selId;
-        const hitSel = d3.select(this).select('.node-hit');
-        hitSel
-          .attr('fill', isSel ? '#e8e0d5' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
-          .attr('stroke', isSel ? '#f5c518' : 'var(--ring)')
-          .attr('stroke-width', isSel ? 3 : 1.5);
-        d3.select(this)
-          .select('.node-ring')
-          .attr('visibility', d.crossGameContinuity || isSel ? 'visible' : 'hidden')
-          .attr('stroke', isSel ? '#f5c518' : 'var(--edge-crossgame)');
-      } else {
-        // Entity diamond
-        const isSel = d.id === selEntity;
-        const defaultColor = ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing;
-        d3.select(this).select('.node-hit')
-          .attr('stroke', isSel ? '#f5c518' : defaultColor)
-          .attr('stroke-width', isSel ? 3 : 2);
-      }
-    });
-  }, []);
 
   // ── Apply physics changes in-place ───────────────────────────────────────────
   const applyPhysics = useCallback((p: PhysicsSettings) => {
@@ -360,19 +409,51 @@ export function LoreGraph({
       { id: 'zone-ruina',  name: '', canonicalGame: 'ruina',  literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'ruina',  isAnchor: true, x: cx - spread, y: cy },
       { id: 'zone-lobotomy', name: '', canonicalGame: 'lobotomy', literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'lobotomy', isAnchor: true, x: cx + spread, y: cy },
     ];
+    // ── Shared Literary Groups (Dante, etc) ──────────────────────────────────
+    const groupMap = new Map<string, string>();
+    literarySources.forEach(ls => {
+      if (ls.sharedGroup) {
+        groupMap.set(ls.sharedGroup, ls.sharedGroupName || ls.sharedGroup);
+      }
+    });
 
-    const allNodes = [...nodes, ...entityNodes, ...zoneAnchors];
-    const allLinks = [...links, ...entityLinks];
+    const groupNodes: GraphNode[] = Array.from(groupMap.entries()).map(([slug, name]) => ({
+      id: `group-${slug}`,
+      name: name,
+      canonicalGame: 'limbus' as any,
+      literarySourceIds: [],
+      themes: [],
+      crossGameContinuity: false,
+      nodeType: 'shared-group' as any,
+      connectionCount: 0,
+    }));
+
+    const groupLinks: GraphLink[] = [];
+    sinners.forEach(s => {
+      s.literarySources.forEach(ref => {
+        const source = literarySources.find(ls => ls.id === ref.id);
+        if (source?.sharedGroup) {
+          groupLinks.push({
+            source: `group-${source.sharedGroup}`,
+            target: s.id,
+            type: 'shared-literary-group' as EdgeType
+          });
+        }
+      });
+    });
+
+    const allNodes = [...nodes, ...entityNodes, ...zoneAnchors, ...groupNodes];
+    const allLinks = [...links, ...entityLinks, ...groupLinks];
 
     // ── Count shared themes per edge (for stroke-width) ─────────────────────────
     const sharedThemeCount: Record<string, number> = {};
     for (const link of allLinks) {
-      const src = allNodes.find((n) => n.id === link.source);
-      const tgt = allNodes.find((n) => n.id === link.target);
+      const src = allNodes.find((n) => n.id === (typeof link.source === 'string' ? link.source : (link.source as GraphNode).id));
+      const tgt = allNodes.find((n) => n.id === (typeof link.target === 'string' ? link.target : (link.target as GraphNode).id));
       if (src && tgt) {
-        const count = new Set(src.themes.filter((t) => tgt.themes.includes(t))).size;
-        sharedThemeCount[`${link.source}-${link.target}`] = count;
-        sharedThemeCount[`${link.target}-${link.source}`] = count;
+        const count = new Set(src.themes.filter((t: string) => tgt.themes.includes(t))).size;
+        sharedThemeCount[`${src.id}-${tgt.id}`] = count;
+        sharedThemeCount[`${tgt.id}-${src.id}`] = count;
       }
     }
 
@@ -383,23 +464,25 @@ export function LoreGraph({
         d3
           .forceLink<GraphNode, GraphLink>(allLinks)
           .id((d) => d.id)
-          .distance(DEFAULTS.nodeSpacing)
+          .distance((d) => d.type === 'shared-literary-group' ? 120 : DEFAULTS.nodeSpacing)
           .strength(0.4),
       )
       .force('charge', d3.forceManyBody().strength(DEFAULTS.repulsion))
       .force('center', d3.forceCenter(width / 2, height / 2).strength(DEFAULTS.centering))
-      .force('collision', d3.forceCollide().radius(55))
+      .force('collision', d3.forceCollide().radius((d) => (d as GraphNode).nodeType === 'shared-group' ? 65 : 55))
       // Zone gravity — pull sinner nodes toward their game's anchor
       .force('zone', d3.forceRadial<GraphNode>(
         (d) => {
+          const gn = d as GraphNode;
           // Anchors stay put; sinners pulled toward their zone anchor
-          if (d.isAnchor) return 0;
+          if (gn.isAnchor) return 0;
+          if (gn.nodeType === 'shared-group') return 0; // Groups stay floating
           const anchorMap: Record<string, number> = {
             limbus: spread * 0.01,
             ruina: spread * 0.01,
             lobotomy: spread * 0.01,
           };
-          return anchorMap[d.canonicalGame] ?? spread * 0.01;
+          return anchorMap[gn.canonicalGame] ?? spread * 0.01;
         },
         (d) => {
           const ax: Record<string, number> = {
@@ -758,7 +841,7 @@ export function LoreGraph({
         .attr('y2', (d) => (d.target as GraphNode).y!);
       nodeEls.attr('transform', (d) => `translate(${d.x},${d.y})`);
     });
-  }, [sinners, edges, highlightSelected]);
+  }, [sinners, edges]);
 
   const handleResetLayout = useCallback(() => {
     setPhysics(DEFAULTS);

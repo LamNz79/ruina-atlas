@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { sinners } from './data/sinners';
 import { deriveEdges } from './utils/deriveEdges';
@@ -8,7 +8,7 @@ import { EntityPanel } from './components/EntityPanel';
 import About from './pages/About';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,14 +17,30 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import logoSvg from '../public/favicon.svg';
+import { GlobalSearch } from './components/GlobalSearch';
+import { SourceExplorer } from './components/SourceExplorer';
 import './index.css';
 
 export default function App() {
   const [selectedSinner, setSelectedSinner] = useState<Sinner | null>(null);
   const [selectedEntity, setSelectedEntity] = useState<string | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
 
   const edges = useMemo(() => deriveEdges(sinners), []);
+
+  // Keyboard shortcut for search
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setSearchOpen((open) => !open);
+      }
+    };
+    document.addEventListener('keydown', down);
+    return () => document.removeEventListener('keydown', down);
+  }, []);
 
   const handleNodeClick = useCallback((sinner: Sinner) => {
     if (selectedSinner?.id === sinner.id) {
@@ -44,6 +60,23 @@ export default function App() {
     setSelectedEntity(entityId);
   }, []);
 
+  const handleSearchSelect = useCallback((type: 'sinner' | 'entity' | 'source', id: string) => {
+    if (type === 'sinner') {
+      const found = sinners.find(s => s.id === id);
+      if (found) {
+        setSelectedSinner(found);
+        setPanelOpen(true);
+        setSelectedEntity(null);
+      }
+    } else if (type === 'entity') {
+      setSelectedEntity(id);
+      setSelectedSinner(null);
+      setPanelOpen(false);
+    } else if (type === 'source') {
+      setActiveSourceId(id);
+    }
+  }, []);
+
   return (
     <Routes>
       {/* Graph route — the main app */}
@@ -51,6 +84,7 @@ export default function App() {
         path="/"
         element={
           <div className="dark flex h-screen w-full flex-col overflow-hidden bg-background font-sans text-foreground">
+            <div className="starfield-bg" />
             {/* Header */}
             <header className="sticky top-0 z-50 flex h-14 w-full items-center justify-between border-b border-border/40 bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/60">
               <Link to="/" className="flex items-center gap-3 no-underline">
@@ -70,6 +104,19 @@ export default function App() {
               </Link>
 
               <div className="flex items-center gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setSearchOpen(true)}
+                  className="h-8 gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground"
+                >
+                  <Search className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Search</span>
+                  <kbd className="hidden lg:inline-flex h-5 select-none items-center gap-1 rounded border border-white/10 bg-white/5 px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+                    <span className="text-xs">⌘</span>K
+                  </kbd>
+                </Button>
+
                 {selectedSinner ? (
                   <>
                     <span className="text-xs font-medium text-muted-foreground hidden sm:block">
@@ -125,9 +172,8 @@ export default function App() {
             {/* Main Content */}
             <main className="relative flex flex-1 overflow-hidden">
               <div
-                className={`relative h-full w-full transition-all duration-300 ease-in-out ${
-                  panelOpen ? 'pr-[400px]' : ''
-                } max-md:pr-0`}
+                className={`relative h-full w-full transition-all duration-300 ease-in-out ${panelOpen ? 'pr-[400px]' : ''
+                  } max-md:pr-0`}
               >
                 <LoreGraph
                   sinners={sinners}
@@ -156,6 +202,27 @@ export default function App() {
                   const found = sinners.find((s) => s.id === id);
                   if (found) {
                     setSelectedEntity(null);
+                    setSelectedSinner(found);
+                    setPanelOpen(true);
+                  }
+                }}
+              />
+
+              {/* Global Fuzzy Search */}
+              <GlobalSearch
+                open={searchOpen}
+                onOpenChange={setSearchOpen}
+                onSelect={handleSearchSelect}
+              />
+
+              {/* Source Explorer */}
+              <SourceExplorer
+                sourceId={activeSourceId ?? ''}
+                open={!!activeSourceId}
+                onClose={() => setActiveSourceId(null)}
+                onSinnerClick={(id) => {
+                  const found = sinners.find(s => s.id === id);
+                  if (found) {
                     setSelectedSinner(found);
                     setPanelOpen(true);
                   }

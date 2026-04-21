@@ -57,7 +57,9 @@
     --bronze: #a08a70;                   /* Warm Bronze accent */
 
     /* Glassmorphism base */
-    --glass-bg: rgba(30, 35, 48, 0.6);
+    --glass-bg: rgba(17, 19, 24, 0.75);
+    --glass-border: rgba(160, 138, 112, 0.2);
+    --glass-highlight: rgba(245, 197, 24, 0.05);
 
     /* Text hierarchy — Warm Ivory tones on dark */
     --text-bright: #e8e0d5;   /* Primary text */
@@ -114,8 +116,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-hidden h-screen w-screen;
     font-family: var(--font-manrope);
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(184, 32, 47, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 10% 20%, rgba(245, 197, 24, 0.03) 0%, transparent 30%);
   }
 
   /* Typography scale — Newsreader for display/headlines */
@@ -136,13 +141,63 @@
   }
 }
 
+/* ─── Premium Polish Icons & Effects ──────────────────────────────────────── */
+
+/* Starfield Background */
+.starfield-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: black;
+  overflow: hidden;
+}
+
+.starfield-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: starfield-move 100s linear infinite;
+  opacity: 0.15;
+}
+
+@keyframes starfield-move {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-100px, -100px); }
+}
+
 /* ─── Utility Classes — The Archive of the Infinite Rail ─────────────────── */
 
-/* Glassmorphism overlay — for modals, floating menus */
-.glass {
+/* Glassmorphism v2 — Improved depth and shimmer */
+.glass-v2 {
   background: var(--glass-bg) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-v2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--glass-highlight) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Ghost Border — 15% opacity outline per DESIGN.md */
@@ -162,11 +217,53 @@
 .scan-line {
   position: relative;
 }
-.scan-line:focus-within {
-  border-bottom: 2px solid var(--gold);
+.scan-line:focus-within::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  animation: scan-line-pulse 2s ease-in-out infinite;
+}
+
+@keyframes scan-line-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* active-item-glow: Archive active selection look */
+.active-item-glow {
+  background: linear-gradient(90deg, rgba(160, 138, 112, 0.15) 0%, transparent 100%) !important;
+  border-left: 4px solid var(--bronze);
+  box-shadow: inset 4px 0 15px -5px rgba(245, 197, 24, 0.2);
+}
+
+/* terminal-kbd: Industrial UI keyboard hints */
+.terminal-kbd {
+  @apply px-1.5 py-0.5 rounded-sm border bg-muted/50 font-mono text-[9px] uppercase tracking-tighter;
+  border-color: rgba(160, 138, 112, 0.3);
+  color: var(--bronze);
 }
 
 /* Gold inner-glow for powered-on button hover */
 .btn-primary-glow:hover {
   box-shadow: inset 0 0 12px rgba(245, 197, 24, 0.3);
+}
+
+/* Custom Scrollbar — Bronze styling */
+.scroll-bronze::-webkit-scrollbar {
+  width: 5px;
+}
+.scroll-bronze::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+.scroll-bronze::-webkit-scrollbar-thumb {
+  background: var(--bronze);
+  border-radius: 10px;
+}
+.scroll-bronze::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
 }

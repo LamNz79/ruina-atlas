@@ -5,6 +5,8 @@ import { X, Hexagon, Users, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useEffect } from 'react';
+import { useSound } from '../hooks/useSound';
 
 interface EntityPanelProps {
   entityId: string | null;
@@ -67,6 +69,19 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
   const entity: CrossGameEntity | undefined = (
     crossGameEntities.entities as CrossGameEntity[]
   ).find((e) => e.id === entityId);
+  const { playTick, playClink } = useSound();
+
+  // Play sound when panel opens
+  useEffect(() => {
+    if (entityId) {
+      playClink();
+    }
+  }, [entityId, playClink]);
+
+  const handleClose = () => {
+    playTick({ pitch: 800 });
+    onClose();
+  };
 
   const connectedSinners = entity?.relatedSinnerIds
     ? sinners.filter((s) => entity.relatedSinnerIds!.includes(s.id))
@@ -74,7 +89,7 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
 
   return (
     <div
-      className={`absolute right-0 top-0 z-[45] h-full w-[400px] border-l border-border bg-card shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+      className={`absolute right-0 top-0 z-[45] h-full w-[400px] shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] glass-v2 ${
         entityId ? 'translate-x-0' : 'translate-x-full'
       }`}
       aria-hidden={!entityId}
@@ -120,7 +135,7 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
               variant="ghost"
               size="icon"
               className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted shrink-0"
-              onClick={onClose}
+              onClick={handleClose}
             >
               <X className="h-4 w-4" />
             </Button>
@@ -194,7 +209,10 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
                       <button
                         key={s.id}
                         className="flex w-full items-center gap-3 rounded-md border border-border/40 bg-muted/20 p-2.5 text-left transition-all hover:border-primary/30 hover:bg-muted/30 active:scale-[0.98]"
-                        onClick={() => onSinnerClick(s.id)}
+                        onClick={() => {
+                          playTick();
+                          onSinnerClick(s.id);
+                        }}
                       >
                         <div
                           className="h-2.5 w-2.5 shrink-0 rounded-full"

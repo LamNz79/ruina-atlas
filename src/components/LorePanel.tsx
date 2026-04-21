@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { Sinner, Game, Identity, DantePower } from '../types';
 import { cantos } from '../data/cantos';
 import { literarySources } from '../data/literarySources';
@@ -18,6 +18,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { SourceExplorer } from './SourceExplorer';
+import { useSound } from '../hooks/useSound';
 
 interface LorePanelProps {
   sinner: Sinner | null;
@@ -190,11 +191,24 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
   const [activeIdentity, setActiveIdentity] = useState<Identity | null>(null);
   const [spoilerEnabled, setSpoilerEnabled] = useState(false);
   const [sourceExplorerId, setSourceExplorerId] = useState<string | null>(null);
+  const { playTick, playClink } = useSound();
+
+  // Play sound when panel opens
+  useEffect(() => {
+    if (isOpen) {
+      playClink();
+    }
+  }, [isOpen, playClink]);
+
+  const handleClose = () => {
+    playTick({ pitch: 800 });
+    onClose();
+  };
 
   return (
     <>
       <div
-        className={`absolute right-0 top-0 z-[45] h-full w-[400px] border-l border-border bg-card shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`absolute right-0 top-0 z-[45] h-full w-[400px] shadow-2xl transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] glass-v2 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         } max-md:w-full`}
         aria-hidden={!isOpen}
@@ -227,7 +241,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                   variant="ghost"
                   size="icon"
                   className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted"
-                  onClick={onClose}
+                  onClick={handleClose}
                 >
                   <X className="h-4 w-4" />
                 </Button>
@@ -255,7 +269,10 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                           <header className="flex flex-wrap items-center gap-3">
                             <button
                               className="text-sm font-semibold text-foreground hover:text-primary transition-colors text-left"
-                              onClick={() => setSourceExplorerId(ref.id)}
+                              onClick={() => {
+                                playTick();
+                                setSourceExplorerId(ref.id);
+                              }}
                             >
                               {source?.title ?? ref.id}
                             </button>
