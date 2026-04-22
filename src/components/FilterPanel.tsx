@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import type { Game, Theme } from '../types';
-import { THEMES } from '../types';
+import { THEMES, THEME_META } from '../types';
 import { literarySources } from '../data/literarySources';
 import { Filter, ChevronDown, ChevronUp, X, HelpCircle } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
@@ -13,6 +13,7 @@ interface FilterState {
   games: Set<Game>;
   themes: Set<Theme>;
   literarySources: Set<string>;
+  showArchiveNodes: boolean;
 }
 
 interface FilterPanelProps {
@@ -81,13 +82,15 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
       games: new Set(['limbus', 'ruina', 'lobotomy']),
       themes: new Set(THEMES),
       literarySources: new Set(literarySources.map(s => s.id)),
+      showArchiveNodes: true,
     });
   };
 
   const activeCount =
     (filters.games.size < 3 ? 1 : 0) +
     (filters.themes.size < THEMES.length ? 1 : 0) +
-    (filters.literarySources.size < literarySources.length ? 1 : 0);
+    (filters.literarySources.size < literarySources.length ? 1 : 0) +
+    (!filters.showArchiveNodes ? 1 : 0);
 
   return (
     <>
@@ -130,6 +133,29 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
         open ? 'max-h-[min(70vh,640px)] opacity-100 max-md:max-h-[70dvh]' : 'max-h-0 opacity-0 border-none shadow-none'
         }`}>
         <CardContent className="space-y-5 pt-5 max-md:max-h-[calc(70dvh-3rem)] max-md:overflow-y-auto scroll-bronze">
+          {/* Archive Layer */}
+          <div className="space-y-2.5">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-red-500/80">
+              Intelligence Layers
+            </h4>
+            <div className="flex items-center justify-between py-1 bg-red-500/5 rounded px-2 -mx-1 border border-red-500/10 transition-all hover:bg-red-500/10">
+              <div className="flex items-center gap-2.5">
+                <div className="h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
+                <span className="text-[11px] font-bold text-foreground/90 uppercase tracking-tight">Archive Entities</span>
+              </div>
+              <Switch
+                checked={filters.showArchiveNodes}
+                onCheckedChange={(checked) => onFiltersChange({ ...filters, showArchiveNodes: checked })}
+                className="scale-75 data-[state=checked]:bg-red-500"
+              />
+            </div>
+            <p className="text-[9px] text-muted-foreground/60 leading-tight px-1 italic">
+              Toggle visibility of non-Sinner nodes (Wings, Abnormalities, Legacy Characters) on the tactical graph.
+            </p>
+          </div>
+
+          <div className="h-[1px] bg-border/50" />
+
           {/* By Game */}
           <div className="space-y-2.5">
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
@@ -185,7 +211,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
                       color: isActive ? '#f5c518' : '#8a847a',
                     }}
                   >
-                    {theme.replace('-', ' ')}
+                    {THEME_META[theme]?.label ?? theme.replace('-', ' ')}
                   </button>
                 );
               })}
