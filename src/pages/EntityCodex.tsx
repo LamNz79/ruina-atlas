@@ -186,7 +186,7 @@ function EntityCard({ entity, isCensored }: { entity: any, isCensored: boolean }
               </div>
             )}
             
-            {entity.relatedSinnerIds.length > 0 && (
+            {entity.relatedSinnerIds && entity.relatedSinnerIds.length > 0 && (
               <Flex gap={1} wrap>
                 {entity.relatedSinnerIds.map((id: string) => (
                   <Link key={id} to={`/profile/sinner/${id}`}>
