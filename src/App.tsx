@@ -10,7 +10,7 @@ import Roadmap from './pages/Roadmap';
 import ProfilePage from './pages/ProfilePage';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map, Sparkles, Biohazard } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,6 +22,7 @@ import logoSvg from '/favicon.svg';
 import { GlobalSearch } from './components/GlobalSearch';
 import { SourceExplorer } from './components/SourceExplorer';
 import TeamBuilder from './pages/TeamBuilder';
+import EntityCodex from './pages/EntityCodex';
 import './index.css';
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
   const [panelOpen, setPanelOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
+  const [expandedNodeIds, setExpandedNodeIds] = useState<Set<string>>(new Set());
 
   const edges = useMemo(() => deriveEdges(sinners), []);
 
@@ -65,6 +67,22 @@ export default function App() {
     setSelectedSinner(null);
     setPanelOpen(false);
     setSelectedEntity(entityId);
+    
+    // Automatically expand the node when clicked to reveal its children
+    setExpandedNodeIds(prev => {
+      const next = new Set(prev);
+      next.add(entityId);
+      return next;
+    });
+  }, []);
+
+  const toggleExpand = useCallback((id: string) => {
+    setExpandedNodeIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
   }, []);
 
   const handleSearchSelect = useCallback((type: 'sinner' | 'entity' | 'source', id: string) => {
@@ -157,6 +175,18 @@ export default function App() {
                   </Link>
                 </Button>
 
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="h-8 gap-1.5 text-xs font-bold border-red-500/20 bg-red-500/5 hover:bg-red-500/10 text-red-400 hidden lg:flex uppercase tracking-tighter"
+                >
+                  <Link to="/codex">
+                    <Biohazard className="h-3 w-3" />
+                    The Codex
+                  </Link>
+                </Button>
+
                 {/* Dropdown menu */}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -175,6 +205,12 @@ export default function App() {
                       <Link to="/roadmap" className="flex items-center gap-2 cursor-pointer">
                         <Map className="h-4 w-4" />
                         Roadmap
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to="/codex" className="flex items-center gap-2 cursor-pointer">
+                        <Biohazard className="h-4 w-4 text-red-400" />
+                        Entity Codex
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
@@ -205,8 +241,10 @@ export default function App() {
                   edges={edges}
                   selectedSinner={selectedSinner}
                   selectedEntity={selectedEntity}
+                  expandedNodeIds={expandedNodeIds}
                   onNodeClick={handleNodeClick}
                   onEntityClick={handleEntityClick}
+                  onToggleExpand={toggleExpand}
                 />
               </div>
 
@@ -222,6 +260,9 @@ export default function App() {
                 entityId={selectedEntity}
                 onClose={() => {
                   setSelectedEntity(null);
+                }}
+                onEntityClick={(id) => {
+                  setSelectedEntity(id);
                 }}
                 onSinnerClick={(id) => {
                   const found = sinners.find((s) => s.id === id);
@@ -291,6 +332,7 @@ export default function App() {
       <Route path="/roadmap" element={<Roadmap />} />
       <Route path="/profile/:category/:id" element={<ProfilePage />} />
       <Route path="/builder" element={<TeamBuilder />} />
+      <Route path="/codex" element={<EntityCodex />} />
     </Routes>
   );
 }
