@@ -291,7 +291,12 @@
       "appearances": ["lobotomy", "ruina", "limbus"],
       "loreSummary": "The primary energy Wing of the City. Its facility structure consists of 10 specialized teams, each managed by a Sephirah.",
       "themes": ["machinery", "guilt"],
-      "relatedSinnerIds": ["dante", "faust", "yi-sang"]
+      "relatedSinnerIds": ["dante", "faust", "yi-sang"],
+      "connectionInsights": {
+        "dante": "Directly resonates with Golden Boughs to manifest Sapling of Light abilities (Durante), which are structurally named after L-Corp Sephirot (Pigritia, Superbia, Morositas).",
+        "faust": "Maintains structural ties through the 'Lobotomy Corp. Remnant' Identity and 'Lobotomy E.G.O::Regret'. Accesses L-Corp knowledge via her bargain with Mephistopheles' engine.",
+        "yi-sang": "Deeply entwined with cognitive extraction and the invention of Mirror Technology. Wields the 'Solemn Lament' Identity derived from L-Corp's archives."
+      }
     },
     {
       "id": "entity-l-ctrl",
@@ -472,7 +477,11 @@
       "loreSummary": "The Sephirah of the Extraction Team. Later the Patron Librarian of the Floor of Philosophy.",
       "themes": ["metamorphosis", "nihilism"],
       "relatedEntityIds": ["entity-l-extraction", "entity-floor-philosophy"],
-      "relatedSinnerIds": ["outis", "faust"]
+      "relatedSinnerIds": ["outis", "faust"],
+      "connectionInsights": {
+        "faust": "Connected via the Extraction Team; Faust's role as a hoarder of forbidden knowledge mirrors Binah's role in L-Corp's deep facility layers.",
+        "outis": "Linked via the 'Magic Bullet' E.G.O (Der Freischütz), which Binah manages through the Extraction Team."
+      }
     },
     {
       "id": "entity-hokma",

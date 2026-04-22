@@ -178,7 +178,7 @@
         "futility"
       ],
       "loreSummary": "Faust is a mysterious Sinner who claims to have no memory of her past, only goals she intends to achieve. She is knowledgeable about abnormalities, the City, and seemingly the true nature of Limbus Company's operations. She speaks in a formal, detached manner and has been shown to act independently of the other Sinners. Her identity is among the most opaque in the group.",
-      "literaryConnectionNotes": "Faust in Goethe's tragedy makes a bargain with the Devil (Mephistopheles) — in exchange for unlimited knowledge and worldly pleasures, he pledges his soul. Limbus Company's Faust has made bargains of her own, with Ayin (in Library of Ruina) and possibly others. Her persistent presence across all three games mirrors Faust's timeless, almost meta-fictional existence. The question of whether she remembers, regrets, or would undo her bargains is the central tension of her character.",
+      "literaryConnectionNotes": "Faust in Goethe's tragedy makes a bargain with the Devil (Mephistopheles) — in exchange for unlimited knowledge and worldly pleasures, he pledges his soul. Limbus Company's Faust has made a bargain with a 'demon', which is the engine of the bus Mephistopheles itself. Her structural ties to Lobotomy Corporation stem from her 'Lobotomy Corp. Remnant' Identity and 'Lobotomy E.G.O::Regret'. Her persistent presence across all three games mirrors Faust's timeless, almost meta-fictional existence. The question of whether she remembers, regrets, or would undo her bargains is the central tension of her character.",
       "identities": [
         {
           "id": "10202",
@@ -2172,13 +2172,6 @@
       "loreSummary": "Yi Sang is quiet, introspective, and physically unwell — he coughs frequently and is often seen writing in a notebook. He is the group's resident poet, and his poetry serves as both a coping mechanism and a lens through which he processes the world. He is the most philosophically withdrawn of the Sinners, seemingly accepting of his own deterioration. His Canto confronts the origins of his condition and whether his art justifies or merely documents his suffering.",
       "literaryConnectionNotes": "Real-world Yi Sang (1907-1937) was a Korean author whose literary career lasted only a decade before tuberculosis killed him at 30. His work is characterized by extreme emotional intensity, a focus on death and decay, and a recurring motif of the self dissolving into fog or absence. The Flight of Earth provides the cosmically exhausted side of the character, while The Wings adds the intimate, dissociative side: a mind trapped in self-observation, humiliation, and fantasy. Limbus Yi Sang is built from both. His fog is both illness and art: impenetrable, obscuring, and strangely beautiful.",
       "identities": [
-        {
-          "id": "10111",
-          "displayName": "LCE E.G.O:: Lantern",
-          "sourceGame": "ruina",
-          "wingOrGroup": null,
-          "damageType": "blunt"
-        },
         {
           "id": "10108",
           "displayName": "Dieci Assoc. South Section 4",
