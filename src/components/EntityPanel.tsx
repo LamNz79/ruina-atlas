@@ -1,7 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import crossGameEntities from '../data/crossGameEntities.json';
 import { sinners } from '../data/sinners';
 import type { CrossGameEntity } from '../types';
-import { X, Hexagon, Users, Star } from 'lucide-react';
+import { X, Hexagon, Users, Star, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -70,6 +71,7 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
     crossGameEntities.entities as CrossGameEntity[]
   ).find((e) => e.id === entityId);
   const { playTick, playClink } = useSound();
+  const navigate = useNavigate();
 
   // Play sound when panel opens
   useEffect(() => {
@@ -130,14 +132,25 @@ export function EntityPanel({ entityId, onClose, onSinnerClick }: EntityPanelPro
                 </div>
               </div>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted shrink-0"
-              onClick={handleClose}
-            >
-              <X className="h-4 w-4" />
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-8 gap-1.5 text-[10px] font-bold uppercase tracking-wider hidden sm:flex"
+                onClick={() => navigate(`/profile/entity/${entity.id}`)}
+              >
+                <ExternalLink className="h-3 w-3" />
+                Full Dossier
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground transition-all hover:bg-muted shrink-0"
+                onClick={handleClose}
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
           </header>
 
           {/* Scrollable Body */}

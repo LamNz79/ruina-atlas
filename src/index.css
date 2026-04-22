@@ -315,3 +315,50 @@
 .scroll-bronze::-webkit-scrollbar-thumb:hover {
   background: var(--gold);
 }
+
+/* Glassmorphism V3 - Deeper and more refractive */
+.glass-v3 {
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Profile Specific Animations */
+@keyframes profile-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-animate-in {
+  animation: profile-fade-in 0.6s cubic-bezier(0.2, 0, 0.2, 1) forwards;
+}
+
+/* Custom scrollbar for dossiers */
+.scroll-dossier::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-dossier::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-dossier::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.scroll-dossier::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text for titles */
+.text-gradient-bronze {
+  background: linear-gradient(135deg, #d3bea7 0%, #a08a70 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-crimson {
+  background: linear-gradient(135deg, #f2a0ad 0%, #b8202f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

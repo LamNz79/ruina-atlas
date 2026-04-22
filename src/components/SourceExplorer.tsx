@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { literarySources } from '../data/literarySources';
 import { sinners } from '../data/sinners';
 import { X, ExternalLink, BookOpen } from 'lucide-react';
@@ -41,6 +42,7 @@ const THEME_LABELS: Record<string, string> = {
 
 export function SourceExplorer({ sourceId, open, onClose, onSinnerClick }: SourceExplorerProps) {
   const source = literarySources.find(s => s.id === sourceId);
+  const navigate = useNavigate();
   if (!open) return null;
   if (!source) {
     return (
@@ -81,14 +83,28 @@ export function SourceExplorer({ sourceId, open, onClose, onSinnerClick }: Sourc
               {source.language}
             </p>
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground"
-            onClick={onClose}
-          >
-            <X className="h-4 w-4" />
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-8 gap-1.5 text-[10px] font-bold uppercase tracking-wider hidden sm:flex"
+              onClick={() => {
+                onClose();
+                navigate(`/profile/source/${source.id}`);
+              }}
+            >
+              <ExternalLink className="h-3 w-3" />
+              Full Dossier
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 rounded-full border border-border/40 text-muted-foreground"
+              onClick={onClose}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
         </DialogHeader>
 
         <div className="mt-4 space-y-5">

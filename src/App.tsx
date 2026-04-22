@@ -7,6 +7,7 @@ import { LorePanel } from './components/LorePanel';
 import { EntityPanel } from './components/EntityPanel';
 import About from './pages/About';
 import Roadmap from './pages/Roadmap';
+import ProfilePage from './pages/ProfilePage';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map } from 'lucide-react';
@@ -262,9 +263,9 @@ export default function App() {
         }
       />
 
-      {/* About page */}
       <Route path="/about" element={<About />} />
       <Route path="/roadmap" element={<Roadmap />} />
+      <Route path="/profile/:category/:id" element={<ProfilePage />} />
     </Routes>
   );
 }

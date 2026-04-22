@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import type { Sinner, Game, Identity, DantePower } from '../types';
 import { cantos } from '../data/cantos';
 import { literarySources } from '../data/literarySources';
@@ -192,6 +193,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
   const [spoilerEnabled, setSpoilerEnabled] = useState(false);
   const [sourceExplorerId, setSourceExplorerId] = useState<string | null>(null);
   const { playTick, playClink } = useSound();
+  const navigate = useNavigate();
 
   // Play sound when panel opens
   useEffect(() => {
@@ -237,6 +239,15 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                     />
                   </div>
                 )}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-8 gap-1.5 text-[10px] font-bold uppercase tracking-wider"
+                  onClick={() => navigate(`/profile/sinner/${sinner.id}`)}
+                >
+                  <ExternalLink className="h-3 w-3" />
+                  Full Dossier
+                </Button>
                 <Button
                   variant="ghost"
                   size="icon"
