@@ -233,14 +233,14 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
         {sinner && (
           <div className="flex h-full flex-col">
             {/* Header */}
-            <header className="sticky top-0 z-10 flex items-start justify-between border-b border-border bg-muted/40 p-5 backdrop-blur-md">
-              <div className="space-y-1">
-                <h2 className="text-xl font-bold tracking-tight text-foreground">{sinner.name}</h2>
+            <header className="sticky top-0 z-10 flex items-start gap-3 border-b border-border bg-muted/40 p-5 backdrop-blur-md">
+              <div className="min-w-0 flex-1 space-y-1">
+                <h2 className="text-xl font-bold leading-tight tracking-tight text-foreground break-words">{sinner.name}</h2>
                 <p className="text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
                   {sinner.appearances.map((g) => GAME_LABELS[g]).join(' \u00B7 ')}
                 </p>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex shrink-0 items-center gap-2">
                 {/* Spoiler toggle */}
                 {sinner.cantos && sinner.cantos.length > 0 && (
                   <div className="flex items-center gap-1.5" title={spoilerEnabled ? 'Hide future cantos' : 'Show all cantos'}>
@@ -257,7 +257,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="h-8 gap-1.5 text-[10px] font-bold uppercase tracking-wider"
+                  className="h-8 gap-1.5 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap"
                   onClick={() => navigate(`/profile/sinner/${sinner.id}`)}
                 >
                   <ExternalLink className="h-3 w-3" />

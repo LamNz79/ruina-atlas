@@ -10,9 +10,10 @@
       "appearances": ["lobotomy", "ruina", "limbus"],
       "loreSummary": "An abnormality representing confession and atonement.",
       "themes": ["guilt", "redemption", "faith"],
-      "relatedSinnerIds": ["sinclair"],
+      "relatedSinnerIds": ["sinclair", "ryoshu"],
       "connectionInsights": {
-        "sinclair": "Sinclair's base E.G.O is directly derived from a fragment of this abnormality. Both embody the agonizing process of confession."
+        "sinclair": "Sinclair's base E.G.O is directly derived from a fragment of this abnormality. Both embody the agonizing process of confession.",
+        "ryoshu": "Wields the 'Penitence' portion of her Lobotomy E.G.O Identity, representing the restrictive, moralistic side of the spectrum."
       }
     },
     {
@@ -35,7 +36,11 @@
       "canonicalGame": "lobotomy",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "Beautiful fairies that offer a feast to workers, only to consume them once the meal is finished.",
-      "themes": ["decay", "family"]
+      "themes": ["decay", "family"],
+      "relatedSinnerIds": ["ishmael"],
+      "connectionInsights": {
+        "ishmael": "Wields the 'Sloshing' Lobotomy E.G.O Identity, mirroring the fairy's feast-then-consume nature through liquid-based mechanics."
+      }
     },
     {
       "id": "entity-wellcheers",
@@ -79,7 +84,11 @@
       "canonicalGame": "lobotomy",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "An experiment gone wrong, shackled by the metal plates hammered into his skull.",
-      "themes": ["machinery", "vengeance"]
+      "themes": ["machinery", "vengeance"],
+      "relatedSinnerIds": ["faust"],
+      "connectionInsights": {
+        "faust": "Wields the 'Regret' Lobotomy E.G.O Identity, utilizing the heavy shackles and industrial theme of the abnormality."
+      }
     },
     {
       "id": "entity-punishing-bird",
@@ -193,7 +202,11 @@
       "canonicalGame": "lobotomy",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "A magical girl who creates villains just so she can play the role of the hero.",
-      "themes": ["absurdity", "metamorphosis"]
+      "themes": ["absurdity", "metamorphosis"],
+      "relatedSinnerIds": ["don-quixote"],
+      "connectionInsights": {
+        "don-quixote": "Wields the 'In the Name of Love and Hate' Identity. The Queen's desperate performance of heroism perfectly mirrors Don Quixote's own 'Golden Dream' delusions."
+      }
     },
     {
       "id": "entity-big-bird",
@@ -271,6 +284,112 @@
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "A cognitohazard so intense it cannot be represented by the human mind or the facility's cameras.",
       "themes": ["nihilism", "absurdity"]
+    },
+    {
+      "id": "entity-solemn-lament",
+      "name": "Funeral of the Dead Butterflies",
+      "subjectNumber": "T-01-68",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "An abnormality that offers a quiet rest to those who are exhausted from the world.",
+      "themes": ["decay", "futility"],
+      "relatedSinnerIds": ["yi-sang"],
+      "connectionInsights": {
+        "yi-sang": "Wields the 'Solemn Lament' Lobotomy E.G.O Identity. The butterfly motif and the concept of a 'quiet rest' deeply resonate with Yi Sang's poetic resignation."
+      }
+    },
+    {
+      "id": "entity-meat-lantern",
+      "name": "Meat Lantern",
+      "subjectNumber": "O-04-84",
+      "type": "abnormality",
+      "riskLevel": "TETH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "An abnormality that hides beneath the ground, using a beautiful flower as a lure.",
+      "themes": ["absurdity", "futility"],
+      "relatedSinnerIds": ["don-quixote"],
+      "connectionInsights": {
+        "don-quixote": "Wields the 'Lantern' Lobotomy E.G.O Identity, reflecting the gap between her bright 'heroic' exterior and the hidden hunger of reality."
+      }
+    },
+    {
+      "id": "entity-spider-bud",
+      "name": "Spider Bud",
+      "subjectNumber": "O-02-43",
+      "type": "abnormality",
+      "riskLevel": "TETH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "A spider that protects its cocoon with absolute devotion, punishing any who touch it.",
+      "themes": ["family", "vengeance"],
+      "relatedSinnerIds": ["ryoshu"],
+      "connectionInsights": {
+        "ryoshu": "Wields the 'Red Eyes' portion of her Lobotomy E.G.O Identity, embodying the protective yet lethal nature of the spider."
+      }
+    },
+    {
+      "id": "entity-knight-despair",
+      "name": "The Knight of Despair",
+      "subjectNumber": "O-01-73",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "One of the four magical girls. A knight whose protection was lost to betrayal, leaving only the weight of her sword.",
+      "themes": ["futility", "guilt"],
+      "relatedSinnerIds": ["rodion"],
+      "connectionInsights": {
+        "rodion": "Wields the 'Sword Sharpened with Tears' Identity. The Knight's betrayal and subsequent despair parallel Rodion's own guilt over her past actions."
+      }
+    },
+    {
+      "id": "entity-ardor-blossom",
+      "name": "Ardor Blossom Moth",
+      "subjectNumber": "M-05-04",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "limbus"],
+      "loreSummary": "An abnormality that consumes everything in its path with scorching flames, leaving only ashes behind.",
+      "themes": ["decay", "vengeance"],
+      "relatedSinnerIds": ["faust"],
+      "connectionInsights": {
+        "faust": "Wields the 'Ardor Blossom Star' Identity. The moth's self-destructive drive for the 'star' mirrors Faust's own pursuit of knowledge."
+      }
+    },
+    {
+      "id": "entity-red-sheet",
+      "name": "Red Sheet",
+      "subjectNumber": "T-01-12",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "limbus"],
+      "loreSummary": "An abnormality wrapped in red talismans that carry curses and blessings alike.",
+      "themes": ["faith", "guilt"],
+      "relatedSinnerIds": ["sinclair"],
+      "connectionInsights": {
+        "sinclair": "Wields the 'Red Sheet' Lobotomy E.G.O Identity, utilizing the talismanic powers to balance his own internal volatility."
+      }
+    },
+    {
+      "id": "entity-drifting-fox",
+      "name": "Drifting Fox",
+      "subjectNumber": "T-04-01",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "limbus"],
+      "loreSummary": "An abnormality that brings rain wherever it goes, wandering aimlessly through the City.",
+      "themes": ["futility", "decay"],
+      "relatedSinnerIds": ["heathcliff", "yi-sang"],
+      "connectionInsights": {
+        "heathcliff": "Wields the 'Sunshower' Lobotomy E.G.O Identity. The fox's aimless wandering and the melancholic rain mirror Heathcliff's own sense of displacement.",
+        "yi-sang": "Connected via the 'Effloresced E.G.O::Spicebush' Identity, which shares the Sunshower thematic resonance and atmospheric decay."
+      }
     },
     {
       "id": "entity-apocalypse-bird",
@@ -403,6 +522,7 @@
       "name": "Malkuth",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Control Team. Later the Patron Librarian of the Floor of History.",
       "themes": ["machinery", "redemption"],
@@ -413,6 +533,7 @@
       "name": "Yesod",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Information Team. Later the Patron Librarian of the Floor of Tech. Sciences.",
       "themes": ["machinery", "nihilism"],
@@ -423,6 +544,7 @@
       "name": "Hod",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Training Team. Later the Patron Librarian of the Floor of Literature.",
       "themes": ["faith", "guilt"],
@@ -433,6 +555,7 @@
       "name": "Netzach",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Security Team. Later the Patron Librarian of the Floor of Art.",
       "themes": ["decay", "redemption"],
@@ -443,6 +566,7 @@
       "name": "Tiphereth",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Central Command Team. Later the Patron Librarian of the Floor of Natural Sciences.",
       "themes": ["machinery", "faith"],
@@ -453,6 +577,7 @@
       "name": "Gebura",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Disciplinary Team. Later the Patron Librarian of the Floor of Language.",
       "themes": ["vengeance", "redemption"],
@@ -463,6 +588,7 @@
       "name": "Chesed",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Welfare Team. Later the Patron Librarian of the Floor of Social Sciences.",
       "themes": ["guilt", "metamorphosis"],
@@ -473,6 +599,7 @@
       "name": "Binah",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Extraction Team. Later the Patron Librarian of the Floor of Philosophy.",
       "themes": ["metamorphosis", "nihilism"],
@@ -488,6 +615,7 @@
       "name": "Hokma",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Record Team. Later the Patron Librarian of the Floor of Religion.",
       "themes": ["faith", "guilt"],
@@ -589,6 +717,7 @@
       "name": "Ayin (A)",
       "type": "character",
       "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
       "appearances": ["lobotomy"],
       "themes": ["faith", "guilt"],
       "loreSummary": "The creator of L Corp and the architect of the Seed of Light project.",
@@ -603,6 +732,60 @@
       "themes": ["machinery", "redemption"],
       "loreSummary": "The AI administrator of L Corp and the current Director of the Library.",
       "relatedEntityIds": ["entity-l-corp", "entity-director-room"]
+    },
+    {
+      "id": "wing-n-corp",
+      "name": "N Corp",
+      "type": "wing",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "Tập đoàn công nghệ Gương (Mirror Technology). Sở hữu lực lượng Dị giáo Nagel und Hammer.",
+      "relatedSinnerIds": ["meursault", "faust", "donquixote", "heathcliff", "rodion", "sinclair"]
+    },
+    {
+      "id": "wing-w-corp",
+      "name": "W Corp",
+      "type": "wing",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "Quản lý hệ thống Tàu Warp (Warp Trains) và đội ngũ Dọn dẹp (Cleanup Agents).",
+      "relatedSinnerIds": ["meursault", "donquixote", "ryoshu", "honglu", "faust", "yi-sang"]
+    },
+    {
+      "id": "wing-k-corp",
+      "name": "K Corp",
+      "type": "wing",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "Sản xuất Ống tiêm HP (HP Ampules) từ Nước mắt Dị thể. Sở hữu đội ngũ Excision Staff.",
+      "relatedSinnerIds": ["honglu", "heathcliff"]
+    },
+    {
+      "id": "wing-r-corp",
+      "name": "R Corp",
+      "type": "wing",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "Tập đoàn Quân sự Tư nhân với các tiểu đội thú săn (Rabbit, Reindeer, Rhino).",
+      "relatedSinnerIds": ["heathcliff", "ishmael", "meursault"]
+    },
+    {
+      "id": "wing-j-corp",
+      "name": "J Corp",
+      "type": "wing",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "Khu vực tồi tàn với hệ thống thu thuế tàn nhẫn. Nơi khởi nguồn của tổ chức cách mạng Yurodiviye.",
+      "relatedSinnerIds": ["rodion"]
+    },
+    {
+      "id": "wing-t-corp",
+      "name": "T Corp",
+      "type": "wing",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "Tập đoàn biến Thời gian và Màu sắc thành hàng hóa xa xỉ. Nơi diễn ra sự kiện Timekilling Time.",
+      "relatedSinnerIds": ["rodion", "honglu"]
     }
   ]
 }

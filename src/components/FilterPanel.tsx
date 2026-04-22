@@ -10,9 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { ThemeGuide } from './ThemeGuide';
 
 interface FilterState {
-  games: Set<Game>;
   themes: Set<Theme>;
-  literarySources: Set<string>;
   showArchiveNodes: boolean;
 }
 
@@ -49,15 +47,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
     return () => document.removeEventListener('mousedown', handler);
   }, [open]);
 
-  const toggleGame = (game: Game) => {
-    const next = new Set(filters.games);
-    if (next.has(game)) {
-      next.delete(game);
-    } else {
-      next.add(game);
-    }
-    onFiltersChange({ ...filters, games: next });
-  };
+
 
   const toggleTheme = (theme: Theme) => {
     const next = new Set(filters.themes);
@@ -68,28 +58,17 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
     onFiltersChange({ ...filters, themes: next });
   };
 
-  const toggleSource = (id: string) => {
-    const next = new Set(filters.literarySources);
-    if (next.has(id)) {
-      next.delete(id);
-    }
-    else { next.add(id) }
-    onFiltersChange({ ...filters, literarySources: next });
-  };
+
 
   const clearAll = () => {
     onFiltersChange({
-      games: new Set(['limbus', 'ruina', 'lobotomy']),
       themes: new Set(THEMES),
-      literarySources: new Set(literarySources.map(s => s.id)),
       showArchiveNodes: true,
     });
   };
 
   const activeCount =
-    (filters.games.size < 3 ? 1 : 0) +
     (filters.themes.size < THEMES.length ? 1 : 0) +
-    (filters.literarySources.size < literarySources.length ? 1 : 0) +
     (!filters.showArchiveNodes ? 1 : 0);
 
   return (
@@ -154,32 +133,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             </p>
           </div>
 
-          <div className="h-[1px] bg-border/50" />
 
-          {/* By Game */}
-          <div className="space-y-2.5">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
-              By Game
-            </h4>
-            <div className="space-y-1.5">
-              {(Object.keys(GAME_LABELS) as Game[]).map(game => (
-                <div key={game} className="flex items-center justify-between py-1 transition-colors hover:bg-muted/30 rounded px-1 -mx-1">
-                  <div className="flex items-center gap-2.5">
-                    <div
-                      className="h-2 w-2 rounded-full shadow-[0_0_8px_var(--tw-shadow-color)]"
-                      style={{ backgroundColor: GAME_COLORS[game], '--tw-shadow-color': GAME_COLORS[game] } as React.CSSProperties}
-                    />
-                    <span className="text-[11px] font-medium text-foreground/90">{GAME_LABELS[game]}</span>
-                  </div>
-                  <Switch
-                    checked={filters.games.has(game)}
-                    onCheckedChange={() => toggleGame(game)}
-                    className="scale-75"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
 
           <div className="h-[1px] bg-border/50" />
 
@@ -218,35 +172,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             </div>
           </div>
 
-          <div className="h-[1px] bg-border/50" />
 
-          {/* By Literary Source */}
-          <div className="space-y-2.5">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">
-              By Literary Source
-            </h4>
-            <div className="max-h-44 overflow-y-auto pr-1 scroll-bronze max-md:max-h-56">
-              <div className="flex flex-wrap gap-1.5">
-              {literarySources.map(source => {
-                const isActive = filters.literarySources.has(source.id);
-                return (
-                  <button
-                    key={source.id}
-                    onClick={() => toggleSource(source.id)}
-                    className="px-2 py-0.5 text-[10px] font-semibold border transition-all active:scale-95"
-                    style={{
-                      borderColor: isActive ? '#a08a70' : 'rgba(200,193,180,0.18)',
-                      backgroundColor: isActive ? 'rgba(160,138,112,0.12)' : 'transparent',
-                      color: isActive ? '#e8e0d5' : '#8a847a',
-                    }}
-                  >
-                    {source.title}
-                  </button>
-                );
-              })}
-              </div>
-            </div>
-          </div>
 
           {/* Clear */}
           {activeCount > 0 && (

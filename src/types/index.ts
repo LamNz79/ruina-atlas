@@ -272,6 +272,8 @@ export interface CrossGameEntity {
   connectionInsights?: Record<string, string>;
   /** Entity IDs connected to this entity (Entity-to-Entity bridging) */
   relatedEntityIds?: string[];
+  /** Parent entity ID for hierarchical clutter reduction (e.g., Team -> Wing) */
+  parentEntityId?: string;
 }
 
 // ── Graph Edge (Derived at Runtime) ─────────────────────────────────────────

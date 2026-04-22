@@ -131,9 +131,9 @@ export function GraphSettings({
               </div>
               <Slider
                 value={[Math.abs(repulsion)]}
-                min={100}
-                max={1000}
-                step={50}
+                min={200}
+                max={5000}
+                step={100}
                 onValueChange={([v]) => onRepulsionChange(-v)}
               />
             </div>

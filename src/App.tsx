@@ -10,7 +10,7 @@ import Roadmap from './pages/Roadmap';
 import ProfilePage from './pages/ProfilePage';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map, Sparkles, Biohazard } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map, Sparkles, Biohazard, Network } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +21,7 @@ import {
 import logoSvg from '/favicon.svg';
 import { GlobalSearch } from './components/GlobalSearch';
 import { SourceExplorer } from './components/SourceExplorer';
-import TeamBuilder from './pages/TeamBuilder';
+import TrilogySankey from './pages/TrilogySankey';
 import EntityCodex from './pages/EntityCodex';
 import './index.css';
 
@@ -167,23 +167,11 @@ export default function App() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="h-8 gap-1.5 text-xs font-bold border-[#a08a70]/40 bg-[#a08a70]/5 hover:bg-[#a08a70]/10 text-[#a08a70] hidden md:flex uppercase tracking-tighter"
+                  className="h-8 gap-1.5 text-xs font-bold border-cyan-500/20 bg-cyan-500/5 hover:bg-cyan-500/10 text-cyan-400 hidden lg:flex uppercase tracking-tighter"
                 >
-                  <Link to="/builder">
-                    <Sparkles className="h-3 w-3" />
-                    Management
-                  </Link>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  size="sm"
-                  className="h-8 gap-1.5 text-xs font-bold border-red-500/20 bg-red-500/5 hover:bg-red-500/10 text-red-400 hidden lg:flex uppercase tracking-tighter"
-                >
-                  <Link to="/codex">
-                    <Biohazard className="h-3 w-3" />
-                    The Codex
+                  <Link to="/trilogy">
+                    <Network className="h-3 w-3" />
+                    Trilogy Flow
                   </Link>
                 </Button>
 
@@ -209,7 +197,7 @@ export default function App() {
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link to="/codex" className="flex items-center gap-2 cursor-pointer">
-                        <Biohazard className="h-4 w-4 text-red-400" />
+                        <Biohazard className="h-4 w-4" />
                         Entity Codex
                       </Link>
                     </DropdownMenuItem>
@@ -331,8 +319,8 @@ export default function App() {
       <Route path="/about" element={<About />} />
       <Route path="/roadmap" element={<Roadmap />} />
       <Route path="/profile/:category/:id" element={<ProfilePage />} />
-      <Route path="/builder" element={<TeamBuilder />} />
       <Route path="/codex" element={<EntityCodex />} />
+      <Route path="/trilogy" element={<TrilogySankey />} />
     </Routes>
   );
 }

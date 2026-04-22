@@ -125,11 +125,11 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick }:
       {entity ? (
         <div className="flex h-full flex-col">
           {/* Header */}
-          <header className="sticky top-0 z-10 flex items-start justify-between border-b border-border bg-muted/40 p-5 backdrop-blur-md">
-            <div className="flex items-start gap-3">
+          <header className="sticky top-0 z-10 flex items-start justify-between gap-2 border-b border-border bg-muted/40 p-5 backdrop-blur-md">
+            <div className="flex items-start gap-3 min-w-0 flex-1">
               {/* Diamond icon matching the graph node */}
               <div
-                className="mt-1 rotate-45 border-2 p-1.5"
+                className="mt-1 shrink-0 rotate-45 border-2 p-1.5"
                 style={{
                   borderColor: ENTITY_COLORS[entity.type] ?? '#888',
                   backgroundColor: `${ENTITY_COLORS[entity.type] ?? '#888'}14`,
@@ -139,16 +139,14 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick }:
                   {TYPE_ICONS[entity.type]}
                 </div>
               </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl font-bold tracking-tight text-foreground leading-tight">{entity.name}</h2>
+              <div className="min-w-0 space-y-1">
+                <h2 className="text-xl font-bold tracking-tight text-foreground leading-tight break-words">{entity.name}</h2>
+                <div className="flex flex-wrap items-center gap-2">
                   {entity.subjectNumber && (
-                    <span className="text-[10px] font-black font-mono px-1.5 py-0.5 rounded bg-muted-foreground/10 text-muted-foreground/80 border border-muted-foreground/20">
+                    <span className="shrink-0 text-[10px] font-black font-mono px-1.5 py-0.5 rounded bg-muted-foreground/10 text-muted-foreground/80 border border-muted-foreground/20 whitespace-nowrap">
                       {entity.subjectNumber}
                     </span>
                   )}
-                </div>
-                <div className="flex items-center gap-2">
                   <Badge
                     variant="outline"
                     className={`text-[9px] font-bold uppercase tracking-wider ${TYPE_BADGE_COLORS[entity.type] ?? 'border-muted/40 text-muted'}`}
@@ -174,7 +172,7 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick }:
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 items-center gap-2">
               <Button
                 variant="outline"
                 size="sm"

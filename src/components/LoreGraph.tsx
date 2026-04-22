@@ -1,6 +1,7 @@
-import { useEffect, useRef, useCallback, useState } from 'react';
+import { useEffect, useRef, useCallback, useState, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as d3 from 'd3';
-import type { Sinner, GraphEdge, EdgeType, Game, Theme, CrossGameEntity } from '../types';
+import type { Sinner, GraphEdge, Game, Theme, CrossGameEntity, EdgeType } from '../types';
 import { THEMES, THEME_META } from '../types';
 import { literarySources } from '../data/literarySources';
 import crossGameEntities from '../data/crossGameEntities.json';
@@ -8,92 +9,12 @@ import { GraphSettings } from './GraphSettings';
 import { FilterPanel } from './FilterPanel';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
-interface GraphNode extends d3.SimulationNodeDatum {
-  id: string;
-  name: string;
-  canonicalGame: string;
-  literarySourceIds: string[];
-  themes: string[];
-  crossGameContinuity: boolean;
-  nodeType: 'sinner' | 'entity' | 'zone-anchor' | 'shared-group';
-  entityType?: 'wing' | 'abnormality' | 'character';
-  icon?: string;
-  riskLevel?: string;
-  parentEntityId?: string;
-  connectionCount?: number;
-  zone?: 'limbus' | 'ruina' | 'lobotomy';
-  isAnchor?: boolean;
-}
-
-interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
-  type: EdgeType;
-  label?: string;
-}
-
-const NODE_GAME_COLORS: Record<string, string> = {
-  limbus: '#b8202f',  // Deep Crimson — Limbus Company (Sinners are the heart)
-  ruina: '#a08a70',  // Warm Bronze — Library of Ruina
-  lobotomy: '#7a5c3a',  // Dark Bronze — Lobotomy Corporation
-};
-
-const ENTITY_COLORS: Record<string, string> = {
-  wing: '#a08a70', // Warm Bronze — Wings (City infrastructure)
-  abnormality: '#8a4a5a', // Muted Crimson — Abnormalities
-  character: '#f5c518', // Electric Gold — Recurring characters
-};
-
-const RISK_LEVEL_COLORS: Record<string, string> = {
-  'ZAYIN': '#2ECC71', // Green — Stable
-  'TETH': '#3498DB', // Blue — Low Risk
-  'HE': '#F1C40F', // Yellow — Moderate Risk
-  'WAW': '#9B59B6', // Purple — High Risk
-  'ALEPH': '#E74C3C', // Blood Red — Extreme Risk
-};
-
-const EDGE_COLORS: Record<EdgeType, string> = {
-  'literary-origin': 'var(--edge-literary)',
-  'thematic-link': 'var(--edge-theme)',
-  'cross-game-continuity': 'var(--edge-crossgame)',
-  'shared-literary-group': 'var(--edge-group)',
-  'wing-affiliation': '#a08a70', // Warm Bronze — Wings
-  'ego-synchronization': '#b8202f', // Blood Crimson — E.G.O links to Abnormalities
-  'structural-hierarchy': '#4a5568', // Deep Slate — Corporate structure
-  'bridge-continuity': '#d4af37',   // Faint Gold — Library resonance
-};
-
-const EDGE_LABELS: Record<EdgeType, string> = {
-  'literary-origin': 'Literary Origin',
-  'thematic-link': 'Shared Theme',
-  'cross-game-continuity': 'Cross-Game',
-  'shared-literary-group': 'Shared Group',
-  'wing-affiliation': 'Wing Affiliation',
-  'ego-synchronization': 'E.G.O Synchronization',
-  'structural-hierarchy': 'Structural Hierarchy',
-  'bridge-continuity': 'Continuity Bridge',
-};
-
-const ALL_EDGE_TYPES: EdgeType[] = [
-  'literary-origin',
-  'thematic-link',
-  'cross-game-continuity',
-  'shared-literary-group',
-  'wing-affiliation',
-  'ego-synchronization',
-  'structural-hierarchy',
-  'bridge-continuity',
-];
-
-export interface PhysicsSettings {
-  nodeSpacing: number;
-  repulsion: number;
-  centering: number;
-}
-
-const DEFAULTS: PhysicsSettings = {
-  nodeSpacing: 160,
-  repulsion: -400,
-  centering: 0.07,
-};
+import { getVisibleAncestorId, calculateSharedThemes } from './LoreGraphUtils';
+import type { GraphNode, GraphLink, PhysicsSettings, FilterState } from './LoreGraphConstants';
+import {
+  DEFAULTS, INITIAL_FILTER_STATE, ALL_EDGE_TYPES, EDGE_COLORS, NODE_GAME_COLORS,
+  ENTITY_COLORS, RISK_LEVEL_COLORS, EDGE_LABELS
+} from './LoreGraphConstants';
 
 interface LoreGraphProps {
   sinners: Sinner[];
@@ -106,13 +27,6 @@ interface LoreGraphProps {
   onToggleExpand: (id: string) => void;
 }
 
-interface FilterState {
-  games: Set<Game>;
-  themes: Set<Theme>;
-  literarySources: Set<string>;
-  showArchiveNodes: boolean;
-}
-
 export function LoreGraph({
   sinners,
   edges,
@@ -123,1060 +37,541 @@ export function LoreGraph({
   onEntityClick,
   onToggleExpand,
 }: LoreGraphProps) {
+  const navigate = useNavigate();
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const simulationRef = useRef<d3.Simulation<GraphNode, GraphLink> | null>(null);
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
 
-  // ── Stable mutable refs — updated without triggering re-renders ─────────────
-  const simulationRef = useRef<d3.Simulation<GraphNode, GraphLink> | null>(null);
-  const linkElsRef = useRef<d3.Selection<SVGLineElement, GraphLink, SVGGElement, unknown> | null>(null);
-  const nodeElsRef = useRef<d3.Selection<SVGGElement, GraphNode, SVGGElement, unknown> | null>(null);
-  const zoomGroupRef = useRef<d3.Selection<SVGGElement, unknown, null, undefined> | null>(null);
-  const selectedIdRef = useRef<string | null>(null);
-  const selectedEntityRef = useRef<string | null>(null);
-  const onNodeClickRef = useRef(onNodeClick);
-  const onEntityClickRef = useRef(onEntityClick);
-  const onToggleExpandRef = useRef(onToggleExpand);
-  const sinnersRef = useRef(sinners);
-  const activeEdgeTypesRef = useRef<Set<EdgeType>>(new Set(ALL_EDGE_TYPES));
-  const filtersRef = useRef<FilterState>({
-    games: new Set(['limbus', 'ruina', 'lobotomy'] as Game[]),
-    themes: new Set(THEMES as unknown as Theme[]),
-    literarySources: new Set(literarySources.map(s => s.id)),
-    showArchiveNodes: true,
-  });
-
-  // Keep onNodeClick ref fresh without re-render dependency
-  useEffect(() => { onNodeClickRef.current = onNodeClick; }, [onNodeClick]);
-  useEffect(() => { onEntityClickRef.current = onEntityClick; }, [onEntityClick]);
-  useEffect(() => { onToggleExpandRef.current = onToggleExpand; }, [onToggleExpand]);
-  useEffect(() => { sinnersRef.current = sinners; }, [sinners]);
-
-  const highlightSelected = useCallback(() => {
-    if (!nodeElsRef.current || !linkElsRef.current) return;
-    const selId = selectedIdRef.current;
-    const selEntity = selectedEntityRef.current;
-    const activeId = selId || selEntity;
-
-    const connectedIds = new Set<string>();
-    if (activeId) {
-      connectedIds.add(activeId);
-      linkElsRef.current.each(function (d) {
-        const src = (typeof d.source === 'string') ? d.source : (d.source as any).id;
-        const tgt = (typeof d.target === 'string') ? d.target : (d.target as any).id;
-        if (src === activeId || tgt === activeId) {
-          connectedIds.add(src);
-          connectedIds.add(tgt);
-        }
-      });
-    }
-
-    // Update nodes
-    nodeElsRef.current.each(function (d) {
-      const isSel = d.id === selId || d.id === selEntity;
-      const isConn = !activeId || connectedIds.has(d.id);
-
-      d3.select(this)
-        .transition().duration(300)
-        .attr('opacity', isConn ? 1 : 0.15);
-
-      if (d.nodeType === 'sinner') {
-        const hitSel = d3.select(this).select('.node-hit');
-        hitSel
-          .attr('fill', isSel ? '#e8e0d5' : NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
-          .attr('stroke', isSel ? '#f5c518' : 'var(--ring)')
-          .attr('stroke-width', isSel ? 3 : 1.5);
-      } else if (d.nodeType === 'entity') {
-        const defaultColor = (d.entityType === 'abnormality' && d.riskLevel)
-          ? (RISK_LEVEL_COLORS[d.riskLevel] ?? ENTITY_COLORS.abnormality)
-          : (ENTITY_COLORS[d.entityType ?? 'wing'] ?? ENTITY_COLORS.wing);
-
-        d3.select(this).select('.node-hit')
-          .attr('stroke', isSel ? '#f5c518' : defaultColor)
-          .attr('stroke-width', isSel ? 3 : 2);
-      }
-    });
-
-    // Update links
-    linkElsRef.current.each(function (d) {
-      if (!activeId) {
-        d3.select(this).transition().duration(300).attr('stroke-opacity', (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4);
-        return;
-      }
-      const src = (typeof d.source === 'string') ? d.source : (d.source as any).id;
-      const tgt = (typeof d.target === 'string') ? d.target : (d.target as any).id;
-      const isConn = src === activeId || tgt === activeId;
-      d3.select(this)
-        .transition().duration(300)
-        .attr('stroke-opacity', isConn ? 0.8 : 0.05)
-        .attr('filter', isConn ? 'url(#edge-glow)' : null);
-    });
-  }, []);
-
-  // Sync selection refs and handle zoom-to-node
-  useEffect(() => {
-    selectedIdRef.current = selectedSinner?.id ?? null;
-    selectedEntityRef.current = selectedEntity;
-    highlightSelected();
-
-    // Zoom to node if something is selected
-    const targetId = selectedSinner?.id || selectedEntity;
-    if (targetId && simulationRef.current && svgRef.current && zoomRef.current) {
-      const node = (simulationRef.current.nodes() as GraphNode[]).find(n => n.id === targetId);
-      if (node && node.x !== undefined && node.y !== undefined) {
-        const container = containerRef.current;
-        if (container) {
-          d3.select(svgRef.current)
-            .transition()
-            .duration(750)
-            .call(
-              zoomRef.current.transform,
-              d3.zoomIdentity.translate(container.clientWidth / 2, container.clientHeight / 2).scale(1.2).translate(-node.x, -node.y)
-            );
-        }
-      }
-    }
-  }, [selectedSinner, selectedEntity, highlightSelected]);
-
+  // --- UI State ---
+  const [hoverId, setHoverId] = useState<string | null>(null);
   const [physics, setPhysics] = useState<PhysicsSettings>(DEFAULTS);
-  const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(
-    new Set(ALL_EDGE_TYPES),
-  );
-  const [filters, setFilters] = useState<FilterState>({
-    games: new Set(['limbus', 'ruina', 'lobotomy'] as Game[]),
-    themes: new Set(THEMES as unknown as Theme[]),
-    literarySources: new Set(literarySources.map(s => s.id)),
-    showArchiveNodes: true,
-  });
-  const [tooltip, setTooltip] = useState<{
-    visible: boolean;
-    type: 'node' | 'edge';
-    name: string;
-    description?: string;
-    game?: string;
-    icon?: string;
-    themes?: string[];
-    literarySources?: string[];
-    x: number;
-    y: number;
-    nodeType?: string;
-  }>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
+  const [filters, setFilters] = useState<FilterState>(INITIAL_FILTER_STATE);
+  const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(new Set(ALL_EDGE_TYPES.filter(t => t !== 'thematic-link')));
+  const [tooltip, setTooltip] = useState<any>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
 
-  // True when user has narrowed at least one filter category from "all"
-  const allGamesSelected = filters.games.size === (['limbus', 'ruina', 'lobotomy'] as Game[]).length;
-  const allThemesSelected = filters.themes.size === (THEMES as unknown as Theme[]).length;
-  const allSourcesSelected = filters.literarySources.size === literarySources.length;
-  const isFiltering = !allGamesSelected || !allThemesSelected || !allSourcesSelected;
+  // --- Data Processing ---
+  const graphData = useMemo(() => {
+    const width = containerRef.current?.clientWidth ?? 1200;
+    const height = containerRef.current?.clientHeight ?? 800;
 
-  // True when NO sinners would match the current filters
-  const hasVisibleSinner = sinners.some((s) => {
-    const matchGame = filters.games.has(s.canonicalGame as Game);
-    const matchTheme = s.themes.some((t) => filters.themes.has(t as Theme));
-    const matchSource = s.literarySources.some((ls) => filters.literarySources.has(ls.id));
-    return matchGame && matchTheme && matchSource;
-  });
-  const showEmptyHint = isFiltering && !hasVisibleSinner;
+    // 1. Filtered Entities & Derived Links
+    const entityLinks: GraphLink[] = [];
+    const rawEntities = crossGameEntities.entities as CrossGameEntity[];
 
-  // ── Sync filter refs ────────────────────────────────────────────────────────
-  useEffect(() => { filtersRef.current = filters; }, [filters]);
-
-
-  // ── Apply physics changes in-place ───────────────────────────────────────────
-  const applyPhysics = useCallback((p: PhysicsSettings) => {
-    if (!simulationRef.current) return;
-    const sim = simulationRef.current;
-    const linkForce = sim.force('link') as d3.ForceLink<GraphNode, GraphLink>;
-    if (linkForce) linkForce.distance(p.nodeSpacing);
-    sim.force('charge', d3.forceManyBody().strength(p.repulsion));
-    sim.force('center', d3.forceCenter(
-      (containerRef.current?.clientWidth ?? 800) / 2,
-      (containerRef.current?.clientHeight ?? 600) / 2,
-    ).strength(p.centering));
-    sim.alpha(0.5).restart();
-  }, []);
-
-  // ── Apply edge visibility in-place ─────────────────────────────────────────
-  const applyEdgeTypes = useCallback((active: Set<EdgeType>) => {
-    if (!linkElsRef.current) return;
-    activeEdgeTypesRef.current = active;
-    linkElsRef.current
-      .attr('visibility', (d) => active.has(d.type) ? 'visible' : 'hidden');
-  }, []);
-
-  const toggleEdgeType = useCallback((type: EdgeType) => {
-    setActiveEdgeTypes((prev) => {
-      const next = new Set(prev);
-      if (next.has(type)) next.delete(type);
-      else next.add(type);
-      return next;
-    });
-  }, []);
-
-  // Sync edge types ref
-  useEffect(() => {
-    activeEdgeTypesRef.current = activeEdgeTypes;
-  }, [activeEdgeTypes]);
-
-  // ── Init SVG structure once ────────────────────────────────────────────────
-  useEffect(() => {
-    if (!svgRef.current || !containerRef.current) return;
-    const container = containerRef.current;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
-
-    const svg = d3
-      .select(svgRef.current)
-      .attr('width', width)
-      .attr('height', height)
-      .attr('viewBox', [0, 0, width, height]);
-
-    const defs = svg.append('defs');
-    const filter = defs.append('filter').attr('id', 'edge-glow');
-    filter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
-    const feMerge = filter.append('feMerge');
-    feMerge.append('feMergeNode').attr('in', 'coloredBlur');
-    feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
-
-    const zoomGroup = svg.append('g').attr('class', 'zoom-group');
-    zoomGroupRef.current = zoomGroup;
-    zoomGroup.append('g').attr('class', 'links');
-    zoomGroup.append('g').attr('class', 'nodes');
-
-    const zoom = d3
-      .zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.3, 3])
-      .on('zoom', (event) => {
-        zoomGroup.attr('transform', event.transform);
-        const scale = event.transform.k;
-        const labelOpacity = scale >= 0.6 ? 1 : 0;
-        zoomGroup.selectAll('.node-label').attr('opacity', labelOpacity);
-      });
-    zoomRef.current = zoom;
-    svg.call(zoom);
-  }, []);
-
-  useEffect(() => { applyPhysics(physics); }, [physics, applyPhysics]);
-  useEffect(() => { applyEdgeTypes(activeEdgeTypes); }, [activeEdgeTypes, applyEdgeTypes]);
-  useEffect(() => { 
-    // Optimization: Only run filter opacity update, don't restart simulation
-    if (!nodeElsRef.current) return;
-    nodeElsRef.current.each(function(d) {
-       let visible = true;
-       if (d.nodeType === 'sinner') {
-         const matchGame = filters.games.has(d.canonicalGame as Game);
-         const matchTheme = d.themes.some(t => filters.themes.has(t as Theme));
-         const matchSource = d.literarySourceIds.some(id => filters.literarySources.has(id));
-         visible = matchGame && matchTheme && matchSource;
-       } else if (d.nodeType === 'entity') {
-         const matchGame = filters.games.has(d.canonicalGame as Game);
-         const matchTheme = d.themes.length === 0 || d.themes.some(t => filters.themes.has(t as Theme));
-         // New: Must be either naturally visible OR its parent must be expanded
-         const isChild = !!d.parentEntityId;
-         const parentExpanded = isChild && expandedNodeIds.has(d.parentEntityId!);
-         visible = filters.showArchiveNodes && matchGame && matchTheme && (!isChild || parentExpanded);
-       } else if (d.nodeType === 'shared-group') {
-         visible = filters.showArchiveNodes;
-       }
-
-       d3.select(this)
-         .transition().duration(200)
-         .attr('opacity', visible ? 1 : 0)
-         .style('pointer-events', visible ? 'auto' : 'none');
-    });
-  }, [filters, expandedNodeIds]);
-
-  // ── Build/Update graph data ───────────────────────────────────────────────
-  useEffect(() => {
-    if (!svgRef.current || !containerRef.current || !zoomGroupRef.current) return;
-    const container = containerRef.current;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
-
-    const zoomGroup = zoomGroupRef.current;
-    simulationRef.current?.stop();
-
-    // Use the mutable refs — no stale closure issues
-    const active = activeEdgeTypesRef.current;
-    const links: GraphLink[] = edges
-      .filter((e) => active.has(e.type))
-      .map((e) => ({ source: e.source, target: e.target, type: e.type }));
-
-    // ── Entity-to-sinner edges ────────────────────────────────────────────────
-    const entityLinks: GraphLink[] = crossGameEntities.entities.flatMap((e) => {
-      const links: GraphLink[] = (e.relatedSinnerIds ?? []).map((sid) => ({
-        source: e.id,
-        target: sid,
-        type: (e.type === 'wing')
-          ? ('wing-affiliation' as EdgeType)
-          : (e.type === 'abnormality')
-            ? ('ego-synchronization' as EdgeType)
-            : ('cross-game-continuity' as EdgeType),
-        label: e.name,
-      }));
-
-      // Add parent structural links
-      if ((e as any).parentEntityId) {
-        links.push({
-          source: (e as any).parentEntityId,
-          target: e.id,
-          type: 'structural-hierarchy' as EdgeType,
-          label: 'Affiliation'
+    rawEntities.forEach(e => {
+      if (e.relatedSinnerIds) {
+        e.relatedSinnerIds.forEach(sid => {
+          entityLinks.push({
+            source: e.id, target: sid,
+            type: e.type === 'abnormality' ? 'ego-synchronization' : 'wing-affiliation',
+            label: 'Resonance'
+          });
         });
       }
-
-      // Add related bridge links
       if ((e as any).relatedEntityIds) {
         (e as any).relatedEntityIds.forEach((rid: string) => {
-          links.push({
-            source: e.id,
-            target: rid,
+          entityLinks.push({
+            source: e.id, target: rid,
             type: (e.type === 'character') ? 'bridge-continuity' : 'structural-hierarchy',
             label: 'Shift'
           });
         });
       }
-
-      return links;
     });
 
-    // ── Count literary-origin connections per node ───────────────────────────
     const connectionCount: Record<string, number> = {};
-    for (const link of edges) {
-      if (link.type === 'literary-origin') {
-        connectionCount[link.source] = (connectionCount[link.source] ?? 0) + 1;
-        connectionCount[link.target] = (connectionCount[link.target] ?? 0) + 1;
+    [...edges, ...entityLinks].forEach(l => {
+      if (l.type === 'literary-origin') {
+        const s = typeof l.source === 'string' ? l.source : (l.source as any).id;
+        const t = typeof l.target === 'string' ? l.target : (l.target as any).id;
+        connectionCount[s] = (connectionCount[s] ?? 0) + 1;
+        connectionCount[t] = (connectionCount[t] ?? 0) + 1;
       }
-    }
-    for (const link of entityLinks) {
-      if (link.type === 'literary-origin') {
-        connectionCount[link.source as string] = (connectionCount[link.source as string] ?? 0) + 1;
-        connectionCount[link.target as string] = (connectionCount[link.target as string] ?? 0) + 1;
-      }
-    }
+    });
 
-    // ── Count shared themes per edge (needs allNodes, calculated after nodes/entities) ─
-
-    // ── Build sinner nodes ──────────────────────────────────────────────────
-    const nodes: GraphNode[] = sinners.map((s) => ({
-      id: s.id,
-      name: s.name,
-      canonicalGame: s.canonicalGame,
-      literarySourceIds: s.literarySources.map((ls) => ls.id),
-      themes: [...s.themes],
-      crossGameContinuity: s.crossGameContinuity,
-      nodeType: 'sinner' as const,
-      connectionCount: connectionCount[s.id] ?? 0,
-      // Lock Dante at center
-      x: s.id === 'dante' ? width / 2 : undefined,
-      y: s.id === 'dante' ? height / 2 : undefined,
-      fx: s.id === 'dante' ? width / 2 : undefined,
-      fy: s.id === 'dante' ? height / 2 : undefined,
+    // 2. Node Generation with Visibility Filtering
+    const sinnerNodes: GraphNode[] = sinners.filter(s => {
+      if (!s.themes.some(t => filters.themes.has(t as Theme))) return false;
+      return true;
+    }).map(s => ({
+      ...s, id: s.id, literarySourceIds: s.literarySources.map(ls => ls.id), themes: [...s.themes],
+      nodeType: 'sinner', connectionCount: connectionCount[s.id] ?? 0,
+      // Do NOT fix Dante — fixing it pulls all connected sinners to the same point
     }));
 
-    // ── Entity nodes ──────────────────────────────────────────────────────────
-    const entityNodes: GraphNode[] = (crossGameEntities.entities as CrossGameEntity[]).map((e) => ({
-      id: e.id,
-      name: e.name,
-      canonicalGame: e.canonicalGame,
+    const visibleEntities = (() => {
+      if (!filters.showArchiveNodes) return [];
+      const visible = new Set<string>();
+      
+      // First pass: identify root-level visible nodes
+      rawEntities.forEach(e => {
+        if (!e.parentEntityId) {
+          const isHub = ['entity-l-corp', 'entity-library', 'entity-limbus-company'].includes(e.id);
+          const hasSinner = (e.relatedSinnerIds?.length ?? 0) > 0;
+          if (isHub || hasSinner) {
+            visible.add(e.id);
+          }
+        }
+      });
+
+      // Second pass: recursively add children if parent is visible AND expanded
+      let changed = true;
+      while (changed) {
+        changed = false;
+        rawEntities.forEach(e => {
+          if (e.parentEntityId && !visible.has(e.id) && visible.has(e.parentEntityId) && expandedNodeIds.has(e.parentEntityId)) {
+            visible.add(e.id);
+            changed = true;
+          }
+        });
+      }
+
+      return rawEntities.filter(e => {
+        if (!visible.has(e.id)) return false;
+        if (e.themes && e.themes.length > 0 && !e.themes.some(t => filters.themes.has(t as Theme))) return false;
+        return true;
+      });
+    })();
+
+    const entityNodes: GraphNode[] = visibleEntities.map(e => ({
+      ...e, nodeType: 'entity' as const, entityType: e.type as any, themes: e.themes ?? [],
       literarySourceIds: [],
-      themes: e.themes ? [...e.themes] : [],
-      crossGameContinuity: false,
-      nodeType: 'entity' as const,
-      entityType: e.type as 'character' | 'wing' | 'abnormality',
-      icon: e.icon,
-      riskLevel: e.riskLevel,
-      parentEntityId: (e as any).parentEntityId,
       connectionCount: connectionCount[e.id] ?? 0,
-    }));
+      crossGameContinuity: e.appearances ? e.appearances.includes('lobotomy') && e.appearances.includes('ruina') : false,
+    } as GraphNode));
 
-    // ── Zone anchor nodes (invisible gravity wells) ──────────────────────────
-    const cx = width / 2;
-    const cy = height / 2;
-    const spread = Math.min(width, height) * 0.28;
-    const zoneAnchors: GraphNode[] = [
-      { id: 'zone-limbus', name: '', canonicalGame: 'limbus', literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'limbus', isAnchor: true, x: cx, y: cy },
-      { id: 'zone-ruina', name: '', canonicalGame: 'ruina', literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'ruina', isAnchor: true, x: cx - spread, y: cy },
-      { id: 'zone-lobotomy', name: '', canonicalGame: 'lobotomy', literarySourceIds: [], themes: [], crossGameContinuity: false, nodeType: 'zone-anchor', zone: 'lobotomy', isAnchor: true, x: cx + spread, y: cy },
-    ];
-    // ── Shared Literary Groups (Dante, etc) ──────────────────────────────────
-    const groupMap = new Map<string, string>();
-    const groupMembers = new Map<string, Set<string>>();
-    literarySources.forEach(ls => {
-      if (ls.sharedGroup) {
-        groupMap.set(ls.sharedGroup, ls.sharedGroupName || ls.sharedGroup);
-      }
-    });
-    sinners.forEach(s => {
-      s.literarySources.forEach(ref => {
-        const source = literarySources.find(ls => ls.id === ref.id);
-        if (!source?.sharedGroup) return;
-        const members = groupMembers.get(source.sharedGroup) ?? new Set<string>();
-        members.add(s.id);
-        groupMembers.set(source.sharedGroup, members);
-      });
-    });
-
-    const activeGroups = Array.from(groupMap.entries()).filter(([slug]) => (groupMembers.get(slug)?.size ?? 0) > 1);
-    const groupNodes: GraphNode[] = activeGroups.map(([slug, name]) => ({
-      id: `group-${slug}`,
-      name: name,
-      canonicalGame: 'limbus' as any,
-      literarySourceIds: [],
-      themes: [],
+    const usedLitIds = new Set(sinnerNodes.flatMap(s => s.literarySourceIds));
+    const litNodes: GraphNode[] = literarySources.filter(ls => usedLitIds.has(ls.id)).map(ls => ({
+      id: `lit-${ls.id}`, name: sinners.some(s => s.name === ls.title) ? `${ls.title} (Book)` : ls.title,
+      canonicalGame: 'limbus' as any, literarySourceIds: [ls.id], themes: ls.themes ?? [],
+      nodeType: 'literary-source', connectionCount: 0,
       crossGameContinuity: false,
-      nodeType: 'shared-group' as any,
-      connectionCount: 0,
     }));
 
-    const groupLinks: GraphLink[] = [];
-    sinners.forEach(s => {
-      s.literarySources.forEach(ref => {
-        const source = literarySources.find(ls => ls.id === ref.id);
-        if (source?.sharedGroup && (groupMembers.get(source.sharedGroup)?.size ?? 0) > 1) {
-          groupLinks.push({
-            source: `group-${source.sharedGroup}`,
-            target: s.id,
-            type: 'shared-literary-group' as EdgeType
-          });
-        }
+    const allNodes = [...sinnerNodes, ...entityNodes, ...litNodes];
+    const nodeMap = new Map<string, GraphNode>(allNodes.map(n => [n.id, n]));
+
+    // 3. Link Redirection & Filtering
+    const allLinks = [...edges, ...entityLinks].map(l => {
+      const s = typeof l.source === 'string' ? l.source : (l.source as any).id;
+      const t = typeof l.target === 'string' ? l.target : (l.target as any).id;
+      const newS = nodeMap.has(s) ? s : getVisibleAncestorId(s, rawEntities, nodeMap);
+      const newT = nodeMap.has(t) ? t : getVisibleAncestorId(t, rawEntities, nodeMap);
+      return { ...l, source: newS, target: newT };
+    }).filter(l => l.source !== l.target && nodeMap.has(l.source as string) && nodeMap.has(l.target as string) && activeEdgeTypes.has(l.type));
+
+    return { nodes: allNodes, links: allLinks, sharedThemeCount: calculateSharedThemes(allLinks as any, nodeMap) };
+  }, [sinners, edges, expandedNodeIds, filters, activeEdgeTypes]);
+
+  // --- Highlighting Logic ---
+  const applyHighlights = useCallback(() => {
+    if (!svgRef.current) return;
+    const activeId = hoverId || selectedSinner?.id || selectedEntity;
+    const connectedIds = new Set<string>();
+
+    if (activeId) {
+      connectedIds.add(activeId);
+      graphData.links.forEach(l => {
+        const s = (l.source as any).id || l.source;
+        const t = (l.target as any).id || l.target;
+        if (s === activeId || t === activeId) { connectedIds.add(s); connectedIds.add(t); }
       });
-    });
-
-    const allNodes = [...nodes, ...entityNodes, ...zoneAnchors, ...groupNodes];
-    const allLinks = [...links, ...entityLinks, ...groupLinks];
-
-    // ── Build node map for O(1) simulation lookup ────────────────────────────
-    const nodeMap = new Map<string, GraphNode>();
-    allNodes.forEach(n => nodeMap.set(n.id, n));
-
-    // ── Count shared themes per edge (for stroke-width) ─────────────────────────
-    const sharedThemeCount: Record<string, number> = {};
-    for (const link of allLinks) {
-      const srcId = typeof link.source === 'string' ? link.source : (link.source as GraphNode).id;
-      const tgtId = typeof link.target === 'string' ? link.target : (link.target as GraphNode).id;
-      const src = nodeMap.get(srcId);
-      const tgt = nodeMap.get(tgtId);
-      if (src && tgt) {
-        const count = new Set(src.themes.filter((t: string) => tgt.themes.includes(t))).size;
-        sharedThemeCount[`${srcId}-${tgtId}`] = count;
-        sharedThemeCount[`${tgtId}-${srcId}`] = count;
-      }
     }
 
-    const simulation = d3
-      .forceSimulation<GraphNode>(allNodes)
-      .force(
-        'link',
-        d3
-          .forceLink<GraphNode, GraphLink>(allLinks)
-          .id((d) => d.id)
-          .distance((d) => {
-            if (d.type === 'shared-literary-group') return 120;
-            if (d.type === 'structural-hierarchy') return 80;
-            if (d.type === 'bridge-continuity') return 140;
-            return DEFAULTS.nodeSpacing;
-          })
-          .strength((d) => {
-            if (d.type === 'structural-hierarchy') return 0.7;
-            return 0.4;
-          }),
+    const svg = d3.select(svgRef.current);
+    svg.selectAll<SVGGElement, GraphNode>('.node-group').transition().duration(200)
+      .attr('opacity', d => !activeId || connectedIds.has(d.id) ? 1 : 0.15);
+
+    svg.selectAll<SVGPathElement, GraphLink>('.link-path').transition().duration(200)
+      .attr('stroke-opacity', d => {
+        const s = (d.source as any).id || d.source;
+        const t = (d.target as any).id || d.target;
+        if (s === activeId || t === activeId) return 0.8;
+        if (activeId) return 0.05;
+        return d.type === 'wing-affiliation' ? 0.25 : 0.4;
+      })
+      .attr('filter', d => {
+        const s = (d.source as any).id || d.source;
+        const t = (d.target as any).id || d.target;
+        return (s === activeId || t === activeId) ? 'url(#edge-glow)' : null;
+      });
+  }, [hoverId, selectedSinner, selectedEntity, graphData]);
+
+  // --- D3 Simulation & Rendering ---
+  useEffect(() => {
+    if (!svgRef.current || !containerRef.current) return;
+    const width = containerRef.current.clientWidth;
+    const height = containerRef.current.clientHeight;
+    const svg = d3.select(svgRef.current);
+    svg.selectAll('*').remove();
+
+    // 0. Definitions (Glows, Gradients, Filters)
+    const defs = svg.append('defs');
+
+    // Glow Filter
+    const glow = defs.append('filter').attr('id', 'glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+    glow.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
+    const merge = glow.append('feMerge');
+    merge.append('feMergeNode').attr('in', 'coloredBlur');
+    merge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+    // Edge Glow Filter
+    const edgeGlow = defs.append('filter').attr('id', 'edge-glow');
+    edgeGlow.append('feGaussianBlur').attr('stdDeviation', '2.5').attr('result', 'blur');
+    edgeGlow.append('feComposite').attr('in', 'SourceGraphic').attr('in2', 'blur').attr('operator', 'over');
+
+    // Hexagon ClipPath
+    defs.append('clipPath').attr('id', 'hexagon-clip')
+      .append('path').attr('d', 'M20,0 L37.32,10 L37.32,30 L20,40 L2.68,30 L2.68,10 Z');
+
+    // 1. Container setup with Scanline Overlay
+    const mainContainer = svg.append('g').attr('class', 'main-container');
+    const g = mainContainer.append('g').attr('class', 'zoom-group');
+    const linksG = g.append('g').attr('class', 'links');
+    const nodesG = g.append('g').attr('class', 'nodes');
+
+    const zoom = d3.zoom<SVGSVGElement, unknown>().scaleExtent([0.1, 4]).on('zoom', (e) => g.attr('transform', e.transform));
+    svg.call(zoom);
+    zoomRef.current = zoom;
+
+    // ─── Size tokens (must match rendering constants below) ───────────────────
+    const S_R = 26;   // sinner circle circumradius
+    const H_R = 28;   // abnormality hex circumradius
+    const W_R = 42;   // wing hex circumradius (1.5x larger)
+    const BK_W = 52;   // book card width
+    const BK_H = 68;   // book card height
+
+    // 2. Force Simulation — all three physics sliders are wired here
+    // In your simulation setup, replace the force configuration:
+
+    const simulation = d3.forceSimulation<GraphNode>(graphData.nodes)
+      .velocityDecay(0.6)    // high friction — nodes stop quickly once near final position
+      .alphaDecay(0.05)      // settles in ~60 ticks (fast cooling)
+      .alphaMin(0.001)
+      .force('link', d3.forceLink<GraphNode, GraphLink>(graphData.links)
+        .id(d => d.id)
+        .distance(d => {
+          // Generous distances so nodes have room to breathe
+          if (d.type === 'literary-origin')      return 260 + physics.nodeSpacing * 0.8;
+          if (d.type === 'ego-synchronization')  return 180 + physics.nodeSpacing * 0.5;
+          if (d.type === 'structural-hierarchy') return 150 + physics.nodeSpacing * 0.4;
+          if (d.type === 'wing-affiliation')     return Math.max(width, height) * 0.44;
+          if (d.type === 'bridge-continuity')    return 200 + physics.nodeSpacing * 0.5;
+          return physics.nodeSpacing;
+        })
+        // Keep link strength LOW — repulsion must win so nodes spread out
+        .strength(d => {
+          if (d.type === 'wing-affiliation')     return 0.03; // barely tethered
+          if (d.type === 'literary-origin')      return 0.12; // books orbit at distance
+          if (d.type === 'structural-hierarchy') return 0.2;
+          return 0.1;
+        })
       )
-      .force('charge', d3.forceManyBody().strength(DEFAULTS.repulsion).theta(1.1)) // Less accurate but faster
-      .force('center', d3.forceCenter(width / 2, height / 2).strength(DEFAULTS.centering))
-      .force('collision', d3.forceCollide().radius((d) => (d as GraphNode).nodeType === 'shared-group' ? 65 : 55))
-      .force('zone', d3.forceRadial<GraphNode>(
-        (d) => {
-          const gn = d as GraphNode;
-          if (gn.isAnchor) return 0;
-          if (gn.nodeType === 'shared-group') return 0;
-          return spread * 0.01;
-        },
-        (d) => {
-          const ax: Record<string, number> = {
-            limbus: cx, ruina: cx - spread, lobotomy: cx + spread,
-          };
-          return ax[d.canonicalGame] ?? cx;
-        },
-        (d) => {
-          const ay: Record<string, number> = { limbus: cy, ruina: cy, lobotomy: cy };
-          return ay[d.canonicalGame] ?? cy;
+      .force('charge', d3.forceManyBody<GraphNode>().strength(d => {
+        let str = physics.repulsion;            // default -3000
+        if (d.nodeType === 'literary-source')   str *= 1.5;
+        if (d.nodeType === 'sinner')            str *= 1.3; // sinners push each other hard
+        if (d.entityType === 'wing')            str *= 2.5;
+        return str;
+      }).theta(0.85).distanceMax(900))
+
+      // Soft gravity — keeps graph on screen without collapsing it
+      .force('gravX', d3.forceX<GraphNode>(width  / 2).strength(physics.centering * 0.25))
+      .force('gravY', d3.forceY<GraphNode>(height / 2).strength(physics.centering * 0.25))
+
+      // Sinners orbit a mid-radius ring so they spread around the center
+      .force('sinnerRing', d3.forceRadial<GraphNode>(
+        d => d.nodeType === 'sinner' ? Math.min(width, height) * 0.30 : 0,
+        width / 2, height / 2
+      ).strength(d => d.nodeType === 'sinner' ? 0.12 : 0))
+
+      // Wing entities pushed to canvas edge
+      .force('periphery', d3.forceRadial<GraphNode>(
+        d => d.entityType === 'wing' ? Math.max(width, height) * 0.46 : 0,
+        width / 2, height / 2
+      ).strength(0.45))
+
+      // Collision — prevents visual overlap
+      .force('collision', d3.forceCollide<GraphNode>().radius(d => {
+        if (d.nodeType === 'literary-source') return BK_W / 2 + 20;
+        if (d.entityType === 'wing')          return W_R + 24;
+        if (d.entityType === 'abnormality')   return H_R + 18;
+        return S_R + 16;
+      }).strength(0.9).iterations(3));
+
+    // ── Scatter nodes before starting so the animation is graceful ────────────
+    // Without this, all nodes start at (0,0) and explode outward chaotically.
+    // With scatter, they start spread out and animate INTO their final positions.
+    const scatterR = Math.min(width, height) * 0.35;
+    graphData.nodes.forEach((node, i) => {
+      if (node.x === undefined || (node.x === 0 && node.y === 0)) {
+        const angle = (2 * Math.PI * i) / graphData.nodes.length;
+        node.x = width  / 2 + scatterR * Math.cos(angle) * (0.6 + Math.random() * 0.5);
+        node.y = height / 2 + scatterR * Math.sin(angle) * (0.6 + Math.random() * 0.5);
+      }
+    });
+
+    // Live tick — drives the animation you see
+    simulation.on('tick', () => {
+      linksG.selectAll('path').attr('d', (d: any) => `M${d.source.x},${d.source.y}L${d.target.x},${d.target.y}`);
+      nodesG.selectAll('.node-group').attr('transform', (d: any) => `translate(${d.x},${d.y})`);
+    });
+    // ──────────────────────────────────────────────────────────────────────────
+
+
+
+    // 3. Render Links
+    const links = linksG.selectAll('path').data(graphData.links).join('path').attr('class', 'link-path')
+      .attr('stroke', d => EDGE_COLORS[d.type] || '#ccc')
+      .attr('stroke-width', d => {
+        const count = graphData.sharedThemeCount[`${(d.source as any).id}-${(d.target as any).id}`] || 0;
+        return d.type === 'literary-origin' ? 1.5 + count * 0.4 : 1.2 + count * 0.4;
+      })
+      .attr('stroke-dasharray', d => d.type === 'wing-affiliation' || d.type === 'ego-synchronization' || d.type === 'structural-hierarchy' ? '6,4' : 'none')
+      .style('pointer-events', 'stroke');
+
+    // Add CSS Animation for dashed links
+    svg.append('style').text(`
+      @keyframes dash-flow { to { stroke-dashoffset: -20; } }
+      .link-path[stroke-dasharray="6,4"] { animation: dash-flow 1.5s linear infinite; }
+      .node-group { transition: opacity 0.2s ease; }
+      .node-group[data-entity-type="wing"]:hover .node-hit { 
+        filter: drop-shadow(0 0 8px var(--wing-neon)) brightness(1.2);
+        stroke-width: 3;
+      }
+      .node-hit { transition: stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1), stroke-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease; }
+      .scanline-overlay { pointer-events: none; opacity: 0.05; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 4px, 3px 100%; }
+    `);
+
+    // 4. Render Nodes
+    const nodeGroups = nodesG.selectAll('.node-group').data(graphData.nodes).join('g')
+      .attr('class', 'node-group')
+      .attr('data-node-type', d => d.nodeType)
+      .attr('data-entity-type', d => d.entityType || 'none')
+      .call(d3.drag<SVGGElement, GraphNode>()
+        .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
+        .on('end', (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+    // Node Shapes & Aesthetics  (S_R / H_R / BK_W / BK_H defined above with simulation)
+    // Pointy-top hexagon path centered on (0,0)
+    const makeHexPath = (r: number) => {
+      const pts: [number, number][] = Array.from({ length: 6 }, (_, i) => {
+        const a = (Math.PI / 3) * i - Math.PI / 6;
+        return [r * Math.cos(a), r * Math.sin(a)];
+      });
+      return `M${pts.map(p => p.join(',')).join('L')}Z`;
+    };
+    const hexPath = makeHexPath(H_R);
+    const wingHexPath = makeHexPath(W_R);
+
+    nodeGroups.each(function (d) {
+      const el = d3.select(this);
+      const color = d.nodeType === 'sinner'
+        ? NODE_GAME_COLORS[d.canonicalGame]
+        : ENTITY_COLORS[d.entityType || 'character'];
+
+      if (d.nodeType === 'literary-source') {
+        // Book card — centered on origin
+        el.append('rect').attr('class', 'node-hit')
+          .attr('x', -BK_W / 2).attr('y', -BK_H / 2)
+          .attr('width', BK_W).attr('height', BK_H)
+          .attr('rx', 3)
+          .attr('fill', '#0c0c0d').attr('stroke', '#d4af37').attr('stroke-width', 1.5)
+          .style('filter', 'drop-shadow(0 0 6px rgba(212,175,55,0.35))');
+        el.append('line')
+          .attr('x1', -BK_W / 2 + 9).attr('y1', -BK_H / 2 + 10)
+          .attr('x2', -BK_W / 2 + 9).attr('y2', BK_H / 2 - 10)
+          .attr('stroke', '#d4af37').attr('stroke-width', 0.8).attr('opacity', 0.4);
+
+      } else if (d.nodeType === 'entity') {
+        if (d.entityType === 'wing') {
+          // Sharp Metallic/Neon Hex for Wings
+          const wingColor = d.id === 'wing-n-corp' ? '#e2e8f0' : // Steel for N Corp
+                            d.id === 'wing-w-corp' ? '#60a5fa' : // Blue for W Corp
+                            d.id === 'wing-k-corp' ? '#34d399' : // Green for K Corp
+                            d.id === 'wing-t-corp' ? '#fbbf24' : // Gold for T Corp
+                            color;
+          
+          this.style.setProperty('--wing-neon', wingColor);
+
+          el.append('path').attr('class', 'node-hit')
+            .attr('d', wingHexPath)
+            .attr('fill', '#080809').attr('stroke', wingColor).attr('stroke-width', 2.5)
+            .attr('stroke-linejoin', 'miter');
+          
+          // Outer "Circuit" frame
+          el.append('path')
+            .attr('d', makeHexPath(W_R + 4))
+            .attr('fill', 'none').attr('stroke', wingColor).attr('stroke-width', 0.5).attr('opacity', 0.3);
+          
+          // Typography/Logo placeholder
+          const logoText = d.name.split(' ')[0].charAt(0); // "N", "W", etc.
+          el.append('text').text(logoText)
+            .attr('text-anchor', 'middle').attr('dy', '0.35em')
+            .attr('fill', wingColor).attr('font-size', '20px').attr('font-weight', '900')
+            .attr('font-family', 'monospace').attr('opacity', 0.8);
+            
+        } else {
+          // Abnormality Hex
+          el.append('path').attr('class', 'node-hit')
+            .attr('d', hexPath)
+            .attr('fill', '#111').attr('stroke', d.riskLevel ? RISK_LEVEL_COLORS[d.riskLevel] : color)
+            .attr('stroke-width', 2);
+          
+          if (d.riskLevel) {
+            el.append('path').attr('d', hexPath)
+              .attr('fill', 'none').attr('stroke', RISK_LEVEL_COLORS[d.riskLevel])
+              .attr('stroke-width', 6).attr('opacity', 0.2).style('filter', 'blur(5px)');
+          }
         }
-      ).strength(0.06))
-      .force('orbital', d3.forceRadial<GraphNode>(
-        (d) => (d.parentEntityId) ? 80 : 0,
-        (d) => {
-          if (!d.parentEntityId) return cx;
-          const parent = nodeMap.get(d.parentEntityId);
-          return parent?.x ?? cx;
-        },
-        (d) => {
-          if (!d.parentEntityId) return cy;
-          const parent = nodeMap.get(d.parentEntityId);
-          return parent?.y ?? cy;
-        }
-      ).strength((d) => d.parentEntityId ? 0.2 : 0))
-      .alphaDecay(0.06); // Settle faster
+
+      } else if (d.nodeType === 'sinner') {
+        el.append('circle').attr('class', 'node-glow')
+          .attr('r', S_R + 7).attr('fill', color).attr('opacity', 0.18).style('filter', 'blur(7px)');
+        el.append('circle').attr('class', 'node-hit')
+          .attr('r', S_R).attr('fill', '#0c0c0d').attr('stroke', color).attr('stroke-width', 2.5);
+        el.append('circle')
+          .attr('r', S_R - 6).attr('fill', 'none').attr('stroke', color)
+          .attr('stroke-width', 1).attr('opacity', 0.6).attr('stroke-dasharray', '3,4');
+      }
+
+      if (d.icon) {
+        const iSize = d.nodeType === 'sinner' ? (S_R - 5) * 2 : (H_R - 6) * 2;
+        el.append('image').attr('href', d.icon)
+          .attr('x', -iSize / 2).attr('y', -iSize / 2)
+          .attr('width', iSize).attr('height', iSize);
+      }
+    });
+
+    // Labels — anchored to shape's actual bottom edge
+    nodeGroups.append('text').text(d => d.name)
+      .attr('dy', d => {
+        if (d.nodeType === 'literary-source') return BK_H / 2 + 13;
+        if (d.entityType === 'wing') return W_R + 15;
+        if (d.nodeType === 'entity') return H_R + 13;
+        return S_R + 13;
+      })
+      .attr('text-anchor', 'middle').attr('fill', '#e8e0d5')
+      .attr('font-size', '11px').attr('font-weight', '600').attr('letter-spacing', '0.5px')
+      .style('text-shadow', '0 2px 4px rgba(0,0,0,0.8)');
+
+    // 5. Interactions
+    nodeGroups.on('click', (e, d) => {
+      e.stopPropagation();
+      if (d.nodeType === 'sinner') {
+        // Sinners have no children — don't toggle expand (it rebuilds the simulation)
+        onNodeClick(sinners.find(s => s.id === d.id)!);
+      } else {
+        // Entities may have children — toggle expand, then open entity panel
+        onToggleExpand(d.id);
+        onEntityClick(d.id);
+      }
+    }).on('mouseenter', (event, d) => {
+      setHoverId(d.id);
+      const rect = containerRef.current!.getBoundingClientRect();
+      setTooltip({ visible: true, type: 'node', name: d.name, game: d.canonicalGame, themes: d.themes, x: event.clientX - rect.left, y: event.clientY - rect.top });
+    }).on('mouseleave', () => {
+      setHoverId(null);
+      setTooltip(t => ({ ...t, visible: false }));
+    });
 
     simulationRef.current = simulation;
+    applyHighlights();
+  }, [graphData, physics]);
 
-    const linkEls = zoomGroup
-      .select<SVGGElement>('.links')
-      .selectAll<SVGLineElement, GraphLink>('line')
-      .data(allLinks, (d: any) => `${d.source}-${d.target}`)
-      .join('line')
-      .attr('stroke', (d) => EDGE_COLORS[d.type] ?? '#f9e2af')
-      .attr('stroke-opacity', (d) =>
-        (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4,
-      )
-      .attr('stroke-width', (d) => {
-        const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
-        if (count === 0) return 1;
-        if (d.type === 'literary-origin') return Math.min(3 + count * 1.5, 8);
-        if (d.type === 'thematic-link') return Math.min(1 + count * 1.5, 7);
-        if (d.type === 'shared-literary-group') return Math.min(2 + count * 1.2, 6);
-        return 1;
-      })
-      .attr('stroke-dasharray', (d) =>
-        (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation' || d.type === 'ego-synchronization') ? '6,4' : 'none',
-      )
-      .style('cursor', (d) => d.label ? 'pointer' : 'default')
-      .on('mouseenter', function (event, d) {
-        if (d.label) {
-          const rect = containerRef.current!.getBoundingClientRect();
+  useEffect(() => { applyHighlights(); }, [applyHighlights]);
 
-          // Try to find a connection insight
-          let description = '';
-          const srcId = typeof d.source === 'string' ? d.source : (d.source as GraphNode).id;
-          const tgtId = typeof d.target === 'string' ? d.target : (d.target as GraphNode).id;
+  // Zoom to selection
+  useEffect(() => {
+    const targetId = selectedSinner?.id || selectedEntity;
+    if (!targetId || !simulationRef.current || !zoomRef.current || !svgRef.current || !containerRef.current) return;
 
-          const entity = crossGameEntities.entities.find(e => e.id === srcId || e.id === tgtId);
-          if (entity && (entity as any).connectionInsights) {
-            const sinnerId = srcId.startsWith('entity-') ? tgtId : srcId;
-            description = (entity as any).connectionInsights[sinnerId] || '';
-          }
+    // Defer long enough to outlast any graphData-triggered simulation rebuild
+    const timer = setTimeout(() => {
+      if (!simulationRef.current || !zoomRef.current || !svgRef.current || !containerRef.current) return;
+      const node = simulationRef.current.nodes().find(n => n.id === targetId);
+      if (!node || typeof node.x !== 'number' || typeof node.y !== 'number') return;
 
-          setTooltip({
-            visible: true,
-            type: 'edge',
-            name: d.label,
-            description,
-            x: event.clientX - rect.left,
-            y: event.clientY - rect.top
-          });
-        }
-      })
-      .on('mousemove', function (event) {
-        const rect = containerRef.current!.getBoundingClientRect();
-        setTooltip((t) => ({ ...t, x: event.clientX - rect.left, y: event.clientY - rect.top }));
-      })
-      .on('mouseleave', function () {
-        setTooltip((t) => ({ ...t, visible: false }));
-        d3.select(this).select('.node-hit').classed('node-pulse', false);
-      });
-    linkElsRef.current = linkEls;
+      const width = containerRef.current.clientWidth;
+      const height = containerRef.current.clientHeight;
+      const scale = 1.6; // zoom level when focused
 
-    const nodeEls = zoomGroup
-      .select<SVGGElement>('.nodes')
-      .selectAll<SVGGElement, GraphNode>('g.node-group')
-      .data(allNodes, (d: any) => d.id)
-      .join(
-        (enter) => {
-          const g = enter.append('g').attr('class', 'node-group');
-          
-          g.style('cursor', (d) => d.nodeType === 'shared-group' ? 'default' : 'pointer');
+      // Correct order: translate the node to the viewport center, THEN scale around that center.
+      // d3.zoomIdentity builds left-to-right:  translate(cx, cy) · scale(k) · translate(-nx, -ny)
+      const transform = d3.zoomIdentity
+        .translate(width / 2, height / 2)
+        .scale(scale)
+        .translate(-node.x, -node.y);
 
-          // Attach drag events
-          g.call(
-            d3.drag<SVGGElement, GraphNode>()
-              .on('start', (event, d) => {
-                if (!event.active) simulation.alphaTarget(0.3).restart();
-                d.fx = d.x;
-                d.fy = d.y;
-              })
-              .on('drag', (event, d) => {
-                d.fx = event.x;
-                d.fy = event.y;
-              })
-              .on('end', (event, d) => {
-                if (!event.active) simulation.alphaTarget(0);
-                d.fx = null;
-                d.fy = null;
-              })
-          );
+      d3.select(svgRef.current)
+        .transition()
+        .duration(750)
+        .ease(d3.easeCubicInOut)
+        .call(zoomRef.current.transform, transform);
+    }, 250); // 250ms: outlasts a D3 rebuild (~16ms) + React re-render cycle
 
-          // Interaction handling
-          g.on('click', (event, d) => {
-            // Expansion Logic: Toggle children visibility if this is a hub node
-            const hasChildren = crossGameEntities.entities.some(e => e.parentEntityId === d.id) || (d as any).relatedEntityIds?.length > 0;
-            if (hasChildren && onToggleExpandRef.current) {
-              onToggleExpandRef.current(d.id);
-            }
-
-            if (d.nodeType === 'entity') {
-              if (onEntityClickRef.current) onEntityClickRef.current(d.id);
-            } else if (d.nodeType === 'sinner') {
-              const found = sinnersRef.current.find((s) => s.id === d.id);
-              if (found) onNodeClickRef.current(found);
-            }
-          });
-
-          // ── Initialize Node Content (moved into enter selection for performance) ──
-          
-          // ... [Note: The .each blocks below will handle initialization via shared selection]
-          return g;
-        },
-        (update) => update,
-        (exit) => exit.remove()
-      );
-
-    nodeElsRef.current = nodeEls;
-
-    // ── Sinner nodes: circle ─────────────────────────────────────────────────
-    nodeEls
-      .filter((d) => d.nodeType === 'sinner')
-      .each(function (d) {
-        const g = d3.select(this);
-        // Hit circle
-        g.append('circle')
-          .attr('class', 'node-hit')
-          .attr('r', d.crossGameContinuity ? 26 : 22)
-          .attr('fill', NODE_GAME_COLORS[d.canonicalGame] ?? NODE_GAME_COLORS.limbus)
-          .attr('stroke', 'var(--ring)')
-          .attr('stroke-width', 1.5)
-          .attr('stroke-opacity', 0.8);
-        // Ring (cross-game only)
-        if (d.crossGameContinuity) {
-          g.append('circle')
-            .attr('class', 'node-ring')
-            .attr('r', 30)
-            .attr('fill', 'none')
-            .attr('stroke', 'var(--edge-crossgame)')
-            .attr('stroke-width', 1)
-            .attr('stroke-opacity', 0.4);
-        }
-        // Label — always visible
-        g.append('text')
-          .attr('class', 'sinner-label')
-          .text(d.name)
-          .attr('text-anchor', 'middle')
-          .attr('dy', d.crossGameContinuity ? 42 : 38)
-          .attr('font-size', '10px')
-          .attr('font-weight', '500')
-          .attr('fill', 'var(--text-bright)')
-          .attr('font-family', 'Space Grotesk, monospace')
-          .attr('pointer-events', 'none')
-          .attr('opacity', 1);
-        // Connection count badge
-        const count = d.connectionCount ?? 0;
-        if (count > 0) {
-          const r = d.crossGameContinuity ? 26 : 22;
-          g.append('text')
-            .attr('class', 'conn-badge')
-            .text(count > 9 ? '9+' : String(count))
-            .attr('text-anchor', 'middle')
-            .attr('dy', '0.35em')
-            .attr('x', r * 0.65)
-            .attr('y', -r * 0.65)
-            .attr('font-size', '8px')
-            .attr('font-weight', '700')
-            .attr('font-family', 'Space Grotesk, monospace')
-            .attr('fill', 'var(--gold)')
-            .attr('stroke', 'var(--bg-surface)')
-            .attr('stroke-width', '2px')
-            .attr('paint-order', 'stroke')
-            .attr('pointer-events', 'none');
-        }
-        // Transparent hit area
-        g.append('circle').attr('r', 34).attr('fill', 'transparent');
-      });
-
-    // ── Entity nodes: shape by type ────────────────────────────────────────────
-    nodeEls
-      .filter((d) => d.nodeType === 'entity')
-      .each(function (d) {
-        const g = d3.select(this);
-        const entityType = d.entityType ?? 'wing';
-        const riskColor = (entityType === 'abnormality' && d.riskLevel) ? RISK_LEVEL_COLORS[d.riskLevel] : null;
-        const color = riskColor ?? (ENTITY_COLORS[entityType] ?? ENTITY_COLORS.wing);
-
-        if (d.icon && entityType !== 'character') {
-          // Icon image node — label hidden (icon is label)
-          const size = 36;
-          g.append('image')
-            .attr('class', 'node-hit')
-            .attr('href', d.icon)
-            .attr('width', size)
-            .attr('height', size)
-            .attr('x', -size / 2)
-            .attr('y', -size / 2)
-            .attr('preserveAspectRatio', 'xMidYMid meet');
-          g.append('rect')
-            .attr('width', size + 12)
-            .attr('height', size + 12)
-            .attr('x', -(size + 12) / 2)
-            .attr('y', -(size + 12) / 2)
-            .attr('fill', 'transparent');
-        } else {
-          const shapeGroup = g.append('g').attr('class', 'node-shape');
-
-          if (entityType === 'abnormality') {
-            // Hexagon — 6-sided polygon
-            const r = 18;
-            const hexPoints = Array.from({ length: 6 }, (_, i) => {
-              const angle = (Math.PI / 3) * i - Math.PI / 6;
-              return `${r * Math.cos(angle)},${r * Math.sin(angle)}`;
-            }).join(' ');
-            shapeGroup
-              .append('polygon')
-              .attr('class', 'node-hit')
-              .attr('points', hexPoints)
-              .attr('fill', 'var(--bg-surface)')
-              .attr('stroke', color)
-              .attr('stroke-width', 2);
-          } else if (entityType === 'character') {
-            // Square — character entity (Angela, Ayin, Gebura)
-            const size = 20;
-            shapeGroup
-              .append('rect')
-              .attr('class', 'node-hit')
-              .attr('width', size)
-              .attr('height', size)
-              .attr('x', -size / 2)
-              .attr('y', -size / 2)
-              .attr('fill', 'var(--bg-surface)')
-              .attr('stroke', color)
-              .attr('stroke-width', 2);
-          } else {
-            // Diamond — Wings (default for other/unknown)
-            const size = 20;
-            shapeGroup
-              .append('rect')
-              .attr('class', 'node-hit')
-              .attr('width', size)
-              .attr('height', size)
-              .attr('x', -size / 2)
-              .attr('y', -size / 2)
-              .attr('fill', 'var(--bg-surface)')
-              .attr('stroke', color)
-              .attr('stroke-width', 2)
-              .attr('transform', 'rotate(45)');
-          }
-
-          // Invisible hit area
-          g.append('rect')
-            .attr('width', 48)
-            .attr('height', 48)
-            .attr('x', -24)
-            .attr('y', -24)
-            .attr('fill', 'transparent');
-        }
-
-        // Label — zoom-threshold reveal (show when zoom >= 0.6)
-        g.append('text')
-          .attr('class', 'node-label')
-          .text(d.name)
-          .attr('text-anchor', 'middle')
-          .attr('dy', d.icon ? 34 : 36)
-          .attr('font-size', '10px')
-          .attr('font-weight', '500')
-          .attr('fill', color)
-          .attr('filter', riskColor ? `drop-shadow(0 0 4px ${riskColor})` : null)
-          .attr('font-family', 'Space Grotesk, monospace')
-          .attr('pointer-events', 'none')
-          .attr('opacity', 'var(--label-opacity, 0)');
-      });
-
-    // ── Shared-group nodes: explicit endpoint so links do not float into empty space ──
-    nodeEls
-      .filter((d) => d.nodeType === 'shared-group')
-      .each(function (d) {
-        const g = d3.select(this);
-
-        g.append('circle')
-          .attr('class', 'node-hit')
-          .attr('r', 18)
-          .attr('fill', 'var(--bg-surface)')
-          .attr('stroke', 'var(--edge-group)')
-          .attr('stroke-width', 2)
-          .attr('stroke-dasharray', '4,3')
-          .attr('opacity', 0.95);
-
-        g.append('text')
-          .attr('class', 'shared-group-label')
-          .text(d.name)
-          .attr('text-anchor', 'middle')
-          .attr('dy', 34)
-          .attr('font-size', '10px')
-          .attr('font-weight', '600')
-          .attr('fill', 'var(--edge-group)')
-          .attr('font-family', 'Space Grotesk, monospace')
-          .attr('pointer-events', 'none')
-          .attr('opacity', 1);
-
-        g.append('circle')
-          .attr('r', 30)
-          .attr('fill', 'transparent');
-      });
-
-    // ── Hover ────────────────────────────────────────────────────────────────
-    nodeEls
-      .on('mouseenter', function (event, hovered) {
-        const rect = containerRef.current!.getBoundingClientRect();
-
-        // Add scanning pulse effect to hovered node
-        d3.select(this).select('.node-hit').classed('node-pulse', true);
-
-        if (hovered.nodeType === 'sinner') {
-          const sinner = sinners.find(s => s.id === hovered.id);
-          const topSources = sinner?.literarySources.slice(0, 2).map(ls => ls.id) ?? [];
-          setTooltip({
-            visible: true,
-            type: 'node',
-            name: hovered.name,
-            game: hovered.canonicalGame,
-            icon: hovered.icon,
-            nodeType: 'sinner',
-            themes: hovered.themes.slice(0, 3),
-            literarySources: topSources,
-            x: event.clientX - rect.left,
-            y: event.clientY - rect.top,
-          });
-        } else {
-          setTooltip({
-            visible: true,
-            type: 'node',
-            name: hovered.name,
-            nodeType: 'entity',
-            icon: hovered.icon,
-            game: undefined,
-            themes: hovered.themes.slice(0, 3),
-            x: event.clientX - rect.left,
-            y: event.clientY - rect.top,
-          });
-        }
-
-        const connectedIds = new Set<string>();
-        connectedIds.add(hovered.id);
-
-        linkEls.each(function (d) {
-          const src = (d.source as GraphNode).id;
-          const tgt = (d.target as GraphNode).id;
-          if (src === hovered.id || tgt === hovered.id) {
-            connectedIds.add(src);
-            connectedIds.add(tgt);
-          }
-        });
-
-        nodeEls.each(function (d) {
-          const isConn = connectedIds.has(d.id);
-          // Use opacity on the group so it works for both circles (sinners) and rects (entities)
-          d3.select(this)
-            .transition()
-            .duration(150)
-            .attr('opacity', isConn ? 1 : 0.15);
-        });
-
-        linkEls
-          .transition()
-          .duration(150)
-          .attr('stroke-opacity', 0.08)
-          .attr('stroke-width', 1);
-
-        linkEls.each(function (d) {
-          const src = (d.source as GraphNode).id;
-          const tgt = (d.target as GraphNode).id;
-          if (src === hovered.id || tgt === hovered.id) {
-            d3.select(this)
-              .raise()
-              .transition()
-              .duration(150)
-              .attr('stroke-opacity', 0.9)
-              .attr('stroke-width', 2)
-              .attr('filter', 'url(#edge-glow)');
-          }
-        });
-      })
-      .on('mouseleave', function () {
-        setTooltip((t) => ({ ...t, visible: false }));
-        nodeEls.each(function () {
-          d3.select(this)
-            .transition()
-            .duration(200)
-            .attr('opacity', 1);
-        });
-
-        linkEls
-          .transition()
-          .duration(200)
-          .attr('stroke-opacity', (d) => (d.type === 'cross-game-continuity' || d.type === 'wing-affiliation') ? 0.2 : 0.4)
-          .attr('stroke-width', (d) => {
-            const count = sharedThemeCount[`${d.source}-${d.target}`] ?? sharedThemeCount[`${d.target}-${d.source}`] ?? 0;
-            if (d.type === 'literary-origin' && count > 0) return Math.min(2.5 + count * 0.8, 6);
-            if (d.type === 'thematic-link' && count > 0) return Math.min(1 + count * 0.8, 5);
-            if (d.type === 'shared-literary-group' && count > 0) return Math.min(1.5 + count * 0.5, 4);
-            return 1;
-          })
-          .attr('filter', null);
-
-        // Restore selected node highlight (in case mouseleave reset it)
-        highlightSelected();
-      });
-
-    // Initial selected state
-    highlightSelected();
-
-    // Unpin Dante after layout settles (only once — not on physics resets)
-    let danteUnpinned = false;
-    simulation.on('end', () => {
-      if (!danteUnpinned) {
-        danteUnpinned = true;
-        allNodes.forEach((n) => { if (n.id === 'dante') { n.fx = null; n.fy = null; } });
-      }
-    });
-
-    simulation.on('tick', () => {
-      linkEls
-        .attr('x1', (d) => (d.source as GraphNode).x!)
-        .attr('y1', (d) => (d.source as GraphNode).y!)
-        .attr('x2', (d) => (d.target as GraphNode).x!)
-        .attr('y2', (d) => (d.target as GraphNode).y!);
-      nodeEls.attr('transform', (d) => `translate(${d.x},${d.y})`);
-    });
-  }, [sinners, edges]);
-
-  const handleResetLayout = useCallback(() => {
-    setPhysics(DEFAULTS);
-  }, []);
-
-  const handleResetZoom = useCallback(() => {
-    if (!svgRef.current || !zoomRef.current) return;
-    d3.select(svgRef.current)
-      .transition()
-      .duration(500)
-      .call(zoomRef.current.transform, d3.zoomIdentity);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [selectedSinner, selectedEntity]);
 
   return (
     <TooltipProvider>
-      <div ref={containerRef} className="relative h-full w-full overflow-hidden max-md:pb-24">
-        <svg ref={svgRef} className="block w-full h-full bg-background/50" />
+      <div ref={containerRef} className="relative h-full w-full overflow-hidden bg-[#050506] font-sans selection:bg-bronze/30">
+        {/* Scanline Overlay */}
+        <div className="scanline-overlay absolute inset-0 z-10" />
 
-        {/* Immersive Mini-Dossier Tooltip */}
+        <svg ref={svgRef} className="h-full w-full" />
+
+        {/* Tooltip */}
         {tooltip.visible && (
-          <div
-            className="pointer-events-none absolute z-50 animate-in fade-in zoom-in-95 duration-200"
-            style={{
-              left: tooltip.x + 20,
-              top: tooltip.y - 40,
-            }}
-          >
-            {tooltip.type === 'edge' ? (
-              <div className="glass-v2 flex flex-col border-[#a08a70]/30 p-2.5 shadow-xl backdrop-blur-sm min-w-[220px] max-w-[300px]">
-                <div className="mb-2 flex items-center gap-2 border-b border-border/30 pb-2">
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#f5c518] animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#a08a70]">{tooltip.name}</span>
-                </div>
-                {tooltip.description && (
-                  <p className="font-mono text-[11px] leading-relaxed text-muted-foreground/90 italic">
-                    {tooltip.description}
-                  </p>
-                )}
+          <div className="absolute z-50 pointer-events-none p-0 bg-transparent border-none"
+            style={{ left: tooltip.x + 20, top: tooltip.y }}>
+            <div className="relative group p-3 bg-black/90 border border-bronze/50 rounded-sm backdrop-blur-xl shadow-[0_0_20px_rgba(0,0,0,0.8)] overflow-hidden">
+              {/* Status Bar */}
+              <div className="absolute top-0 left-0 w-full h-[2px] bg-bronze/50 overflow-hidden">
+                <div className="w-1/3 h-full bg-bronze animate-[scan_2s_linear_infinite]" />
               </div>
-            ) : (
-              <div className="glass-v2 overflow-hidden border-[#a08a70]/30 shadow-2xl min-w-[220px]">
-                <div className="bg-[#b8202f]/10 px-3 py-1.5 border-b border-[#a08a70]/20 flex items-center justify-between">
-                  <span className="text-[10px] font-bold tracking-widest text-[#a08a70] uppercase">
-                    {tooltip.nodeType === 'sinner' ? 'Sinner Dossier' : 'Entity File'}
-                  </span>
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#f5c518] animate-pulse" />
+              <div className="text-[10px] font-mono text-bronze/60 tracking-tighter mb-1">DATA_STREAM::CONNECTED</div>
+              <div className="text-sm font-bold text-[#e8e0d5] uppercase tracking-wider mb-0.5">{tooltip.name}</div>
+              <div className="text-[9px] text-muted-foreground uppercase tracking-widest border-b border-white/10 pb-1 mb-2">{tooltip.game}</div>
+
+              {tooltip.themes?.length > 0 && (
+                <div className="flex flex-wrap gap-1 mt-2">
+                  {tooltip.themes.slice(0, 4).map((t: string) => (
+                    <span key={t} className="px-1.5 py-0.5 bg-bronze/10 border border-bronze/20 text-[8px] text-bronze uppercase font-mono">{t}</span>
+                  ))}
                 </div>
+              )}
 
-                <div className="p-3">
-                  <div className="flex items-start gap-3">
-                    {tooltip.icon && (
-                      <div className="h-12 w-12 border border-[#a08a70]/30 bg-black/40 p-1 shrink-0">
-                        <img src={tooltip.icon} alt="" className="h-full w-full object-contain grayscale hover:grayscale-0 transition-all duration-500" />
-                      </div>
-                    )}
-                    <div className="space-y-1">
-                      <h4 className="text-sm font-bold text-[#e8e0d5] leading-tight chromatic-text">
-                        {tooltip.name}
-                      </h4>
-                      {tooltip.game && (
-                        <div className="text-[10px] font-medium text-[#a08a70] uppercase tracking-wider">
-                          Origin: {tooltip.game}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {tooltip.themes && tooltip.themes.length > 0 && (
-                    <div className="mt-3 space-y-1">
-                      <div className="text-[9px] font-bold text-muted-foreground/60 uppercase tracking-tighter">Affinities</div>
-                      <div className="flex flex-wrap gap-1">
-                        {tooltip.themes.map(t => (
-                          <span key={t} className="px-1.5 py-0.5 bg-[#a08a70]/10 border border-[#a08a70]/20 text-[9px] text-[#e8e0d5] uppercase font-mono">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {tooltip.literarySources && tooltip.literarySources.length > 0 && (
-                    <div className="mt-3 space-y-1">
-                      <div className="text-[9px] font-bold text-muted-foreground/60 uppercase tracking-tighter">Sources</div>
-                      <div className="text-[10px] text-[#a08a70]/80 leading-snug">
-                        {tooltip.literarySources.map(id => {
-                          const src = literarySources.find(s => s.id === id);
-                          return src?.title ?? id;
-                        }).join(' · ')}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="bg-[#b8202f]/5 px-3 py-1 border-t border-[#a08a70]/10 flex justify-between items-center overflow-hidden">
-                  <div className="h-[2px] w-full bg-[#a08a70]/20 relative">
-                    <div className="absolute top-0 left-0 h-full bg-[#f5c518] w-1/3 animate-[scan-move_2s_infinite]" />
-                  </div>
-                  <span className="ml-3 text-[9px] font-mono text-[#a08a70]/50 whitespace-nowrap">STATUS: STABLE</span>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Empty filter state hint */}
-        {showEmptyHint && (
-          <div className="pointer-events-none absolute inset-x-0 top-1/2 z-20 flex -translate-y-1/2 justify-center px-4 max-md:top-[42%]">
-            <div className="rounded-xl border border-border/50 bg-card/80 px-6 py-4 text-center shadow-xl backdrop-blur-sm max-md:max-w-[20rem]">
-              <p className="text-sm font-semibold text-foreground">No nodes match current filters</p>
-              <p className="mt-1 text-xs text-muted-foreground">Try widening your selection in the filter panel</p>
+              {/* Subtle corner decor */}
+              <div className="absolute bottom-1 right-1 w-2 h-2 border-r border-b border-bronze/30" />
             </div>
           </div>
         )}
 
-        <FilterPanel
-          filters={filters}
-          onFiltersChange={(f) => setFilters(f)}
-        />
+        <FilterPanel filters={filters} onFiltersChange={setFilters} />
         <GraphSettings
-          nodeSpacing={physics.nodeSpacing}
-          repulsion={physics.repulsion}
-          centering={physics.centering}
-          onNodeSpacingChange={(v) => setPhysics((p) => ({ ...p, nodeSpacing: v }))}
-          onRepulsionChange={(v) => setPhysics((p) => ({ ...p, repulsion: v }))}
-          onCenteringChange={(v) => setPhysics((p) => ({ ...p, centering: v }))}
+          {...physics}
           activeEdgeTypes={activeEdgeTypes}
-          onToggleEdgeType={toggleEdgeType}
-          onResetLayout={handleResetLayout}
-          onResetZoom={handleResetZoom}
+          onToggleEdgeType={t => setActiveEdgeTypes(prev => {
+            const next = new Set(prev);
+            if (next.has(t)) next.delete(t); else next.add(t);
+            return next;
+          })}
+          onNodeSpacingChange={v => setPhysics(p => ({ ...p, nodeSpacing: v }))}
+          onRepulsionChange={v => setPhysics(p => ({ ...p, repulsion: v }))}
+          onCenteringChange={v => setPhysics(p => ({ ...p, centering: v }))}
+          onResetLayout={() => setPhysics(DEFAULTS)}
+          onResetZoom={() => svgRef.current && zoomRef.current && d3.select(svgRef.current).transition().duration(500).call(zoomRef.current.transform, d3.zoomIdentity)}
         />
+
+        {/* Global Styles for Animations */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+        ` }} />
       </div>
     </TooltipProvider>
   );
 }
-
-export { EDGE_COLORS, EDGE_LABELS };
-export type { GraphNode, GraphLink };
