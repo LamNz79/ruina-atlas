@@ -3,8 +3,8 @@
   "created": "2026-04-13",
   "last_updated": "2026-04-22",
   "status": "active-development",
-  "recommended_order": ["data_layer", "lore_graph", "full_content", "team_builder"],
-  "summary": "A React and TypeScript fan tool for Project Moon focused on literary origins, canto context, and cross-game lore connections. The shared data layer and lore graph MVP are implemented. The current milestone is M3 content completion and consistency.",
+  "recommended_order": ["data_layer", "lore_graph", "full_content", "universal_profiles", "team_builder"],
+  "summary": "A React and TypeScript fan tool for Project Moon focused on literary origins, canto context, and cross-game lore connections. The atlas now features a comprehensive lore graph and a complete Universal Profile system for Sinners, Sources, and Entities.",
 
   "milestones": [
     {
@@ -35,7 +35,7 @@
     {
       "id": "M3",
       "name": "Lore graph full content",
-      "status": "in_progress",
+      "status": "completed 2026-04-22",
       "priority": "high",
       "description": "Expand the graph into a reliable reference tool with richer data, spoiler-aware canto context, source browsing, and consistency cleanup.",
       "implemented_now": [
@@ -61,10 +61,10 @@
     },
     {
       "id": "M4",
-      "name": "Sinner profile cards",
-      "status": "not_started",
+      "name": "Universal profile cards",
+      "status": "completed 2026-04-22",
       "priority": "medium",
-      "description": "Richer per-Sinner profile pages or expanded panels with cleaner presentation of lore, identities, EGOs, and timeline context."
+      "description": "Richer polymorphic profile pages for Sinners, Sources, and Entities with deep-dives into lore, identities, EGOs, and timeline context."
     },
     {
       "id": "M5",
@@ -97,6 +97,7 @@
     "cross_game_entities": 12,
     "major_ui_surfaces": [
       "Lore graph",
+      "Universal Profile pages (/profile/:type/:id)",
       "Sinner panel",
       "Entity panel",
       "Source explorer",
@@ -106,7 +107,7 @@
     ]
   },
 
-  "next_action": "Finish the M3 consistency pass: audit literary source links, shared-group behavior, canto coverage, and entity data quality before starting M4.",
+  "next_action": "Proceed to M5: Team Builder — leveraging the literary and thematic connections now surfaced in the Profile System to filter composition groups.",
 
   "conversation_context": {
     "last_reviewed_on": "2026-04-22",
