@@ -522,3 +522,26 @@
   stroke-width: 3px;
   filter: drop-shadow(0 0 15px currentColor);
 }
+
+/* ─── Finger (Syndicate) Aesthetics ─────────────────────────────────────── */
+
+.finger-node {
+  filter: drop-shadow(0 0 8px rgba(147, 51, 234, 0.4));
+  transition: all 0.3s ease;
+}
+
+.node-group:hover .finger-node {
+  stroke-width: 3.5px;
+  filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.8));
+  fill: #050506;
+}
+
+.finger-virtue {
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.node-group:hover .finger-virtue {
+  transform: scale(1.2);
+  fill: #fff;
+}
