@@ -26,6 +26,7 @@ interface LoreGraphProps {
   onEntityClick: (entityId: string) => void;
   onSourceClick: (sourceId: string) => void;
   onToggleExpand: (id: string) => void;
+  onPin: (node: any) => void;
 }
 
 export function LoreGraph({
@@ -38,6 +39,7 @@ export function LoreGraph({
   onEntityClick,
   onSourceClick,
   onToggleExpand,
+  onPin,
 }: LoreGraphProps) {
   const navigate = useNavigate();
   const svgRef = useRef<SVGSVGElement>(null);
@@ -132,6 +134,10 @@ export function LoreGraph({
       return rawEntities.filter(e => {
         if (!visible.has(e.id)) return false;
         if (e.themes && e.themes.length > 0 && !e.themes.some(t => filters.themes.has(t as Theme))) return false;
+        
+        // Spoiler Gate: Hide entities from future Cantos
+        if (e.spoilerLevel && e.spoilerLevel > filters.cantoLevel) return false;
+        
         return true;
       });
     })();
@@ -139,6 +145,7 @@ export function LoreGraph({
     const entityNodes: GraphNode[] = visibleEntities.map(e => ({
       ...e, nodeType: 'entity' as const, entityType: e.type as any, themes: e.themes ?? [],
       literarySourceIds: [],
+      tokenLabel: (e as any).tokenLabel,
       connectionCount: connectionCount[e.id] ?? 0,
       crossGameContinuity: e.appearances ? e.appearances.includes('lobotomy') && e.appearances.includes('ruina') : false,
     } as GraphNode));
@@ -186,10 +193,21 @@ export function LoreGraph({
       .attr('opacity', d => !activeId || connectedIds.has(d.id) ? 1 : 0.15);
 
     svg.selectAll<SVGPathElement, GraphLink>('.link-path').transition().duration(200)
+      .attr('stroke', d => {
+        const s = (d.source as any).id || d.source;
+        const t = (d.target as any).id || d.target;
+        if (s === activeId || t === activeId) {
+          // If it's a Sinner, use their signature color for the radiating edges
+          const node = graphData.nodes.find(n => n.id === activeId);
+          if (node?.nodeType === 'sinner') return (node as any).signatureColor || '#b8202f';
+          return EDGE_COLORS[d.type] || '#ccc';
+        }
+        return EDGE_COLORS[d.type] || '#ccc';
+      })
       .attr('stroke-opacity', d => {
         const s = (d.source as any).id || d.source;
         const t = (d.target as any).id || d.target;
-        if (s === activeId || t === activeId) return 0.8;
+        if (s === activeId || t === activeId) return 0.9;
         if (activeId) return 0.05;
         return d.type === 'wing-affiliation' ? 0.25 : 0.4;
       })
@@ -468,7 +486,7 @@ export function LoreGraph({
             .attr('fill', wingColor).attr('font-size', '20px').attr('font-weight', '900')
             .attr('font-family', 'monospace').attr('opacity', 0.8);
             
-        } else {
+        } else if (d.entityType === 'abnormality') {
           // Abnormality Hex
           const riskColor = d.riskLevel ? RISK_LEVEL_COLORS[d.riskLevel] : '#8a4a5a';
           
@@ -502,6 +520,35 @@ export function LoreGraph({
             .attr('fill', '#e11d48').attr('font-size', '4.5px').attr('font-weight', '900')
             .attr('letter-spacing', '0.5px')
             .text('COGNITOHAZARD SUPPRESSED');
+
+        } else if (d.entityType === 'association') {
+          // Diamond for Associations
+          const dR = H_R;
+          el.append('path').attr('class', 'node-hit')
+            .attr('d', `M0 -${dR} L${dR} 0 L0 ${dR} L-${dR} 0 Z`)
+            .attr('fill', '#0c0c0e').attr('stroke', '#d4af37').attr('stroke-width', 2);
+          
+          el.append('text').text(d.name.split(' ')[0].charAt(0))
+            .attr('text-anchor', 'middle').attr('dy', '0.35em')
+            .attr('fill', '#d4af37').attr('font-size', '16px').attr('font-weight', '900')
+            .attr('font-family', 'serif');
+
+        } else if (d.entityType === 'finger') {
+          // Triangle for Fingers (Syndicates) - Sharp & Grimy
+          const tR = H_R;
+          const fingerColor = '#9333ea'; // Purple/Crimson Syndicate feel
+          
+          el.append('path').attr('class', 'node-hit finger-node')
+            .attr('d', `M0 -${tR} L${tR} ${tR} L-${tR} ${tR} Z`)
+            .attr('fill', '#080809').attr('stroke', fingerColor).attr('stroke-width', 2.5);
+          
+          // Kanji/Han character from Confucian Virtues
+          el.append('text').attr('class', 'finger-virtue')
+            .text((d as any).tokenLabel || '?')
+            .attr('text-anchor', 'middle').attr('dy', '0.65em')
+            .attr('fill', '#e2e8f0').attr('font-size', '16px').attr('font-weight', '900')
+            .attr('font-family', '"Noto Serif SC", "Source Han Serif", serif')
+            .style('filter', 'drop-shadow(0 0 5px rgba(147, 51, 234, 0.5))');
         }
 
       } else if (d.nodeType === 'sinner') {
@@ -575,6 +622,9 @@ export function LoreGraph({
         // Entity node — toggle expanded state
         onEntityClick(d.id);
       }
+    }).on('contextmenu', (e, d) => {
+      e.preventDefault();
+      onPin(d);
     }).on('mouseenter', (event, d) => {
       setHoverId(d.id);
       const rect = containerRef.current!.getBoundingClientRect();

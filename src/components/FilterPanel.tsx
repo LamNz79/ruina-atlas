@@ -8,11 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ThemeGuide } from './ThemeGuide';
-
-interface FilterState {
-  themes: Set<Theme>;
-  showArchiveNodes: boolean;
-}
+import type { FilterState } from './LoreGraphConstants';
 
 interface FilterPanelProps {
   filters: FilterState;
@@ -64,6 +60,7 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
     onFiltersChange({
       themes: new Set(THEMES),
       showArchiveNodes: true,
+      cantoLevel: 0,
     });
   };
 
@@ -131,6 +128,32 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             <p className="text-[9px] text-muted-foreground/60 leading-tight px-1 italic">
               Toggle visibility of non-Sinner nodes (Wings, Abnormalities, Legacy Characters) on the tactical graph.
             </p>
+          </div>
+
+          <div className="h-[1px] bg-border/50" />
+
+          {/* Spoiler Gate */}
+          <div className="space-y-2.5">
+            <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-primary/80">
+              Spoiler Authorization
+            </h4>
+            <div className="px-1 space-y-3">
+              <div className="flex justify-between items-center text-[11px] font-bold">
+                <span className="text-foreground/90 uppercase tracking-tight">Access Level</span>
+                <span className="text-primary font-mono bg-primary/10 px-1.5 py-0.5 rounded-sm">CANTO {(filters as any).cantoLevel || 0}</span>
+              </div>
+              <input 
+                type="range" 
+                min="0" max="9" step="1"
+                value={(filters as any).cantoLevel || 0}
+                onChange={(e) => onFiltersChange({ ...filters, cantoLevel: parseInt(e.target.value) } as any)}
+                className="w-full h-1 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+              />
+              <div className="flex justify-between text-[8px] font-mono text-muted-foreground/50 uppercase">
+                <span>Prologue</span>
+                <span>Inferno</span>
+              </div>
+            </div>
           </div>
 
 
