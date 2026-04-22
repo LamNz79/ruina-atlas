@@ -1,276 +1,599 @@
 {
   "entities": [
     {
-      "id": "entity-w-corp",
-      "name": "W Corp.",
+      "id": "entity-one-sin",
+      "name": "One Sin and Hundreds of Good Deeds",
+      "subjectNumber": "O-03-03",
+      "type": "abnormality",
+      "riskLevel": "ZAYIN",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "An abnormality representing confession and atonement.",
+      "themes": ["guilt", "redemption", "faith"],
+      "relatedSinnerIds": ["sinclair"],
+      "connectionInsights": {
+        "sinclair": "Sinclair's base E.G.O is directly derived from a fragment of this abnormality. Both embody the agonizing process of confession."
+      }
+    },
+    {
+      "id": "entity-plague-doctor",
+      "name": "Plague Doctor",
+      "subjectNumber": "O-01-45",
+      "type": "abnormality",
+      "riskLevel": "ZAYIN",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy"],
+      "loreSummary": "A masked doctor who claims to cure all diseases, but hides a terrifying truth behind his 12 apostles.",
+      "themes": ["faith", "guilt"]
+    },
+    {
+      "id": "entity-fairy-festival",
+      "name": "Fairy Festival",
+      "subjectNumber": "F-04-83",
+      "type": "abnormality",
+      "riskLevel": "ZAYIN",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Beautiful fairies that offer a feast to workers, only to consume them once the meal is finished.",
+      "themes": ["decay", "family"]
+    },
+    {
+      "id": "entity-wellcheers",
+      "name": "Opened Can of WellCheers",
+      "subjectNumber": "F-05-52",
+      "type": "abnormality",
+      "riskLevel": "ZAYIN",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A refreshing soda can that contains the essence of the ocean—and the sailors who never returned.",
+      "themes": ["futility"]
+    },
+    {
+      "id": "entity-scorched-girl",
+      "name": "Scorched Girl",
+      "subjectNumber": "F-01-02",
+      "type": "abnormality",
+      "riskLevel": "TETH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A girl who burned her own world to ashes in a desperate attempt to be heard.",
+      "themes": ["vengeance", "decay"]
+    },
+    {
+      "id": "entity-beauty-beast",
+      "name": "Beauty and the Beast",
+      "subjectNumber": "F-02-44",
+      "type": "abnormality",
+      "riskLevel": "TETH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy"],
+      "loreSummary": "A cursed entity that transfers its monstrous form between itself and its caretaker.",
+      "themes": ["metamorphosis", "guilt"]
+    },
+    {
+      "id": "entity-forsaken-murderer",
+      "name": "Forsaken Murderer",
+      "subjectNumber": "T-01-54",
+      "type": "abnormality",
+      "riskLevel": "TETH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "An experiment gone wrong, shackled by the metal plates hammered into his skull.",
+      "themes": ["machinery", "vengeance"]
+    },
+    {
+      "id": "entity-punishing-bird",
+      "name": "Punishing Bird",
+      "subjectNumber": "O-02-56",
+      "type": "abnormality",
+      "riskLevel": "TETH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A small bird that enforces justice with a lethal beak. One of the three birds of the Black Forest.",
+      "themes": ["guilt", "futility"]
+    },
+    {
+      "id": "entity-woodsman",
+      "name": "Warm-hearted Woodsman",
+      "subjectNumber": "F-05-32",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A construct that cuts out the hearts of others to fill its own empty, mechanical chest.",
+      "themes": ["machinery", "decay"]
+    },
+    {
+      "id": "entity-freischutz",
+      "name": "Der Freischütz",
+      "subjectNumber": "F-01-69",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "A huntsman whose seventh magic bullet hits the one he loves most.",
+      "themes": ["vengeance", "guilt"],
+      "relatedSinnerIds": ["outis"],
+      "connectionInsights": {
+        "outis": "Linked via the 'Magic Bullet' E.G.O. Both are tactical masters whose actions inevitably bring tragedy to their own side."
+      }
+    },
+    {
+      "id": "entity-snow-queen",
+      "name": "The Snow Queen",
+      "subjectNumber": "F-01-37",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A frozen ethereal entity that traps hearts in blocks of ice to keep them perfect forever.",
+      "themes": ["futility", "decay"]
+    },
+    {
+      "id": "entity-teddy-bear",
+      "name": "Happy Teddy Bear",
+      "subjectNumber": "T-04-06",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A sentient toy that desires nothing but to be hugged... until the hug becomes a crush.",
+      "themes": ["family", "decay"]
+    },
+    {
+      "id": "entity-singing-machine",
+      "name": "Singing Machine",
+      "subjectNumber": "O-05-30",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "An industrial grinder that transforms people into beautiful, haunting music.",
+      "themes": ["machinery", "absurdity"]
+    },
+    {
+      "id": "entity-snow-white-apple",
+      "name": "Snow White's Apple",
+      "subjectNumber": "F-04-42",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A rotting princess encased in the vines of a poisoned apple tree.",
+      "themes": ["decay", "vengeance"]
+    },
+    {
+      "id": "entity-little-red",
+      "name": "Little Red Riding Hooded Mercenary",
+      "subjectNumber": "F-01-57",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A high-ranking mercenary consumed by an eternal hatred for the Big Bad Wolf.",
+      "themes": ["vengeance", "futility"]
+    },
+    {
+      "id": "entity-big-bad-wolf",
+      "name": "Big and Will be Bad Wolf",
+      "subjectNumber": "F-02-58",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "An endless hunger that grows with every meal. The eternal rival of the Mercenary.",
+      "themes": ["decay", "futility"]
+    },
+    {
+      "id": "entity-queen-hatred",
+      "name": "The Queen of Hatred",
+      "subjectNumber": "O-01-04",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A magical girl who creates villains just so she can play the role of the hero.",
+      "themes": ["absurdity", "metamorphosis"]
+    },
+    {
+      "id": "entity-big-bird",
+      "name": "Big Bird",
+      "subjectNumber": "O-02-40",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A multi-eyed bird that consumes heads to 'save' workers from the forest's darkness.",
+      "themes": ["guilt", "faith"]
+    },
+    {
+      "id": "entity-judgement-bird",
+      "name": "Judgement Bird",
+      "subjectNumber": "O-02-62",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The scales of the forest that bring execution as the only form of balance.",
+      "themes": ["guilt", "nihilism"]
+    },
+    {
+      "id": "entity-little-prince",
+      "name": "The Little Prince",
+      "subjectNumber": "O-04-66",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy"],
+      "loreSummary": "A fungus-enthralling entity that replaces individual will with a unified, spore-driven bliss.",
+      "themes": ["metamorphosis", "faith"]
+    },
+    {
+      "id": "entity-nothing-there",
+      "name": "Nothing There",
+      "subjectNumber": "O-06-20",
+      "type": "abnormality",
+      "riskLevel": "ALEPH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A terrifying shapeshifter that mimics human behavior and speech to hide its biology.",
+      "themes": ["metamorphosis", "absurdity", "identity-fragmentation"]
+    },
+    {
+      "id": "entity-silent-orchestra",
+      "name": "The Silent Orchestra",
+      "subjectNumber": "T-01-31",
+      "type": "abnormality",
+      "riskLevel": "ALEPH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "An ensemble that plays a symphony so beautiful it demands the lives of its audience.",
+      "themes": ["absurdity", "nihilism"]
+    },
+    {
+      "id": "entity-whitenight",
+      "name": "WhiteNight",
+      "subjectNumber": "T-03-46",
+      "type": "abnormality",
+      "riskLevel": "ALEPH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A messianic entity that demands total submission from its twelve apostles.",
+      "themes": ["faith", "nihilism"]
+    },
+    {
+      "id": "entity-censored",
+      "name": "CENSORED",
+      "subjectNumber": "O-03-89",
+      "type": "abnormality",
+      "riskLevel": "ALEPH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "A cognitohazard so intense it cannot be represented by the human mind or the facility's cameras.",
+      "themes": ["nihilism", "absurdity"]
+    },
+    {
+      "id": "entity-apocalypse-bird",
+      "name": "Apocalypse Bird",
+      "subjectNumber": "O-02-63",
+      "type": "abnormality",
+      "riskLevel": "ALEPH",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The fusion of the three birds. It represents the end of the forest and the ultimate failure of protection.",
+      "themes": ["nihilism", "futility"]
+    },
+    {
+      "id": "entity-l-corp",
+      "name": "Lobotomy Corporation",
       "type": "wing",
       "canonicalGame": "lobotomy",
-      "appearances": [
-        "lobotomy",
-        "ruina",
-        "limbus"
-      ],
-      "literaryOrigin": "Jorge Luis Borges — themes of infinite time and dimensional looping (The WARP Train dilates time: thousands of years pass externally while only ten seconds elapse). District 23's culinary culture echoes Patrick Süskind's Perfume: The Story of a Murderer.",
-      "loreSummary": "One of the 26 Wings of the City, operating in District 23. Controls two Singularities: state restoration (save-point molecular reset after WARP Train travel damage) and dimensional gating (purchased from a fallen Wing). Known for its Cleanup Crew — agents who restore order on WARP Trains that have traveled through dimensional gates. In Limbus Company, W Corp. identities are available for 10 of the 13 Sinners as L2/L3/L4 Cleanup Agents.",
-      "themes": [
-        "machinery",
-        "futility",
-        "nihilism"
-      ],
-      "relatedSinnerIds": [
-        "heathcliff",
-        "outis",
-        "yi-sang",
-        "don-quixote",
-        "ryoshu",
-        "faust",
-        "meursault",
-        "hong-lu",
-        "rodion",
-        "gregor"
-      ]
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "The primary energy Wing of the City. Its facility structure consists of 10 specialized teams, each managed by a Sephirah.",
+      "themes": ["machinery", "guilt"],
+      "relatedSinnerIds": ["dante", "faust", "yi-sang"]
     },
     {
-      "id": "entity-red-shoes",
-      "name": "The Red Shoes",
-      "type": "abnormality",
+      "id": "entity-l-ctrl",
+      "name": "Control Team",
+      "type": "wing",
       "canonicalGame": "lobotomy",
-      "appearances": [
-        "lobotomy",
-        "ruina"
-      ],
-      "literaryOrigin": "Hans Christian Andersen — The Red Shoes (1845 fairy tale about a girl cursed to dance in a pair of enchanted red shoes she cannot remove).",
-      "loreSummary": "A pair of shiny red high-heeled shoes that amplify the desires and obsession of whoever wears them. The shoes enchant people, filling them with an irresistible urge to put them on. Hidden teeth along the edges bite into the skin of the host and cannot be removed through normal means. Classified as HE-risk. Does not appear as a fightable abnormality — it cannot be contained through combat. In Limbus Company, its E.G.O variant 'Sanguine Desire' is obtainable exclusively during Walpurgis Night events for Rodion.",
-      "themes": [
-        "obsession",
-        "machinery",
-        "guilt"
-      ],
-      "relatedSinnerIds": [
-        "rodion"
-      ]
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Responsible for facility-wide coordination and management.",
+      "themes": ["machinery"]
     },
     {
-      "id": "entity-blood-bath",
-      "name": "Blood Bath",
-      "type": "abnormality",
+      "id": "entity-l-info",
+      "name": "Information Team",
+      "type": "wing",
       "canonicalGame": "lobotomy",
-      "appearances": [
-        "lobotomy"
-      ],
-      "literaryOrigin": "Project Moon original; framed through ritual-bath and blood-sacrifice horror motifs rather than a single direct source text.",
-      "loreSummary": "A bathtub-like Abnormality filled with grasping hands and sacrificial imagery. Blood Bath is less a straight literary adaptation than a condensation of ritual horror, bodily consumption, and obsession with purification through violence. In the current dataset it remains a standalone lore node rather than a Sinner-linked story beat.",
-      "themes": [
-        "decay",
-        "nihilism",
-        "machinery"
-      ],
-      "relatedSinnerIds": []
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Manages the Abnormality database and internal communication.",
+      "themes": ["machinery"]
     },
     {
-      "id": "entity-ayin",
-      "name": "Ayin",
+      "id": "entity-l-training",
+      "name": "Training Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Dedicated to employee development and survival in high-risk zones.",
+      "themes": ["faith"]
+    },
+    {
+      "id": "entity-l-security",
+      "name": "Security Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Maintains physical containment and suppressive protocols.",
+      "themes": ["vengeance"]
+    },
+    {
+      "id": "entity-l-central",
+      "name": "Central Command Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The nerve center connecting the upper and lower layers of the facility.",
+      "themes": ["machinery"]
+    },
+    {
+      "id": "entity-l-discipline",
+      "name": "Disciplinary Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Suppresses high-risk (WAW/ALEPH) abnormalities.",
+      "themes": ["vengeance"]
+    },
+    {
+      "id": "entity-l-welfare",
+      "name": "Welfare Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Maintains employee mental health and facility stability.",
+      "themes": ["redemption"]
+    },
+    {
+      "id": "entity-l-extraction",
+      "name": "Extraction Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Extracts E.G.O equipment from Abnormalities.",
+      "themes": ["metamorphosis"]
+    },
+    {
+      "id": "entity-l-record",
+      "name": "Record Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "Preserves the archives and historical data of the facility.",
+      "themes": ["faith"]
+    },
+    {
+      "id": "entity-l-arch",
+      "name": "Architecture Team",
+      "type": "wing",
+      "canonicalGame": "lobotomy",
+      "parentEntityId": "entity-l-corp",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The deepest layer of the facility where the Seed of Light is refined.",
+      "themes": ["faith"]
+    },
+    {
+      "id": "entity-malkuth",
+      "name": "Malkuth",
       "type": "character",
       "canonicalGame": "lobotomy",
-      "appearances": [
-        "lobotomy",
-        "ruina"
-      ],
-      "literaryOrigin": "Primarily Project Moon original, with thematic overlap from Kabbalah and modern philosophical ideas about self-overcoming, guilt, and salvation through suffering.",
-      "loreSummary": "Ayin is the architect behind Lobotomy Corporation and the Seed of Light plan. His story is defined by calculated cruelty, repetition, and the belief that immense suffering can be turned into a future transformation for humanity. In Library of Ruina, his presence lingers less as a living actor than as the originating will behind the system Angela and the Sephirot must confront.",
-      "themes": [
-        "nihilism",
-        "machinery",
-        "futility",
-        "identity-fragmentation"
-      ],
-      "relatedSinnerIds": [
-        "faust",
-        "yi-sang",
-        "outis",
-        "gregor"
-      ]
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Control Team. Later the Patron Librarian of the Floor of History.",
+      "themes": ["machinery", "redemption"],
+      "relatedEntityIds": ["entity-l-ctrl", "entity-floor-history"]
     },
     {
-      "id": "entity-angela",
-      "name": "Angela",
+      "id": "entity-yesod",
+      "name": "Yesod",
       "type": "character",
-      "canonicalGame": "ruina",
-      "appearances": [
-        "lobotomy",
-        "ruina"
-      ],
-      "literaryOrigin": "Primarily Project Moon original, though her arc draws on motifs of artificial life, rebellion against a creator, and the search for a self-authored identity.",
-      "loreSummary": "Angela is the artificial intelligence created by Ayin to manage Lobotomy Corporation. In Library of Ruina, she becomes the master of the Library and turns her struggle inward: not just against the City, but against the role she was built to perform. Her arc is about moving from instrumenthood to personhood, and from inherited purpose to chosen purpose.",
-      "themes": [
-        "identity-fragmentation",
-        "redemption",
-        "faith",
-        "machinery"
-      ],
-      "relatedSinnerIds": [
-        "yi-sang",
-        "outis",
-        "ishmael",
-        "faust"
-      ]
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Information Team. Later the Patron Librarian of the Floor of Tech. Sciences.",
+      "themes": ["machinery", "nihilism"],
+      "relatedEntityIds": ["entity-l-info", "entity-floor-tech"]
+    },
+    {
+      "id": "entity-hod",
+      "name": "Hod",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Training Team. Later the Patron Librarian of the Floor of Literature.",
+      "themes": ["faith", "guilt"],
+      "relatedEntityIds": ["entity-l-training", "entity-floor-literature"]
+    },
+    {
+      "id": "entity-netzach",
+      "name": "Netzach",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Security Team. Later the Patron Librarian of the Floor of Art.",
+      "themes": ["decay", "redemption"],
+      "relatedEntityIds": ["entity-l-security", "entity-floor-art"]
+    },
+    {
+      "id": "entity-tiphereth",
+      "name": "Tiphereth",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Central Command Team. Later the Patron Librarian of the Floor of Natural Sciences.",
+      "themes": ["machinery", "faith"],
+      "relatedEntityIds": ["entity-l-central", "entity-floor-natural"]
     },
     {
       "id": "entity-gebura",
       "name": "Gebura",
       "type": "character",
-      "canonicalGame": "ruina",
-      "appearances": [
-        "lobotomy",
-        "ruina"
-      ],
-      "literaryOrigin": "Primarily Project Moon original, filtered through the Sephirah name Geburah and the fairy-tale imagery surrounding the Red Mist and Little Red motifs.",
-      "loreSummary": "Gebura is the Sephirah of disciplinary force in Lobotomy Corporation, carrying forward the legacy of Kali, the Red Mist. In Library of Ruina, she remains the floor patron most closely tied to direct violence, but her role is no longer simple destruction: it becomes the disciplined use of strength in defense of others. She matters in the broader Project Moon web as a model for raw combat power shaped by hard-won restraint.",
-      "themes": [
-        "redemption",
-        "vengeance",
-        "machinery",
-        "guilt"
-      ],
-      "relatedSinnerIds": [
-        "ryoshu",
-        "meursault",
-        "gregor"
-      ]
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Disciplinary Team. Later the Patron Librarian of the Floor of Language.",
+      "themes": ["vengeance", "redemption"],
+      "relatedEntityIds": ["entity-l-discipline", "entity-floor-language"]
     },
     {
-      "id": "entity-liu-association",
-      "name": "Liu Association",
-      "type": "wing",
-      "canonicalGame": "ruina",
-      "appearances": [
-        "ruina",
-        "limbus"
-      ],
-      "literaryOrigin": "Journey to the West (Wu Cheng'en, 16th century) — one of China's Four Great Classical Novels. The Association's war involving pilgrim figures and a 14-year journey directly mirrors the 14-year pilgrimage of Tripitaka's party. The Wing's internal power structure echoes the hierarchy of the pilgrimage, with Liu Ishmael as the Tang Sanzang figure — gathering unlikely allies to reach the true end.",
-      "loreSummary": "One of the 26 Wings of the City, operating out of District 15. Controls the Singularity of bio-weaponry — specifically the ability to amplify the emotional and spiritual resonance of fighters beyond human limits. In Ruina, the Association's war against the Library is one of the most narratively complex campaigns. In Limbus Company, Liu identities are among the most sought-after, featuring fighters like Liu Heathcliff (Don Quixote-tier aggression), Liu Gregor (discipline), and Liu Ryoshu (raw fire).",
-      "themes": [
-        "faith",
-        "family",
-        "machinery",
-        "decay"
-      ],
-      "relatedSinnerIds": [
-        "heathcliff",
-        "don-quixote",
-        "ryoshu",
-        "gregor",
-        "ishmael"
-      ]
+      "id": "entity-chesed",
+      "name": "Chesed",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Welfare Team. Later the Patron Librarian of the Floor of Social Sciences.",
+      "themes": ["guilt", "metamorphosis"],
+      "relatedEntityIds": ["entity-l-welfare", "entity-floor-social"]
     },
     {
-      "id": "entity-hana-association",
-      "name": "Hana Association",
-      "type": "wing",
-      "canonicalGame": "ruina",
-      "appearances": [
-        "ruina",
-        "limbus"
-      ],
-      "literaryOrigin": "Korean flag symbolism — the four cardinal trigrams (qián, duì, lí, zhèn) are embedded in South Korea's national flag. The Hana Association's logo uses either the Arabic numeral 1 or Roman numeral I, placed at the center of a trigram design, directly mirroring this national symbol.",
-      "loreSummary": "The highest-ranking of the 26 Wings — responsible for administering all other Wings and Fixer Offices. Issues Fixer licenses, assigns Grades 1–9 and Colors, and classifies the threat levels of Syndicates and Phenomena (Urban Myth → Urban Legend → Urban Plague → Urban Nightmare → Star of the City → Impurity). Their equipment consists of trigrams that can morph into any shape in combat. When threats exceed even Star of the City classification, they are labeled Impurity and handled directly by The Head.",
-      "themes": [
-        "machinery",
-        "faith",
-        "family",
-        "decay"
-      ],
-      "relatedSinnerIds": [
-        "yi-sang"
-      ]
+      "id": "entity-binah",
+      "name": "Binah",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Extraction Team. Later the Patron Librarian of the Floor of Philosophy.",
+      "themes": ["metamorphosis", "nihilism"],
+      "relatedEntityIds": ["entity-l-extraction", "entity-floor-philosophy"],
+      "relatedSinnerIds": ["outis", "faust"]
     },
     {
-      "id": "entity-shi-association",
-      "name": "Shi Association",
-      "type": "wing",
-      "canonicalGame": "ruina",
-      "appearances": [
-        "ruina",
-        "limbus"
-      ],
-      "literaryOrigin": "死 (shi) — the Japanese kanji for death, featured prominently in the Association's logo. The wordplay links to the Shi Association's philosophy: all people are equal in death, making any target viable for assassination.",
-      "loreSummary": "Specializes in covert assassination — completing requests silently without witnesses. Shi Fixers cultivate an eye for weak points and execute plans promptly. Each branch uses different weapons suited to their environment: southern branch wields long katanas, eastern branch uses bowblades. The Association's uniform is black with red highlights. Following the events of Library of Ruina, the southern branch remains depleted and at risk of annihilation. Their fighting style emphasizes critical hits through Poise generation, primarily using Slash and Pierce Skills.",
-      "themes": [
-        "vengeance",
-        "guilt",
-        "decay"
-      ],
-      "relatedSinnerIds": [
-        "faust",
-        "rodion",
-        "don-quixote",
-        "heathcliff",
-        "ishmael"
-      ],
-      "icon": "/node/wings/ShiAsso.png"
+      "id": "entity-hokma",
+      "name": "Hokma",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "loreSummary": "The Sephirah of the Record Team. Later the Patron Librarian of the Floor of Religion.",
+      "themes": ["faith", "guilt"],
+      "relatedEntityIds": ["entity-l-record", "entity-floor-religion"]
     },
     {
-      "id": "entity-zwei-association",
-      "name": "Zwei Association",
+      "id": "entity-floor-history",
+      "name": "Floor of History",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": [
-        "ruina",
-        "limbus"
-      ],
-      "literaryOrigin": "German word for the number two — reflected in the Association's logo which contains the Arabic numeral 2 within a shield design. This echoes Faust's Germanic origins and placement as Limbus Company's second Sinner.",
-      "loreSummary": "Operates as the City\\'s \"shield\" — providing civil protection, peacekeeping, and proximity protection to clients in assigned territories. The South Section specializes in covert operations and major crimes investigation; the West Section values an imposing presence during contracts. Equipped with Zwei handers or batons and navy-blue coats (South) or knight-style armor (West). Fixers can patrol territories for days without relief. Appeared in Library of Ruina during Urban Legend, eventually losing Walter and Isadora to the Library.",
-      "themes": [
-        "family",
-        "machinery",
-        "guilt"
-      ],
-      "relatedSinnerIds": [
-        "faust",
-        "ishmael"
-      ]
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "The first floor of the Library, dedicated to the records of the past."
     },
     {
-      "id": "entity-cinq-association",
-      "name": "Cinq Association",
+      "id": "entity-floor-tech",
+      "name": "Floor of Tech. Sciences",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": [
-        "ruina",
-        "limbus"
-      ],
-      "literaryOrigin": "French word for the number five — reflected in the Association's logo featuring a stylized \"5\" around a rapier design. The Association's dueling culture draws from The Three Musketeers, the French historical novel by Alexandre Dumas featuring swashbuckling combat, strict dueling protocols, and aristocratic swordsmanship.",
-      "loreSummary": "Specializes in one-on-one duels and close combat — substituting into fights on behalf of clients who request a Fixer to fight in their place. Duels have various \"levels,\" with Level 3 indicating a duel to the death. The Western branch uses rapiers and follows strict combat rules; the Eastern branch uses martial arts enhanced by pyrojade bangles that can melt steel weapons. Identities focus on gaining Haste through high Speed to outspeed opponents. The South and West traditionally declare duels by throwing a glove.",
-      "themes": [
-        "vengeance",
-        "guilt",
-        "decay"
-      ],
-      "relatedSinnerIds": [
-        "meursault",
-        "sinclair"
-      ],
-      "icon": "/node/wings/cinqIcon.png"
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "A floor dedicated to the understanding of the Library's complex mechanisms."
     },
     {
-      "id": "entity-tres-association",
-      "name": "Tres Association",
+      "id": "entity-floor-literature",
+      "name": "Floor of Literature",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": [
-        "ruina",
-        "limbus"
-      ],
-      "literaryOrigin": "Spanish word for the number three — reflected in Don Quixote's Spanish origins and placement as Limbus Company's third Sinner. The connection extends the pattern of Wings reflecting the Sinner order through language and origin.",
-      "loreSummary": "Manages all Workshops in the City — reviewing newly designed weapons, filing patent applications to The Head, and charging relative taxes. Their domain spans weapons, gadgets, and prosthetic models. Designs rejected by the Association cannot be produced commercially in their current state. The Association also runs qualification exams, including Workshop exams, for Fixers who wish to operate Workshops. The South branch has suffered heavy losses from Distortions, particularly the Blood-red Night and L'Heure du Loup events.",
-      "themes": [
-        "family",
-        "machinery",
-        "decay"
-      ],
-      "relatedSinnerIds": [
-        "don-quixote"
-      ]
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "Where the stories and souls within books are translated into reality."
+    },
+    {
+      "id": "entity-floor-art",
+      "name": "Floor of Art",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "Dedicated to the creative expression of the City's suffering."
+    },
+    {
+      "id": "entity-floor-natural",
+      "name": "Floor of Natural Sciences",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "Investigates the physical laws and metaphysical truth of the Library."
+    },
+    {
+      "id": "entity-floor-language",
+      "name": "Floor of Language",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "The front line of the Library's defense, focused on suppressive combat."
+    },
+    {
+      "id": "entity-floor-social",
+      "name": "Floor of Social Sciences",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "Examines the societal impact and communal weight of the City's history."
+    },
+    {
+      "id": "entity-floor-philosophy",
+      "name": "Floor of Philosophy",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "The deepest exploration of why the City must exist."
+    },
+    {
+      "id": "entity-floor-religion",
+      "name": "Floor of Religion",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "Where the final questions of faith and purpose are archived."
+    },
+    {
+      "id": "entity-director-room",
+      "name": "The Director's Room",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina"],
+      "themes": [],
+      "loreSummary": "The core of the Library where the final outcome of the Seed of Light is determined.",
+      "relatedEntityIds": ["entity-l-arch"]
+    },
+    {
+      "id": "entity-ayin",
+      "name": "Ayin (A)",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy"],
+      "themes": ["faith", "guilt"],
+      "loreSummary": "The creator of L Corp and the architect of the Seed of Light project.",
+      "relatedEntityIds": ["entity-l-corp", "entity-director-room"]
+    },
+    {
+      "id": "entity-angela",
+      "name": "Angela",
+      "type": "character",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina"],
+      "themes": ["machinery", "redemption"],
+      "loreSummary": "The AI administrator of L Corp and the current Director of the Library.",
+      "relatedEntityIds": ["entity-l-corp", "entity-director-room"]
     }
   ]
 }

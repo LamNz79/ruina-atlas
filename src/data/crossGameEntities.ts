@@ -1,4 +1,4 @@
 import data from './crossGameEntities.json';
 import type { CrossGameEntity } from '../types';
 
-export default data as unknown as { entities: CrossGameEntity[] };
+export const entities = data.entities as unknown as CrossGameEntity[];
