@@ -21,6 +21,7 @@ import {
 import logoSvg from '/favicon.svg';
 import { GlobalSearch } from './components/GlobalSearch';
 import { SourceExplorer } from './components/SourceExplorer';
+import { TeamDock } from './components/TeamDock';
 import TrilogySankey from './pages/TrilogySankey';
 import EntityCodex from './pages/EntityCodex';
 import './index.css';
@@ -32,6 +33,7 @@ export default function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
   const [expandedNodeIds, setExpandedNodeIds] = useState<Set<string>>(new Set());
+  const [pinnedNodes, setPinnedNodes] = useState<any[]>([]);
 
   const edges = useMemo(() => deriveEdges(sinners), []);
 
@@ -100,6 +102,19 @@ export default function App() {
     } else if (type === 'source') {
       setActiveSourceId(id);
     }
+  }, []);
+
+  const handlePin = useCallback((node: any) => {
+    setPinnedNodes(prev => {
+      if (prev.find(p => p.id === node.id)) return prev;
+      if (prev.length >= 12) return prev;
+      return [...prev, {
+        id: node.id,
+        name: node.name,
+        type: node.nodeType === 'sinner' ? 'sinner' : node.nodeType === 'literary-source' ? 'literary' : 'entity',
+        color: node.signatureColor || node.color
+      }];
+    });
   }, []);
 
   return (
@@ -234,8 +249,16 @@ export default function App() {
                   onEntityClick={handleEntityClick}
                   onSourceClick={setActiveSourceId}
                   onToggleExpand={toggleExpand}
+                  onPin={handlePin}
                 />
               </div>
+
+              {/* Team Dock */}
+              <TeamDock 
+                pinnedNodes={pinnedNodes} 
+                onRemove={(id) => setPinnedNodes(prev => prev.filter(p => p.id !== id))}
+                onClear={() => setPinnedNodes([])}
+              />
 
               {/* Detail Panel */}
               <LorePanel
