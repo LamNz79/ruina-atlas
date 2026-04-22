@@ -253,11 +253,11 @@ export function LoreGraph({
         .id(d => d.id)
         .distance(d => {
           // Generous distances so nodes have room to breathe
-          if (d.type === 'literary-origin')      return 260 + physics.nodeSpacing * 0.8;
-          if (d.type === 'ego-synchronization')  return 180 + physics.nodeSpacing * 0.5;
-          if (d.type === 'structural-hierarchy') return 150 + physics.nodeSpacing * 0.4;
+          if (d.type === 'literary-origin')      return 110 + physics.nodeSpacing * 0.2;
+          if (d.type === 'ego-synchronization')  return 190 + physics.nodeSpacing * 0.3;
+          if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
           if (d.type === 'wing-affiliation')     return Math.max(width, height) * 0.44;
-          if (d.type === 'bridge-continuity')    return 200 + physics.nodeSpacing * 0.5;
+          if (d.type === 'bridge-continuity')    return 180 + physics.nodeSpacing * 0.4;
           return physics.nodeSpacing;
         })
         // Keep link strength LOW — repulsion must win so nodes spread out
@@ -377,13 +377,23 @@ export function LoreGraph({
         el.append('rect').attr('class', 'node-hit')
           .attr('x', -BK_W / 2).attr('y', -BK_H / 2)
           .attr('width', BK_W).attr('height', BK_H)
-          .attr('rx', 3)
-          .attr('fill', '#0c0c0d').attr('stroke', '#d4af37').attr('stroke-width', 1.5)
-          .style('filter', 'drop-shadow(0 0 6px rgba(212,175,55,0.35))');
+          .attr('rx', 4)
+          .attr('fill', '#0c0c0d').attr('stroke', '#d4af37').attr('stroke-width', 1.8)
+          .style('filter', 'drop-shadow(0 0 8px rgba(212,175,55,0.4))');
+        
+        // Binding Decorators (Gáy sách)
+        const bX = -BK_W / 2 + 8;
         el.append('line')
-          .attr('x1', -BK_W / 2 + 9).attr('y1', -BK_H / 2 + 10)
-          .attr('x2', -BK_W / 2 + 9).attr('y2', BK_H / 2 - 10)
-          .attr('stroke', '#d4af37').attr('stroke-width', 0.8).attr('opacity', 0.4);
+          .attr('x1', bX).attr('y1', -BK_H / 2 + 6)
+          .attr('x2', bX).attr('y2', BK_H / 2 - 6)
+          .attr('stroke', '#d4af37').attr('stroke-width', 1.2).attr('opacity', 0.6);
+        
+        [ -15, 0, 15 ].forEach(offset => {
+          el.append('line')
+            .attr('x1', -BK_W / 2 + 2).attr('y1', offset)
+            .attr('x2', bX).attr('y2', offset)
+            .attr('stroke', '#d4af37').attr('stroke-width', 0.8).attr('opacity', 0.4);
+        });
 
       } else if (d.nodeType === 'entity') {
         if (d.entityType === 'wing') {
@@ -423,7 +433,7 @@ export function LoreGraph({
           if (d.riskLevel) {
             el.append('path').attr('d', hexPath)
               .attr('fill', 'none').attr('stroke', RISK_LEVEL_COLORS[d.riskLevel])
-              .attr('stroke-width', 6).attr('opacity', 0.2).style('filter', 'blur(5px)');
+              .attr('stroke-width', 10).attr('opacity', 0.25).style('filter', 'blur(8px)');
           }
         }
 
