@@ -17,13 +17,24 @@ export interface EgoEntry {
   url: string;
 }
 
-export const egoById: Record<string, EgoEntry> = raw as unknown as Record<string, EgoEntry>;
-export const egoEntries: EgoEntry[] = Object.values(egoById);
+export const egoById: Record<string, EgoEntry> = (raw as EgoEntry[]).reduce((acc, entry) => {
+  acc[entry.id] = entry;
+  return acc;
+}, {} as Record<string, EgoEntry>);
+
+export const egoEntries: EgoEntry[] = raw as EgoEntry[];
 export function getEgoById(id: string): EgoEntry | null { return egoById[id] ?? null; }
 export function getEgoImage(egoId: string): string {
-  const egoIdAsNumber = Number(egoId)
-  console.log(egoById[egoIdAsNumber-1]?.image);
+  const ego = egoById[egoId];
+  if (ego && ego.image) {
+    return ego.image;
+  }
+  
+  // Handlers for unconventional ID formats or fallbacks if not in JSON
+  const egoIdAsNumber = Number(egoId);
+  if (!isNaN(egoIdAsNumber)) {
+    return `/assets/ego/images/ego_${egoIdAsNumber}_sm.jpg`;
+  }
 
-
-  return egoById[egoIdAsNumber - 1]?.image ?? `/assets/ego/images/ego_${egoIdAsNumber - 1}_sm.jpg`;
+  return '/favicon.svg';
 }

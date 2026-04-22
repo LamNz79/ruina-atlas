@@ -84,34 +84,60 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
             const img = identityImages[id.id];
             
             return (
-              <Card key={id.id} className="group overflow-hidden border-border/40 bg-card/60 transition-all hover:scale-[1.02] hover:shadow-xl hover:border-primary/40">
-                <div className="relative aspect-video overflow-hidden bg-muted/20">
+              <Card key={id.id} className="group overflow-hidden border-border/40 bg-card/60 transition-all hover:scale-[1.02] hover:shadow-2xl hover:border-primary/40 relative">
+                {/* Image Container with Backdrop */}
+                <div className="relative aspect-[16/9] overflow-hidden bg-muted/20 border-b border-border/40">
                   {img ? (
-                    <img src={img} alt={id.displayName} className="h-full w-full object-cover transition-transform group-hover:scale-110" />
+                    <>
+                      {/* Blurred Backdrop */}
+                      <img 
+                        src={img} 
+                        className="absolute inset-0 h-full w-full object-cover blur-2xl opacity-30 scale-110" 
+                        aria-hidden="true" 
+                      />
+                      {/* Main Art */}
+                      <img 
+                        src={img} 
+                        alt={id.displayName} 
+                        className="relative h-full w-full object-contain p-2 transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" 
+                      />
+                    </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center text-muted-foreground italic text-xs">No Portrait</div>
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-xs font-black uppercase tracking-wider text-white truncate drop-shadow-md">
+                  
+                  {/* Overlay Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                  
+                  {/* Identity Label */}
+                  <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between">
+                    <p className="text-[10px] font-black uppercase tracking-tight text-white/90 truncate drop-shadow-md">
                       {id.displayName}
                     </p>
+                    <Badge variant="outline" className="text-[8px] h-3.5 px-1 font-bold border-white/20 bg-black/20 text-white/70 backdrop-blur-sm shrink-0">
+                      V.{id.id.slice(-2)}
+                    </Badge>
                   </div>
                 </div>
-                <CardContent className="p-4 space-y-3">
-                  <div className="flex flex-wrap gap-1.5">
+
+                <CardContent className="p-3 space-y-3 bg-gradient-to-b from-card/80 to-card/40">
+                  <div className="flex flex-wrap gap-1">
                     {detail?.attackType.map(t => (
-                      <Badge key={t} variant="secondary" className="text-[9px] font-bold h-4 px-1.5">{t}</Badge>
+                      <Badge key={t} variant="secondary" className="text-[9px] font-bold h-4 px-1.5 bg-muted/50">{t}</Badge>
                     ))}
-                    <Badge variant="outline" className="text-[9px] h-4 font-bold border-primary/20 text-primary/80">{id.wingOrGroup || 'Freelance'}</Badge>
+                    <Badge variant="outline" className="text-[9px] h-4 font-bold border-primary/20 text-primary/70">{id.wingOrGroup || 'Freelance'}</Badge>
                   </div>
                   {detail && (
-                    <div className="grid grid-cols-3 gap-2 border-t border-border/40 pt-3">
+                    <div className="grid grid-cols-3 gap-1 border-t border-border/20 pt-2.5">
                        {/* Stats mini grid */}
-                       {['HP', 'DEF', 'SPD'].map((s, i) => (
-                         <div key={s} className="text-center">
-                            <p className="text-[8px] text-muted-foreground font-bold uppercase">{s}</p>
-                            <p className="text-[10px] font-mono">{(detail.stats as any)[`${s.toLowerCase()}_30`]}</p>
+                       {[
+                         { label: 'HP', key: 'hp_30', color: 'text-red-400/80' },
+                         { label: 'DEF', key: 'def_30', color: 'text-blue-400/80' },
+                         { label: 'SPD', key: 'speed_30', color: 'text-amber-400/80' }
+                       ].map((s) => (
+                         <div key={s.label} className="flex flex-col items-center">
+                            <p className="text-[8px] text-muted-foreground font-black uppercase tracking-tighter opacity-60">{s.label}</p>
+                            <p className={`text-[10px] font-mono font-bold ${s.color}`}>{(detail.stats as any)[s.key]}</p>
                          </div>
                        ))}
                     </div>
@@ -143,19 +169,49 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
                 {items.map(ego => (
                   <div 
                     key={ego.id} 
-                    className="flex gap-4 p-4 rounded-xl border border-border/40 bg-card/40 transition-all hover:bg-muted/20"
-                    style={{ borderLeftColor: ego.colorTheme, borderLeftWidth: '4px' }}
+                    className="group relative flex flex-col gap-3 p-4 rounded-xl border border-border/40 bg-card/40 transition-all hover:bg-card/60 hover:border-primary/20 hover:shadow-[0_0_20px_-10px] overflow-hidden"
+                    style={{ 
+                      '--ego-color': ego.colorTheme || '#888',
+                      boxShadow: `0 0 20px -12px ${ego.colorTheme}40`
+                    } as any}
                   >
-                    <div className="h-16 w-16 shrink-0 rounded-lg overflow-hidden border border-border/20 bg-muted/10">
-                       {ego.egoId ? (
-                         <img src={getEgoImage(ego.egoId)} alt={ego.displayName} className="h-full w-full object-contain" />
-                       ) : (
-                         <div className="h-full w-full flex items-center justify-center"><Skull className="h-6 w-6 text-muted-foreground/30" /></div>
-                       )}
+                    {/* Themed Glow Background */}
+                    <div 
+                      className="absolute -right-8 -top-8 h-24 w-24 rounded-full blur-3xl opacity-20 transition-opacity group-hover:opacity-40" 
+                      style={{ backgroundColor: ego.colorTheme }}
+                    />
+
+                    <div className="flex gap-4 items-center relative z-10">
+                      <div className="h-16 w-16 shrink-0 rounded-lg overflow-hidden border border-border/20 bg-muted/10 relative">
+                        {/* Cinematic Backdrop for Icon */}
+                        <img 
+                          src={getEgoImage(ego.egoId)} 
+                          className="absolute inset-0 h-full w-full object-cover blur-xl opacity-40 scale-125" 
+                          aria-hidden="true" 
+                        />
+                        {ego.egoId ? (
+                          <img src={getEgoImage(ego.egoId)} alt={ego.displayName} className="relative h-full w-full object-contain p-1 z-10" />
+                        ) : (
+                          <div className="h-full w-full flex items-center justify-center relative z-10"><Skull className="h-6 w-6 text-muted-foreground/30" /></div>
+                        )}
+                      </div>
+                      <div className="flex flex-col justify-center min-w-0">
+                        <p className="text-sm font-bold truncate group-hover:text-primary transition-colors">{ego.displayName}</p>
+                        <Badge variant="outline" className="text-[8px] w-fit h-4 font-black uppercase mt-1 border-border/40" style={{ color: ego.colorTheme, borderColor: `${ego.colorTheme}40` }}>
+                          {rank}
+                        </Badge>
+                      </div>
                     </div>
-                    <div className="flex flex-col justify-center min-w-0">
-                      <p className="text-sm font-bold truncate">{ego.displayName}</p>
-                      <p className="text-[10px] text-muted-foreground line-clamp-2 mt-1 leading-tight">{ego.description}</p>
+                    
+                    <div className="relative z-10">
+                      <p className="text-[10px] text-muted-foreground line-clamp-2 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+                        {ego.description}
+                      </p>
+                    </div>
+
+                    {/* Progress Bar/Affinity Indicator */}
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-border/10">
+                      <div className="h-full transition-all duration-700 group-hover:w-full" style={{ width: '15%', backgroundColor: ego.colorTheme }} />
                     </div>
                   </div>
                 ))}

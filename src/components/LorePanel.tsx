@@ -428,7 +428,7 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                         return (
                           <Card
                             key={id.id}
-                            className={`group cursor-pointer overflow-hidden border transition-all active:scale-[0.98] ${
+                            className={`group cursor-pointer overflow-hidden border transition-all active:scale-[0.98] relative ${
                               id.sourceGame === 'limbus' ? 'hover:border-edge-theme/50' :
                               id.sourceGame === 'lobotomy' ? 'hover:border-edge-literary/50' :
                               'hover:border-edge-crossgame/50'
@@ -436,20 +436,28 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                             onClick={() => setActiveIdentity(id)}
                           >
                             <CardHeader className="p-0">
-                              <div className="aspect-square bg-muted/40 flex items-center justify-center overflow-hidden">
+                              <div className="aspect-[4/3] bg-muted/20 flex items-center justify-center overflow-hidden relative">
                                 {img ? (
-                                  <img
-                                    src={img}
-                                    alt={id.displayName}
-                                    className="h-full w-full object-contain p-1 transition-transform group-hover:scale-105"
-                                  />
+                                  <>
+                                    <img 
+                                      src={img} 
+                                      className="absolute inset-0 h-full w-full object-cover blur-xl opacity-20 scale-110" 
+                                      aria-hidden="true" 
+                                    />
+                                    <img
+                                      src={img}
+                                      alt={id.displayName}
+                                      className="relative h-full w-full object-contain p-1.5 transition-transform duration-500 group-hover:scale-110 z-10"
+                                    />
+                                  </>
                                 ) : (
                                   <span className="text-xs font-bold text-muted-foreground/50">{id.displayName.slice(0, 2)}</span>
                                 )}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                               </div>
                             </CardHeader>
-                            <CardContent className="p-2 text-center">
-                              <p className="truncate text-[9px] font-bold leading-none text-muted-foreground group-hover:text-foreground transition-colors">
+                            <CardContent className="p-1.5 text-center bg-card/40 relative z-20">
+                              <p className="truncate text-[9px] font-black uppercase tracking-tight text-muted-foreground group-hover:text-foreground transition-colors">
                                 {id.displayName}
                               </p>
                             </CardContent>
@@ -490,25 +498,32 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                             {egos.map((ego) => (
                               <div
                                 key={ego.id}
-                                className="group relative flex flex-col items-center gap-1.5 rounded-lg border border-border/40 bg-muted/15 p-2.5 transition-all hover:border-border/80 hover:bg-muted/25"
+                                className="group relative flex flex-col items-center gap-1.5 rounded-lg border border-border/40 bg-muted/10 p-2 transition-all hover:border-primary/40 hover:bg-muted/20 hover:shadow-lg overflow-hidden"
+                                style={{ 
+                                  '--ego-color': ego.colorTheme || '#888',
+                                  boxShadow: `0 0 15px -10px ${ego.colorTheme}30`
+                                } as any}
                               >
-                                {/* Rarity badge top-left */}
-                                <span
-                                  className="absolute left-1.5 top-1.5 text-[8px] font-black uppercase tracking-wider"
-                                  style={{ color: RANK_COLORS[ego.rank] ?? '#888', opacity: 0.7 }}
-                                >
-                                  {ego.rank}
-                                </span>
-                                {/* Image */}
+                                {/* Themed Glow */}
+                                <div 
+                                  className="absolute -right-4 -top-4 h-12 w-12 rounded-full blur-2xl opacity-10 transition-opacity group-hover:opacity-30" 
+                                  style={{ backgroundColor: ego.colorTheme }}
+                                />
+
+                                {/* Image Container */}
                                 {ego.egoId ? (
                                   <div
-                                    className="mt-2 h-14 w-14 overflow-hidden rounded border border-border/50"
-                                    style={{ backgroundColor: (ego.colorTheme ?? '#888') + '25', borderColor: (ego.colorTheme ?? '#888') + '50' }}
+                                    className="relative mt-1 h-12 w-12 overflow-hidden rounded border border-border/20 bg-muted/20"
                                   >
                                     <img
                                       src={getEgoImage(ego.egoId)}
+                                      className="absolute inset-0 h-full w-full object-cover blur-lg opacity-30 scale-125"
+                                      aria-hidden="true"
+                                    />
+                                    <img
+                                      src={getEgoImage(ego.egoId)}
                                       alt={ego.displayName}
-                                      className="h-full w-full object-contain"
+                                      className="relative h-full w-full object-contain p-0.5 z-10 transition-transform group-hover:scale-110"
                                       loading="lazy"
                                       onError={(e) => {
                                         e.currentTarget.style.visibility = 'hidden';
@@ -517,13 +532,12 @@ export function LorePanel({ sinner, onClose, isOpen }: LorePanelProps) {
                                   </div>
                                 ) : (
                                   <div
-                                    className="mt-2 flex h-14 w-14 items-center justify-center rounded border border-border/50"
-                                    style={{ backgroundColor: (ego.colorTheme ?? '#888') + '20', borderColor: (ego.colorTheme ?? '#888') + '40' }}
+                                    className="mt-1 flex h-12 w-12 items-center justify-center rounded border border-border/50 bg-muted/20"
                                   >
-                                    <div className="h-4 w-4 rounded-full" style={{ backgroundColor: ego.colorTheme ?? '#888' }} />
+                                    <div className="h-3 w-3 rounded-full animate-pulse" style={{ backgroundColor: ego.colorTheme ?? '#888' }} />
                                   </div>
                                 )}
-                                <span className="mt-0.5 w-full truncate text-center text-[10px] font-semibold leading-tight text-foreground">
+                                <span className="w-full truncate text-center text-[9px] font-black uppercase tracking-tight text-muted-foreground group-hover:text-foreground transition-colors relative z-10">
                                   {ego.displayName}
                                 </span>
                               </div>

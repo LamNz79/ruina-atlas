@@ -88,7 +88,7 @@
   },
   {
     "id": "5",
-    "name": "[Ya Śūnyatā Tad Rūpam] Outis",
+    "name": "[Ya \u015a\u016bnyat\u0101 Tad R\u016bpam] Outis",
     "slug": "ya-sunyata-tad-rupam-outis",
     "rarity": "TETH",
     "character": "Outis",
@@ -343,7 +343,7 @@
   },
   {
     "id": "17",
-    "name": "[To Páthos Máthos] Outis",
+    "name": "[To P\u00e1thos M\u00e1thos] Outis",
     "slug": "to-pathos-mathos-outis",
     "rarity": "ZAYIN",
     "character": "Outis",
@@ -1061,7 +1061,7 @@
   },
   {
     "id": "49",
-    "name": "[Ya Śūnyatā Tad Rūpam] Heathcliff",
+    "name": "[Ya \u015a\u016bnyat\u0101 Tad R\u016bpam] Heathcliff",
     "slug": "ya-sunyata-tad-rupam-heathcliff",
     "rarity": "HE",
     "character": "Heathcliff",
@@ -1724,7 +1724,7 @@
       "Gloom": 3
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_77_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_77"
   },
   {
@@ -1793,7 +1793,7 @@
       "Envy": 5
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_80_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_80"
   },
   {
@@ -1817,7 +1817,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_81_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_81"
   },
   {
@@ -1839,7 +1839,7 @@
       "Envy": 4
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_82_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_82"
   },
   {
@@ -1862,7 +1862,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_83_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_83"
   },
   {
@@ -1908,7 +1908,7 @@
       "Envy": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_85_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_85"
   },
   {
@@ -1931,7 +1931,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_86_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_86"
   },
   {
@@ -1955,7 +1955,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_87_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_87"
   },
   {
@@ -1982,7 +1982,7 @@
   },
   {
     "id": "89",
-    "name": "[Thoracalgia] Ryōshū",
+    "name": "[Thoracalgia] Ry\u014dsh\u016b",
     "slug": "thoracalgia-ry-shu",
     "rarity": "HE",
     "character": "Ryoshu",
@@ -2065,7 +2065,7 @@
       "Pride": 1
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_92_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_92"
   },
   {
@@ -2087,7 +2087,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_93_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_93"
   },
   {
@@ -2108,7 +2108,7 @@
       "Gluttony": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_94_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_94"
   },
   {
@@ -2130,7 +2130,7 @@
       "Envy": 1
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_95_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_95"
   },
   {
@@ -2154,7 +2154,7 @@
       "Envy": 6
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_96_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_96"
   },
   {
@@ -2177,7 +2177,7 @@
       "Envy": 1
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_97_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_97"
   },
   {
@@ -2200,7 +2200,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_98_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_98"
   },
   {
@@ -2222,7 +2222,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_99_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_99"
   },
   {
@@ -2245,7 +2245,7 @@
       "Pride": 4
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_100_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_100"
   },
   {
@@ -2268,7 +2268,7 @@
       "Pride": 2
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_101_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_101"
   },
   {
@@ -2290,7 +2290,7 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_102_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_102"
   },
   {
@@ -2314,12 +2314,12 @@
       "Envy": 3
     },
     "isNew": false,
-    "image": null,
+    "image": "/assets/ego/images/ego_103_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_103"
   },
   {
     "id": "104",
-    "name": "[Great Trichiliocosm (三千大世界)] Yi Sang",
+    "name": "[Great Trichiliocosm (\u4e09\u5343\u5927\u4e16\u754c)] Yi Sang",
     "slug": "great-trichiliocosm-yi-sang",
     "rarity": "WAW",
     "character": "Yi Sang",
@@ -2338,12 +2338,12 @@
       "Envy": 2
     },
     "isNew": true,
-    "image": null,
+    "image": "/assets/ego/images/ego_104_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_104"
   },
   {
     "id": "105",
-    "name": "[Great Trichiliocosm (三千大世界)] Ryoshu",
+    "name": "[Great Trichiliocosm (\u4e09\u5343\u5927\u4e16\u754c)] Ryoshu",
     "slug": "great-trichiliocosm-ryoshu",
     "rarity": "WAW",
     "character": "Ryoshu",
@@ -2363,7 +2363,7 @@
       "Pride": 4
     },
     "isNew": true,
-    "image": null,
+    "image": "/assets/ego/images/ego_105_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_105"
   },
   {
@@ -2388,7 +2388,7 @@
       "Envy": 1
     },
     "isNew": true,
-    "image": null,
+    "image": "/assets/ego/images/ego_106_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_106"
   },
   {
@@ -2410,7 +2410,7 @@
       "Pride": 2
     },
     "isNew": true,
-    "image": null,
+    "image": "/assets/ego/images/ego_107_highres.webp",
     "url": "https://gll-fun.com/limbus/en/ego/id_107"
   }
 ]
