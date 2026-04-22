@@ -7,205 +7,10 @@
       "year": 1320,
       "language": "Italian",
       "passage": "All hope abandon, ye who enter in.",
-      "passageContext": "Inscription above the gates of Hell, Divine Comedy — Inferno",
-      "sharedGroup": "divine-comedy",
-      "themes": [
-        "guilt",
-        "futility",
-        "faith"
-      ],
+      "passageContext": "Inscription above the gates of Hell — Inferno, Canto III. A warning mirrored in the Sinners' entry into the Limbus Company bus.",
+      "historicalContext": "The foundational structure of Dante's journey through the afterlife provides the narrative blueprint for Limbus Company, from the Manager's name to the division of the City's Districts.",
+      "themes": ["guilt", "futility", "faith", "redemption"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Divine_Comedy"
-    },
-    {
-      "id": "faust-goethe",
-      "title": "Faust",
-      "author": "Johann Wolfgang von Goethe",
-      "year": 1808,
-      "language": "German",
-      "passage": "Whoever constantly and restlessly yearns — him we may redeem.",
-      "passageContext": "Mephistopheles, on his wager with Faust",
-      "themes": [
-        "guilt",
-        "vengeance",
-        "redemption",
-        "futility"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Goethe%27s_Faust"
-    },
-    {
-      "id": "moby-dick",
-      "title": "Moby-Dick",
-      "author": "Herman Melville",
-      "year": 1851,
-      "language": "English",
-      "passage": "It is a fair wind, the West Wind, the loveliest wind of all.",
-      "passageContext": "Ishmael, reflecting on the sea after returning from his voyage",
-      "themes": [
-        "vengeance",
-        "obsession",
-        "futility"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Moby-Dick"
-    },
-    {
-      "id": "demian",
-      "title": "Demian",
-      "author": "Hermann Hesse",
-      "year": 1919,
-      "language": "German",
-      "passage": "The bird fights its way out of the egg. The egg is the world.",
-      "passageContext": "Emil Sinclair, recalling a story told by Demian",
-      "themes": [
-        "metamorphosis",
-        "identity-fragmentation",
-        "guilt",
-        "redemption"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Demian"
-    },
-    {
-      "id": "don-quixote",
-      "title": "Don Quixote",
-      "author": "Miguel de Cervantes",
-      "year": 1605,
-      "language": "Spanish",
-      "passage": "When life itself seems lunatic, who knows where madness lies?",
-      "passageContext": "Don Quixote, on the nature of his quest",
-      "themes": [
-        "absurdity",
-        "identity-fragmentation",
-        "futility",
-        "faith"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Don_Quixote"
-    },
-    {
-      "id": "the-stranger",
-      "title": "The Stranger (L'Étranger)",
-      "author": "Albert Camus",
-      "year": 1942,
-      "language": "French",
-      "passage": "Mother died today. Or, maybe, yesterday; I can't be sure.",
-      "passageContext": "Meursault's opening lines — establishing his emotional detachment",
-      "themes": [
-        "absurdity",
-        "nihilism",
-        "guilt",
-        "identity-fragmentation"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Stranger"
-    },
-    {
-      "id": "wuthering-heights",
-      "title": "Wuthering Heights",
-      "author": "Emily Brontë",
-      "year": 1847,
-      "language": "English",
-      "passage": "Whatever our souls are made of, his and mine are the same.",
-      "passageContext": "Catherine Earnshaw to Nelly Dean, on her bond with Heathcliff",
-      "themes": [
-        "vengeance",
-        "obsession",
-        "futility",
-        "family"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Wuthering_Heights"
-    },
-    {
-      "id": "metamorphosis-kafka",
-      "title": "The Metamorphosis",
-      "author": "Franz Kafka",
-      "year": 1915,
-      "language": "German",
-      "passage": "One morning, when Gregor Samsa woke from uneasy dreams, he found himself transformed in his bed into a monstrous vermin.",
-      "passageContext": "Opening line of The Metamorphosis — Gregor's literal transformation",
-      "themes": [
-        "metamorphosis",
-        "guilt",
-        "family",
-        "futility",
-        "decay"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Metamorphosis"
-    },
-    {
-      "id": "crime-and-punishment",
-      "title": "Crime and Punishment",
-      "author": "Fyodor Dostoevsky",
-      "year": 1866,
-      "language": "Russian",
-      "passage": "Pain and suffering are always inevitable for a large intelligence and a deep heart.",
-      "passageContext": "Raskolnikov's internal justification for his crime",
-      "themes": [
-        "guilt",
-        "redemption",
-        "futility",
-        "nihilism"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Crime_and_Punishment"
-    },
-    {
-      "id": "dream-of-the-red-chamber",
-      "title": "Dream of the Red Chamber (红楼梦)",
-      "author": "Cao Xueqin",
-      "year": 1791,
-      "language": "Classical Chinese",
-      "passage": "Truth from fiction — Dream of the Red Chamber; happiness from sorrow — Flowers beneath the Mirror.",
-      "passageContext": "A couplet from the novel's opening verses, referring to its nature as both a dream and a mirror of reality",
-      "themes": [
-        "decay",
-        "family",
-        "futility",
-        "identity-fragmentation"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber"
-    },
-    {
-      "id": "kim-yi-sang",
-      "title": "The Flight of Earth (iqug-ui Han-Yang)",
-      "author": "Yi Sang (이grammar상)",
-      "year": 1939,
-      "language": "Korean",
-      "passage": "If there were no earth, I would not have to love.",
-      "passageContext": "From 'Fog' (안개), expressing the speaker's entangled relationship with existence and dissolution",
-      "themes": [
-        "decay",
-        "futility",
-        "nihilism",
-        "metamorphosis",
-        "identity-fragmentation"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Yi_Sang"
-    },
-    {
-      "id": "odyssey",
-      "title": "The Odyssey",
-      "author": "Homer",
-      "year": -800,
-      "language": "Ancient Greek",
-      "passage": "Tell me, O muse, of that ingenious hero who travelled far and wide.",
-      "passageContext": "Opening invocation — Odysseus's long journey home after the Trojan War",
-      "themes": [
-        "vengeance",
-        "family",
-        "futility",
-        "identity-fragmentation"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Odyssey"
-    },
-    {
-      "id": "in-a-grove",
-      "title": "In a Grove",
-      "author": "Ryunosuke Akutagawa",
-      "year": 1922,
-      "language": "Japanese",
-      "passage": "I demand the murderer's head.",
-      "passageContext": "The woodcutter's testimony — opening one of seven contradictory accounts of a single murder",
-      "themes": [
-        "identity-fragmentation",
-        "guilt"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/In_a_Grove"
     },
     {
       "id": "the-wings",
@@ -213,16 +18,35 @@
       "author": "Yi Sang",
       "year": 1936,
       "language": "Korean",
-      "passage": "Have you ever seen a stuffed genius?",
-      "passageContext": "Opening line — the painter Yong-chol confronting the decay of his own talent and identity",
-      "themes": [
-        "decay",
-        "futility",
-        "nihilism",
-        "metamorphosis",
-        "identity-fragmentation"
-      ],
+      "passage": "Have you ever seen a stuffed genius? I am happy. At such a time even my talent, like a stuffed genius, is delightful.",
+      "passageContext": "Opening lines — a reflection on intellectual decay and isolation, echoing Yi Sang's search for identity in the City.",
+      "historicalContext": "Yi Sang's surrealist masterpiece exploring the fragmentation of the self under colonial and existential pressure. It is the core of Yi Sang's 'Ideal' and 'Glass Window' symbolism.",
+      "themes": ["decay", "futility", "identity-fragmentation", "metamorphosis"],
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Wings_(novel)"
+    },
+    {
+      "id": "faust-goethe",
+      "title": "Faust",
+      "author": "Johann Wolfgang von Goethe",
+      "year": 1808,
+      "language": "German",
+      "passage": "Two souls, alas, are dwelling in my breast, and one is striving to forsake its brother.",
+      "passageContext": "Faust's internal conflict — the root of his bargain with Mephistopheles and his endless pursuit of knowledge.",
+      "historicalContext": "Goethe's tragedy of the soul's restless search for transcendence. In Limbus Company, it informs Faust's 'omniscient' persona and her potential pact for forbidden knowledge.",
+      "themes": ["guilt", "redemption", "futility", "obsession"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Goethe%27s_Faust"
+    },
+    {
+      "id": "don-quixote",
+      "title": "Don Quixote",
+      "author": "Miguel de Cervantes",
+      "year": 1605,
+      "language": "Spanish",
+      "passage": "To surrender dreams — this may be madness. To seek treasure where there is only trash — this is true insanity.",
+      "passageContext": "The 'Golden Dream' of the Knight Errant, a delusion that Don Quixote weaponizes against a bleak reality.",
+      "historicalContext": "Cervantes' deconstruction of chivalry. Don Quixote's 'justice' in the City is a direct adaptation of this knightly delusion used to survive a cruel world.",
+      "themes": ["absurdity", "identity-fragmentation", "faith", "futility"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Don_Quixote"
     },
     {
       "id": "hell-screen",
@@ -230,200 +54,131 @@
       "author": "Ryunosuke Akutagawa",
       "year": 1918,
       "language": "Japanese",
-      "passage": "I am certain that he did it to punish the twisted personality of an artist who would go so far as to burn a carriage and kill a human being to complete the painting of a screen.",
-      "passageContext": "The narrator revealing the Lord of Horikawa's motive for burning Yoshihide's daughter — art at the cost of everything human",
-      "themes": [
-        "obsession",
-        "guilt",
-        "futility"
-      ],
+      "passage": "To paint the screen, I must see the actual sight. If I don't see it, I can't paint it.",
+      "passageContext": "The artist Yoshihide's obsession with perfection, leading to the ultimate sacrifice of his daughter for his art.",
+      "historicalContext": "Akutagawa's exploration of the terrifying cost of artistic perfection. It defines Ryoshu's aesthetic of 'scenic' violence and her detachment from human morality.",
+      "themes": ["obsession", "guilt", "vengeance", "futility"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Hell_Screen"
     },
     {
-      "id": "sorrows-of-young-werther",
-      "title": "The Sorrows of Young Werther",
-      "author": "Johann Wolfgang von Goethe",
-      "year": 1774,
+      "id": "the-stranger",
+      "title": "The Stranger (L'Étranger)",
+      "author": "Albert Camus",
+      "year": 1942,
+      "language": "French",
+      "passage": "I laid my heart open to the benign indifference of the universe.",
+      "passageContext": "Meursault's final acceptance of the absurd, mirroring his emotional detachment throughout the trial.",
+      "historicalContext": "Camus' manifesto of the absurd. Meursault's role as the 'Stranger' reflects his inability to participate in the City's emotional and social performances.",
+      "themes": ["absurdity", "nihilism", "guilt", "identity-fragmentation"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Stranger"
+    },
+    {
+      "id": "dream-of-the-red-chamber",
+      "title": "Dream of the Red Chamber",
+      "author": "Cao Xueqin",
+      "year": 1791,
+      "language": "Chinese",
+      "passage": "When fiction is mistaken for truth, truth becomes fiction; where nothing is taken for something, something becomes nothing.",
+      "passageContext": "A couplet from the Land of Illusion, reflecting the cyclical decay and tragedy of the Jia family.",
+      "historicalContext": "Cao Xueqin's masterpiece on the transience of life and family status. In Project Moon, it underpins Hong Lu's themes of inescapable tragedy and the 'illusion' of his noble background.",
+      "themes": ["decay", "family", "futility", "identity-fragmentation"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber"
+    },
+    {
+      "id": "wuthering-heights",
+      "title": "Wuthering Heights",
+      "author": "Emily Brontë",
+      "year": 1847,
+      "language": "English",
+      "passage": "I have not broken your heart — you have broken it; and in breaking it, you have broken mine.",
+      "passageContext": "Heathcliff to Catherine, a statement of shared destruction and obsessive vengeance.",
+      "historicalContext": "Brontë's gothic tale of cyclical trauma and revenge. Heathcliff's character in the City is a raw manifestation of this cycle, where love is inseparable from mutual destruction.",
+      "themes": ["vengeance", "obsession", "futility", "family"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Wuthering_Heights"
+    },
+    {
+      "id": "moby-dick",
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "year": 1851,
+      "language": "English",
+      "passage": "Towards thee I roll, thou all-destroying but unconquering whale; to the last I grapple with thee.",
+      "passageContext": "Captain Ahab's final cry of defiance and obsession, the 'blind vengeance' that Ishmael survives.",
+      "historicalContext": "Melville's epic on the nature of evil and obsession. Ahab's pursuit of the White Whale is the primary engine for Ishmael's Canto, representing a recursive cycle of loss and grapple.",
+      "themes": ["vengeance", "obsession", "futility", "survival"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Moby-Dick"
+    },
+    {
+      "id": "crime-and-punishment",
+      "title": "Crime and Punishment",
+      "author": "Fyodor Dostoevsky",
+      "year": 1866,
+      "language": "Russian",
+      "passage": "I did not kill a human being, I killed a principle!",
+      "passageContext": "Raskolnikov's justification for his crime, a philosophy of the 'Extraordinary Man' that leads to his ruin.",
+      "historicalContext": "Dostoevsky's psychological study of sin and redemption. Rodion's story in the City focuses on the heavy cost of 'principled' violence and the search for atonement.",
+      "themes": ["guilt", "redemption", "nihilism", "futility"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Crime_and_Punishment"
+    },
+    {
+      "id": "demian",
+      "title": "Demian",
+      "author": "Hermann Hesse",
+      "year": 1919,
       "language": "German",
-      "passage": "The fountains of the great, deep, joyful Springs of Hope have dried up within me.",
-      "passageContext": "Werther to Wilhelm — the moment of emotional collapse as passion overwhelms purpose",
-      "themes": [
-        "guilt",
-        "identity-fragmentation",
-        "decay"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Sorrows_of_Young_Werther"
+      "passage": "The bird fights its way out of the egg. The egg is the world. Who would be born must first destroy a world.",
+      "passageContext": "Demian's lesson to Sinclair about the painful necessity of metamorphosis and breaking free from inherited morality.",
+      "historicalContext": "Hesse's exploration of individuation and the internal 'Abraxas' (the union of god and devil). It defines Sinclair's struggle between the world of light and the world of darkness.",
+      "themes": ["metamorphosis", "identity-fragmentation", "guilt", "redemption"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Demian"
     },
     {
-      "id": "aeneid",
-      "title": "The Aeneid",
-      "author": "Virgil",
-      "year": -29,
-      "language": "Latin",
-      "passage": "I sing of warfare and a man at war, who came to Italy by destiny.",
-      "passageContext": "Opening lines — Aeneas's journey from Troy to found Rome",
-      "themes": [
-        "fate",
-        "vengeance",
-        "faith"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Aeneid"
-    },
-    {
-      "id": "outis",
-      "title": "Outis",
+      "id": "odyssey",
+      "title": "The Odyssey",
       "author": "Homer",
       "year": -800,
       "language": "Ancient Greek",
       "passage": "My name is Outis — 'No-man' — and No-man am I called.",
-      "passageContext": "Odysseus to the Cyclops Polyphemus — the deception that blinds the monster",
-      "themes": [
-        "identity-fragmentation",
-        "deception",
-        "futility"
-      ],
+      "passageContext": "Odysseus's deception of the Cyclops, a moment where identity is discarded to ensure survival and victory.",
+      "historicalContext": "Homer's epic of homecoming and cunning. Outis's character revolves around this 'No-man' identity, using military strategy and deception to survive the City's trials.",
+      "themes": ["vengeance", "family", "identity-fragmentation", "survival"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Odyssey"
     },
     {
-      "id": "the-sea-wolf",
-      "title": "The Sea-Wolf",
-      "author": "Jack London",
-      "year": 1904,
-      "language": "English",
-      "passage": "I do not paint things, I paint only their effects.",
-      "passageContext": "Wolf Larsen, on the tension between appearance and reality — a captain who writes poetry while commanding through brute force",
-      "themes": [
-        "survival",
-        "individualism",
-        "nature",
-        "civilization"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Sea-Wolf"
-    },
-    {
-      "id": "tartuffe",
-      "title": "Tartuffe",
-      "author": "Molière",
-      "year": 1664,
-      "language": "French",
-      "passage": "The holy cause of Heaven is a coat of mail that serves to screen under shelter of which it's fine to act unscrupulously.",
-      "passageContext": "Mariane, revealing how Tartuffe weaponizes piety for personal gain",
-      "themes": [
-        "hypocrisy",
-        "faith",
-        "self-deception"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Tartuffe"
-    },
-    {
-      "id": "picture-dorian-gray",
-      "title": "The Picture of Dorian Gray",
-      "author": "Oscar Wilde",
-      "year": 1890,
-      "language": "English",
-      "passage": "The portrait will bear the burden of his shame — and he will be spared its weight.",
-      "passageContext": "Basil Hallward, on the portrait bearing Dorian's sins while he remains beautiful",
-      "themes": [
-        "aestheticism",
-        "corruption",
-        "youth",
-        "duality"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Picture_of_Dorian_Gray"
-    },
-    {
-      "id": "waiting-godot",
-      "title": "Waiting for Godot",
-      "author": "Samuel Beckett",
-      "year": 1953,
-      "language": "English / French",
-      "passage": "We are all born mad. Some remain so.",
-      "passageContext": "Vladimir, on the human condition — a statement of absurdist philosophy dressed as casual observation",
-      "themes": [
-        "absurdism",
-        "stasis",
-        "ritual"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Waiting_for_Godot"
-    },
-    {
-      "id": "journey-west",
-      "title": "Journey to the West",
-      "author": "Wu Cheng'en",
-      "year": 1592,
-      "language": "Classical Chinese",
-      "passage": "The monkey who познаниe the heavens shook the mountain of spines.",
-      "passageContext": "A quatrain from the novels opening verses — introducing Sun Wukong and the journey that follows",
-      "themes": [
-        "redemption",
-        "duty",
-        "companionship",
-        "corruption"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Journey_to_the_West"
-    },
-    {
-      "id": "burns-poetry",
-      "title": "Poems and Songs",
-      "author": "Robert Burns",
-      "year": 1793,
-      "language": "Scots / English",
-      "passage": "My love is like a red, red rose that's newly springing in June.",
-      "passageContext": "From 'A Red, Red Rose' — Burns's most celebrated love poem, quoted by Brontë as Wuthering Heights epigraph",
-      "themes": [
-        "love",
-        "nature",
-        "rebellion",
-        "romanticism"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Robert_Burns"
-    },
-    {
-      "id": "kafka-letters",
-      "title": "Letters to Milena",
+      "id": "metamorphosis-kafka",
+      "title": "The Metamorphosis",
       "author": "Franz Kafka",
-      "year": 1952,
+      "year": 1915,
       "language": "German",
-      "passage": "Sometimes I can overcome the hellish thought, sometimes it overcomes me.",
-      "passageContext": "Kafka to Milena — the gap between rational thought and the impossibility of connection",
-      "themes": [
-        "isolation",
-        "communication",
-        "desire",
-        "impossibility"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Letters_to_Milena"
+      "passage": "I cannot make you understand. I cannot make anyone understand what is happening inside me. I cannot even explain it to myself.",
+      "passageContext": "Gregor Samsa's internal monologue as his humanity decays alongside his insectoid body.",
+      "historicalContext": "Kafka's seminal work on alienation and the absurdity of the human condition. In Project Moon, it serves as the core inspiration for Gregor's physical transformation and his family's subsequent rejection.",
+      "themes": ["metamorphosis", "guilt", "family", "decay", "futility"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Metamorphosis"
     },
     {
-      "id": "mephistopheles",
-      "title": "Mephistopheles",
-      "author": "Devil's Bargain (Archetype)",
-      "year": 0,
-      "language": "Folklore / Cultural",
-      "passage": "I am the spirit that constantly denies.",
-      "passageContext": "Mephistopheles introduces himself to Faust — the principle of negation, the devil who serves through obstruction",
-      "themes": [
-        "guilt",
-        "deception",
-        "futility"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Mephistopheles"
+      "id": "water-margin",
+      "title": "Water Margin (Shuǐhǔ Zhuàn)",
+      "author": "Shi Nai'an",
+      "year": 1373,
+      "language": "Classical Chinese",
+      "passage": "To do justice on behalf of Heaven.",
+      "passageContext": "The motto of the 108 outlaws of Liangshan Marsh.",
+      "historicalContext": "One of the Four Great Classical Novels of Chinese literature. It serves as the primary inspiration for 'The Pinky' (Ngón Út) of the Five Fingers, whose members are named after the 108 stars corresponding to the Liangshan heroes.",
+      "themes": ["vengeance", "family", "faith"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Water_Margin"
     },
     {
-      "id": "brothers-karamazov",
-      "title": "The Brothers Karamazov",
-      "author": "Fyodor Dostoevsky",
-      "year": 1880,
-      "language": "Russian",
-      "passage": "I go to encounter in the fathomless sea, a drop of new sweetness.",
-      "passageContext": "Dmitri Karamazov, on the moment he chooses love over flight — embracing suffering as the only path to truth",
-      "themes": [
-        "guilt",
-        "redemption",
-        "faith",
-        "family"
-      ],
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Brothers_Karamazov"
+      "id": "grimm-fairy-tales",
+      "title": "Grimm's Fairy Tales",
+      "author": "Jacob and Wilhelm Grimm",
+      "year": 1812,
+      "language": "German",
+      "passage": "The bird was so beautiful, and it sang so sweetly, that the boy forgot his grief.",
+      "passageContext": "From 'The Juniper Tree' — a tale of brutal death and magical rebirth.",
+      "historicalContext": "A collection of folk tales that often contain dark, violent moral lessons. Many Abnormalities in Lobotomy Corporation are 'echoes' of these folk archetypes.",
+      "themes": ["redemption", "decay", "family"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Grimms%27_Fairy_Tales"
     }
   ]
 }

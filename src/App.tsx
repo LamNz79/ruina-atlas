@@ -232,6 +232,7 @@ export default function App() {
                   expandedNodeIds={expandedNodeIds}
                   onNodeClick={handleNodeClick}
                   onEntityClick={handleEntityClick}
+                  onSourceClick={setActiveSourceId}
                   onToggleExpand={toggleExpand}
                 />
               </div>

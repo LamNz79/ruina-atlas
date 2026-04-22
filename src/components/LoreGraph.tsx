@@ -24,6 +24,7 @@ interface LoreGraphProps {
   expandedNodeIds: Set<string>;
   onNodeClick: (sinner: Sinner) => void;
   onEntityClick: (entityId: string) => void;
+  onSourceClick: (sourceId: string) => void;
   onToggleExpand: (id: string) => void;
 }
 
@@ -35,6 +36,7 @@ export function LoreGraph({
   expandedNodeIds,
   onNodeClick,
   onEntityClick,
+  onSourceClick,
   onToggleExpand,
 }: LoreGraphProps) {
   const navigate = useNavigate();
@@ -404,7 +406,7 @@ export function LoreGraph({
                             d.id === 'wing-t-corp' ? '#fbbf24' : // Gold for T Corp
                             color;
           
-          this.style.setProperty('--wing-neon', wingColor);
+          el.style('--wing-neon', wingColor);
 
           el.append('path').attr('class', 'node-hit')
             .attr('d', wingHexPath)
@@ -473,9 +475,10 @@ export function LoreGraph({
       if (d.nodeType === 'sinner') {
         // Sinners have no children — don't toggle expand (it rebuilds the simulation)
         onNodeClick(sinners.find(s => s.id === d.id)!);
+      } else if (d.nodeType === 'literary-source') {
+        onSourceClick(d.id.replace('lit-', ''));
       } else {
-        // Entities may have children — toggle expand, then open entity panel
-        onToggleExpand(d.id);
+        // Entity node — toggle expanded state
         onEntityClick(d.id);
       }
     }).on('mouseenter', (event, d) => {

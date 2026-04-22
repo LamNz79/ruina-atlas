@@ -107,15 +107,42 @@ export function SourceExplorer({ sourceId, open, onClose, onSinnerClick }: Sourc
           </div>
         </DialogHeader>
 
+        {source.coverImage && (
+          <div className="relative mt-2 h-40 w-full overflow-hidden rounded-lg border border-border/40 bg-muted/20 flex items-center justify-center">
+            <img 
+              src={source.coverImage} 
+              className="absolute inset-0 h-full w-full object-cover blur-2xl opacity-20 scale-110" 
+              aria-hidden="true" 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
+            <img 
+              src={source.coverImage} 
+              alt={source.title} 
+              className="relative h-full w-full object-contain p-4 z-10 drop-shadow-2xl transition-transform hover:scale-105 duration-500" 
+            />
+          </div>
+        )}
+
         <div className="mt-4 space-y-5">
           {/* Passage */}
           {source.passage && (
-            <blockquote className="border-l-2 border-primary/30 pl-4 text-sm italic leading-relaxed text-foreground/90">
-              "{source.passage}"
-              {source.passageContext && (
-                <p className="mt-1 text-xs not-italic text-muted-foreground">— {source.passageContext}</p>
+            <div className="space-y-3">
+              <blockquote className="border-l-2 border-primary/30 pl-4 text-sm italic leading-relaxed text-foreground/90">
+                "{source.passage}"
+                {source.passageContext && (
+                  <p className="mt-1 text-xs not-italic text-muted-foreground">— {source.passageContext}</p>
+                )}
+              </blockquote>
+              
+              {source.historicalContext && (
+                <div className="rounded-md border border-edge-literary/20 bg-edge-literary/5 p-3">
+                  <h4 className="mb-1 text-[10px] font-bold uppercase tracking-widest text-edge-literary">Research Notes</h4>
+                  <p className="text-[11px] leading-relaxed text-muted-foreground/90 italic">
+                    {source.historicalContext}
+                  </p>
+                </div>
               )}
-            </blockquote>
+            </div>
           )}
 
           {/* Themes */}

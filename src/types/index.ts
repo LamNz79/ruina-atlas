@@ -97,6 +97,10 @@ export interface LiterarySource {
   language: string;
   passage?: string;
   passageContext?: string;
+  /** High-fidelity research notes on the historical/literary significance. */
+  historicalContext?: string;
+  /** Asset path for the stylized book cover image. */
+  coverImage?: string;
   /**
    * Graph grouping — sources from the same work share a group node.
    * e.g. 'divine-comedy' groups Inferno / Purgatorio / Paradiso refs.
