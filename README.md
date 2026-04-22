@@ -19,6 +19,7 @@ It focuses on the part other databases usually skip: the literary layer. The app
 - [x] Filter panel for game, theme, and literary source
 - [x] Cross-game entity nodes and entity detail panel
 - [x] Spoiler-gated canto annotations in the Sinner panel
+- [x] About and Roadmap pages
 - [ ] M3 content polish and consistency pass
 - [ ] Sinner profile card/page expansion
 - [ ] Lore-aware team builder
@@ -69,6 +70,7 @@ Core data lives under `src/data`:
 - `literarySources.json`: books, authors, passages, themes, shared-group metadata
 - `crossGameEntities.json`: Wings, abnormalities, and recurring characters
 - `cantos.json`: canto metadata and spoiler levels
+- `ego.json`, `identityDetailData.json`, `identityImages.json`: supplemental identity and EGO data
 
 Type definitions live in `src/types/index.ts`.
 

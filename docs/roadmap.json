@@ -1,7 +1,7 @@
 {
   "project": "Ruina Atlas",
   "created": "2026-04-13",
-  "last_updated": "2026-04-21",
+  "last_updated": "2026-04-22",
   "status": "active-development",
   "recommended_order": ["data_layer", "lore_graph", "full_content", "team_builder"],
   "summary": "A React and TypeScript fan tool for Project Moon focused on literary origins, canto context, and cross-game lore connections. The shared data layer and lore graph MVP are implemented. The current milestone is M3 content completion and consistency.",
@@ -44,7 +44,9 @@
         "Cross-game entities in src/data/crossGameEntities.json",
         "Literary source explorer modal",
         "Filter panel for game, theme, and literary source",
-        "Shared literary group nodes in the graph"
+        "Shared literary group nodes in the graph",
+        "Global fuzzy search (Ctrl+K)",
+        "Project documentation pages (About/Roadmap)"
       ],
       "remaining_work": [
         "Data quality pass across Sinner literary sources and canto summaries",
@@ -99,16 +101,17 @@
       "Entity panel",
       "Source explorer",
       "Filter panel",
-      "Global search"
+      "Global search",
+      "About and Roadmap pages"
     ]
   },
 
   "next_action": "Finish the M3 consistency pass: audit literary source links, shared-group behavior, canto coverage, and entity data quality before starting M4.",
 
   "conversation_context": {
-    "last_reviewed_on": "2026-04-21",
+    "last_reviewed_on": "2026-04-22",
     "notes": [
-      "README and roadmap were refreshed to match the implemented repo state.",
+      "README and roadmap were refreshed to match the implemented repo state, including About/Roadmap pages and supplemental data files.",
       "M1 and M2 are complete.",
       "M3 is partially implemented and now primarily a content-quality and consistency milestone."
     ]
