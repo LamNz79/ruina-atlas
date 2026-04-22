@@ -57,6 +57,21 @@ export default function SourceModule({ source, connectedSinners }: SourceModuleP
               <p className="text-sm font-medium text-muted-foreground border-l-2 border-primary/20 pl-4">— {source.passageContext}</p>
             )}
           </div>
+
+          {/* Research Notes Section */}
+          {source.historicalContext && (
+            <div className="flex flex-col gap-4 p-8 rounded-2xl border border-bronze/30 bg-bronze/5 relative overflow-hidden group">
+              <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-bronze/40 group-hover:border-gold transition-colors" />
+              <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-bronze/40 group-hover:border-gold transition-colors" />
+              <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-bronze/70 flex items-center gap-2">
+                <div className="h-1.5 w-1.5 bg-bronze rounded-full animate-pulse" />
+                Archive Continuity & Research Notes
+              </h3>
+              <p className="text-sm font-medium italic leading-relaxed text-muted-foreground/90 font-display">
+                "{source.historicalContext}"
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="space-y-6">

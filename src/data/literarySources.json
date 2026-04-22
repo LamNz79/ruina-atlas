@@ -22,6 +22,7 @@
       "passageContext": "Opening lines — a reflection on intellectual decay and isolation, echoing Yi Sang's search for identity in the City.",
       "historicalContext": "Yi Sang's surrealist masterpiece exploring the fragmentation of the self under colonial and existential pressure. It is the core of Yi Sang's 'Ideal' and 'Glass Window' symbolism.",
       "themes": ["decay", "futility", "identity-fragmentation", "metamorphosis"],
+      "coverImage": "/assets/books/The-Wings.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Wings_(novel)"
     },
     {
@@ -46,6 +47,7 @@
       "passageContext": "The 'Golden Dream' of the Knight Errant, a delusion that Don Quixote weaponizes against a bleak reality.",
       "historicalContext": "Cervantes' deconstruction of chivalry. Don Quixote's 'justice' in the City is a direct adaptation of this knightly delusion used to survive a cruel world.",
       "themes": ["absurdity", "identity-fragmentation", "faith", "futility"],
+      "coverImage": "/assets/books/Don-Quixote.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Don_Quixote"
     },
     {
@@ -58,6 +60,7 @@
       "passageContext": "The artist Yoshihide's obsession with perfection, leading to the ultimate sacrifice of his daughter for his art.",
       "historicalContext": "Akutagawa's exploration of the terrifying cost of artistic perfection. It defines Ryoshu's aesthetic of 'scenic' violence and her detachment from human morality.",
       "themes": ["obsession", "guilt", "vengeance", "futility"],
+      "coverImage": "/assets/books/Hell-Screen.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Hell_Screen"
     },
     {
@@ -70,6 +73,7 @@
       "passageContext": "Meursault's final acceptance of the absurd, mirroring his emotional detachment throughout the trial.",
       "historicalContext": "Camus' manifesto of the absurd. Meursault's role as the 'Stranger' reflects his inability to participate in the City's emotional and social performances.",
       "themes": ["absurdity", "nihilism", "guilt", "identity-fragmentation"],
+      "coverImage": "/assets/books/The-Stranger.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Stranger"
     },
     {
@@ -82,6 +86,7 @@
       "passageContext": "A couplet from the Land of Illusion, reflecting the cyclical decay and tragedy of the Jia family.",
       "historicalContext": "Cao Xueqin's masterpiece on the transience of life and family status. In Project Moon, it underpins Hong Lu's themes of inescapable tragedy and the 'illusion' of his noble background.",
       "themes": ["decay", "family", "futility", "identity-fragmentation"],
+      "coverImage": "/assets/books/Dream-of-the-Red-Chamber.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Dream_of_the_Red_Chamber"
     },
     {
@@ -94,6 +99,7 @@
       "passageContext": "Heathcliff to Catherine, a statement of shared destruction and obsessive vengeance.",
       "historicalContext": "Brontë's gothic tale of cyclical trauma and revenge. Heathcliff's character in the City is a raw manifestation of this cycle, where love is inseparable from mutual destruction.",
       "themes": ["vengeance", "obsession", "futility", "family"],
+      "coverImage": "/assets/books/Wuthering-Heights.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Wuthering_Heights"
     },
     {
@@ -106,6 +112,7 @@
       "passageContext": "Captain Ahab's final cry of defiance and obsession, the 'blind vengeance' that Ishmael survives.",
       "historicalContext": "Melville's epic on the nature of evil and obsession. Ahab's pursuit of the White Whale is the primary engine for Ishmael's Canto, representing a recursive cycle of loss and grapple.",
       "themes": ["vengeance", "obsession", "futility", "survival"],
+      "coverImage": "/assets/books/Moby-Dick.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Moby-Dick"
     },
     {
@@ -118,6 +125,7 @@
       "passageContext": "Raskolnikov's justification for his crime, a philosophy of the 'Extraordinary Man' that leads to his ruin.",
       "historicalContext": "Dostoevsky's psychological study of sin and redemption. Rodion's story in the City focuses on the heavy cost of 'principled' violence and the search for atonement.",
       "themes": ["guilt", "redemption", "nihilism", "futility"],
+      "coverImage": "/assets/books/Crime-and-Punishment.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Crime_and_Punishment"
     },
     {
@@ -130,6 +138,7 @@
       "passageContext": "Demian's lesson to Sinclair about the painful necessity of metamorphosis and breaking free from inherited morality.",
       "historicalContext": "Hesse's exploration of individuation and the internal 'Abraxas' (the union of god and devil). It defines Sinclair's struggle between the world of light and the world of darkness.",
       "themes": ["metamorphosis", "identity-fragmentation", "guilt", "redemption"],
+      "coverImage": "/assets/books/Demian.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Demian"
     },
     {
@@ -142,6 +151,7 @@
       "passageContext": "Odysseus's deception of the Cyclops, a moment where identity is discarded to ensure survival and victory.",
       "historicalContext": "Homer's epic of homecoming and cunning. Outis's character revolves around this 'No-man' identity, using military strategy and deception to survive the City's trials.",
       "themes": ["vengeance", "family", "identity-fragmentation", "survival"],
+      "coverImage": "/assets/books/The-Odyssey.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Odyssey"
     },
     {
@@ -154,6 +164,7 @@
       "passageContext": "Gregor Samsa's internal monologue as his humanity decays alongside his insectoid body.",
       "historicalContext": "Kafka's seminal work on alienation and the absurdity of the human condition. In Project Moon, it serves as the core inspiration for Gregor's physical transformation and his family's subsequent rejection.",
       "themes": ["metamorphosis", "guilt", "family", "decay", "futility"],
+      "coverImage": "/assets/books/The-Metamorphosis.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Metamorphosis"
     },
     {

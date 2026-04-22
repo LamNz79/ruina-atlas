@@ -39,11 +39,30 @@ export const HeroFrame = ({ category, id, name, entity }: HeroFrameProps) => {
             />
           </>
         ) : category === 'source' ? (
-          <Stack gap={6} justify="center" align="center" className="text-primary relative z-20">
-            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 animate-pulse" aria-hidden="true" />
-            <BookOpen className="h-24 w-24 relative z-10" />
-            <span className="text-5xl font-serif italic border-b-2 border-primary/20 pb-2 relative z-10">Archive</span>
-          </Stack>
+          <>
+            {entity.coverImage ? (
+              <>
+                {/* Cinematic Backdrop */}
+                <img
+                  src={entity.coverImage}
+                  className="absolute inset-0 h-full w-full object-cover blur-3xl opacity-40 saturate-150 scale-110"
+                  aria-hidden="true"
+                />
+                {/* Focused Book Art */}
+                <img
+                  src={entity.coverImage}
+                  alt={name}
+                  className="relative h-full w-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-10 p-6 transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </>
+            ) : (
+              <Stack gap={6} justify="center" align="center" className="text-primary relative z-20">
+                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150 animate-pulse" aria-hidden="true" />
+                <BookOpen className="h-24 w-24 relative z-10" />
+                <span className="text-5xl font-serif italic border-b-2 border-primary/20 pb-2 relative z-10">Archive</span>
+              </Stack>
+            )}
+          </>
         ) : (
           <Stack gap={6} justify="center" align="center" className="relative z-20" style={{ color: (entity as any).type === 'wing' ? '#a08a70' : '#8a4a5a' }}>
             <div

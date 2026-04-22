@@ -165,6 +165,9 @@ export interface EGO {
 export interface Sinner {
   id: string;              // slug, e.g. 'yi-sang'
   name: string;            // display name
+  sinnerNumber: string;    // official number, e.g. '01'
+  signatureColor: string;  // official color hex
+  emblemPath: string;      // vector icon path for the graph
   canonicalGame: Game;     // game where they first appear as playable
   appearances: GameAppearance;
   /**

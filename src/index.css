@@ -449,3 +449,76 @@
   0%, 100% { filter: drop-shadow(0 0 2px rgba(184, 32, 47, 0)); }
   50% { filter: drop-shadow(0 0 8px rgba(184, 32, 47, 0.4)); }
 }
+
+/* Book Cover Focus Effect */
+.node-group[data-node-type="literary-source"]:hover .book-cover-preview {
+  filter: grayscale(40%) brightness(50%) !important;
+  opacity: 0.9 !important;
+  transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+/* ─── Sinner Node Radar UI ──────────────────────────────────────────────── */
+
+.node-group[data-node-type="sinner"] .sinner-number,
+.node-group[data-node-type="sinner"] .sinner-emblem,
+.node-group[data-node-type="sinner"] .radar-ring {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node-group[data-node-type="sinner"]:hover .sinner-number {
+  opacity: 0 !important;
+  transform: scale(0.8);
+}
+
+.node-group[data-node-type="sinner"]:hover .sinner-emblem {
+  opacity: 1 !important;
+  transform: translate(-12px, -12px) scale(1.1);
+}
+
+.node-group[data-node-type="sinner"]:hover .radar-ring {
+  opacity: 1 !important;
+  stroke: var(--gold);
+  stroke-width: 1.5px;
+  animation: radar-dash-flow 2s linear infinite;
+}
+
+@keyframes radar-dash-flow {
+  to { stroke-dashoffset: -14; }
+}
+
+.node-group[data-node-type="sinner"]:hover .node-hit {
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+/* ─── Abnormality Node UI ───────────────────────────────────────────────── */
+
+.node-group[data-entity-type="abnormality"] .censored-overlay,
+.node-group[data-entity-type="abnormality"] .subject-number,
+.node-group[data-entity-type="abnormality"] .abnormality-glow {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node-group[data-entity-type="abnormality"] .abnormality-glow {
+  animation: abnormality-pulse 4s ease-in-out infinite;
+}
+
+@keyframes abnormality-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.15); }
+}
+
+.node-group[data-entity-type="abnormality"]:hover .censored-overlay {
+  opacity: 0 !important;
+  transform: scale(0.5);
+}
+
+.node-group[data-entity-type="abnormality"]:hover .subject-number {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}
+
+.node-group[data-entity-type="abnormality"]:hover .node-hit {
+  stroke-width: 3px;
+  filter: drop-shadow(0 0 15px currentColor);
+}

@@ -256,7 +256,7 @@ export function LoreGraph({
         .distance(d => {
           // Generous distances so nodes have room to breathe
           if (d.type === 'literary-origin')      return 110 + physics.nodeSpacing * 0.2;
-          if (d.type === 'ego-synchronization')  return 190 + physics.nodeSpacing * 0.3;
+          if (d.type === 'ego-synchronization')  return 75 + physics.nodeSpacing * 0.1; // Tight satellite orbit
           if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
           if (d.type === 'wing-affiliation')     return Math.max(width, height) * 0.44;
           if (d.type === 'bridge-continuity')    return 180 + physics.nodeSpacing * 0.4;
@@ -264,8 +264,9 @@ export function LoreGraph({
         })
         // Keep link strength LOW — repulsion must win so nodes spread out
         .strength(d => {
-          if (d.type === 'wing-affiliation')     return 0.03; // barely tethered
-          if (d.type === 'literary-origin')      return 0.12; // books orbit at distance
+          if (d.type === 'wing-affiliation')     return 0.03;
+          if (d.type === 'ego-synchronization')  return 0.45; // Stronger satellite pull
+          if (d.type === 'literary-origin')      return 0.12;
           if (d.type === 'structural-hierarchy') return 0.2;
           return 0.1;
         })
@@ -375,27 +376,69 @@ export function LoreGraph({
         : ENTITY_COLORS[d.entityType || 'character'];
 
       if (d.nodeType === 'literary-source') {
+        const sourceId = d.id.replace('lit-', '');
+        const sourceData = literarySources.find(ls => ls.id === sourceId);
+
         // Book card — centered on origin
         el.append('rect').attr('class', 'node-hit')
           .attr('x', -BK_W / 2).attr('y', -BK_H / 2)
           .attr('width', BK_W).attr('height', BK_H)
-          .attr('rx', 4)
-          .attr('fill', '#0c0c0d').attr('stroke', '#d4af37').attr('stroke-width', 1.8)
-          .style('filter', 'drop-shadow(0 0 8px rgba(212,175,55,0.4))');
-        
+          .attr('rx', 2)
+          .attr('fill', '#0c0c0e')
+          .attr('stroke', '#d4af37')
+          .attr('stroke-width', 1.8)
+          .style('filter', 'drop-shadow(0 0 10px rgba(0,0,0,0.5))');
+
+        // Background Cover Preview (Monochrome/Darkened)
+        if (sourceData?.coverImage) {
+          el.append('image')
+            .attr('href', sourceData.coverImage)
+            .attr('x', -BK_W / 2 + 1).attr('y', -BK_H / 2 + 1)
+            .attr('width', BK_W - 2).attr('height', BK_H - 2)
+            .attr('preserveAspectRatio', 'xMidYMid slice')
+            .attr('class', 'book-cover-preview')
+            .style('filter', 'grayscale(100%) brightness(15%)')
+            .style('opacity', 0.6);
+        }
+
         // Binding Decorators (Gáy sách)
-        const bX = -BK_W / 2 + 8;
+        const bX = -BK_W / 2 + 5;
         el.append('line')
-          .attr('x1', bX).attr('y1', -BK_H / 2 + 6)
-          .attr('x2', bX).attr('y2', BK_H / 2 - 6)
-          .attr('stroke', '#d4af37').attr('stroke-width', 1.2).attr('opacity', 0.6);
+          .attr('x1', bX).attr('y1', -BK_H / 2 + 2)
+          .attr('x2', bX).attr('y2', BK_H / 2 - 2)
+          .attr('stroke', '#d4af37').attr('stroke-width', 1).attr('opacity', 0.4);
         
-        [ -15, 0, 15 ].forEach(offset => {
+        [ -12, 0, 12 ].forEach(offset => {
           el.append('line')
-            .attr('x1', -BK_W / 2 + 2).attr('y1', offset)
+            .attr('x1', -BK_W / 2 + 1).attr('y1', offset)
             .attr('x2', bX).attr('y2', offset)
-            .attr('stroke', '#d4af37').attr('stroke-width', 0.8).attr('opacity', 0.4);
+            .attr('stroke', '#d4af37').attr('stroke-width', 0.8).attr('opacity', 0.3);
         });
+
+        // Vector Icon
+        const iconPaths: Record<string, string> = {
+          'divine-comedy': 'M12 2l-4 4 4 4 4-4-4-4z M12 22v-8', 
+          'moby-dick': 'M12 5v14 M5 12h14 M12 19c-3.866 0-7-3.134-7-7',
+          'the-wings': 'M3 10c0-1.657 1.343-3 3-3s3 1.343 3 3v4h4v-4c0-1.657 1.343-3 3-3s3 1.343 3 3',
+          'faust-goethe': 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M4 4.5A2.5 2.5 0 0 1 6.5 7H20 M4 4.5v15',
+          'don-quixote': 'M14.5 4l-10 10 M3 21l18-18',
+          'the-metamorphosis': 'M12 3v18 M6 8h12 M6 12h12 M6 16h12',
+          'the-stranger': 'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 9v4',
+          'dream-of-the-red-chamber': 'M6 3h12l3 6-9 12-9-12z',
+          'crime-and-punishment': 'M12 3l-8 12h16z M12 15v6',
+          'wuthering-heights': 'M4 12c0 4 3 7 7 7s7-3 7-7 M12 2v10',
+          'demian': 'M12 22c5 0 9-4 9-9s-4-9-9-9-9 4-9 9 4 9 9 9z',
+          'odyssey': 'M3 11l18-1 1 2H2l1-1z M12 10V3L4 10z',
+        };
+
+        const path = iconPaths[sourceId] || 'M12 6.253v13c-2.5-1.7-6.5-1.7-9 0v-13c2.5-1.7 6.5-1.7 9 0z M12 6.253c2.5-1.7 6.5-1.7 9 0v13c-2.5-1.7-6.5-1.7-9 0';
+        
+        el.append('path')
+          .attr('d', path)
+          .attr('transform', `translate(${-12}, ${-12}) scale(1)`)
+          .attr('fill', 'none').attr('stroke', '#d4af37').attr('stroke-width', 1.5)
+          .attr('opacity', 0.8)
+          .style('pointer-events', 'none');
 
       } else if (d.nodeType === 'entity') {
         if (d.entityType === 'wing') {
@@ -427,26 +470,77 @@ export function LoreGraph({
             
         } else {
           // Abnormality Hex
+          const riskColor = d.riskLevel ? RISK_LEVEL_COLORS[d.riskLevel] : '#8a4a5a';
+          
+          // 1. Ghostly Outer Glow (Risk-specific blurred aura)
+          el.append('path').attr('class', 'abnormality-glow')
+            .attr('d', hexPath)
+            .attr('fill', 'none').attr('stroke', riskColor).attr('stroke-width', 10)
+            .attr('opacity', 0.25).style('filter', 'blur(6px)');
+
+          // 2. Main Hex Frame
           el.append('path').attr('class', 'node-hit')
             .attr('d', hexPath)
-            .attr('fill', '#111').attr('stroke', d.riskLevel ? RISK_LEVEL_COLORS[d.riskLevel] : color)
-            .attr('stroke-width', 2);
+            .attr('fill', '#0a0a0c').attr('stroke', riskColor).attr('stroke-width', 1.8);
           
-          if (d.riskLevel) {
-            el.append('path').attr('d', hexPath)
-              .attr('fill', 'none').attr('stroke', RISK_LEVEL_COLORS[d.riskLevel])
-              .attr('stroke-width', 10).attr('opacity', 0.25).style('filter', 'blur(8px)');
-          }
+          // 3. Subject Number (Revealed on hover)
+          el.append('text').attr('class', 'subject-number')
+            .text(d.subjectNumber || '?-??-??')
+            .attr('text-anchor', 'middle').attr('dy', '0.35em')
+            .attr('fill', riskColor).attr('font-size', '9px').attr('font-weight', '900')
+            .attr('font-family', 'monospace')
+            .style('opacity', 0).style('pointer-events', 'none');
+
+          // 4. "Cognitohazard Suppressed" Censored Label
+          const censG = el.append('g').attr('class', 'censored-overlay');
+          censG.append('rect')
+            .attr('x', -24).attr('y', -7)
+            .attr('width', 48).attr('height', 14)
+            .attr('fill', '#000').attr('stroke', '#e11d48').attr('stroke-width', 1);
+          
+          censG.append('text').attr('dy', '0.35em').attr('text-anchor', 'middle')
+            .attr('fill', '#e11d48').attr('font-size', '4.5px').attr('font-weight', '900')
+            .attr('letter-spacing', '0.5px')
+            .text('COGNITOHAZARD SUPPRESSED');
         }
 
       } else if (d.nodeType === 'sinner') {
+        const s = d as any;
+        const sigColor = s.signatureColor || '#b8202f';
+        const sNum = s.sinnerNumber || '??';
+
+        // 1. Signature Inner Glow
         el.append('circle').attr('class', 'node-glow')
-          .attr('r', S_R + 7).attr('fill', color).attr('opacity', 0.18).style('filter', 'blur(7px)');
+          .attr('r', S_R + 8).attr('fill', sigColor).attr('opacity', 0.12).style('filter', 'blur(6px)');
+        
+        // 2. Dash-array Radar Ring (Red Limbus core)
+        el.append('circle').attr('class', 'radar-ring')
+          .attr('r', S_R + 4).attr('fill', 'none').attr('stroke', '#b8202f')
+          .attr('stroke-width', 1).attr('stroke-dasharray', '3,4')
+          .style('opacity', 0.5);
+
+        // 3. Main Circular Frame
         el.append('circle').attr('class', 'node-hit')
-          .attr('r', S_R).attr('fill', '#0c0c0d').attr('stroke', color).attr('stroke-width', 2.5);
-        el.append('circle')
-          .attr('r', S_R - 6).attr('fill', 'none').attr('stroke', color)
-          .attr('stroke-width', 1).attr('opacity', 0.6).attr('stroke-dasharray', '3,4');
+          .attr('r', S_R).attr('fill', '#0c0c0e').attr('stroke', sigColor).attr('stroke-width', 2);
+
+        // 4. Sinner Number (Visible by default)
+        el.append('text').attr('class', 'sinner-number')
+          .text(sNum)
+          .attr('text-anchor', 'middle').attr('dy', '0.35em')
+          .attr('fill', sigColor).attr('font-size', '14px').attr('font-weight', '900')
+          .attr('font-family', 'monospace')
+          .style('text-shadow', `0 0 5px ${sigColor}44`)
+          .style('pointer-events', 'none');
+
+        // 5. Personal Emblem (Visible on hover)
+        if (s.emblemPath) {
+          el.append('path').attr('class', 'sinner-emblem')
+            .attr('d', s.emblemPath)
+            .attr('transform', `translate(-12, -12) scale(1)`)
+            .attr('fill', 'none').attr('stroke', sigColor).attr('stroke-width', 1.5)
+            .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
+            .style('opacity', 0).style('pointer-events', 'none');
+        }
       }
 
       if (d.icon) {
