@@ -11,8 +11,9 @@ export interface GraphNode extends d3.SimulationNodeDatum {
   themes: string[];
   crossGameContinuity: boolean;
   nodeType: 'sinner' | 'entity' | 'zone-anchor' | 'literary-source';
-  entityType?: 'wing' | 'abnormality' | 'character';
+  entityType?: 'wing' | 'abnormality' | 'character' | 'association' | 'finger';
   icon?: string;
+  subjectNumber?: string;
   riskLevel?: string;
   parentEntityId?: string;
   connectionCount?: number;
@@ -43,6 +44,16 @@ export const RISK_LEVEL_COLORS: Record<string, string> = {
   'HE': '#F1C40F',
   'WAW': '#9B59B6',
   'ALEPH': '#E74C3C',
+};
+
+export const SIN_COLORS: Record<string, string> = {
+  wrath: '#ef4444',    // Red
+  lust: '#f97316',     // Orange
+  sloth: '#eab308',    // Yellow
+  gluttony: '#22c55e', // Green
+  gloom: '#3b82f6',    // Blue
+  pride: '#1e3a8a',    // Dark Blue/Navy
+  envy: '#a855f7',     // Purple
 };
 
 export const EDGE_COLORS: Record<EdgeType, string> = {
@@ -93,9 +104,11 @@ export const DEFAULTS: PhysicsSettings = {
 export interface FilterState {
   themes: Set<Theme>;
   showArchiveNodes: boolean;
+  cantoLevel: number;
 }
 
 export const INITIAL_FILTER_STATE: FilterState = {
   themes: new Set(THEMES as unknown as Theme[]),
   showArchiveNodes: true,
+  cantoLevel: 0,
 };

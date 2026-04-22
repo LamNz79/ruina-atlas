@@ -255,7 +255,7 @@ export interface Canto {
  * Rendered as distinct diamond-shaped nodes in the lore graph.
  * @see src/data/crossGameEntities.json
  */
-export type CrossGameEntityType = 'character' | 'wing' | 'abnormality';
+export type CrossGameEntityType = 'character' | 'wing' | 'abnormality' | 'association' | 'finger';
 
 export interface CrossGameEntity {
   id: string;                 // prefixed 'entity-{slug}', e.g. 'entity-w-corp'
@@ -281,6 +281,10 @@ export interface CrossGameEntity {
   relatedEntityIds?: string[];
   /** Parent entity ID for hierarchical clutter reduction (e.g., Team -> Wing) */
   parentEntityId?: string;
+  /** Progress level required to see this entity (Canto 0-9) */
+  spoilerLevel?: number;
+  /** Single-character symbolic token (e.g. Kanji for Fingers) */
+  tokenLabel?: string;
 }
 
 // ── Graph Edge (Derived at Runtime) ─────────────────────────────────────────
