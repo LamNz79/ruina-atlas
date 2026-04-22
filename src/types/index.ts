@@ -264,6 +264,14 @@ export interface CrossGameEntity {
   relatedSinnerIds?: string[];
   /** Icon image path relative to public/, e.g. '/wings/cinqIcon.png' */
   icon?: string;
+  /** Risk Level (Abnormalities only), e.g. 'ALEPH' */
+  riskLevel?: string;
+  /** Subject Number (Abnormalities only), e.g. 'O-03-03' */
+  subjectNumber?: string;
+  /** Intelligence briefing for each sinner link (Record<SinnerId, Briefing>) */
+  connectionInsights?: Record<string, string>;
+  /** Entity IDs connected to this entity (Entity-to-Entity bridging) */
+  relatedEntityIds?: string[];
 }
 
 // ── Graph Edge (Derived at Runtime) ─────────────────────────────────────────
@@ -274,7 +282,7 @@ export interface CrossGameEntity {
  *
  * @see src/utils/deriveEdges.ts
  */
-export type EdgeType = 'literary-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group' | 'wing-affiliation';
+export type EdgeType = 'literary-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group' | 'wing-affiliation' | 'ego-synchronization' | 'structural-hierarchy' | 'bridge-continuity';
 
 export interface GraphEdge {
   source: string; // Sinner.id
