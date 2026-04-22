@@ -217,7 +217,18 @@ export function LoreGraph({
     themes: new Set(THEMES as unknown as Theme[]),
     literarySources: new Set(literarySources.map(s => s.id)),
   });
-  const [tooltip, setTooltip] = useState<{ visible: boolean; type: 'node' | 'edge'; name: string; game?: string; themes?: string[]; literarySources?: string[]; x: number; y: number }>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
+  const [tooltip, setTooltip] = useState<{ 
+    visible: boolean; 
+    type: 'node' | 'edge'; 
+    name: string; 
+    game?: string; 
+    icon?: string;
+    themes?: string[]; 
+    literarySources?: string[]; 
+    x: number; 
+    y: number;
+    nodeType?: string;
+  }>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
 
   // True when user has narrowed at least one filter category from "all"
   const allGamesSelected = filters.games.size === (['limbus', 'ruina', 'lobotomy'] as Game[]).length;
@@ -542,6 +553,7 @@ export function LoreGraph({
       })
       .on('mouseleave', function () {
         setTooltip((t) => ({ ...t, visible: false }));
+        d3.select(this).select('.node-hit').classed('node-pulse', false);
       });
     linkElsRef.current = linkEls;
 
@@ -771,8 +783,11 @@ export function LoreGraph({
     nodeEls
       .on('mouseenter', function (event, hovered) {
         const rect = containerRef.current!.getBoundingClientRect();
+        
+        // Add scanning pulse effect to hovered node
+        d3.select(this).select('.node-hit').classed('node-pulse', true);
+
         if (hovered.nodeType === 'sinner') {
-          // Find the actual sinner to get literary source names
           const sinner = sinners.find(s => s.id === hovered.id);
           const topSources = sinner?.literarySources.slice(0, 2).map(ls => ls.id) ?? [];
           setTooltip({
@@ -780,7 +795,9 @@ export function LoreGraph({
             type: 'node',
             name: hovered.name,
             game: hovered.canonicalGame,
-            themes: hovered.themes.slice(0, 2),
+            icon: hovered.icon,
+            nodeType: 'sinner',
+            themes: hovered.themes.slice(0, 3),
             literarySources: topSources,
             x: event.clientX - rect.left,
             y: event.clientY - rect.top,
@@ -790,8 +807,10 @@ export function LoreGraph({
             visible: true,
             type: 'node',
             name: hovered.name,
+            nodeType: 'entity',
+            icon: hovered.icon,
             game: undefined,
-            themes: hovered.themes.slice(0, 2),
+            themes: hovered.themes.slice(0, 3),
             x: event.clientX - rect.left,
             y: event.clientY - rect.top,
           });
@@ -903,45 +922,80 @@ export function LoreGraph({
     <div ref={containerRef} className="relative h-full w-full overflow-hidden max-md:pb-24">
       <svg ref={svgRef} className="block w-full h-full bg-background/50" />
 
-      {/* Hover tooltip */}
+      {/* Immersive Mini-Dossier Tooltip */}
       {tooltip.visible && (
-        <div
-          className="absolute pointer-events-none z-50 max-md:hidden"
-          style={{ left: tooltip.x + 14, top: tooltip.y - 28 }}
+        <div 
+          className="pointer-events-none absolute z-50 animate-in fade-in zoom-in-95 duration-200"
+          style={{ 
+            left: tooltip.x + 20, 
+            top: tooltip.y - 40,
+          }}
         >
           {tooltip.type === 'edge' ? (
-            <div className="flex items-center gap-2 rounded-lg border border-border/80 bg-card/95 px-3 py-1.5 shadow-xl backdrop-blur-sm">
-              <div className="h-1.5 w-1.5 rounded-full bg-edge-crossgame" />
-              <span className="text-xs font-semibold text-foreground">{tooltip.name}</span>
+            <div className="glass-v2 flex items-center gap-2 border-[#a08a70]/30 px-3 py-1.5 shadow-xl backdrop-blur-sm">
+              <div className="h-1.5 w-1.5 rounded-full bg-[#f5c518] animate-pulse" />
+              <span className="text-[10px] uppercase font-bold tracking-widest text-[#a08a70]">{tooltip.name}</span>
             </div>
           ) : (
-            <div className="space-y-1.5 rounded-lg border border-border/80 bg-card/95 px-3 py-2 shadow-xl backdrop-blur-sm min-w-[140px]">
-              <p className="text-sm font-bold text-foreground leading-tight">{tooltip.name}</p>
-              {tooltip.game && (
-                <div className="flex items-center gap-1.5">
-                  <div
-                    className="h-1.5 w-1.5 rounded-full"
-                    style={{ backgroundColor: NODE_GAME_COLORS[tooltip.game] ?? '#888' }}
-                  />
-                  <span className="text-[10px] font-medium text-muted-foreground capitalize">{tooltip.game}</span>
+            <div className="glass-v2 overflow-hidden border-[#a08a70]/30 shadow-2xl min-w-[220px]">
+              <div className="bg-[#b8202f]/10 px-3 py-1.5 border-b border-[#a08a70]/20 flex items-center justify-between">
+                <span className="text-[10px] font-bold tracking-widest text-[#a08a70] uppercase">
+                  {tooltip.nodeType === 'sinner' ? 'Sinner Dossier' : 'Entity File'}
+                </span>
+                <div className="h-1.5 w-1.5 rounded-full bg-[#f5c518] animate-pulse" />
+              </div>
+              
+              <div className="p-3">
+                <div className="flex items-start gap-3">
+                  {tooltip.icon && (
+                    <div className="h-12 w-12 border border-[#a08a70]/30 bg-black/40 p-1 shrink-0">
+                      <img src={tooltip.icon} alt="" className="h-full w-full object-contain grayscale hover:grayscale-0 transition-all duration-500" />
+                    </div>
+                  )}
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-bold text-[#e8e0d5] leading-tight chromatic-text">
+                      {tooltip.name}
+                    </h4>
+                    {tooltip.game && (
+                      <div className="text-[10px] font-medium text-[#a08a70] uppercase tracking-wider">
+                        Origin: {tooltip.game}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-              {tooltip.literarySources && tooltip.literarySources.length > 0 && (
-                <div className="space-y-0.5">
-                  <p className="text-[9px] font-semibold uppercase tracking-wider text-muted-foreground/60">Sources</p>
-                  <p className="text-[10px] text-muted-foreground/80 leading-tight">
+
+                {tooltip.themes && tooltip.themes.length > 0 && (
+                  <div className="mt-3 space-y-1">
+                    <div className="text-[9px] font-bold text-muted-foreground/60 uppercase tracking-tighter">Affinities</div>
+                    <div className="flex flex-wrap gap-1">
+                      {tooltip.themes.map(t => (
+                        <span key={t} className="px-1.5 py-0.5 bg-[#a08a70]/10 border border-[#a08a70]/20 text-[9px] text-[#e8e0d5] uppercase font-mono">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {tooltip.literarySources && tooltip.literarySources.length > 0 && (
+                  <div className="mt-3 space-y-1">
+                    <div className="text-[9px] font-bold text-muted-foreground/60 uppercase tracking-tighter">Sources</div>
+                    <div className="text-[10px] text-[#a08a70]/80 leading-snug">
                     {tooltip.literarySources.map(id => {
-                      const src = literarySources.find(s => s.id === id);
-                      return src?.title ?? id;
-                    }).join(' · ')}
-                  </p>
+                        const src = literarySources.find(s => s.id === id);
+                        return src?.title ?? id;
+                      }).join(' · ')}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="bg-[#b8202f]/5 px-3 py-1 border-t border-[#a08a70]/10 flex justify-between items-center overflow-hidden">
+                <div className="h-[2px] w-full bg-[#a08a70]/20 relative">
+                    <div className="absolute top-0 left-0 h-full bg-[#f5c518] w-1/3 animate-[scan-move_2s_infinite]" />
                 </div>
-              )}
-              {tooltip.themes && tooltip.themes.length > 0 && (
-                <p className="text-[10px] text-muted-foreground/70">
-                  {tooltip.themes.map(t => THEME_META[t as Theme]?.label ?? t.replace('-', ' ')).join(' · ')}
-                </p>
-              )}
+                <span className="ml-3 text-[9px] font-mono text-[#a08a70]/50 whitespace-nowrap">STATUS: STABLE</span>
+              </div>
             </div>
           )}
         </div>

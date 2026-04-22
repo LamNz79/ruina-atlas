@@ -10,7 +10,7 @@ import Roadmap from './pages/Roadmap';
 import ProfilePage from './pages/ProfilePage';
 import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map, Sparkles } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,9 +18,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import logoSvg from '../public/favicon.svg';
+import logoSvg from '/favicon.svg';
 import { GlobalSearch } from './components/GlobalSearch';
 import { SourceExplorer } from './components/SourceExplorer';
+import TeamBuilder from './pages/TeamBuilder';
 import './index.css';
 
 export default function App() {
@@ -100,7 +101,7 @@ export default function App() {
                   className="h-8 w-8 object-contain"
                 />
                 <div className="flex flex-col">
-                  <h1 className="text-lg font-bold tracking-tight text-foreground leading-none">
+                  <h1 className="text-lg font-bold tracking-tight text-foreground leading-none chromatic-text">
                     Ruina Atlas
                   </h1>
                   <p className="hidden text-[10px] font-medium text-muted-foreground sm:block leading-none mt-0.5">
@@ -143,6 +144,18 @@ export default function App() {
                     </Button>
                   </>
                 ) : null}
+
+                <Button
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="h-8 gap-1.5 text-xs font-bold border-[#a08a70]/40 bg-[#a08a70]/5 hover:bg-[#a08a70]/10 text-[#a08a70] hidden md:flex uppercase tracking-tighter"
+                >
+                  <Link to="/builder">
+                    <Sparkles className="h-3 w-3" />
+                    Management
+                  </Link>
+                </Button>
 
                 {/* Dropdown menu */}
                 <DropdownMenu>
@@ -243,7 +256,6 @@ export default function App() {
               />
             </main>
 
-            {/* Footer */}
             <footer className="flex h-8 w-full items-center justify-between border-t border-border/40 bg-background/95 px-6 text-[11px] font-medium text-muted-foreground backdrop-blur">
               <div className="flex items-center gap-4">
                 <span>{sinners.length} Sinners</span>
@@ -259,6 +271,18 @@ export default function App() {
                 Data: eldritchtools/limbus-shared-library
               </a>
             </footer>
+
+            {/* M4.7 Hardware Layers */}
+            <div className="terminal-overlay" />
+            <div className="scanner-line" />
+            <div className="noise-texture">
+              <svg className="h-full w-full opacity-30 pointer-events-none">
+                <filter id="noiseFilter">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch" />
+                </filter>
+                <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+              </svg>
+            </div>
           </div>
         }
       />
@@ -266,6 +290,7 @@ export default function App() {
       <Route path="/about" element={<About />} />
       <Route path="/roadmap" element={<Roadmap />} />
       <Route path="/profile/:category/:id" element={<ProfilePage />} />
+      <Route path="/builder" element={<TeamBuilder />} />
     </Routes>
   );
 }

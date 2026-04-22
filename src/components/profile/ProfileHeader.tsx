@@ -40,10 +40,13 @@ export const ProfileHeader = ({
           Atlas
         </Button>
         <span className="h-4 w-px bg-border/40" />
-        <Flex gap={2}>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70">{category}</span>
-          <span className="h-3 w-[1px] bg-border/50" />
-          <h1 className="text-xs font-bold tracking-tight truncate max-w-[120px] sm:max-w-none">{name}</h1>
+        <Flex gap={2} align="center">
+          <div className="flex flex-col items-start leading-none gap-1">
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/70">{category}</span>
+            <span className="text-[8px] font-mono text-muted-foreground/40 uppercase tracking-tighter">Clearance: Level <span className="redacted-text">5</span></span>
+          </div>
+          <span className="h-5 w-[1px] bg-border/50 mx-1" />
+          <h1 className="text-sm font-bold tracking-tight truncate max-w-[120px] sm:max-w-none chromatic-text uppercase tracking-widest">{name}</h1>
         </Flex>
       </Flex>
 
