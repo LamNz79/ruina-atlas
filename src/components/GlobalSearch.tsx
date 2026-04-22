@@ -4,7 +4,7 @@ import { sinners } from '../data/sinners';
 import crossGameEntities from '../data/crossGameEntities.json';
 import { literarySources } from '../data/literarySources';
 import type { CrossGameEntity, LiterarySource } from '../types';
-import { Search, BookOpen, User, Box, Command as CommandIcon, History, Shield, Sparkles } from 'lucide-react';
+import { Search, BookOpen, User, Box as BoxIcon, Command as CommandIcon, History, Shield, Sparkles } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -12,25 +12,32 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
+import { identityImages } from '../data/identityImages';
+import { getEgoImage } from '../data/ego';
+import { Flex, Stack } from './layout/index';
+
 interface GlobalSearchProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  onSelect: (type: 'sinner' | 'entity' | 'source', id: string) => void;
+  onSelect: (type: 'sinner' | 'entity' | 'source' | 'identity' | 'ego', id: string) => void;
 }
 
 type SearchItem = {
   id: string;
   name: string;
-  type: 'sinner' | 'entity' | 'source';
+  type: 'sinner' | 'entity' | 'source' | 'identity' | 'ego';
   subtitle?: string;
   meta?: string;
   extra?: string; // e.g., Damange type or specialized label
+  iconUrl?: string;
 };
 
 const TYPE_COLORS: Record<string, string> = {
   sinner: 'var(--crimson)',
   entity: 'var(--gold)',
   source: 'var(--bronze)',
+  identity: '#3b82f6',
+  ego: '#ef4444',
 };
 
 export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps) {
@@ -45,7 +52,8 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
         type: 'sinner' as const,
         subtitle: 'Limbus Sinner',
         meta: s.canonicalGame,
-        extra: s.themes.slice(0, 1).join('')
+        extra: s.themes.slice(0, 1).join(''),
+        iconUrl: identityImages[s.identities.find(i => i.displayName === 'LCB Sinner')?.id || '']
       })),
       ...(crossGameEntities.entities as CrossGameEntity[]).map(e => ({
         id: e.id,
@@ -53,7 +61,8 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
         type: 'entity' as const,
         subtitle: `${e.type.charAt(0).toUpperCase() + e.type.slice(1)}`,
         meta: e.canonicalGame,
-        extra: e.type
+        extra: e.type,
+        iconUrl: (e as any).icon
       })),
       ...(literarySources as LiterarySource[]).map(ls => ({
         id: ls.id,
@@ -61,13 +70,32 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
         type: 'source' as const,
         subtitle: 'Literary Source',
         meta: ls.author
-      }))
+      })),
+      // Add all Identities
+      ...sinners.flatMap(s => s.identities.map(idnt => ({
+        id: s.id, // We select the sinner for identity navigation
+        name: idnt.displayName,
+        type: 'identity' as const,
+        subtitle: `Identity: ${s.name}`,
+        meta: idnt.sourceGame,
+        extra: idnt.wingOrGroup || undefined,
+        iconUrl: identityImages[idnt.id]
+      }))),
+      // Add all EGOs
+      ...sinners.flatMap(s => s.egos.map(ego => ({
+        id: s.id,
+        name: ego.displayName,
+        type: 'ego' as const,
+        subtitle: `EGO: ${s.name}`,
+        meta: ego.rank,
+        iconUrl: getEgoImage(ego.egoId)
+      })))
     ];
     return items;
   }, []);
 
   const fuse = useMemo(() => new Fuse(searchData, {
-    keys: ['name', 'subtitle', 'meta'],
+    keys: ['name', 'subtitle', 'meta', 'extra'],
     threshold: 0.3,
     location: 0,
     distance: 100,
@@ -76,8 +104,8 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
   }), [searchData]);
 
   const results = useMemo(() => {
-    if (!query) return searchData.slice(0, 6); // Suggestions
-    return fuse.search(query).map(r => r.item).slice(0, 12);
+    if (!query) return searchData.slice(0, 8); // Suggestions
+    return fuse.search(query).map(r => r.item).slice(0, 15);
   }, [fuse, query, searchData]);
 
   useEffect(() => {
@@ -94,7 +122,7 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
     } else if (e.key === 'Enter') {
       const selected = results[selectedIndex];
       if (selected) {
-        onSelect(selected.type, selected.id);
+        onSelect(selected.type === 'identity' || selected.type === 'ego' ? 'sinner' : selected.type, selected.id);
         onOpenChange(false);
         setQuery('');
       }
@@ -103,20 +131,20 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] p-0 gap-0 glass-v2 border-bronze/30 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+      <DialogContent className="sm:max-w-[650px] p-0 gap-0 glass-v2 border-bronze/30 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         <div className="scan-line px-5 py-4 flex items-center gap-4 bg-muted/30 border-b border-bronze/10">
           <Search className="h-5 w-5 text-bronze animate-pulse" />
           <input
             autoFocus
             className="flex-1 bg-transparent border-none outline-none text-lg placeholder:text-muted-foreground/50 tracking-tight"
             style={{ fontFamily: 'var(--font-space)' }}
-            placeholder="Search the Infinite Archive..."
+            placeholder="Search Sinners, Identities, EGOs, or Sources..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
           />
           <div className="flex items-center gap-2">
-            {!query && <span className="text-[10px] font-bold text-bronze/40 uppercase tracking-widest hidden sm:block">Archive Core Active</span>}
+            {!query && <span className="text-[10px] font-bold text-bronze/40 uppercase tracking-widest hidden sm:block">Dossier Access: Verified</span>}
             <div className="terminal-kbd flex items-center gap-1 opacity-80">
               <CommandIcon className="h-2.5 w-2.5" />
               <span>K</span>
@@ -124,11 +152,11 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
           </div>
         </div>
 
-        <ScrollArea className="max-h-[420px] scroll-bronze">
-          <div className="px-3 pt-4 pb-2">
+        <ScrollArea className="max-h-[480px] scroll-bronze">
+          <div className="px-3 pt-4 pb-1">
             <h3 className="px-3 text-[10px] font-bold text-muted-foreground/60 uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
               {query ? <Sparkles className="h-3 w-3" /> : <History className="h-3 w-3" />}
-              {query ? 'Matched Signals' : 'Recent Observations'}
+              {query ? 'Archive Matches' : 'Archive Highlights'}
             </h3>
           </div>
 
@@ -139,28 +167,38 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
                 const isActive = idx === selectedIndex;
 
                 return (
-                  <div
-                    key={`${item.type}-${item.id}`}
-                    className={`group relative flex items-center gap-4 px-4 py-3 cursor-pointer transition-all duration-200 ${isActive ? 'active-item-glow' : 'hover:bg-white/[0.03]'
+                  <Flex
+                    key={`${item.type}-${item.id}-${item.name}`}
+                    gap={4}
+                    className={`group relative px-4 py-2 cursor-pointer transition-all duration-200 rounded-lg ${isActive ? 'active-item-glow bg-white/[0.05]' : 'hover:bg-white/[0.03]'
                       }`}
                     onClick={() => {
-                      onSelect(item.type, item.id);
+                      onSelect(item.type === 'identity' || item.type === 'ego' ? 'sinner' : item.type, item.id);
                       onOpenChange(false);
                       setQuery('');
                     }}
                   >
-                    <div
-                      className={`shrink-0 h-10 w-10 flex items-center justify-center border transition-colors ${isActive ? 'border-bronze/50 bg-bronze/10' : 'border-white/5 bg-white/[0.02]'
+                    <Flex
+                      justify="center"
+                      className={`shrink-0 h-14 w-14 border transition-all overflow-hidden relative shadow-inner ${isActive ? 'border-bronze/50' : 'border-white/5 bg-white/[0.02]'
                         }`}
-                      style={{ borderColor: isActive ? color : undefined }}
+                      style={{ borderColor: isActive ? color : undefined, borderRadius: '12px' }}
                     >
-                      {item.type === 'sinner' && <User className="h-5 w-5" style={{ color: isActive ? color : 'var(--text-faint)' }} />}
-                      {item.type === 'entity' && (item.extra === 'wing' ? <Shield className="h-5 w-5" /> : <Box className="h-5 w-5" />)}
-                      {item.type === 'source' && <BookOpen className="h-5 w-5" />}
-                    </div>
+                      {item.iconUrl ? (
+                         <>
+                           <img src={item.iconUrl} className="absolute inset-0 h-full w-full object-cover blur-md opacity-30 scale-150" aria-hidden="true" />
+                           <img src={item.iconUrl} className="relative h-full w-full object-cover z-10 transition-transform duration-500 group-hover:scale-110" alt={item.name} />
+                           <div className="absolute inset-0 z-20 border border-white/10 rounded-[11px]" aria-hidden="true" />
+                         </>
+                      ) : (
+                        item.type === 'sinner' ? <User className="h-6 w-6" style={{ color: isActive ? color : 'var(--text-faint)' }} /> :
+                        item.type === 'entity' ? (item.extra === 'wing' ? <Shield className="h-6 w-6" /> : <BoxIcon className="h-6 w-6" />) :
+                        item.type === 'source' ? <BookOpen className="h-6 w-6" /> : <Sparkles className="h-6 w-6" />
+                      )}
+                    </Flex>
 
-                    <div className="flex-1 overflow-hidden">
-                      <div className="flex items-center gap-2">
+                    <Stack gap={1} className="flex-1 overflow-hidden">
+                      <Flex gap={2}>
                         <p className={`text-md font-medium truncate tracking-tight transition-colors ${isActive ? 'text-text-bright' : 'text-text-d'
                           }`} style={{ fontFamily: 'var(--font-newsreader)' }}>
                           {item.name}
@@ -170,8 +208,8 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
                             {item.extra}
                           </Badge>
                         )}
-                      </div>
-                      <p className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground/50 flex items-center gap-2">
+                      </Flex>
+                      <Flex gap={2} className="text-[10px] uppercase font-bold tracking-widest text-muted-foreground/50">
                         <span style={{ color: color }}>{item.subtitle}</span>
                         {item.meta && (
                           <>
@@ -179,16 +217,16 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
                             <span>{item.meta}</span>
                           </>
                         )}
-                      </p>
-                    </div>
+                      </Flex>
+                    </Stack>
 
                     {isActive && (
-                      <div className="flex items-center gap-1.5">
+                      <Flex gap={1.5}>
                         <span className="text-[9px] font-bold text-gold/60 uppercase">Initialize</span>
                         <kbd className="terminal-kbd border-gold/30 text-gold">↵</kbd>
-                      </div>
+                      </Flex>
                     )}
-                  </div>
+                  </Flex>
                 );
               })}
             </div>

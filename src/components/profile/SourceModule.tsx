@@ -4,6 +4,8 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { BookOpen, ExternalLink, Users, Quote } from 'lucide-react';
 import { Button } from '../ui/button';
+import { identityImages } from '@/data/identityImages';
+import { EntityCard } from './EntityCard';
 
 interface SourceModuleProps {
   source: LiterarySource;
@@ -97,47 +99,51 @@ export default function SourceModule({ source, connectedSinners }: SourceModuleP
         </div>
       </section>
 
-      {/* 2. Connected Sinners Graph */}
+      {/* 2. Bibliography of Connections */}
       <section className="space-y-8">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold flex items-center gap-3">
-            <Users className="h-6 w-6 text-primary" />
-            Connected Sinners
-          </h2>
-          <Badge variant="outline" className="font-mono">{connectedSinners.length} Relationships</Badge>
+        <div className="flex items-center justify-between border-b border-border/20 pb-4">
+          <div className="space-y-1">
+            <h2 className="text-2xl font-black flex items-center gap-3 tracking-tight">
+              <Users className="h-6 w-6 text-primary" />
+              Manifestations & Bibliography
+            </h2>
+            <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
+              Sinners and entities influenced by this literary work
+            </p>
+          </div>
+          <Badge variant="outline" className="font-mono px-3 py-1 bg-muted/20 border-primary/20">
+            {connectedSinners.length} Records
+          </Badge>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {connectedSinners.map(({ sinner, role, specificConnection }) => (
-            <Card key={sinner.id} className="group border-border/40 bg-card/60 transition-all hover:border-primary/40">
-              <CardContent className="p-6 space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="h-2 w-2 rounded-full" style={{ backgroundColor: GAME_COLORS[sinner.canonicalGame] }} />
-                    <h4 className="font-bold">{sinner.name}</h4>
-                  </div>
-                  <Badge
-                    variant="outline"
-                    className={`text-[9px] font-bold uppercase ${role === 'primary' ? 'border-edge-literary/40 bg-edge-literary/10 text-edge-literary' :
-                      role === 'secondary' ? 'border-edge-theme/40 bg-edge-theme/10 text-edge-theme' :
-                        'border-edge-crossgame/40 bg-edge-crossgame/10 text-edge-crossgame'
-                      }`}
-                  >
-                    {role}
-                  </Badge>
-                </div>
-                <p className="text-xs leading-relaxed text-muted-foreground min-h-[40px]">
-                  {specificConnection}
-                </p>
-                <Button asChild variant="ghost" size="sm" className="w-full h-8 text-[10px] font-bold text-primary group-hover:bg-primary/5">
-                  <Link to={`/profile/sinner/${sinner.id}`}>View Sinner Profile</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+          {connectedSinners.map(({ sinner, role, specificConnection }) => {
+            // Get the primary identity image for the sinner to use as card art
+            const primaryIdentityId = sinner.identities.find(id => id.id.endsWith('01'))?.id || '';
+            const cardImg = identityImages[primaryIdentityId] || '';
+
+            return (
+              <EntityCard
+                key={sinner.id}
+                title={sinner.name}
+                subtitle={`${role.toUpperCase()}`}
+                imageUrl={cardImg}
+                description={specificConnection}
+                linkTo={`/profile/sinner/${sinner.id}`}
+                aspectRatio="aspect-[3/2]"
+                themeColor={GAME_COLORS[sinner.canonicalGame]}
+                badges={[
+                  { label: sinner.canonicalGame.toUpperCase(), variant: "outline", color: GAME_COLORS[sinner.canonicalGame] }
+                ]}
+              />
+            );
+          })}
           {connectedSinners.length === 0 && (
-            <div className="col-span-full py-12 text-center rounded-xl border border-dashed border-border/60 text-muted-foreground italic">
-              No Sinners have been connected to this literary work yet.
+            <div className="col-span-full py-20 text-center rounded-2xl border-2 border-dashed border-border/20 bg-muted/5 flex flex-col items-center gap-4">
+              <BookOpen className="h-12 w-12 text-muted-foreground/20" />
+              <p className="text-sm italic text-muted-foreground/60 max-w-xs">
+                The archives do not yet contain specific sinner connections for this work. Deep-dive synchronization pending.
+              </p>
             </div>
           )}
         </div>

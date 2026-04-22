@@ -6,7 +6,7 @@ import { literarySources } from '../data/literarySources';
 import { identityImages } from '../data/identityImages';
 import { identityDetailData } from '../data/identityDetailData';
 import { getEgoImage } from '../data/ego';
-import { X, ExternalLink, Eye, EyeOff } from 'lucide-react';
+import { X, ExternalLink, Eye, EyeOff, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Badge } from '@/components/ui/badge';
@@ -102,24 +102,39 @@ function IdentityModal({ id, open, onClose }: { id: Identity; open: boolean; onC
 
   return (
     <Dialog open={open} onOpenChange={(val) => !val && onClose()}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader className="flex-row items-center gap-4 space-y-0">
-          <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border border-border bg-muted/50">
-            {img ? (
-              <img src={img} alt={id.displayName} className="h-full w-full object-contain" />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-xs font-bold uppercase text-muted-foreground">
-                {id.displayName.slice(0, 2)}
-              </div>
-            )}
+      <DialogContent className="sm:max-w-[425px] overflow-hidden p-0 gap-0">
+        <div className="relative h-48 w-full bg-muted/20 border-b border-border/40 overflow-hidden flex items-center justify-center">
+          {img ? (
+            <>
+              {/* Cinematic Backdrop */}
+              <img 
+                src={img} 
+                className="absolute inset-0 h-full w-full object-cover blur-2xl opacity-30 scale-110" 
+                aria-hidden="true" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+              
+              {/* Main Art */}
+              <img 
+                src={img} 
+                alt={id.displayName} 
+                className="relative h-full w-full object-contain p-4 z-10 drop-shadow-2xl" 
+              />
+            </>
+          ) : (
+            <div className="flex flex-col items-center gap-2 opacity-20">
+              <Sparkles className="h-12 w-12" />
+              <span className="text-[10px] font-black uppercase tracking-widest">No Physical Record</span>
+            </div>
+          )}
+          
+          <div className="absolute bottom-4 left-6 right-6 z-20">
+            <h3 className="text-2xl font-black tracking-tighter text-white drop-shadow-md">{id.displayName}</h3>
+            <span className="text-[10px] font-bold uppercase tracking-widest text-white/70 drop-shadow-md">{GAME_LABELS[id.sourceGame]}</span>
           </div>
-          <div className="flex flex-col">
-            <DialogTitle className="text-lg leading-tight">{id.displayName}</DialogTitle>
-            <span className="mt-1 text-xs font-medium text-muted-foreground">{GAME_LABELS[id.sourceGame]}</span>
-          </div>
-        </DialogHeader>
+        </div>
 
-        <div className="mt-4 flex flex-col gap-6">
+        <div className="p-6 flex flex-col gap-6">
           {detail ? (
             <>
               {/* Badges */}
