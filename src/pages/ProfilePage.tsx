@@ -170,16 +170,27 @@ export default function ProfilePage() {
           {/* Universal Hero Section */}
           <section className="flex flex-col md:flex-row gap-12 items-start animate-in fade-in slide-in-from-bottom-4 duration-700">
             <div className="w-full md:w-1/3 aspect-[4/5] relative group">
-              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-2xl group-hover:bg-primary/20 transition-colors" />
-              <div className="relative h-full w-full bg-card/40 border border-border/40 rounded-2xl overflow-hidden flex items-center justify-center p-8 backdrop-blur-md">
+              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-3xl group-hover:bg-primary/20 transition-colors" />
+              <div className="relative h-full w-full bg-card/20 border border-border/40 rounded-2xl overflow-hidden flex items-center justify-center backdrop-blur-xl">
                 {/* Hero Image Logic */}
                 {category === 'sinner' ? (
-                  <img
-                    src={id === 'dante' ? '/assets/identities/dante.jpg' : identityImages[(entity as Sinner).identities.find(id => id.id.endsWith('01'))?.id || ''] || '/favicon.svg'}
-                    alt={name}
-                    className="h-full w-full object-contain drop-shadow-2xl"
-                    onError={(e) => { e.currentTarget.src = '/favicon.svg'; }}
-                  />
+                  <>
+                    {/* Cinematic Backdrop */}
+                    <img
+                      src={id === 'dante' ? '/assets/identities/dante.jpg' : identityImages[(entity as Sinner).identities.find(id => id.id.endsWith('01'))?.id || ''] || '/favicon.svg'}
+                      className="absolute inset-0 h-full w-full object-cover blur-3xl opacity-40 saturate-150 scale-110"
+                      aria-hidden="true"
+                      onError={(e) => { (e.currentTarget as any).style.display = 'none'; }}
+                    />
+                    
+                    {/* Focused Identity Art */}
+                    <img
+                      src={id === 'dante' ? '/assets/identities/dante.jpg' : identityImages[(entity as Sinner).identities.find(id => id.id.endsWith('01'))?.id || ''] || '/favicon.svg'}
+                      alt={name}
+                      className="relative h-full w-full object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 p-4 transition-transform duration-500 group-hover:scale-[1.02]"
+                      onError={(e) => { e.currentTarget.src = '/favicon.svg'; }}
+                    />
+                  </>
                 ) : category === 'source' ? (
                   <div className="flex flex-col items-center gap-4 text-primary">
                     <LayoutGrid className="h-20 w-20 opacity-20" />
