@@ -58,10 +58,11 @@ export const SIN_COLORS: Record<string, string> = {
 
 export const EDGE_COLORS: Record<EdgeType, string> = {
   'literary-origin': 'var(--edge-literary)',
+  'theological-origin': '#fdfbd3',
   'thematic-link': 'var(--edge-theme)',
   'cross-game-continuity': 'var(--edge-crossgame)',
   'shared-literary-group': 'var(--edge-group)',
-  'wing-affiliation': '#a08a70',
+  'wing-affiliation': '#00e5ff',
   'ego-synchronization': '#b8202f',
   'structural-hierarchy': '#4a5568',
   'bridge-continuity': '#d4af37',
@@ -69,6 +70,7 @@ export const EDGE_COLORS: Record<EdgeType, string> = {
 
 export const EDGE_LABELS: Record<EdgeType, string> = {
   'literary-origin': 'Literary Origin',
+  'theological-origin': 'Theological Origin',
   'thematic-link': 'Shared Theme',
   'cross-game-continuity': 'Cross-Game',
   'shared-literary-group': 'Shared Group',
@@ -80,6 +82,7 @@ export const EDGE_LABELS: Record<EdgeType, string> = {
 
 export const ALL_EDGE_TYPES: EdgeType[] = [
   'literary-origin',
+  'theological-origin',
   'thematic-link',
   'cross-game-continuity',
   'shared-literary-group',

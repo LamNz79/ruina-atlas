@@ -6,12 +6,14 @@ import { literarySources } from '../data/literarySources';
 import type { CrossGameEntity, EdgeType, GraphEdge, Sinner, Theme } from '../types';
 import { FilterPanel } from './FilterPanel';
 import { GraphSettings } from './GraphSettings';
+import GraphLegend from './GraphLegend';
 
 import type { FilterState, GraphLink, GraphNode, PhysicsSettings } from './LoreGraphConstants';
 import {
   ALL_EDGE_TYPES,
   DEFAULTS,
   EDGE_COLORS,
+  EDGE_LABELS,
   ENTITY_COLORS,
   INITIAL_FILTER_STATE,
   NODE_GAME_COLORS,
@@ -202,10 +204,10 @@ export function LoreGraph({
     }
 
     const svg = d3.select(svgRef.current);
-    svg.selectAll<SVGGElement, GraphNode>('.node-group').transition().duration(200)
+    svg.selectAll<SVGGElement, GraphNode>('.node-group')
       .attr('opacity', d => !activeId || connectedIds.has(d.id) ? 1 : 0.15);
 
-    svg.selectAll<SVGPathElement, GraphLink>('.link-path').transition().duration(200)
+    svg.selectAll<SVGPathElement, GraphLink>('.link-path')
       .attr('stroke', d => {
         const s = (d.source as any).id || d.source;
         const t = (d.target as any).id || d.target;
@@ -356,14 +358,14 @@ export function LoreGraph({
       .force('periphery', d3.forceRadial<GraphNode>(
         d => {
           const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-          if (isMajorFaction) return 900; 
+          if (isMajorFaction) return 900;
           if (d.entityType === 'abnormality') return 600;
           if (d.nodeType === 'literary-source') return 350;
-          
+
           // Dante is the HUB (center), other sinners form the SPOKE (ring)
           if (d.id === 'dante') return 0;
           if (d.nodeType === 'sinner') return 250;
-          
+
           return 470;
         },
         width / 2, height / 2
@@ -412,16 +414,16 @@ export function LoreGraph({
       .attr('stroke-dasharray', d => d.type === 'wing-affiliation' || d.type === 'ego-synchronization' || d.type === 'structural-hierarchy' ? '6,4' : 'none')
       .style('pointer-events', 'stroke');
 
-    // Live tick — drives the animation you see
-    simulation.on('tick', () => {
-      linksG.selectAll('path').attr('d', (d: any) => `M${d.source.x},${d.source.y}L${d.target.x},${d.target.y}`);
-      nodesG.selectAll('.node-group').attr('transform', (d: any) => `translate(${d.x},${d.y})`);
-    });
-    // ──────────────────────────────────────────────────────────────────────────
+    // Add tooltips to links
+    links.selectAll('title').remove();
+    links.append('title').text((d: any) => `${EDGE_LABELS[d.type as EdgeType]}${d.label ? `: ${d.label}` : ''}`);
+
+
 
     // Add CSS Animation for dashed links
     svg.append('style').text(`
       @keyframes dash-flow { to { stroke-dashoffset: -20; } }
+      .link-path { transition: stroke 0.2s ease, stroke-opacity 0.2s ease, filter 0.2s ease; }
       .link-path[stroke-dasharray="6,4"] { animation: dash-flow 1.5s linear infinite; }
       .node-group { transition: opacity 0.2s ease; }
       .node-group[data-entity-type="wing"]:hover .node-hit {
@@ -760,9 +762,59 @@ export function LoreGraph({
       setTooltip(t => ({ ...t, visible: false }));
     });
 
+    // Live tick — optimized to use cached selections
+    simulation.on('tick', () => {
+      links.attr('d', (d: any) => `M${d.source.x},${d.source.y}L${d.target.x},${d.target.y}`);
+      nodeGroups.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
+    });
+
     simulationRef.current = simulation;
     applyHighlights();
-  }, [graphData, physics]);
+
+    return () => {
+      simulation.stop();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [graphData]);
+
+  // --- Dynamic Physics Updates ---
+  useEffect(() => {
+    if (!simulationRef.current) return;
+    const simulation = simulationRef.current;
+    const width = containerRef.current?.clientWidth || 800;
+    const height = containerRef.current?.clientHeight || 800;
+
+    const linkForce = simulation.force('link') as d3.ForceLink<GraphNode, GraphLink>;
+    if (linkForce) {
+      linkForce.distance(d => {
+        if (d.type === 'literary-origin') return 80 + physics.nodeSpacing * 0.1;
+        if (d.type === 'ego-synchronization') return 120 + physics.nodeSpacing * 0.2;
+        if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
+        if (d.type === 'wing-affiliation') return 300 + physics.nodeSpacing * 0.5;
+        return physics.nodeSpacing;
+      });
+    }
+
+    const chargeForce = simulation.force('charge') as d3.ForceManyBody<GraphNode>;
+    if (chargeForce) {
+      chargeForce.strength(d => {
+        const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
+        if (isMajorFaction) return physics.repulsion * 2.5;
+        if (d.nodeType === 'literary-source') return physics.repulsion * 1.5;
+        if (d.nodeType === 'sinner') return physics.repulsion * 0.3;
+        return physics.repulsion;
+      });
+    }
+
+    const gravX = simulation.force('gravX') as d3.ForceX<GraphNode>;
+    if (gravX) gravX.strength(physics.centering * 0.1);
+
+    const gravY = simulation.force('gravY') as d3.ForceY<GraphNode>;
+    if (gravY) gravY.strength(physics.centering * 0.1);
+
+    // Nudge the simulation to smoothly apply new physics
+    simulation.alpha(0.3).restart();
+  }, [physics]);
 
   useEffect(() => { applyHighlights(); }, [applyHighlights]);
 
@@ -833,6 +885,7 @@ export function LoreGraph({
           </div>
         )}
 
+        <GraphLegend />
         <FilterPanel filters={filters} onFiltersChange={setFilters} />
         <GraphSettings
           {...physics}
@@ -852,9 +905,12 @@ export function LoreGraph({
         {/* Global Styles for Animations */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            @keyframes scan { from { transform: translateX(-
-            %); } to { transform: translateX(300%); } }
-        ` }} />
+            @keyframes scan { 
+              from { transform: translateX(-100%); } 
+              to { transform: translateX(300%); } 
+            }
+          `
+        }} />
       </div>
     </TooltipProvider>
   );
