@@ -850,8 +850,10 @@
       "canonicalGame": "ruina",
       "appearances": ["ruina", "limbus"],
       "tokenLabel": "禮",
-      "loreSummary": "One of the Five Fingers. Governs with absolute hierarchy and manners (Li). Subsidiaries: Kurokumo Clan, Stray Dogs.",
-      "themes": ["family", "machinery"]
+      "loreSummary": "One of the Five Fingers. Governs with absolute hierarchy and manners (Li). Enforces a strict code of propriety where the words of a superior are absolute.",
+      "themes": ["family", "machinery"],
+      "literaryOrigin": "book-of-rites",
+      "relatedEntityIds": ["entity-kalo", "entity-denis", "entity-boris", "entity-kurokumo", "entity-stray-dogs", "entity-iron-brotherhood"]
     },
     {
       "id": "finger-index",
@@ -860,9 +862,8 @@
       "canonicalGame": "ruina",
       "appearances": ["ruina", "limbus"],
       "tokenLabel": "信",
-      "loreSummary": "One of the Five Fingers. Operates based on absolute 'Prescripts' (Xin). Subsidiaries: Proxy system, Messengers.",
-      "themes": ["faith", "absurdity"],
-      "relatedSinnerIds": ["faust"]
+      "loreSummary": "One of the Five Fingers. Governed by mysterious 'Prescripts' delivered by Messengers. They embody absolute Trust (Xin) in the Will of the City.",
+      "themes": ["faith", "futility"]
     },
     {
       "id": "finger-middle",
@@ -871,31 +872,174 @@
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
       "tokenLabel": "義",
-      "loreSummary": "One of the Five Fingers. Values brotherhood and vengeance (Yi). Subsidiaries: Twinhook Pirates.",
+      "loreSummary": "One of the Five Fingers. Values 'Family' and 'Righteousness' (Yi) above all else. Known for their brutal vengeance against anyone who harms their 'brothers' or 'sisters'.",
       "themes": ["family", "vengeance"],
-      "relatedSinnerIds": ["meursault", "donquixote"]
+      "relatedEntityIds": ["entity-ricardo", "entity-twinhook-pirates"]
+    },
+    {
+      "id": "entity-ricardo",
+      "name": "Ricardo",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "finger-middle",
+      "appearances": ["limbus"],
+      "loreSummary": "A 'Big Brother' of the Middle. An incredibly powerful combatant who single-handedly defeated the Sinners in Canto V due to a 'hair coupon' slight. He embodies the Middle's extreme commitment to their brothers.",
+      "themes": ["family", "vengeance"],
+      "connectionInsights": {
+        "heathcliff": "Antagonistic Resonance: Ricardo brutally punished Heathcliff for stealing his hair coupons, leading to a near-fatal encounter for the LCB."
+      }
+    },
+    {
+      "id": "entity-twinhook-pirates",
+      "name": "Twinhook Pirates",
+      "type": "syndicate",
+      "canonicalGame": "limbus",
+      "parentEntityId": "finger-middle",
+      "appearances": ["limbus"],
+      "loreSummary": "A band of pirates operating in the Great Lake (U Corp. Backstreets). They serve as a subsidiary of the Middle and were responsible for kidnapping Limbus Company's Before Team.",
+      "themes": ["vengeance"]
     },
     {
       "id": "finger-ring",
       "name": "The Ring",
       "type": "finger",
-      "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
       "tokenLabel": "智",
-      "loreSummary": "One of the Five Fingers. Obsessed with distorted 'Art' and wisdom (Zhi). Subsidiaries: Dead Rabbits.",
-      "themes": ["metamorphosis", "absurdity"],
-      "relatedSinnerIds": ["yi-sang", "outis"]
+      "loreSummary": "One of the Five Fingers. Obsessed with Wisdom (Zhi) and Art. They view the City as a canvas and carry out horrific experiments in the name of artistic enlightenment.",
+      "themes": ["decay", "redemption"],
+      "relatedEntityIds": ["entity-aseah", "entity-ring-maestro"]
+    },
+    {
+      "id": "entity-aseah",
+      "name": "Aseah",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "finger-ring",
+      "appearances": ["limbus"],
+      "loreSummary": "A researcher and former member of the League of Nine Littérateurs. He worked with the Ring to conduct mirror technology experiments, leading to the creation of the Identities used by Limbus Company.",
+      "themes": ["decay"],
+      "connectionInsights": {
+        "yi-sang": "Former Colleague: Aseah and Yi Sang were members of the League of Nine. Aseah's exploitation of Yi Sang's technology for the Ring is a major point of betrayal."
+      }
+    },
+    {
+      "id": "entity-ring-maestro",
+      "name": "Ring Maestro",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "finger-ring",
+      "appearances": ["limbus"],
+      "loreSummary": "A high-ranking 'Maestro' of the Ring. During the events of the Leviathan webcomic, this figure distorted into the Abnormality 'Schadenfreude' after a confrontation with Vergilius.",
+      "themes": ["decay", "art"]
     },
     {
       "id": "finger-pinky",
       "name": "The Pinky",
       "type": "finger",
-      "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "canonicalGame": "ruina",
+      "appearances": ["ruina", "limbus"],
       "tokenLabel": "仁",
-      "loreSummary": "One of the Five Fingers. Represents Humanity/Benevolence (Ren), often operating through infiltration and deep cover.",
-      "themes": ["family"],
-      "literaryOrigin": "Water Margin"
+      "loreSummary": "One of the Five Fingers. Embodying Benevolence (Ren), they are structured around 'Stars' and a decentralized network of outlaws. They follow the code of the 108 Stars.",
+      "themes": ["family", "faith"],
+      "literaryOrigin": "water-margin"
+    },
+    {
+      "id": "entity-kalo",
+      "name": "Kalo",
+      "type": "character",
+      "canonicalGame": "ruina",
+      "parentEntityId": "finger-thumb",
+      "appearances": ["ruina"],
+      "loreSummary": "A Sottocapo of the Thumb. He leads the syndicate's forces within the Library with cold, calculating efficiency, embodying the absolute respect for hierarchy.",
+      "themes": ["machinery"],
+      "connectionInsights": {
+        "finger-thumb": "As Sottocapo, Kalo's authority is equivalent to a board member of a Wing. He represents the highest level of Thumb hierarchy encountered by the Librarians."
+      }
+    },
+    {
+      "id": "entity-denis",
+      "name": "Denis",
+      "type": "character",
+      "canonicalGame": "ruina",
+      "parentEntityId": "finger-thumb",
+      "appearances": ["ruina"],
+      "loreSummary": "A Capo of the Thumb who serves under Kalo. Known for his loud, aggressive enforcement of manners and his mastery of firearms.",
+      "themes": ["machinery"]
+    },
+    {
+      "id": "entity-boris",
+      "name": "Boris",
+      "type": "character",
+      "canonicalGame": "ruina",
+      "parentEntityId": "finger-thumb",
+      "appearances": ["ruina"],
+      "loreSummary": "A Capo of the Thumb known for his incredible physical strength and stoic adherence to syndicate rules. He utilizes industrial 'discipline' to crush dissent.",
+      "themes": ["machinery"]
+    },
+    {
+      "id": "entity-kurokumo",
+      "name": "Kurokumo Clan",
+      "type": "syndicate",
+      "canonicalGame": "ruina",
+      "parentEntityId": "finger-thumb",
+      "appearances": ["ruina", "limbus"],
+      "loreSummary": "A katana-wielding syndicate that serves as a primary subsidiary of the Thumb. They specialize in bleed-inducing combat and occupy the Backstreets with quiet menace.",
+      "themes": ["vengeance", "family"],
+      "relatedSinnerIds": ["rodion", "honglu", "ryoshu"]
+    },
+    {
+      "id": "entity-sayo",
+      "name": "Sayo",
+      "type": "character",
+      "canonicalGame": "ruina",
+      "parentEntityId": "entity-kurokumo",
+      "appearances": ["ruina"],
+      "loreSummary": "The leader of the Kurokumo Clan's forces in the Library. She is a master of the katana and strictly follows the orders of the Thumb, despite her clan's distinct cultural identity.",
+      "themes": ["vengeance"]
+    },
+    {
+      "id": "entity-blade-lineage",
+      "name": "Blade Lineage",
+      "type": "syndicate",
+      "canonicalGame": "ruina",
+      "appearances": ["ruina", "limbus"],
+      "loreSummary": "An independent syndicate that follows traditional Korean swordsmanship. They are the fierce rivals of the Kurokumo Clan and prioritize individual martial skill over absolute hierarchy.",
+      "themes": ["vengeance"],
+      "relatedSinnerIds": ["meursault", "sinclair", "don-quixote", "yi-sang", "faust"]
+    },
+    {
+      "id": "entity-kim",
+      "name": "Bamboo-hatted Kim",
+      "type": "character",
+      "canonicalGame": "ruina",
+      "parentEntityId": "entity-blade-lineage",
+      "appearances": ["ruina", "limbus"],
+      "loreSummary": "The legendary leader of the Blade Lineage. He is famous for the technique 'Yield My Flesh to Claim Their Bones'. He distorted after his clan was decimated, but was later restored by the LCB.",
+      "themes": ["vengeance"],
+      "connectionInsights": {
+        "entity-kurokumo": "Blood rivals. Kim's clan and the Kurokumo Clan have a long history of lethal conflict in the Backstreets."
+      }
+    },
+    {
+      "id": "entity-stray-dogs",
+      "name": "Stray Dogs",
+      "type": "syndicate",
+      "canonicalGame": "ruina",
+      "parentEntityId": "finger-thumb",
+      "appearances": ["ruina"],
+      "loreSummary": "A violent subsidiary of the Thumb responsible for brutal enforcement. They famously massacred the Zwei Association's South Section 6.",
+      "themes": ["vengeance"]
+    },
+    {
+      "id": "entity-iron-brotherhood",
+      "name": "Iron Brotherhood",
+      "type": "syndicate",
+      "canonicalGame": "ruina",
+      "parentEntityId": "finger-thumb",
+      "appearances": ["ruina"],
+      "loreSummary": "A low-ranking subsidiary composed of members with extensive prosthetic replacements. They trade their humanity for the durability of iron.",
+      "themes": ["machinery"]
     },
     {
       "id": "wing-a-corp",
@@ -909,3 +1053,4 @@
     }
   ]
 }
+

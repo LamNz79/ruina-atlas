@@ -21,12 +21,14 @@ const TYPE_ICONS: Record<string, React.ReactNode> = {
   wing: <Hexagon className="h-3.5 w-3.5" />,
   abnormality: <Star className="h-3.5 w-3.5" />,
   character: <Users className="h-3.5 w-3.5" />,
+  finger: <Star className="h-3.5 w-3.5 fill-current" />,
 };
 
 const TYPE_LABELS: Record<string, string> = {
   wing: 'Organization',
   abnormality: 'Abnormality',
   character: 'Character',
+  finger: 'Finger',
 };
 
 const RISK_LEVEL_COLORS: Record<string, string> = {
@@ -47,6 +49,7 @@ const ENTITY_COLORS: Record<string, string> = {
   wing: '#a08a70',   // Warm Bronze
   abnormality: '#8a4a5a',  // Muted Crimson
   character: '#f5c518',   // Electric Gold
+  finger: '#b8202f',      // Deep Crimson
 };
 
 const GAME_LABELS: Record<string, string> = {
@@ -116,6 +119,11 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick, s
         e.type === 'character' && e.relatedEntityIds?.includes(entity.id)
       )
     : null;
+
+  // New logic: Find Subsidiary Entities (children)
+  const subsidiaryEntities = entity 
+    ? (crossGameEntities.entities as CrossGameEntity[]).filter(e => e.parentEntityId === entity.id)
+    : [];
 
   return (
     <div
@@ -268,12 +276,33 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick, s
               )}
 
               {/* Associated Units (Bridge) */}
-              {associatedEntities.length > 0 && (
+              {(associatedEntities.length > 0 || subsidiaryEntities.length > 0) && (
                 <section className="space-y-3">
                   <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                     Structural Continuity
                   </h3>
                   <div className="grid grid-cols-1 gap-3">
+                    {/* Render Subsidiaries first */}
+                    {subsidiaryEntities.map((se) => (
+                      <button
+                        key={se.id}
+                        className="flex w-full items-center gap-3 rounded-md border border-primary/20 bg-primary/5 p-2.5 text-left transition-all hover:bg-primary/10"
+                        onClick={() => onEntityClick?.(se.id)}
+                      >
+                        <div className="shrink-0 rotate-45 border border-primary/40 p-1">
+                          <div className="rotate-[-45deg]">
+                            {TYPE_ICONS[se.type]}
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-xs font-bold text-foreground">{se.name}</p>
+                          <p className="text-[9px] uppercase tracking-tighter text-muted-foreground/60">{TYPE_LABELS[se.type]}</p>
+                        </div>
+                        <ExternalLink className="h-3 w-3 text-primary/40" />
+                      </button>
+                    ))}
+
+                    {/* Render Linked Associated Entities */}
                     {associatedEntities.map((ae) => (
                       <div key={ae.id} className="space-y-2">
                         <button

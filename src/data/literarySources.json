@@ -169,18 +169,6 @@
       "wikiUrl": "https://en.wikipedia.org/wiki/The_Metamorphosis"
     },
     {
-      "id": "water-margin",
-      "title": "Water Margin (Shuǐhǔ Zhuàn)",
-      "author": "Shi Nai'an",
-      "year": 1373,
-      "language": "Classical Chinese",
-      "passage": "To do justice on behalf of Heaven.",
-      "passageContext": "The motto of the 108 outlaws of Liangshan Marsh.",
-      "historicalContext": "One of the Four Great Classical Novels of Chinese literature. It serves as the primary inspiration for 'The Pinky' (Ngón Út) of the Five Fingers, whose members are named after the 108 stars corresponding to the Liangshan heroes.",
-      "themes": ["vengeance", "family", "faith"],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Water_Margin"
-    },
-    {
       "id": "grimm-fairy-tales",
       "title": "Grimm's Fairy Tales",
       "author": "Jacob and Wilhelm Grimm",
@@ -231,6 +219,30 @@
       "themes": ["guilt", "family", "vengeance", "redemption"],
       "category": "theological",
       "coverImage": "/assets/theological/CainAndAbel.png"
+    },
+    {
+      "id": "book-of-rites",
+      "title": "Book of Rites (Lǐjì)",
+      "author": "Confucius (Attributed)",
+      "year": -500,
+      "language": "Classical Chinese",
+      "passage": "Manners (Li) are the foundation of all order. Without them, even the most powerful king is but a beast in robes.",
+      "passageContext": "A collection of texts describing the social forms, administration, and ceremonial rites of the Zhou dynasty.",
+      "historicalContext": "One of the Five Classics of the Confucian canon. It serves as the primary ideological inspiration for 'The Thumb' (Ngón Cái) of the Five Fingers, who enforce 'Propriety' with absolute and lethal prejudice.",
+      "themes": ["machinery", "family", "faith"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Book_of_Rites"
+    },
+    {
+      "id": "water-margin",
+      "title": "Water Margin (Shuǐhǔ Zhuàn)",
+      "author": "Shi Nai'an",
+      "year": 1400,
+      "language": "Classical Chinese",
+      "passage": "The 108 Stars of Destiny shall gather at the marsh, bound by brotherhood and the stars above.",
+      "passageContext": "One of the Four Great Classical Novels of Chinese literature, telling the story of 108 outlaws who form a sizable army.",
+      "historicalContext": "The primary literary inspiration for 'The Pinky' (Ngón Út) of the Five Fingers. The Pinky's structure and its use of 'Stars' (like the Tiantui Star) directly mirror the 108 Stars of Destiny from the novel.",
+      "themes": ["family", "vengeance", "faith"],
+      "wikiUrl": "https://en.wikipedia.org/wiki/Water_Margin"
     }
   ]
 }
