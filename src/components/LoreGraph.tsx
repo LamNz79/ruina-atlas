@@ -25,11 +25,13 @@ interface LoreGraphProps {
   selectedSinner: Sinner | null;
   selectedEntity: string | null;
   expandedNodeIds: Set<string>;
+  focusNodeId?: string | null;
   onNodeClick: (sinner: Sinner) => void;
   onEntityClick: (entityId: string) => void;
   onSourceClick: (sourceId: string) => void;
   onToggleExpand: (id: string) => void;
   onPin: (node: any) => void;
+  onClearFocus?: () => void;
 }
 
 export function LoreGraph({
@@ -38,10 +40,13 @@ export function LoreGraph({
   selectedSinner,
   selectedEntity,
   expandedNodeIds,
+  focusNodeId,
   onNodeClick,
   onEntityClick,
   onSourceClick,
+  onToggleExpand,
   onPin,
+  onClearFocus,
 }: LoreGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -63,6 +68,14 @@ export function LoreGraph({
     const rawEntities = crossGameEntities.entities as CrossGameEntity[];
 
     rawEntities.forEach(e => {
+      // Parent → Child structural link
+      if (e.parentEntityId) {
+        entityLinks.push({
+          source: e.parentEntityId, target: e.id,
+          type: 'structural-hierarchy',
+          label: 'Contains'
+        });
+      }
       if (e.relatedSinnerIds) {
         e.relatedSinnerIds.forEach(sid => {
           entityLinks.push({
@@ -110,9 +123,10 @@ export function LoreGraph({
       // First pass: identify root-level visible nodes
       rawEntities.forEach(e => {
         if (!e.parentEntityId) {
+          const isMajorFaction = e.type === 'wing' || e.type === 'association' || e.type === 'finger';
           const isHub = ['entity-l-corp', 'entity-library', 'entity-limbus-company'].includes(e.id);
           const hasSinner = (e.relatedSinnerIds?.length ?? 0) > 0;
-          if (isHub || hasSinner) {
+          if (isHub || hasSinner || isMajorFaction) {
             visible.add(e.id);
           }
         }
@@ -175,7 +189,7 @@ export function LoreGraph({
   // --- Highlighting Logic ---
   const applyHighlights = useCallback(() => {
     if (!svgRef.current) return;
-    const activeId = hoverId || selectedSinner?.id || selectedEntity;
+    const activeId = hoverId || focusNodeId || selectedSinner?.id || selectedEntity;
     const connectedIds = new Set<string>();
 
     if (activeId) {
@@ -215,7 +229,7 @@ export function LoreGraph({
         const t = (d.target as any).id || d.target;
         return (s === activeId || t === activeId) ? 'url(#edge-glow)' : null;
       });
-  }, [hoverId, selectedSinner, selectedEntity, graphData]);
+  }, [hoverId, focusNodeId, selectedSinner, selectedEntity, graphData]);
 
   // --- D3 Simulation & Rendering ---
   useEffect(() => {
@@ -247,7 +261,14 @@ export function LoreGraph({
     // 1. Container setup with Scanline Overlay
     const mainContainer = svg.append('g').attr('class', 'main-container');
     const g = mainContainer.append('g').attr('class', 'zoom-group');
-    const linksG = g.append('g').attr('class', 'links');
+    svg.on('click', (e) => {
+      // Clear focus if clicking the background
+      if (e.target.tagName === 'svg' && onClearFocus) {
+        onClearFocus();
+      }
+    });
+
+    const linksG = g.append('g').attr('class', 'links-layer');
     const nodesG = g.append('g').attr('class', 'nodes');
 
     const zoom = d3.zoom<SVGSVGElement, unknown>().scaleExtent([0.1, 4]).on('zoom', (e) => g.attr('transform', e.transform));
@@ -261,64 +282,131 @@ export function LoreGraph({
     const BK_W = 52;   // book card width
     const BK_H = 68;   // book card height
 
-    // 2. Force Simulation — all three physics sliders are wired here
-    // In your simulation setup, replace the force configuration:
+    // 2. Force Simulation — Hub-and-Spoke Topography
+    // Inner core: Sinners + Literary/Theological sources
+    // Outer ring: Wings, Associations, Fingers (major factions)
+    // Mid ring: Abnormalities, Characters, child entities
+
+    const minDim = Math.min(width, height);
 
     const simulation = d3.forceSimulation<GraphNode>(graphData.nodes)
-      .velocityDecay(0.6)    // high friction — nodes stop quickly once near final position
+      .velocityDecay(0.6)    // high friction — damps oscillation quickly
       .alphaDecay(0.05)      // settles in ~60 ticks (fast cooling)
       .alphaMin(0.001)
       .force('link', d3.forceLink<GraphNode, GraphLink>(graphData.links)
         .id(d => d.id)
         .distance(d => {
-          // Generous distances so nodes have room to breathe
-          if (d.type === 'literary-origin') return 110 + physics.nodeSpacing * 0.2;
-          if (d.type === 'ego-synchronization') return 75 + physics.nodeSpacing * 0.1; // Tight satellite orbit
+          if (d.type === 'literary-origin') return 80 + physics.nodeSpacing * 0.1;  // rút ngắn distance
+          if (d.type === 'ego-synchronization') return 75 + physics.nodeSpacing * 0.1;
           if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
-          if (d.type === 'wing-affiliation') return Math.max(width, height) * 0.44;
+          if (d.type === 'wing-affiliation') return 250 + physics.nodeSpacing * 0.5; // Fixed: was excessively large
           if (d.type === 'bridge-continuity') return 180 + physics.nodeSpacing * 0.4;
           return physics.nodeSpacing;
         })
-        // Keep link strength LOW — repulsion must win so nodes spread out
         .strength(d => {
-          if (d.type === 'wing-affiliation') return 0.03;
-          if (d.type === 'ego-synchronization') return 0.45; // Stronger satellite pull
-          if (d.type === 'literary-origin') return 0.12;
+          if (d.type === 'wing-affiliation') return 0.05;
+          if (d.type === 'ego-synchronization') return 0.45;
+          if (d.type === 'literary-origin') return 0.06;  // giảm strength — để radial thắng
           if (d.type === 'structural-hierarchy') return 0.2;
           return 0.1;
         })
       )
+
+      // Many-Body: Factions push 2.5x harder to anchor themselves as pillars
       .force('charge', d3.forceManyBody<GraphNode>().strength(d => {
-        let str = physics.repulsion;            // default -3000
-        if (d.nodeType === 'literary-source') str *= 1.5;
-        if (d.nodeType === 'sinner') str *= 1.3; // sinners push each other hard
-        if (d.entityType === 'wing') str *= 2.5;
-        return str;
-      }).theta(0.85).distanceMax(900))
+        // Dùng entityType (đã resolve từ CrossGameEntity.type) — KHÔNG phải nodeType
+        const isMajorFaction =
+          d.entityType === 'wing' ||
+          d.entityType === 'association' ||
+          d.entityType === 'finger';        // "finger" = Five Fingers syndicates
 
-      // Soft gravity — keeps graph on screen without collapsing it
-      .force('gravX', d3.forceX<GraphNode>(width / 2).strength(physics.centering * 0.25))
-      .force('gravY', d3.forceY<GraphNode>(height / 2).strength(physics.centering * 0.25))
+        if (isMajorFaction) return physics.repulsion * 2.5;  // ≈ -7500 @ default -3000
+        if (d.nodeType === 'literary-source') return physics.repulsion * 1.5;
+          if (d.nodeType === 'sinner') return physics.repulsion * 0.3; // Reduce repulsion so they don't fight the circular layout
+        return physics.repulsion;
+      }).theta(0.85).distanceMax(500))  // tăng distanceMax: Wings ở xa cần "nghe" lực đẩy từ xa hơn
 
-      // Sinners orbit a mid-radius ring so they spread around the center
-      .force('sinnerRing', d3.forceRadial<GraphNode>(
-        d => d.nodeType === 'sinner' ? Math.min(width, height) * 0.30 : 0,
-        width / 2, height / 2
-      ).strength(d => d.nodeType === 'sinner' ? 0.12 : 0))
+      // Soft gravity — keeps graph centered on screen
+      // General centering — nhẹ, cho tất cả nodes
+      .force('gravX', d3.forceX<GraphNode>(width / 2).strength(physics.centering * 0.1))
+      .force('gravY', d3.forceY<GraphNode>(height / 2).strength(physics.centering * 0.1))
 
-      // Wing entities pushed to canvas edge
+      // Dedicated radial distribution — chỉ cho Sinners
+      // Dùng forceX/forceY theo góc để ép 13 Sinners thành vòng tròn đều
+      .force('sinnerRing', (() => {
+        // Tính góc đều cho mỗi Sinner theo thứ tự index
+        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner');
+        const angleMap = new Map<string, number>();
+        sinnerList.forEach((s, i) => {
+          angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
+        });
+
+        const R = 160; // target radius — khớp với forceRadial target
+        const cx = width / 2;
+        const cy = height / 2;
+
+        return d3.forceX<GraphNode>(d => {
+          if (d.nodeType !== 'sinner') return cx;
+          const angle = angleMap.get(d.id) ?? 0;
+          return cx + R * Math.cos(angle);
+        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0); // Tăng strength lên 1.0 để neo chặt
+      })())
+
+      .force('sinnerRingY', (() => {
+        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner');
+        const angleMap = new Map<string, number>();
+        sinnerList.forEach((s, i) => {
+          angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
+        });
+
+        const R = 160;
+        const cx = width / 2;
+        const cy = height / 2;
+
+        return d3.forceY<GraphNode>(d => {
+          if (d.nodeType !== 'sinner') return cy;
+          const angle = angleMap.get(d.id) ?? 0;
+          return cy + R * Math.sin(angle);
+        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0); // Tăng strength lên 1.0 để neo chặt
+      })())
+
+      // Radial Orbits — High-intensity hub-and-spoke engine
       .force('periphery', d3.forceRadial<GraphNode>(
-        d => d.entityType === 'wing' ? Math.max(width, height) * 0.46 : 0,
-        width / 2, height / 2
-      ).strength(0.45))
+        d => {
+          const isMajorFaction =
+            d.entityType === 'wing' ||
+            d.entityType === 'association' ||
+            d.entityType === 'finger';
 
-      // Collision — prevents visual overlap
+
+          // Dùng absolute px thay vì nhân baseR — dễ đọc, dễ tune
+          if (isMajorFaction) return 420;  // Outer ring: Wings, Assocs, Fingers
+          if (d.nodeType === 'sinner') return 160;          // Sinners: sát tâm nhất
+          if (d.nodeType === 'literary-source') return 240; // Books: vành đai trong, quanh Sinners
+          return 270;                                       // Mid ring: Abnormalities, Characters, child entities
+        },
+        width / 2, height / 2
+      ).strength(d => {
+        const isMajorFaction =
+          d.entityType === 'wing' ||
+          d.entityType === 'association' ||
+          d.entityType === 'finger';
+        if (isMajorFaction) return 0.9;
+        if (d.nodeType === 'sinner') return 1.0;  // Max pull — Sinners PHẢI vào tâm
+        if (d.nodeType === 'literary-source') return 0.75;
+
+        return 0.35;                      // Mid ring: để link force quyết định vị trí tự nhiên hơn
+      }))
+
+      // Collision — prevents visual overlap, tuned per shape
       .force('collision', d3.forceCollide<GraphNode>().radius(d => {
-        if (d.nodeType === 'literary-source') return BK_W / 2 + 20;
-        if (d.entityType === 'wing') return W_R + 24;
-        if (d.entityType === 'abnormality') return H_R + 18;
-        return S_R + 16;
-      }).strength(0.9).iterations(3));
+        if (d.nodeType === 'literary-source') return 62;
+        if (d.entityType === 'wing') return 52;   // Wing hex lớn nhất
+        if (d.entityType === 'association') return 46;
+        if (d.entityType === 'finger') return 44;
+        if (d.entityType === 'abnormality') return H_R + 16;
+        return S_R + 14;
+      }).strength(0.95).iterations(3));  // iterations 3: tránh overlap khi Wings va nhau ở outer ring
 
     // ── Scatter nodes before starting so the animation is graceful ────────────
     // Without this, all nodes start at (0,0) and explode outward chaotically.
@@ -331,6 +419,20 @@ export function LoreGraph({
         node.y = height / 2 + scatterR * Math.sin(angle) * (0.6 + Math.random() * 0.5);
       }
     });
+
+    // 3. Render Links
+    const links = linksG.selectAll('path').data(graphData.links).join('path').attr('class', 'link-path')
+      .attr('stroke', d => EDGE_COLORS[d.type] || '#ccc')
+      .attr('stroke-width', d => {
+        const count = graphData.sharedThemeCount[`${(d.source as any).id}-${(d.target as any).id}`] || 0;
+        return d.type === 'literary-origin' ? 1.5 + count * 0.4 : 1.2 + count * 0.4;
+      })
+      .attr('data-base-width', d => {
+        const count = graphData.sharedThemeCount[`${(d.source as any).id}-${(d.target as any).id}`] || 0;
+        return d.type === 'literary-origin' ? 1.5 + count * 0.4 : 1.2 + count * 0.4;
+      })
+      .attr('stroke-dasharray', d => d.type === 'wing-affiliation' || d.type === 'ego-synchronization' || d.type === 'structural-hierarchy' ? '6,4' : 'none')
+      .style('pointer-events', 'stroke');
 
     // Live tick — drives the animation you see
     simulation.on('tick', () => {
@@ -580,6 +682,15 @@ export function LoreGraph({
             .attr('fill', '#e2e8f0').attr('font-size', '16px').attr('font-weight', '900')
             .attr('font-family', '"Noto Serif SC", "Source Han Serif", serif')
             .style('filter', 'drop-shadow(0 0 5px rgba(147, 51, 234, 0.5))');
+
+        } else if (d.entityType === 'character') {
+          // Circle for characters like Binah
+          el.append('circle').attr('class', 'node-hit')
+            .attr('r', H_R - 2).attr('fill', '#0a0a0c').attr('stroke', '#0ea5e9').attr('stroke-width', 2);
+        } else {
+          // Fallback shape (syndicates, facilities, etc.)
+          el.append('circle').attr('class', 'node-hit')
+            .attr('r', H_R).attr('fill', '#0c0c0e').attr('stroke', '#888').attr('stroke-width', 1.8);
         }
 
       } else if (d.nodeType === 'sinner') {
@@ -627,7 +738,7 @@ export function LoreGraph({
           .attr('x', -iSize / 2).attr('y', -iSize / 2)
           .attr('width', iSize).attr('height', iSize);
       }
-    });
+    }); // End nodeGroups.each
 
     // Labels — anchored to shape's actual bottom edge
     nodeGroups.append('text').text(d => d.name)
@@ -645,12 +756,13 @@ export function LoreGraph({
     nodeGroups.on('click', (e, d) => {
       e.stopPropagation();
       if (d.nodeType === 'sinner') {
-        // Sinners have no children — don't toggle expand (it rebuilds the simulation)
         onNodeClick(sinners.find(s => s.id === d.id)!);
       } else if (d.nodeType === 'literary-source') {
         onSourceClick(d.id.replace('lit-', ''));
       } else {
-        // Entity node — toggle expanded state
+        if (d.entityType === 'wing' && onToggleExpand) {
+          onToggleExpand(d.id);
+        }
         onEntityClick(d.id);
       }
     }).on('contextmenu', (e, d) => {

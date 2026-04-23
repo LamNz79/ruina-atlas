@@ -235,18 +235,20 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick, s
               )}
 
               {/* Themes */}
-              <section className="space-y-3">
-                <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                  Themes
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {entity.themes.map((t) => (
-                    <Badge key={t} variant="secondary" className="px-2 py-0.5 text-[11px] font-medium">
-                      {THEME_LABELS[t] ?? t}
-                    </Badge>
-                  ))}
-                </div>
-              </section>
+              {entity.themes && entity.themes.length > 0 && (
+                <section className="space-y-3">
+                  <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    Themes
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {entity.themes.map((t) => (
+                      <Badge key={t} variant="secondary" className="px-2 py-0.5 text-[11px] font-medium">
+                        {THEME_LABELS[t] ?? t}
+                      </Badge>
+                    ))}
+                  </div>
+                </section>
+              )}
 
               {/* Managing Sephirah / Patron Librarian (Logical Header) */}
               {(managingSephirah || patronLibrarian) && (

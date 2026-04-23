@@ -25,6 +25,7 @@ interface LorePanelProps {
   isOpen: boolean;
   spoilerLevel: number;
   setSpoilerLevel: (level: number) => void;
+  onLocateNode?: (nodeId: string) => void;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -96,7 +97,7 @@ const TIER_LABELS: Record<string, string> = {
 
 // ── Identity Modal ────────────────────────────────────────────────────────────
 
-function IdentityModal({ id, open, onClose }: { id: Identity; open: boolean; onClose: () => void }) {
+function IdentityModal({ id, open, onClose, onLocateNode }: { id: Identity; open: boolean; onClose: () => void; onLocateNode?: (nodeId: string) => void }) {
   const detail = identityDetailData[id.id];
   const img = identityImages[id.id];
 
@@ -147,7 +148,21 @@ function IdentityModal({ id, open, onClose }: { id: Identity; open: boolean; onC
                   {TIER_LABELS[detail.tierCategory] ?? detail.tierCategory.toUpperCase()}
                 </Badge>
                 {id.wingOrGroup && (
-                  <Badge variant="outline" className="text-[10px] font-bold uppercase tracking-wider border-[#f5c518]/40 bg-[#f5c518]/10 text-[#f5c518]">
+                  <Badge 
+                    variant="outline" 
+                    className={`text-[10px] font-bold uppercase tracking-wider border-[#f5c518]/40 bg-[#f5c518]/10 text-[#f5c518] ${onLocateNode ? 'cursor-pointer hover:bg-[#f5c518]/20 transition-colors' : ''}`}
+                    onClick={() => {
+                      if (onLocateNode) {
+                        // We need to map the string to the ID. For now, we can just pass the string, and the search or graph logic will handle it, or we try to find the entity.
+                        // Actually, the GlobalSearch shows entities are searchable. Let's try to match wingOrGroup to an entity.
+                        // But since we just want to focus, maybe passing the string as query, or we need the exact ID.
+                        // Wing IDs are like "wing-w-corp". The text is "W Corp".
+                        const formattedId = `wing-${id.wingOrGroup.toLowerCase().replace(/ /g, '-')}`;
+                        onLocateNode(formattedId);
+                        onClose(); // close the modal
+                      }
+                    }}
+                  >
                     {id.wingOrGroup}
                   </Badge>
                 )}
@@ -208,7 +223,7 @@ function IdentityModal({ id, open, onClose }: { id: Identity; open: boolean; onC
 
 // ── Main Panel ────────────────────────────────────────────────────────────────
 
-export function LorePanel({ sinner, onClose, isOpen, spoilerLevel, setSpoilerLevel }: LorePanelProps) {
+export function LorePanel({ sinner, onClose, isOpen, spoilerLevel, setSpoilerLevel, onLocateNode }: LorePanelProps) {
   const [activeIdentity, setActiveIdentity] = useState<Identity | null>(null);
   const [sourceExplorerId, setSourceExplorerId] = useState<string | null>(null);
   const { playTick, playClink } = useSound();
@@ -614,12 +629,13 @@ export function LorePanel({ sinner, onClose, isOpen, spoilerLevel, setSpoilerLev
         )}
       </div>
 
-      {/* Identity Detail Modal */}
+      {/* Modals */}
       {activeIdentity && (
         <IdentityModal
           id={activeIdentity}
           open={!!activeIdentity}
           onClose={() => setActiveIdentity(null)}
+          onLocateNode={onLocateNode}
         />
       )}
 

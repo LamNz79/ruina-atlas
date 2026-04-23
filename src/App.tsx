@@ -34,6 +34,7 @@ export default function App() {
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
   const [expandedNodeIds, setExpandedNodeIds] = useState<Set<string>>(new Set());
   const [pinnedNodes, setPinnedNodes] = useState<any[]>([]);
+  const [focusNodeId, setFocusNodeId] = useState<string | null>(null);
   const [spoilerLevel, setSpoilerLevel] = useState(8); // Default to Canto 8 (pre-M3 default)
 
 
@@ -104,6 +105,9 @@ export default function App() {
     } else if (type === 'source') {
       setActiveSourceId(id);
     }
+    
+    // Set focus — literary source nodes on graph use "lit-" prefix
+    setFocusNodeId(type === 'source' ? `lit-${id}` : id);
   }, []);
 
   const handlePin = useCallback((node: any) => {
@@ -247,11 +251,13 @@ export default function App() {
                   selectedSinner={selectedSinner}
                   selectedEntity={selectedEntity}
                   expandedNodeIds={expandedNodeIds}
+                  focusNodeId={focusNodeId}
                   onNodeClick={handleNodeClick}
                   onEntityClick={handleEntityClick}
                   onSourceClick={setActiveSourceId}
                   onToggleExpand={toggleExpand}
                   onPin={handlePin}
+                  onClearFocus={() => setFocusNodeId(null)}
                 />
               </div>
 
@@ -269,6 +275,10 @@ export default function App() {
                 isOpen={panelOpen}
                 spoilerLevel={spoilerLevel}
                 setSpoilerLevel={setSpoilerLevel}
+                onLocateNode={(id) => {
+                  setFocusNodeId(id);
+                  setPanelOpen(false); // Optionally close panel, or keep open. Let's keep open for now? Actually closing might help see the graph. Let's not close.
+                }}
               />
 
               {/* Entity Detail Panel */}
@@ -277,6 +287,7 @@ export default function App() {
                 spoilerLevel={spoilerLevel}
                 onClose={() => {
                   setSelectedEntity(null);
+                  setExpandedNodeIds(new Set()); // Collapse all expanded nodes when panel is closed
                 }}
                 onEntityClick={(id) => {
                   setSelectedEntity(id);
