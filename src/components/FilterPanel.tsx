@@ -59,14 +59,24 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
   const clearAll = () => {
     onFiltersChange({
       themes: new Set(THEMES),
-      showArchiveNodes: true,
+      showArchiveNodes: false,
+      showWings: false,
+      showAbnormalities: false,
+      showAssociations: false,
+      showFingers: false,
+      showCharacters: false,
       cantoLevel: 0,
     });
   };
 
   const activeCount =
     (filters.themes.size < THEMES.length ? 1 : 0) +
-    (!filters.showArchiveNodes ? 1 : 0);
+    (!filters.showArchiveNodes ? 1 : 0) +
+    (!filters.showWings ? 1 : 0) +
+    (!filters.showAbnormalities ? 1 : 0) +
+    (!filters.showAssociations ? 1 : 0) +
+    (!filters.showFingers ? 1 : 0) +
+    (!filters.showCharacters ? 1 : 0);
 
   return (
     <>
@@ -114,10 +124,12 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-red-500/80">
               Intelligence Layers
             </h4>
+            
+            {/* Global Archive Toggle */}
             <div className="flex items-center justify-between py-1 bg-red-500/5 rounded px-2 -mx-1 border border-red-500/10 transition-all hover:bg-red-500/10">
               <div className="flex items-center gap-2.5">
                 <div className="h-2 w-2 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
-                <span className="text-[11px] font-bold text-foreground/90 uppercase tracking-tight">Archive Entities</span>
+                <span className="text-[11px] font-bold text-foreground/90 uppercase tracking-tight">Archive Nodes</span>
               </div>
               <Switch
                 checked={filters.showArchiveNodes}
@@ -125,8 +137,31 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
                 className="scale-75 data-[state=checked]:bg-red-500"
               />
             </div>
+
+            {/* Granular Sub-filters */}
+            {filters.showArchiveNodes && (
+              <div className="pl-4 space-y-1.5 border-l border-red-500/20 mt-2">
+                {[
+                  { id: 'Wings', key: 'showWings' },
+                  { id: 'Abnormalities', key: 'showAbnormalities' },
+                  { id: 'Associations', key: 'showAssociations' },
+                  { id: 'Fingers', key: 'showFingers' },
+                  { id: 'Legacy Characters', key: 'showCharacters' },
+                ].map(({ id, key }) => (
+                  <div key={id} className="flex items-center justify-between py-0.5">
+                    <span className="text-[10px] font-medium text-muted-foreground/80 uppercase tracking-tight">{id}</span>
+                    <Switch
+                      checked={(filters as any)[key]}
+                      onCheckedChange={(checked) => onFiltersChange({ ...filters, [key]: checked })}
+                      className="scale-[0.6] data-[state=checked]:bg-red-500/60"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
             <p className="text-[9px] text-muted-foreground/60 leading-tight px-1 italic">
-              Toggle visibility of non-Sinner nodes (Wings, Abnormalities, Legacy Characters) on the tactical graph.
+              Filter non-Sinner data by canonical classification.
             </p>
           </div>
 

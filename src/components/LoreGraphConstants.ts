@@ -11,7 +11,7 @@ export interface GraphNode extends d3.SimulationNodeDatum {
   themes: string[];
   crossGameContinuity: boolean;
   nodeType: 'sinner' | 'entity' | 'zone-anchor' | 'literary-source';
-  entityType?: 'wing' | 'abnormality' | 'character' | 'association' | 'finger';
+  entityType?: 'wing' | 'abnormality' | 'character' | 'association' | 'finger' | 'syndicate';
   icon?: string;
   subjectNumber?: string;
   riskLevel?: string;
@@ -36,6 +36,7 @@ export const ENTITY_COLORS: Record<string, string> = {
   wing: '#a08a70',
   abnormality: '#8a4a5a',
   character: '#f5c518',
+  syndicate: '#22c55e', // Bamboo Green default
 };
 
 export const RISK_LEVEL_COLORS: Record<string, string> = {
@@ -57,11 +58,11 @@ export const SIN_COLORS: Record<string, string> = {
 };
 
 export const EDGE_COLORS: Record<EdgeType, string> = {
-  'literary-origin': 'var(--edge-literary)',
-  'theological-origin': '#fdfbd3',
-  'thematic-link': 'var(--edge-theme)',
-  'cross-game-continuity': 'var(--edge-crossgame)',
-  'shared-literary-group': 'var(--edge-group)',
+  'literary-origin': '#a08a70',     // Bronze
+  'theological-origin': '#fdfbd3',  // Divine Gold
+  'thematic-link': '#c4bdb3',       // Ivory
+  'cross-game-continuity': '#f5c518', // Electric Gold
+  'shared-literary-group': '#8a847a', // Subtle Ivory
   'wing-affiliation': '#00e5ff',
   'ego-synchronization': '#b8202f',
   'structural-hierarchy': '#4a5568',
@@ -107,11 +108,21 @@ export const DEFAULTS: PhysicsSettings = {
 export interface FilterState {
   themes: Set<Theme>;
   showArchiveNodes: boolean;
+  showWings: boolean;
+  showAbnormalities: boolean;
+  showAssociations: boolean;
+  showFingers: boolean;
+  showCharacters: boolean;
   cantoLevel: number;
 }
 
 export const INITIAL_FILTER_STATE: FilterState = {
   themes: new Set(THEMES as unknown as Theme[]),
-  showArchiveNodes: true,
+  showArchiveNodes: false,
+  showWings: false,
+  showAbnormalities: false,
+  showAssociations: false,
+  showFingers: false,
+  showCharacters: false,
   cantoLevel: 0,
 };

@@ -26,7 +26,7 @@
       "appearances": ["lobotomy"],
       "loreSummary": "A masked doctor who claims to cure all diseases, but hides a terrifying truth behind his 12 apostles.",
       "themes": ["faith", "guilt"],
-      "literaryOrigin": "book-of-revelations"
+      "literarySourceIds": ["book-of-revelations"]
     },
     {
       "id": "entity-fairy-festival",
@@ -274,7 +274,7 @@
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "A messianic entity that demands total submission from its twelve apostles.",
       "themes": ["faith", "nihilism"],
-      "literaryOrigin": "book-of-revelations"
+      "literarySourceIds": ["book-of-revelations"]
     },
     {
       "id": "entity-censored",
@@ -412,7 +412,7 @@
       "appearances": ["lobotomy", "ruina", "limbus"],
       "loreSummary": "The primary energy Wing of the City. Its facility structure consists of 10 specialized teams, each managed by a Sephirah.",
       "themes": ["machinery", "guilt"],
-      "literaryOrigin": "kabbalah-tree-of-life",
+      "literarySourceIds": ["kabbalah-tree-of-life"],
       "relatedSinnerIds": ["dante", "faust", "yi-sang"],
       "connectionInsights": {
         "dante": "Directly resonates with Golden Boughs to manifest Sapling of Light abilities (Durante), which are structurally named after L-Corp Sephirot (Pigritia, Superbia, Morositas).",
@@ -849,8 +849,9 @@
       "type": "finger",
       "canonicalGame": "ruina",
       "appearances": ["ruina", "limbus"],
+      "literarySourceIds": ["book-of-rites"],
       "tokenLabel": "禮",
-      "loreSummary": "One of the Five Fingers. Governs with absolute hierarchy and manners (Li). Enforces a strict code of propriety where the words of a superior are absolute.",
+      "loreSummary": "One of the Five Fingers that rule the Backstreets. They are defined by an absolute, labyrinthine hierarchy and the 'Etiquette' of respect. They govern the northern regions and are known for their firearms and ruthless discipline.",
       "themes": ["family", "machinery"],
       "literaryOrigin": "book-of-rites",
       "relatedEntityIds": ["entity-kalo", "entity-denis", "entity-boris", "entity-kurokumo", "entity-stray-dogs", "entity-iron-brotherhood"]
@@ -939,8 +940,9 @@
       "type": "finger",
       "canonicalGame": "ruina",
       "appearances": ["ruina", "limbus"],
+      "literarySourceIds": ["water-margin"],
       "tokenLabel": "仁",
-      "loreSummary": "One of the Five Fingers. Embodying Benevolence (Ren), they are structured around 'Stars' and a decentralized network of outlaws. They follow the code of the 108 Stars.",
+      "loreSummary": "One of the Five Fingers that rule the Backstreets. Known for their complex family-like structure and the 'Taboos' that govern their members' behavior. They follow the code of the 108 Stars.",
       "themes": ["family", "faith"],
       "literaryOrigin": "water-margin"
     },

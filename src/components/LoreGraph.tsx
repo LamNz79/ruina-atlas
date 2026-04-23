@@ -51,8 +51,11 @@ export function LoreGraph({
   onClearFocus,
 }: LoreGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const simulationRef = useRef<d3.Simulation<GraphNode, GraphLink> | null>(null);
+  const workerRef = useRef<Worker | null>(null);
+  const nodesRef = useRef<Map<string, GraphNode>>(new Map());
+  const transformRef = useRef<d3.ZoomTransform>(d3.zoomIdentity);
   const zoomRef = useRef<d3.ZoomBehavior<SVGSVGElement, unknown> | null>(null);
 
   // --- UI State ---
@@ -62,79 +65,55 @@ export function LoreGraph({
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(new Set(ALL_EDGE_TYPES.filter(t => t !== 'thematic-link')));
   const [tooltip, setTooltip] = useState<any>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
 
+  // --- Size constants (Match Worker) ---
+  const S_R = 26;   // sinner
+  const H_R = 28;   // abnormality
+  const W_R = 42;   // wing
+  const BK_W = 46;  // book width
+  const BK_H = 82;  // book height
+
   // --- Data Processing ---
   const graphData = useMemo(() => {
-
-    // 1. Filtered Entities & Derived Links
     const entityLinks: GraphLink[] = [];
     const rawEntities = crossGameEntities.entities as CrossGameEntity[];
 
     rawEntities.forEach(e => {
-      // Parent → Child structural link
       if (e.parentEntityId) {
-        entityLinks.push({
-          source: e.parentEntityId, target: e.id,
-          type: 'structural-hierarchy',
-          label: 'Contains'
-        });
+        entityLinks.push({ source: e.parentEntityId, target: e.id, type: 'structural-hierarchy', label: 'Contains' });
       }
       if (e.relatedSinnerIds) {
         e.relatedSinnerIds.forEach(sid => {
-          entityLinks.push({
-            source: e.id, target: sid,
-            type: e.type === 'abnormality' ? 'ego-synchronization' : 'wing-affiliation',
-            label: 'Resonance'
-          });
-        });
-      }
-      if ((e as any).relatedEntityIds) {
-        (e as any).relatedEntityIds.forEach((rid: string) => {
-          entityLinks.push({
-            source: e.id, target: rid,
-            type: (e.type === 'character') ? 'bridge-continuity' : 'structural-hierarchy',
-            label: 'Shift'
-          });
+          entityLinks.push({ source: e.id, target: sid, type: e.type === 'abnormality' ? 'ego-synchronization' : 'wing-affiliation', label: 'Resonance' });
         });
       }
     });
 
     const connectionCount: Record<string, number> = {};
     [...edges, ...entityLinks].forEach(l => {
-      if (l.type === 'literary-origin') {
-        const s = typeof l.source === 'string' ? l.source : (l.source as any).id;
-        const t = typeof l.target === 'string' ? l.target : (l.target as any).id;
-        connectionCount[s] = (connectionCount[s] ?? 0) + 1;
-        connectionCount[t] = (connectionCount[t] ?? 0) + 1;
-      }
+      const sId = typeof l.source === 'string' ? l.source : (l.source as any).id;
+      const tId = typeof l.target === 'string' ? l.target : (l.target as any).id;
+      connectionCount[sId] = (connectionCount[sId] ?? 0) + 1;
+      connectionCount[tId] = (connectionCount[tId] ?? 0) + 1;
     });
 
-    // 2. Node Generation with Visibility Filtering
-    const sinnerNodes: GraphNode[] = sinners.filter(s => {
-      if (!s.themes.some(t => filters.themes.has(t as Theme))) return false;
-      return true;
-    }).map(s => ({
+    const sinnerNodes: GraphNode[] = sinners.filter(s => s.themes.some(t => filters.themes.has(t as Theme))).map(s => ({
       ...s, id: s.id, literarySourceIds: s.literarySources.map(ls => ls.id), themes: [...s.themes],
       nodeType: 'sinner', connectionCount: connectionCount[s.id] ?? 0,
-      // Do NOT fix Dante — fixing it pulls all connected sinners to the same point
     }));
 
     const visibleEntities = (() => {
       if (!filters.showArchiveNodes) return [];
       const visible = new Set<string>();
 
-      // First pass: identify root-level visible nodes
       rawEntities.forEach(e => {
         if (!e.parentEntityId) {
-          const isMajorFaction = e.type === 'wing' || e.type === 'association' || e.type === 'finger';
-          const isHub = ['entity-l-corp', 'entity-library', 'entity-limbus-company'].includes(e.id);
+          const isMajorFaction = e.type === 'wing' || e.type === 'association' || e.type === 'finger' || e.type === 'syndicate';
+          const isHub = ['entity-l-corp', 'entity-library', 'entity-limbus-company', 'entity-blade-lineage'].includes(e.id);
           const hasSinner = (e.relatedSinnerIds?.length ?? 0) > 0;
-          if (isHub || hasSinner || isMajorFaction) {
-            visible.add(e.id);
-          }
+          if (isHub || hasSinner || isMajorFaction) visible.add(e.id);
         }
       });
 
-      // Second pass: recursively add children if parent is visible AND expanded
       let changed = true;
       while (changed) {
         changed = false;
@@ -148,36 +127,54 @@ export function LoreGraph({
 
       return rawEntities.filter(e => {
         if (!visible.has(e.id)) return false;
+        if (e.type === 'wing' && !filters.showWings) return false;
+        if (e.type === 'abnormality' && !filters.showAbnormalities) return false;
+        if (e.type === 'association' && !filters.showAssociations) return false;
+        if (e.type === 'finger' && !filters.showFingers) return false;
+        if (e.type === 'character' && !filters.showCharacters) return false;
+        if (e.type === 'syndicate' && !filters.showAssociations) return false; // Group with associations for now
         if (e.themes && e.themes.length > 0 && !e.themes.some(t => filters.themes.has(t as Theme))) return false;
-
-        // Spoiler Gate: Hide entities from future Cantos
         if (e.spoilerLevel && e.spoilerLevel > filters.cantoLevel) return false;
-
         return true;
       });
     })();
 
     const entityNodes: GraphNode[] = visibleEntities.map(e => ({
-      ...e, nodeType: 'entity' as const, entityType: e.type as any, themes: e.themes ?? [],
-      literarySourceIds: [],
-      tokenLabel: (e as any).tokenLabel,
+      ...e, nodeType: 'entity', entityType: e.type as any, themes: e.themes ?? [],
+      literarySourceIds: (e as any).literarySourceIds ?? [],
       connectionCount: connectionCount[e.id] ?? 0,
       crossGameContinuity: e.appearances ? e.appearances.includes('lobotomy') && e.appearances.includes('ruina') : false,
     } as GraphNode));
 
-    const usedLitIds = new Set(sinnerNodes.flatMap(s => s.literarySourceIds));
+    const usedLitIds = new Set([
+      ...sinnerNodes.flatMap(s => s.literarySourceIds),
+      ...entityNodes.flatMap(e => e.literarySourceIds)
+    ]);
+
     const litNodes: GraphNode[] = literarySources.filter(ls => usedLitIds.has(ls.id)).map(ls => ({
-      id: `lit-${ls.id}`, name: sinners.some(s => s.name === ls.title) ? `${ls.title} (Book)` : ls.title,
-      canonicalGame: 'limbus' as any, literarySourceIds: [ls.id], themes: ls.themes ?? [],
-      nodeType: 'literary-source', connectionCount: 0,
-      crossGameContinuity: false,
+      id: `lit-${ls.id}`, name: ls.title, canonicalGame: 'limbus' as any, literarySourceIds: [ls.id], themes: ls.themes ?? [],
+      nodeType: 'literary-source', connectionCount: 0, crossGameContinuity: false,
     }));
+
+    const litLinks: GraphLink[] = [];
+    [...sinnerNodes, ...entityNodes].forEach(node => {
+      node.literarySourceIds.forEach(lid => {
+        const litNodeId = `lit-${lid}`;
+        const sourceData = literarySources.find(ls => ls.id === lid);
+        const isTheological = sourceData?.category === 'theological';
+        litLinks.push({
+          source: node.id,
+          target: litNodeId,
+          type: isTheological ? 'theological-origin' : 'literary-origin',
+          label: isTheological ? 'Divine Inspiration' : 'Literary Source'
+        });
+      });
+    });
 
     const allNodes = [...sinnerNodes, ...entityNodes, ...litNodes];
     const nodeMap = new Map<string, GraphNode>(allNodes.map(n => [n.id, n]));
 
-    // 3. Link Redirection & Filtering
-    const allLinks = [...edges, ...entityLinks].map(l => {
+    const allLinks = [...edges, ...entityLinks, ...litLinks].map(l => {
       const s = typeof l.source === 'string' ? l.source : (l.source as any).id;
       const t = typeof l.target === 'string' ? l.target : (l.target as any).id;
       const newS = nodeMap.has(s) ? s : getVisibleAncestorId(s, rawEntities, nodeMap);
@@ -185,703 +182,365 @@ export function LoreGraph({
       return { ...l, source: newS, target: newT };
     }).filter(l => l.source !== l.target && nodeMap.has(l.source as string) && nodeMap.has(l.target as string) && activeEdgeTypes.has(l.type));
 
-    return { nodes: allNodes, links: allLinks, sharedThemeCount: calculateSharedThemes(allLinks as any, nodeMap) };
+    return { nodes: allNodes, links: allLinks };
   }, [sinners, edges, expandedNodeIds, filters, activeEdgeTypes]);
 
-  // --- Highlighting Logic ---
-  const applyHighlights = useCallback(() => {
-    if (!svgRef.current) return;
-    const activeId = hoverId || focusNodeId || selectedSinner?.id || selectedEntity;
-    const connectedIds = new Set<string>();
-
-    if (activeId) {
-      connectedIds.add(activeId);
-      graphData.links.forEach(l => {
-        const s = (l.source as any).id || l.source;
-        const t = (l.target as any).id || l.target;
-        if (s === activeId || t === activeId) { connectedIds.add(s); connectedIds.add(t); }
-      });
-    }
-
-    const svg = d3.select(svgRef.current);
-    svg.selectAll<SVGGElement, GraphNode>('.node-group')
-      .attr('opacity', d => !activeId || connectedIds.has(d.id) ? 1 : 0.15);
-
-    svg.selectAll<SVGPathElement, GraphLink>('.link-path')
-      .attr('stroke', d => {
-        const s = (d.source as any).id || d.source;
-        const t = (d.target as any).id || d.target;
-        if (s === activeId || t === activeId) {
-          // If it's a Sinner, use their signature color for the radiating edges
-          const node = graphData.nodes.find(n => n.id === activeId);
-          if (node?.nodeType === 'sinner') return (node as any).signatureColor || '#b8202f';
-          return EDGE_COLORS[d.type] || '#ccc';
-        }
-        return EDGE_COLORS[d.type] || '#ccc';
-      })
-      .attr('stroke-opacity', d => {
-        const s = (d.source as any).id || d.source;
-        const t = (d.target as any).id || d.target;
-        if (s === activeId || t === activeId) return 0.9;
-        if (activeId) return 0.05;
-        return d.type === 'wing-affiliation' ? 0.25 : 0.4;
-      })
-      .attr('filter', d => {
-        const s = (d.source as any).id || d.source;
-        const t = (d.target as any).id || d.target;
-        return (s === activeId || t === activeId) ? 'url(#edge-glow)' : null;
-      });
-  }, [hoverId, focusNodeId, selectedSinner, selectedEntity, graphData]);
-
-  // --- D3 Simulation & Rendering ---
+  // --- Worker Lifecycle ---
   useEffect(() => {
-    if (!svgRef.current || !containerRef.current) return;
+    const worker = new Worker(new URL('./loreGraphWorker.ts', import.meta.url), { type: 'module' });
+    workerRef.current = worker;
+
+    worker.onmessage = (event) => {
+      const { type, nodes: workerNodes } = event.data;
+      if (type === 'tick') {
+        workerNodes.forEach((n: any) => {
+          const local = nodesRef.current.get(n.id);
+          if (local) {
+            local.x = n.x;
+            local.y = n.y;
+          }
+        });
+      }
+    };
+
+    worker.postMessage({ type: 'init', data: { physics } });
+
+    return () => worker.terminate();
+  }, []);
+
+  useEffect(() => {
+    if (workerRef.current) {
+      // Initialize/Update nodes with positions from refs if available
+      graphData.nodes.forEach(n => {
+        const existing = nodesRef.current.get(n.id);
+        if (existing) {
+          n.x = existing.x;
+          n.y = existing.y;
+        }
+      });
+      nodesRef.current = new Map(graphData.nodes.map(n => [n.id, n]));
+      workerRef.current.postMessage({ type: 'updateData', data: { nodes: graphData.nodes, links: graphData.links } });
+    }
+  }, [graphData]);
+
+  useEffect(() => {
+    workerRef.current?.postMessage({ type: 'updatePhysics', data: { physics } });
+  }, [physics]);
+
+  // --- Rendering Functions ---
+  const renderCanvas = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !containerRef.current) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     const width = containerRef.current.clientWidth;
     const height = containerRef.current.clientHeight;
+    canvas.width = width * window.devicePixelRatio;
+    canvas.height = height * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.save();
+    ctx.translate(transformRef.current.x, transformRef.current.y);
+    ctx.scale(transformRef.current.k, transformRef.current.k);
+
+    const activeId = hoverId || focusNodeId || selectedSinner?.id || selectedEntity;
+
+    graphData.links.forEach(l => {
+      const s = nodesRef.current.get(typeof l.source === 'string' ? l.source : (l.source as any).id);
+      const t = nodesRef.current.get(typeof l.target === 'string' ? l.target : (l.target as any).id);
+      if (!s || !t) return;
+
+      const isConnected = (s.id === activeId || t.id === activeId);
+      ctx.beginPath();
+      ctx.moveTo(s.x!, s.y!);
+      ctx.lineTo(t.x!, t.y!);
+
+      ctx.strokeStyle = EDGE_COLORS[l.type] || '#ccc';
+      ctx.globalAlpha = isConnected ? 0.9 : (activeId ? 0.05 : 0.3);
+      ctx.lineWidth = isConnected ? 2 / transformRef.current.k : 1 / transformRef.current.k;
+
+      if (isConnected) {
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = ctx.strokeStyle;
+      } else {
+        ctx.shadowBlur = 0;
+      }
+
+      ctx.stroke();
+    });
+
+    ctx.restore();
+  }, [graphData.links, hoverId, focusNodeId, selectedSinner, selectedEntity]);
+
+  const updateSVGPositions = useCallback(() => {
+    if (!svgRef.current) return;
+    const transform = transformRef.current;
     const svg = d3.select(svgRef.current);
-    svg.selectAll('*').remove();
+    
+    svg.select('.zoom-group').attr('transform', transform.toString());
 
-    // 0. Definitions (Glows, Gradients, Filters)
-    const defs = svg.append('defs');
-
-    // Glow Filter
-    const glow = defs.append('filter').attr('id', 'glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
-    glow.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
-    const merge = glow.append('feMerge');
-    merge.append('feMergeNode').attr('in', 'coloredBlur');
-    merge.append('feMergeNode').attr('in', 'SourceGraphic');
-
-    // Edge Glow Filter
-    const edgeGlow = defs.append('filter').attr('id', 'edge-glow');
-    edgeGlow.append('feGaussianBlur').attr('stdDeviation', '2.5').attr('result', 'blur');
-    edgeGlow.append('feComposite').attr('in', 'SourceGraphic').attr('in2', 'blur').attr('operator', 'over');
-
-    // Hexagon ClipPath
-    defs.append('clipPath').attr('id', 'hexagon-clip')
-      .append('path').attr('d', 'M20,0 L37.32,10 L37.32,30 L20,40 L2.68,30 L2.68,10 Z');
-
-    // 1. Container setup with Scanline Overlay
-    const mainContainer = svg.append('g').attr('class', 'main-container');
-    const g = mainContainer.append('g').attr('class', 'zoom-group');
-    svg.on('click', (e) => {
-      // Clear focus if clicking the background
-      if (e.target.tagName === 'svg' && onClearFocus) {
-        onClearFocus();
-      }
-    });
-
-    const linksG = g.append('g').attr('class', 'links-layer');
-    const nodesG = g.append('g').attr('class', 'nodes');
-
-    // Zoom setup with initial scale for overview
-    const zoom = d3.zoom<SVGSVGElement, unknown>()
-      .scaleExtent([0.05, 4])
-      .on('zoom', (e) => g.attr('transform', e.transform));
-
-    svg.call(zoom);
-    zoomRef.current = zoom;
-
-    // Set initial overview scale (0.45 captures the 850px outer ring)
-    svg.call(zoom.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(0.45).translate(-width / 2, -height / 2));
-
-    // ─── Size tokens (must match rendering constants below) ───────────────────
-    const S_R = 26;   // sinner circle circumradius
-    const H_R = 28;   // abnormality hex circumradius
-    const W_R = 42;   // wing hex circumradius (1.5x larger)
-    const BK_W = 52;   // book card width
-    const BK_H = 68;   // book card height
-
-    // 2. Force Simulation — Hub-and-Spoke 4-Belt Topography
-    const simulation = d3.forceSimulation<GraphNode>(graphData.nodes)
-      .velocityDecay(0.6)
-      .alphaDecay(0.05)
-      .alphaMin(0.001)
-      .force('link', d3.forceLink<GraphNode, GraphLink>(graphData.links)
-        .id(d => d.id)
-        .distance(d => {
-          if (d.type === 'literary-origin') return 80 + physics.nodeSpacing * 0.1;
-          if (d.type === 'ego-synchronization') return 120 + physics.nodeSpacing * 0.2;
-          if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
-          if (d.type === 'wing-affiliation') return 300 + physics.nodeSpacing * 0.5;
-          return physics.nodeSpacing;
-        })
-        .strength(d => {
-          if (d.type === 'wing-affiliation') return 0.05;
-          if (d.type === 'ego-synchronization') return 0.35;
-          if (d.type === 'literary-origin') return 0.06;
-          return 0.15;
-        })
-      )
-
-      .force('charge', d3.forceManyBody<GraphNode>().strength(d => {
-        const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-        if (isMajorFaction) return physics.repulsion * 2.5;
-        if (d.nodeType === 'literary-source') return physics.repulsion * 1.5;
-        if (d.nodeType === 'sinner') return physics.repulsion * 0.3;
-        return physics.repulsion;
-      }).theta(0.85).distanceMax(600))
-
-      .force('gravX', d3.forceX<GraphNode>(width / 2).strength(physics.centering * 0.1))
-      .force('gravY', d3.forceY<GraphNode>(height / 2).strength(physics.centering * 0.1))
-
-      .force('sinnerRing', (() => {
-        // EXCLUDE Dante from the ring so he can sit in the center
-        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner' && n.id !== 'dante');
-        const angleMap = new Map<string, number>();
-        sinnerList.forEach((s, i) => {
-          angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
-        });
-        const R = 250; // Match the radial periphery target
-        const cx = width / 2;
-        return d3.forceX<GraphNode>(d => {
-          if (d.nodeType !== 'sinner' || d.id === 'dante') return cx;
-          const angle = angleMap.get(d.id) ?? 0;
-          return cx + R * Math.cos(angle);
-        }).strength(d => (d.nodeType === 'sinner' && d.id !== 'dante') ? 1.0 : 0);
-      })())
-
-      .force('sinnerRingY', (() => {
-        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner' && n.id !== 'dante');
-        const angleMap = new Map<string, number>();
-        sinnerList.forEach((s, i) => {
-          angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
-        });
-        const R = 250;
-        const cy = height / 2;
-        return d3.forceY<GraphNode>(d => {
-          if (d.nodeType !== 'sinner' || d.id === 'dante') return cy;
-          const angle = angleMap.get(d.id) ?? 0;
-          return cy + R * Math.sin(angle);
-        }).strength(d => (d.nodeType === 'sinner' && d.id !== 'dante') ? 1.0 : 0);
-      })())
-
-      .force('periphery', d3.forceRadial<GraphNode>(
-        d => {
-          const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-          if (isMajorFaction) return 900;
-          if (d.entityType === 'abnormality') return 600;
-          if (d.nodeType === 'literary-source') return 350;
-
-          // Dante is the HUB (center), other sinners form the SPOKE (ring)
-          if (d.id === 'dante') return 0;
-          if (d.nodeType === 'sinner') return 250;
-
-          return 470;
-        },
-        width / 2, height / 2
-      ).strength(d => {
-        const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-        if (isMajorFaction) return 0.95;
-        if (d.id === 'dante') return 1.0; // Anchor Dante to the absolute center
-        if (d.nodeType === 'sinner') return 1.0;
-        if (d.nodeType === 'literary-source') return 0.85;
-        return 0.7;
-      }))
-
-      // Collision — prevents visual overlap, tuned per shape
-      .force('collision', d3.forceCollide<GraphNode>().radius(d => {
-        if (d.nodeType === 'literary-source') return 62;
-        if (d.entityType === 'wing') return 52;   // Wing hex lớn nhất
-        if (d.entityType === 'association') return 46;
-        if (d.entityType === 'finger') return 44;
-        if (d.entityType === 'abnormality') return H_R + 16;
-        return S_R + 14;
-      }).strength(0.95).iterations(3));  // iterations 3: tránh overlap khi Wings va nhau ở outer ring
-
-    // ── Scatter nodes before starting so the animation is graceful ────────────
-    // Without this, all nodes start at (0,0) and explode outward chaotically.
-    // With scatter, they start spread out and animate INTO their final positions.
-    const scatterR = Math.min(width, height) * 0.35;
-    graphData.nodes.forEach((node, i) => {
-      if (node.x === undefined || (node.x === 0 && node.y === 0)) {
-        const angle = (2 * Math.PI * i) / graphData.nodes.length;
-        node.x = width / 2 + scatterR * Math.cos(angle) * (0.6 + Math.random() * 0.5);
-        node.y = height / 2 + scatterR * Math.sin(angle) * (0.6 + Math.random() * 0.5);
-      }
-    });
-
-    // 3. Render Links
-    const links = linksG.selectAll('path').data(graphData.links).join('path').attr('class', 'link-path')
-      .attr('stroke', d => EDGE_COLORS[d.type] || '#ccc')
-      .attr('stroke-width', d => {
-        const count = graphData.sharedThemeCount[`${(d.source as any).id}-${(d.target as any).id}`] || 0;
-        return d.type === 'literary-origin' ? 1.5 + count * 0.4 : 1.2 + count * 0.4;
-      })
-      .attr('data-base-width', d => {
-        const count = graphData.sharedThemeCount[`${(d.source as any).id}-${(d.target as any).id}`] || 0;
-        return d.type === 'literary-origin' ? 1.5 + count * 0.4 : 1.2 + count * 0.4;
-      })
-      .attr('stroke-dasharray', d => d.type === 'wing-affiliation' || d.type === 'ego-synchronization' || d.type === 'structural-hierarchy' ? '6,4' : 'none')
-      .style('pointer-events', 'stroke');
-
-    // Add tooltips to links
-    links.selectAll('title').remove();
-    links.append('title').text((d: any) => `${EDGE_LABELS[d.type as EdgeType]}${d.label ? `: ${d.label}` : ''}`);
-
-
-
-    // Add CSS Animation for dashed links
-    svg.append('style').text(`
-      @keyframes dash-flow { to { stroke-dashoffset: -20; } }
-      .link-path { transition: stroke 0.2s ease, stroke-opacity 0.2s ease, filter 0.2s ease; }
-      .link-path[stroke-dasharray="6,4"] { animation: dash-flow 1.5s linear infinite; }
-      .node-group { transition: opacity 0.2s ease; }
-      .node-group[data-entity-type="wing"]:hover .node-hit {
-        filter: drop-shadow(0 0 8px var(--wing-neon)) brightness(1.2);
-        stroke-width: 3;
-      }
-      .node-hit { transition: stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1), stroke-width 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s ease; }
-      .scanline-overlay { pointer-events: none; opacity: 0.05; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 4px, 3px 100%; }
-    `);
-
-    // 4. Render Nodes
-    const nodeGroups = nodesG.selectAll('.node-group').data(graphData.nodes).join('g')
-      .attr('class', 'node-group')
-      .attr('data-node-type', d => d.nodeType)
-      .attr('data-entity-type', d => d.entityType || 'none')
-      .call(d3.drag<SVGGElement, GraphNode>()
-        .on('start', (e, d) => { if (!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-        .on('drag', (e, d) => { d.fx = e.x; d.fy = e.y; })
-        .on('end', (e, d) => { if (!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }));
-
-    // Node Shapes & Aesthetics  (S_R / H_R / BK_W / BK_H defined above with simulation)
-    // Pointy-top hexagon path centered on (0,0)
-    const makeHexPath = (r: number) => {
-      const pts: [number, number][] = Array.from({ length: 6 }, (_, i) => {
-        const a = (Math.PI / 3) * i - Math.PI / 6;
-        return [r * Math.cos(a), r * Math.sin(a)];
+    svg.selectAll<SVGGElement, GraphNode>('.node-group')
+      .attr('transform', d => {
+        const n = nodesRef.current.get(d.id);
+        return n ? `translate(${n.x},${n.y})` : '';
       });
-      return `M${pts.map(p => p.join(',')).join('L')}Z`;
-    };
-    const hexPath = makeHexPath(H_R);
-    const wingHexPath = makeHexPath(W_R);
+  }, []);
 
-    nodeGroups.each(function (d) {
-      const el = d3.select(this);
-      const color = d.nodeType === 'sinner'
-        ? NODE_GAME_COLORS[d.canonicalGame]
-        : ENTITY_COLORS[d.entityType || 'character'];
+  useEffect(() => {
+    let frameId: number;
+    const loop = () => {
+      renderCanvas();
+      updateSVGPositions();
+      frameId = requestAnimationFrame(loop);
+    };
+    frameId = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(frameId);
+  }, [renderCanvas, updateSVGPositions]);
+
+  // --- SVG Node Rendering Logic ---
+  const makeHexPath = (r: number) => {
+    const pts: [number, number][] = Array.from({ length: 6 }, (_, i) => {
+      const a = (Math.PI / 3) * i - Math.PI / 6;
+      return [r * Math.cos(a), r * Math.sin(a)];
+    });
+    return `M${pts.map(p => p.join(',')).join('L')}Z`;
+  };
+
+  const renderNodeContent = useCallback((el: d3.Selection<SVGGElement, GraphNode, any, any>) => {
+    el.each(function (d) {
+      const nodeEl = d3.select(this);
+      nodeEl.selectAll('*').remove();
+
+      // Add node type for CSS selection
+      nodeEl.attr('data-node-type', d.nodeType);
+      if (d.entityType) nodeEl.attr('data-entity-type', d.entityType);
+
+      const color = d.nodeType === 'sinner' ? NODE_GAME_COLORS[d.canonicalGame] : ENTITY_COLORS[d.entityType || 'character'];
 
       if (d.nodeType === 'literary-source') {
         const sourceId = d.id.replace('lit-', '');
         const sourceData = literarySources.find(ls => ls.id === sourceId);
-
-        // Book card — centered on origin
-        el.append('rect').attr('class', 'node-hit')
+        const isTheological = sourceData?.category === 'theological';
+        
+        // Base Card / Background
+        nodeEl.append('rect').attr('class', 'node-hit book-card-base')
           .attr('x', -BK_W / 2).attr('y', -BK_H / 2)
           .attr('width', BK_W).attr('height', BK_H)
-          .attr('rx', 2)
-          .attr('fill', '#0c0c0e')
-          .attr('stroke', '#d4af37')
-          .attr('stroke-width', 1.8)
-          .style('filter', 'drop-shadow(0 0 10px rgba(0,0,0,0.5))');
+          .attr('rx', 1).attr('fill', '#080809').attr('stroke', isTheological ? '#f5c518' : '#a08a70').attr('stroke-width', 2);
 
-        // Background Cover Preview (Monochrome/Darkened)
+        // Cover Image
         if (sourceData?.coverImage) {
-          el.append('image')
+          nodeEl.append('image').attr('class', 'book-cover-preview')
             .attr('href', sourceData.coverImage)
-            .attr('x', -BK_W / 2 + 1).attr('y', -BK_H / 2 + 1)
-            .attr('width', BK_W - 2).attr('height', BK_H - 2)
+            .attr('x', -BK_W / 2 + 3).attr('y', -BK_H / 2 + 1)
+            .attr('width', BK_W - 4).attr('height', BK_H - 2)
             .attr('preserveAspectRatio', 'xMidYMid slice')
-            .attr('class', 'book-cover-preview')
-            .style('filter', 'grayscale(100%) brightness(15%)')
-            .style('opacity', 0.6);
+            .style('filter', 'grayscale(100%) brightness(20%)').style('opacity', 0.6);
         }
 
-        // Binding Decorators (Gáy sách)
-        const bX = -BK_W / 2 + 5;
-        el.append('line')
-          .attr('x1', bX).attr('y1', -BK_H / 2 + 2)
-          .attr('x2', bX).attr('y2', BK_H / 2 - 2)
-          .attr('stroke', '#d4af37').attr('stroke-width', 1).attr('opacity', 0.4);
+        // Spine Decoration (Left side)
+        nodeEl.append('line').attr('x1', -BK_W / 2 + 3).attr('y1', -BK_H / 2).attr('x2', -BK_W / 2 + 3).attr('y2', BK_H / 2)
+          .attr('stroke', isTheological ? '#f5c518' : '#a08a70').attr('stroke-width', 0.5).attr('opacity', 0.8);
 
-        [-12, 0, 12].forEach(offset => {
-          el.append('line')
-            .attr('x1', -BK_W / 2 + 1).attr('y1', offset)
-            .attr('x2', bX).attr('y2', offset)
-            .attr('stroke', '#d4af37').attr('stroke-width', 0.8).attr('opacity', 0.3);
-        });
-
-        // Vector Icon
-        const iconPaths: Record<string, string> = {
-          'divine-comedy': 'M12 2l-4 4 4 4 4-4-4-4z M12 22v-8',
-          'moby-dick': 'M12 5v14 M5 12h14 M12 19c-3.866 0-7-3.134-7-7',
-          'the-wings': 'M3 10c0-1.657 1.343-3 3-3s3 1.343 3 3v4h4v-4c0-1.657 1.343-3 3-3s3 1.343 3 3',
-          'faust-goethe': 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M4 4.5A2.5 2.5 0 0 1 6.5 7H20 M4 4.5v15',
-          'don-quixote': 'M14.5 4l-10 10 M3 21l18-18',
-          'the-metamorphosis': 'M12 3v18 M6 8h12 M6 12h12 M6 16h12',
-          'the-stranger': 'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 9v4',
-          'dream-of-the-red-chamber': 'M6 3h12l3 6-9 12-9-12z',
-          'crime-and-punishment': 'M12 3l-8 12h16z M12 15v6',
-          'wuthering-heights': 'M4 12c0 4 3 7 7 7s7-3 7-7 M12 2v10',
-          'demian': 'M12 22c5 0 9-4 9-9s-4-9-9-9-9 4-9 9 4 9 9 9z',
-          'odyssey': 'M3 11l18-1 1 2H2l1-1z M12 10V3L4 10z',
-          'kabbalah-tree-of-life': 'M12 2v20 M12 7h5 M12 12h-5 M12 17h5',
-          'book-of-revelations': 'M5 3l14 0c1 0 1 1 1 1s0 1-1 1l-14 0c-1 0-1-1-1-1s0-1 1-1z M5 21l14 0c1 0 1-1 1-1s0-1-1-1l-14 0c-1 0-1 1-1 1s0 1 1 1z M12 5v14',
-          'cain-and-abel': 'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 7l0 10 M7 12l10 0',
-        };
-
-        // Special premium styling for theological origins — "Golden Bough" Aesthetic
-        const isTheological = sourceData?.category === 'theological';
+        // Theological "Divine Halo" / Aura
         if (isTheological) {
-          // Layer 1: Diffuse outer glow (visible halo)
-          el.insert('rect', ':first-child')
-            .attr('x', -BK_W / 2 - 8).attr('y', -BK_H / 2 - 8)
-            .attr('width', BK_W + 16).attr('height', BK_H + 16)
-            .attr('fill', 'none').attr('stroke', '#f5c518')
-            .attr('stroke-width', 2).attr('opacity', 0.5)
-            .attr('rx', 4)
-            .style('filter', 'blur(6px)');
-
-          // Layer 2: Crisp outer frame (double-frame effect)
-          el.insert('rect', ':nth-child(2)')
-            .attr('x', -BK_W / 2 - 4).attr('y', -BK_H / 2 - 4)
-            .attr('width', BK_W + 8).attr('height', BK_H + 8)
-            .attr('fill', 'none').attr('stroke', '#f5c518')
-            .attr('stroke-width', 1.2).attr('opacity', 0.7)
-            .attr('rx', 3)
-            .attr('stroke-dasharray', '4 2');
-
-          // Layer 3: Upgrade inner card border
-          el.select('.node-hit')
-            .attr('stroke', '#f5c518')
-            .attr('stroke-width', 2.5)
-            .style('filter', 'drop-shadow(0 0 8px rgba(245,197,24,0.4))');
-
-          // Corner accents (decorative gilded corners)
-          const cx = BK_W / 2 + 1, cy = BK_H / 2 + 1;
-          [[-cx, -cy], [cx, -cy], [cx, cy], [-cx, cy]].forEach(([x, y]) => {
-            el.append('circle')
-              .attr('cx', x).attr('cy', y)
-              .attr('r', 2.5)
-              .attr('fill', '#f5c518')
-              .attr('opacity', 0.6);
-          });
+          nodeEl.insert('rect', ':first-child')
+            .attr('x', -BK_W / 2 - 10).attr('y', -BK_H / 2 - 10)
+            .attr('width', BK_W + 20).attr('height', BK_H + 20)
+            .attr('fill', 'none').attr('stroke', '#fdfbd3').attr('stroke-width', 2.5).attr('opacity', 0.4).attr('rx', 4)
+            .style('filter', 'blur(8px)');
+          
+          nodeEl.append('path').attr('d', 'M-8,-25 L8,-25 M0,-30 L0,-20') // Small cross/anchor symbol
+            .attr('stroke', '#f5c518').attr('stroke-width', 1.5).attr('fill', 'none');
         }
 
-        const path = iconPaths[sourceId] || 'M12 6.253v13c-2.5-1.7-6.5-1.7-9 0v-13c2.5-1.7 6.5-1.7 9 0z M12 6.253c2.5-1.7 6.5-1.7 9 0v13c-2.5-1.7-6.5-1.7-9 0';
-
-        // Icon: theological gets brighter gold, literary gets muted gold
-        el.append('path')
-          .attr('d', path)
-          .attr('transform', `translate(${-12}, ${-12}) scale(1)`)
-          .attr('fill', isTheological ? 'rgba(245,197,24,0.15)' : 'none')
-          .attr('stroke', isTheological ? '#f5c518' : '#d4af37')
-          .attr('stroke-width', isTheological ? 2 : 1.5)
-          .attr('opacity', isTheological ? 1 : 0.8)
-          .style('pointer-events', 'none');
+        // Standard Icon
+        const iconPath = 'M6 3.126v6.5c-1.25-.85-3.25-.85-4.5 0v-6.5c1.25-.85 3.25-.85 4.5 0z M6 3.126c1.25-.85 3.25-.85 4.5 0v6.5c-1.25-.85-3.25-.85-4.5 0';
+        nodeEl.append('path').attr('d', iconPath).attr('transform', `translate(-6, -6) scale(1.2)`)
+          .attr('stroke', isTheological ? '#f5c518' : '#a08a70').attr('fill', 'none').attr('stroke-width', 1).attr('opacity', 0.7);
 
       } else if (d.nodeType === 'entity') {
         if (d.entityType === 'wing') {
-          // Sharp Metallic/Neon Hex for Wings
-          const wingColor = d.id === 'wing-n-corp' ? '#e2e8f0' : // Steel for N Corp
-            d.id === 'wing-w-corp' ? '#60a5fa' : // Blue for W Corp
-              d.id === 'wing-k-corp' ? '#34d399' : // Green for K Corp
-                d.id === 'wing-t-corp' ? '#fbbf24' : // Gold for T Corp
-                  color;
-
-          el.style('--wing-neon', wingColor);
-
-          el.append('path').attr('class', 'node-hit')
-            .attr('d', wingHexPath)
-            .attr('fill', '#080809').attr('stroke', wingColor).attr('stroke-width', 2.5)
-            .attr('stroke-linejoin', 'miter');
-
-          // Outer "Circuit" frame
-          el.append('path')
-            .attr('d', makeHexPath(W_R + 4))
-            .attr('fill', 'none').attr('stroke', wingColor).attr('stroke-width', 0.5).attr('opacity', 0.3);
-
-          // Typography/Logo placeholder
-          const logoText = d.name.split(' ')[0].charAt(0); // "N", "W", etc.
-          el.append('text').text(logoText)
-            .attr('text-anchor', 'middle').attr('dy', '0.35em')
-            .attr('fill', wingColor).attr('font-size', '20px').attr('font-weight', '900')
-            .attr('font-family', 'monospace').attr('opacity', 0.8);
-
+          const wingColor = d.id === 'wing-n-corp' ? '#e2e8f0' : d.id === 'wing-w-corp' ? '#60a5fa' : d.id === 'wing-k-corp' ? '#34d399' : d.id === 'wing-t-corp' ? '#fbbf24' : color;
+          nodeEl.append('path').attr('class', 'node-hit').attr('d', makeHexPath(W_R)).attr('fill', '#080809').attr('stroke', wingColor).attr('stroke-width', 2.5);
+          nodeEl.append('text').text(d.name.charAt(0)).attr('text-anchor', 'middle').attr('dy', '0.35em').attr('fill', wingColor).attr('font-size', '20px').attr('font-weight', '900');
         } else if (d.entityType === 'abnormality') {
-          // Abnormality Hex
           const riskColor = d.riskLevel ? RISK_LEVEL_COLORS[d.riskLevel] : '#8a4a5a';
-
-          // 1. Ghostly Outer Glow (Risk-specific blurred aura)
-          el.append('path').attr('class', 'abnormality-glow')
-            .attr('d', hexPath)
-            .attr('fill', 'none').attr('stroke', riskColor).attr('stroke-width', 10)
-            .attr('opacity', 0.25).style('filter', 'blur(6px)');
-
-          // 2. Main Hex Frame
-          el.append('path').attr('class', 'node-hit')
-            .attr('d', hexPath)
-            .attr('fill', '#0a0a0c').attr('stroke', riskColor).attr('stroke-width', 1.8);
-
-          // 3. Subject Number (Revealed on hover)
-          el.append('text').attr('class', 'subject-number')
-            .text(d.subjectNumber || '?-??-??')
-            .attr('text-anchor', 'middle').attr('dy', '0.35em')
-            .attr('fill', riskColor).attr('font-size', '9px').attr('font-weight', '900')
-            .attr('font-family', 'monospace')
-            .style('opacity', 0).style('pointer-events', 'none');
-
-          // 4. "Cognitohazard Suppressed" Censored Label
-          const censG = el.append('g').attr('class', 'censored-overlay');
-          censG.append('rect')
-            .attr('x', -24).attr('y', -7)
-            .attr('width', 48).attr('height', 14)
-            .attr('fill', '#000').attr('stroke', '#e11d48').attr('stroke-width', 1);
-
-          censG.append('text').attr('dy', '0.35em').attr('text-anchor', 'middle')
-            .attr('fill', '#e11d48').attr('font-size', '4.5px').attr('font-weight', '900')
-            .attr('letter-spacing', '0.5px')
-            .text('COGNITOHAZARD SUPPRESSED');
-
-        } else if (d.entityType === 'association') {
-          // Diamond for Associations
-          const dR = H_R;
-          el.append('path').attr('class', 'node-hit')
-            .attr('d', `M0 -${dR} L${dR} 0 L0 ${dR} L-${dR} 0 Z`)
-            .attr('fill', '#0c0c0e').attr('stroke', '#d4af37').attr('stroke-width', 2);
-
-          el.append('text').text(d.name.split(' ')[0].charAt(0))
-            .attr('text-anchor', 'middle').attr('dy', '0.35em')
-            .attr('fill', '#d4af37').attr('font-size', '16px').attr('font-weight', '900')
-            .attr('font-family', 'serif');
-
+          nodeEl.append('path').attr('d', makeHexPath(H_R)).attr('fill', 'none').attr('stroke', riskColor).attr('stroke-width', 10).attr('opacity', 0.25).style('filter', 'blur(6px)');
+          nodeEl.append('path').attr('class', 'node-hit').attr('d', makeHexPath(H_R)).attr('fill', '#0a0a0c').attr('stroke', riskColor).attr('stroke-width', 1.8);
+          nodeEl.append('text').text(d.subjectNumber || '?-??-??').attr('text-anchor', 'middle').attr('dy', '0.35em').attr('fill', riskColor).attr('font-size', '9px').attr('font-weight', '900');
+        } else if (d.entityType === 'association' || d.entityType === 'syndicate') {
+          const isBladeLineage = d.id === 'entity-blade-lineage';
+          const factionColor = isBladeLineage ? '#22c55e' : '#d4af37';
+          
+          // Diamond shape for Blade Lineage / Syndicates
+          nodeEl.append('path').attr('d', `M0 -${H_R} L${H_R} 0 L0 ${H_R} L-${H_R} 0 Z`).attr('fill', '#0c0c0e').attr('stroke', factionColor).attr('stroke-width', 2);
+          
+          if (isBladeLineage) {
+            // Gat (Bamboo Hat) Icon
+            const gatPath = 'M-12,5 Q0,-8 12,5 L12,8 Q0,-5 -12,8 Z M-6,5 Q0,-18 6,5';
+            nodeEl.append('path').attr('d', gatPath).attr('fill', 'none').attr('stroke', factionColor).attr('stroke-width', 1.5).attr('opacity', 0.9);
+          } else {
+            nodeEl.append('text').text(d.name.charAt(0)).attr('text-anchor', 'middle').attr('dy', '0.35em').attr('fill', factionColor).attr('font-size', '16px').attr('font-weight', '900');
+          }
         } else if (d.entityType === 'finger') {
-          // Triangle for Fingers (Syndicates) - Sharp & Grimy
-          const tR = H_R;
-          const fingerColor = '#9333ea'; // Purple/Crimson Syndicate feel
-
-          el.append('path').attr('class', 'node-hit finger-node')
-            .attr('d', `M0 -${tR} L${tR} ${tR} L-${tR} ${tR} Z`)
-            .attr('fill', '#080809').attr('stroke', fingerColor).attr('stroke-width', 2.5);
-
-          // Kanji/Han character from Confucian Virtues
-          el.append('text').attr('class', 'finger-virtue')
-            .text((d as any).tokenLabel || '?')
-            .attr('text-anchor', 'middle').attr('dy', '0.65em')
-            .attr('fill', '#e2e8f0').attr('font-size', '16px').attr('font-weight', '900')
-            .attr('font-family', '"Noto Serif SC", "Source Han Serif", serif')
-            .style('filter', 'drop-shadow(0 0 5px rgba(147, 51, 234, 0.5))');
-
-        } else if (d.entityType === 'character') {
-          // Circle for characters like Binah
-          el.append('circle').attr('class', 'node-hit')
-            .attr('r', H_R - 2).attr('fill', '#0a0a0c').attr('stroke', '#0ea5e9').attr('stroke-width', 2);
+          nodeEl.append('path').attr('d', `M0 -${H_R} L${H_R} ${H_R} L-${H_R} ${H_R} Z`).attr('fill', '#080809').attr('stroke', '#9333ea').attr('stroke-width', 2.5);
+          nodeEl.append('text').text((d as any).tokenLabel || '?').attr('text-anchor', 'middle').attr('dy', '0.65em').attr('fill', '#e2e8f0').attr('font-size', '16px').attr('font-weight', '900');
         } else {
-          // Fallback shape (syndicates, facilities, etc.)
-          el.append('circle').attr('class', 'node-hit')
-            .attr('r', H_R).attr('fill', '#0c0c0e').attr('stroke', '#888').attr('stroke-width', 1.8);
+          nodeEl.append('circle').attr('class', 'node-hit').attr('r', H_R).attr('fill', '#0c0c0e').attr('stroke', color).attr('stroke-width', 2);
         }
-
       } else if (d.nodeType === 'sinner') {
-        const s = d as any;
-        const isDante = d.id === 'dante';
-        const sigColor = isDante ? '#b01c37' : (s.signatureColor || '#b8202f');
-        const sNum = s.sinnerNumber || '??';
-        const nodeRadius = isDante ? S_R + 4 : S_R;
-
-        // 1. Signature Inner Glow (Extra intense for Dante)
-        el.append('circle').attr('class', 'node-glow')
-          .attr('r', nodeRadius + (isDante ? 15 : 8))
-          .attr('fill', sigColor)
-          .attr('opacity', isDante ? 0.35 : 0.12)
-          .style('filter', isDante ? 'blur(10px)' : 'blur(6px)');
-
-        // 2. Dash-array Radar Ring (Red Limbus core)
-        el.append('circle').attr('class', 'radar-ring')
-          .attr('r', nodeRadius + 4).attr('fill', 'none').attr('stroke', '#b8202f')
-          .attr('stroke-width', isDante ? 1.5 : 1).attr('stroke-dasharray', isDante ? 'none' : '3,4')
-          .style('opacity', isDante ? 0.8 : 0.5);
-
-        // 3. Main Circular Frame
-        el.append('circle').attr('class', 'node-hit')
-          .attr('r', nodeRadius).attr('fill', '#0c0c0e').attr('stroke', sigColor).attr('stroke-width', isDante ? 3 : 2);
-
-        // 4. Sinner Number (Visible by default)
-        el.append('text').attr('class', 'sinner-number')
-          .text(isDante ? 'X' : sNum)
-          .attr('text-anchor', 'middle').attr('dy', '0.35em')
-          .attr('fill', sigColor).attr('font-size', isDante ? '18px' : '14px').attr('font-weight', '900')
-          .attr('font-family', 'monospace')
-          .style('text-shadow', `0 0 5px ${sigColor}bb`)
-          .style('pointer-events', 'none');
-
-        // 5. Personal Emblem (Visible on hover)
-        if (s.emblemPath) {
-          el.append('path').attr('class', 'sinner-emblem')
-            .attr('d', s.emblemPath)
-            .attr('transform', `translate(-12, -12) scale(1)`)
-            .attr('fill', 'none').attr('stroke', sigColor).attr('stroke-width', 1.5)
-            .attr('stroke-linecap', 'round').attr('stroke-linejoin', 'round')
-            .style('opacity', 0).style('pointer-events', 'none');
+        const sigColor = d.id === 'dante' ? '#b01c37' : ((d as any).signatureColor || '#b8202f');
+        nodeEl.append('circle').attr('r', S_R + 8).attr('fill', sigColor).attr('opacity', 0.12).style('filter', 'blur(6px)');
+        nodeEl.append('circle').attr('class', 'node-hit').attr('r', S_R).attr('fill', '#0c0c0e').attr('stroke', sigColor).attr('stroke-width', 2);
+        nodeEl.append('text').attr('class', 'sinner-number').text((d as any).sinnerNumber || '??').attr('text-anchor', 'middle').attr('dy', '0.35em').attr('fill', sigColor).attr('font-size', '14px').attr('font-weight', '900');
+        if ((d as any).emblemPath) {
+          nodeEl.append('path').attr('class', 'sinner-emblem').attr('d', (d as any).emblemPath).attr('transform', `translate(-12, -12)`).attr('fill', 'none').attr('stroke', sigColor).attr('stroke-width', 1.5).style('opacity', 0);
         }
       }
 
-      if (d.icon) {
-        const iSize = d.nodeType === 'sinner' ? (S_R - 5) * 2 : (H_R - 6) * 2;
-        el.append('image').attr('href', d.icon)
-          .attr('x', -iSize / 2).attr('y', -iSize / 2)
-          .attr('width', iSize).attr('height', iSize);
-      }
-    }); // End nodeGroups.each
-
-    // Labels — anchored to shape's actual bottom edge
-    nodeGroups.append('text').text(d => d.name)
-      .attr('dy', d => {
-        if (d.nodeType === 'literary-source') return BK_H / 2 + 13;
-        if (d.entityType === 'wing') return W_R + 15;
-        if (d.nodeType === 'entity') return H_R + 13;
-        return S_R + 13;
-      })
-      .attr('text-anchor', 'middle').attr('fill', '#e8e0d5')
-      .attr('font-size', '11px').attr('font-weight', '600').attr('letter-spacing', '0.5px')
-      .style('text-shadow', '0 2px 4px rgba(0,0,0,0.8)');
-
-    // 5. Interactions
-    nodeGroups.on('click', (e, d) => {
-      e.stopPropagation();
-      if (d.nodeType === 'sinner') {
-        onNodeClick(sinners.find(s => s.id === d.id)!);
-      } else if (d.nodeType === 'literary-source') {
-        onSourceClick(d.id.replace('lit-', ''));
-      } else {
-        if (d.entityType === 'wing' && onToggleExpand) {
-          onToggleExpand(d.id);
-        }
-        onEntityClick(d.id);
-      }
-    }).on('contextmenu', (e, d) => {
-      e.preventDefault();
-      onPin(d);
-    }).on('mouseenter', (event, d) => {
-      setHoverId(d.id);
-      const rect = containerRef.current!.getBoundingClientRect();
-      setTooltip({ visible: true, type: 'node', name: d.name, game: d.canonicalGame, themes: d.themes, x: event.clientX - rect.left, y: event.clientY - rect.top });
-    }).on('mouseleave', () => {
-      setHoverId(null);
-      setTooltip(t => ({ ...t, visible: false }));
+      nodeEl.append('text').text(d.name).attr('dy', d.nodeType === 'literary-source' ? BK_H / 2 + 13 : (d.entityType === 'wing' ? W_R + 15 : H_R + 13))
+        .attr('text-anchor', 'middle').attr('fill', '#e8e0d5').attr('font-size', '11px').attr('font-weight', '600').style('text-shadow', '0 2px 4px rgba(0,0,0,0.8)');
     });
+  }, []);
 
-    // Live tick — optimized to use cached selections
-    simulation.on('tick', () => {
-      links.attr('d', (d: any) => `M${d.source.x},${d.source.y}L${d.target.x},${d.target.y}`);
-      nodeGroups.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
-    });
-
-    simulationRef.current = simulation;
-    applyHighlights();
-
-    return () => {
-      simulation.stop();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [graphData]);
-
-  // --- Dynamic Physics Updates ---
+  // --- SVG Update Effect ---
   useEffect(() => {
-    if (!simulationRef.current) return;
-    const simulation = simulationRef.current;
-    const width = containerRef.current?.clientWidth || 800;
-    const height = containerRef.current?.clientHeight || 800;
+    if (!svgRef.current) return;
+    const svg = d3.select(svgRef.current);
+    let g = svg.select<SVGGElement>('.zoom-group');
+    
+    if (g.empty()) {
+      const defs = svg.append('defs');
+      const glow = defs.append('filter').attr('id', 'glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+      glow.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'coloredBlur');
+      const merge = glow.append('feMerge');
+      merge.append('feMergeNode').attr('in', 'coloredBlur');
+      merge.append('feMergeNode').attr('in', 'SourceGraphic');
 
-    const linkForce = simulation.force('link') as d3.ForceLink<GraphNode, GraphLink>;
-    if (linkForce) {
-      linkForce.distance(d => {
-        if (d.type === 'literary-origin') return 80 + physics.nodeSpacing * 0.1;
-        if (d.type === 'ego-synchronization') return 120 + physics.nodeSpacing * 0.2;
-        if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
-        if (d.type === 'wing-affiliation') return 300 + physics.nodeSpacing * 0.5;
-        return physics.nodeSpacing;
+      const divineHalo = defs.append('radialGradient').attr('id', 'divine-halo');
+      divineHalo.append('stop').attr('offset', '0%').attr('stop-color', '#fdfbd3').attr('stop-opacity', 0.6);
+      divineHalo.append('stop').attr('offset', '70%').attr('stop-color', '#f5c518').attr('stop-opacity', 0.2);
+      divineHalo.append('stop').attr('offset', '100%').attr('stop-color', '#f5c518').attr('stop-opacity', 0);
+
+      g = svg.append('g').attr('class', 'zoom-group');
+      
+      const zoom = d3.zoom<SVGSVGElement, unknown>()
+        .scaleExtent([0.05, 4])
+        .on('zoom', (e) => { transformRef.current = e.transform; });
+      svg.call(zoom);
+      zoomRef.current = zoom;
+      
+      const width = containerRef.current?.clientWidth || 800;
+      const height = containerRef.current?.clientHeight || 800;
+      svg.call(zoom.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(0.45));
+    }
+
+    const nodesSelection = g.selectAll<SVGGElement, GraphNode>('.node-group')
+      .data(graphData.nodes, d => d.id);
+
+    const nodesEnter = nodesSelection.enter()
+      .append('g')
+      .attr('class', 'node-group')
+      .on('click', (e, d) => {
+        e.stopPropagation();
+        if (d.nodeType === 'sinner') onNodeClick(sinners.find(s => s.id === d.id)!);
+        else if (d.nodeType === 'literary-source') onSourceClick(d.id.replace('lit-', ''));
+        else {
+          if (d.entityType === 'wing' && onToggleExpand) onToggleExpand(d.id);
+          onEntityClick(d.id);
+        }
+      })
+      .on('mouseenter', (event, d) => {
+        setHoverId(d.id);
+        const rect = containerRef.current!.getBoundingClientRect();
+        setTooltip({ visible: true, type: 'node', name: d.name, game: d.canonicalGame, themes: d.themes, x: event.clientX - rect.left, y: event.clientY - rect.top });
+      })
+      .on('mouseleave', () => {
+        setHoverId(null);
+        setTooltip(t => ({ ...t, visible: false }));
+      })
+      .call(d3.drag<SVGGElement, GraphNode>()
+        .on('start', (e, d) => workerRef.current?.postMessage({ type: 'dragStart', data: { id: d.id, x: e.x, y: e.y } }))
+        .on('drag', (e, d) => workerRef.current?.postMessage({ type: 'dragMove', data: { id: d.id, x: e.x, y: e.y } }))
+        .on('end', (e, d) => workerRef.current?.postMessage({ type: 'dragEnd', data: { id: d.id } }))
+      );
+
+    nodesEnter.call(renderNodeContent);
+    nodesSelection.exit().remove();
+
+    // Highlights
+    const activeId = hoverId || focusNodeId || selectedSinner?.id || selectedEntity;
+    const connectedIds = new Set<string>();
+    if (activeId) {
+      connectedIds.add(activeId);
+      graphData.links.forEach(l => {
+        const sId = typeof l.source === 'string' ? l.source : (l.source as any).id;
+        const tId = typeof l.target === 'string' ? l.target : (l.target as any).id;
+        if (sId === activeId || tId === activeId) { connectedIds.add(sId); connectedIds.add(tId); }
       });
     }
 
-    const chargeForce = simulation.force('charge') as d3.ForceManyBody<GraphNode>;
-    if (chargeForce) {
-      chargeForce.strength(d => {
-        const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-        if (isMajorFaction) return physics.repulsion * 2.5;
-        if (d.nodeType === 'literary-source') return physics.repulsion * 1.5;
-        if (d.nodeType === 'sinner') return physics.repulsion * 0.3;
-        return physics.repulsion;
+    g.selectAll<SVGGElement, GraphNode>('.node-group')
+      .attr('opacity', d => !activeId || connectedIds.has(d.id) ? 1 : 0.15)
+      .each(function(d) {
+        const isActive = activeId === d.id;
+        d3.select(this).selectAll('.sinner-emblem')
+          .transition().duration(200)
+          .style('opacity', isActive ? 0.9 : 0);
+        d3.select(this).selectAll('.sinner-number')
+          .transition().duration(200)
+          .style('opacity', isActive ? 0 : 1);
+        d3.select(this).selectAll('.node-hit')
+          .transition().duration(200)
+          .attr('stroke-width', isActive ? 4 : (d.nodeType === 'wing' ? 2.5 : 2));
       });
-    }
 
-    const gravX = simulation.force('gravX') as d3.ForceX<GraphNode>;
-    if (gravX) gravX.strength(physics.centering * 0.1);
+  }, [graphData, hoverId, focusNodeId, selectedSinner, selectedEntity, renderNodeContent, sinners]);
 
-    const gravY = simulation.force('gravY') as d3.ForceY<GraphNode>;
-    if (gravY) gravY.strength(physics.centering * 0.1);
-
-    // Nudge the simulation to smoothly apply new physics
-    simulation.alpha(0.3).restart();
-  }, [physics]);
-
-  useEffect(() => { applyHighlights(); }, [applyHighlights]);
-
-  // Zoom to selection
+  // --- Zoom to selection ---
   useEffect(() => {
     const targetId = selectedSinner?.id || selectedEntity;
-    if (!targetId || !simulationRef.current || !zoomRef.current || !svgRef.current || !containerRef.current) return;
+    if (!targetId || !zoomRef.current || !svgRef.current || !containerRef.current) return;
 
-    // Defer long enough to outlast any graphData-triggered simulation rebuild
     const timer = setTimeout(() => {
-      if (!simulationRef.current || !zoomRef.current || !svgRef.current || !containerRef.current) return;
-      const node = simulationRef.current.nodes().find(n => n.id === targetId);
+      const node = nodesRef.current.get(targetId);
       if (!node || typeof node.x !== 'number' || typeof node.y !== 'number') return;
 
-      const width = containerRef.current.clientWidth;
-      const height = containerRef.current.clientHeight;
-      const scale = 1.6; // zoom level when focused
+      const width = containerRef.current!.clientWidth;
+      const height = containerRef.current!.clientHeight;
+      const scale = 1.6;
 
-      // Correct order: translate the node to the viewport center, THEN scale around that center.
-      // d3.zoomIdentity builds left-to-right:  translate(cx, cy) · scale(k) · translate(-nx, -ny)
       const transform = d3.zoomIdentity
         .translate(width / 2, height / 2)
         .scale(scale)
         .translate(-node.x, -node.y);
 
-      d3.select(svgRef.current)
+      d3.select(svgRef.current!)
         .transition()
         .duration(750)
         .ease(d3.easeCubicInOut)
-        .call(zoomRef.current.transform, transform);
-    }, 250); // 250ms: outlasts a D3 rebuild (~16ms) + React re-render cycle
+        .call(zoomRef.current!.transform, transform);
+    }, 250);
 
     return () => clearTimeout(timer);
   }, [selectedSinner, selectedEntity]);
 
   return (
     <TooltipProvider>
-      <div ref={containerRef} className="relative h-full w-full overflow-hidden bg-[#050506] font-sans selection:bg-bronze/30">
-        {/* Scanline Overlay */}
-        <div className="scanline-overlay absolute inset-0 z-10" />
+      <div ref={containerRef} className="relative h-full w-full overflow-hidden bg-[#050506] font-sans">
+        <div className="scanline-overlay absolute inset-0 z-10 pointer-events-none" />
+        <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
+        <svg ref={svgRef} className="absolute inset-0 h-full w-full" style={{ background: 'transparent' }} />
 
-        <svg ref={svgRef} className="h-full w-full" />
-
-        {/* Tooltip */}
         {tooltip.visible && (
-          <div className="absolute z-50 pointer-events-none p-0 bg-transparent border-none"
+          <div className="absolute z-50 pointer-events-none p-3 bg-black/90 border border-bronze/50 rounded-sm backdrop-blur-xl shadow-xl"
             style={{ left: tooltip.x + 20, top: tooltip.y }}>
-            <div className="relative group p-3 bg-black/90 border border-bronze/50 rounded-sm backdrop-blur-xl shadow-[0_0_20px_rgba(0,0,0,0.8)] overflow-hidden">
-              {/* Status Bar */}
-              <div className="absolute top-0 left-0 w-full h-[2px] bg-bronze/50 overflow-hidden">
-                <div className="w-1/3 h-full bg-bronze animate-[scan_2s_linear_infinite]" />
-              </div>
-              <div className="text-[10px] font-mono text-bronze/60 tracking-tighter mb-1">DATA_STREAM::CONNECTED</div>
-              <div className="text-sm font-bold text-[#e8e0d5] uppercase tracking-wider mb-0.5">{tooltip.name}</div>
-              <div className="text-[9px] text-muted-foreground uppercase tracking-widest border-b border-white/10 pb-1 mb-2">{tooltip.game}</div>
-
-              {tooltip.themes?.length > 0 && (
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {tooltip.themes.slice(0, 4).map((t: string) => (
-                    <span key={t} className="px-1.5 py-0.5 bg-bronze/10 border border-bronze/20 text-[8px] text-bronze uppercase font-mono">{t}</span>
-                  ))}
-                </div>
-              )}
-
-              {/* Subtle corner decor */}
-              <div className="absolute bottom-1 right-1 w-2 h-2 border-r border-b border-bronze/30" />
-            </div>
+            <div className="text-[10px] font-mono text-bronze/60 tracking-tighter mb-1">DATA_STREAM::CONNECTED</div>
+            <div className="text-sm font-bold text-[#e8e0d5] uppercase tracking-wider mb-0.5">{tooltip.name}</div>
+            <div className="text-[9px] text-muted-foreground uppercase tracking-widest">{tooltip.game}</div>
           </div>
         )}
 
@@ -901,16 +560,6 @@ export function LoreGraph({
           onResetLayout={() => setPhysics(DEFAULTS)}
           onResetZoom={() => svgRef.current && zoomRef.current && d3.select(svgRef.current).transition().duration(500).call(zoomRef.current.transform, d3.zoomIdentity)}
         />
-
-        {/* Global Styles for Animations */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            @keyframes scan { 
-              from { transform: translateX(-100%); } 
-              to { transform: translateX(300%); } 
-            }
-          `
-        }} />
       </div>
     </TooltipProvider>
   );
