@@ -323,48 +323,54 @@ export function LoreGraph({
       .force('gravY', d3.forceY<GraphNode>(height / 2).strength(physics.centering * 0.1))
 
       .force('sinnerRing', (() => {
-        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner');
+        // EXCLUDE Dante from the ring so he can sit in the center
+        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner' && n.id !== 'dante');
         const angleMap = new Map<string, number>();
         sinnerList.forEach((s, i) => {
           angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
         });
-        const R = 100; // Perfect circle at 100px
+        const R = 250; // Match the radial periphery target
         const cx = width / 2;
         return d3.forceX<GraphNode>(d => {
-          if (d.nodeType !== 'sinner') return cx;
+          if (d.nodeType !== 'sinner' || d.id === 'dante') return cx;
           const angle = angleMap.get(d.id) ?? 0;
           return cx + R * Math.cos(angle);
-        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0);
+        }).strength(d => (d.nodeType === 'sinner' && d.id !== 'dante') ? 1.0 : 0);
       })())
 
       .force('sinnerRingY', (() => {
-        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner');
+        const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner' && n.id !== 'dante');
         const angleMap = new Map<string, number>();
         sinnerList.forEach((s, i) => {
           angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
         });
-        const R = 100;
+        const R = 250;
         const cy = height / 2;
         return d3.forceY<GraphNode>(d => {
-          if (d.nodeType !== 'sinner') return cy;
+          if (d.nodeType !== 'sinner' || d.id === 'dante') return cy;
           const angle = angleMap.get(d.id) ?? 0;
           return cy + R * Math.sin(angle);
-        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0);
+        }).strength(d => (d.nodeType === 'sinner' && d.id !== 'dante') ? 1.0 : 0);
       })())
 
       .force('periphery', d3.forceRadial<GraphNode>(
         d => {
           const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-          if (isMajorFaction) return 850;
-          if (d.entityType === 'abnormality') return 550;
-          if (d.nodeType === 'literary-source') return 300;
-          if (d.nodeType === 'sinner') return 200;
-          return 420;
+          if (isMajorFaction) return 900; 
+          if (d.entityType === 'abnormality') return 600;
+          if (d.nodeType === 'literary-source') return 350;
+          
+          // Dante is the HUB (center), other sinners form the SPOKE (ring)
+          if (d.id === 'dante') return 0;
+          if (d.nodeType === 'sinner') return 250;
+          
+          return 470;
         },
         width / 2, height / 2
       ).strength(d => {
         const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
         if (isMajorFaction) return 0.95;
+        if (d.id === 'dante') return 1.0; // Anchor Dante to the absolute center
         if (d.nodeType === 'sinner') return 1.0;
         if (d.nodeType === 'literary-source') return 0.85;
         return 0.7;
@@ -667,30 +673,35 @@ export function LoreGraph({
 
       } else if (d.nodeType === 'sinner') {
         const s = d as any;
-        const sigColor = s.signatureColor || '#b8202f';
+        const isDante = d.id === 'dante';
+        const sigColor = isDante ? '#b01c37' : (s.signatureColor || '#b8202f');
         const sNum = s.sinnerNumber || '??';
+        const nodeRadius = isDante ? S_R + 4 : S_R;
 
-        // 1. Signature Inner Glow
+        // 1. Signature Inner Glow (Extra intense for Dante)
         el.append('circle').attr('class', 'node-glow')
-          .attr('r', S_R + 8).attr('fill', sigColor).attr('opacity', 0.12).style('filter', 'blur(6px)');
+          .attr('r', nodeRadius + (isDante ? 15 : 8))
+          .attr('fill', sigColor)
+          .attr('opacity', isDante ? 0.35 : 0.12)
+          .style('filter', isDante ? 'blur(10px)' : 'blur(6px)');
 
         // 2. Dash-array Radar Ring (Red Limbus core)
         el.append('circle').attr('class', 'radar-ring')
-          .attr('r', S_R + 4).attr('fill', 'none').attr('stroke', '#b8202f')
-          .attr('stroke-width', 1).attr('stroke-dasharray', '3,4')
-          .style('opacity', 0.5);
+          .attr('r', nodeRadius + 4).attr('fill', 'none').attr('stroke', '#b8202f')
+          .attr('stroke-width', isDante ? 1.5 : 1).attr('stroke-dasharray', isDante ? 'none' : '3,4')
+          .style('opacity', isDante ? 0.8 : 0.5);
 
         // 3. Main Circular Frame
         el.append('circle').attr('class', 'node-hit')
-          .attr('r', S_R).attr('fill', '#0c0c0e').attr('stroke', sigColor).attr('stroke-width', 2);
+          .attr('r', nodeRadius).attr('fill', '#0c0c0e').attr('stroke', sigColor).attr('stroke-width', isDante ? 3 : 2);
 
         // 4. Sinner Number (Visible by default)
         el.append('text').attr('class', 'sinner-number')
-          .text(sNum)
+          .text(isDante ? 'X' : sNum)
           .attr('text-anchor', 'middle').attr('dy', '0.35em')
-          .attr('fill', sigColor).attr('font-size', '14px').attr('font-weight', '900')
+          .attr('fill', sigColor).attr('font-size', isDante ? '18px' : '14px').attr('font-weight', '900')
           .attr('font-family', 'monospace')
-          .style('text-shadow', `0 0 5px ${sigColor}44`)
+          .style('text-shadow', `0 0 5px ${sigColor}bb`)
           .style('pointer-events', 'none');
 
         // 5. Personal Emblem (Visible on hover)

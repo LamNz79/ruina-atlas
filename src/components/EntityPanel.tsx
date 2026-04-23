@@ -273,19 +273,32 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick, s
                   <h3 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                     Structural Continuity
                   </h3>
-                  <div className="grid grid-cols-1 gap-2">
+                  <div className="grid grid-cols-1 gap-3">
                     {associatedEntities.map((ae) => (
-                      <button
-                        key={ae.id}
-                        className="flex items-center gap-3 rounded-md border border-border/40 bg-muted/20 p-2.5 text-left transition-all hover:bg-muted/30"
-                        onClick={() => onEntityClick?.(ae.id)}
-                      >
-                        <Hexagon className="h-3.5 w-3.5 text-muted-foreground/60" />
-                        <div className="flex-1">
-                          <p className="text-xs font-semibold text-foreground">{ae.name}</p>
-                          <p className="text-[9px] uppercase tracking-tighter text-muted-foreground/60">{GAME_LABELS[ae.canonicalGame]}</p>
-                        </div>
-                      </button>
+                      <div key={ae.id} className="space-y-2">
+                        <button
+                          className="flex w-full items-center gap-3 rounded-md border border-border/40 bg-muted/20 p-2.5 text-left transition-all hover:bg-muted/30"
+                          onClick={() => onEntityClick?.(ae.id)}
+                        >
+                          <Hexagon className="h-3.5 w-3.5 text-muted-foreground/60" />
+                          <div className="flex-1">
+                            <p className="text-xs font-semibold text-foreground">{ae.name}</p>
+                            <p className="text-[9px] uppercase tracking-tighter text-muted-foreground/60">{GAME_LABELS[ae.canonicalGame]}</p>
+                          </div>
+                          <ExternalLink className="h-3 w-3 text-muted-foreground/40" />
+                        </button>
+                        
+                        {entity.connectionInsights?.[ae.id] && (
+                          <div className="ml-5 rounded-sm border-l-2 border-[#a08a70]/40 bg-[#a08a70]/5 p-2.5">
+                            <h4 className="mb-1 text-[9px] font-bold uppercase tracking-tighter text-[#a08a70]/70">
+                              Connection Note
+                            </h4>
+                            <p className="text-[12px] font-mono leading-relaxed text-muted-foreground/90 italic">
+                              {entity.connectionInsights[ae.id]}
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </section>

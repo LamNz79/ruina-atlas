@@ -573,7 +573,10 @@
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Central Command Team. Later the Patron Librarian of the Floor of Natural Sciences.",
       "themes": ["machinery", "faith"],
-      "relatedEntityIds": ["entity-l-central", "entity-floor-natural"]
+      "relatedEntityIds": ["entity-l-central", "entity-floor-natural"],
+      "connectionInsights": {
+        "entity-floor-natural": "Following the Seed of Light project's failure and the Library's manifestation, the Sephirah of Central Command transitioned to manage the Floor of Natural Sciences."
+      }
     },
     {
       "id": "entity-gebura",
@@ -584,7 +587,10 @@
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Disciplinary Team. Later the Patron Librarian of the Floor of Language.",
       "themes": ["vengeance", "redemption"],
-      "relatedEntityIds": ["entity-l-discipline", "entity-floor-language"]
+      "relatedEntityIds": ["entity-l-discipline", "entity-floor-language"],
+      "connectionInsights": {
+        "entity-floor-language": "The 'Red Mist' continues her suppressive duties in the Library, shifting from L-Corp's Disciplinary Team to the front lines of the Library's defense."
+      }
     },
     {
       "id": "entity-chesed",
@@ -595,7 +601,10 @@
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "The Sephirah of the Welfare Team. Later the Patron Librarian of the Floor of Social Sciences.",
       "themes": ["guilt", "metamorphosis"],
-      "relatedEntityIds": ["entity-l-welfare", "entity-floor-social"]
+      "relatedEntityIds": ["entity-l-welfare", "entity-floor-social"],
+      "connectionInsights": {
+        "entity-floor-social": "Chesed's focus on employee welfare in L-Corp evolved into managing the societal weight and records within the Floor of Social Sciences."
+      }
     },
     {
       "id": "entity-binah",
@@ -610,7 +619,8 @@
       "relatedSinnerIds": ["outis", "faust"],
       "connectionInsights": {
         "faust": "Connected via the Extraction Team; Faust's role as a hoarder of forbidden knowledge mirrors Binah's role in L-Corp's deep facility layers.",
-        "outis": "Linked via the 'Magic Bullet' E.G.O (Der Freischütz), which Binah manages through the Extraction Team."
+        "outis": "Linked via the 'Magic Bullet' E.G.O (Der Freischütz), which Binah manages through the Extraction Team.",
+        "entity-floor-philosophy": "Binah survived the facility's collapse to become the Patron Librarian, continuing her observation of the City's 'metaphysical truth' in the Library."
       }
     },
     {
@@ -797,7 +807,11 @@
       "canonicalGame": "ruina",
       "appearances": ["ruina", "limbus"],
       "loreSummary": "The head of all Fixer associations, responsible for ranking Fixers and managing high-level contracts.",
-      "themes": ["faith"]
+      "themes": ["faith"],
+      "relatedSinnerIds": ["yi-sang"],
+      "connectionInsights": {
+        "yi-sang": "Symbolic Resonance: 'Hana' means 'One' in Korean, directly corresponding to Yi Sang's designation as Sinner #1. Both share the same cultural origin (Korean) based on Yi Sang's literary prototype."
+      }
     },
     {
       "id": "assoc-zwei",
