@@ -271,9 +271,16 @@ export function LoreGraph({
     const linksG = g.append('g').attr('class', 'links-layer');
     const nodesG = g.append('g').attr('class', 'nodes');
 
-    const zoom = d3.zoom<SVGSVGElement, unknown>().scaleExtent([0.1, 4]).on('zoom', (e) => g.attr('transform', e.transform));
+    // Zoom setup with initial scale for overview
+    const zoom = d3.zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.05, 4])
+      .on('zoom', (e) => g.attr('transform', e.transform));
+
     svg.call(zoom);
     zoomRef.current = zoom;
+
+    // Set initial overview scale (0.45 captures the 850px outer ring)
+    svg.call(zoom.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(0.45).translate(-width / 2, -height / 2));
 
     // ─── Size tokens (must match rendering constants below) ───────────────────
     const S_R = 26;   // sinner circle circumradius
@@ -282,74 +289,52 @@ export function LoreGraph({
     const BK_W = 52;   // book card width
     const BK_H = 68;   // book card height
 
-    // 2. Force Simulation — Hub-and-Spoke Topography
-    // Inner core: Sinners + Literary/Theological sources
-    // Outer ring: Wings, Associations, Fingers (major factions)
-    // Mid ring: Abnormalities, Characters, child entities
-
-    const minDim = Math.min(width, height);
-
+    // 2. Force Simulation — Hub-and-Spoke 4-Belt Topography
     const simulation = d3.forceSimulation<GraphNode>(graphData.nodes)
-      .velocityDecay(0.6)    // high friction — damps oscillation quickly
-      .alphaDecay(0.05)      // settles in ~60 ticks (fast cooling)
+      .velocityDecay(0.6)
+      .alphaDecay(0.05)
       .alphaMin(0.001)
       .force('link', d3.forceLink<GraphNode, GraphLink>(graphData.links)
         .id(d => d.id)
         .distance(d => {
-          if (d.type === 'literary-origin') return 80 + physics.nodeSpacing * 0.1;  // rút ngắn distance
-          if (d.type === 'ego-synchronization') return 75 + physics.nodeSpacing * 0.1;
+          if (d.type === 'literary-origin') return 80 + physics.nodeSpacing * 0.1;
+          if (d.type === 'ego-synchronization') return 120 + physics.nodeSpacing * 0.2;
           if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
-          if (d.type === 'wing-affiliation') return 250 + physics.nodeSpacing * 0.5; // Fixed: was excessively large
-          if (d.type === 'bridge-continuity') return 180 + physics.nodeSpacing * 0.4;
+          if (d.type === 'wing-affiliation') return 300 + physics.nodeSpacing * 0.5;
           return physics.nodeSpacing;
         })
         .strength(d => {
           if (d.type === 'wing-affiliation') return 0.05;
-          if (d.type === 'ego-synchronization') return 0.45;
-          if (d.type === 'literary-origin') return 0.06;  // giảm strength — để radial thắng
-          if (d.type === 'structural-hierarchy') return 0.2;
-          return 0.1;
+          if (d.type === 'ego-synchronization') return 0.35;
+          if (d.type === 'literary-origin') return 0.06;
+          return 0.15;
         })
       )
 
-      // Many-Body: Factions push 2.5x harder to anchor themselves as pillars
       .force('charge', d3.forceManyBody<GraphNode>().strength(d => {
-        // Dùng entityType (đã resolve từ CrossGameEntity.type) — KHÔNG phải nodeType
-        const isMajorFaction =
-          d.entityType === 'wing' ||
-          d.entityType === 'association' ||
-          d.entityType === 'finger';        // "finger" = Five Fingers syndicates
-
-        if (isMajorFaction) return physics.repulsion * 2.5;  // ≈ -7500 @ default -3000
+        const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
+        if (isMajorFaction) return physics.repulsion * 2.5;
         if (d.nodeType === 'literary-source') return physics.repulsion * 1.5;
-          if (d.nodeType === 'sinner') return physics.repulsion * 0.3; // Reduce repulsion so they don't fight the circular layout
+        if (d.nodeType === 'sinner') return physics.repulsion * 0.3;
         return physics.repulsion;
-      }).theta(0.85).distanceMax(500))  // tăng distanceMax: Wings ở xa cần "nghe" lực đẩy từ xa hơn
+      }).theta(0.85).distanceMax(600))
 
-      // Soft gravity — keeps graph centered on screen
-      // General centering — nhẹ, cho tất cả nodes
       .force('gravX', d3.forceX<GraphNode>(width / 2).strength(physics.centering * 0.1))
       .force('gravY', d3.forceY<GraphNode>(height / 2).strength(physics.centering * 0.1))
 
-      // Dedicated radial distribution — chỉ cho Sinners
-      // Dùng forceX/forceY theo góc để ép 13 Sinners thành vòng tròn đều
       .force('sinnerRing', (() => {
-        // Tính góc đều cho mỗi Sinner theo thứ tự index
         const sinnerList = graphData.nodes.filter(n => n.nodeType === 'sinner');
         const angleMap = new Map<string, number>();
         sinnerList.forEach((s, i) => {
           angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
         });
-
-        const R = 160; // target radius — khớp với forceRadial target
+        const R = 100; // Perfect circle at 100px
         const cx = width / 2;
-        const cy = height / 2;
-
         return d3.forceX<GraphNode>(d => {
           if (d.nodeType !== 'sinner') return cx;
           const angle = angleMap.get(d.id) ?? 0;
           return cx + R * Math.cos(angle);
-        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0); // Tăng strength lên 1.0 để neo chặt
+        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0);
       })())
 
       .force('sinnerRingY', (() => {
@@ -358,44 +343,31 @@ export function LoreGraph({
         sinnerList.forEach((s, i) => {
           angleMap.set(s.id, (2 * Math.PI * i) / sinnerList.length);
         });
-
-        const R = 160;
-        const cx = width / 2;
+        const R = 100;
         const cy = height / 2;
-
         return d3.forceY<GraphNode>(d => {
           if (d.nodeType !== 'sinner') return cy;
           const angle = angleMap.get(d.id) ?? 0;
           return cy + R * Math.sin(angle);
-        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0); // Tăng strength lên 1.0 để neo chặt
+        }).strength(d => d.nodeType === 'sinner' ? 1.0 : 0);
       })())
 
-      // Radial Orbits — High-intensity hub-and-spoke engine
       .force('periphery', d3.forceRadial<GraphNode>(
         d => {
-          const isMajorFaction =
-            d.entityType === 'wing' ||
-            d.entityType === 'association' ||
-            d.entityType === 'finger';
-
-
-          // Dùng absolute px thay vì nhân baseR — dễ đọc, dễ tune
-          if (isMajorFaction) return 460;  // Outer ring: Wings, Assocs, Fingers (đẩy rộng thêm tí)
-          if (d.nodeType === 'sinner') return 160;          // Sinners: sát tâm nhất
-          if (d.nodeType === 'literary-source') return 240; // Books: vành đai trong, quanh Sinners
-          return 320;                                       // Mid ring: Abnormalities, Characters (Đẩy xa hẳn khỏi nhân)
+          const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
+          if (isMajorFaction) return 850;
+          if (d.entityType === 'abnormality') return 550;
+          if (d.nodeType === 'literary-source') return 300;
+          if (d.nodeType === 'sinner') return 200;
+          return 420;
         },
         width / 2, height / 2
       ).strength(d => {
-        const isMajorFaction =
-          d.entityType === 'wing' ||
-          d.entityType === 'association' ||
-          d.entityType === 'finger';
+        const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
         if (isMajorFaction) return 0.95;
         if (d.nodeType === 'sinner') return 1.0;
         if (d.nodeType === 'literary-source') return 0.85;
-
-        return 0.7;                       // Tăng mạnh lực để Abno không bị kéo lọt vào tâm
+        return 0.7;
       }))
 
       // Collision — prevents visual overlap, tuned per shape
@@ -869,7 +841,8 @@ export function LoreGraph({
         {/* Global Styles for Animations */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+            @keyframes scan { from { transform: translateX(-
+            %); } to { transform: translateX(300%); } }
         ` }} />
       </div>
     </TooltipProvider>
