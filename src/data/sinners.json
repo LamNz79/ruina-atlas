@@ -2256,6 +2256,56 @@
           "summary": "Current event ÔÇö Details pending lore progression.",
           "isMajor": false
         }
+      ],
+      "powers": [
+        {
+          "name": "Turning Back the Clock",
+          "description": "Dante can heal injuries and revive Sinners from death by winding back time. The cost is that Dante physically feels how each Sinner died — the pain writhes through their body as time reverses. Dante describes opening a foreboding door filled with the wails of unknown sufferers and pulling the Sinners' hands out from the gateway."
+        },
+        {
+          "name": "Golden Bough Resonance",
+          "description": "Dante can sense where the Golden Boughs are by \"following their star.\" They perceive the Boughs as shining stars in a swirling sky and can share these visions with the Sinners through their telepathic link."
+        },
+        {
+          "name": "Telepathy",
+          "description": "Dante communicates only through a ticking sound, altering its frequency and intensity. Only the Sinners and a select few can understand the meaning behind the ticks. When agitated, the speech may include bell chimes and/or steam whistles. Dante can selectively address one Sinner or the entire group at once."
+        },
+        {
+          "name": "Distortion Speech",
+          "description": "Dante can understand Distortions who have lost the ability to speak human language, extending to their subordinate entities. Acting as interpreter, they relay invaluable information to the Sinners — possibly due to resonance with the Golden Boughs."
+        },
+        {
+          "name": "Remote Sight",
+          "description": "Gained during the events of Canto IX. Dante can watch over Sinners separated from them, though cannot verbally communicate. They can also \"lend strength\" and revive distant Sinners."
+        },
+        {
+          "name": "Sapling of Light: Pigritia",
+          "description": "In Canto VI, Dante creates a field that slows everything except the Sinners within a certain radius. In game, this halves the Speed of all enemies, rounded down."
+        },
+        {
+          "name": "Sapling of Light: Superbia",
+          "description": "In Canto VII, Dante appears to strengthen the power of a Sinner. In game, this allows an E.G.O. Skill to be slotted without spending any E.G.O Resources."
+        },
+        {
+          "name": "Sapling of Light: Morositas",
+          "description": "In Canto VIII, Dante uses the strength-averaging aspect of their contract to bring an enemy down to the Sinners' level. In game, this sets the Offense and Defense levels of all units to the average of all units' values for three turns."
+        },
+        {
+          "name": "Sapling of Light: Ira",
+          "description": "In Canto IX, Dante uses the strength-enhancing aspect of their contract to drastically raise a Sinner's capabilities for the duration of the fight. In game: unbreakable coins, no stagger, minimum HP fixed to 10, and base attacks heal HP. All effects last one turn."
+        },
+        {
+          "name": "Last Resort",
+          "description": "A preventative measure to prevent the Golden Boughs from falling into wrong hands. By inputting a sequence into the back of their clock head, Dante can self-detonate a charge hot enough to \"melt even the Stars of the City.\" The Golden Boughs cannot survive this explosion."
+        },
+        {
+          "name": "Golden Bough Synchronization",
+          "description": "Used once during Canto 6-48 to perform an otherwise impossible feat with the help of a Golden Bough, leaving it \"burnt\" afterwards."
+        },
+        {
+          "name": "Immunity to Memory Wiping",
+          "description": "Dante can resist memory removal from various sources. They retained their memory of K Corp.'s Singularity after the wipe at the end of Canto IV, and retain memories of characters erased from existence, such as Catherine (Canto VI) and Ren and Sora (Relic Arayashiki effect)."
+        }
       ]
     },
     {
