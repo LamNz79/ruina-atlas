@@ -189,7 +189,44 @@
       "passageContext": "From 'The Juniper Tree' — a tale of brutal death and magical rebirth.",
       "historicalContext": "A collection of folk tales that often contain dark, violent moral lessons. Many Abnormalities in Lobotomy Corporation are 'echoes' of these folk archetypes.",
       "themes": ["redemption", "decay", "family"],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Grimms%27_Fairy_Tales"
+      "wikiUrl": "https://en.wikipedia.org/wiki/Grimms%27_Fairy_Tales",
+      "category": "literary"
+    },
+    {
+      "id": "kabbalah-tree-of-life",
+      "title": "The Tree of Life (Kabbalah)",
+      "author": "Theological Origin",
+      "year": 0,
+      "language": "Hebrew",
+      "passage": "Keter, Chokhmah, Binah, Chesed, Gevurah, Tiferet, Netzach, Hod, Yesod, Malkuth.",
+      "passageContext": "The ten Sephirot of the Kabbalistic Tree, representing the emanation of the Divine. Directly mirrored by the 10 Sephirah-led departments of Lobotomy Corporation.",
+      "historicalContext": "The core philosophical framework for Lobotomy Corp's architecture and the Seed of Light project. Each Sephirah AI is named after a Sephirah on the Tree.",
+      "themes": ["faith", "redemption", "machinery"],
+      "category": "theological"
+    },
+    {
+      "id": "book-of-revelations",
+      "title": "The Book of Revelations",
+      "author": "Theological Origin",
+      "year": 95,
+      "language": "Ancient Greek",
+      "passage": "And I saw, and behold a white horse: and he that sat on him had a bow; and a crown was given unto him.",
+      "passageContext": "The vision of the apocalypse and the four horsemen. Echoed by the transformation of Plague Doctor into WhiteNight.",
+      "historicalContext": "Reflected in the figure of the Antichrist and the 12 Apostles in Lobotomy Corp. WhiteNight acts as a messianic figure with absolute authority over its apostles.",
+      "themes": ["faith", "guilt", "nihilism"],
+      "category": "theological"
+    },
+    {
+      "id": "cain-and-abel",
+      "title": "Cain & Abel",
+      "author": "Theological Origin",
+      "year": 0,
+      "language": "Hebrew",
+      "passage": "Am I my brother's keeper?",
+      "passageContext": "The first murder and the mark of Cain, representing the dual nature of humanity.",
+      "historicalContext": "Intertwined with Hermann Hesse's Demian. Sinclair's mark and his internal conflict between 'light' and 'dark' worlds are rooted in this biblical archetype.",
+      "themes": ["guilt", "family", "vengeance", "redemption"],
+      "category": "theological"
     }
   ]
 }

@@ -110,6 +110,11 @@ export interface LiterarySource {
   sharedGroupName?: string;
   themes: Theme[];
   wikiUrl?: string;
+  /**
+   * Classification for specific rendering styles.
+   * 'theological' sources get premium gold highlights.
+   */
+  category?: 'theological' | 'literary';
 }
 
 /**

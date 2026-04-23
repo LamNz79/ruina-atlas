@@ -14,6 +14,7 @@ interface EntityPanelProps {
   onClose: () => void;
   onSinnerClick: (sinnerId: string) => void;
   onEntityClick?: (entityId: string) => void;
+  spoilerLevel?: number;
 }
 
 const TYPE_ICONS: Record<string, React.ReactNode> = {
@@ -75,7 +76,7 @@ const THEME_LABELS: Record<string, string> = {
   family: 'Family',
 };
 
-export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick }: EntityPanelProps) {
+export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick, spoilerLevel }: EntityPanelProps) {
   const entity: CrossGameEntity | undefined = (
     crossGameEntities.entities as CrossGameEntity[]
   ).find((e) => e.id === entityId);

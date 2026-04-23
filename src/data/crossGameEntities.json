@@ -25,7 +25,8 @@
       "canonicalGame": "lobotomy",
       "appearances": ["lobotomy"],
       "loreSummary": "A masked doctor who claims to cure all diseases, but hides a terrifying truth behind his 12 apostles.",
-      "themes": ["faith", "guilt"]
+      "themes": ["faith", "guilt"],
+      "literaryOrigin": "book-of-revelations"
     },
     {
       "id": "entity-fairy-festival",
@@ -272,7 +273,8 @@
       "canonicalGame": "lobotomy",
       "appearances": ["lobotomy", "ruina"],
       "loreSummary": "A messianic entity that demands total submission from its twelve apostles.",
-      "themes": ["faith", "nihilism"]
+      "themes": ["faith", "nihilism"],
+      "literaryOrigin": "book-of-revelations"
     },
     {
       "id": "entity-censored",
@@ -410,6 +412,7 @@
       "appearances": ["lobotomy", "ruina", "limbus"],
       "loreSummary": "The primary energy Wing of the City. Its facility structure consists of 10 specialized teams, each managed by a Sephirah.",
       "themes": ["machinery", "guilt"],
+      "literaryOrigin": "kabbalah-tree-of-life",
       "relatedSinnerIds": ["dante", "faust", "yi-sang"],
       "connectionInsights": {
         "dante": "Directly resonates with Golden Boughs to manifest Sapling of Light abilities (Durante), which are structurally named after L-Corp Sephirot (Pigritia, Superbia, Morositas).",

@@ -2324,6 +2324,11 @@
           "id": "demian",
           "role": "primary",
           "specificConnection": "Direct mapping to Hesse's Demian."
+        },
+        {
+          "id": "cain-and-abel",
+          "role": "secondary",
+          "specificConnection": "The biblical archetype of the 'Mark of Cain' is a central theme in Sinclair's struggle between the two worlds of light and darkness."
         }
       ],
       "themes": [

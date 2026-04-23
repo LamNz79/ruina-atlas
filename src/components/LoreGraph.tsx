@@ -1,20 +1,23 @@
-import { useEffect, useRef, useCallback, useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as d3 from 'd3';
-import type { Sinner, GraphEdge, Game, Theme, CrossGameEntity, EdgeType } from '../types';
-import { THEMES, THEME_META } from '../types';
-import { literarySources } from '../data/literarySources';
-import crossGameEntities from '../data/crossGameEntities.json';
-import { GraphSettings } from './GraphSettings';
-import { FilterPanel } from './FilterPanel';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import * as d3 from 'd3';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import crossGameEntities from '../data/crossGameEntities.json';
+import { literarySources } from '../data/literarySources';
+import type { CrossGameEntity, EdgeType, GraphEdge, Sinner, Theme } from '../types';
+import { FilterPanel } from './FilterPanel';
+import { GraphSettings } from './GraphSettings';
 
-import { getVisibleAncestorId, calculateSharedThemes } from './LoreGraphUtils';
-import type { GraphNode, GraphLink, PhysicsSettings, FilterState } from './LoreGraphConstants';
+import type { FilterState, GraphLink, GraphNode, PhysicsSettings } from './LoreGraphConstants';
 import {
-  DEFAULTS, INITIAL_FILTER_STATE, ALL_EDGE_TYPES, EDGE_COLORS, NODE_GAME_COLORS,
-  ENTITY_COLORS, RISK_LEVEL_COLORS, EDGE_LABELS
+  ALL_EDGE_TYPES,
+  DEFAULTS,
+  EDGE_COLORS,
+  ENTITY_COLORS,
+  INITIAL_FILTER_STATE,
+  NODE_GAME_COLORS,
+  RISK_LEVEL_COLORS
 } from './LoreGraphConstants';
+import { calculateSharedThemes, getVisibleAncestorId } from './LoreGraphUtils';
 
 interface LoreGraphProps {
   sinners: Sinner[];
@@ -38,10 +41,8 @@ export function LoreGraph({
   onNodeClick,
   onEntityClick,
   onSourceClick,
-  onToggleExpand,
   onPin,
 }: LoreGraphProps) {
-  const navigate = useNavigate();
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const simulationRef = useRef<d3.Simulation<GraphNode, GraphLink> | null>(null);
@@ -56,8 +57,6 @@ export function LoreGraph({
 
   // --- Data Processing ---
   const graphData = useMemo(() => {
-    const width = containerRef.current?.clientWidth ?? 1200;
-    const height = containerRef.current?.clientHeight ?? 800;
 
     // 1. Filtered Entities & Derived Links
     const entityLinks: GraphLink[] = [];
@@ -107,7 +106,7 @@ export function LoreGraph({
     const visibleEntities = (() => {
       if (!filters.showArchiveNodes) return [];
       const visible = new Set<string>();
-      
+
       // First pass: identify root-level visible nodes
       rawEntities.forEach(e => {
         if (!e.parentEntityId) {
@@ -134,10 +133,10 @@ export function LoreGraph({
       return rawEntities.filter(e => {
         if (!visible.has(e.id)) return false;
         if (e.themes && e.themes.length > 0 && !e.themes.some(t => filters.themes.has(t as Theme))) return false;
-        
+
         // Spoiler Gate: Hide entities from future Cantos
         if (e.spoilerLevel && e.spoilerLevel > filters.cantoLevel) return false;
-        
+
         return true;
       });
     })();
@@ -273,32 +272,32 @@ export function LoreGraph({
         .id(d => d.id)
         .distance(d => {
           // Generous distances so nodes have room to breathe
-          if (d.type === 'literary-origin')      return 110 + physics.nodeSpacing * 0.2;
-          if (d.type === 'ego-synchronization')  return 75 + physics.nodeSpacing * 0.1; // Tight satellite orbit
+          if (d.type === 'literary-origin') return 110 + physics.nodeSpacing * 0.2;
+          if (d.type === 'ego-synchronization') return 75 + physics.nodeSpacing * 0.1; // Tight satellite orbit
           if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
-          if (d.type === 'wing-affiliation')     return Math.max(width, height) * 0.44;
-          if (d.type === 'bridge-continuity')    return 180 + physics.nodeSpacing * 0.4;
+          if (d.type === 'wing-affiliation') return Math.max(width, height) * 0.44;
+          if (d.type === 'bridge-continuity') return 180 + physics.nodeSpacing * 0.4;
           return physics.nodeSpacing;
         })
         // Keep link strength LOW — repulsion must win so nodes spread out
         .strength(d => {
-          if (d.type === 'wing-affiliation')     return 0.03;
-          if (d.type === 'ego-synchronization')  return 0.45; // Stronger satellite pull
-          if (d.type === 'literary-origin')      return 0.12;
+          if (d.type === 'wing-affiliation') return 0.03;
+          if (d.type === 'ego-synchronization') return 0.45; // Stronger satellite pull
+          if (d.type === 'literary-origin') return 0.12;
           if (d.type === 'structural-hierarchy') return 0.2;
           return 0.1;
         })
       )
       .force('charge', d3.forceManyBody<GraphNode>().strength(d => {
         let str = physics.repulsion;            // default -3000
-        if (d.nodeType === 'literary-source')   str *= 1.5;
-        if (d.nodeType === 'sinner')            str *= 1.3; // sinners push each other hard
-        if (d.entityType === 'wing')            str *= 2.5;
+        if (d.nodeType === 'literary-source') str *= 1.5;
+        if (d.nodeType === 'sinner') str *= 1.3; // sinners push each other hard
+        if (d.entityType === 'wing') str *= 2.5;
         return str;
       }).theta(0.85).distanceMax(900))
 
       // Soft gravity — keeps graph on screen without collapsing it
-      .force('gravX', d3.forceX<GraphNode>(width  / 2).strength(physics.centering * 0.25))
+      .force('gravX', d3.forceX<GraphNode>(width / 2).strength(physics.centering * 0.25))
       .force('gravY', d3.forceY<GraphNode>(height / 2).strength(physics.centering * 0.25))
 
       // Sinners orbit a mid-radius ring so they spread around the center
@@ -316,8 +315,8 @@ export function LoreGraph({
       // Collision — prevents visual overlap
       .force('collision', d3.forceCollide<GraphNode>().radius(d => {
         if (d.nodeType === 'literary-source') return BK_W / 2 + 20;
-        if (d.entityType === 'wing')          return W_R + 24;
-        if (d.entityType === 'abnormality')   return H_R + 18;
+        if (d.entityType === 'wing') return W_R + 24;
+        if (d.entityType === 'abnormality') return H_R + 18;
         return S_R + 16;
       }).strength(0.9).iterations(3));
 
@@ -328,7 +327,7 @@ export function LoreGraph({
     graphData.nodes.forEach((node, i) => {
       if (node.x === undefined || (node.x === 0 && node.y === 0)) {
         const angle = (2 * Math.PI * i) / graphData.nodes.length;
-        node.x = width  / 2 + scatterR * Math.cos(angle) * (0.6 + Math.random() * 0.5);
+        node.x = width / 2 + scatterR * Math.cos(angle) * (0.6 + Math.random() * 0.5);
         node.y = height / 2 + scatterR * Math.sin(angle) * (0.6 + Math.random() * 0.5);
       }
     });
@@ -340,24 +339,12 @@ export function LoreGraph({
     });
     // ──────────────────────────────────────────────────────────────────────────
 
-
-
-    // 3. Render Links
-    const links = linksG.selectAll('path').data(graphData.links).join('path').attr('class', 'link-path')
-      .attr('stroke', d => EDGE_COLORS[d.type] || '#ccc')
-      .attr('stroke-width', d => {
-        const count = graphData.sharedThemeCount[`${(d.source as any).id}-${(d.target as any).id}`] || 0;
-        return d.type === 'literary-origin' ? 1.5 + count * 0.4 : 1.2 + count * 0.4;
-      })
-      .attr('stroke-dasharray', d => d.type === 'wing-affiliation' || d.type === 'ego-synchronization' || d.type === 'structural-hierarchy' ? '6,4' : 'none')
-      .style('pointer-events', 'stroke');
-
     // Add CSS Animation for dashed links
     svg.append('style').text(`
       @keyframes dash-flow { to { stroke-dashoffset: -20; } }
       .link-path[stroke-dasharray="6,4"] { animation: dash-flow 1.5s linear infinite; }
       .node-group { transition: opacity 0.2s ease; }
-      .node-group[data-entity-type="wing"]:hover .node-hit { 
+      .node-group[data-entity-type="wing"]:hover .node-hit {
         filter: drop-shadow(0 0 8px var(--wing-neon)) brightness(1.2);
         stroke-width: 3;
       }
@@ -425,8 +412,8 @@ export function LoreGraph({
           .attr('x1', bX).attr('y1', -BK_H / 2 + 2)
           .attr('x2', bX).attr('y2', BK_H / 2 - 2)
           .attr('stroke', '#d4af37').attr('stroke-width', 1).attr('opacity', 0.4);
-        
-        [ -12, 0, 12 ].forEach(offset => {
+
+        [-12, 0, 12].forEach(offset => {
           el.append('line')
             .attr('x1', -BK_W / 2 + 1).attr('y1', offset)
             .attr('x2', bX).attr('y2', offset)
@@ -435,7 +422,7 @@ export function LoreGraph({
 
         // Vector Icon
         const iconPaths: Record<string, string> = {
-          'divine-comedy': 'M12 2l-4 4 4 4 4-4-4-4z M12 22v-8', 
+          'divine-comedy': 'M12 2l-4 4 4 4 4-4-4-4z M12 22v-8',
           'moby-dick': 'M12 5v14 M5 12h14 M12 19c-3.866 0-7-3.134-7-7',
           'the-wings': 'M3 10c0-1.657 1.343-3 3-3s3 1.343 3 3v4h4v-4c0-1.657 1.343-3 3-3s3 1.343 3 3',
           'faust-goethe': 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M4 4.5A2.5 2.5 0 0 1 6.5 7H20 M4 4.5v15',
@@ -447,49 +434,93 @@ export function LoreGraph({
           'wuthering-heights': 'M4 12c0 4 3 7 7 7s7-3 7-7 M12 2v10',
           'demian': 'M12 22c5 0 9-4 9-9s-4-9-9-9-9 4-9 9 4 9 9 9z',
           'odyssey': 'M3 11l18-1 1 2H2l1-1z M12 10V3L4 10z',
+          'kabbalah-tree-of-life': 'M12 2v20 M12 7h5 M12 12h-5 M12 17h5',
+          'book-of-revelations': 'M5 3l14 0c1 0 1 1 1 1s0 1-1 1l-14 0c-1 0-1-1-1-1s0-1 1-1z M5 21l14 0c1 0 1-1 1-1s0-1-1-1l-14 0c-1 0-1 1-1 1s0 1 1 1z M12 5v14',
+          'cain-and-abel': 'M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 7l0 10 M7 12l10 0',
         };
 
+        // Special premium styling for theological origins — "Golden Bough" Aesthetic
+        const isTheological = sourceData?.category === 'theological';
+        if (isTheological) {
+          // Layer 1: Diffuse outer glow (visible halo)
+          el.insert('rect', ':first-child')
+            .attr('x', -BK_W / 2 - 8).attr('y', -BK_H / 2 - 8)
+            .attr('width', BK_W + 16).attr('height', BK_H + 16)
+            .attr('fill', 'none').attr('stroke', '#f5c518')
+            .attr('stroke-width', 2).attr('opacity', 0.5)
+            .attr('rx', 4)
+            .style('filter', 'blur(6px)');
+
+          // Layer 2: Crisp outer frame (double-frame effect)
+          el.insert('rect', ':nth-child(2)')
+            .attr('x', -BK_W / 2 - 4).attr('y', -BK_H / 2 - 4)
+            .attr('width', BK_W + 8).attr('height', BK_H + 8)
+            .attr('fill', 'none').attr('stroke', '#f5c518')
+            .attr('stroke-width', 1.2).attr('opacity', 0.7)
+            .attr('rx', 3)
+            .attr('stroke-dasharray', '4 2');
+
+          // Layer 3: Upgrade inner card border
+          el.select('.node-hit')
+            .attr('stroke', '#f5c518')
+            .attr('stroke-width', 2.5)
+            .style('filter', 'drop-shadow(0 0 8px rgba(245,197,24,0.4))');
+
+          // Corner accents (decorative gilded corners)
+          const cx = BK_W / 2 + 1, cy = BK_H / 2 + 1;
+          [[-cx, -cy], [cx, -cy], [cx, cy], [-cx, cy]].forEach(([x, y]) => {
+            el.append('circle')
+              .attr('cx', x).attr('cy', y)
+              .attr('r', 2.5)
+              .attr('fill', '#f5c518')
+              .attr('opacity', 0.6);
+          });
+        }
+
         const path = iconPaths[sourceId] || 'M12 6.253v13c-2.5-1.7-6.5-1.7-9 0v-13c2.5-1.7 6.5-1.7 9 0z M12 6.253c2.5-1.7 6.5-1.7 9 0v13c-2.5-1.7-6.5-1.7-9 0';
-        
+
+        // Icon: theological gets brighter gold, literary gets muted gold
         el.append('path')
           .attr('d', path)
           .attr('transform', `translate(${-12}, ${-12}) scale(1)`)
-          .attr('fill', 'none').attr('stroke', '#d4af37').attr('stroke-width', 1.5)
-          .attr('opacity', 0.8)
+          .attr('fill', isTheological ? 'rgba(245,197,24,0.15)' : 'none')
+          .attr('stroke', isTheological ? '#f5c518' : '#d4af37')
+          .attr('stroke-width', isTheological ? 2 : 1.5)
+          .attr('opacity', isTheological ? 1 : 0.8)
           .style('pointer-events', 'none');
 
       } else if (d.nodeType === 'entity') {
         if (d.entityType === 'wing') {
           // Sharp Metallic/Neon Hex for Wings
           const wingColor = d.id === 'wing-n-corp' ? '#e2e8f0' : // Steel for N Corp
-                            d.id === 'wing-w-corp' ? '#60a5fa' : // Blue for W Corp
-                            d.id === 'wing-k-corp' ? '#34d399' : // Green for K Corp
-                            d.id === 'wing-t-corp' ? '#fbbf24' : // Gold for T Corp
-                            color;
-          
+            d.id === 'wing-w-corp' ? '#60a5fa' : // Blue for W Corp
+              d.id === 'wing-k-corp' ? '#34d399' : // Green for K Corp
+                d.id === 'wing-t-corp' ? '#fbbf24' : // Gold for T Corp
+                  color;
+
           el.style('--wing-neon', wingColor);
 
           el.append('path').attr('class', 'node-hit')
             .attr('d', wingHexPath)
             .attr('fill', '#080809').attr('stroke', wingColor).attr('stroke-width', 2.5)
             .attr('stroke-linejoin', 'miter');
-          
+
           // Outer "Circuit" frame
           el.append('path')
             .attr('d', makeHexPath(W_R + 4))
             .attr('fill', 'none').attr('stroke', wingColor).attr('stroke-width', 0.5).attr('opacity', 0.3);
-          
+
           // Typography/Logo placeholder
           const logoText = d.name.split(' ')[0].charAt(0); // "N", "W", etc.
           el.append('text').text(logoText)
             .attr('text-anchor', 'middle').attr('dy', '0.35em')
             .attr('fill', wingColor).attr('font-size', '20px').attr('font-weight', '900')
             .attr('font-family', 'monospace').attr('opacity', 0.8);
-            
+
         } else if (d.entityType === 'abnormality') {
           // Abnormality Hex
           const riskColor = d.riskLevel ? RISK_LEVEL_COLORS[d.riskLevel] : '#8a4a5a';
-          
+
           // 1. Ghostly Outer Glow (Risk-specific blurred aura)
           el.append('path').attr('class', 'abnormality-glow')
             .attr('d', hexPath)
@@ -500,7 +531,7 @@ export function LoreGraph({
           el.append('path').attr('class', 'node-hit')
             .attr('d', hexPath)
             .attr('fill', '#0a0a0c').attr('stroke', riskColor).attr('stroke-width', 1.8);
-          
+
           // 3. Subject Number (Revealed on hover)
           el.append('text').attr('class', 'subject-number')
             .text(d.subjectNumber || '?-??-??')
@@ -515,7 +546,7 @@ export function LoreGraph({
             .attr('x', -24).attr('y', -7)
             .attr('width', 48).attr('height', 14)
             .attr('fill', '#000').attr('stroke', '#e11d48').attr('stroke-width', 1);
-          
+
           censG.append('text').attr('dy', '0.35em').attr('text-anchor', 'middle')
             .attr('fill', '#e11d48').attr('font-size', '4.5px').attr('font-weight', '900')
             .attr('letter-spacing', '0.5px')
@@ -527,7 +558,7 @@ export function LoreGraph({
           el.append('path').attr('class', 'node-hit')
             .attr('d', `M0 -${dR} L${dR} 0 L0 ${dR} L-${dR} 0 Z`)
             .attr('fill', '#0c0c0e').attr('stroke', '#d4af37').attr('stroke-width', 2);
-          
+
           el.append('text').text(d.name.split(' ')[0].charAt(0))
             .attr('text-anchor', 'middle').attr('dy', '0.35em')
             .attr('fill', '#d4af37').attr('font-size', '16px').attr('font-weight', '900')
@@ -537,11 +568,11 @@ export function LoreGraph({
           // Triangle for Fingers (Syndicates) - Sharp & Grimy
           const tR = H_R;
           const fingerColor = '#9333ea'; // Purple/Crimson Syndicate feel
-          
+
           el.append('path').attr('class', 'node-hit finger-node')
             .attr('d', `M0 -${tR} L${tR} ${tR} L-${tR} ${tR} Z`)
             .attr('fill', '#080809').attr('stroke', fingerColor).attr('stroke-width', 2.5);
-          
+
           // Kanji/Han character from Confucian Virtues
           el.append('text').attr('class', 'finger-virtue')
             .text((d as any).tokenLabel || '?')
@@ -559,7 +590,7 @@ export function LoreGraph({
         // 1. Signature Inner Glow
         el.append('circle').attr('class', 'node-glow')
           .attr('r', S_R + 8).attr('fill', sigColor).attr('opacity', 0.12).style('filter', 'blur(6px)');
-        
+
         // 2. Dash-array Radar Ring (Red Limbus core)
         el.append('circle').attr('class', 'radar-ring')
           .attr('r', S_R + 4).attr('fill', 'none').attr('stroke', '#b8202f')

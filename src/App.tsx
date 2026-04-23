@@ -1,16 +1,4 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import { sinners } from './data/sinners';
-import { deriveEdges } from './utils/deriveEdges';
-import { LoreGraph } from './components/LoreGraph';
-import { LorePanel } from './components/LorePanel';
-import { EntityPanel } from './components/EntityPanel';
-import About from './pages/About';
-import Roadmap from './pages/Roadmap';
-import ProfilePage from './pages/ProfilePage';
-import type { Sinner } from './types';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Menu, ExternalLink, Info, Search, Map, Sparkles, Biohazard, Network } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,13 +6,25 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import logoSvg from '/favicon.svg';
+import { Biohazard, ChevronLeft, ChevronRight, ExternalLink, Info, Map, Menu, Network, Search } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import { EntityPanel } from './components/EntityPanel';
 import { GlobalSearch } from './components/GlobalSearch';
+import { LoreGraph } from './components/LoreGraph';
+import { LorePanel } from './components/LorePanel';
 import { SourceExplorer } from './components/SourceExplorer';
 import { TeamDock } from './components/TeamDock';
-import TrilogySankey from './pages/TrilogySankey';
-import EntityCodex from './pages/EntityCodex';
+import { sinners } from './data/sinners';
 import './index.css';
+import About from './pages/About';
+import EntityCodex from './pages/EntityCodex';
+import ProfilePage from './pages/ProfilePage';
+import Roadmap from './pages/Roadmap';
+import TrilogySankey from './pages/TrilogySankey';
+import type { Sinner } from './types';
+import { deriveEdges } from './utils/deriveEdges';
+import logoSvg from '/favicon.svg';
 
 export default function App() {
   const [selectedSinner, setSelectedSinner] = useState<Sinner | null>(null);
@@ -34,6 +34,8 @@ export default function App() {
   const [activeSourceId, setActiveSourceId] = useState<string | null>(null);
   const [expandedNodeIds, setExpandedNodeIds] = useState<Set<string>>(new Set());
   const [pinnedNodes, setPinnedNodes] = useState<any[]>([]);
+  const [spoilerLevel, setSpoilerLevel] = useState(8); // Default to Canto 8 (pre-M3 default)
+
 
   const edges = useMemo(() => deriveEdges(sinners), []);
 
@@ -69,7 +71,7 @@ export default function App() {
     setSelectedSinner(null);
     setPanelOpen(false);
     setSelectedEntity(entityId);
-    
+
     // Automatically expand the node when clicked to reveal its children
     setExpandedNodeIds(prev => {
       const next = new Set(prev);
@@ -254,8 +256,8 @@ export default function App() {
               </div>
 
               {/* Team Dock */}
-              <TeamDock 
-                pinnedNodes={pinnedNodes} 
+              <TeamDock
+                pinnedNodes={pinnedNodes}
                 onRemove={(id) => setPinnedNodes(prev => prev.filter(p => p.id !== id))}
                 onClear={() => setPinnedNodes([])}
               />
@@ -265,11 +267,14 @@ export default function App() {
                 sinner={selectedSinner}
                 onClose={handleClose}
                 isOpen={panelOpen}
+                spoilerLevel={spoilerLevel}
+                setSpoilerLevel={setSpoilerLevel}
               />
 
               {/* Entity Detail Panel */}
               <EntityPanel
                 entityId={selectedEntity}
+                spoilerLevel={spoilerLevel}
                 onClose={() => {
                   setSelectedEntity(null);
                 }}
