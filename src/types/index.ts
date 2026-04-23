@@ -300,12 +300,13 @@ export interface CrossGameEntity {
  *
  * @see src/utils/deriveEdges.ts
  */
-export type EdgeType = 'literary-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group' | 'wing-affiliation' | 'ego-synchronization' | 'structural-hierarchy' | 'bridge-continuity';
+export type EdgeType = 'literary-origin' | 'theological-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group' | 'wing-affiliation' | 'ego-synchronization' | 'structural-hierarchy' | 'bridge-continuity';
 
 export interface GraphEdge {
   source: string; // Sinner.id
   target: string; // Sinner.id
   type: EdgeType;
+  label?: string;
 }
 
 // ── Asset Map ────────────────────────────────────────────────────────────────

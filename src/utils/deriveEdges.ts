@@ -1,4 +1,5 @@
 import type { Sinner, GraphEdge } from '../types';
+import { literarySources } from '../data/literarySources';
 
 /**
  * Derive all graph edges from the Sinner data at runtime.
@@ -12,11 +13,14 @@ export function deriveEdges(sinners: Sinner[]): GraphEdge[] {
     [a, b].sort().join('||');
 
   for (const s1 of sinners) {
-    // 1) Links from Sinner to Literary Source
-    for (const ls of s1.literarySources) {
-      const k = key(s1.id, `lit-${ls.id}`);
+    // 1) Links from Sinner to Literary/Theological Source
+    for (const lsRef of s1.literarySources) {
+      const k = key(s1.id, `lit-${lsRef.id}`);
       if (!added.has(k)) {
-        edges.push({ source: s1.id, target: `lit-${ls.id}`, type: 'literary-origin' });
+        const sourceData = literarySources.find(ls => ls.id === lsRef.id);
+        const type = sourceData?.category === 'theological' ? 'theological-origin' : 'literary-origin';
+        
+        edges.push({ source: s1.id, target: `lit-${lsRef.id}`, type });
         added.add(k);
       }
     }

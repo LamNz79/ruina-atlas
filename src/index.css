@@ -92,6 +92,8 @@
     /* Electric Gold — cross-game continuity */
     --edge-group: #8a847a;
     /* Subtle Ivory — shared literary group */
+    --edge-theological: #fdfbd3;
+    /* Divine White-Gold — theological origin */
 
     /* Game node colors — match Archive palette */
     --game-limbus: #b8202f;
