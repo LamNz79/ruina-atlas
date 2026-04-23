@@ -848,7 +848,7 @@
       "tokenLabel": "信",
       "loreSummary": "One of the Five Fingers. Operates based on absolute 'Prescripts' (Xin). Subsidiaries: Proxy system, Messengers.",
       "themes": ["faith", "absurdity"],
-      "relatedSinnerIds": ["yi-sang", "faust"]
+      "relatedSinnerIds": ["faust"]
     },
     {
       "id": "finger-middle",
@@ -857,10 +857,9 @@
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
       "tokenLabel": "義",
-      "loreSummary": "One of the Five Fingers. Values brotherhood and vengeance (Yi). Subsidiaries: Twinhook Pirates, Dead Rabbits.",
+      "loreSummary": "One of the Five Fingers. Values brotherhood and vengeance (Yi). Subsidiaries: Twinhook Pirates.",
       "themes": ["family", "vengeance"],
-      "relatedSinnerIds": ["heathcliff", "meursault", "donquixote"],
-      "literaryOrigin": "Water Margin"
+      "relatedSinnerIds": ["meursault", "donquixote"]
     },
     {
       "id": "finger-ring",
@@ -869,8 +868,9 @@
       "canonicalGame": "ruina",
       "appearances": ["ruina", "limbus"],
       "tokenLabel": "智",
-      "loreSummary": "One of the Five Fingers. Obsessed with the distorted 'Art' and wisdom (Zhi).",
-      "themes": ["metamorphosis", "absurdity"]
+      "loreSummary": "One of the Five Fingers. Obsessed with distorted 'Art' and wisdom (Zhi). Subsidiaries: Dead Rabbits.",
+      "themes": ["metamorphosis", "absurdity"],
+      "relatedSinnerIds": ["yi-sang", "outis"]
     },
     {
       "id": "finger-pinky",
@@ -879,8 +879,19 @@
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
       "tokenLabel": "仁",
-      "loreSummary": "One of the Five Fingers. Represents Benevolence (Ren), often operating through infiltration.",
-      "themes": ["family"]
+      "loreSummary": "One of the Five Fingers. Represents Humanity/Benevolence (Ren), often operating through infiltration and deep cover.",
+      "themes": ["family"],
+      "literaryOrigin": "Water Margin"
+    },
+    {
+      "id": "wing-a-corp",
+      "name": "The Head (A Corp)",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "The ultimate authority of the City. Composed of the Head, the Eye, and the Claw. Maintains the Taboos and the World Hub.",
+      "themes": ["faith", "machinery", "redemption"],
+      "relatedSinnerIds": ["faust", "yi-sang", "sinclair"]
     }
   ]
 }
