@@ -380,10 +380,10 @@ export function LoreGraph({
 
 
           // Dùng absolute px thay vì nhân baseR — dễ đọc, dễ tune
-          if (isMajorFaction) return 420;  // Outer ring: Wings, Assocs, Fingers
+          if (isMajorFaction) return 460;  // Outer ring: Wings, Assocs, Fingers (đẩy rộng thêm tí)
           if (d.nodeType === 'sinner') return 160;          // Sinners: sát tâm nhất
           if (d.nodeType === 'literary-source') return 240; // Books: vành đai trong, quanh Sinners
-          return 270;                                       // Mid ring: Abnormalities, Characters, child entities
+          return 320;                                       // Mid ring: Abnormalities, Characters (Đẩy xa hẳn khỏi nhân)
         },
         width / 2, height / 2
       ).strength(d => {
@@ -391,11 +391,11 @@ export function LoreGraph({
           d.entityType === 'wing' ||
           d.entityType === 'association' ||
           d.entityType === 'finger';
-        if (isMajorFaction) return 0.9;
-        if (d.nodeType === 'sinner') return 1.0;  // Max pull — Sinners PHẢI vào tâm
-        if (d.nodeType === 'literary-source') return 0.75;
+        if (isMajorFaction) return 0.95;
+        if (d.nodeType === 'sinner') return 1.0;
+        if (d.nodeType === 'literary-source') return 0.85;
 
-        return 0.35;                      // Mid ring: để link force quyết định vị trí tự nhiên hơn
+        return 0.7;                       // Tăng mạnh lực để Abno không bị kéo lọt vào tâm
       }))
 
       // Collision — prevents visual overlap, tuned per shape
