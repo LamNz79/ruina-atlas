@@ -742,7 +742,7 @@
       "type": "wing",
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
-      "loreSummary": "Tập đoàn công nghệ Gương (Mirror Technology). Sở hữu lực lượng Dị giáo Nagel und Hammer.",
+      "loreSummary": "Mirror Technology corporation. Operates the fanatic Nagel und Hammer inquisitors.",
       "relatedSinnerIds": ["meursault", "faust", "donquixote", "heathcliff", "rodion", "sinclair"]
     },
     {
@@ -751,7 +751,7 @@
       "type": "wing",
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
-      "loreSummary": "Quản lý hệ thống Tàu Warp (Warp Trains) và đội ngũ Dọn dẹp (Cleanup Agents).",
+      "loreSummary": "Manages the Warp Train transportation network and employs the secretive Cleanup Agents.",
       "relatedSinnerIds": ["meursault", "donquixote", "ryoshu", "honglu", "faust", "yi-sang"]
     },
     {
@@ -760,7 +760,7 @@
       "type": "wing",
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
-      "loreSummary": "Sản xuất Ống tiêm HP (HP Ampules) từ Nước mắt Dị thể. Sở hữu đội ngũ Excision Staff.",
+      "loreSummary": "Produces miraculous HP Ampules derived from the Tearful Thing. Defended by the Excision Staff.",
       "relatedSinnerIds": ["honglu", "heathcliff"]
     },
     {
@@ -769,7 +769,7 @@
       "type": "wing",
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
-      "loreSummary": "Tập đoàn Quân sự Tư nhân với các tiểu đội thú săn (Rabbit, Reindeer, Rhino).",
+      "loreSummary": "Private Military Company utilizing specialized beast-themed mercenary packs (Rabbit, Reindeer, Rhino).",
       "relatedSinnerIds": ["heathcliff", "ishmael", "meursault"]
     },
     {
@@ -778,7 +778,7 @@
       "type": "wing",
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
-      "loreSummary": "Khu vực tồi tàn với hệ thống thu thuế tàn nhẫn. Nơi khởi nguồn của tổ chức cách mạng Yurodiviye.",
+      "loreSummary": "A gambling-focused district with a ruthless casino tax system. Birthplace of the Yurodiviye.",
       "relatedSinnerIds": ["rodion"]
     },
     {
@@ -787,7 +787,7 @@
       "type": "wing",
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
-      "loreSummary": "Tập đoàn biến Thời gian và Màu sắc thành hàng hóa xa xỉ. Nơi diễn ra sự kiện Timekilling Time.",
+      "loreSummary": "Corporation that commodifies Time and Color as luxury goods. Setting of the Timekilling Time event.",
       "relatedSinnerIds": ["rodion", "honglu"]
     },
     {

@@ -202,7 +202,8 @@
       "passageContext": "The ten Sephirot of the Kabbalistic Tree, representing the emanation of the Divine. Directly mirrored by the 10 Sephirah-led departments of Lobotomy Corporation.",
       "historicalContext": "The core philosophical framework for Lobotomy Corp's architecture and the Seed of Light project. Each Sephirah AI is named after a Sephirah on the Tree.",
       "themes": ["faith", "redemption", "machinery"],
-      "category": "theological"
+      "category": "theological",
+      "coverImage": "/assets/theological/KabbalahTreeofLife.png"
     },
     {
       "id": "book-of-revelations",
@@ -214,7 +215,8 @@
       "passageContext": "The vision of the apocalypse and the four horsemen. Echoed by the transformation of Plague Doctor into WhiteNight.",
       "historicalContext": "Reflected in the figure of the Antichrist and the 12 Apostles in Lobotomy Corp. WhiteNight acts as a messianic figure with absolute authority over its apostles.",
       "themes": ["faith", "guilt", "nihilism"],
-      "category": "theological"
+      "category": "theological",
+      "coverImage": "/assets/theological/BookofRevelations.png"
     },
     {
       "id": "cain-and-abel",
@@ -226,7 +228,8 @@
       "passageContext": "The first murder and the mark of Cain, representing the dual nature of humanity.",
       "historicalContext": "Intertwined with Hermann Hesse's Demian. Sinclair's mark and his internal conflict between 'light' and 'dark' worlds are rooted in this biblical archetype.",
       "themes": ["guilt", "family", "vengeance", "redemption"],
-      "category": "theological"
+      "category": "theological",
+      "coverImage": "/assets/theological/CainAndAbel.png"
     }
   ]
 }
