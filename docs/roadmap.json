@@ -48,12 +48,7 @@
         "Global fuzzy search (Ctrl+K)",
         "Project documentation pages (About/Roadmap)"
       ],
-      "remaining_work": [
-        "Data quality pass across Sinner literary sources and canto summaries",
-        "Consistency audit for graph links, shared groups, and panel interactions",
-        "Cross-game entity coverage review and cleanup",
-        "README and roadmap maintenance as the implementation changes"
-      ],
+      "remaining_work": [],
       "future_scope": [
         "Relationship Layering: Differentiate between primary vs. secondary literary sources with visual weight in the graph."
       ],
@@ -108,8 +103,8 @@
 
   "current_snapshot": {
     "sinners": 13,
-    "literary_sources": 33,
-    "cross_game_entities": 17,
+    "literary_sources": 42,
+    "cross_game_entities": 24,
     "major_ui_surfaces": [
       "Lore graph",
       "Universal Profile pages (/profile/:type/:id)",
@@ -125,11 +120,11 @@
   "next_action": "Proceed to M5: Team Builder — leveraging the literary and thematic connections now surfaced in the Profile System to filter composition groups.",
 
   "conversation_context": {
-    "last_reviewed_on": "2026-04-22",
+    "last_reviewed_on": "2026-04-24",
     "notes": [
       "README and roadmap were refreshed to match the implemented repo state, including About/Roadmap pages and supplemental data files.",
-      "M1 and M2 are complete.",
-      "M3 is partially implemented and now primarily a content-quality and consistency milestone."
+      "M1, M2, M3 and M4 are complete.",
+      "M7 is in progress following community feedback integration for literary influences."
     ]
   }
 }
