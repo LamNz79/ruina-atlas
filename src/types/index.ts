@@ -260,7 +260,7 @@ export interface Canto {
  * Rendered as distinct diamond-shaped nodes in the lore graph.
  * @see src/data/crossGameEntities.json
  */
-export type CrossGameEntityType = 'character' | 'wing' | 'abnormality' | 'association' | 'finger';
+export type CrossGameEntityType = 'character' | 'wing' | 'abnormality' | 'association' | 'finger' | 'syndicate';
 
 export interface CrossGameEntity {
   id: string;                 // prefixed 'entity-{slug}', e.g. 'entity-w-corp'
