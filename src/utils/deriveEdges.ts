@@ -14,7 +14,7 @@ export function deriveEdges(sinners: Sinner[]): GraphEdge[] {
 
   for (const s1 of sinners) {
     // 1) Links from Sinner to Literary/Theological Source
-    for (const lsRef of s1.literarySources) {
+    for (const lsRef of s1.literarySources || []) {
       const k = key(s1.id, `lit-${lsRef.id}`);
       if (!added.has(k)) {
         const sourceData = literarySources.find(ls => ls.id === lsRef.id);
@@ -48,8 +48,8 @@ export function deriveEdges(sinners: Sinner[]): GraphEdge[] {
       }
 
       // 4) Shared theme (between Sinners)
-      const s1Themes = new Set(s1.themes);
-      const hasTheme = s2.themes.some((t) => s1Themes.has(t));
+      const s1Themes = new Set(s1.themes || []);
+      const hasTheme = (s2.themes || []).some((t) => s1Themes.has(t));
       if (hasTheme) {
         edges.push({ source: s1.id, target: s2.id, type: 'thematic-link' });
         added.add(k);
