@@ -1108,6 +1108,58 @@
       "loreSummary": "A pair of shoes that possess the wearer, forcing them to dance until they die of exhaustion or blood loss.",
       "themes": ["obsession", "decay"],
       "literarySourceIds": ["the-red-shoes"]
+    },
+    {
+      "id": "entity-smee",
+      "name": "Smee",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "The first mate of the Pequod in the Mirror of the Lake. He remains loyal to Ahab despite the crew's descent into madness.",
+      "themes": ["faith", "futility"],
+      "relatedSinnerIds": ["ishmael"],
+      "connectionInsights": {
+        "ishmael": "Smee serves as a foil to Ishmael's eventual rebellion, representing the unquestioning loyalty to a doomed captain."
+      }
+    },
+    {
+      "id": "entity-dongrang",
+      "name": "Dongrang",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "A researcher at K Corp. and former member of the League of Nine Literati. He chose to discard his past and dreams for the stability and success provided by the Wings.",
+      "themes": ["decay", "metamorphosis", "futility"],
+      "relatedSinnerIds": ["yi-sang"],
+      "connectionInsights": {
+        "yi-sang": "A former friend and parallel to Yi Sang. While Yi Sang struggled with the fragmentation of the self, Dongrang chose to erase his original self entirely for advancement."
+      }
+    },
+    {
+      "id": "entity-dongbaek",
+      "name": "Dongbaek",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "A member of the Technology Liberation Alliance and former member of the League of Nine Literati. She seeks to restore the world to a 'purer' state through the destruction of Singularity technology.",
+      "themes": ["vengeance", "faith", "decay"],
+      "relatedSinnerIds": ["yi-sang"],
+      "connectionInsights": {
+        "yi-sang": "Represents the path of radical resistance to the City's technological decay, contrasting with Yi Sang's more internal, poetic search for meaning."
+      }
+    },
+    {
+      "id": "entity-rim",
+      "name": "Rim",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "A researcher encountered during the investigation of the Golden Bough in the District of the Wuthering Heights. He is involved in the experiments regarding the Mirror and parallel worlds.",
+      "themes": ["machinery", "identity-fragmentation"],
+      "relatedSinnerIds": ["heathcliff"],
+      "connectionInsights": {
+        "heathcliff": "His experiments with the Mirror technology facilitate the encounter with Erlking Heathcliff, driving the Canto's exploration of identity and tragedy."
+      }
     }
   ]
 }

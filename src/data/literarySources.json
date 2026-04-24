@@ -415,6 +415,54 @@
       "category": "literary"
     },
     {
+      "id": "the-spiders-thread",
+      "title": "The Spider's Thread",
+      "author": "Akutagawa Ryunosuke",
+      "historicalContext": "A secondary source for Ryoshu. It deals with the themes of a single chance at salvation and the cruelty of artistic/moral detachment.",
+      "themes": ["faith", "futility"],
+      "category": "literary"
+    },
+    {
+      "id": "rashomon",
+      "title": "Rashomon",
+      "author": "Akutagawa Ryunosuke",
+      "historicalContext": "A secondary source for Ryoshu. It explores the relativity of morality and the desperation of survival, themes often reflected in her brutal worldview.",
+      "themes": ["nihilism", "decay"],
+      "category": "literary"
+    },
+    {
+      "id": "erlkonig",
+      "title": "Der Erlkönig",
+      "author": "Johann Wolfgang von Goethe",
+      "historicalContext": "A major secondary influence for Heathcliff (Erlking Heathcliff). The poem's themes of a supernatural entity pursuing a child parallel Heathcliff's role as a stalker and 'monster' in the Wuthering Heights adaptation.",
+      "themes": ["decay", "family"],
+      "category": "literary"
+    },
+    {
+      "id": "wild-hunt",
+      "title": "The Wild Hunt",
+      "author": "European Folklore",
+      "historicalContext": "The conceptual basis for Heathcliff's 'Wild Hunt' identity. It represents a spectral group of hunters whose appearance portends catastrophe, mirroring Heathcliff's destructive return.",
+      "themes": ["vengeance", "decay"],
+      "category": "literary"
+    },
+    {
+      "id": "little-mermaid",
+      "title": "The Little Mermaid",
+      "author": "Hans Christian Andersen",
+      "historicalContext": "A secondary source for Ishmael. The themes of unrequited longing and the sacrifice of one's voice/identity for a world that does not belong to them mirror her journey away from the Pequod.",
+      "themes": ["redemption", "identity-fragmentation"],
+      "category": "literary"
+    },
+    {
+      "id": "little-prince",
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "historicalContext": "A significant secondary influence for Sinclair. The Fox's lessons on 'taming' and the Prince's innocence in a cynical world parallel Sinclair's relationship with Demian and his struggle to remain 'untainted'.",
+      "themes": ["faith", "guilt"],
+      "category": "literary"
+    },
+    {
       "id": "water-margin",
       "title": "Water Margin (Shuǐhǔ Zhuàn)",
       "author": "Shi Nai'an",

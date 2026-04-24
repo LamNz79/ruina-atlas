@@ -1495,6 +1495,16 @@
           "id": "wuthering-heights",
           "role": "primary",
           "specificConnection": "Direct mapping to Wuthering Heights."
+        },
+        {
+          "id": "erlkonig",
+          "role": "secondary",
+          "specificConnection": "Erlking Heathcliff identity specifically adapts the themes of the Goethe poem."
+        },
+        {
+          "id": "wild-hunt",
+          "role": "secondary",
+          "specificConnection": "The Wild Hunt identity reflects the folklore's themes of a spectral, destructive return."
         }
       ],
       "themes": [
