@@ -54,6 +54,9 @@
         "Cross-game entity coverage review and cleanup",
         "README and roadmap maintenance as the implementation changes"
       ],
+      "future_scope": [
+        "Relationship Layering: Differentiate between primary vs. secondary literary sources with visual weight in the graph."
+      ],
       "references": {
         "design_log": "docs/design-log/003-lore-graph-full-content-design-log.md",
         "requirement": "requirement/002-lore-graph-full-content-requirement.md"
@@ -79,6 +82,18 @@
       "status": "not_started",
       "priority": "low",
       "description": "Improve search, deep links, and browse flows across Sinners, sources, and entity nodes."
+    },
+    {
+      "id": "M7",
+      "name": "Wings & NPC Expansion",
+      "status": "in-progress",
+      "priority": "medium",
+      "description": "Expand beyond Sinners to cover major NPCs and District-level lore (Indigo Elder, Dongrang, etc.) and their specific literary roots (Hemingway, Kafka-parallelism).",
+      "deliverables": [
+        "New entity nodes for District NPCs and secondary antagonists",
+        "Deep-dive sources for Dreaming Electric Sheep (PKD) and Indigo Elder (Hemingway)",
+        "Expanded 'Secondary Source' mapping for complex characters like Erlkönig Heathcliff"
+      ]
     }
   ],
 
@@ -93,8 +108,8 @@
 
   "current_snapshot": {
     "sinners": 13,
-    "literary_sources": 27,
-    "cross_game_entities": 12,
+    "literary_sources": 33,
+    "cross_game_entities": 17,
     "major_ui_surfaces": [
       "Lore graph",
       "Universal Profile pages (/profile/:type/:id)",
