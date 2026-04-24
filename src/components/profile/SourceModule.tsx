@@ -1,7 +1,5 @@
-import { Link } from 'react-router-dom';
 import type { LiterarySource, Sinner } from '../../types';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import { BookOpen, ExternalLink, Users, Quote } from 'lucide-react';
 import { Button } from '../ui/button';
 import { identityImages } from '@/data/identityImages';

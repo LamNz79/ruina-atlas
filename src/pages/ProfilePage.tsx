@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 // Layout Primitives
-import { Stack, Flex, Container, Section, Box } from '../components/layout/index';
+import { Stack, Container, Section, Box } from '../components/layout/index';
 
 // Logic Hooks
 import { useDossierData } from '../hooks/useDossierData';
@@ -45,17 +45,17 @@ export default function ProfilePage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(184,32,47,0.05),transparent_50%)]" />
       </Box>
 
-      <ProfileHeader 
-        category={category!} 
-        name={name} 
-        nav={nav} 
+      <ProfileHeader
+        category={category!}
+        name={name}
+        nav={nav}
         spoilerEnabled={spoilerEnabled}
         onSpoilerToggle={setSpoilerEnabled}
       />
 
       <Container className="py-12 relative z-10">
         <Stack gap={20}>
-          
+
           {/* Universal Hero Section */}
           <Section spacing="none" className="flex flex-col md:flex-row gap-12 items-start animate-in fade-in slide-in-from-bottom-4 duration-700">
             <HeroFrame category={category!} id={id!} name={name} entity={entity} />
