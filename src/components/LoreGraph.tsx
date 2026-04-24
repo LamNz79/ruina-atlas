@@ -64,6 +64,7 @@ export function LoreGraph({
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTER_STATE);
   const [activeEdgeTypes, setActiveEdgeTypes] = useState<Set<EdgeType>>(new Set(ALL_EDGE_TYPES.filter(t => t !== 'thematic-link')));
   const [tooltip, setTooltip] = useState<any>({ visible: false, type: 'node', name: '', x: 0, y: 0 });
+  const isDraggingRef = useRef(false);
 
   // --- Size constants (Match Worker) ---
   const S_R = 26;   // sinner
@@ -230,20 +231,34 @@ export function LoreGraph({
   // --- Rendering Functions ---
   const renderCanvas = useCallback(() => {
     const canvas = canvasRef.current;
-    if (!canvas || !containerRef.current) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const width = containerRef.current.clientWidth;
-    const height = containerRef.current.clientHeight;
-    canvas.width = width * window.devicePixelRatio;
-    canvas.height = height * window.devicePixelRatio;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    const rect = container.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    
+    // Set internal resolution based on DPR
+    if (canvas.width !== Math.floor(rect.width * dpr) || canvas.height !== Math.floor(rect.height * dpr)) {
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
+    }
 
-    ctx.clearRect(0, 0, width, height);
+    // Ensure CSS size matches container exactly
+    if (canvas.style.width !== `${rect.width}px`) canvas.style.width = `${rect.width}px`;
+    if (canvas.style.height !== `${rect.height}px`) canvas.style.height = `${rect.height}px`;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     ctx.save();
-    ctx.translate(transformRef.current.x, transformRef.current.y);
-    ctx.scale(transformRef.current.k, transformRef.current.k);
+    // 1. Scale to device pixels
+    ctx.scale(dpr, dpr);
+    
+    // 2. Apply D3 zoom transform (translation and scale are in CSS pixels)
+    const transform = transformRef.current;
+    ctx.translate(transform.x, transform.y);
+    ctx.scale(transform.k, transform.k);
 
     const activeId = hoverId || focusNodeId || selectedSinner?.id || selectedEntity;
 
@@ -253,13 +268,15 @@ export function LoreGraph({
       if (!s || !t) return;
 
       const isConnected = (s.id === activeId || t.id === activeId);
+      if (typeof s.x !== 'number' || typeof s.y !== 'number' || typeof t.x !== 'number' || typeof t.y !== 'number') return;
+      
       ctx.beginPath();
-      ctx.moveTo(s.x!, s.y!);
-      ctx.lineTo(t.x!, t.y!);
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(t.x, t.y);
 
       ctx.strokeStyle = EDGE_COLORS[l.type] || '#ccc';
       ctx.globalAlpha = isConnected ? 0.9 : (activeId ? 0.05 : 0.3);
-      ctx.lineWidth = isConnected ? 2 / transformRef.current.k : 1 / transformRef.current.k;
+      ctx.lineWidth = isConnected ? 2 / transform.k : 1 / transform.k;
 
       if (isConnected) {
         ctx.shadowBlur = 10;
@@ -275,29 +292,39 @@ export function LoreGraph({
   }, [graphData.links, hoverId, focusNodeId, selectedSinner, selectedEntity]);
 
   const updateSVGPositions = useCallback(() => {
-    if (!svgRef.current) return;
+    if (!svgRef.current || !containerRef.current) return;
     const transform = transformRef.current;
     const svg = d3.select(svgRef.current);
     
+    // Update SVG container dimensions to match precisely
+    const rect = containerRef.current.getBoundingClientRect();
+    if (svg.attr('width') !== rect.width.toString()) svg.attr('width', rect.width);
+    if (svg.attr('height') !== rect.height.toString()) svg.attr('height', rect.height);
+
     svg.select('.zoom-group').attr('transform', transform.toString());
 
     svg.selectAll<SVGGElement, GraphNode>('.node-group')
       .attr('transform', d => {
         const n = nodesRef.current.get(d.id);
-        return n ? `translate(${n.x},${n.y})` : '';
+        return (n && typeof n.x === 'number' && typeof n.y === 'number') ? `translate(${n.x},${n.y})` : '';
       });
   }, []);
+
+  const renderRef = useRef({ renderCanvas, updateSVGPositions });
+  useEffect(() => {
+    renderRef.current = { renderCanvas, updateSVGPositions };
+  }, [renderCanvas, updateSVGPositions]);
 
   useEffect(() => {
     let frameId: number;
     const loop = () => {
-      renderCanvas();
-      updateSVGPositions();
+      renderRef.current.renderCanvas();
+      renderRef.current.updateSVGPositions();
       frameId = requestAnimationFrame(loop);
     };
     frameId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(frameId);
-  }, [renderCanvas, updateSVGPositions]);
+  }, []); // Stable loop that doesn't restart
 
   // --- SVG Node Rendering Logic ---
   const makeHexPath = (r: number) => {
@@ -454,18 +481,26 @@ export function LoreGraph({
         }
       })
       .on('mouseenter', (event, d) => {
+        if (isDraggingRef.current) return;
         setHoverId(d.id);
         const rect = containerRef.current!.getBoundingClientRect();
         setTooltip({ visible: true, type: 'node', name: d.name, game: d.canonicalGame, themes: d.themes, x: event.clientX - rect.left, y: event.clientY - rect.top });
       })
       .on('mouseleave', () => {
+        if (isDraggingRef.current) return;
         setHoverId(null);
         setTooltip(t => ({ ...t, visible: false }));
       })
       .call(d3.drag<SVGGElement, GraphNode>()
-        .on('start', (e, d) => workerRef.current?.postMessage({ type: 'dragStart', data: { id: d.id, x: e.x, y: e.y } }))
+        .on('start', (e, d) => {
+          isDraggingRef.current = true;
+          workerRef.current?.postMessage({ type: 'dragStart', data: { id: d.id, x: e.x, y: e.y } });
+        })
         .on('drag', (e, d) => workerRef.current?.postMessage({ type: 'dragMove', data: { id: d.id, x: e.x, y: e.y } }))
-        .on('end', (e, d) => workerRef.current?.postMessage({ type: 'dragEnd', data: { id: d.id } }))
+        .on('end', (e, d) => {
+          isDraggingRef.current = false;
+          workerRef.current?.postMessage({ type: 'dragEnd', data: { id: d.id } });
+        })
       );
 
     nodesEnter.call(renderNodeContent);
@@ -495,7 +530,7 @@ export function LoreGraph({
           .style('opacity', isActive ? 0 : 1);
         d3.select(this).selectAll('.node-hit')
           .transition().duration(200)
-          .attr('stroke-width', isActive ? 4 : (d.nodeType === 'wing' ? 2.5 : 2));
+          .attr('stroke-width', isActive ? 4 : (d.entityType === 'wing' ? 2.5 : 2));
       });
 
   }, [graphData, hoverId, focusNodeId, selectedSinner, selectedEntity, renderNodeContent, sinners]);
@@ -532,8 +567,8 @@ export function LoreGraph({
     <TooltipProvider>
       <div ref={containerRef} className="relative h-full w-full overflow-hidden bg-[#050506] font-sans">
         <div className="scanline-overlay absolute inset-0 z-10 pointer-events-none" />
-        <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none" />
-        <svg ref={svgRef} className="absolute inset-0 h-full w-full" style={{ background: 'transparent' }} />
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+        <svg ref={svgRef} className="absolute inset-0 w-full h-full" style={{ background: 'transparent' }} />
 
         {tooltip.visible && (
           <div className="absolute z-50 pointer-events-none p-3 bg-black/90 border border-bronze/50 rounded-sm backdrop-blur-xl shadow-xl"
