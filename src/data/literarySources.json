@@ -8,11 +8,124 @@
       "language": "Italian",
       "passage": "All hope abandon, ye who enter in.",
       "passageContext": "Inscription above the gates of Hell — Inferno, Canto III. A warning mirrored in the Sinners' entry into the Limbus Company bus.",
-      "historicalContext": "The foundational structure of Dante's journey through the afterlife provides the narrative blueprint for Limbus Company, from the Manager's name to the division of the City's Districts.",
+      "historicalContext": "The foundational structure of Dante's journey through the afterlife provides the narrative blueprint for Limbus Company, from the Manager's name (Dante/Durante) to the division of the City's Districts. It dictates the 'Inferno, Purgatorio, Paradiso' progression of the story.",
       "themes": ["guilt", "futility", "faith", "redemption"],
       "coverImage": "/assets/books/The-Divine-Comedy.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Divine_Comedy",
       "category": "theological"
+    },
+    {
+      "id": "kabbalah",
+      "title": "Jewish Kabbalah (Tree of Life)",
+      "author": "Traditional",
+      "historicalContext": "The mystical foundation of Lobotomy Corporation. The 10 Sephirot of the Tree of Life correspond to the 10 departments and their respective AI managers, forming the architecture of the Seed of Light project.",
+      "themes": ["faith", "decay", "redemption"],
+      "category": "theological",
+      "wikiUrl": "https://en.wikipedia.org/wiki/Kabbalah"
+    },
+    {
+      "id": "old-man-and-sea",
+      "title": "The Old Man and the Sea",
+      "author": "Ernest Hemingway",
+      "historicalContext": "The primary inspiration for the Indigo Elder's philosophy and struggle against the Great Lake's calamities. Represents the indomitable human spirit in the face of inevitable destruction.",
+      "themes": ["futility", "faith"],
+      "category": "literary"
+    },
+    {
+      "id": "electric-sheep",
+      "title": "Do Androids Dream of Electric Sheep?",
+      "author": "Philip K. Dick",
+      "historicalContext": "Source for the Dreaming Electric Sheep abnormality. Explores the blurred lines between artificial life and human empathy within a decaying industrial world.",
+      "themes": ["identity-fragmentation", "machinery", "decay"],
+      "category": "literary"
+    },
+    {
+      "id": "the-red-shoes",
+      "title": "The Red Shoes",
+      "author": "Hans Christian Andersen",
+      "historicalContext": "Source for the Red Shoes abnormality. Symbolizes obsessive desire and the loss of control to an external, blood-fueled drive.",
+      "themes": ["obsession", "guilt", "decay"],
+      "category": "literary"
+    },
+    {
+      "id": "the-spiders-thread",
+      "title": "The Spider's Thread",
+      "author": "Akutagawa Ryunosuke",
+      "historicalContext": "A short story exploring themes of selfishness and the narrow possibility of salvation. In Limbus Company, it informs Ryoshu's aesthetic and her perspective on the 'thread' of life and art.",
+      "themes": ["futility", "redemption"],
+      "category": "literary"
+    },
+    {
+      "id": "rashomon",
+      "title": "Rashomon",
+      "author": "Akutagawa Ryunosuke",
+      "historicalContext": "Focuses on the breakdown of social order and the morality of survival. It contributes to the 'Grit' and 'Grey' morality seen in Ryoshu's backstory.",
+      "themes": ["decay", "identity-fragmentation"],
+      "category": "literary"
+    },
+    {
+      "id": "little-mermaid",
+      "title": "The Little Mermaid",
+      "author": "Hans Christian Andersen",
+      "historicalContext": "A secondary source for Ishmael, specifically mirrored in Queequeg's role. Elements of self-sacrifice, alienation between two worlds (land and sea), and the search for a soul/agency are central.",
+      "themes": ["family", "faith", "redemption"],
+      "category": "literary"
+    },
+    {
+      "id": "little-prince",
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "historicalContext": "A secondary source for Sinclair. Demian quotes the Fox's wisdom ('essential thing is invisible'), and Sinclair's design (specifically his scarf) mirrors the Prince. It represents the loss and search for childhood innocence.",
+      "themes": ["family", "identity-fragmentation"],
+      "category": "literary"
+    },
+    {
+      "id": "carmilla",
+      "title": "Carmilla",
+      "author": "Joseph Sheridan Le Fanu",
+      "historicalContext": "A secondary source for Don Quixote. Informs the vampiric elements and the 'Kindred' lore revealed in Canto VII. It blends gothic horror with the knightly delusions of the primary source.",
+      "themes": ["obsession", "decay", "family"],
+      "category": "literary"
+    },
+    {
+      "id": "sea-and-butterfly",
+      "title": "The Sea and The Butterfly",
+      "author": "Kim In-Son",
+      "historicalContext": "The poetic inspiration for the character Rim. It explores the fragility of the self against the vast, overwhelming power of the sea.",
+      "themes": ["futility", "decay"],
+      "category": "literary"
+    },
+    {
+      "id": "the-camellias",
+      "title": "The Camellias",
+      "author": "Gim Yujeong",
+      "historicalContext": "The primary inspiration for the character Dongbaek and her floral/nature-based distortion aesthetics.",
+      "themes": ["family", "decay"],
+      "category": "literary"
+    },
+    {
+      "id": "peter-pan",
+      "title": "Peter Pan",
+      "author": "J.M. Barrie",
+      "historicalContext": "The inspiration for Smee and the pirate-themed syndicates in Limbus Company. Explores the concept of 'Neverland' and the refusal to grow up/face reality.",
+      "themes": ["family", "identity-fragmentation"],
+      "category": "literary"
+    },
+    {
+      "id": "the-cow-mud-hut",
+      "title": "The Cow / The Mud Hut",
+      "author": "Chi-Yin-Joo",
+      "historicalContext": "The literary inspiration for Dongrang. It explores the pastoral life and the eventual decay/destruction of traditional structures, mirrored in Dongrang's fall from grace.",
+      "themes": ["decay", "futility"],
+      "category": "literary"
+    },
+    {
+      "id": "kafka-father-parallel",
+      "title": "Kafka's Relationship with his Father",
+      "author": "Biographical",
+      "historicalContext": "A secondary influence on Gregor Samsa. While 'The Metamorphosis' is the primary text, Gregor's internal guilt and his relationship with 'The Manager' (and his biological father) heavily mirror Franz Kafka's real-life struggle for validation.",
+      "themes": ["family", "guilt"],
+      "category": "literary"
     },
     {
       "id": "the-wings",
@@ -64,6 +177,32 @@
       "themes": ["obsession", "guilt", "vengeance", "futility"],
       "coverImage": "/assets/books/Hell-Screen.png",
       "wikiUrl": "https://en.wikipedia.org/wiki/Hell_Screen"
+    },
+    {
+      "id": "the-spiders-thread",
+      "title": "The Spider's Thread",
+      "author": "Ryunosuke Akutagawa",
+      "year": 1918,
+      "language": "Japanese",
+      "passage": "A single spider's thread, silver and slender, came dangling down from the heavens.",
+      "passageContext": "The thread of redemption offered to the sinner Kandata, which snaps when he refuses to share it.",
+      "historicalContext": "A Buddhist-themed fable about selfishness and the possibility of salvation. It is heavily referenced in Ryoshu's 'House of Spiders' lore and her connection to her daughter.",
+      "themes": ["guilt", "redemption", "futility"],
+      "coverImage": "/assets/books/The-Spiders-Thread.png",
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Spider%27s_Thread"
+    },
+    {
+      "id": "rashomon",
+      "title": "Rashōmon",
+      "author": "Ryunosuke Akutagawa",
+      "year": 1915,
+      "language": "Japanese",
+      "passage": "To do what is necessary for survival is not a sin; it is the way of the world.",
+      "passageContext": "The internal justification used by the servant as he chooses between starvation and crime under the crumbling gate.",
+      "historicalContext": "A story about moral relativism and the breakdown of society. While not as direct as Hell Screen, it informs the broader 'Akutagawa' DNA of Ryoshu's worldview.",
+      "themes": ["absurdity", "nihilism", "survival"],
+      "coverImage": "/assets/books/Rashomon.png",
+      "wikiUrl": "https://en.wikipedia.org/wiki/Rash%C5%8Dmon_(short_story)"
     },
     {
       "id": "the-stranger",
@@ -183,41 +322,43 @@
       "category": "literary"
     },
     {
-      "id": "kabbalah-tree-of-life",
-      "title": "The Tree of Life (Kabbalah)",
-      "author": "Theological Origin",
+      "id": "kabbalah",
+      "title": "Jewish Kabbalah (Tree of Life)",
+      "author": "Traditional",
       "year": 0,
       "language": "Hebrew",
       "passage": "Keter, Chokhmah, Binah, Chesed, Gevurah, Tiferet, Netzach, Hod, Yesod, Malkuth.",
       "passageContext": "The ten Sephirot of the Kabbalistic Tree, representing the emanation of the Divine. Directly mirrored by the 10 Sephirah-led departments of Lobotomy Corporation.",
-      "historicalContext": "The core philosophical framework for Lobotomy Corp's architecture and the Seed of Light project. Each Sephirah AI is named after a Sephirah on the Tree.",
-      "themes": ["faith", "redemption", "machinery"],
+      "historicalContext": "The mystical foundation of Lobotomy Corporation. The 10 Sephirot of the Tree of Life correspond to the 10 departments and their respective AI managers, forming the architecture of the Seed of Light project.",
+      "themes": ["faith", "decay", "redemption"],
       "category": "theological",
-      "coverImage": "/assets/theological/KabbalahTreeofLife.png"
+      "coverImage": "/assets/theological/KabbalahTreeofLife.png",
+      "wikiUrl": "https://en.wikipedia.org/wiki/Kabbalah"
     },
     {
       "id": "book-of-revelations",
       "title": "The Book of Revelations",
-      "author": "Theological Origin",
+      "author": "John of Patmos",
       "year": 95,
       "language": "Ancient Greek",
       "passage": "And I saw, and behold a white horse: and he that sat on him had a bow; and a crown was given unto him.",
       "passageContext": "The vision of the apocalypse and the four horsemen. Echoed by the transformation of Plague Doctor into WhiteNight.",
-      "historicalContext": "Reflected in the figure of the Antichrist and the 12 Apostles in Lobotomy Corp. WhiteNight acts as a messianic figure with absolute authority over its apostles.",
-      "themes": ["faith", "guilt", "nihilism"],
+      "historicalContext": "Source of the 'Four Horsemen' and apocalyptic imagery prevalent in Abnormality designs, specifically the WhiteNight/Plague Doctor cycle and the concept of the 12 Apostles.",
+      "themes": ["faith", "guilt", "redemption"],
       "category": "theological",
-      "coverImage": "/assets/theological/BookofRevelations.png"
+      "coverImage": "/assets/theological/BookofRevelations.png",
+      "wikiUrl": "https://en.wikipedia.org/wiki/Book_of_Revelation"
     },
     {
       "id": "cain-and-abel",
-      "title": "Cain & Abel",
-      "author": "Theological Origin",
+      "title": "The Mark of Cain (Genesis) / Cain & Abel",
+      "author": "Biblical",
       "year": 0,
       "language": "Hebrew",
       "passage": "Am I my brother's keeper?",
       "passageContext": "The first murder and the mark of Cain, representing the dual nature of humanity.",
-      "historicalContext": "Intertwined with Hermann Hesse's Demian. Sinclair's mark and his internal conflict between 'light' and 'dark' worlds are rooted in this biblical archetype.",
-      "themes": ["guilt", "family", "vengeance", "redemption"],
+      "historicalContext": "The theological layer for Sinclair's internal conflict. It is filtered through the lens of Hermann Hesse's 'Demian', representing the chosen nature of those who bear the 'mark' of awareness.",
+      "themes": ["guilt", "family", "identity-fragmentation", "redemption"],
       "category": "theological",
       "coverImage": "/assets/theological/CainAndAbel.png"
     },
@@ -232,6 +373,46 @@
       "historicalContext": "One of the Five Classics of the Confucian canon. It serves as the primary ideological inspiration for 'The Thumb' (Ngón Cái) of the Five Fingers, who enforce 'Propriety' with absolute and lethal prejudice.",
       "themes": ["machinery", "family", "faith"],
       "wikiUrl": "https://en.wikipedia.org/wiki/Book_of_Rites"
+    },
+    {
+      "id": "autumn-mountain",
+      "title": "Autumn Mountain",
+      "author": "Akutagawa Ryunosuke",
+      "historicalContext": "A secondary source for Ryoshu. Explores the obsession with a masterpiece that may or may not exist, mirroring her singular focus on artistic perfection.",
+      "themes": ["obsession", "futility"],
+      "category": "literary"
+    },
+    {
+      "id": "the-myth-of-sisyphus",
+      "title": "The Myth of Sisyphus",
+      "author": "Albert Camus",
+      "historicalContext": "A secondary source for Meursault. It provides the philosophical groundwork for his acceptance of the absurd through repetitive, seemingly meaningless obedience.",
+      "themes": ["absurdity", "futility"],
+      "category": "literary"
+    },
+    {
+      "id": "journey-to-the-west",
+      "title": "Journey to the West",
+      "author": "Wu Cheng'en",
+      "historicalContext": "A secondary source for Hong Lu. Elements of the celestial hierarchy and the trials of the journey parallel his family's complex, semi-mythical status.",
+      "themes": ["family", "faith"],
+      "category": "literary"
+    },
+    {
+      "id": "the-rimes-of-the-ancient-mariner",
+      "title": "The Rime of the Ancient Mariner",
+      "author": "Samuel Taylor Coleridge",
+      "historicalContext": "A secondary source for Ishmael. It reflects the psychological burden of the sole survivor and the 'curse' of the sea.",
+      "themes": ["guilt", "survival", "faith"],
+      "category": "literary"
+    },
+    {
+      "id": "siddhartha",
+      "title": "Siddhartha",
+      "author": "Hermann Hesse",
+      "historicalContext": "A secondary source for Sinclair. His journey toward self-realization outside of Demian's direct influence mirrors Siddhartha's search for enlightenment.",
+      "themes": ["faith", "identity-fragmentation"],
+      "category": "literary"
     },
     {
       "id": "water-margin",

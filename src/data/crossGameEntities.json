@@ -327,6 +327,7 @@
       "appearances": ["lobotomy", "ruina", "limbus"],
       "loreSummary": "A spider that protects its cocoon with absolute devotion, punishing any who touch it.",
       "themes": ["family", "vengeance"],
+      "literarySourceIds": ["the-spiders-thread"],
       "relatedSinnerIds": ["ryoshu"],
       "connectionInsights": {
         "ryoshu": "Wields the 'Red Eyes' portion of her Lobotomy E.G.O Identity, embodying the protective yet lethal nature of the spider."
@@ -412,7 +413,7 @@
       "appearances": ["lobotomy", "ruina", "limbus"],
       "loreSummary": "The primary energy Wing of the City. Its facility structure consists of 10 specialized teams, each managed by a Sephirah.",
       "themes": ["machinery", "guilt"],
-      "literarySourceIds": ["kabbalah-tree-of-life"],
+      "literarySourceIds": ["kabbalah"],
       "relatedSinnerIds": ["dante", "faust", "yi-sang"],
       "connectionInsights": {
         "dante": "Directly resonates with Golden Boughs to manifest Sapling of Light abilities (Durante), which are structurally named after L-Corp Sephirot (Pigritia, Superbia, Morositas).",
@@ -947,6 +948,26 @@
       "literaryOrigin": "water-margin"
     },
     {
+      "id": "entity-lei-heng",
+      "name": "Lei Heng",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "finger-pinky",
+      "appearances": ["limbus"],
+      "loreSummary": "A member of the Pinky identified as the 'Tiantui Star' (Winged Tiger). He embodies the fierce and unyielding nature of his literary counterpart from Water Margin.",
+      "themes": ["vengeance", "family"]
+    },
+    {
+      "id": "entity-zilu",
+      "name": "Zilu",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "finger-pinky",
+      "appearances": ["limbus"],
+      "loreSummary": "A member of the Pinky associated with the 'Tianjiu Star' (Unrestrained). Like other Pinky members, his identity is deeply tied to the destiny of the 108 Stars.",
+      "themes": ["faith", "family"]
+    },
+    {
       "id": "entity-kalo",
       "name": "Kalo",
       "type": "character",
@@ -1052,6 +1073,41 @@
       "loreSummary": "The ultimate authority of the City. Composed of the Head, the Eye, and the Claw. Maintains the Taboos and the World Hub.",
       "themes": ["faith", "machinery", "redemption"],
       "relatedSinnerIds": ["faust", "yi-sang", "sinclair"]
+    },
+    {
+      "id": "entity-indigo-elder",
+      "name": "The Indigo Elder",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "A legendary Color Fixer of the Great Lake. He spends his life hunting the 'Calamities' and guiding those brave or foolish enough to sail the waters.",
+      "themes": ["futility", "faith"],
+      "literarySourceIds": ["old-man-and-sea"],
+      "relatedSinnerIds": ["ishmael"]
+    },
+    {
+      "id": "entity-electric-sheep",
+      "name": "Dreaming Electric Sheep",
+      "subjectNumber": "T-02-12",
+      "type": "abnormality",
+      "riskLevel": "WAW",
+      "canonicalGame": "limbus",
+      "appearances": ["limbus"],
+      "loreSummary": "An abnormality that generates a dream-like state for those connected to it. It questions the nature of reality and artificial empathy.",
+      "themes": ["machinery", "identity-fragmentation"],
+      "literarySourceIds": ["electric-sheep"]
+    },
+    {
+      "id": "entity-red-shoes",
+      "name": "Red Shoes",
+      "subjectNumber": "O-04-08",
+      "type": "abnormality",
+      "riskLevel": "HE",
+      "canonicalGame": "lobotomy",
+      "appearances": ["lobotomy", "ruina", "limbus"],
+      "loreSummary": "A pair of shoes that possess the wearer, forcing them to dance until they die of exhaustion or blood loss.",
+      "themes": ["obsession", "decay"],
+      "literarySourceIds": ["the-red-shoes"]
     }
   ]
 }
