@@ -6,7 +6,7 @@
 
 It focuses on the part other databases usually skip: the literary layer. The app connects Sinners, books, themes, cantos, and cross-game entities in one graph-first interface.
 
-> Work in progress. The graph and core data model are live, and M3 content expansion is underway.
+> **Public Beta.** The graph and core data model are live. M4 Universal Profiles are fully implemented.
 
 ---
 
@@ -20,9 +20,9 @@ It focuses on the part other databases usually skip: the literary layer. The app
 - [x] Cross-game entity nodes and entity detail panel
 - [x] Spoiler-gated canto annotations in the Sinner panel
 - [x] About and Roadmap pages
-- [ ] M3 content polish and consistency pass
-- [ ] Sinner profile card/page expansion
-- [ ] Lore-aware team builder
+- [x] M3 content polish and consistency pass
+- [x] Sinner profile card/page expansion (M4)
+- [ ] Lore-aware team builder (M5)
 
 Current data snapshot:
 

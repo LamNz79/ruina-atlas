@@ -13,8 +13,13 @@ export default function About() {
             className="h-8 w-8 object-contain"
           />
           <div className="flex flex-col">
-            <h1 className="text-lg font-bold tracking-tight leading-none">Ruina Atlas</h1>
-            <p className="hidden text-[10px] font-medium text-muted-foreground sm:block leading-none mt-0.5">
+            <div className="flex items-center gap-2">
+              <h1 className="text-lg font-bold tracking-tight leading-none">Ruina Atlas</h1>
+              <span className="rounded-full bg-primary/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary border border-primary/30">
+                Public Beta
+              </span>
+            </div>
+            <p className="hidden text-[10px] font-medium text-muted-foreground sm:block leading-none mt-1">
               Literary connections of Project Moon's universe
             </p>
           </div>
@@ -49,7 +54,7 @@ export default function About() {
               What is Ruina Atlas?
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Ruina Atlas is a fan-made literary map tool for Project Moon's universe — connecting the Sinners of Limbus Company to their literary origins across all three games. Explore how characters like Yi Sang, Faust, and Gregor trace back to Dante's Inferno, Goethe's Faust, and beyond.
+              Ruina Atlas is a fan-made literary map tool for Project Moon's universe — connecting the Sinners of Limbus Company to their literary origins across all three games. Currently in <strong>Public Beta</strong>, the atlas is a living document that grows through community research and lore analysis.
             </p>
           </section>
 

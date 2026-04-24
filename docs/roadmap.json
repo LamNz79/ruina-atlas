@@ -1,10 +1,10 @@
 {
   "project": "Ruina Atlas",
   "created": "2026-04-13",
-  "last_updated": "2026-04-22",
-  "status": "active-development",
+  "last_updated": "2026-04-24",
+  "status": "public-beta",
   "recommended_order": ["data_layer", "lore_graph", "full_content", "universal_profiles", "team_builder"],
-  "summary": "A React and TypeScript fan tool for Project Moon focused on literary origins, canto context, and cross-game lore connections. The atlas now features a comprehensive lore graph and a complete Universal Profile system for Sinners, Sources, and Entities.",
+  "summary": "A React and TypeScript fan tool for Project Moon focused on literary origins, canto context, and cross-game lore connections. Now in Public Beta, the atlas features a comprehensive lore graph and a complete Universal Profile system.",
 
   "milestones": [
     {
@@ -35,7 +35,7 @@
     {
       "id": "M3",
       "name": "Lore graph full content",
-      "status": "completed 2026-04-22",
+      "status": "completed 2026-04-24",
       "priority": "high",
       "description": "Expand the graph into a reliable reference tool with richer data, spoiler-aware canto context, source browsing, and consistency cleanup.",
       "implemented_now": [
