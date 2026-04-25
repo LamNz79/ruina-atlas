@@ -30,6 +30,11 @@ export const THEMES = [
   'nihilism',
   'faith',
   'family',
+  'betrayal',
+  'hope',
+  'obsession',
+  'survival',
+  'art',
 ] as const;
 
 export const THEME_META: Record<Theme, { label: string; description: string }> = {
@@ -80,6 +85,26 @@ export const THEME_META: Record<Theme, { label: string; description: string }> =
   family: {
     label: 'Family',
     description: 'Blood and chosen bonds — the weight of kinship and its betrayals',
+  },
+  betrayal: {
+    label: 'Betrayal',
+    description: 'Trust broken for survival or ambition; the wound that reshapes loyalty',
+  },
+  hope: {
+    label: 'Hope',
+    description: 'The fragile insistence that things can change — camellias in winter',
+  },
+  obsession: {
+    label: 'Obsession',
+    description: 'The mind fixed on one thing until it consumes all else',
+  },
+  survival: {
+    label: 'Survival',
+    description: 'Enduring at any cost; the calculus of staying alive in the City',
+  },
+  art: {
+    label: 'Art',
+    description: 'Creation as compulsion, identity, or weapon',
   },
 };
 
