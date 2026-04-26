@@ -1,6 +1,5 @@
-import type { Sinner, GraphEdge, CrossGameEntity } from '../types';
+import type { CrossGameEntity } from '../types';
 import type { GraphNode, GraphLink } from './LoreGraphConstants';
-import { literarySources } from '../data/literarySources';
 
 export const getVisibleAncestorId = (id: string, entities: CrossGameEntity[], nodeMap: Map<string, GraphNode>): string => {
   let currentId = id;

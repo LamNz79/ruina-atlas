@@ -89,7 +89,7 @@ function updateSimulationPhysics() {
 
   const S_R = 26;
   const H_R = 28;
-  const W_R = 42;
+  // const W_R = 42;
 
   simulation
     .force('link', d3.forceLink<GraphNode, GraphLink>(links)

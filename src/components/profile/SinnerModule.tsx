@@ -1,17 +1,14 @@
-import type { Sinner, Identity, EGO, CantoAnnotation } from '../../types';
+import type { Sinner } from '../../types';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { identityImages } from '../../data/identityImages';
 import { identityDetailData } from '../../data/identityDetailData';
 import { getEgoImage } from '../../data/ego';
 import { cantos } from '../../data/cantos';
-import { 
-  Sword, 
-  Shield, 
-  Activity, 
-  Flame, 
-  Skull, 
-  Zap, 
+import {
+  Sword,
+  Flame,
+  Skull,
   Info,
   Clock
 } from 'lucide-react';
@@ -23,22 +20,22 @@ interface SinnerModuleProps {
 
 const RANK_COLORS: Record<string, string> = {
   ZAYIN: '#3CB371',
-  TETH:  '#1E90FF',
-  HE:    '#FF6347',
-  WAW:   '#8B0000',
+  TETH: '#1E90FF',
+  HE: '#FF6347',
+  WAW: '#8B0000',
   ALEPH: '#800080',
 };
 
-const STAT_ICONS = {
-  hp: <Activity className="h-3 w-3" />,
-  def: <Shield className="h-3 w-3" />,
-  speed: <Zap className="h-3 w-3" />,
-};
+// const STAT_ICONS = {
+//   hp: <Activity className="h-3 w-3" />,
+//   def: <Shield className="h-3 w-3" />,
+//   speed: <Zap className="h-3 w-3" />,
+// };
 
 const RARITY_ORDER = ['ZAYIN', 'TETH', 'HE', 'WAW', 'ALEPH'] as const;
 
 export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModuleProps) {
-  
+
   // Helper to group EGOs
   const groupedEgos = RARITY_ORDER.map(rank => ({
     rank,
@@ -50,21 +47,21 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
       {/* 1. Statistics & Overview */}
       <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="flex flex-col gap-4 p-6 rounded-xl border border-border/40 bg-card/30 backdrop-blur-sm">
-           <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground flex items-center gap-2">
-             <Info className="h-3.5 w-3.5" />
-             Character Stats
-           </h3>
-           <div className="grid grid-cols-2 gap-4">
-             {/* Example base stats (could be averaged or LCB specific) */}
-             <div className="space-y-1">
-               <span className="text-[10px] text-muted-foreground uppercase font-bold">Role</span>
-               <p className="text-sm font-semibold">{sinner.id === 'dante' ? 'Manager' : 'Limbus Sinner'}</p>
-             </div>
-             <div className="space-y-1">
-               <span className="text-[10px] text-muted-foreground uppercase font-bold">Continuity</span>
-               <p className="text-sm font-semibold">{sinner.crossGameContinuity ? 'High' : 'Local'}</p>
-             </div>
-           </div>
+          <h3 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground flex items-center gap-2">
+            <Info className="h-3.5 w-3.5" />
+            Character Stats
+          </h3>
+          <div className="grid grid-cols-2 gap-4">
+            {/* Example base stats (could be averaged or LCB specific) */}
+            <div className="space-y-1">
+              <span className="text-[10px] text-muted-foreground uppercase font-bold">Role</span>
+              <p className="text-sm font-semibold">{sinner.id === 'dante' ? 'Manager' : 'Limbus Sinner'}</p>
+            </div>
+            <div className="space-y-1">
+              <span className="text-[10px] text-muted-foreground uppercase font-bold">Continuity</span>
+              <p className="text-sm font-semibold">{sinner.crossGameContinuity ? 'High' : 'Local'}</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -82,7 +79,7 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
           {sinner.identities.map(id => {
             const detail = identityDetailData[id.id];
             const img = identityImages[id.id];
-            
+
             return (
               <Card key={id.id} className="group overflow-hidden border-border/40 bg-card/60 transition-all hover:scale-[1.02] hover:shadow-2xl hover:border-primary/40 relative">
                 {/* Image Container with Backdrop */}
@@ -90,25 +87,25 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
                   {img ? (
                     <>
                       {/* Blurred Backdrop */}
-                      <img 
-                        src={img} 
-                        className="absolute inset-0 h-full w-full object-cover blur-2xl opacity-30 scale-110" 
-                        aria-hidden="true" 
+                      <img
+                        src={img}
+                        className="absolute inset-0 h-full w-full object-cover blur-2xl opacity-30 scale-110"
+                        aria-hidden="true"
                       />
                       {/* Main Art */}
-                      <img 
-                        src={img} 
-                        alt={id.displayName} 
-                        className="relative h-full w-full object-contain p-2 transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]" 
+                      <img
+                        src={img}
+                        alt={id.displayName}
+                        className="relative h-full w-full object-contain p-2 transition-all duration-500 group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                       />
                     </>
                   ) : (
                     <div className="flex h-full w-full items-center justify-center text-muted-foreground italic text-xs">No Portrait</div>
                   )}
-                  
+
                   {/* Overlay Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                  
+
                   {/* Identity Label */}
                   <div className="absolute bottom-2.5 left-3 right-3 flex items-end justify-between">
                     <p className="text-[10px] font-black uppercase tracking-tight text-white/90 truncate drop-shadow-md">
@@ -129,17 +126,17 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
                   </div>
                   {detail && (
                     <div className="grid grid-cols-3 gap-1 border-t border-border/20 pt-2.5">
-                       {/* Stats mini grid */}
-                       {[
-                         { label: 'HP', key: 'hp_30', color: 'text-red-400/80' },
-                         { label: 'DEF', key: 'def_30', color: 'text-blue-400/80' },
-                         { label: 'SPD', key: 'speed_30', color: 'text-amber-400/80' }
-                       ].map((s) => (
-                         <div key={s.label} className="flex flex-col items-center">
-                            <p className="text-[8px] text-muted-foreground font-black uppercase tracking-tighter opacity-60">{s.label}</p>
-                            <p className={`text-[10px] font-mono font-bold ${s.color}`}>{(detail.stats as any)[s.key]}</p>
-                         </div>
-                       ))}
+                      {/* Stats mini grid */}
+                      {[
+                        { label: 'HP', key: 'hp_30', color: 'text-red-400/80' },
+                        { label: 'DEF', key: 'def_30', color: 'text-blue-400/80' },
+                        { label: 'SPD', key: 'speed_30', color: 'text-amber-400/80' }
+                      ].map((s) => (
+                        <div key={s.label} className="flex flex-col items-center">
+                          <p className="text-[8px] text-muted-foreground font-black uppercase tracking-tighter opacity-60">{s.label}</p>
+                          <p className={`text-[10px] font-mono font-bold ${s.color}`}>{(detail.stats as any)[s.key]}</p>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </CardContent>
@@ -167,27 +164,27 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
               </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {items.map(ego => (
-                  <div 
-                    key={ego.id} 
+                  <div
+                    key={ego.id}
                     className="group relative flex flex-col gap-3 p-4 rounded-xl border border-border/40 bg-card/40 transition-all hover:bg-card/60 hover:border-primary/20 hover:shadow-[0_0_20px_-10px] overflow-hidden"
-                    style={{ 
+                    style={{
                       '--ego-color': ego.colorTheme || '#888',
                       boxShadow: `0 0 20px -12px ${ego.colorTheme}40`
                     } as any}
                   >
                     {/* Themed Glow Background */}
-                    <div 
-                      className="absolute -right-8 -top-8 h-24 w-24 rounded-full blur-3xl opacity-20 transition-opacity group-hover:opacity-40" 
+                    <div
+                      className="absolute -right-8 -top-8 h-24 w-24 rounded-full blur-3xl opacity-20 transition-opacity group-hover:opacity-40"
                       style={{ backgroundColor: ego.colorTheme }}
                     />
 
                     <div className="flex gap-4 items-center relative z-10">
                       <div className="h-16 w-16 shrink-0 rounded-lg overflow-hidden border border-border/20 bg-muted/10 relative">
                         {/* Cinematic Backdrop for Icon */}
-                        <img 
-                          src={getEgoImage(ego.egoId)} 
-                          className="absolute inset-0 h-full w-full object-cover blur-xl opacity-40 scale-125" 
-                          aria-hidden="true" 
+                        <img
+                          src={getEgoImage(ego.egoId)}
+                          className="absolute inset-0 h-full w-full object-cover blur-xl opacity-40 scale-125"
+                          aria-hidden="true"
                         />
                         {ego.egoId ? (
                           <img src={getEgoImage(ego.egoId)} alt={ego.displayName} className="relative h-full w-full object-contain p-1 z-10" />
@@ -202,7 +199,7 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
                         </Badge>
                       </div>
                     </div>
-                    
+
                     <div className="relative z-10">
                       <p className="text-[10px] text-muted-foreground line-clamp-2 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                         {ego.description}

@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
-import * as d3 from 'd3';
-import { sankey, sankeyLinkHorizontal, type SankeyNode, type SankeyLink } from 'd3-sankey';
+import { sankey, sankeyLinkHorizontal } from 'd3-sankey';
 import { sinners } from '../data/sinners';
 import crossGameEntities from '../data/crossGameEntities.json';
 
@@ -85,7 +84,7 @@ export default function TrilogySankey() {
     departments.forEach(dept => {
       addNode(dept.id, dept.name, 'lobotomy');
       addLink('entity-l-corp', dept.id, 15);
-      
+
       const s = entities.find(e => e.id === dept.sephirah) || { id: dept.sephirah, name: dept.sephirah.replace('entity-', '') };
       addNode(s.id, s.name, 'lobotomy');
       addLink(dept.id, s.id, 12);
@@ -98,16 +97,16 @@ export default function TrilogySankey() {
         addLink(s.id, floorId, 10);
         addLink(floorId, 'entity-library', 10);
       } else if (s.id === 'entity-angela') {
-          // Special case for Angela/Architecture
-          addLink('entity-angela', 'entity-library', 10);
+        // Special case for Angela/Architecture
+        addLink('entity-angela', 'entity-library', 10);
       }
     });
 
     // 4. External Wings (Tributaries to Limbus)
     const externalWings = entities.filter(e => e.type === 'wing' && e.id.startsWith('wing-'));
     externalWings.forEach(w => {
-        addNode(w.id, w.name, 'limbus');
-        addLink(w.id, 'entity-limbus-company', 20);
+      addNode(w.id, w.name, 'limbus');
+      addLink(w.id, 'entity-limbus-company', 20);
     });
 
     // 5. Limbus Company Departments (LCCA, LCCB, LCD, LCB)
@@ -166,7 +165,7 @@ export default function TrilogySankey() {
       <div className="max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-bronze mb-2">Continuity Flow: The City's Evolution</h1>
         <p className="text-sm text-muted-foreground mb-8">Visualizing the structural succession from Lobotomy Corp to Limbus Company.</p>
-        
+
         <svg width={width} height={height} className="mx-auto">
           <g>
             {links.map((link: any, i: number) => (

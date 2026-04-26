@@ -1,9 +1,8 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LayoutGrid, Eye, EyeOff, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { Flex, Box } from '../layout/index';
+import { Flex } from '../layout/index';
 
 interface ProfileHeaderProps {
   category: string;
@@ -18,12 +17,12 @@ interface ProfileHeaderProps {
   onSpoilerToggle?: (val: boolean) => void;
 }
 
-export const ProfileHeader = ({ 
-  category, 
-  name, 
-  nav, 
-  spoilerEnabled, 
-  onSpoilerToggle 
+export const ProfileHeader = ({
+  category,
+  name,
+  nav,
+  spoilerEnabled,
+  onSpoilerToggle
 }: ProfileHeaderProps) => {
   const navigate = useNavigate();
 

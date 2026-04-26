@@ -540,6 +540,11 @@
           "id": "don-quixote",
           "role": "primary",
           "specificConnection": "Direct mapping to Cervantes' Don Quixote."
+        },
+        {
+          "id": "carmilla",
+          "role": "secondary",
+          "specificConnection": "Informs the vampiric elements of her backstory and the La Manchaland kindred lore."
         }
       ],
       "themes": [
@@ -770,6 +775,21 @@
           "id": "hell-screen",
           "role": "primary",
           "specificConnection": "Direct mapping to Akutagawa's Hell Screen."
+        },
+        {
+          "id": "the-spiders-thread",
+          "role": "secondary",
+          "specificConnection": "Referenced via the 'House of Spiders' and Ryoshu's complex relationship with her daughter and redemption."
+        },
+        {
+          "id": "rashomon",
+          "role": "secondary",
+          "specificConnection": "Informs her cynical worldview on morality and survival within the City."
+        },
+        {
+          "id": "autumn-mountain",
+          "role": "secondary",
+          "specificConnection": "Reflects the aesthetic obsession and the weight of artistic sacrifice."
         }
       ],
       "themes": [
@@ -1007,6 +1027,11 @@
           "id": "the-stranger",
           "role": "primary",
           "specificConnection": "Direct mapping to Camus' The Stranger."
+        },
+        {
+          "id": "the-myth-of-sisyphus",
+          "role": "secondary",
+          "specificConnection": "Reflects his acceptance of the absurd through repetitive tasks and unwavering compliance."
         }
       ],
       "themes": [
@@ -1253,6 +1278,16 @@
           "id": "dream-of-the-red-chamber",
           "role": "primary",
           "specificConnection": "Direct mapping to Dream of the Red Chamber."
+        },
+        {
+          "id": "water-margin",
+          "role": "secondary",
+          "specificConnection": "Reflected in the character designs of the Pinky syndicate members associated with his lineage."
+        },
+        {
+          "id": "journey-to-the-west",
+          "role": "secondary",
+          "specificConnection": "Elements of his journey and his family's vast, surreal hierarchy parallel the celestial trials."
         }
       ],
       "themes": [
@@ -1719,6 +1754,16 @@
           "id": "moby-dick",
           "role": "primary",
           "specificConnection": "Direct mapping to Moby-Dick."
+        },
+        {
+          "id": "little-mermaid",
+          "role": "secondary",
+          "specificConnection": "Mirrored in Queequeg's role and Ishmael's struggle with agency and self-sacrifice."
+        },
+        {
+          "id": "the-rimes-of-the-ancient-mariner",
+          "role": "secondary",
+          "specificConnection": "Reflects the psychological burden of being the sole survivor and the curse of her past experiences on the sea."
         }
       ],
       "themes": [
@@ -2366,8 +2411,18 @@
         },
         {
           "id": "cain-and-abel",
+          "role": "influence",
+          "specificConnection": "Reflected in Sinclair's 'Mark', signifying the burden of awareness and the exclusion from the world of innocence."
+        },
+        {
+          "id": "little-prince",
           "role": "secondary",
-          "specificConnection": "The biblical archetype of the 'Mark of Cain' is a central theme in Sinclair's struggle between the two worlds of light and darkness."
+          "specificConnection": "Demian quotes the Fox; Sinclair's design (scarf) and themes of lost innocence mirror the Prince."
+        },
+        {
+          "id": "siddhartha",
+          "role": "secondary",
+          "specificConnection": "His journey of self-discovery mirrors Siddhartha's search for enlightenment outside traditional upbringing."
         }
       ],
       "themes": [
@@ -2878,9 +2933,14 @@
       "crossGameContinuity": false,
       "literarySources": [
         {
-          "id": "metamorphosis-kafka",
+          "id": "the-metamorphosis",
           "role": "primary",
-          "specificConnection": "Direct mapping to Kafka's Metamorphosis."
+          "specificConnection": "Direct mapping to Kafka's The Metamorphosis."
+        },
+        {
+          "id": "kafka-father-parallel",
+          "role": "influence",
+          "specificConnection": "Gregor's relationship with authority (Hermann/Manager) mirrors Kafka's real-life struggle with his father."
         }
       ],
       "themes": [

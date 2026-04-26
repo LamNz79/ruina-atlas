@@ -1,7 +1,5 @@
-import { X, Shield, Sword, Zap, BookOpen } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { X, Shield, Zap, BookOpen } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import type { Sinner, CrossGameEntity } from '../types';
 
 interface PinnedNode {
   id: string;
@@ -28,7 +26,7 @@ export function TeamDock({ pinnedNodes, onRemove, onClear }: TeamDockProps) {
         <Badge variant="outline" className="h-4 px-1 text-[9px] font-mono border-bronze/40 text-bronze ml-2">
           {pinnedNodes.length}/12
         </Badge>
-        <button 
+        <button
           onClick={onClear}
           className="ml-4 text-[9px] uppercase font-bold text-muted-foreground hover:text-red-500 transition-colors"
         >
@@ -38,11 +36,11 @@ export function TeamDock({ pinnedNodes, onRemove, onClear }: TeamDockProps) {
 
       <div className="flex gap-2 p-2 bg-black/60 border border-bronze/20 backdrop-blur-2xl rounded-sm shadow-[0_0_40px_rgba(0,0,0,0.5)]">
         {pinnedNodes.map((node) => (
-          <div 
+          <div
             key={node.id}
             className="group relative flex flex-col items-center justify-center w-14 h-16 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-bronze/40 transition-all cursor-default"
           >
-            <button 
+            <button
               onClick={() => onRemove(node.id)}
               className="absolute -top-1 -right-1 p-0.5 bg-red-600 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
             >
@@ -58,7 +56,7 @@ export function TeamDock({ pinnedNodes, onRemove, onClear }: TeamDockProps) {
             <span className="text-[8px] font-bold text-center px-1 truncate w-full uppercase text-ivory/80 group-hover:text-ivory transition-colors">
               {node.name.split(' ')[0]}
             </span>
-            
+
             {/* Resonance Indicators */}
             <div className="absolute -bottom-1 flex gap-0.5 opacity-40 group-hover:opacity-100 transition-opacity">
               <div className="w-1 h-1 bg-primary rounded-full" />

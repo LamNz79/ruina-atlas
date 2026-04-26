@@ -4,7 +4,6 @@ import { sinners } from '../data/sinners';
 import { X, ExternalLink, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
@@ -19,11 +18,11 @@ interface SourceExplorerProps {
   onSinnerClick: (sinnerId: string) => void;
 }
 
-const GAME_COLORS: Record<string, string> = {
-  limbus:    '#b8202f',  // Deep Crimson
-  ruina:     '#a08a70',  // Warm Bronze
-  lobotomy:  '#7a5c3a',  // Dark Bronze
-};
+// const GAME_COLORS: Record<string, string> = {
+//   limbus: '#b8202f',  // Deep Crimson
+//   ruina: '#a08a70',  // Warm Bronze
+//   lobotomy: '#7a5c3a',  // Dark Bronze
+// };
 
 const THEME_LABELS: Record<string, string> = {
   guilt: 'Guilt',
@@ -75,31 +74,31 @@ export function SourceExplorer({ sourceId, open, onClose, onSinnerClick }: Sourc
           <div className="relative w-full md:w-[42%] bg-muted/40 flex flex-col items-center justify-center p-8 overflow-hidden border-b md:border-b-0 md:border-r border-bronze/20">
             {source.coverImage ? (
               <>
-                <img 
-                  src={source.coverImage} 
-                  className="absolute inset-0 h-full w-full object-cover blur-3xl opacity-30 scale-125" 
-                  aria-hidden="true" 
+                <img
+                  src={source.coverImage}
+                  className="absolute inset-0 h-full w-full object-cover blur-3xl opacity-30 scale-125"
+                  aria-hidden="true"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-black via-transparent to-black/20 opacity-60" />
                 <div className="relative z-10 w-full aspect-[2/3] max-w-[280px] group">
-                   {/* Frame Decorator */}
-                   <div className="absolute -inset-1 border border-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                   <img 
-                    src={source.coverImage} 
-                    alt={source.title} 
-                    className="h-full w-full object-cover shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-bronze/30 transition-transform duration-700 group-hover:scale-[1.02]" 
+                  {/* Frame Decorator */}
+                  <div className="absolute -inset-1 border border-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <img
+                    src={source.coverImage}
+                    alt={source.title}
+                    className="h-full w-full object-cover shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-bronze/30 transition-transform duration-700 group-hover:scale-[1.02]"
                   />
                   <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_40px_rgba(0,0,0,0.6)]" />
                 </div>
-                
+
                 {/* Book Metadata Overlay */}
                 <div className="absolute bottom-6 left-6 right-6 z-20">
-                   <div className="flex items-center gap-2 mb-2">
-                     <Badge className="bg-gold/10 text-gold border-gold/20 text-[8px] uppercase tracking-[0.2em] px-2 rounded-none">Authentic Source</Badge>
-                     <div className="h-px flex-1 bg-gold/10" />
-                   </div>
-                   <h3 className="text-xl font-bold text-white tracking-tight leading-tight">{source.title}</h3>
-                   <p className="text-[10px] text-gold/60 font-bold uppercase tracking-widest mt-1">First Published: {source.year || 'Unknown'}</p>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Badge className="bg-gold/10 text-gold border-gold/20 text-[8px] uppercase tracking-[0.2em] px-2 rounded-none">Authentic Source</Badge>
+                    <div className="h-px flex-1 bg-gold/10" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white tracking-tight leading-tight">{source.title}</h3>
+                  <p className="text-[10px] text-gold/60 font-bold uppercase tracking-widest mt-1">First Published: {source.year || 'Unknown'}</p>
                 </div>
               </>
             ) : (
@@ -138,17 +137,17 @@ export function SourceExplorer({ sourceId, open, onClose, onSinnerClick }: Sourc
               {/* Research Context (Research Notes) */}
               {source.historicalContext && (
                 <div className="space-y-3">
-                   <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-gold/60 flex items-center gap-2">
-                     <div className="h-1.5 w-1.5 bg-gold rounded-full animate-pulse" />
-                     Research Continuity
-                   </h5>
-                   <div className="relative p-5 border border-bronze/20 bg-bronze/5">
-                      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-gold" />
-                      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gold" />
-                      <p className="text-sm font-medium italic leading-relaxed text-ivory/90 font-display">
-                        "{source.historicalContext}"
-                      </p>
-                   </div>
+                  <h5 className="text-[10px] font-black uppercase tracking-[0.2em] text-gold/60 flex items-center gap-2">
+                    <div className="h-1.5 w-1.5 bg-gold rounded-full animate-pulse" />
+                    Research Continuity
+                  </h5>
+                  <div className="relative p-5 border border-bronze/20 bg-bronze/5">
+                    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-gold" />
+                    <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gold" />
+                    <p className="text-sm font-medium italic leading-relaxed text-ivory/90 font-display">
+                      "{source.historicalContext}"
+                    </p>
+                  </div>
                 </div>
               )}
 

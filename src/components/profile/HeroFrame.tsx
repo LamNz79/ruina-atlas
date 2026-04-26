@@ -1,9 +1,8 @@
-import React from 'react';
 import { BookOpen, LayoutGrid } from 'lucide-react';
 import { identityImages } from '../../data/identityImages';
 import type { Sinner } from '../../types';
 import { GlassContainer } from '../layout/GlassContainer';
-import { Flex, Stack } from '../layout/index';
+import { Stack } from '../layout/index';
 
 interface HeroFrameProps {
   category: string;
