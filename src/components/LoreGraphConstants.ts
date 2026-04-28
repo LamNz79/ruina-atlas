@@ -7,6 +7,7 @@ export interface GraphNode extends d3.SimulationNodeDatum {
   name: string;
   canonicalGame: string;
   literarySourceIds: string[];
+  literarySources?: { id: string; role: string; specificConnection: string }[];
   themes: string[];
   crossGameContinuity: boolean;
   nodeType: 'sinner' | 'entity' | 'zone-anchor' | 'literary-source';
@@ -87,6 +88,9 @@ export const EDGE_LABELS: Record<EdgeType, string> = {
 };
 
 export const ALL_EDGE_TYPES: EdgeType[] = [
+  'primary-source',
+  'secondary-source',
+  'author-parallel',
   'literary-origin',
   'theological-origin',
   'thematic-link',

@@ -13,6 +13,7 @@ import {
   ALL_EDGE_TYPES,
   DEFAULTS,
   EDGE_COLORS,
+  EDGE_LABELS,
   ENTITY_COLORS,
   INITIAL_FILTER_STATE,
   NODE_GAME_COLORS,
@@ -95,7 +96,8 @@ export function LoreGraph({
     });
 
     const sinnerNodes: GraphNode[] = sinners.filter(s => s.themes.some(t => filters.themes.has(t as Theme))).map(s => ({
-      ...s, id: s.id, literarySourceIds: s.literarySources.map(ls => ls.id), themes: [...s.themes],
+      ...s, id: s.id, literarySourceIds: s.literarySources.map(ls => ls.id),
+      literarySources: s.literarySources, themes: [...s.themes],
       nodeType: 'sinner', connectionCount: connectionCount[s.id] ?? 0,
     }));
 
@@ -137,12 +139,16 @@ export function LoreGraph({
       });
     })();
 
-    const entityNodes: GraphNode[] = visibleEntities.map(e => ({
-      ...e, nodeType: 'entity', entityType: e.type as any, themes: e.themes ?? [],
-      literarySourceIds: (e as any).literarySourceIds ?? [],
-      connectionCount: connectionCount[e.id] ?? 0,
-      crossGameContinuity: e.appearances ? e.appearances.includes('lobotomy') && e.appearances.includes('ruina') : false,
-    } as GraphNode));
+    const entityNodes: GraphNode[] = visibleEntities.map(e => {
+      const litSources = e.literarySources || (e.literarySourceIds?.map(id => ({ id, role: 'influence', specificConnection: '' })) ?? []);
+      return {
+        ...e, nodeType: 'entity', entityType: e.type as any, themes: e.themes ?? [],
+        literarySources: litSources,
+        literarySourceIds: litSources.map(ls => ls.id),
+        connectionCount: connectionCount[e.id] ?? 0,
+        crossGameContinuity: e.appearances ? e.appearances.includes('lobotomy') && e.appearances.includes('ruina') : false,
+      } as GraphNode;
+    });
 
     const usedLitIds = new Set([
       ...sinnerNodes.flatMap(s => s.literarySourceIds),
@@ -156,15 +162,21 @@ export function LoreGraph({
 
     const litLinks: GraphLink[] = [];
     [...sinnerNodes, ...entityNodes].forEach(node => {
-      node.literarySourceIds.forEach(lid => {
-        const litNodeId = `lit-${lid}`;
-        const sourceData = literarySources.find(ls => ls.id === lid);
+      node.literarySources?.forEach(lsRef => {
+        const litNodeId = `lit-${lsRef.id}`;
+        const sourceData = literarySources.find(ls => ls.id === lsRef.id);
         const isTheological = sourceData?.category === 'theological';
+        
+        let edgeType: EdgeType = isTheological ? 'theological-origin' : 'literary-origin';
+        if (lsRef.role === 'primary') edgeType = 'primary-source';
+        else if (lsRef.role === 'secondary') edgeType = 'secondary-source';
+        else if (lsRef.role === 'author-parallel') edgeType = 'author-parallel';
+
         litLinks.push({
           source: node.id,
           target: litNodeId,
-          type: isTheological ? 'theological-origin' : 'literary-origin',
-          label: isTheological ? 'Divine Inspiration' : 'Literary Source'
+          type: edgeType,
+          label: EDGE_LABELS[edgeType] || (isTheological ? 'Divine Inspiration' : 'Literary Source')
         });
       });
     });
@@ -272,15 +284,26 @@ export function LoreGraph({
       ctx.lineTo(t.x, t.y);
 
       ctx.strokeStyle = EDGE_COLORS[l.type] || '#ccc';
-      ctx.globalAlpha = isConnected ? 0.9 : (activeId ? 0.05 : 0.3);
-      ctx.lineWidth = isConnected ? 2 / transform.k : 1 / transform.k;
+      // Visual weight hierarchy
+      let baseWidth = 1;
+      const isRedString = l.type === 'primary-source' || l.type === 'author-parallel';
+      const isOrigin = isRedString || l.type === 'theological-origin';
+      
+      if (isOrigin) baseWidth = 2.8;
+      else if (l.type === 'secondary-source' || l.type === 'thematic-link') baseWidth = 0.6;
+      else if (l.type === 'literary-origin') baseWidth = 1.4;
+      
+      ctx.lineWidth = isConnected ? (baseWidth * 2.2) / transform.k : baseWidth / transform.k;
 
-      if (isConnected) {
-        ctx.shadowBlur = 10;
+      // The "Red String of Fate" / Origin Glow effect
+      if (isConnected || isRedString) {
+        ctx.shadowBlur = isConnected ? 15 : 8;
         ctx.shadowColor = ctx.strokeStyle;
       } else {
         ctx.shadowBlur = 0;
       }
+
+      ctx.globalAlpha = isConnected ? 1.0 : (activeId ? 0.08 : (isRedString ? 0.6 : 0.35));
 
       ctx.stroke();
     });

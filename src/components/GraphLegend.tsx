@@ -94,13 +94,18 @@ const GraphLegend: React.FC = () => {
 // Helper function to map types to short lore descriptions
 function getLoreDescription(type: EdgeType): string {
   switch (type) {
+    case 'primary-source': return 'Core adapted work';
+    case 'secondary-source': return 'Allusion or minor influence';
+    case 'author-parallel': return 'Mirror World Parallel';
     case 'literary-origin': return 'Classical prototype';
     case 'theological-origin': return 'Divine/Scriptural anchor';
     case 'thematic-link': return 'Conceptual resonance';
     case 'cross-game-continuity': return 'Legacy persistence';
     case 'wing-affiliation': return 'Corporate contract';
     case 'ego-synchronization': return 'Resonance extraction';
+    case 'shared-literary-group': return 'Collective source group';
     case 'bridge-continuity': return 'Spiritual transformation';
+    case 'structural-hierarchy': return 'Organization branch';
     default: return 'Entity link';
   }
 }
