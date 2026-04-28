@@ -152,11 +152,7 @@ function IdentityModal({ id, open, onClose, onLocateNode }: { id: Identity; open
                     variant="outline" 
                     className={`text-[10px] font-bold uppercase tracking-wider border-[#f5c518]/40 bg-[#f5c518]/10 text-[#f5c518] ${onLocateNode ? 'cursor-pointer hover:bg-[#f5c518]/20 transition-colors' : ''}`}
                     onClick={() => {
-                      if (onLocateNode) {
-                        // We need to map the string to the ID. For now, we can just pass the string, and the search or graph logic will handle it, or we try to find the entity.
-                        // Actually, the GlobalSearch shows entities are searchable. Let's try to match wingOrGroup to an entity.
-                        // But since we just want to focus, maybe passing the string as query, or we need the exact ID.
-                        // Wing IDs are like "wing-w-corp". The text is "W Corp".
+                      if (onLocateNode && id.wingOrGroup) {
                         const formattedId = `wing-${id.wingOrGroup.toLowerCase().replace(/ /g, '-')}`;
                         onLocateNode(formattedId);
                         onClose(); // close the modal

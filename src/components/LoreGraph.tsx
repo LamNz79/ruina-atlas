@@ -491,7 +491,7 @@ export function LoreGraph({
       .on('mouseleave', () => {
         if (isDraggingRef.current) return;
         setHoverId(null);
-        setTooltip(t => ({ ...t, visible: false }));
+        setTooltip((t: any) => ({ ...t, visible: false }));
       })
       .call(d3.drag<SVGGElement, GraphNode>()
         .on('start', (e, d) => {

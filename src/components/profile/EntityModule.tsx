@@ -169,7 +169,7 @@ export default function EntityModule({ entity, connectedSinners, relatedIdentiti
                 key={`${sinner.id}-${identity.id}`}
                 title={identity.displayName}
                 subtitle={sinner.name}
-                imageUrl={identityImages[identity.id]}
+                imageUrl={identityImages[identity.id] ?? undefined}
                 linkTo={`/profile/sinner/${sinner.id}`}
                 aspectRatio="aspect-[4/5]"
                 themeColor={GAME_COLORS[identity.sourceGame]}
@@ -207,7 +207,7 @@ export default function EntityModule({ entity, connectedSinners, relatedIdentiti
                 key={sinner.id}
                 title={sinner.name}
                 subtitle={`${sinner.canonicalGame.toUpperCase()}`}
-                imageUrl={identityImages[primaryId]}
+                imageUrl={identityImages[primaryId] ?? undefined}
                 linkTo={`/profile/sinner/${sinner.id}`}
                 themeColor={GAME_COLORS[sinner.canonicalGame]}
                 aspectRatio="aspect-square"

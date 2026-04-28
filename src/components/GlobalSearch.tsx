@@ -53,7 +53,7 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
         subtitle: 'Limbus Sinner',
         meta: s.canonicalGame,
         extra: s.themes.slice(0, 1).join(''),
-        iconUrl: identityImages[s.identities.find(i => i.displayName === 'LCB Sinner')?.id || '']
+        iconUrl: identityImages[s.identities.find(i => i.displayName === 'LCB Sinner')?.id || ''] ?? undefined
       })),
       ...(crossGameEntities.entities as CrossGameEntity[]).map(e => ({
         id: e.id,
@@ -62,7 +62,7 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
         subtitle: `${e.type.charAt(0).toUpperCase() + e.type.slice(1)}`,
         meta: e.canonicalGame,
         extra: e.type,
-        iconUrl: (e as any).icon
+        iconUrl: (e as any).icon ?? undefined
       })),
       ...(literarySources as LiterarySource[]).map(ls => ({
         id: ls.id,
@@ -79,7 +79,7 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
         subtitle: `Identity: ${s.name}`,
         meta: idnt.sourceGame,
         extra: idnt.wingOrGroup || undefined,
-        iconUrl: identityImages[idnt.id]
+        iconUrl: identityImages[idnt.id] ?? undefined
       }))),
       // Add all EGOs
       ...sinners.flatMap(s => s.egos.map(ego => ({
