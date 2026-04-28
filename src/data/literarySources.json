@@ -14,132 +14,91 @@
       "wikiUrl": "https://en.wikipedia.org/wiki/Divine_Comedy",
       "category": "theological"
     },
-    {
-      "id": "kabbalah",
-      "title": "Jewish Kabbalah (Tree of Life)",
-      "author": "Traditional",
-      "historicalContext": "The mystical foundation of Lobotomy Corporation. The 10 Sephirot of the Tree of Life correspond to the 10 departments and their respective AI managers, forming the architecture of the Seed of Light project.",
-      "themes": ["faith", "decay", "redemption"],
-      "category": "theological",
-      "wikiUrl": "https://en.wikipedia.org/wiki/Kabbalah"
-    },
-    {
-      "id": "old-man-and-sea",
-      "title": "The Old Man and the Sea",
-      "author": "Ernest Hemingway",
-      "historicalContext": "The primary inspiration for the Indigo Elder's philosophy and struggle against the Great Lake's calamities. Represents the indomitable human spirit in the face of inevitable destruction.",
-      "themes": ["futility", "faith"],
-      "category": "literary"
-    },
-    {
-      "id": "electric-sheep",
-      "title": "Do Androids Dream of Electric Sheep?",
-      "author": "Philip K. Dick",
-      "historicalContext": "Source for the Dreaming Electric Sheep abnormality. Explores the blurred lines between artificial life and human empathy within a decaying industrial world.",
-      "themes": ["identity-fragmentation", "machinery", "decay"],
-      "category": "literary"
-    },
-    {
-      "id": "the-red-shoes",
-      "title": "The Red Shoes",
-      "author": "Hans Christian Andersen",
-      "historicalContext": "Source for the Red Shoes abnormality. Symbolizes obsessive desire and the loss of control to an external, blood-fueled drive.",
-      "themes": ["obsession", "guilt", "decay"],
-      "category": "literary"
-    },
-    {
-      "id": "the-spiders-thread",
-      "title": "The Spider's Thread",
-      "author": "Akutagawa Ryunosuke",
-      "historicalContext": "A short story exploring themes of selfishness and the narrow possibility of salvation. In Limbus Company, it informs Ryoshu's aesthetic and her perspective on the 'thread' of life and art.",
-      "themes": ["futility", "redemption"],
-      "category": "literary"
-    },
-    {
-      "id": "rashomon",
-      "title": "Rashomon",
-      "author": "Akutagawa Ryunosuke",
-      "historicalContext": "Focuses on the breakdown of social order and the morality of survival. It contributes to the 'Grit' and 'Grey' morality seen in Ryoshu's backstory.",
-      "themes": ["decay", "identity-fragmentation"],
-      "category": "literary"
-    },
-    {
-      "id": "little-mermaid",
-      "title": "The Little Mermaid",
-      "author": "Hans Christian Andersen",
-      "historicalContext": "A secondary source for Ishmael, specifically mirrored in Queequeg's role. Elements of self-sacrifice, alienation between two worlds (land and sea), and the search for a soul/agency are central.",
-      "themes": ["family", "faith", "redemption"],
-      "category": "literary"
-    },
-    {
-      "id": "little-prince",
-      "title": "The Little Prince",
-      "author": "Antoine de Saint-Exupéry",
-      "historicalContext": "A secondary source for Sinclair. Demian quotes the Fox's wisdom ('essential thing is invisible'), and Sinclair's design (specifically his scarf) mirrors the Prince. It represents the loss and search for childhood innocence.",
-      "themes": ["family", "identity-fragmentation"],
-      "category": "literary"
-    },
-    {
-      "id": "carmilla",
-      "title": "Carmilla",
-      "author": "Joseph Sheridan Le Fanu",
-      "historicalContext": "A secondary source for Don Quixote. Informs the vampiric elements and the 'Kindred' lore revealed in Canto VII. It blends gothic horror with the knightly delusions of the primary source.",
-      "themes": ["obsession", "decay", "family"],
-      "category": "literary"
-    },
-    {
-      "id": "sea-and-butterfly",
-      "title": "The Sea and The Butterfly",
-      "author": "Kim In-Son",
-      "historicalContext": "The poetic inspiration for the character Rim. It explores the fragility of the self against the vast, overwhelming power of the sea.",
-      "themes": ["futility", "decay"],
-      "category": "literary"
-    },
-    {
-      "id": "the-camellias",
-      "title": "The Camellias",
-      "author": "Gim Yujeong",
-      "historicalContext": "The primary inspiration for the character Dongbaek and her floral/nature-based distortion aesthetics.",
-      "themes": ["family", "decay"],
-      "category": "literary"
-    },
-    {
-      "id": "peter-pan",
-      "title": "Peter Pan",
-      "author": "J.M. Barrie",
-      "historicalContext": "The inspiration for Smee and the pirate-themed syndicates in Limbus Company. Explores the concept of 'Neverland' and the refusal to grow up/face reality.",
-      "themes": ["family", "identity-fragmentation"],
-      "category": "literary"
-    },
-    {
-      "id": "the-cow-mud-hut",
-      "title": "The Cow / The Mud Hut",
-      "author": "Chi-Yin-Joo",
-      "historicalContext": "The literary inspiration for Dongrang. It explores the pastoral life and the eventual decay/destruction of traditional structures, mirrored in Dongrang's fall from grace.",
-      "themes": ["decay", "futility"],
-      "category": "literary"
-    },
-    {
-      "id": "kafka-father-parallel",
-      "title": "Kafka's Relationship with his Father",
-      "author": "Biographical",
-      "historicalContext": "A secondary influence on Gregor Samsa. While 'The Metamorphosis' is the primary text, Gregor's internal guilt and his relationship with 'The Manager' (and his biological father) heavily mirror Franz Kafka's real-life struggle for validation.",
-      "themes": ["family", "guilt"],
-      "category": "literary"
-    },
-    {
-      "id": "the-wings",
-      "title": "The Wings",
-      "author": "Yi Sang",
-      "year": 1936,
-      "language": "Korean",
-      "passage": "Have you ever seen a stuffed genius? I am happy. At such a time even my talent, like a stuffed genius, is delightful.",
-      "passageContext": "Opening lines — a reflection on intellectual decay and isolation, echoing Yi Sang's search for identity in the City.",
-      "historicalContext": "Yi Sang's surrealist masterpiece exploring the fragmentation of the self under colonial and existential pressure. It is the core of Yi Sang's 'Ideal' and 'Glass Window' symbolism.",
-      "themes": ["decay", "futility", "identity-fragmentation", "metamorphosis"],
-      "coverImage": "/assets/books/The-Wings.png",
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Wings_(novel)"
-    },
+{
+    "id": "kabbalah",
+    "title": "Jewish Kabbalah (Tree of Life)",
+    "author": "Traditional",
+    "year": 0,
+    "language": "Hebrew",
+    "passage": "Keter, Chokhmah, Binah, Chesed, Gevurah, Tiferet, Netzach, Hod, Yesod, Malkuth.",
+    "passageContext": "The ten Sephirot of the Kabbalistic Tree, representing the emanation of the Divine. Directly mirrored by the 10 Sephirah-led departments of Lobotomy Corporation.",
+    "historicalContext": "The mystical foundation of Lobotomy Corporation. The 10 Sephirot of the Tree of Life correspond to the 10 departments and their respective AI managers, forming the architecture of the Seed of Light project.",
+    "themes": ["faith", "decay", "redemption"],
+    "category": "theological",
+    "coverImage": "/assets/theological/KabbalahTreeofLife.png",
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kabbalah"
+  },
+  {
+    "id": "old-man-and-sea",
+    "title": "The Old Man and the Sea",
+    "author": "Ernest Hemingway",
+    "historicalContext": "The primary inspiration for the Indigo Elder's philosophy and struggle against the Great Lake's calamities. Represents the indomitable human spirit in the face of inevitable destruction.",
+    "themes": ["futility", "faith"],
+    "category": "literary"
+  },
+  {
+    "id": "electric-sheep",
+    "title": "Do Androids Dream of Electric Sheep?",
+    "author": "Philip K. Dick",
+    "historicalContext": "Source for the Dreaming Electric Sheep abnormality. Explores the blurred lines between artificial life and human empathy within a decaying industrial world.",
+    "themes": ["identity-fragmentation", "machinery", "decay"],
+    "category": "literary"
+  },
+  {
+    "id": "the-red-shoes",
+    "title": "The Red Shoes",
+    "author": "Hans Christian Andersen",
+    "historicalContext": "Source for the Red Shoes abnormality. Symbolizes obsessive desire and the loss of control to an external, blood-fueled drive.",
+    "themes": ["obsession", "guilt", "decay"],
+    "category": "literary"
+  },
+  {
+    "id": "little-mermaid",
+    "title": "The Little Mermaid",
+    "author": "Hans Christian Andersen",
+    "historicalContext": "A secondary source for Ishmael, specifically mirrored in Queequeg's role. Elements of self-sacrifice, alienation between two worlds (land and sea), and the search for a soul/agency are central.",
+    "themes": ["family", "faith", "redemption"],
+    "category": "literary"
+  },
+  {
+    "id": "little-prince",
+    "title": "The Little Prince",
+    "author": "Antoine de Saint-Exupéry",
+    "historicalContext": "A secondary source for Sinclair. Demian quotes the Fox's wisdom ('essential thing is invisible'), and Sinclair's design (specifically his scarf) mirrors the Prince. It represents the loss and search for childhood innocence.",
+    "themes": ["family", "identity-fragmentation"],
+    "category": "literary"
+  },
+  {
+    "id": "carmilla",
+    "title": "Carmilla",
+    "author": "Joseph Sheridan Le Fanu",
+    "historicalContext": "A secondary source for Don Quixote. Informs the vampiric elements and the 'Kindred' lore revealed in Canto VII. It blends gothic horror with the knightly delusions of the primary source.",
+    "themes": ["obsession", "decay", "family"],
+    "category": "literary"
+  },
+  {
+    "id": "sea-and-butterfly",
+    "title": "The Sea and The Butterfly",
+    "author": "Kim Ki-rim",
+    "historicalContext": "The poetic inspiration for the character Rim (based on Kim Ki-rim). It explores the fragility of the self against the vast, overwhelming power of the sea.",
+    "themes": ["futility", "decay"],
+    "category": "literary"
+  },
+  {
+    "id": "the-wings",
+    "title": "The Wings",
+    "author": "Yi Sang",
+    "year": 1936,
+    "language": "Korean",
+    "passage": "Have you ever seen a stuffed genius? I am happy. At such a time even my talent, like a stuffed genius, is delightful.",
+    "passageContext": "Opening lines — a reflection on intellectual decay and isolation, echoing Yi Sang's search for identity in the City.",
+    "historicalContext": "Yi Sang's surrealist masterpiece exploring the fragmentation of the self under colonial and existential pressure. The narrator lives in a dark room, dependent on his wife Yeonsim who drugs him with sleeping pills; he escapes and wanders the streets yearning for wings to fly. The wife's name becomes the Mirror's name in Limbus Company.",
+    "themes": ["decay", "futility", "identity-fragmentation", "metamorphosis"],
+    "coverImage": "/assets/books/The-Wings.png",
+    "wikiUrl": "https://en.wikipedia.org/wiki/The_Wings_(novel)",
+    "sharedGroup": "yi-sang-circle",
+    "sharedGroupName": "Yi Sang's Literary Circle"
+  },
     {
       "id": "faust-goethe",
       "title": "Faust",
@@ -322,20 +281,6 @@
       "category": "literary"
     },
     {
-      "id": "kabbalah",
-      "title": "Jewish Kabbalah (Tree of Life)",
-      "author": "Traditional",
-      "year": 0,
-      "language": "Hebrew",
-      "passage": "Keter, Chokhmah, Binah, Chesed, Gevurah, Tiferet, Netzach, Hod, Yesod, Malkuth.",
-      "passageContext": "The ten Sephirot of the Kabbalistic Tree, representing the emanation of the Divine. Directly mirrored by the 10 Sephirah-led departments of Lobotomy Corporation.",
-      "historicalContext": "The mystical foundation of Lobotomy Corporation. The 10 Sephirot of the Tree of Life correspond to the 10 departments and their respective AI managers, forming the architecture of the Seed of Light project.",
-      "themes": ["faith", "decay", "redemption"],
-      "category": "theological",
-      "coverImage": "/assets/theological/KabbalahTreeofLife.png",
-      "wikiUrl": "https://en.wikipedia.org/wiki/Kabbalah"
-    },
-    {
       "id": "book-of-revelations",
       "title": "The Book of Revelations",
       "author": "John of Patmos",
@@ -471,8 +416,67 @@
       "passage": "The 108 Stars of Destiny shall gather at the marsh, bound by brotherhood and the stars above.",
       "passageContext": "One of the Four Great Classical Novels of Chinese literature, telling the story of 108 outlaws who form a sizable army.",
       "historicalContext": "The primary literary inspiration for 'The Pinky' (Ngón Út) of the Five Fingers. The Pinky's structure and its use of 'Stars' (like the Tiantui Star) directly mirror the 108 Stars of Destiny from the novel.",
-      "themes": ["family", "vengeance", "faith"],
-      "wikiUrl": "https://en.wikipedia.org/wiki/Water_Margin"
-    }
+    "themes": ["family", "vengeance", "faith"],
+    "wikiUrl": "https://en.wikipedia.org/wiki/Water_Margin"
+  },
+  {
+    "id": "crows-eye-view",
+    "title": "Crow's Eye View (오감도)",
+    "author": "Yi Sang",
+    "year": 1934,
+    "language": "Korean",
+    "passage": "이상한 가역반응 — Strange reversible reaction: thirteen moments on the angle of a crow's gaze.",
+    "passageContext": "From the 15-poem cycle that scandalized the Korean literary establishment, called 'the sleep talk of a lunatic.' Its anti-realist structure mirrors the Mirror technology's shattering of identity.",
+    "historicalContext": "Yi Sang's most controversial work — a 15-poem cycle incorporating mathematical and scientific language into surrealist verse. The title 'Crow's Eye View' (烏瞰圖, Ogamdo) implies a perspective from above, looking down, as a crow would. In Limbus Company, it is Yi Sang's base E.G.O and the central metaphor for seeing the world from an alien, elevated vantage that reveals hidden patterns.",
+    "themes": ["absurdity", "identity-fragmentation", "nihilism"],
+    "sharedGroup": "yi-sang-circle",
+    "sharedGroupName": "Yi Sang's Literary Circle"
+  },
+  {
+    "id": "mirror-poem",
+    "title": "Mirror (거울)",
+    "author": "Yi Sang",
+    "year": 1933,
+    "language": "Korean",
+    "passage": "거울 속의 나는 왼손잡이이다 — The me in the mirror is left-handed.",
+    "passageContext": "Yi Sang's poem about the double self who cannot be touched, who is opposite yet similar. Directly quoted in Limbus Company promo art and the inspiration for Sang Yi.",
+    "historicalContext": "A short poem about the 'I in the mirror' — a left-handed double who exists in reflection but cannot be grasped. This single image is the genesis of the Mirror technology in Limbus Company: the device named Yeonsim that allows viewing of parallel worlds, and the doppelgänger Sang Yi who embodies the reflected self.",
+    "themes": ["identity-fragmentation", "decay"],
+    "sharedGroup": "yi-sang-circle",
+    "sharedGroupName": "Yi Sang's Literary Circle"
+  },
+  {
+    "id": "the-camellias",
+    "title": "The Camellias (동백꽃)",
+    "author": "Gim Yujeong",
+    "year": 1936,
+    "language": "Korean",
+    "passage": "Jumsoon pushed me into the camellias and we fell together.",
+    "passageContext": "The moment of falling into blossoms — mirrored in Canto IV when Yi Sang is stabbed by Dongbaek under the Golden Bough's tree branch and literally falls.",
+    "historicalContext": "Gim Yujeong's short story about a village romance conveyed through the camellia flower. The camellia (동백, dongbaek) is the namesake of the League of Nine member who stabs Yi Sang with the Golden Bough, triggering his ego fathoms. Yi Sang's attachment to a rotten burnt potato in Intervallo I also foreshadows Dongbaek — in The Camellias, Jumsoon offers potatoes to get the protagonist's attention.",
+    "themes": ["hope", "family"]
+  },
+  {
+    "id": "the-cow",
+    "title": "The Cow (소)",
+    "author": "Yoo Chi-jin",
+    "year": 1933,
+    "language": "Korean",
+    "passage": "The yellow calf follows its mother through the rain — a scene of innocence before the landlord's reckoning.",
+    "passageContext": "The central symbol of Dongrang's E.G.O Farmwatch: the yellow calf, an emblem of pastoral idealism twisted by the machinery of exploitation.",
+    "historicalContext": "Yoo Chi-jin's play about a farmer's bond with his cow, sold to a landlord who exploits both. The playwright Yoo Chi-jin — pen name Dongrang — was a Guinhoe founding member who initially wrote about farmers' suffering but later became pro-Japanese. In Limbus Company, this betrayal arc is transposed onto Dongrang, who sells out the League under T Corp interrogation and rises to K Corp Branch Manager.",
+    "themes": ["betrayal", "futility"]
+  },
+  {
+    "id": "glass-window",
+    "title": "Glass Window (유리창)",
+    "author": "Jeong Ji-yong",
+    "year": 1930,
+    "language": "Korean",
+    "passage": "유리창 — through the glass, the dead return as an illusion of warmth.",
+    "passageContext": "Two poems of the same title written in memory of Jeong Ji-yong's dead children. The glass window gives the illusion of resurrecting the dead — the foundation of Young-ji's invention.",
+    "historicalContext": "Jeong Ji-yong wrote two poems titled 'Glass Window' (유리창), both mourning the loss of his children and finding solace only through the pane — a barrier that simultaneously connects and separates. In Limbus Company, Young-ji's Glass Window invention allows the observation of other worlds, offering the same illusory promise of reunion with what is lost. Jeong Ji-yong was later abducted to North Korea; his fate remained unknown for decades — paralleling Young-ji's disappearance.",
+    "themes": ["decay", "faith"]
+  }
   ]
 }
