@@ -301,6 +301,11 @@
 }
 
 /* Custom Scrollbar — Bronze styling */
+.scroll-bronze {
+  scrollbar-width: thin;
+  scrollbar-color: #a08a70 transparent;
+}
+
 .scroll-bronze::-webkit-scrollbar {
   width: 5px;
 }
@@ -312,6 +317,7 @@
 .scroll-bronze::-webkit-scrollbar-thumb {
   background: var(--bronze);
   border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .scroll-bronze::-webkit-scrollbar-thumb:hover {
