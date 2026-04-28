@@ -11,47 +11,47 @@
         "limbus"
       ],
       "crossGameContinuity": true,
-  "literarySources": [
-    {
-      "id": "the-wings",
-      "role": "primary",
-      "specificConnection": "Direct mapping to the author Yi Sang and his masterpiece 'The Wings'. The narrator's wife Yeonsim = the Mirror's name; the 'taxidermied genius' quote = Yi Sang's introduction; the yearning for wings = Canto IV arc."
-    },
-    {
-      "id": "crows-eye-view",
-      "role": "primary",
-      "specificConnection": "Yi Sang's own 15-poem cycle — the source of his base E.G.O name. The crow's aerial perspective mirrors the Mirror technology's shattering of identity and the anti-realist structure of parallel worlds."
-    },
-    {
-      "id": "mirror-poem",
-      "role": "secondary",
-      "specificConnection": "Yi Sang's poem about the left-handed 'I in the mirror' — the direct inspiration for the Mirror device (Yeonsim) and the doppelgänger Sang Yi. Quoted in Limbus Company promo art."
-    },
-    {
-      "id": "the-camellias",
-      "role": "influence",
-      "specificConnection": "Gim Yujeong's story provides Dongbaek's name, the camellia/potato motifs, and the 'falling into blossoms' scene in Canto IV. Yi Sang's burnt-potato attachment in Intervallo I foreshadows this connection."
-    },
-    {
-      "id": "the-cow",
-      "role": "influence",
-      "specificConnection": "Yoo Chi-jin's play about a farmer and his cow sold to a landlord — the literary origin of Dongrang's E.G.O Farmwatch and the yellow calf symbol. The betrayal arc maps onto Dongrang's sellout of the League."
-    },
-    {
-      "id": "glass-window",
-      "role": "influence",
-      "specificConnection": "Jeong Ji-yong's two mourning poems named Young-ji's Glass Window invention — the League technology that allows observation of other worlds, offering the illusion of reunion with what is lost."
-    }
-  ],
-  "themes": [
-    "decay",
-    "futility",
-    "identity-fragmentation",
-    "absurdity",
-    "nihilism",
-    "betrayal",
-    "hope"
-  ],
+      "literarySources": [
+        {
+          "id": "the-wings",
+          "role": "primary",
+          "specificConnection": "Direct mapping to the author Yi Sang and his masterpiece 'The Wings'. The narrator's wife Yeonsim = the Mirror's name; the 'taxidermied genius' quote = Yi Sang's introduction; the yearning for wings = Canto IV arc."
+        },
+        {
+          "id": "crows-eye-view",
+          "role": "primary",
+          "specificConnection": "Yi Sang's own 15-poem cycle — the source of his base E.G.O name. The crow's aerial perspective mirrors the Mirror technology's shattering of identity and the anti-realist structure of parallel worlds."
+        },
+        {
+          "id": "mirror-poem",
+          "role": "secondary",
+          "specificConnection": "Yi Sang's poem about the left-handed 'I in the mirror' — the direct inspiration for the Mirror device (Yeonsim) and the doppelgänger Sang Yi. Quoted in Limbus Company promo art."
+        },
+        {
+          "id": "the-camellias",
+          "role": "influence",
+          "specificConnection": "Gim Yujeong's story provides Dongbaek's name, the camellia/potato motifs, and the 'falling into blossoms' scene in Canto IV. Yi Sang's burnt-potato attachment in Intervallo I foreshadows this connection."
+        },
+        {
+          "id": "the-cow",
+          "role": "influence",
+          "specificConnection": "Yoo Chi-jin's play about a farmer and his cow sold to a landlord — the literary origin of Dongrang's E.G.O Farmwatch and the yellow calf symbol. The betrayal arc maps onto Dongrang's sellout of the League."
+        },
+        {
+          "id": "glass-window",
+          "role": "influence",
+          "specificConnection": "Jeong Ji-yong's two mourning poems named Young-ji's Glass Window invention — the League technology that allows observation of other worlds, offering the illusion of reunion with what is lost."
+        }
+      ],
+      "themes": [
+        "decay",
+        "futility",
+        "identity-fragmentation",
+        "absurdity",
+        "nihilism",
+        "betrayal",
+        "hope"
+      ],
       "loreSummary": "Former youngest chief researcher at T Corp. and inventor of the Mirror (Yeonsim). A core member of the League of Nine Littérateurs whose dissolution sent him into depression. After the League's betrayal by Dongrang and destruction by T Corp., he was taken to N Corp. by Gubo, where he fell into despair staring at his reflected self Sang Yi. Found by Faust and invited to Limbus Company; his Mirror now powers Mephistopheles' engine. Post-Canto IV, he chose to 'fly' — rejecting the taxidermied genius for living wings.",
       "identities": [
         {
@@ -208,7 +208,7 @@
         },
         {
           "id": "20108",
-          "displayName": "Great Trichiliocosm [õ©ëÕìâÕñºõ©ûþòî]",
+          "displayName": "Great Trichiliocosm (Il-che-yu-sim-jo)",
           "floor": "",
           "colorTheme": "#8B0000",
           "description": "[WAW] awakening: pierce, affinity: wrath",
@@ -216,7 +216,7 @@
         },
         {
           "id": "20101",
-          "displayName": "CrowÔÇÖs Eye View",
+          "displayName": "Crow's Eye View",
           "floor": "",
           "colorTheme": "#3CB371",
           "description": "[ZAYIN] awakening: pierce, affinity: sloth",
@@ -230,24 +230,6 @@
           "description": "[ZAYIN] awakening: pierce, affinity: gloom",
           "rank": "ZAYIN",
           "egoId": "63"
-        },
-        {
-          "id": "7",
-          "displayName": "Crows's Eye View",
-          "rank": "ZAYIN",
-          "floor": "",
-          "colorTheme": "#3CB371",
-          "description": "[ZAYIN] Crows's Eye View ÔÇö Base, Sloth affinity",
-          "egoId": "7"
-        },
-        {
-          "id": "104",
-          "displayName": "Great Trichiliocosm (õ©ëÕìâÕñºõ©ûþòî)",
-          "rank": "WAW",
-          "floor": "",
-          "colorTheme": "#8B0000",
-          "description": "[WAW] Great Trichiliocosm (õ©ëÕìâÕñºõ©ûþòî) ÔÇö Battle Pass (free), Wrath affinity",
-          "egoId": "104"
         }
       ],
   "cantos": [
