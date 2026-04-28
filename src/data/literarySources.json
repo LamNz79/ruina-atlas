@@ -14,8 +14,8 @@
       "wikiUrl": "https://en.wikipedia.org/wiki/Divine_Comedy",
       "category": "theological"
     },
-{
-    "id": "kabbalah",
+    {
+      "id": "kabbalah",
     "title": "Jewish Kabbalah (Tree of Life)",
     "author": "Traditional",
     "year": 0,
@@ -56,16 +56,16 @@
     "id": "little-mermaid",
     "title": "The Little Mermaid",
     "author": "Hans Christian Andersen",
-    "historicalContext": "A secondary source for Ishmael, specifically mirrored in Queequeg's role. Elements of self-sacrifice, alienation between two worlds (land and sea), and the search for a soul/agency are central.",
-    "themes": ["family", "faith", "redemption"],
+    "historicalContext": "A secondary source for Ishmael, specifically mirrored in Queequeg's role. Elements of self-sacrifice, alienation between two worlds (land and sea), and the search for a soul/agency are central. It also reflects the themes of unrequited longing and the sacrifice of one's identity for a world that does not belong to them.",
+    "themes": ["family", "faith", "redemption", "identity-fragmentation"],
     "category": "literary"
   },
   {
     "id": "little-prince",
     "title": "The Little Prince",
     "author": "Antoine de Saint-Exupéry",
-    "historicalContext": "A secondary source for Sinclair. Demian quotes the Fox's wisdom ('essential thing is invisible'), and Sinclair's design (specifically his scarf) mirrors the Prince. It represents the loss and search for childhood innocence.",
-    "themes": ["family", "identity-fragmentation"],
+    "historicalContext": "A significant secondary source for Sinclair. Demian quotes the Fox's wisdom ('essential thing is invisible'), and Sinclair's design (specifically his scarf) mirrors the Prince. The Fox's lessons on 'taming' and the Prince's innocence in a cynical world parallel Sinclair's relationship with Demian and his struggle to remain 'untainted'.",
+    "themes": ["family", "identity-fragmentation", "faith", "guilt"],
     "category": "literary"
   },
   {
@@ -145,10 +145,11 @@
       "language": "Japanese",
       "passage": "A single spider's thread, silver and slender, came dangling down from the heavens.",
       "passageContext": "The thread of redemption offered to the sinner Kandata, which snaps when he refuses to share it.",
-      "historicalContext": "A Buddhist-themed fable about selfishness and the possibility of salvation. It is heavily referenced in Ryoshu's 'House of Spiders' lore and her connection to her daughter.",
-      "themes": ["guilt", "redemption", "futility"],
+      "historicalContext": "A Buddhist-themed fable about selfishness and the possibility of salvation. It deals with the themes of a single chance at salvation and the cruelty of artistic/moral detachment. It is heavily referenced in Ryoshu's 'House of Spiders' lore and her connection to her daughter.",
+      "themes": ["guilt", "redemption", "futility", "faith"],
       "coverImage": "/assets/books/The-Spiders-Thread.png",
-      "wikiUrl": "https://en.wikipedia.org/wiki/The_Spider%27s_Thread"
+      "wikiUrl": "https://en.wikipedia.org/wiki/The_Spider%27s_Thread",
+      "category": "literary"
     },
     {
       "id": "rashomon",
@@ -158,10 +159,11 @@
       "language": "Japanese",
       "passage": "To do what is necessary for survival is not a sin; it is the way of the world.",
       "passageContext": "The internal justification used by the servant as he chooses between starvation and crime under the crumbling gate.",
-      "historicalContext": "A story about moral relativism and the breakdown of society. While not as direct as Hell Screen, it informs the broader 'Akutagawa' DNA of Ryoshu's worldview.",
-      "themes": ["absurdity", "nihilism", "survival"],
+      "historicalContext": "A story about moral relativism and the breakdown of society. It explores the relativity of morality and the desperation of survival, themes often reflected in her brutal worldview. While not as direct as Hell Screen, it informs the broader 'Akutagawa' DNA of Ryoshu's worldview.",
+      "themes": ["absurdity", "nihilism", "survival", "decay"],
       "coverImage": "/assets/books/Rashomon.png",
-      "wikiUrl": "https://en.wikipedia.org/wiki/Rash%C5%8Dmon_(short_story)"
+      "wikiUrl": "https://en.wikipedia.org/wiki/Rash%C5%8Dmon_(short_story)",
+      "category": "literary"
     },
     {
       "id": "the-stranger",
@@ -359,65 +361,18 @@
       "themes": ["faith", "identity-fragmentation"],
       "category": "literary"
     },
-    {
-      "id": "the-spiders-thread",
-      "title": "The Spider's Thread",
-      "author": "Akutagawa Ryunosuke",
-      "historicalContext": "A secondary source for Ryoshu. It deals with the themes of a single chance at salvation and the cruelty of artistic/moral detachment.",
-      "themes": ["faith", "futility"],
-      "category": "literary"
-    },
-    {
-      "id": "rashomon",
-      "title": "Rashomon",
-      "author": "Akutagawa Ryunosuke",
-      "historicalContext": "A secondary source for Ryoshu. It explores the relativity of morality and the desperation of survival, themes often reflected in her brutal worldview.",
-      "themes": ["nihilism", "decay"],
-      "category": "literary"
-    },
-    {
-      "id": "erlkonig",
-      "title": "Der Erlkönig",
-      "author": "Johann Wolfgang von Goethe",
-      "historicalContext": "A major secondary influence for Heathcliff (Erlking Heathcliff). The poem's themes of a supernatural entity pursuing a child parallel Heathcliff's role as a stalker and 'monster' in the Wuthering Heights adaptation.",
-      "themes": ["decay", "family"],
-      "category": "literary"
-    },
-    {
-      "id": "wild-hunt",
-      "title": "The Wild Hunt",
-      "author": "European Folklore",
-      "historicalContext": "The conceptual basis for Heathcliff's 'Wild Hunt' identity. It represents a spectral group of hunters whose appearance portends catastrophe, mirroring Heathcliff's destructive return.",
-      "themes": ["vengeance", "decay"],
-      "category": "literary"
-    },
-    {
-      "id": "little-mermaid",
-      "title": "The Little Mermaid",
-      "author": "Hans Christian Andersen",
-      "historicalContext": "A secondary source for Ishmael. The themes of unrequited longing and the sacrifice of one's voice/identity for a world that does not belong to them mirror her journey away from the Pequod.",
-      "themes": ["redemption", "identity-fragmentation"],
-      "category": "literary"
-    },
-    {
-      "id": "little-prince",
-      "title": "The Little Prince",
-      "author": "Antoine de Saint-Exupéry",
-      "historicalContext": "A significant secondary influence for Sinclair. The Fox's lessons on 'taming' and the Prince's innocence in a cynical world parallel Sinclair's relationship with Demian and his struggle to remain 'untainted'.",
-      "themes": ["faith", "guilt"],
-      "category": "literary"
-    },
-    {
-      "id": "water-margin",
-      "title": "Water Margin (Shuǐhǔ Zhuàn)",
-      "author": "Shi Nai'an",
-      "year": 1400,
-      "language": "Classical Chinese",
-      "passage": "The 108 Stars of Destiny shall gather at the marsh, bound by brotherhood and the stars above.",
-      "passageContext": "One of the Four Great Classical Novels of Chinese literature, telling the story of 108 outlaws who form a sizable army.",
-      "historicalContext": "The primary literary inspiration for 'The Pinky' (Ngón Út) of the Five Fingers. The Pinky's structure and its use of 'Stars' (like the Tiantui Star) directly mirror the 108 Stars of Destiny from the novel.",
+  {
+    "id": "water-margin",
+    "title": "Water Margin (Shuǐhǔ Zhuàn)",
+    "author": "Shi Nai'an",
+    "year": 1400,
+    "language": "Classical Chinese",
+    "passage": "The 108 Stars of Destiny shall gather at the marsh, bound by brotherhood and the stars above.",
+    "passageContext": "One of the Four Great Classical Novels of Chinese literature, telling the story of 108 outlaws who form a sizable army.",
+    "historicalContext": "The primary literary inspiration for 'The Pinky' (Ngón Út) of the Five Fingers. The Pinky's structure and its use of 'Stars' (like the Tiantui Star) directly mirror the 108 Stars of Destiny from the novel.",
     "themes": ["family", "vengeance", "faith"],
-    "wikiUrl": "https://en.wikipedia.org/wiki/Water_Margin"
+    "wikiUrl": "https://en.wikipedia.org/wiki/Water_Margin",
+    "category": "literary"
   },
   {
     "id": "crows-eye-view",
