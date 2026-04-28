@@ -91,14 +91,16 @@ function updateSimulationPhysics() {
   const H_R = 28;
   // const W_R = 42;
 
+  const spacingScale = physics.nodeSpacing / 180;
+
   simulation
     .force('link', d3.forceLink<GraphNode, GraphLink>(links)
       .id(d => d.id)
       .distance(d => {
-        if (d.type === 'literary-origin') return 80 + physics.nodeSpacing * 0.1;
-        if (d.type === 'ego-synchronization') return 120 + physics.nodeSpacing * 0.2;
-        if (d.type === 'structural-hierarchy') return 140 + physics.nodeSpacing * 0.4;
-        if (d.type === 'wing-affiliation') return 300 + physics.nodeSpacing * 0.5;
+        if (d.type === 'literary-origin') return (80 + physics.nodeSpacing * 0.1) * spacingScale;
+        if (d.type === 'ego-synchronization') return (120 + physics.nodeSpacing * 0.2) * spacingScale;
+        if (d.type === 'structural-hierarchy') return (140 + physics.nodeSpacing * 0.4) * spacingScale;
+        if (d.type === 'wing-affiliation') return (300 + physics.nodeSpacing * 0.5) * spacingScale;
         return physics.nodeSpacing;
       })
       .strength(d => {
@@ -114,26 +116,24 @@ function updateSimulationPhysics() {
       if (d.nodeType === 'literary-source') return physics.repulsion * 1.5;
       if (d.nodeType === 'sinner') return physics.repulsion * 0.3;
       return physics.repulsion;
-    }).theta(0.85).distanceMax(600))
+    }).theta(0.85).distanceMax(1000))
     .force('center', d3.forceCenter(0, 0).strength(physics.centering))
     .force('periphery', d3.forceRadial<GraphNode>(
       d => {
         const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-        if (isMajorFaction) return 900;
-        if (d.entityType === 'abnormality') return 600;
-        if (d.nodeType === 'literary-source') return 350;
+        if (isMajorFaction) return 900 * spacingScale;
+        if (d.entityType === 'abnormality') return 600 * spacingScale;
+        if (d.nodeType === 'literary-source') return 350 * spacingScale;
         if (d.id === 'dante') return 0;
-        if (d.nodeType === 'sinner') return 250;
-        return 470;
+        if (d.nodeType === 'sinner') return 250 * spacingScale;
+        return 470 * spacingScale;
       },
       0, 0
     ).strength(d => {
-      const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
-      if (isMajorFaction) return 0.95;
+      // Lower strength allows repulsion and spacing to work better
       if (d.id === 'dante') return 1.0;
-      if (d.nodeType === 'sinner') return 1.0;
-      if (d.nodeType === 'literary-source') return 0.85;
-      return 0.7;
+      if (d.nodeType === 'sinner') return 0.4;
+      return 0.25;
     }))
     .force('collision', d3.forceCollide<GraphNode>().radius(d => {
       if (d.nodeType === 'literary-source') return 62;
@@ -144,5 +144,5 @@ function updateSimulationPhysics() {
       return S_R + 14;
     }).strength(0.95).iterations(3));
 
-  simulation.alpha(0.3).restart();
+  simulation.alpha(1.0).restart();
 }
