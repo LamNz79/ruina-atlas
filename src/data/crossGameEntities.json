@@ -7,10 +7,21 @@
       "type": "abnormality",
       "riskLevel": "ZAYIN",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "An abnormality representing confession and atonement.",
-      "themes": ["guilt", "redemption", "faith"],
-      "relatedSinnerIds": ["sinclair", "ryoshu"],
+      "themes": [
+        "guilt",
+        "redemption",
+        "faith"
+      ],
+      "relatedSinnerIds": [
+        "sinclair",
+        "ryoshu"
+      ],
       "connectionInsights": {
         "sinclair": "Sinclair's base E.G.O is directly derived from a fragment of this abnormality. Both embody the agonizing process of confession.",
         "ryoshu": "Wields the 'Penitence' portion of her Lobotomy E.G.O Identity, representing the restrictive, moralistic side of the spectrum."
@@ -23,10 +34,17 @@
       "type": "abnormality",
       "riskLevel": "ZAYIN",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy"],
+      "appearances": [
+        "lobotomy"
+      ],
       "loreSummary": "A masked doctor who claims to cure all diseases, but hides a terrifying truth behind his 12 apostles.",
-      "themes": ["faith", "guilt"],
-      "literarySourceIds": ["book-of-revelations"]
+      "themes": [
+        "faith",
+        "guilt"
+      ],
+      "literarySourceIds": [
+        "book-of-revelations"
+      ]
     },
     {
       "id": "entity-fairy-festival",
@@ -35,10 +53,18 @@
       "type": "abnormality",
       "riskLevel": "ZAYIN",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Beautiful fairies that offer a feast to workers, only to consume them once the meal is finished.",
-      "themes": ["decay", "family"],
-      "relatedSinnerIds": ["ishmael"],
+      "themes": [
+        "decay",
+        "family"
+      ],
+      "relatedSinnerIds": [
+        "ishmael"
+      ],
       "connectionInsights": {
         "ishmael": "Wields the 'Sloshing' Lobotomy E.G.O Identity, mirroring the fairy's feast-then-consume nature through liquid-based mechanics."
       }
@@ -50,9 +76,14 @@
       "type": "abnormality",
       "riskLevel": "ZAYIN",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A refreshing soda can that contains the essence of the ocean—and the sailors who never returned.",
-      "themes": ["futility"]
+      "themes": [
+        "futility"
+      ]
     },
     {
       "id": "entity-scorched-girl",
@@ -61,9 +92,15 @@
       "type": "abnormality",
       "riskLevel": "TETH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A girl who burned her own world to ashes in a desperate attempt to be heard.",
-      "themes": ["vengeance", "decay"]
+      "themes": [
+        "vengeance",
+        "decay"
+      ]
     },
     {
       "id": "entity-beauty-beast",
@@ -72,9 +109,14 @@
       "type": "abnormality",
       "riskLevel": "TETH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy"],
+      "appearances": [
+        "lobotomy"
+      ],
       "loreSummary": "A cursed entity that transfers its monstrous form between itself and its caretaker.",
-      "themes": ["metamorphosis", "guilt"]
+      "themes": [
+        "metamorphosis",
+        "guilt"
+      ]
     },
     {
       "id": "entity-forsaken-murderer",
@@ -83,10 +125,18 @@
       "type": "abnormality",
       "riskLevel": "TETH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "An experiment gone wrong, shackled by the metal plates hammered into his skull.",
-      "themes": ["machinery", "vengeance"],
-      "relatedSinnerIds": ["faust"],
+      "themes": [
+        "machinery",
+        "vengeance"
+      ],
+      "relatedSinnerIds": [
+        "faust"
+      ],
       "connectionInsights": {
         "faust": "Wields the 'Regret' Lobotomy E.G.O Identity, utilizing the heavy shackles and industrial theme of the abnormality."
       }
@@ -98,9 +148,15 @@
       "type": "abnormality",
       "riskLevel": "TETH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A small bird that enforces justice with a lethal beak. One of the three birds of the Black Forest.",
-      "themes": ["guilt", "futility"]
+      "themes": [
+        "guilt",
+        "futility"
+      ]
     },
     {
       "id": "entity-woodsman",
@@ -109,9 +165,15 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A construct that cuts out the hearts of others to fill its own empty, mechanical chest.",
-      "themes": ["machinery", "decay"]
+      "themes": [
+        "machinery",
+        "decay"
+      ]
     },
     {
       "id": "entity-freischutz",
@@ -120,10 +182,19 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "A huntsman whose seventh magic bullet hits the one he loves most.",
-      "themes": ["vengeance", "guilt"],
-      "relatedSinnerIds": ["outis"],
+      "themes": [
+        "vengeance",
+        "guilt"
+      ],
+      "relatedSinnerIds": [
+        "outis"
+      ],
       "connectionInsights": {
         "outis": "Linked via the 'Magic Bullet' E.G.O. Both are tactical masters whose actions inevitably bring tragedy to their own side."
       }
@@ -135,9 +206,15 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A frozen ethereal entity that traps hearts in blocks of ice to keep them perfect forever.",
-      "themes": ["futility", "decay"]
+      "themes": [
+        "futility",
+        "decay"
+      ]
     },
     {
       "id": "entity-teddy-bear",
@@ -146,9 +223,15 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A sentient toy that desires nothing but to be hugged... until the hug becomes a crush.",
-      "themes": ["family", "decay"]
+      "themes": [
+        "family",
+        "decay"
+      ]
     },
     {
       "id": "entity-singing-machine",
@@ -157,9 +240,15 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "An industrial grinder that transforms people into beautiful, haunting music.",
-      "themes": ["machinery", "absurdity"]
+      "themes": [
+        "machinery",
+        "absurdity"
+      ]
     },
     {
       "id": "entity-snow-white-apple",
@@ -168,9 +257,15 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A rotting princess encased in the vines of a poisoned apple tree.",
-      "themes": ["decay", "vengeance"]
+      "themes": [
+        "decay",
+        "vengeance"
+      ]
     },
     {
       "id": "entity-little-red",
@@ -179,9 +274,15 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A high-ranking mercenary consumed by an eternal hatred for the Big Bad Wolf.",
-      "themes": ["vengeance", "futility"]
+      "themes": [
+        "vengeance",
+        "futility"
+      ]
     },
     {
       "id": "entity-big-bad-wolf",
@@ -190,9 +291,15 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "An endless hunger that grows with every meal. The eternal rival of the Mercenary.",
-      "themes": ["decay", "futility"]
+      "themes": [
+        "decay",
+        "futility"
+      ]
     },
     {
       "id": "entity-queen-hatred",
@@ -201,10 +308,18 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A magical girl who creates villains just so she can play the role of the hero.",
-      "themes": ["absurdity", "metamorphosis"],
-      "relatedSinnerIds": ["don-quixote"],
+      "themes": [
+        "absurdity",
+        "metamorphosis"
+      ],
+      "relatedSinnerIds": [
+        "don-quixote"
+      ],
       "connectionInsights": {
         "don-quixote": "Wields the 'In the Name of Love and Hate' Identity. The Queen's desperate performance of heroism perfectly mirrors Don Quixote's own 'Golden Dream' delusions."
       }
@@ -216,9 +331,15 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A multi-eyed bird that consumes heads to 'save' workers from the forest's darkness.",
-      "themes": ["guilt", "faith"]
+      "themes": [
+        "guilt",
+        "faith"
+      ]
     },
     {
       "id": "entity-judgement-bird",
@@ -227,9 +348,15 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The scales of the forest that bring execution as the only form of balance.",
-      "themes": ["guilt", "nihilism"]
+      "themes": [
+        "guilt",
+        "nihilism"
+      ]
     },
     {
       "id": "entity-little-prince",
@@ -238,9 +365,14 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy"],
+      "appearances": [
+        "lobotomy"
+      ],
       "loreSummary": "A fungus-enthralling entity that replaces individual will with a unified, spore-driven bliss.",
-      "themes": ["metamorphosis", "faith"]
+      "themes": [
+        "metamorphosis",
+        "faith"
+      ]
     },
     {
       "id": "entity-nothing-there",
@@ -249,9 +381,16 @@
       "type": "abnormality",
       "riskLevel": "ALEPH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A terrifying shapeshifter that mimics human behavior and speech to hide its biology.",
-      "themes": ["metamorphosis", "absurdity", "identity-fragmentation"]
+      "themes": [
+        "metamorphosis",
+        "absurdity",
+        "identity-fragmentation"
+      ]
     },
     {
       "id": "entity-silent-orchestra",
@@ -260,9 +399,15 @@
       "type": "abnormality",
       "riskLevel": "ALEPH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "An ensemble that plays a symphony so beautiful it demands the lives of its audience.",
-      "themes": ["absurdity", "nihilism"]
+      "themes": [
+        "absurdity",
+        "nihilism"
+      ]
     },
     {
       "id": "entity-whitenight",
@@ -271,10 +416,18 @@
       "type": "abnormality",
       "riskLevel": "ALEPH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A messianic entity that demands total submission from its twelve apostles.",
-      "themes": ["faith", "nihilism"],
-      "literarySourceIds": ["book-of-revelations"]
+      "themes": [
+        "faith",
+        "nihilism"
+      ],
+      "literarySourceIds": [
+        "book-of-revelations"
+      ]
     },
     {
       "id": "entity-censored",
@@ -283,9 +436,15 @@
       "type": "abnormality",
       "riskLevel": "ALEPH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "A cognitohazard so intense it cannot be represented by the human mind or the facility's cameras.",
-      "themes": ["nihilism", "absurdity"]
+      "themes": [
+        "nihilism",
+        "absurdity"
+      ]
     },
     {
       "id": "entity-solemn-lament",
@@ -294,10 +453,19 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "An abnormality that offers a quiet rest to those who are exhausted from the world.",
-      "themes": ["decay", "futility"],
-      "relatedSinnerIds": ["yi-sang"],
+      "themes": [
+        "decay",
+        "futility"
+      ],
+      "relatedSinnerIds": [
+        "yi-sang"
+      ],
       "connectionInsights": {
         "yi-sang": "Wields the 'Solemn Lament' Lobotomy E.G.O Identity. The butterfly motif and the concept of a 'quiet rest' deeply resonate with Yi Sang's poetic resignation."
       }
@@ -309,10 +477,19 @@
       "type": "abnormality",
       "riskLevel": "TETH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "An abnormality that hides beneath the ground, using a beautiful flower as a lure.",
-      "themes": ["absurdity", "futility"],
-      "relatedSinnerIds": ["don-quixote"],
+      "themes": [
+        "absurdity",
+        "futility"
+      ],
+      "relatedSinnerIds": [
+        "don-quixote"
+      ],
       "connectionInsights": {
         "don-quixote": "Wields the 'Lantern' Lobotomy E.G.O Identity, reflecting the gap between her bright 'heroic' exterior and the hidden hunger of reality."
       }
@@ -324,11 +501,22 @@
       "type": "abnormality",
       "riskLevel": "TETH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "A spider that protects its cocoon with absolute devotion, punishing any who touch it.",
-      "themes": ["family", "vengeance"],
-      "literarySourceIds": ["the-spiders-thread"],
-      "relatedSinnerIds": ["ryoshu"],
+      "themes": [
+        "family",
+        "vengeance"
+      ],
+      "literarySourceIds": [
+        "the-spiders-thread"
+      ],
+      "relatedSinnerIds": [
+        "ryoshu"
+      ],
       "connectionInsights": {
         "ryoshu": "Wields the 'Red Eyes' portion of her Lobotomy E.G.O Identity, embodying the protective yet lethal nature of the spider."
       }
@@ -340,10 +528,19 @@
       "type": "abnormality",
       "riskLevel": "WAW",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "One of the four magical girls. A knight whose protection was lost to betrayal, leaving only the weight of her sword.",
-      "themes": ["futility", "guilt"],
-      "relatedSinnerIds": ["rodion"],
+      "themes": [
+        "futility",
+        "guilt"
+      ],
+      "relatedSinnerIds": [
+        "rodion"
+      ],
       "connectionInsights": {
         "rodion": "Wields the 'Sword Sharpened with Tears' Identity. The Knight's betrayal and subsequent despair parallel Rodion's own guilt over her past actions."
       }
@@ -355,10 +552,18 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "limbus"
+      ],
       "loreSummary": "An abnormality that consumes everything in its path with scorching flames, leaving only ashes behind.",
-      "themes": ["decay", "vengeance"],
-      "relatedSinnerIds": ["faust"],
+      "themes": [
+        "decay",
+        "vengeance"
+      ],
+      "relatedSinnerIds": [
+        "faust"
+      ],
       "connectionInsights": {
         "faust": "Wields the 'Ardor Blossom Star' Identity. The moth's self-destructive drive for the 'star' mirrors Faust's own pursuit of knowledge."
       }
@@ -370,10 +575,18 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "limbus"
+      ],
       "loreSummary": "An abnormality wrapped in red talismans that carry curses and blessings alike.",
-      "themes": ["faith", "guilt"],
-      "relatedSinnerIds": ["sinclair"],
+      "themes": [
+        "faith",
+        "guilt"
+      ],
+      "relatedSinnerIds": [
+        "sinclair"
+      ],
       "connectionInsights": {
         "sinclair": "Wields the 'Red Sheet' Lobotomy E.G.O Identity, utilizing the talismanic powers to balance his own internal volatility."
       }
@@ -385,10 +598,19 @@
       "type": "abnormality",
       "riskLevel": "HE",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "limbus"
+      ],
       "loreSummary": "An abnormality that brings rain wherever it goes, wandering aimlessly through the City.",
-      "themes": ["futility", "decay"],
-      "relatedSinnerIds": ["heathcliff", "yi-sang"],
+      "themes": [
+        "futility",
+        "decay"
+      ],
+      "relatedSinnerIds": [
+        "heathcliff",
+        "yi-sang"
+      ],
       "connectionInsights": {
         "heathcliff": "Wields the 'Sunshower' Lobotomy E.G.O Identity. The fox's aimless wandering and the melancholic rain mirror Heathcliff's own sense of displacement.",
         "yi-sang": "Connected via the 'Effloresced E.G.O::Spicebush' Identity, which shares the Sunshower thematic resonance and atmospheric decay."
@@ -401,20 +623,39 @@
       "type": "abnormality",
       "riskLevel": "ALEPH",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The fusion of the three birds. It represents the end of the forest and the ultimate failure of protection.",
-      "themes": ["nihilism", "futility"]
+      "themes": [
+        "nihilism",
+        "futility"
+      ]
     },
     {
       "id": "entity-l-corp",
       "name": "Lobotomy Corporation",
       "type": "wing",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "The primary energy Wing of the City. Its facility structure consists of 10 specialized teams, each managed by a Sephirah.",
-      "themes": ["machinery", "guilt"],
-      "literarySourceIds": ["kabbalah"],
-      "relatedSinnerIds": ["dante", "faust", "yi-sang"],
+      "themes": [
+        "machinery",
+        "guilt"
+      ],
+      "literarySourceIds": [
+        "kabbalah"
+      ],
+      "relatedSinnerIds": [
+        "dante",
+        "faust",
+        "yi-sang"
+      ],
       "connectionInsights": {
         "dante": "Directly resonates with Golden Boughs to manifest Sapling of Light abilities (Durante), which are structurally named after L-Corp Sephirot (Pigritia, Superbia, Morositas).",
         "faust": "Maintains structural ties through the 'Lobotomy Corp. Remnant' Identity and 'Lobotomy E.G.O::Regret'. Accesses L-Corp knowledge via her bargain with Mephistopheles' engine.",
@@ -427,9 +668,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Responsible for facility-wide coordination and management.",
-      "themes": ["machinery"]
+      "themes": [
+        "machinery"
+      ]
     },
     {
       "id": "entity-l-info",
@@ -437,9 +683,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Manages the Abnormality database and internal communication.",
-      "themes": ["machinery"]
+      "themes": [
+        "machinery"
+      ]
     },
     {
       "id": "entity-l-training",
@@ -447,9 +698,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Dedicated to employee development and survival in high-risk zones.",
-      "themes": ["faith"]
+      "themes": [
+        "faith"
+      ]
     },
     {
       "id": "entity-l-security",
@@ -457,9 +713,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Maintains physical containment and suppressive protocols.",
-      "themes": ["vengeance"]
+      "themes": [
+        "vengeance"
+      ]
     },
     {
       "id": "entity-l-central",
@@ -467,9 +728,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The nerve center connecting the upper and lower layers of the facility.",
-      "themes": ["machinery"]
+      "themes": [
+        "machinery"
+      ]
     },
     {
       "id": "entity-l-discipline",
@@ -477,9 +743,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Suppresses high-risk (WAW/ALEPH) abnormalities.",
-      "themes": ["vengeance"]
+      "themes": [
+        "vengeance"
+      ]
     },
     {
       "id": "entity-l-welfare",
@@ -487,9 +758,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Maintains employee mental health and facility stability.",
-      "themes": ["redemption"]
+      "themes": [
+        "redemption"
+      ]
     },
     {
       "id": "entity-l-extraction",
@@ -497,9 +773,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Extracts E.G.O equipment from Abnormalities.",
-      "themes": ["metamorphosis"]
+      "themes": [
+        "metamorphosis"
+      ]
     },
     {
       "id": "entity-l-record",
@@ -507,9 +788,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "Preserves the archives and historical data of the facility.",
-      "themes": ["faith"]
+      "themes": [
+        "faith"
+      ]
     },
     {
       "id": "entity-l-arch",
@@ -517,9 +803,14 @@
       "type": "wing",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The deepest layer of the facility where the Seed of Light is refined.",
-      "themes": ["faith"]
+      "themes": [
+        "faith"
+      ]
     },
     {
       "id": "entity-malkuth",
@@ -527,10 +818,19 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Control Team. Later the Patron Librarian of the Floor of History.",
-      "themes": ["machinery", "redemption"],
-      "relatedEntityIds": ["entity-l-ctrl", "entity-floor-history"]
+      "themes": [
+        "machinery",
+        "redemption"
+      ],
+      "relatedEntityIds": [
+        "entity-l-ctrl",
+        "entity-floor-history"
+      ]
     },
     {
       "id": "entity-yesod",
@@ -538,10 +838,19 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Information Team. Later the Patron Librarian of the Floor of Tech. Sciences.",
-      "themes": ["machinery", "nihilism"],
-      "relatedEntityIds": ["entity-l-info", "entity-floor-tech"]
+      "themes": [
+        "machinery",
+        "nihilism"
+      ],
+      "relatedEntityIds": [
+        "entity-l-info",
+        "entity-floor-tech"
+      ]
     },
     {
       "id": "entity-hod",
@@ -549,10 +858,19 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Training Team. Later the Patron Librarian of the Floor of Literature.",
-      "themes": ["faith", "guilt"],
-      "relatedEntityIds": ["entity-l-training", "entity-floor-literature"]
+      "themes": [
+        "faith",
+        "guilt"
+      ],
+      "relatedEntityIds": [
+        "entity-l-training",
+        "entity-floor-literature"
+      ]
     },
     {
       "id": "entity-netzach",
@@ -560,10 +878,19 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Security Team. Later the Patron Librarian of the Floor of Art.",
-      "themes": ["decay", "redemption"],
-      "relatedEntityIds": ["entity-l-security", "entity-floor-art"]
+      "themes": [
+        "decay",
+        "redemption"
+      ],
+      "relatedEntityIds": [
+        "entity-l-security",
+        "entity-floor-art"
+      ]
     },
     {
       "id": "entity-tiphereth",
@@ -571,10 +898,19 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Central Command Team. Later the Patron Librarian of the Floor of Natural Sciences.",
-      "themes": ["machinery", "faith"],
-      "relatedEntityIds": ["entity-l-central", "entity-floor-natural"],
+      "themes": [
+        "machinery",
+        "faith"
+      ],
+      "relatedEntityIds": [
+        "entity-l-central",
+        "entity-floor-natural"
+      ],
       "connectionInsights": {
         "entity-floor-natural": "Following the Seed of Light project's failure and the Library's manifestation, the Sephirah of Central Command transitioned to manage the Floor of Natural Sciences."
       }
@@ -585,10 +921,19 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Disciplinary Team. Later the Patron Librarian of the Floor of Language.",
-      "themes": ["vengeance", "redemption"],
-      "relatedEntityIds": ["entity-l-discipline", "entity-floor-language"],
+      "themes": [
+        "vengeance",
+        "redemption"
+      ],
+      "relatedEntityIds": [
+        "entity-l-discipline",
+        "entity-floor-language"
+      ],
       "connectionInsights": {
         "entity-floor-language": "The 'Red Mist' continues her suppressive duties in the Library, shifting from L-Corp's Disciplinary Team to the front lines of the Library's defense."
       }
@@ -599,10 +944,19 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Welfare Team. Later the Patron Librarian of the Floor of Social Sciences.",
-      "themes": ["guilt", "metamorphosis"],
-      "relatedEntityIds": ["entity-l-welfare", "entity-floor-social"],
+      "themes": [
+        "guilt",
+        "metamorphosis"
+      ],
+      "relatedEntityIds": [
+        "entity-l-welfare",
+        "entity-floor-social"
+      ],
       "connectionInsights": {
         "entity-floor-social": "Chesed's focus on employee welfare in L-Corp evolved into managing the societal weight and records within the Floor of Social Sciences."
       }
@@ -613,11 +967,23 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Extraction Team. Later the Patron Librarian of the Floor of Philosophy.",
-      "themes": ["metamorphosis", "nihilism"],
-      "relatedEntityIds": ["entity-l-extraction", "entity-floor-philosophy"],
-      "relatedSinnerIds": ["outis", "faust"],
+      "themes": [
+        "metamorphosis",
+        "nihilism"
+      ],
+      "relatedEntityIds": [
+        "entity-l-extraction",
+        "entity-floor-philosophy"
+      ],
+      "relatedSinnerIds": [
+        "outis",
+        "faust"
+      ],
       "connectionInsights": {
         "faust": "Connected via the Extraction Team; Faust's role as a hoarder of forbidden knowledge mirrors Binah's role in L-Corp's deep facility layers.",
         "outis": "Linked via the 'Magic Bullet' E.G.O (Der Freischütz), which Binah manages through the Extraction Team.",
@@ -630,17 +996,28 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy", "ruina"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
       "loreSummary": "The Sephirah of the Record Team. Later the Patron Librarian of the Floor of Religion.",
-      "themes": ["faith", "guilt"],
-      "relatedEntityIds": ["entity-l-record", "entity-floor-religion"]
+      "themes": [
+        "faith",
+        "guilt"
+      ],
+      "relatedEntityIds": [
+        "entity-l-record",
+        "entity-floor-religion"
+      ]
     },
     {
       "id": "entity-floor-history",
       "name": "Floor of History",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "The first floor of the Library, dedicated to the records of the past."
     },
@@ -649,7 +1026,9 @@
       "name": "Floor of Tech. Sciences",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "A floor dedicated to the understanding of the Library's complex mechanisms."
     },
@@ -658,7 +1037,9 @@
       "name": "Floor of Literature",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "Where the stories and souls within books are translated into reality."
     },
@@ -667,7 +1048,9 @@
       "name": "Floor of Art",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "Dedicated to the creative expression of the City's suffering."
     },
@@ -676,7 +1059,9 @@
       "name": "Floor of Natural Sciences",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "Investigates the physical laws and metaphysical truth of the Library."
     },
@@ -685,7 +1070,9 @@
       "name": "Floor of Language",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "The front line of the Library's defense, focused on suppressive combat."
     },
@@ -694,7 +1081,9 @@
       "name": "Floor of Social Sciences",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "Examines the societal impact and communal weight of the City's history."
     },
@@ -703,7 +1092,9 @@
       "name": "Floor of Philosophy",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "The deepest exploration of why the City must exist."
     },
@@ -712,7 +1103,9 @@
       "name": "Floor of Religion",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "Where the final questions of faith and purpose are archived."
     },
@@ -721,10 +1114,14 @@
       "name": "The Director's Room",
       "type": "wing",
       "canonicalGame": "ruina",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "themes": [],
       "loreSummary": "The core of the Library where the final outcome of the Seed of Light is determined.",
-      "relatedEntityIds": ["entity-l-arch"]
+      "relatedEntityIds": [
+        "entity-l-arch"
+      ]
     },
     {
       "id": "entity-ayin",
@@ -732,96 +1129,170 @@
       "type": "character",
       "canonicalGame": "lobotomy",
       "parentEntityId": "entity-l-corp",
-      "appearances": ["lobotomy"],
-      "themes": ["faith", "guilt"],
+      "appearances": [
+        "lobotomy"
+      ],
+      "themes": [
+        "faith",
+        "guilt"
+      ],
       "loreSummary": "The creator of L Corp and the architect of the Seed of Light project.",
-      "relatedEntityIds": ["entity-l-corp", "entity-director-room"]
+      "relatedEntityIds": [
+        "entity-l-corp",
+        "entity-director-room"
+      ]
     },
     {
       "id": "entity-angela",
       "name": "Angela",
       "type": "character",
       "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina"],
-      "themes": ["machinery", "redemption"],
+      "appearances": [
+        "lobotomy",
+        "ruina"
+      ],
+      "themes": [
+        "machinery",
+        "redemption"
+      ],
       "loreSummary": "The AI administrator of L Corp and the current Director of the Library.",
-      "relatedEntityIds": ["entity-l-corp", "entity-director-room"]
+      "relatedEntityIds": [
+        "entity-l-corp",
+        "entity-director-room"
+      ]
     },
     {
-    "id": "wing-n-corp",
-    "name": "N Corp",
-    "type": "wing",
-    "canonicalGame": "limbus",
-    "appearances": ["limbus"],
-    "loreSummary": "Mirror Technology corporation. Operates the fanatic Nagel und Hammer inquisitors.",
-    "themes": ["machinery", "betrayal"],
-    "relatedSinnerIds": ["meursault", "faust", "don-quixote", "heathcliff", "rodion", "sinclair", "yi-sang"],
-    "connectionInsights": {
-      "yi-sang": "Kept Yi Sang in a lab after Gubo brought him from the League's dissolution. The Mirror was studied here for Hermann's New League experiments."
-    }
+      "id": "wing-n-corp",
+      "name": "N Corp",
+      "type": "wing",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Mirror Technology corporation. Operates the fanatic Nagel und Hammer inquisitors.",
+      "themes": [
+        "machinery",
+        "betrayal"
+      ],
+      "relatedSinnerIds": [
+        "meursault",
+        "faust",
+        "don-quixote",
+        "heathcliff",
+        "rodion",
+        "sinclair",
+        "yi-sang"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Kept Yi Sang in a lab after Gubo brought him from the League's dissolution. The Mirror was studied here for Hermann's New League experiments."
+      }
     },
     {
       "id": "wing-w-corp",
       "name": "W Corp",
       "type": "wing",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "Manages the Warp Train transportation network and employs the secretive Cleanup Agents.",
-      "relatedSinnerIds": ["meursault", "don-quixote", "ryoshu", "hong-lu", "faust", "yi-sang"]
+      "relatedSinnerIds": [
+        "meursault",
+        "don-quixote",
+        "ryoshu",
+        "hong-lu",
+        "faust",
+        "yi-sang"
+      ]
     },
     {
       "id": "wing-k-corp",
       "name": "K Corp",
       "type": "wing",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
-    "loreSummary": "Produces miraculous HP Ampules derived from the Tearful Thing. Defended by the Excision Staff.",
-    "themes": ["machinery", "betrayal"],
-    "relatedSinnerIds": ["hong-lu", "heathcliff", "yi-sang"],
-    "connectionInsights": {
-      "yi-sang": "Canto IV setting. K Corp exploited the League's Glass technology to boost their Singularity. Dongrang served as Branch Manager of Food Resource Development here."
-    }
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Produces miraculous HP Ampules derived from the Tearful Thing. Defended by the Excision Staff.",
+      "themes": [
+        "machinery",
+        "betrayal"
+      ],
+      "relatedSinnerIds": [
+        "hong-lu",
+        "heathcliff",
+        "yi-sang"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Canto IV setting. K Corp exploited the League's Glass technology to boost their Singularity. Dongrang served as Branch Manager of Food Resource Development here."
+      }
     },
     {
       "id": "wing-r-corp",
       "name": "R Corp",
       "type": "wing",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "Private Military Company utilizing specialized beast-themed mercenary packs (Rabbit, Reindeer, Rhino).",
-      "relatedSinnerIds": ["heathcliff", "ishmael", "meursault"]
+      "relatedSinnerIds": [
+        "heathcliff",
+        "ishmael",
+        "meursault"
+      ]
     },
     {
       "id": "wing-j-corp",
       "name": "J Corp",
       "type": "wing",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "A gambling-focused district with a ruthless casino tax system. Birthplace of the Yurodiviye.",
-      "relatedSinnerIds": ["rodion"]
+      "relatedSinnerIds": [
+        "rodion"
+      ]
     },
     {
       "id": "wing-t-corp",
       "name": "T Corp",
       "type": "wing",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "Corporation that commodifies Time and Color as luxury goods. Setting of the Timekilling Time event.",
-      "themes": ["machinery", "survival"],
-      "relatedSinnerIds": ["rodion", "hong-lu", "yi-sang"],
+      "themes": [
+        "machinery",
+        "survival"
+      ],
+      "relatedSinnerIds": [
+        "rodion",
+        "hong-lu",
+        "yi-sang"
+      ],
       "connectionInsights": {
         "yi-sang": "The League of Nine was based under T Corp. Their Time Collectors interrogated Dongrang, forcing the League's dissolution. Yurang was also abducted by T Corp."
-    }
+      }
     },
     {
       "id": "assoc-hana",
       "name": "Hana Association",
       "type": "association",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "The head of all Fixer associations, responsible for ranking Fixers and managing high-level contracts.",
-      "themes": ["faith"],
-      "relatedSinnerIds": ["yi-sang"],
+      "themes": [
+        "faith"
+      ],
+      "relatedSinnerIds": [
+        "yi-sang"
+      ],
       "connectionInsights": {
         "yi-sang": "Symbolic Resonance: 'Hana' means 'One' in Korean, directly corresponding to Yi Sang's designation as Sinner #1. Both share the same cultural origin (Korean) based on Yi Sang's literary prototype."
       }
@@ -831,64 +1302,125 @@
       "name": "Zwei Association",
       "type": "association",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "Specializes in public safety, security, and protection. Known as the 'Shield of the City'.",
-      "themes": ["family"],
-      "relatedSinnerIds": ["faust", "sinclair", "ishmael", "rodion", "gregor"]
+      "themes": [
+        "family"
+      ],
+      "relatedSinnerIds": [
+        "faust",
+        "sinclair",
+        "ishmael",
+        "rodion",
+        "gregor"
+      ]
     },
     {
       "id": "assoc-shi",
       "name": "Shi Association",
       "type": "association",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "Specializes in covert operations and assassination, often overworked by the Association's bureaucracy.",
-      "themes": ["vengeance", "futility"],
-      "relatedSinnerIds": ["ishmael", "heathcliff", "don-quixote", "faust"]
+      "themes": [
+        "vengeance",
+        "futility"
+      ],
+      "relatedSinnerIds": [
+        "ishmael",
+        "heathcliff",
+        "don-quixote",
+        "faust"
+      ]
     },
     {
       "id": "assoc-dieci",
       "name": "Dieci Association",
       "type": "association",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "Focused on the retrieval of knowledge and information, utilizing 'Understanding' as a combat force.",
-      "themes": ["faith", "guilt"],
-      "relatedSinnerIds": ["hong-lu", "rodion", "yi-sang", "meursault"]
+      "themes": [
+        "faith",
+        "guilt"
+      ],
+      "relatedSinnerIds": [
+        "hong-lu",
+        "rodion",
+        "yi-sang",
+        "meursault"
+      ]
     },
     {
       "id": "finger-thumb",
       "name": "The Thumb",
       "type": "finger",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
-      "literarySourceIds": ["book-of-rites"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "literarySourceIds": [
+        "book-of-rites"
+      ],
       "tokenLabel": "禮",
       "loreSummary": "One of the Five Fingers that rule the Backstreets. They are defined by an absolute, labyrinthine hierarchy and the 'Etiquette' of respect. They govern the northern regions and are known for their firearms and ruthless discipline.",
-      "themes": ["family", "machinery"],
+      "themes": [
+        "family",
+        "machinery"
+      ],
       "literaryOrigin": "book-of-rites",
-      "relatedEntityIds": ["entity-kalo", "entity-denis", "entity-boris", "entity-kurokumo", "entity-stray-dogs", "entity-iron-brotherhood"]
+      "relatedEntityIds": [
+        "entity-kalo",
+        "entity-denis",
+        "entity-boris",
+        "entity-kurokumo",
+        "entity-stray-dogs",
+        "entity-iron-brotherhood"
+      ]
     },
     {
       "id": "finger-index",
       "name": "The Index",
       "type": "finger",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "tokenLabel": "信",
       "loreSummary": "One of the Five Fingers. Governed by mysterious 'Prescripts' delivered by Messengers. They embody absolute Trust (Xin) in the Will of the City.",
-      "themes": ["faith", "futility"]
+      "themes": [
+        "faith",
+        "futility"
+      ]
     },
     {
       "id": "finger-middle",
       "name": "The Middle",
       "type": "finger",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "tokenLabel": "義",
       "loreSummary": "One of the Five Fingers. Values 'Family' and 'Righteousness' (Yi) above all else. Known for their brutal vengeance against anyone who harms their 'brothers' or 'sisters'.",
-      "themes": ["family", "vengeance"],
-      "relatedEntityIds": ["entity-ricardo", "entity-twinhook-pirates"]
+      "themes": [
+        "family",
+        "vengeance"
+      ],
+      "relatedEntityIds": [
+        "entity-ricardo",
+        "entity-twinhook-pirates"
+      ]
     },
     {
       "id": "entity-ricardo",
@@ -896,9 +1428,14 @@
       "type": "character",
       "canonicalGame": "limbus",
       "parentEntityId": "finger-middle",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "A 'Big Brother' of the Middle. An incredibly powerful combatant who single-handedly defeated the Sinners in Canto V due to a 'hair coupon' slight. He embodies the Middle's extreme commitment to their brothers.",
-      "themes": ["family", "vengeance"],
+      "themes": [
+        "family",
+        "vengeance"
+      ],
       "connectionInsights": {
         "heathcliff": "Antagonistic Resonance: Ricardo brutally punished Heathcliff for stealing his hair coupons, leading to a near-fatal encounter for the LCB."
       }
@@ -909,36 +1446,59 @@
       "type": "syndicate",
       "canonicalGame": "limbus",
       "parentEntityId": "finger-middle",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "A band of pirates operating in the Great Lake (U Corp. Backstreets). They serve as a subsidiary of the Middle and were responsible for kidnapping Limbus Company's Before Team.",
-      "themes": ["vengeance"]
+      "themes": [
+        "vengeance"
+      ]
     },
     {
       "id": "finger-ring",
       "name": "The Ring",
       "type": "finger",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "tokenLabel": "智",
       "loreSummary": "One of the Five Fingers. Obsessed with Wisdom (Zhi) and Art. They view the City as a canvas and carry out horrific experiments in the name of artistic enlightenment.",
-      "themes": ["decay", "redemption"],
-      "relatedEntityIds": ["entity-aseah", "entity-ring-maestro"]
+      "themes": [
+        "decay",
+        "redemption"
+      ],
+      "relatedEntityIds": [
+        "entity-aseah",
+        "entity-ring-maestro"
+      ]
     },
     {
-    "id": "entity-aseah",
-    "name": "Aseah",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "finger-ring",
-    "appearances": ["limbus"],
-    "loreSummary": "A researcher and former member of the League of Nine Littérateurs. Based on the Korean writer Yi Hyo-seok. He was kidnapped by The Ring for Glass technology research with Maestro Jumsoon; later returned to N Corp.",
-    "themes": ["decay", "betrayal"],
-    "spoilerLevel": 4,
-    "relatedSinnerIds": ["yi-sang"],
-    "relatedEntityIds": ["entity-league-of-nine", "finger-ring", "wing-n-corp"],
-    "connectionInsights": {
-    "yi-sang": "Former Colleague: Aseah and Yi Sang were members of the League of Nine. Aseah's exploitation of Yi Sang's technology for the Ring is a major point of betrayal."
-    }
+      "id": "entity-aseah",
+      "name": "Aseah",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "finger-ring",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "A researcher and former member of the League of Nine Littérateurs. Based on the Korean writer Yi Hyo-seok. He was kidnapped by The Ring for Glass technology research with Maestro Jumsoon; later returned to N Corp.",
+      "themes": [
+        "decay",
+        "betrayal"
+      ],
+      "spoilerLevel": 4,
+      "relatedSinnerIds": [
+        "yi-sang"
+      ],
+      "relatedEntityIds": [
+        "entity-league-of-nine",
+        "finger-ring",
+        "wing-n-corp"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Former Colleague: Aseah and Yi Sang were members of the League of Nine. Aseah's exploitation of Yi Sang's technology for the Ring is a major point of betrayal."
+      }
     },
     {
       "id": "entity-ring-maestro",
@@ -946,20 +1506,33 @@
       "type": "character",
       "canonicalGame": "limbus",
       "parentEntityId": "finger-ring",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "A high-ranking 'Maestro' of the Ring. During the events of the Leviathan webcomic, this figure distorted into the Abnormality 'Schadenfreude' after a confrontation with Vergilius.",
-      "themes": ["decay", "art"]
+      "themes": [
+        "decay",
+        "art"
+      ]
     },
     {
       "id": "finger-pinky",
       "name": "The Pinky",
       "type": "finger",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
-      "literarySourceIds": ["water-margin"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
+      "literarySourceIds": [
+        "water-margin"
+      ],
       "tokenLabel": "仁",
       "loreSummary": "One of the Five Fingers that rule the Backstreets. Known for their complex family-like structure and the 'Taboos' that govern their members' behavior. They follow the code of the 108 Stars.",
-      "themes": ["family", "faith"],
+      "themes": [
+        "family",
+        "faith"
+      ],
       "literaryOrigin": "water-margin"
     },
     {
@@ -968,9 +1541,14 @@
       "type": "character",
       "canonicalGame": "limbus",
       "parentEntityId": "finger-pinky",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "A member of the Pinky identified as the 'Tiantui Star' (Winged Tiger). He embodies the fierce and unyielding nature of his literary counterpart from Water Margin.",
-      "themes": ["vengeance", "family"]
+      "themes": [
+        "vengeance",
+        "family"
+      ]
     },
     {
       "id": "entity-zilu",
@@ -978,9 +1556,14 @@
       "type": "character",
       "canonicalGame": "limbus",
       "parentEntityId": "finger-pinky",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "A member of the Pinky associated with the 'Tianjiu Star' (Unrestrained). Like other Pinky members, his identity is deeply tied to the destiny of the 108 Stars.",
-      "themes": ["faith", "family"]
+      "themes": [
+        "faith",
+        "family"
+      ]
     },
     {
       "id": "entity-kalo",
@@ -988,9 +1571,13 @@
       "type": "character",
       "canonicalGame": "ruina",
       "parentEntityId": "finger-thumb",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "loreSummary": "A Sottocapo of the Thumb. He leads the syndicate's forces within the Library with cold, calculating efficiency, embodying the absolute respect for hierarchy.",
-      "themes": ["machinery"],
+      "themes": [
+        "machinery"
+      ],
       "connectionInsights": {
         "finger-thumb": "As Sottocapo, Kalo's authority is equivalent to a board member of a Wing. He represents the highest level of Thumb hierarchy encountered by the Librarians."
       }
@@ -1001,9 +1588,13 @@
       "type": "character",
       "canonicalGame": "ruina",
       "parentEntityId": "finger-thumb",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "loreSummary": "A Capo of the Thumb who serves under Kalo. Known for his loud, aggressive enforcement of manners and his mastery of firearms.",
-      "themes": ["machinery"]
+      "themes": [
+        "machinery"
+      ]
     },
     {
       "id": "entity-boris",
@@ -1011,9 +1602,13 @@
       "type": "character",
       "canonicalGame": "ruina",
       "parentEntityId": "finger-thumb",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "loreSummary": "A Capo of the Thumb known for his incredible physical strength and stoic adherence to syndicate rules. He utilizes industrial 'discipline' to crush dissent.",
-      "themes": ["machinery"]
+      "themes": [
+        "machinery"
+      ]
     },
     {
       "id": "entity-kurokumo",
@@ -1021,10 +1616,20 @@
       "type": "syndicate",
       "canonicalGame": "ruina",
       "parentEntityId": "finger-thumb",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "A katana-wielding syndicate that serves as a primary subsidiary of the Thumb. They specialize in bleed-inducing combat and occupy the Backstreets with quiet menace.",
-      "themes": ["vengeance", "family"],
-      "relatedSinnerIds": ["rodion", "hong-lu", "ryoshu"]
+      "themes": [
+        "vengeance",
+        "family"
+      ],
+      "relatedSinnerIds": [
+        "rodion",
+        "hong-lu",
+        "ryoshu"
+      ]
     },
     {
       "id": "entity-sayo",
@@ -1032,19 +1637,34 @@
       "type": "character",
       "canonicalGame": "ruina",
       "parentEntityId": "entity-kurokumo",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "loreSummary": "The leader of the Kurokumo Clan's forces in the Library. She is a master of the katana and strictly follows the orders of the Thumb, despite her clan's distinct cultural identity.",
-      "themes": ["vengeance"]
+      "themes": [
+        "vengeance"
+      ]
     },
     {
       "id": "entity-blade-lineage",
       "name": "Blade Lineage",
       "type": "syndicate",
       "canonicalGame": "ruina",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "An independent syndicate that follows traditional Korean swordsmanship. They are the fierce rivals of the Kurokumo Clan and prioritize individual martial skill over absolute hierarchy.",
-      "themes": ["vengeance"],
-      "relatedSinnerIds": ["meursault", "sinclair", "don-quixote", "yi-sang", "faust"]
+      "themes": [
+        "vengeance"
+      ],
+      "relatedSinnerIds": [
+        "meursault",
+        "sinclair",
+        "don-quixote",
+        "yi-sang",
+        "faust"
+      ]
     },
     {
       "id": "entity-kim",
@@ -1052,9 +1672,14 @@
       "type": "character",
       "canonicalGame": "ruina",
       "parentEntityId": "entity-blade-lineage",
-      "appearances": ["ruina", "limbus"],
+      "appearances": [
+        "ruina",
+        "limbus"
+      ],
       "loreSummary": "The legendary leader of the Blade Lineage. He is famous for the technique 'Yield My Flesh to Claim Their Bones'. He distorted after his clan was decimated, but was later restored by the LCB.",
-      "themes": ["vengeance"],
+      "themes": [
+        "vengeance"
+      ],
       "connectionInsights": {
         "entity-kurokumo": "Blood rivals. Kim's clan and the Kurokumo Clan have a long history of lethal conflict in the Backstreets."
       }
@@ -1065,9 +1690,13 @@
       "type": "syndicate",
       "canonicalGame": "ruina",
       "parentEntityId": "finger-thumb",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "loreSummary": "A violent subsidiary of the Thumb responsible for brutal enforcement. They famously massacred the Zwei Association's South Section 6.",
-      "themes": ["vengeance"]
+      "themes": [
+        "vengeance"
+      ]
     },
     {
       "id": "entity-iron-brotherhood",
@@ -1075,83 +1704,147 @@
       "type": "syndicate",
       "canonicalGame": "ruina",
       "parentEntityId": "finger-thumb",
-      "appearances": ["ruina"],
+      "appearances": [
+        "ruina"
+      ],
       "loreSummary": "A low-ranking subsidiary composed of members with extensive prosthetic replacements. They trade their humanity for the durability of iron.",
-      "themes": ["machinery"]
+      "themes": [
+        "machinery"
+      ]
     },
     {
-    "id": "wing-a-corp",
-    "name": "The Head (A Corp)",
-    "type": "wing",
-    "canonicalGame": "ruina",
-    "appearances": ["lobotomy", "ruina", "limbus"],
-    "loreSummary": "The ultimate authority of the City. Composed of the Head, the Eye, and the Claw. Maintains the Taboos and the World Hub.",
-    "themes": ["faith", "machinery", "redemption"],
-    "relatedSinnerIds": ["faust", "yi-sang", "sinclair"]
+      "id": "wing-a-corp",
+      "name": "The Head (A Corp)",
+      "type": "wing",
+      "canonicalGame": "ruina",
+      "appearances": [
+        "lobotomy",
+        "ruina",
+        "limbus"
+      ],
+      "loreSummary": "The ultimate authority of the City. Composed of the Head, the Eye, and the Claw. Maintains the Taboos and the World Hub.",
+      "themes": [
+        "faith",
+        "machinery",
+        "redemption"
+      ],
+      "relatedSinnerIds": [
+        "faust",
+        "yi-sang",
+        "sinclair"
+      ]
     },
     {
-    "id": "entity-league-of-nine",
-    "name": "League of Nine Littérateurs",
-    "type": "syndicate",
-    "canonicalGame": "limbus",
-    "appearances": ["limbus"],
-    "loreSummary": "A research collective of nine (later twelve) inventors founded by Young-ji. Based on the real-life Guinhoe (九人會, Nine Poets Society). They pursued pure innovation under T Corp until internal betrayals and Wing pressure destroyed them. Their surviving technology — the Mirror, the Glass Window — became foundational to Limbus Company and the City's power structure.",
-    "themes": ["betrayal", "hope", "decay"],
-    "spoilerLevel": 4,
-    "relatedSinnerIds": ["yi-sang"],
-    "relatedEntityIds": ["wing-t-corp", "wing-k-corp", "wing-n-corp"],
-    "connectionInsights": {
-      "yi-sang": "Yi Sang was a core member who invented the Mirror (Yeonsim). The League's dissolution sent him into deep depression; its technology lives on in Mephistopheles' engine."
+      "id": "entity-league-of-nine",
+      "name": "League of Nine Littérateurs",
+      "type": "syndicate",
+      "canonicalGame": "limbus",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "A research collective of nine (later twelve) inventors founded by Young-ji. Based on the real-life Guinhoe (九人會, Nine Poets Society). They pursued pure innovation under T Corp until internal betrayals and Wing pressure destroyed them. Their surviving technology — the Mirror, the Glass Window — became foundational to Limbus Company and the City's power structure.",
+      "themes": [
+        "betrayal",
+        "hope",
+        "decay"
+      ],
+      "spoilerLevel": 4,
+      "relatedSinnerIds": [
+        "yi-sang"
+      ],
+      "relatedEntityIds": [
+        "wing-t-corp",
+        "wing-k-corp",
+        "wing-n-corp"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Yi Sang was a core member who invented the Mirror (Yeonsim). The League's dissolution sent him into deep depression; its technology lives on in Mephistopheles' engine."
       }
     },
     {
-    "id": "entity-dongrang",
-    "name": "Dongrang",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Yoo Chi-jin (pen name Dongrang), a Guinhoe founding member. A kind man from Yi Sang's hometown who loved animals — especially the yellow calf that became his E.G.O Farmwatch's central symbol. Studied veterinary science; invented a method to regrow chicken wings for food production. Betrayed the League under T Corp interrogation, selling out the Glass Window's location. Rose to K Corp Branch Manager of Food Resource Development, using Glass technology to boost the Tearful Thing. Distorted into 'Dongrang, Who Denies All' then manifested E.G.O Farmwatch (마름 — tenant farm supervisor). Killed by Yi Sang's Crow's Eye View E.G.O.",
-    "themes": ["betrayal", "futility", "decay"],
-    "spoilerLevel": 4,
-    "literaryOrigin": "The Cow (소) by Yoo Chi-jin",
-    "relatedSinnerIds": ["yi-sang"],
-    "relatedEntityIds": ["wing-k-corp", "entity-league-of-nine"],
-    "connectionInsights": {
-      "yi-sang": "Fellow League member from the same hometown. His betrayal under T Corp interrogation led to the League's destruction. Yi Sang killed him with the Crow's Eye View E.G.O at the climax of Canto IV."
+      "id": "entity-dongrang",
+      "name": "Dongrang",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Based on Yoo Chi-jin (pen name Dongrang), a Guinhoe founding member. A kind man from Yi Sang's hometown who loved animals — especially the yellow calf that became his E.G.O Farmwatch's central symbol. Studied veterinary science; invented a method to regrow chicken wings for food production. Betrayed the League under T Corp interrogation, selling out the Glass Window's location. Rose to K Corp Branch Manager of Food Resource Development, using Glass technology to boost the Tearful Thing. Distorted into 'Dongrang, Who Denies All' then manifested E.G.O Farmwatch (마름 — tenant farm supervisor). Killed by Yi Sang's Crow's Eye View E.G.O.",
+      "themes": [
+        "betrayal",
+        "futility",
+        "decay",
+        "metamorphosis"
+      ],
+      "spoilerLevel": 4,
+      "literaryOrigin": "The Cow (소) by Yoo Chi-jin",
+      "relatedSinnerIds": [
+        "yi-sang"
+      ],
+      "relatedEntityIds": [
+        "wing-k-corp",
+        "entity-league-of-nine"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Fellow League member from the same hometown. His betrayal under T Corp interrogation led to the League's destruction. While Yi Sang struggled with the fragmentation of the self, Dongrang chose to erase his original self entirely for advancement. Yi Sang killed him with the Crow's Eye View E.G.O at the climax of Canto IV."
       }
     },
     {
-    "id": "entity-dongbaek",
-    "name": "Dongbaek",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Gim Yujeong, a Guinhoe member and close friend of the real Yi Sang. Her name means camellia flower (동백). A spirited woman who turned hardened after the League's destruction, becoming a Technology Liberation Alliance subgroup leader seeking to destroy K Corp's Singularity. Stabbed Yi Sang through the heart with the Golden Bough in Canto IV, triggering his ego fathoms. Later stabbed by Dongrang with the same Bough; her consciousness persisted to remind Yi Sang of his invention's worth before passing on. Manifested personal E.G.O Spicebush (동백 — camellia and spicebush share the Korean name).",
-    "themes": ["hope", "vengeance", "betrayal"],
-    "spoilerLevel": 4,
-    "literaryOrigin": "The Camellias (동백꽃) by Gim Yujeong",
-    "relatedSinnerIds": ["yi-sang"],
-    "relatedEntityIds": ["entity-league-of-nine", "wing-k-corp"],
-    "connectionInsights": {
-      "yi-sang": "Fellow League member who stabbed him with the Golden Bough — the act that triggered his Canto IV awakening. Yi Sang's K Corp identity (Effloresced E.G.O::Spicebush) mirrors Dongbaek, sharing her E.G.O."
+      "id": "entity-dongbaek",
+      "name": "Dongbaek",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Based on Gim Yujeong, a Guinhoe member and close friend of the real Yi Sang. Her name means camellia flower (동백). A spirited woman who turned hardened after the League's destruction, becoming a Technology Liberation Alliance subgroup leader seeking to destroy K Corp's Singularity. Stabbed Yi Sang through the heart with the Golden Bough in Canto IV, triggering his ego fathoms. Later stabbed by Dongrang with the same Bough; her consciousness persisted to remind Yi Sang of his invention's worth before passing on. Manifested personal E.G.O Spicebush (동백 — camellia and spicebush share the Korean name).",
+      "themes": [
+        "hope",
+        "vengeance",
+        "betrayal",
+        "faith",
+        "decay"
+      ],
+      "spoilerLevel": 4,
+      "literaryOrigin": "The Camellias (동백꽃) by Gim Yujeong",
+      "relatedSinnerIds": [
+        "yi-sang"
+      ],
+      "relatedEntityIds": [
+        "entity-league-of-nine",
+        "wing-k-corp"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Fellow League member who stabbed him with the Golden Bough — the act that triggered his Canto IV awakening. Represents the path of radical resistance to the City's technological decay, contrasting with Yi Sang's more internal, poetic search for meaning. Yi Sang's K Corp identity (Effloresced E.G.O::Spicebush) mirrors Dongbaek, sharing her E.G.O."
       }
     },
     {
-    "id": "entity-gubo",
-    "name": "Gubo",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Park Tae-won (pen names Mongbo and Gubo), Yi Sang's inseparable friend in real life. Escaped with Yi Sang to N Corp after the League's dissolution. Later collaborated with Hermann on the New League of Nine Littérateurs, attempting to recruit or kill former League members who refused to join. Yi Sang's N Corp identity mirrors Gubo.",
-    "themes": ["betrayal", "survival"],
-    "spoilerLevel": 8,
-    "relatedSinnerIds": ["yi-sang", "don-quixote"],
-    "relatedEntityIds": ["wing-n-corp", "entity-league-of-nine"],
-    "connectionInsights": {
-      "yi-sang": "Inseparable friend who brought Yi Sang to N Corp after the League fell. Later became Hermann's collaborator in the New League — the same organization that experimented on Yi Sang."
+      "id": "entity-gubo",
+      "name": "Gubo",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Based on Park Tae-won (pen names Mongbo and Gubo), Yi Sang's inseparable friend in real life. Escaped with Yi Sang to N Corp after the League's dissolution. Later collaborated with Hermann on the New League of Nine Littérateurs, attempting to recruit or kill former League members who refused to join. Yi Sang's N Corp identity mirrors Gubo.",
+      "themes": [
+        "betrayal",
+        "survival"
+      ],
+      "spoilerLevel": 8,
+      "relatedSinnerIds": [
+        "yi-sang",
+        "don-quixote"
+      ],
+      "relatedEntityIds": [
+        "wing-n-corp",
+        "entity-league-of-nine"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Inseparable friend who brought Yi Sang to N Corp after the League fell. Later became Hermann's collaborator in the New League — the same organization that experimented on Yi Sang."
       }
     },
     {
@@ -1159,129 +1852,166 @@
       "name": "Smee",
       "type": "character",
       "canonicalGame": "limbus",
-      "appearances": ["limbus"],
+      "appearances": [
+        "limbus"
+      ],
       "loreSummary": "The first mate of the Pequod in the Mirror of the Lake. He remains loyal to Ahab despite the crew's descent into madness.",
-      "themes": ["faith", "futility"],
-      "relatedSinnerIds": ["ishmael"],
+      "themes": [
+        "faith",
+        "futility"
+      ],
+      "relatedSinnerIds": [
+        "ishmael"
+      ],
       "connectionInsights": {
         "ishmael": "Smee serves as a foil to Ishmael's eventual rebellion, representing the unquestioning loyalty to a doomed captain."
       }
     },
+    {
+      "id": "entity-young-ji",
+      "name": "Young-ji",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Based on Jeong Ji-yong (from his courtesy name), the oldest Guinhoe member and founding poet. Founder of the League who invented the Glass Window (유리창) — named after Jeong Ji-yong's two poems of the same title, written in memory of his dead children. A warm big-brother figure with a habit of hiding problems from juniors. Invited by Wings for recruitment; disappeared before T Corp's raid. Current whereabouts unknown — paralleling Jeong Ji-yong's abduction by North Korea and death in 1950, unknown until 2003.",
+      "themes": [
+        "faith",
+        "decay"
+      ],
+      "spoilerLevel": 4,
+      "literaryOrigin": "Glass Window (유리창) by Jeong Ji-yong",
+      "relatedSinnerIds": [
+        "yi-sang",
+        "hong-lu"
+      ],
+      "relatedEntityIds": [
+        "entity-league-of-nine"
+      ],
+      "connectionInsights": {
+        "yi-sang": "League founder who invented the Glass Window. Published Yi Sang's 'A Flower Tree' in Catholic Youth. His disappearance left the League vulnerable to T Corp.",
+        "hong-lu": "Hong Lu takes the role of Young-ji in the League of Nine play during Canto IV's ego fathoms."
+      }
     },
     {
-    "id": "entity-young-ji",
-    "name": "Young-ji",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Jeong Ji-yong (from his courtesy name), the oldest Guinhoe member and founding poet. Founder of the League who invented the Glass Window (유리창) — named after Jeong Ji-yong's two poems of the same title, written in memory of his dead children. A warm big-brother figure with a habit of hiding problems from juniors. Invited by Wings for recruitment; disappeared before T Corp's raid. Current whereabouts unknown — paralleling Jeong Ji-yong's abduction by North Korea and death in 1950, unknown until 2003.",
-    "themes": ["faith", "decay"],
-    "spoilerLevel": 4,
-    "literaryOrigin": "Glass Window (유리창) by Jeong Ji-yong",
-    "relatedSinnerIds": ["yi-sang", "hong-lu"],
-    "relatedEntityIds": ["entity-league-of-nine"],
-    "connectionInsights": {
-      "yi-sang": "League founder who invented the Glass Window. Published Yi Sang's 'A Flower Tree' in Catholic Youth. His disappearance left the League vulnerable to T Corp.",
-      "hong-lu": "Hong Lu takes the role of Young-ji in the League of Nine play during Canto IV's ego fathoms."
-    }
-  },
-  {
-    "id": "entity-sang-heo",
-    "name": "Sang-heo",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Lee Tae-jun (pen name Sang-heo), a Guinhoe member. Remained loyal to the League and proposed using the Concept Incinerator. Whereabouts unknown after dissolution — paralleling Lee Tae-jun's defection to North Korea.",
-    "themes": ["faith", "guilt"],
-    "spoilerLevel": 4,
-    "relatedSinnerIds": ["yi-sang", "outis"],
-    "relatedEntityIds": ["entity-league-of-nine"],
-    "connectionInsights": {
-      "yi-sang": "Fellow League member who remained loyal. Proposed the Concept Incinerator that was used during the League's final days."
-    }
-  },
-  {
-    "id": "entity-aneung",
-    "name": "Aneung",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Cho Yong-man, a Guinhoe member. Was threatened with repatriation to S Corp. and revealed the League's location — one of the betrayals that led to the League's destruction. Parallels Cho Yong-man's pro-Japanese cooperation.",
-    "themes": ["betrayal", "survival"],
-    "spoilerLevel": 4,
-    "relatedSinnerIds": ["yi-sang", "sinclair"],
-    "relatedEntityIds": ["entity-league-of-nine"],
-    "connectionInsights": {
-      "yi-sang": "Fellow League member who betrayed the League's location under threat of repatriation."
-    }
-  },
-  {
-    "id": "entity-gap-ryong",
-    "name": "Gap-ryong",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Lee Mu-young (birth name Lee Gap-ryong), a Guinhoe member. From the same hometown as Yi Sang and Dongrang. Sold an invention to cover the League's rent; suspected of being another betrayer. Parallels Lee Mu-young's pro-Japanese actions.",
-    "themes": ["betrayal", "survival"],
-    "spoilerLevel": 4,
-    "relatedSinnerIds": ["yi-sang", "heathcliff"],
-    "relatedEntityIds": ["entity-league-of-nine"],
-    "connectionInsights": {
-      "yi-sang": "Fellow League member from the same hometown. Sold an invention to cover League rent, raising suspicion of betrayal."
-    }
-  },
-  {
-    "id": "entity-nul-in",
-    "name": "Nul-in",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Kim Hwan-tae (pen name Nul-in), a Guinhoe member. Last to join the League and fastest to acclimate. Cynical and materialistic; pushed Dongrang toward his realization about technology needing practical value.",
-    "themes": ["futility", "survival"],
-    "spoilerLevel": 4,
-    "relatedSinnerIds": ["yi-sang", "rodion"],
-    "relatedEntityIds": ["entity-league-of-nine", "entity-dongrang"],
-    "connectionInsights": {
-      "yi-sang": "Fellow League member whose pragmatic worldview influenced Dongrang's turn toward practicality — and eventual betrayal."
-    }
-  },
-  {
-    "id": "entity-yurang",
-    "name": "Yurang",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Lee Jong-myeong (from his novel Wandering/유랑), a Guinhoe member. Invented ID tags to find lost children — tags that were twisted by T Corp. into worker monitoring tools. Was abducted by T Corp. Parallels Lee Jong-myeong's unknown fate after 1936.",
-    "themes": ["decay", "survival"],
-    "spoilerLevel": 4,
-    "relatedSinnerIds": ["yi-sang", "ishmael"],
-    "relatedEntityIds": ["entity-league-of-nine", "wing-t-corp"],
-    "connectionInsights": {
-      "yi-sang": "Fellow League member abducted by T Corp. after her invention was repurposed for worker surveillance."
-    }
-  },
-  {
-    "id": "entity-rim",
-    "name": "Rim",
-    "type": "character",
-    "canonicalGame": "limbus",
-    "parentEntityId": "entity-league-of-nine",
-    "appearances": ["limbus"],
-    "loreSummary": "Based on Kim Ki-rim, a Guinhoe founding member, poet, and reporter who shared Yi Sang's interest in surrealism. Referenced in Canto V as implying Young-ji is still alive.",
-    "themes": ["hope", "art"],
-    "spoilerLevel": 5,
-    "relatedSinnerIds": ["yi-sang", "faust"],
-    "relatedEntityIds": ["entity-league-of-nine"],
-    "connectionInsights": {
-      "yi-sang": "Fellow founding member of the League who shared Yi Sang's surrealist sensibilities. Later implied that Young-ji may still be alive."
-    }
-  },
+      "id": "entity-sang-heo",
+      "name": "Sang-heo",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Based on Lee Tae-jun (pen name Sang-heo), a Guinhoe member. Remained loyal to the League and proposed using the Concept Incinerator. Whereabouts unknown after dissolution — paralleling Lee Tae-jun's defection to North Korea.",
+      "themes": [
+        "faith",
+        "guilt"
+      ],
+      "spoilerLevel": 4,
+      "relatedSinnerIds": [
+        "yi-sang",
+        "outis"
+      ],
+      "relatedEntityIds": [
+        "entity-league-of-nine"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Fellow League member who remained loyal. Proposed the Concept Incinerator that was used during the League's final days."
+      }
+    },
+    {
+      "id": "entity-aneung",
+      "name": "Aneung",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": [
+        "limbus"
+      ],
+      "loreSummary": "Based on Cho Yong-man, a Guinhoe member. Was threatened with repatriation to S Corp. and revealed the League's location — one of the betrayals that led to the League's destruction. Parallels Cho Yong-man's pro-Japanese cooperation.",
+      "themes": [
+        "betrayal",
+        "survival"
+      ],
+      "spoilerLevel": 4,
+      "relatedSinnerIds": [
+        "yi-sang",
+        "sinclair"
+      ],
+      "relatedEntityIds": [
+        "entity-league-of-nine"
+      ],
+      "connectionInsights": {
+        "yi-sang": "Fellow League member who betrayed the League's location under threat of repatriation."
+      }
+    },
+    {
+      "id": "entity-gap-ryong",
+      "name": "Gap-ryong",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": ["limbus"],
+      "loreSummary": "Based on Lee Mu-young (birth name Lee Gap-ryong), a Guinhoe member. From the same hometown as Yi Sang and Dongrang. Sold an invention to cover the League's rent; suspected of being another betrayer. Parallels Lee Mu-young's pro-Japanese actions.",
+      "themes": ["betrayal", "survival"],
+      "spoilerLevel": 4,
+      "relatedSinnerIds": ["yi-sang", "heathcliff"],
+      "relatedEntityIds": ["entity-league-of-nine"],
+      "connectionInsights": {
+        "yi-sang": "Fellow League member from the same hometown. Sold an invention to cover League rent, raising suspicion of betrayal."
+      }
+    },
+    {
+      "id": "entity-nul-in",
+      "name": "Nul-in",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": ["limbus"],
+      "loreSummary": "Based on Kim Hwan-tae (pen name Nul-in), a Guinhoe member. Last to join the League and fastest to acclimate. Cynical and materialistic; pushed Dongrang toward his realization about technology needing practical value.",
+      "themes": ["futility", "survival"],
+      "spoilerLevel": 4,
+      "relatedSinnerIds": ["yi-sang", "rodion"],
+      "relatedEntityIds": ["entity-league-of-nine", "entity-dongrang"],
+      "connectionInsights": {
+        "yi-sang": "Fellow League member whose pragmatic worldview influenced Dongrang's turn toward practicality — and eventual betrayal."
+      }
+    },
+    {
+      "id": "entity-yurang",
+      "name": "Yurang",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": ["limbus"],
+      "loreSummary": "Based on Lee Jong-myeong (from his novel Wandering/유랑), a Guinhoe member. Invented ID tags to find lost children — tags that were twisted by T Corp. into worker monitoring tools. Was abducted by T Corp. Parallels Lee Jong-myeong's unknown fate after 1936.",
+      "themes": ["decay", "survival"],
+      "spoilerLevel": 4,
+      "relatedSinnerIds": ["yi-sang", "ishmael"],
+      "relatedEntityIds": ["entity-league-of-nine", "wing-t-corp"],
+      "connectionInsights": {
+        "yi-sang": "Fellow League member abducted by T Corp. after her invention was repurposed for worker surveillance."
+      }
+    },
+    {
+      "id": "entity-rim",
+      "name": "Rim",
+      "type": "character",
+      "canonicalGame": "limbus",
+      "parentEntityId": "entity-league-of-nine",
+      "appearances": ["limbus"],
+      "loreSummary": "Based on Kim Ki-rim, a Guinhoe founding member, poet, and reporter who shared Yi Sang's interest in surrealism. Referenced in Canto V as implying Young-ji is still alive.",
+      "themes": ["hope", "art", "machinery", "identity-fragmentation"],
+      "spoilerLevel": 5,
+      "relatedSinnerIds": ["yi-sang", "faust", "heathcliff"],
+      "relatedEntityIds": ["entity-league-of-nine"],
+      "connectionInsights": {
+        "yi-sang": "Fellow founding member of the League who shared Yi Sang's surrealist sensibilities. Later implied that Young-ji may still be alive.",
+        "heathcliff": "His experiments with the Mirror technology facilitate the encounter with Erlking Heathcliff, driving the Canto's exploration of identity and tragedy."
+      }
+    },
   {
     "id": "entity-indigo-elder",
     "name": "The Indigo Elder",
@@ -1319,4 +2049,3 @@
   }
   ]
 }
-
