@@ -318,6 +318,10 @@
   background: var(--gold);
 }
 
+.scrollbar-hide-track::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
 /* Glassmorphism V3 - Deeper and more refractive */
 .glass-v3 {
   background: rgba(10, 10, 10, 0.7);

@@ -75,9 +75,9 @@ export function GraphSettings({
 
       {/* Panel body */}
       <Card className={`overflow-hidden border-t-0 shadow-xl transition-all duration-300 ease-in-out ${
-        open ? 'max-h-[500px] opacity-100 max-md:max-h-[60dvh]' : 'max-h-0 opacity-0 border-none shadow-none'
+        open ? 'max-h-[min(85vh,700px)] opacity-100' : 'max-h-0 opacity-0 border-none shadow-none'
       }`}>
-        <CardContent className="space-y-6 pt-5 max-md:max-h-[calc(60dvh-3rem)] max-md:overflow-y-auto scroll-bronze">
+        <CardContent className="space-y-6 pt-5 max-h-[calc(85vh-3.5rem)] overflow-y-auto scroll-bronze scrollbar-hide-track">
           {/* Physics Section */}
           <div className="space-y-4">
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">Engine Physics</h4>

@@ -103,9 +103,9 @@ export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
 
       {/* Panel */}
       <Card className={`overflow-hidden border-t-0 shadow-xl transition-all duration-300 ease-in-out ${
-        open ? 'max-h-[min(70vh,640px)] opacity-100 max-md:max-h-[70dvh]' : 'max-h-0 opacity-0 border-none shadow-none'
+        open ? 'max-h-[min(85vh,640px)] opacity-100' : 'max-h-0 opacity-0 border-none shadow-none'
         }`}>
-        <CardContent className="space-y-5 pt-5 max-md:max-h-[calc(70dvh-3rem)] max-md:overflow-y-auto scroll-bronze">
+        <CardContent className="space-y-5 pt-5 max-h-[calc(85vh-3.5rem)] overflow-y-auto scroll-bronze scrollbar-hide-track">
           {/* Archive Layer */}
           <div className="space-y-2.5">
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-red-500/80">
