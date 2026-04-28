@@ -748,13 +748,17 @@
       "relatedEntityIds": ["entity-l-corp", "entity-director-room"]
     },
     {
-      "id": "wing-n-corp",
-      "name": "N Corp",
-      "type": "wing",
-      "canonicalGame": "limbus",
-      "appearances": ["limbus"],
-      "loreSummary": "Mirror Technology corporation. Operates the fanatic Nagel und Hammer inquisitors.",
-      "relatedSinnerIds": ["meursault", "faust", "donquixote", "heathcliff", "rodion", "sinclair"]
+    "id": "wing-n-corp",
+    "name": "N Corp",
+    "type": "wing",
+    "canonicalGame": "limbus",
+    "appearances": ["limbus"],
+    "loreSummary": "Mirror Technology corporation. Operates the fanatic Nagel und Hammer inquisitors.",
+    "themes": ["machinery", "betrayal"],
+    "relatedSinnerIds": ["meursault", "faust", "don-quixote", "heathcliff", "rodion", "sinclair", "yi-sang"],
+    "connectionInsights": {
+      "yi-sang": "Kept Yi Sang in a lab after Gubo brought him from the League's dissolution. The Mirror was studied here for Hermann's New League experiments."
+    }
     },
     {
       "id": "wing-w-corp",
@@ -763,7 +767,7 @@
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
       "loreSummary": "Manages the Warp Train transportation network and employs the secretive Cleanup Agents.",
-      "relatedSinnerIds": ["meursault", "donquixote", "ryoshu", "honglu", "faust", "yi-sang"]
+      "relatedSinnerIds": ["meursault", "don-quixote", "ryoshu", "hong-lu", "faust", "yi-sang"]
     },
     {
       "id": "wing-k-corp",
@@ -771,8 +775,12 @@
       "type": "wing",
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
-      "loreSummary": "Produces miraculous HP Ampules derived from the Tearful Thing. Defended by the Excision Staff.",
-      "relatedSinnerIds": ["honglu", "heathcliff"]
+    "loreSummary": "Produces miraculous HP Ampules derived from the Tearful Thing. Defended by the Excision Staff.",
+    "themes": ["machinery", "betrayal"],
+    "relatedSinnerIds": ["hong-lu", "heathcliff", "yi-sang"],
+    "connectionInsights": {
+      "yi-sang": "Canto IV setting. K Corp exploited the League's Glass technology to boost their Singularity. Dongrang served as Branch Manager of Food Resource Development here."
+    }
     },
     {
       "id": "wing-r-corp",
@@ -799,7 +807,11 @@
       "canonicalGame": "limbus",
       "appearances": ["limbus"],
       "loreSummary": "Corporation that commodifies Time and Color as luxury goods. Setting of the Timekilling Time event.",
-      "relatedSinnerIds": ["rodion", "honglu"]
+      "themes": ["machinery", "survival"],
+      "relatedSinnerIds": ["rodion", "hong-lu", "yi-sang"],
+      "connectionInsights": {
+        "yi-sang": "The League of Nine was based under T Corp. Their Time Collectors interrogated Dongrang, forcing the League's dissolution. Yurang was also abducted by T Corp."
+    }
     },
     {
       "id": "assoc-hana",
@@ -832,7 +844,7 @@
       "appearances": ["ruina", "limbus"],
       "loreSummary": "Specializes in covert operations and assassination, often overworked by the Association's bureaucracy.",
       "themes": ["vengeance", "futility"],
-      "relatedSinnerIds": ["ishmael", "heathcliff", "donquixote", "faust"]
+      "relatedSinnerIds": ["ishmael", "heathcliff", "don-quixote", "faust"]
     },
     {
       "id": "assoc-dieci",
@@ -842,7 +854,7 @@
       "appearances": ["limbus"],
       "loreSummary": "Focused on the retrieval of knowledge and information, utilizing 'Understanding' as a combat force.",
       "themes": ["faith", "guilt"],
-      "relatedSinnerIds": ["honglu", "rodion", "yi-sang", "meursault"]
+      "relatedSinnerIds": ["hong-lu", "rodion", "yi-sang", "meursault"]
     },
     {
       "id": "finger-thumb",
@@ -913,17 +925,20 @@
       "relatedEntityIds": ["entity-aseah", "entity-ring-maestro"]
     },
     {
-      "id": "entity-aseah",
-      "name": "Aseah",
-      "type": "character",
-      "canonicalGame": "limbus",
-      "parentEntityId": "finger-ring",
-      "appearances": ["limbus"],
-      "loreSummary": "A researcher and former member of the League of Nine Littérateurs. He worked with the Ring to conduct mirror technology experiments, leading to the creation of the Identities used by Limbus Company.",
-      "themes": ["decay"],
-      "connectionInsights": {
-        "yi-sang": "Former Colleague: Aseah and Yi Sang were members of the League of Nine. Aseah's exploitation of Yi Sang's technology for the Ring is a major point of betrayal."
-      }
+    "id": "entity-aseah",
+    "name": "Aseah",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "finger-ring",
+    "appearances": ["limbus"],
+    "loreSummary": "A researcher and former member of the League of Nine Littérateurs. Based on the Korean writer Yi Hyo-seok. He was kidnapped by The Ring for Glass technology research with Maestro Jumsoon; later returned to N Corp.",
+    "themes": ["decay", "betrayal"],
+    "spoilerLevel": 4,
+    "relatedSinnerIds": ["yi-sang"],
+    "relatedEntityIds": ["entity-league-of-nine", "finger-ring", "wing-n-corp"],
+    "connectionInsights": {
+    "yi-sang": "Former Colleague: Aseah and Yi Sang were members of the League of Nine. Aseah's exploitation of Yi Sang's technology for the Ring is a major point of betrayal."
+    }
     },
     {
       "id": "entity-ring-maestro",
@@ -1009,7 +1024,7 @@
       "appearances": ["ruina", "limbus"],
       "loreSummary": "A katana-wielding syndicate that serves as a primary subsidiary of the Thumb. They specialize in bleed-inducing combat and occupy the Backstreets with quiet menace.",
       "themes": ["vengeance", "family"],
-      "relatedSinnerIds": ["rodion", "honglu", "ryoshu"]
+      "relatedSinnerIds": ["rodion", "hong-lu", "ryoshu"]
     },
     {
       "id": "entity-sayo",
@@ -1065,50 +1080,229 @@
       "themes": ["machinery"]
     },
     {
-      "id": "wing-a-corp",
-      "name": "The Head (A Corp)",
-      "type": "wing",
-      "canonicalGame": "ruina",
-      "appearances": ["lobotomy", "ruina", "limbus"],
-      "loreSummary": "The ultimate authority of the City. Composed of the Head, the Eye, and the Claw. Maintains the Taboos and the World Hub.",
-      "themes": ["faith", "machinery", "redemption"],
-      "relatedSinnerIds": ["faust", "yi-sang", "sinclair"]
+    "id": "wing-a-corp",
+    "name": "The Head (A Corp)",
+    "type": "wing",
+    "canonicalGame": "ruina",
+    "appearances": ["lobotomy", "ruina", "limbus"],
+    "loreSummary": "The ultimate authority of the City. Composed of the Head, the Eye, and the Claw. Maintains the Taboos and the World Hub.",
+    "themes": ["faith", "machinery", "redemption"],
+    "relatedSinnerIds": ["faust", "yi-sang", "sinclair"]
     },
     {
-      "id": "entity-indigo-elder",
-      "name": "The Indigo Elder",
-      "type": "character",
-      "canonicalGame": "limbus",
-      "appearances": ["limbus"],
-      "loreSummary": "A legendary Color Fixer of the Great Lake. He spends his life hunting the 'Calamities' and guiding those brave or foolish enough to sail the waters.",
-      "themes": ["futility", "faith"],
-      "literarySourceIds": ["old-man-and-sea"],
-      "relatedSinnerIds": ["ishmael"]
+    "id": "entity-league-of-nine",
+    "name": "League of Nine Littérateurs",
+    "type": "syndicate",
+    "canonicalGame": "limbus",
+    "appearances": ["limbus"],
+    "loreSummary": "A research collective of nine (later twelve) inventors founded by Young-ji. Based on the real-life Guinhoe (九人會, Nine Poets Society). They pursued pure innovation under T Corp until internal betrayals and Wing pressure destroyed them. Their surviving technology — the Mirror, the Glass Window — became foundational to Limbus Company and the City's power structure.",
+    "themes": ["betrayal", "hope", "decay"],
+    "spoilerLevel": 4,
+    "relatedSinnerIds": ["yi-sang"],
+    "relatedEntityIds": ["wing-t-corp", "wing-k-corp", "wing-n-corp"],
+    "connectionInsights": {
+      "yi-sang": "Yi Sang was a core member who invented the Mirror (Yeonsim). The League's dissolution sent him into deep depression; its technology lives on in Mephistopheles' engine."
+      }
     },
     {
-      "id": "entity-electric-sheep",
-      "name": "Dreaming Electric Sheep",
-      "subjectNumber": "T-02-12",
-      "type": "abnormality",
-      "riskLevel": "WAW",
-      "canonicalGame": "limbus",
-      "appearances": ["limbus"],
-      "loreSummary": "An abnormality that generates a dream-like state for those connected to it. It questions the nature of reality and artificial empathy.",
-      "themes": ["machinery", "identity-fragmentation"],
-      "literarySourceIds": ["electric-sheep"]
+    "id": "entity-dongrang",
+    "name": "Dongrang",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Yoo Chi-jin (pen name Dongrang), a Guinhoe founding member. A kind man from Yi Sang's hometown who loved animals — especially the yellow calf that became his E.G.O Farmwatch's central symbol. Studied veterinary science; invented a method to regrow chicken wings for food production. Betrayed the League under T Corp interrogation, selling out the Glass Window's location. Rose to K Corp Branch Manager of Food Resource Development, using Glass technology to boost the Tearful Thing. Distorted into 'Dongrang, Who Denies All' then manifested E.G.O Farmwatch (마름 — tenant farm supervisor). Killed by Yi Sang's Crow's Eye View E.G.O.",
+    "themes": ["betrayal", "futility", "decay"],
+    "spoilerLevel": 4,
+    "literaryOrigin": "The Cow (소) by Yoo Chi-jin",
+    "relatedSinnerIds": ["yi-sang"],
+    "relatedEntityIds": ["wing-k-corp", "entity-league-of-nine"],
+    "connectionInsights": {
+      "yi-sang": "Fellow League member from the same hometown. His betrayal under T Corp interrogation led to the League's destruction. Yi Sang killed him with the Crow's Eye View E.G.O at the climax of Canto IV."
+      }
     },
     {
-      "id": "entity-red-shoes",
-      "name": "Red Shoes",
-      "subjectNumber": "O-04-08",
-      "type": "abnormality",
-      "riskLevel": "HE",
-      "canonicalGame": "lobotomy",
-      "appearances": ["lobotomy", "ruina", "limbus"],
-      "loreSummary": "A pair of shoes that possess the wearer, forcing them to dance until they die of exhaustion or blood loss.",
-      "themes": ["obsession", "decay"],
-      "literarySourceIds": ["the-red-shoes"]
+    "id": "entity-dongbaek",
+    "name": "Dongbaek",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Gim Yujeong, a Guinhoe member and close friend of the real Yi Sang. Her name means camellia flower (동백). A spirited woman who turned hardened after the League's destruction, becoming a Technology Liberation Alliance subgroup leader seeking to destroy K Corp's Singularity. Stabbed Yi Sang through the heart with the Golden Bough in Canto IV, triggering his ego fathoms. Later stabbed by Dongrang with the same Bough; her consciousness persisted to remind Yi Sang of his invention's worth before passing on. Manifested personal E.G.O Spicebush (동백 — camellia and spicebush share the Korean name).",
+    "themes": ["hope", "vengeance", "betrayal"],
+    "spoilerLevel": 4,
+    "literaryOrigin": "The Camellias (동백꽃) by Gim Yujeong",
+    "relatedSinnerIds": ["yi-sang"],
+    "relatedEntityIds": ["entity-league-of-nine", "wing-k-corp"],
+    "connectionInsights": {
+      "yi-sang": "Fellow League member who stabbed him with the Golden Bough — the act that triggered his Canto IV awakening. Yi Sang's K Corp identity (Effloresced E.G.O::Spicebush) mirrors Dongbaek, sharing her E.G.O."
+      }
+    },
+    {
+    "id": "entity-gubo",
+    "name": "Gubo",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Park Tae-won (pen names Mongbo and Gubo), Yi Sang's inseparable friend in real life. Escaped with Yi Sang to N Corp after the League's dissolution. Later collaborated with Hermann on the New League of Nine Littérateurs, attempting to recruit or kill former League members who refused to join. Yi Sang's N Corp identity mirrors Gubo.",
+    "themes": ["betrayal", "survival"],
+    "spoilerLevel": 8,
+    "relatedSinnerIds": ["yi-sang", "don-quixote"],
+    "relatedEntityIds": ["wing-n-corp", "entity-league-of-nine"],
+    "connectionInsights": {
+      "yi-sang": "Inseparable friend who brought Yi Sang to N Corp after the League fell. Later became Hermann's collaborator in the New League — the same organization that experimented on Yi Sang."
     }
+  },
+  {
+    "id": "entity-young-ji",
+    "name": "Young-ji",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Jeong Ji-yong (from his courtesy name), the oldest Guinhoe member and founding poet. Founder of the League who invented the Glass Window (유리창) — named after Jeong Ji-yong's two poems of the same title, written in memory of his dead children. A warm big-brother figure with a habit of hiding problems from juniors. Invited by Wings for recruitment; disappeared before T Corp's raid. Current whereabouts unknown — paralleling Jeong Ji-yong's abduction by North Korea and death in 1950, unknown until 2003.",
+    "themes": ["faith", "decay"],
+    "spoilerLevel": 4,
+    "literaryOrigin": "Glass Window (유리창) by Jeong Ji-yong",
+    "relatedSinnerIds": ["yi-sang", "hong-lu"],
+    "relatedEntityIds": ["entity-league-of-nine"],
+    "connectionInsights": {
+      "yi-sang": "League founder who invented the Glass Window. Published Yi Sang's 'A Flower Tree' in Catholic Youth. His disappearance left the League vulnerable to T Corp.",
+      "hong-lu": "Hong Lu takes the role of Young-ji in the League of Nine play during Canto IV's ego fathoms."
+    }
+  },
+  {
+    "id": "entity-sang-heo",
+    "name": "Sang-heo",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Lee Tae-jun (pen name Sang-heo), a Guinhoe member. Remained loyal to the League and proposed using the Concept Incinerator. Whereabouts unknown after dissolution — paralleling Lee Tae-jun's defection to North Korea.",
+    "themes": ["faith", "guilt"],
+    "spoilerLevel": 4,
+    "relatedSinnerIds": ["yi-sang", "outis"],
+    "relatedEntityIds": ["entity-league-of-nine"],
+    "connectionInsights": {
+      "yi-sang": "Fellow League member who remained loyal. Proposed the Concept Incinerator that was used during the League's final days."
+    }
+  },
+  {
+    "id": "entity-aneung",
+    "name": "Aneung",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Cho Yong-man, a Guinhoe member. Was threatened with repatriation to S Corp. and revealed the League's location — one of the betrayals that led to the League's destruction. Parallels Cho Yong-man's pro-Japanese cooperation.",
+    "themes": ["betrayal", "survival"],
+    "spoilerLevel": 4,
+    "relatedSinnerIds": ["yi-sang", "sinclair"],
+    "relatedEntityIds": ["entity-league-of-nine"],
+    "connectionInsights": {
+      "yi-sang": "Fellow League member who betrayed the League's location under threat of repatriation."
+    }
+  },
+  {
+    "id": "entity-gap-ryong",
+    "name": "Gap-ryong",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Lee Mu-young (birth name Lee Gap-ryong), a Guinhoe member. From the same hometown as Yi Sang and Dongrang. Sold an invention to cover the League's rent; suspected of being another betrayer. Parallels Lee Mu-young's pro-Japanese actions.",
+    "themes": ["betrayal", "survival"],
+    "spoilerLevel": 4,
+    "relatedSinnerIds": ["yi-sang", "heathcliff"],
+    "relatedEntityIds": ["entity-league-of-nine"],
+    "connectionInsights": {
+      "yi-sang": "Fellow League member from the same hometown. Sold an invention to cover League rent, raising suspicion of betrayal."
+    }
+  },
+  {
+    "id": "entity-nul-in",
+    "name": "Nul-in",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Kim Hwan-tae (pen name Nul-in), a Guinhoe member. Last to join the League and fastest to acclimate. Cynical and materialistic; pushed Dongrang toward his realization about technology needing practical value.",
+    "themes": ["futility", "survival"],
+    "spoilerLevel": 4,
+    "relatedSinnerIds": ["yi-sang", "rodion"],
+    "relatedEntityIds": ["entity-league-of-nine", "entity-dongrang"],
+    "connectionInsights": {
+      "yi-sang": "Fellow League member whose pragmatic worldview influenced Dongrang's turn toward practicality — and eventual betrayal."
+    }
+  },
+  {
+    "id": "entity-yurang",
+    "name": "Yurang",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Lee Jong-myeong (from his novel Wandering/유랑), a Guinhoe member. Invented ID tags to find lost children — tags that were twisted by T Corp. into worker monitoring tools. Was abducted by T Corp. Parallels Lee Jong-myeong's unknown fate after 1936.",
+    "themes": ["decay", "survival"],
+    "spoilerLevel": 4,
+    "relatedSinnerIds": ["yi-sang", "ishmael"],
+    "relatedEntityIds": ["entity-league-of-nine", "wing-t-corp"],
+    "connectionInsights": {
+      "yi-sang": "Fellow League member abducted by T Corp. after her invention was repurposed for worker surveillance."
+    }
+  },
+  {
+    "id": "entity-rim",
+    "name": "Rim",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "parentEntityId": "entity-league-of-nine",
+    "appearances": ["limbus"],
+    "loreSummary": "Based on Kim Ki-rim, a Guinhoe founding member, poet, and reporter who shared Yi Sang's interest in surrealism. Referenced in Canto V as implying Young-ji is still alive.",
+    "themes": ["hope", "art"],
+    "spoilerLevel": 5,
+    "relatedSinnerIds": ["yi-sang", "faust"],
+    "relatedEntityIds": ["entity-league-of-nine"],
+    "connectionInsights": {
+      "yi-sang": "Fellow founding member of the League who shared Yi Sang's surrealist sensibilities. Later implied that Young-ji may still be alive."
+    }
+  },
+  {
+    "id": "entity-indigo-elder",
+    "name": "The Indigo Elder",
+    "type": "character",
+    "canonicalGame": "limbus",
+    "appearances": ["limbus"],
+    "loreSummary": "A legendary Color Fixer of the Great Lake. He spends his life hunting the 'Calamities' and guiding those brave or foolish enough to sail the waters.",
+    "themes": ["futility", "faith"],
+    "literarySourceIds": ["old-man-and-sea"],
+    "relatedSinnerIds": ["ishmael"]
+  },
+  {
+    "id": "entity-electric-sheep",
+    "name": "Dreaming Electric Sheep",
+    "subjectNumber": "T-02-12",
+    "type": "abnormality",
+    "riskLevel": "WAW",
+    "canonicalGame": "limbus",
+    "appearances": ["limbus"],
+    "loreSummary": "An abnormality that generates a dream-like state for those connected to it. It questions the nature of reality and artificial empathy.",
+    "themes": ["machinery", "identity-fragmentation"],
+    "literarySourceIds": ["electric-sheep"]
+  },
+  {
+    "id": "entity-red-shoes",
+    "name": "Red Shoes",
+    "subjectNumber": "O-04-08",
+    "type": "abnormality",
+    "riskLevel": "HE",
+    "canonicalGame": "lobotomy",
+    "appearances": ["lobotomy", "ruina", "limbus"],
+    "loreSummary": "A pair of shoes that possess the wearer, forcing them to dance until they die of exhaustion or blood loss.",
+    "themes": ["obsession", "decay"],
+    "literarySourceIds": ["the-red-shoes"]
+  }
   ]
 }
 
