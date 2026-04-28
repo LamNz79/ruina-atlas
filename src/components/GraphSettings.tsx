@@ -26,7 +26,6 @@ interface GraphSettingsProps {
 import { 
   EDGE_COLORS, 
   EDGE_LABELS, 
-  ALL_EDGE_TYPES as EDGE_TYPES 
 } from './LoreGraphConstants';
 
 export function GraphSettings({
@@ -91,7 +90,7 @@ export function GraphSettings({
               <Slider
                 value={[nodeSpacing]}
                 min={80}
-                max={350}
+                max={600}
                 step={10}
                 onValueChange={([v]) => onNodeSpacingChange(v)}
               />
@@ -105,7 +104,7 @@ export function GraphSettings({
               <Slider
                 value={[Math.abs(repulsion)]}
                 min={200}
-                max={5000}
+                max={10000}
                 step={100}
                 onValueChange={([v]) => onRepulsionChange(-v)}
               />
@@ -119,7 +118,7 @@ export function GraphSettings({
               <Slider
                 value={[centering]}
                 min={0.01}
-                max={0.20}
+                max={0.50}
                 step={0.01}
                 onValueChange={([v]) => onCenteringChange(v)}
               />
@@ -129,23 +128,88 @@ export function GraphSettings({
           <div className="h-[1px] bg-border/50" />
 
           {/* Visibility Section */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             <h4 className="text-[10px] font-black uppercase tracking-[0.15em] text-muted-foreground/70">Connection Filter</h4>
-            <div className="space-y-1.5">
-              {EDGE_TYPES.map((type) => (
-                <div key={type} className="flex items-center justify-between py-1 transition-colors hover:bg-muted/30 rounded px-1 -mx-1">
-                  <div className="flex items-center gap-2.5">
-                    <div className="h-2 w-2 rounded-full shadow-[0_0_8px_var(--tw-shadow-color)]" 
-                         style={{ backgroundColor: EDGE_COLORS[type], '--tw-shadow-color': EDGE_COLORS[type] } as React.CSSProperties} />
-                    <span className="text-[11px] font-medium text-foreground/90">{EDGE_LABELS[type]}</span>
-                  </div>
-                  <Switch
-                    checked={activeEdgeTypes.has(type)}
-                    onCheckedChange={() => onToggleEdgeType(type)}
-                    className="scale-75"
-                  />
+            
+            <div className="space-y-4">
+              {/* Origin Strings */}
+              <div className="space-y-1.5">
+                <div className="text-[9px] font-bold text-red-500/60 uppercase tracking-tighter mb-1 px-1 flex items-center gap-1.5">
+                  <div className="h-1 w-3 bg-red-500/40 rounded-full" />
+                  Origin Strings
                 </div>
-              ))}
+                {['primary-source', 'author-parallel', 'theological-origin'].map((type) => (
+                  <div key={type} className="flex items-center justify-between py-1 transition-colors hover:bg-muted/30 rounded px-1 -mx-1">
+                    <div className="flex items-center gap-2.5">
+                      <div className="h-2 w-2 rounded-full shadow-[0_0_8px_var(--tw-shadow-color)]" 
+                           style={{ backgroundColor: EDGE_COLORS[type as EdgeType], '--tw-shadow-color': EDGE_COLORS[type as EdgeType] } as React.CSSProperties} />
+                      <span className="text-[11px] font-medium text-foreground/90">{EDGE_LABELS[type as EdgeType]}</span>
+                    </div>
+                    <Switch
+                      checked={activeEdgeTypes.has(type as EdgeType)}
+                      onCheckedChange={() => onToggleEdgeType(type as EdgeType)}
+                      className="scale-75"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Literary Allusions */}
+              <div className="space-y-1.5">
+                <div className="text-[9px] font-bold text-muted-foreground/40 uppercase tracking-tighter mb-1 px-1">Allusions & Prototypes</div>
+                {['secondary-source', 'literary-origin'].map((type) => (
+                  <div key={type} className="flex items-center justify-between py-1 transition-colors hover:bg-muted/30 rounded px-1 -mx-1">
+                    <div className="flex items-center gap-2.5">
+                      <div className="h-2 w-2 rounded-full shadow-[0_0_8px_var(--tw-shadow-color)]" 
+                           style={{ backgroundColor: EDGE_COLORS[type as EdgeType], '--tw-shadow-color': EDGE_COLORS[type as EdgeType] } as React.CSSProperties} />
+                      <span className="text-[11px] font-medium text-foreground/90">{EDGE_LABELS[type as EdgeType]}</span>
+                    </div>
+                    <Switch
+                      checked={activeEdgeTypes.has(type as EdgeType)}
+                      onCheckedChange={() => onToggleEdgeType(type as EdgeType)}
+                      className="scale-75"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Continuity & Org */}
+              <div className="space-y-1.5">
+                <div className="text-[9px] font-bold text-muted-foreground/40 uppercase tracking-tighter mb-1 px-1">Continuity & Org</div>
+                {['cross-game-continuity', 'wing-affiliation', 'structural-hierarchy', 'bridge-continuity'].map((type) => (
+                  <div key={type} className="flex items-center justify-between py-1 transition-colors hover:bg-muted/30 rounded px-1 -mx-1">
+                    <div className="flex items-center gap-2.5">
+                      <div className="h-2 w-2 rounded-full shadow-[0_0_8px_var(--tw-shadow-color)]" 
+                           style={{ backgroundColor: EDGE_COLORS[type as EdgeType], '--tw-shadow-color': EDGE_COLORS[type as EdgeType] } as React.CSSProperties} />
+                      <span className="text-[11px] font-medium text-foreground/90">{EDGE_LABELS[type as EdgeType]}</span>
+                    </div>
+                    <Switch
+                      checked={activeEdgeTypes.has(type as EdgeType)}
+                      onCheckedChange={() => onToggleEdgeType(type as EdgeType)}
+                      className="scale-75"
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Resonance */}
+              <div className="space-y-1.5">
+                <div className="text-[9px] font-bold text-muted-foreground/40 uppercase tracking-tighter mb-1 px-1">Resonance</div>
+                {['thematic-link', 'ego-synchronization', 'shared-literary-group'].map((type) => (
+                  <div key={type} className="flex items-center justify-between py-1 transition-colors hover:bg-muted/30 rounded px-1 -mx-1">
+                    <div className="flex items-center gap-2.5">
+                      <div className="h-2 w-2 rounded-full shadow-[0_0_8px_var(--tw-shadow-color)]" 
+                           style={{ backgroundColor: EDGE_COLORS[type as EdgeType], '--tw-shadow-color': EDGE_COLORS[type as EdgeType] } as React.CSSProperties} />
+                      <span className="text-[11px] font-medium text-foreground/90">{EDGE_LABELS[type as EdgeType]}</span>
+                    </div>
+                    <Switch
+                      checked={activeEdgeTypes.has(type as EdgeType)}
+                      onCheckedChange={() => onToggleEdgeType(type as EdgeType)}
+                      className="scale-75"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
