@@ -13,13 +13,12 @@ import {
   ALL_EDGE_TYPES,
   DEFAULTS,
   EDGE_COLORS,
-  EDGE_LABELS,
   ENTITY_COLORS,
   INITIAL_FILTER_STATE,
   NODE_GAME_COLORS,
   RISK_LEVEL_COLORS
 } from './LoreGraphConstants';
-import { calculateSharedThemes, getVisibleAncestorId } from './LoreGraphUtils';
+import { getVisibleAncestorId } from './LoreGraphUtils';
 
 interface LoreGraphProps {
   sinners: Sinner[];
@@ -47,8 +46,6 @@ export function LoreGraph({
   onEntityClick,
   onSourceClick,
   onToggleExpand,
-  onPin,
-  onClearFocus,
 }: LoreGraphProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -238,7 +235,7 @@ export function LoreGraph({
 
     const rect = container.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
-    
+
     // Set internal resolution based on DPR
     if (canvas.width !== Math.floor(rect.width * dpr) || canvas.height !== Math.floor(rect.height * dpr)) {
       canvas.width = Math.floor(rect.width * dpr);
@@ -250,11 +247,11 @@ export function LoreGraph({
     if (canvas.style.height !== `${rect.height}px`) canvas.style.height = `${rect.height}px`;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     ctx.save();
     // 1. Scale to device pixels
     ctx.scale(dpr, dpr);
-    
+
     // 2. Apply D3 zoom transform (translation and scale are in CSS pixels)
     const transform = transformRef.current;
     ctx.translate(transform.x, transform.y);
@@ -269,7 +266,7 @@ export function LoreGraph({
 
       const isConnected = (s.id === activeId || t.id === activeId);
       if (typeof s.x !== 'number' || typeof s.y !== 'number' || typeof t.x !== 'number' || typeof t.y !== 'number') return;
-      
+
       ctx.beginPath();
       ctx.moveTo(s.x, s.y);
       ctx.lineTo(t.x, t.y);
@@ -295,7 +292,7 @@ export function LoreGraph({
     if (!svgRef.current || !containerRef.current) return;
     const transform = transformRef.current;
     const svg = d3.select(svgRef.current);
-    
+
     // Update SVG container dimensions to match precisely
     const rect = containerRef.current.getBoundingClientRect();
     if (svg.attr('width') !== rect.width.toString()) svg.attr('width', rect.width);
@@ -350,7 +347,7 @@ export function LoreGraph({
         const sourceId = d.id.replace('lit-', '');
         const sourceData = literarySources.find(ls => ls.id === sourceId);
         const isTheological = sourceData?.category === 'theological';
-        
+
         // Base Card / Background
         nodeEl.append('rect').attr('class', 'node-hit book-card-base')
           .attr('x', -BK_W / 2).attr('y', -BK_H / 2)
@@ -378,7 +375,7 @@ export function LoreGraph({
             .attr('width', BK_W + 20).attr('height', BK_H + 20)
             .attr('fill', 'none').attr('stroke', '#fdfbd3').attr('stroke-width', 2.5).attr('opacity', 0.4).attr('rx', 4)
             .style('filter', 'blur(8px)');
-          
+
           nodeEl.append('path').attr('d', 'M-8,-25 L8,-25 M0,-30 L0,-20') // Small cross/anchor symbol
             .attr('stroke', '#f5c518').attr('stroke-width', 1.5).attr('fill', 'none');
         }
@@ -401,10 +398,10 @@ export function LoreGraph({
         } else if (d.entityType === 'association' || d.entityType === 'syndicate') {
           const isBladeLineage = d.id === 'entity-blade-lineage';
           const factionColor = isBladeLineage ? '#22c55e' : '#d4af37';
-          
+
           // Diamond shape for Blade Lineage / Syndicates
           nodeEl.append('path').attr('d', `M0 -${H_R} L${H_R} 0 L0 ${H_R} L-${H_R} 0 Z`).attr('fill', '#0c0c0e').attr('stroke', factionColor).attr('stroke-width', 2);
-          
+
           if (isBladeLineage) {
             // Gat (Bamboo Hat) Icon
             const gatPath = 'M-12,5 Q0,-8 12,5 L12,8 Q0,-5 -12,8 Z M-6,5 Q0,-18 6,5';
@@ -430,6 +427,9 @@ export function LoreGraph({
 
       nodeEl.append('text').text(d.name).attr('dy', d.nodeType === 'literary-source' ? BK_H / 2 + 13 : (d.entityType === 'wing' ? W_R + 15 : H_R + 13))
         .attr('text-anchor', 'middle').attr('fill', '#e8e0d5').attr('font-size', '11px').attr('font-weight', '600').style('text-shadow', '0 2px 4px rgba(0,0,0,0.8)');
+
+      // Critical: Ensure children don't block mouse events on the main hit shape
+      nodeEl.selectAll('text, .sinner-emblem, image').style('pointer-events', 'none');
     });
   }, []);
 
@@ -438,7 +438,7 @@ export function LoreGraph({
     if (!svgRef.current) return;
     const svg = d3.select(svgRef.current);
     let g = svg.select<SVGGElement>('.zoom-group');
-    
+
     if (g.empty()) {
       const defs = svg.append('defs');
       const glow = defs.append('filter').attr('id', 'glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
@@ -453,13 +453,13 @@ export function LoreGraph({
       divineHalo.append('stop').attr('offset', '100%').attr('stop-color', '#f5c518').attr('stop-opacity', 0);
 
       g = svg.append('g').attr('class', 'zoom-group');
-      
+
       const zoom = d3.zoom<SVGSVGElement, unknown>()
         .scaleExtent([0.05, 4])
         .on('zoom', (e) => { transformRef.current = e.transform; });
       svg.call(zoom);
       zoomRef.current = zoom;
-      
+
       const width = containerRef.current?.clientWidth || 800;
       const height = containerRef.current?.clientHeight || 800;
       svg.call(zoom.transform, d3.zoomIdentity.translate(width / 2, height / 2).scale(0.45));
@@ -471,6 +471,8 @@ export function LoreGraph({
     const nodesEnter = nodesSelection.enter()
       .append('g')
       .attr('class', 'node-group')
+      .attr('data-node-type', d => d.nodeType)
+      .attr('data-entity-type', d => d.entityType || 'none')
       .on('click', (e, d) => {
         e.stopPropagation();
         if (d.nodeType === 'sinner') onNodeClick(sinners.find(s => s.id === d.id)!);
@@ -497,7 +499,7 @@ export function LoreGraph({
           workerRef.current?.postMessage({ type: 'dragStart', data: { id: d.id, x: e.x, y: e.y } });
         })
         .on('drag', (e, d) => workerRef.current?.postMessage({ type: 'dragMove', data: { id: d.id, x: e.x, y: e.y } }))
-        .on('end', (e, d) => {
+        .on('end', (_e, d) => {
           isDraggingRef.current = false;
           workerRef.current?.postMessage({ type: 'dragEnd', data: { id: d.id } });
         })
@@ -520,7 +522,7 @@ export function LoreGraph({
 
     g.selectAll<SVGGElement, GraphNode>('.node-group')
       .attr('opacity', d => !activeId || connectedIds.has(d.id) ? 1 : 0.15)
-      .each(function(d) {
+      .each(function (d) {
         const isActive = activeId === d.id;
         d3.select(this).selectAll('.sinner-emblem')
           .transition().duration(200)

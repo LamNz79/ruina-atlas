@@ -300,7 +300,7 @@ export interface CrossGameEntity {
  *
  * @see src/utils/deriveEdges.ts
  */
-export type EdgeType = 'literary-origin' | 'theological-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group' | 'wing-affiliation' | 'ego-synchronization' | 'structural-hierarchy' | 'bridge-continuity';
+export type EdgeType = 'primary-source' | 'secondary-source' | 'author-parallel' | 'literary-origin' | 'theological-origin' | 'thematic-link' | 'cross-game-continuity' | 'shared-literary-group' | 'wing-affiliation' | 'ego-synchronization' | 'structural-hierarchy' | 'bridge-continuity';
 
 export interface GraphEdge {
   source: string; // Sinner.id

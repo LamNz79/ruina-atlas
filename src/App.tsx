@@ -90,8 +90,8 @@ export default function App() {
     });
   }, []);
 
-  const handleSearchSelect = useCallback((type: 'sinner' | 'entity' | 'source', id: string) => {
-    if (type === 'sinner') {
+  const handleSearchSelect = useCallback((type: 'sinner' | 'entity' | 'source' | 'identity' | 'ego', id: string) => {
+    if (type === 'sinner' || type === 'identity' || type === 'ego') {
       const found = sinners.find(s => s.id === id);
       if (found) {
         setSelectedSinner(found);

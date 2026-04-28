@@ -182,7 +182,7 @@ export default function SinnerModule({ sinner, spoilerEnabled }: SinnerModulePro
                       <div className="h-16 w-16 shrink-0 rounded-lg overflow-hidden border border-border/20 bg-muted/10 relative">
                         {/* Cinematic Backdrop for Icon */}
                         <img
-                          src={getEgoImage(ego.egoId)}
+                          src={getEgoImage(ego.egoId ?? '')}
                           className="absolute inset-0 h-full w-full object-cover blur-xl opacity-40 scale-125"
                           aria-hidden="true"
                         />

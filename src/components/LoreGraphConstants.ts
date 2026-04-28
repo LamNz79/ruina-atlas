@@ -1,6 +1,5 @@
 import * as d3 from 'd3';
 import type { EdgeType, Game, Theme } from '../types';
-import { literarySources } from '../data/literarySources';
 import { THEMES } from '../types';
 
 export interface GraphNode extends d3.SimulationNodeDatum {
@@ -58,6 +57,9 @@ export const SIN_COLORS: Record<string, string> = {
 };
 
 export const EDGE_COLORS: Record<EdgeType, string> = {
+  'primary-source': '#b8202f',      // Deep Crimson
+  'secondary-source': '#a08a70',    // Bronze
+  'author-parallel': '#f5c518',     // Electric Gold
   'literary-origin': '#a08a70',     // Bronze
   'theological-origin': '#fdfbd3',  // Divine Gold
   'thematic-link': '#c4bdb3',       // Ivory
@@ -70,15 +72,18 @@ export const EDGE_COLORS: Record<EdgeType, string> = {
 };
 
 export const EDGE_LABELS: Record<EdgeType, string> = {
+  'primary-source': 'Primary Source',
+  'secondary-source': 'Secondary Source',
+  'author-parallel': 'Author Parallel',
   'literary-origin': 'Literary Origin',
   'theological-origin': 'Theological Origin',
-  'thematic-link': 'Shared Theme',
-  'cross-game-continuity': 'Cross-Game',
+  'thematic-link': 'Thematic Link',
+  'cross-game-continuity': 'Cross-game Continuity',
   'shared-literary-group': 'Shared Group',
   'wing-affiliation': 'Wing Affiliation',
-  'ego-synchronization': 'E.G.O Synchronization',
-  'structural-hierarchy': 'Structural Hierarchy',
-  'bridge-continuity': 'Continuity Bridge',
+  'ego-synchronization': 'EGO Synchronization',
+  'structural-hierarchy': 'Hierarchy',
+  'bridge-continuity': 'Bridge Continuity',
 };
 
 export const ALL_EDGE_TYPES: EdgeType[] = [

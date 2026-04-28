@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import Fuse from 'fuse.js';
 import { sinners } from '../data/sinners';
 import crossGameEntities from '../data/crossGameEntities.json';
@@ -28,7 +28,7 @@ type SearchItem = {
   type: 'sinner' | 'entity' | 'source' | 'identity' | 'ego';
   subtitle?: string;
   meta?: string;
-  extra?: string; // e.g., Damange type or specialized label
+  extra?: any; // e.g., Damange type or specialized label
   iconUrl?: string;
 };
 
@@ -88,7 +88,7 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
         type: 'ego' as const,
         subtitle: `EGO: ${s.name}`,
         meta: ego.rank,
-        iconUrl: getEgoImage(ego.egoId)
+        iconUrl: ego.egoId ? getEgoImage(ego.egoId) : undefined
       })))
     ];
     return items;
@@ -112,6 +112,12 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
     setSelectedIndex(0);
   }, [results]);
 
+  const handleSearchSelect = useCallback((item: SearchItem) => {
+    onSelect(item.type === 'identity' || item.type === 'ego' ? 'sinner' : item.type, item.id);
+    onOpenChange(false);
+    setQuery('');
+  }, [onOpenChange, onSelect]);
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault();
@@ -122,12 +128,10 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
     } else if (e.key === 'Enter') {
       const selected = results[selectedIndex];
       if (selected) {
-        onSelect(selected.type === 'identity' || selected.type === 'ego' ? 'sinner' : selected.type, selected.id);
-        onOpenChange(false);
-        setQuery('');
+        handleSearchSelect(selected);
       }
     }
-  };
+  }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -185,15 +189,15 @@ export function GlobalSearch({ open, onOpenChange, onSelect }: GlobalSearchProps
                       style={{ borderColor: isActive ? color : undefined, borderRadius: '12px' }}
                     >
                       {item.iconUrl ? (
-                         <>
-                           <img src={item.iconUrl} className="absolute inset-0 h-full w-full object-cover blur-md opacity-30 scale-150" aria-hidden="true" />
-                           <img src={item.iconUrl} className="relative h-full w-full object-cover z-10 transition-transform duration-500 group-hover:scale-110" alt={item.name} />
-                           <div className="absolute inset-0 z-20 border border-white/10 rounded-[11px]" aria-hidden="true" />
-                         </>
+                        <>
+                          <img src={item.iconUrl} className="absolute inset-0 h-full w-full object-cover blur-md opacity-30 scale-150" aria-hidden="true" />
+                          <img src={item.iconUrl} className="relative h-full w-full object-cover z-10 transition-transform duration-500 group-hover:scale-110" alt={item.name} />
+                          <div className="absolute inset-0 z-20 border border-white/10 rounded-[11px]" aria-hidden="true" />
+                        </>
                       ) : (
                         item.type === 'sinner' ? <User className="h-6 w-6" style={{ color: isActive ? color : 'var(--text-faint)' }} /> :
-                        item.type === 'entity' ? (item.extra === 'wing' ? <Shield className="h-6 w-6" /> : <BoxIcon className="h-6 w-6" />) :
-                        item.type === 'source' ? <BookOpen className="h-6 w-6" /> : <Sparkles className="h-6 w-6" />
+                          item.type === 'entity' ? (item.extra === 'wing' ? <Shield className="h-6 w-6" /> : <BoxIcon className="h-6 w-6" />) :
+                            item.type === 'source' ? <BookOpen className="h-6 w-6" /> : <Sparkles className="h-6 w-6" />
                       )}
                     </Flex>
 

@@ -1,4 +1,4 @@
-import type { Sinner, GraphEdge } from '../types';
+import type { Sinner, GraphEdge, EdgeType } from '../types';
 import { literarySources } from '../data/literarySources';
 
 /**
@@ -18,7 +18,17 @@ export function deriveEdges(sinners: Sinner[]): GraphEdge[] {
       const k = key(s1.id, `lit-${lsRef.id}`);
       if (!added.has(k)) {
         const sourceData = literarySources.find(ls => ls.id === lsRef.id);
-        const type = sourceData?.category === 'theological' ? 'theological-origin' : 'literary-origin';
+        
+        let type: EdgeType = 'literary-origin';
+        if (lsRef.role === 'primary') {
+          type = 'primary-source';
+        } else if (lsRef.role === 'secondary') {
+          type = 'secondary-source';
+        } else if (lsRef.role === 'influence') {
+          type = 'author-parallel'; // Mapping influence to author-parallel per roadmap
+        } else if (sourceData?.category === 'theological') {
+          type = 'theological-origin';
+        }
         
         edges.push({ source: s1.id, target: `lit-${lsRef.id}`, type });
         added.add(k);
