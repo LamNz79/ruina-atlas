@@ -271,6 +271,22 @@ export function LoreGraph({
 
     const activeId = hoverId || focusNodeId || selectedSinner?.id || selectedEntity;
 
+    // --- Draw Radial Orbits (Vành đai) ---
+    const spacingScale = physics.nodeSpacing / 180;
+    const radii = [160 * spacingScale, 280 * spacingScale, 450 * spacingScale, 600 * spacingScale, 900 * spacingScale];
+    
+    ctx.save();
+    ctx.shadowBlur = 0;
+    radii.forEach((r, i) => {
+      ctx.beginPath();
+      ctx.arc(0, 0, r, 0, Math.PI * 2);
+      ctx.strokeStyle = i === 0 ? 'rgba(184, 32, 47, 0.15)' : 'rgba(160, 138, 112, 0.08)';
+      ctx.lineWidth = 1 / transform.k;
+      if (i > 1) ctx.setLineDash([5 / transform.k, 10 / transform.k]);
+      ctx.stroke();
+    });
+    ctx.restore();
+
     graphData.links.forEach(l => {
       const s = nodesRef.current.get(typeof l.source === 'string' ? l.source : (l.source as any).id);
       const t = nodesRef.current.get(typeof l.target === 'string' ? l.target : (l.target as any).id);

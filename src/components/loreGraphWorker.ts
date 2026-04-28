@@ -113,27 +113,26 @@ function updateSimulationPhysics() {
     .force('charge', d3.forceManyBody<GraphNode>().strength(d => {
       const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
       if (isMajorFaction) return physics.repulsion * 2.5;
-      if (d.nodeType === 'literary-source') return physics.repulsion * 1.5;
+      if (d.nodeType === 'literary-source') return physics.repulsion * 1.2;
       if (d.nodeType === 'sinner') return physics.repulsion * 0.3;
       return physics.repulsion;
     }).theta(0.85).distanceMax(1000))
-    .force('center', d3.forceCenter(0, 0).strength(physics.centering))
+    .force('center', d3.forceCenter(0, 0).strength(physics.centering * 0.3))
     .force('periphery', d3.forceRadial<GraphNode>(
       d => {
         const isMajorFaction = d.entityType === 'wing' || d.entityType === 'association' || d.entityType === 'finger';
         if (isMajorFaction) return 900 * spacingScale;
         if (d.entityType === 'abnormality') return 600 * spacingScale;
-        if (d.nodeType === 'literary-source') return 350 * spacingScale;
+        if (d.nodeType === 'literary-source') return 280 * spacingScale; // Tighter literary ring
         if (d.id === 'dante') return 0;
-        if (d.nodeType === 'sinner') return 250 * spacingScale;
-        return 470 * spacingScale;
+        if (d.nodeType === 'sinner') return 160 * spacingScale; // Tighter sinner ring
+        return 450 * spacingScale;
       },
       0, 0
     ).strength(d => {
-      // Lower strength allows repulsion and spacing to work better
       if (d.id === 'dante') return 1.0;
-      if (d.nodeType === 'sinner') return 0.4;
-      return 0.25;
+      if (d.nodeType === 'sinner') return 0.85; // Much stronger sinner ring
+      return 0.6;
     }))
     .force('collision', d3.forceCollide<GraphNode>().radius(d => {
       if (d.nodeType === 'literary-source') return 62;
