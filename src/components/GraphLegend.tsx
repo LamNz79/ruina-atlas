@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ChevronUp, Info } from 'lucide-react';
+import { HelpCircle, ChevronDown, Info } from 'lucide-react';
 import { EDGE_COLORS, EDGE_LABELS, ALL_EDGE_TYPES } from './LoreGraphConstants';
 import type { EdgeType } from '../types';
 

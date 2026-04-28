@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import type { EdgeType, Game, Theme } from '../types';
+import type { EdgeType, Theme } from '../types';
 import { THEMES } from '../types';
 
 export interface GraphNode extends d3.SimulationNodeDatum {

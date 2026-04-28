@@ -79,7 +79,7 @@ const THEME_LABELS: Record<string, string> = {
   family: 'Family',
 };
 
-export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick, spoilerLevel }: EntityPanelProps) {
+export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick }: EntityPanelProps) {
   const entity: CrossGameEntity | undefined = (
     crossGameEntities.entities as CrossGameEntity[]
   ).find((e) => e.id === entityId);

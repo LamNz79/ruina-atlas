@@ -1,4 +1,3 @@
-import React from 'react';
 import { 
   Dialog, 
   DialogContent, 
@@ -7,11 +6,10 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Badge } from '@/components/ui/badge';
 import { Flex, Stack, Box, Grid } from '../layout';
 import { egoEntries } from '../../data/ego';
 import type { EgoEntry } from '../../data/ego';
-import { Sparkles, Trash2 } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface EgoPickerProps {
   isOpen: boolean;

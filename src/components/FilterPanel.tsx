@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import type { Game, Theme } from '../types';
+import type { Theme } from '../types';
 import { THEMES, THEME_META } from '../types';
-import { literarySources } from '../data/literarySources';
 import { Filter, ChevronDown, ChevronUp, X, HelpCircle } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Button } from '@/components/ui/button';
@@ -14,18 +13,6 @@ interface FilterPanelProps {
   filters: FilterState;
   onFiltersChange: (filters: FilterState) => void;
 }
-
-const GAME_LABELS: Record<Game, string> = {
-  limbus: 'Limbus Company',
-  ruina: 'Library of Ruina',
-  lobotomy: 'Lobotomy Corporation',
-};
-
-const GAME_COLORS: Record<Game, string> = {
-  limbus: '#b8202f',    // Deep Crimson
-  ruina: '#a08a70',    // Warm Bronze
-  lobotomy: '#7a5c3a',  // Dark Bronze
-};
 
 export function FilterPanel({ filters, onFiltersChange }: FilterPanelProps) {
   const [open, setOpen] = useState(false);
