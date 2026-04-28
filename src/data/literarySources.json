@@ -432,6 +432,16 @@
     "passageContext": "Two poems of the same title written in memory of Jeong Ji-yong's dead children. The glass window gives the illusion of resurrecting the dead — the foundation of Young-ji's invention.",
     "historicalContext": "Jeong Ji-yong wrote two poems titled 'Glass Window' (유리창), both mourning the loss of his children and finding solace only through the pane — a barrier that simultaneously connects and separates. In Limbus Company, Young-ji's Glass Window invention allows the observation of other worlds, offering the same illusory promise of reunion with what is lost. Jeong Ji-yong was later abducted to North Korea; his fate remained unknown for decades — paralleling Young-ji's disappearance.",
     "themes": ["decay", "faith"]
+  },
+  {
+    "id": "one-day-gubo",
+    "title": "One Day in the Life of a Novelist Gubo",
+    "author": "Pak Tae-won",
+    "year": 1934,
+    "language": "Korean",
+    "historicalContext": "A modernist novel following the character Gubo as he wanders Seoul, reflecting on his isolation and the changing city. It is the primary inspiration for the character Gubo in Limbus Company, who mirrors the author's observations and modernist sensibilities.",
+    "themes": ["futility", "decay", "identity-fragmentation"],
+    "category": "literary"
   }
   ]
 }

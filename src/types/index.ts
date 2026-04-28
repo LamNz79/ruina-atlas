@@ -148,7 +148,7 @@ export interface LiterarySource {
  */
 export interface LiterarySourceRef {
   id: string; // key into literarySources.json
-  role: 'primary' | 'secondary' | 'influence';
+  role: 'primary' | 'secondary' | 'author-parallel' | 'influence';
   /**
    * Plain-language description of the specific connection.
    * e.g. "Yi Sang's poem 'Fog' mirrors the original work's atmosphere of despair."
@@ -293,8 +293,12 @@ export interface CrossGameEntity {
   type: CrossGameEntityType;
   canonicalGame: Game;
   appearances: GameAppearance;
-  /** Literary origin book/author if applicable */
+  /** Literary origin book/author if applicable (deprecated in favor of literarySources) */
   literaryOrigin?: string;
+  /** Detailed literary source references with roles (primary/secondary) */
+  literarySources?: LiterarySourceRef[];
+  /** Backward compatibility for simple ID lists */
+  literarySourceIds?: string[];
   loreSummary: string;
   themes: Theme[];
   /** Sinner IDs connected to this entity (produces graph edges) */

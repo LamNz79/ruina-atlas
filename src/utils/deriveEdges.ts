@@ -24,8 +24,8 @@ export function deriveEdges(sinners: Sinner[]): GraphEdge[] {
           type = 'primary-source';
         } else if (lsRef.role === 'secondary') {
           type = 'secondary-source';
-        } else if (lsRef.role === 'influence') {
-          type = 'author-parallel'; // Mapping influence to author-parallel per roadmap
+        } else if (lsRef.role === 'author-parallel' || lsRef.role === 'influence') {
+          type = 'author-parallel'; 
         } else if (sourceData?.category === 'theological') {
           type = 'theological-origin';
         }

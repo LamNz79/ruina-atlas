@@ -1777,8 +1777,14 @@
         "decay",
         "metamorphosis"
       ],
+      "literarySources": [
+        {
+          "id": "the-cow",
+          "role": "author-parallel",
+          "specificConnection": "Based on Yoo Chi-jin (pen name Dongrang), author of 'The Cow'. His betrayal of the League mirrors the author's historical trajectory."
+        }
+      ],
       "spoilerLevel": 4,
-      "literaryOrigin": "The Cow (소) by Yoo Chi-jin",
       "relatedSinnerIds": [
         "yi-sang"
       ],
@@ -1807,8 +1813,14 @@
         "faith",
         "decay"
       ],
+      "literarySources": [
+        {
+          "id": "the-camellias",
+          "role": "author-parallel",
+          "specificConnection": "Based on Gim Yujeong (whose pen name was Dongbaek/Camellia), author of 'The Camellias'. Her E.G.O and motifs are directly derived from the story."
+        }
+      ],
       "spoilerLevel": 4,
-      "literaryOrigin": "The Camellias (동백꽃) by Gim Yujeong",
       "relatedSinnerIds": [
         "yi-sang"
       ],
@@ -1833,6 +1845,13 @@
       "themes": [
         "betrayal",
         "survival"
+      ],
+      "literarySources": [
+        {
+          "id": "one-day-gubo",
+          "role": "author-parallel",
+          "specificConnection": "Based on Pak Tae-won (pen name Gubo), author of 'One Day in the Life of a Novelist Gubo'. His modernist observations and bond with Yi Sang are central to his character."
+        }
       ],
       "spoilerLevel": 8,
       "relatedSinnerIds": [
@@ -1881,8 +1900,14 @@
         "faith",
         "decay"
       ],
+      "literarySources": [
+        {
+          "id": "glass-window",
+          "role": "author-parallel",
+          "specificConnection": "Based on Jeong Ji-yong (pen name Young-ji), author of 'Glass Window'. The invention named after him is the core technology of the League."
+        }
+      ],
       "spoilerLevel": 4,
-      "literaryOrigin": "Glass Window (유리창) by Jeong Ji-yong",
       "relatedSinnerIds": [
         "yi-sang",
         "hong-lu"
@@ -2004,6 +2029,13 @@
       "appearances": ["limbus"],
       "loreSummary": "Based on Kim Ki-rim, a Guinhoe founding member, poet, and reporter who shared Yi Sang's interest in surrealism. Referenced in Canto V as implying Young-ji is still alive.",
       "themes": ["hope", "art", "machinery", "identity-fragmentation"],
+      "literarySources": [
+        {
+          "id": "sea-and-butterfly",
+          "role": "author-parallel",
+          "specificConnection": "Based on Kim Ki-rim, author of 'The Sea and The Butterfly'. His surrealist sensibilities and bond with Yi Sang define his role in the League."
+        }
+      ],
       "spoilerLevel": 5,
       "relatedSinnerIds": ["yi-sang", "faust", "heathcliff"],
       "relatedEntityIds": ["entity-league-of-nine"],
@@ -2020,7 +2052,13 @@
     "appearances": ["limbus"],
     "loreSummary": "A legendary Color Fixer of the Great Lake. He spends his life hunting the 'Calamities' and guiding those brave or foolish enough to sail the waters.",
     "themes": ["futility", "faith"],
-    "literarySourceIds": ["old-man-and-sea"],
+    "literarySources": [
+      {
+        "id": "old-man-and-sea",
+        "role": "primary",
+        "specificConnection": "The primary inspiration for the Indigo Elder's struggle against the Calamities of the Great Lake."
+      }
+    ],
     "relatedSinnerIds": ["ishmael"]
   },
   {
