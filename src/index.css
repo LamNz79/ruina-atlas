@@ -557,3 +557,60 @@
   transform: scale(1.2);
   fill: #fff;
 }
+
+/* ─── Resonance Orb & Command Center ───────────────────────────────────── */
+
+.resonance-orb-container {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resonance-orb {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, var(--gold) 0%, transparent 70%);
+  filter: blur(4px);
+  animation: orb-pulse 2s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.resonance-orb-core {
+  position: relative;
+  z-index: 1;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--ivory);
+  box-shadow: 0 0 15px var(--gold);
+}
+
+@keyframes orb-pulse {
+  0%, 100% { transform: scale(0.8); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.command-center-panel {
+  background: linear-gradient(180deg, rgba(10, 8, 6, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+  border: 1px solid rgba(160, 138, 112, 0.2);
+  box-shadow: 
+    0 0 40px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(160, 138, 112, 0.05);
+}
+
+.vital-line {
+  height: 2px;
+  background: var(--gold);
+  opacity: 0.3;
+  animation: vital-scan 3s linear infinite;
+}
+
+@keyframes vital-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

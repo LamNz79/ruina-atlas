@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import crossGameEntities from '../data/crossGameEntities.json';
 import { sinners } from '../data/sinners';
 import type { CrossGameEntity } from '../types';
-import { X, Hexagon, Users, Star, ExternalLink } from 'lucide-react';
+import { X, Hexagon, Users, Star, ExternalLink, Pin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -14,6 +14,7 @@ interface EntityPanelProps {
   onClose: () => void;
   onSinnerClick: (sinnerId: string) => void;
   onEntityClick?: (entityId: string) => void;
+  onPin?: (node: any) => void;
   spoilerLevel?: number;
 }
 
@@ -79,7 +80,7 @@ const THEME_LABELS: Record<string, string> = {
   family: 'Family',
 };
 
-export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick }: EntityPanelProps) {
+export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick, onPin }: EntityPanelProps) {
   const entity: CrossGameEntity | undefined = (
     crossGameEntities.entities as CrossGameEntity[]
   ).find((e) => e.id === entityId);
@@ -191,6 +192,22 @@ export function EntityPanel({ entityId, onClose, onSinnerClick, onEntityClick }:
                 <ExternalLink className="h-3 w-3" />
                 Full Dossier
               </Button>
+              {onPin && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-8 gap-1.5 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap border-gold/30 text-gold hover:bg-gold/10"
+                  onClick={() => onPin({
+                    id: entity.id,
+                    name: entity.name,
+                    type: entity.type,
+                    color: ENTITY_COLORS[entity.type] ?? '#888'
+                  })}
+                >
+                  <Pin className="h-3 w-3" />
+                  Pin
+                </Button>
+              )}
               <Button
                 variant="ghost"
                 size="icon"

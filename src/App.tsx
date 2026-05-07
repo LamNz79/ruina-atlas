@@ -6,7 +6,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Biohazard, ChevronLeft, ChevronRight, ExternalLink, Info, Map, Menu, Network, Search } from 'lucide-react';
+import { Biohazard, ChevronLeft, ChevronRight, ExternalLink, Info, Map, Menu, Network, Search, Zap } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { EntityPanel } from './components/EntityPanel';
@@ -21,6 +21,7 @@ import About from './pages/About';
 import EntityCodex from './pages/EntityCodex';
 import ProfilePage from './pages/ProfilePage';
 import Roadmap from './pages/Roadmap';
+import TeamBuilder from './pages/TeamBuilder';
 import TrilogySankey from './pages/TrilogySankey';
 import type { Sinner } from './types';
 import { deriveEdges } from './utils/deriveEdges';
@@ -117,8 +118,8 @@ export default function App() {
       return [...prev, {
         id: node.id,
         name: node.name,
-        type: node.nodeType === 'sinner' ? 'sinner' : node.nodeType === 'literary-source' ? 'literary' : 'entity',
-        color: node.signatureColor || node.color
+        type: node.type === 'sinner' ? 'sinner' : node.type === 'literary-source' ? 'literary' : 'entity',
+        color: node.color || node.signatureColor
       }];
     });
   }, []);
@@ -222,6 +223,12 @@ export default function App() {
                         Entity Codex
                       </Link>
                     </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link to="/team-builder" className="flex items-center gap-2 cursor-pointer">
+                        <Zap className="h-4 w-4" />
+                        Team Builder
+                      </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
                       <a
@@ -275,6 +282,7 @@ export default function App() {
                 isOpen={panelOpen}
                 spoilerLevel={spoilerLevel}
                 setSpoilerLevel={setSpoilerLevel}
+                onPin={handlePin}
                 onLocateNode={(id) => {
                   setFocusNodeId(id);
                   setPanelOpen(false); // Optionally close panel, or keep open. Let's keep open for now? Actually closing might help see the graph. Let's not close.
@@ -285,6 +293,7 @@ export default function App() {
               <EntityPanel
                 entityId={selectedEntity}
                 spoilerLevel={spoilerLevel}
+                onPin={handlePin}
                 onClose={() => {
                   setSelectedEntity(null);
                   setExpandedNodeIds(new Set()); // Collapse all expanded nodes when panel is closed
@@ -361,6 +370,17 @@ export default function App() {
       <Route path="/profile/:category/:id" element={<ProfilePage />} />
       <Route path="/codex" element={<EntityCodex />} />
       <Route path="/trilogy" element={<TrilogySankey />} />
+      <Route 
+        path="/team-builder" 
+        element={
+          <TeamBuilder 
+            pinnedNodes={pinnedNodes} 
+            onRemove={(id) => setPinnedNodes(prev => prev.filter(p => p.id !== id))}
+            onClear={() => setPinnedNodes([])}
+            onAdd={handlePin}
+          />
+        } 
+      />
     </Routes>
   );
 }

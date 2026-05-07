@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Slider } from '@/components/ui/slider';
-import { ExternalLink, Sparkles, X } from 'lucide-react';
+import { ExternalLink, Sparkles, X, Pin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cantos } from '../data/cantos';
@@ -25,6 +25,7 @@ interface LorePanelProps {
   isOpen: boolean;
   spoilerLevel: number;
   setSpoilerLevel: (level: number) => void;
+  onPin?: (node: any) => void;
   onLocateNode?: (nodeId: string) => void;
 }
 
@@ -219,7 +220,7 @@ function IdentityModal({ id, open, onClose, onLocateNode }: { id: Identity; open
 
 // ── Main Panel ────────────────────────────────────────────────────────────────
 
-export function LorePanel({ sinner, onClose, isOpen, spoilerLevel, setSpoilerLevel, onLocateNode }: LorePanelProps) {
+export function LorePanel({ sinner, onClose, isOpen, spoilerLevel, setSpoilerLevel, onPin, onLocateNode }: LorePanelProps) {
   const [activeIdentity, setActiveIdentity] = useState<Identity | null>(null);
   const [sourceExplorerId, setSourceExplorerId] = useState<string | null>(null);
   const { playTick, playClink } = useSound();
@@ -266,6 +267,22 @@ export function LorePanel({ sinner, onClose, isOpen, spoilerLevel, setSpoilerLev
                     <ExternalLink className="h-3 w-3" />
                     Full Dossier
                   </Button>
+                  {onPin && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="h-8 gap-1.5 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap border-gold/30 text-gold hover:bg-gold/10"
+                      onClick={() => onPin({
+                        id: sinner.id,
+                        name: sinner.name,
+                        type: 'sinner',
+                        color: sinner.signatureColor
+                      })}
+                    >
+                      <Pin className="h-3 w-3" />
+                      Pin
+                    </Button>
+                  )}
                   <Button
                     variant="ghost"
                     size="icon"

@@ -1,427 +1,397 @@
-import { useState, useMemo } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState, useEffect, useRef, useMemo } from 'react';
+import { Shield, Zap, ChevronLeft, Activity, Brain, HelpCircle, Network, Terminal } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { sinners } from '../data/sinners';
-import { identityImages } from '../data/identityImages';
-import { identityDetailData } from '../data/identityDetailData';
-import { useTeamBuilder } from '../hooks/useTeamBuilder';
-import { Container, Section, Grid, Stack, Flex, Box } from '../components/layout/index';
-import { Button } from '@/components/ui/button';
-import { ChevronLeft, Info, Trash2, LayoutGrid, Sparkles } from 'lucide-react';
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle,
-  DialogDescription,
-} from '@/components/ui/dialog';
-import { ScrollArea } from '@/components/ui/scroll-area';
+import { SINS, calculateResonance } from '../utils/resonanceEngine';
 import { Badge } from '@/components/ui/badge';
-import { IdentityDossier } from '../components/builder/IdentityDossier';
-import { EgoPicker } from '../components/builder/EgoPicker';
-import { egoById } from '../data/ego';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
-export default function TeamBuilder() {
-  const navigate = useNavigate();
-  const { squad, setMember, toggleEgo, clearSquad } = useTeamBuilder();
-  const [pickerOpen, setPickerOpen] = useState(false);
-  const [dossierOpen, setDossierOpen] = useState(false);
-  const [egoPickerOpen, setEgoPickerOpen] = useState(false);
-  const [activeSinnerId, setActiveSinnerId] = useState<string | null>(null);
-  const [selectedIdentity, setSelectedIdentity] = useState<any>(null);
+interface TeamBuilderProps {
+  pinnedNodes: any[];
+  onRemove: (id: string) => void;
+  onClear: () => void;
+  onAdd: (node: any) => void;
+}
 
-  // Derive all available identities from sinners data
-  const buildableSinners = useMemo(() => sinners.filter(s => s.id !== 'dante'), []);
-  
-  const allIdentities = useMemo(() => {
-    return buildableSinners.flatMap(s => 
-      s.identities.map(id => ({
-        ...id,
-        sinnerId: s.id,
-        image: identityImages[id.id] || '/assets/identities/default.jpg',
-        details: identityDetailData[id.id]
-      }))
-    );
-  }, [buildableSinners]);
+export default function TeamBuilder({ pinnedNodes, onRemove, onClear, onAdd }: TeamBuilderProps) {
+  const [showGuide, setShowGuide] = useState(false);
+  const resonance = useMemo(() => calculateResonance(pinnedNodes), [pinnedNodes]);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const radarRef = useRef<HTMLCanvasElement>(null);
 
-  const handleOpenPicker = (sinnerId: string) => {
-    setActiveSinnerId(sinnerId);
-    setPickerOpen(true);
-  };
+  // Synergy Map Canvas Rendering
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-  const handleSelectIdentity = (identityId: string) => {
-    if (activeSinnerId) {
-      setMember(activeSinnerId, identityId);
-    }
-    setPickerOpen(false);
-  };
+    const render = () => {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
 
-  const activeSinner = activeSinnerId ? sinners.find(s => s.id === activeSinnerId) : null;
-  const filteredIdentities = useMemo(() => {
-    return allIdentities.filter(id => id.sinnerId === activeSinnerId);
-  }, [allIdentities, activeSinnerId]);
-
-  // Squad Affinity Calculation (Generation vs Costs)
-  const squadAnalysis = useMemo(() => {
-    const generation: Record<string, number> = {};
-    const costs: Record<string, number> = {};
-    
-    Object.values(squad).forEach(member => {
-      // Add Identity Generation
-      if (member.identityId) {
-        const details = identityDetailData[member.identityId];
-        details?.affinity?.forEach(aff => {
-          generation[aff] = (generation[aff] || 0) + 1;
-        });
+      const activeSinnerNodes = pinnedNodes.filter(n => n.type === 'sinner');
+      if (activeSinnerNodes.length < 2) {
+        ctx.fillStyle = 'rgba(160, 138, 112, 0.2)';
+        ctx.font = `${14 * window.devicePixelRatio}px var(--font-space)`;
+        ctx.textAlign = 'center';
+        ctx.fillText('SELECT MULTIPLE SINNERS TO MAP RESONANCE', W / 2, H / 2);
+        return;
       }
 
-      // Add E.G.O Costs
-      Object.values(member.egoLoadout).forEach(egoId => {
-        if (egoId) {
-          const ego = egoById[egoId];
-          if (ego) {
-            Object.entries(ego.cost).forEach(([aff, val]) => {
-              costs[aff] = (costs[aff] || 0) + val;
-            });
-          }
-        }
+      const positions = activeSinnerNodes.map((_, i) => {
+        const angle = (i / activeSinnerNodes.length) * Math.PI * 2 - Math.PI / 2;
+        const radius = Math.min(W, H) * 0.35;
+        return { x: W / 2 + Math.cos(angle) * radius, y: H / 2 + Math.sin(angle) * radius };
       });
-    });
 
-    return { generation, costs };
-  }, [squad]);
+      // Draw connections
+      activeSinnerNodes.forEach((nodeA, i) => {
+        const sinnerA = sinners.find(s => s.id === nodeA.id);
+        if (!sinnerA) return;
 
-  const handleIdentityClick = (sinnerId: string, identity: any) => {
-    if (!identity) {
-      handleOpenPicker(sinnerId);
-    } else {
-      setSelectedIdentity(identity);
-      setDossierOpen(true);
-    }
-  };
+        activeSinnerNodes.forEach((nodeB, j) => {
+          if (j <= i) return;
+          const sinnerB = sinners.find(s => s.id === nodeB.id);
+          if (!sinnerB) return;
+
+          const sharedThemes = sinnerA.themes.filter(t => sinnerB.themes.includes(t));
+          if (sharedThemes.length > 0) {
+            const alpha = 0.1 + sharedThemes.length * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(positions[i].x, positions[i].y);
+            ctx.lineTo(positions[j].x, positions[j].y);
+            ctx.strokeStyle = `rgba(160, 138, 112, ${alpha})`;
+            ctx.lineWidth = sharedThemes.length * 2 * window.devicePixelRatio;
+            ctx.stroke();
+
+            // Synergy point
+            const mx = (positions[i].x + positions[j].x) / 2;
+            const my = (positions[i].y + positions[j].y) / 2;
+            ctx.fillStyle = `rgba(245, 197, 24, ${alpha + 0.2})`;
+            ctx.beginPath();
+            ctx.arc(mx, my, 3 * window.devicePixelRatio, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+      });
+
+      // Draw nodes
+      activeSinnerNodes.forEach((node, i) => {
+        const { x, y } = positions[i];
+        ctx.beginPath();
+        ctx.arc(x, y, 20 * window.devicePixelRatio, 0, Math.PI * 2);
+        ctx.fillStyle = '#0a0806';
+        ctx.fill();
+        ctx.strokeStyle = node.color || '#a08a70';
+        ctx.lineWidth = 2 * window.devicePixelRatio;
+        ctx.stroke();
+
+        ctx.fillStyle = '#e8e0d5';
+        ctx.font = `bold ${10 * window.devicePixelRatio}px var(--font-space)`;
+        ctx.textAlign = 'center';
+        ctx.fillText(node.name.slice(0, 3).toUpperCase(), x, y + 4 * window.devicePixelRatio);
+      });
+    };
+
+    render();
+    window.addEventListener('resize', render);
+    return () => window.removeEventListener('resize', render);
+  }, [pinnedNodes]);
+
+  // Radar Chart Rendering
+  useEffect(() => {
+    const canvas = radarRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const render = () => {
+      const W = canvas.width;
+      const H = canvas.height;
+      const cx = W / 2;
+      const cy = H / 2 + 5;
+      const r = Math.min(W, H) * 0.35;
+      ctx.clearRect(0, 0, W, H);
+
+      const n = SINS.length;
+      const angles = SINS.map((_, i) => (i * 2 * Math.PI / n) - Math.PI / 2);
+
+      // Web grid
+      [0.25, 0.5, 0.75, 1].forEach(scale => {
+        ctx.beginPath();
+        angles.forEach((a, i) => {
+          const x = cx + Math.cos(a) * r * scale;
+          const y = cy + Math.sin(a) * r * scale;
+          i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        });
+        ctx.closePath();
+        ctx.strokeStyle = 'rgba(160, 138, 112, 0.15)';
+        ctx.stroke();
+      });
+
+      // Axes
+      angles.forEach(a => {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+        ctx.strokeStyle = 'rgba(160, 138, 112, 0.1)';
+        ctx.stroke();
+      });
+
+      // Data area
+      if (pinnedNodes.filter(n => n.type === 'sinner').length > 0) {
+        ctx.beginPath();
+        SINS.forEach((sin, i) => {
+          const val = (resonance.sinAffinities[sin] || 0) / Math.max(...Object.values(resonance.sinAffinities), 1);
+          const x = cx + Math.cos(angles[i]) * r * val;
+          const y = cy + Math.sin(angles[i]) * r * val;
+          i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(245, 197, 24, 0.15)';
+        ctx.fill();
+        ctx.strokeStyle = '#f5c518';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      // Labels
+      ctx.fillStyle = 'rgba(160, 138, 112, 0.6)';
+      ctx.font = '9px var(--font-space)';
+      ctx.textAlign = 'center';
+      SINS.forEach((sin, i) => {
+        const x = cx + Math.cos(angles[i]) * (r + 15);
+        const y = cy + Math.sin(angles[i]) * (r + 15) + 3;
+        ctx.fillText(sin.toUpperCase(), x, y);
+      });
+    };
+
+    render();
+  }, [resonance.sinAffinities]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30">
-      {/* Background Polish */}
-      <div className="starfield-bg" />
-      <div className="terminal-overlay" />
-      <div className="scanner-line" />
-
+    <div className="flex flex-col h-screen bg-[#0a0806] text-[#e8e0d5] font-mono overflow-hidden animate-in fade-in duration-500">
       {/* Header */}
-      <header className="sticky top-0 z-50 flex h-16 w-full items-center justify-between border-b border-border/40 bg-background/95 px-8 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <Flex gap={6} align="center">
-          <Link to="/" className="flex items-center gap-3 group">
-            <LayoutGrid className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
-            <div className="flex flex-col leading-none">
-              <span className="text-sm font-black uppercase tracking-tighter chromatic-text">Ruina Atlas</span>
-              <span className="text-[9px] font-mono text-muted-foreground/60 uppercase">Management Terminal</span>
-            </div>
+      <header className="flex items-center justify-between px-6 py-4 border-b border-bronze/20 bg-black/40 backdrop-blur-md">
+        <div className="flex items-center gap-4">
+          <Link to="/" className="p-2 hover:bg-white/5 transition-colors group">
+            <ChevronLeft className="h-5 w-5 text-bronze group-hover:text-gold" />
           </Link>
-          <span className="h-6 w-px bg-border/40" />
-          <h2 className="text-sm font-bold tracking-widest text-[#e8e0d5] uppercase flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-[#f5c518] animate-pulse" />
-            Squad Initialization
-          </h2>
-        </Flex>
-
-        <Flex gap={3}>
-           <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={() => navigate('/')}
-            className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-foreground"
-          >
-            <ChevronLeft className="mr-1 h-3.5 w-3.5" />
-            Return to Atlas
+          <div className="flex flex-col">
+            <h1 className="text-sm font-display tracking-[0.3em] uppercase text-gold">Archive · Team Builder</h1>
+            <span className="text-[10px] text-bronze/50 tracking-widest uppercase">Lore Resonance Engine v0.9</span>
+          </div>
+        </div>
+        <div className="flex gap-4">
+          <Badge variant="outline" className="border-bronze/30 text-bronze uppercase text-[9px] tracking-tighter">
+            System Synchronized
+          </Badge>
+          <Dialog open={showGuide} onOpenChange={setShowGuide}>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm" className="h-7 gap-1 text-[10px] border-gold/30 text-gold hover:bg-gold/10">
+                <HelpCircle className="h-3 w-3" />
+                Guide
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[500px] border-gold/20 glass-v2 text-[#e8e0d5]">
+              <DialogHeader>
+                <DialogTitle className="text-gold font-display tracking-widest uppercase flex items-center gap-2">
+                  <Terminal className="h-4 w-4" />
+                  Resonance Engine Field Guide
+                </DialogTitle>
+              </DialogHeader>
+              <ScrollArea className="max-h-[60vh] pr-4">
+                <div className="space-y-6 text-sm text-bronze/90 py-2">
+                  <section className="space-y-2">
+                    <h3 className="text-ivory font-bold uppercase tracking-wider flex items-center gap-2 text-xs">
+                      <Network className="h-4 w-4 text-gold" />
+                      Neural Synergy Map
+                    </h3>
+                    <p className="leading-relaxed text-[13px]">
+                      The Neural Map visualizes <strong>Thematic Density</strong>. It connects Sinners who share core literary themes (e.g., <em>Guilt, Obsession, Absurdism</em>). 
+                      The thicker and brighter the connection line, the stronger their literary resonance.
+                    </p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-ivory font-bold uppercase tracking-wider flex items-center gap-2 text-xs">
+                      <Brain className="h-4 w-4 text-gold" />
+                      Sin Affinity Radar
+                    </h3>
+                    <p className="leading-relaxed text-[13px]">
+                      The radar chart maps your team's base EGO Sin Affinities across the 7 Sins. 
+                      A well-rounded team covers multiple axes, while a highly-specialized team will spike in specific directions like Wrath or Gloom.
+                    </p>
+                  </section>
+                  <section className="space-y-2">
+                    <h3 className="text-ivory font-bold uppercase tracking-wider flex items-center gap-2 text-xs">
+                      <Zap className="h-4 w-4 text-gold" />
+                      Active Resonances
+                    </h3>
+                    <p className="leading-relaxed text-[13px]">
+                      The Resonance Engine scans your team composition and automatically activates powerful synergies based on overlapping criteria:
+                    </p>
+                    <ul className="list-disc pl-5 space-y-1 text-[12px] opacity-80">
+                      <li><strong>Theme Resonance:</strong> 2+ members sharing a literary theme.</li>
+                      <li><strong>Sin Affinity:</strong> 2+ members sharing the same base EGO Sin.</li>
+                      <li><strong>Faction Cohesion:</strong> 3+ members belonging to the same Organization or Wing (e.g., Lobotomy Corp, W Corp).</li>
+                    </ul>
+                  </section>
+                </div>
+              </ScrollArea>
+            </DialogContent>
+          </Dialog>
+          <Button variant="outline" size="sm" onClick={onClear} className="h-7 text-[10px] border-crimson/30 text-crimson hover:bg-crimson/10">
+            Clear Active Set
           </Button>
-          <Button 
-            variant="destructive" 
-            size="sm" 
-            onClick={clearSquad}
-            className="h-8 gap-2 text-[10px] font-bold uppercase tracking-widest"
-          >
-            <Trash2 className="h-3 w-3" />
-            Clear Squad
-          </Button>
-        </Flex>
+        </div>
       </header>
 
-      <main className="py-12 relative z-10 px-8">
-        <Container>
-          <Section spacing="lg">
-            <Stack gap={6}>
-              {/* Header Title & Actions */}
-              <Flex justify="between" align="end" className="px-6 py-2 border-b border-border/20">
-                <Stack gap={1}>
-                  <h3 className="text-2xl font-black tracking-tighter text-[#e8e0d5] uppercase italic">Personnel Enrollment</h3>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-widest opacity-60">System Ready // Select Identities & E.G.O Arsenal</p>
-                </Stack>
-                <Button 
-                  variant="destructive" 
-                  size="sm" 
-                  onClick={clearSquad}
-                  className="h-8 gap-2 text-[10px] font-bold uppercase tracking-widest border-[#b8202f]/40 bg-[#b8202f]/5 hover:bg-[#b8202f]/10"
-                >
-                  <Trash2 className="h-3 w-3" />
-                  Reset Roster
-                </Button>
-              </Flex>
-
-              {/* Tactical Analysis Dashboard */}
-              <Box className="glass-v2 border-[#a08a70]/20 p-6 rounded-xl">
-                <Stack gap={4}>
-                  <Flex justify="between" align="center">
-                    <Flex gap={2} align="center">
-                      <div className="h-2 w-2 rounded-full bg-[#f5c518] animate-pulse" />
-                      <h4 className="text-[11px] font-black uppercase tracking-[0.3em] text-[#a08a70]">Tactical Resource Monitor</h4>
-                    </Flex>
-                    <Badge variant="outline" className="bg-[#b8202f]/5 border-[#b8202f]/20 text-[#b8202f] text-[9px] font-bold">
-                      LIVE RESONANCE FEED
-                    </Badge>
-                  </Flex>
-
-                  <Grid gap={3} className="grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
-                    {['Wrath', 'Lust', 'Sloth', 'Gluttony', 'Gloom', 'Pride', 'Envy'].map(aff => {
-                      const gen = squadAnalysis.generation[aff] || 0;
-                      const cost = squadAnalysis.costs[aff] || 0;
-                      const hasDeficit = cost > gen * 4 && cost > 0; // Heuristic for critical
-                      const isZero = gen === 0 && cost === 0;
-
-                      return (
-                        <Box 
-                          key={aff} 
-                          className={`
-                            p-3 rounded-lg border transition-all duration-500
-                            ${isZero ? 'opacity-20 grayscale border-border/10' : 'opacity-100 border-[#a08a70]/20 bg-white/5 shadow-inner'}
-                            ${hasDeficit ? 'border-red-500/50 bg-red-500/5 shadow-[0_0_15px_rgba(239,68,68,0.2)]' : ''}
-                          `}
-                        >
-                          <Stack gap={2}>
-                            <Flex justify="between" align="center">
-                              <span className={`text-[10px] font-black uppercase tracking-tighter ${hasDeficit ? 'text-red-400' : 'text-[#e8e0d5]/80'}`}>
-                                {aff}
-                              </span>
-                              <div className={`h-2 w-2 rounded-full bg-affinity-${aff.toLowerCase()} shadow-[0_0_8px_currentColor]`} />
-                            </Flex>
-                            
-                            <Flex align="baseline" gap={1.5}>
-                               <span className="text-lg font-black leading-none text-[#e8e0d5]">{gen}</span>
-                               <span className="text-[10px] font-bold text-muted-foreground uppercase">Supply</span>
-                            </Flex>
-
-                            <div className="h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                               <div 
-                                 className={`h-full transition-all duration-700 bg-affinity-${aff.toLowerCase()}`} 
-                                 style={{ width: `${Math.min((gen / 6) * 100, 100)}%` }}
-                               />
-                            </div>
-
-                            {cost > 0 && (
-                              <Flex justify="between" align="center" className="mt-1 pt-1 border-t border-white/5">
-                                <span className="text-[9px] font-bold text-muted-foreground uppercase">Activation Cost</span>
-                                <span className={`text-[10px] font-black ${hasDeficit ? 'text-red-400 animate-pulse' : 'text-[#f5c518]'}`}>{cost}</span>
-                              </Flex>
-                            )}
-                            
-                            {hasDeficit && (
-                              <div className="text-[8px] font-black text-red-500 uppercase tracking-widest text-center mt-1 animate-pulse">
-                                FUEL DEFICIT
-                              </div>
-                            )}
-                          </Stack>
-                        </Box>
-                      );
+      {/* Main Body */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Left: Main Area */}
+        <div className="flex flex-col flex-1 border-r border-bronze/10">
+          {/* Sinner Selection Grid */}
+          <div className="p-6 border-b border-bronze/5 bg-white/[0.02]">
+            <div className="grid grid-cols-7 gap-3">
+              {sinners.map(sinner => {
+                const isPinned = pinnedNodes.some(n => n.id === sinner.id);
+                return (
+                  <button
+                    key={sinner.id}
+                    onClick={() => isPinned ? onRemove(sinner.id) : onAdd({
+                      id: sinner.id,
+                      name: sinner.name,
+                      type: 'sinner',
+                      color: sinner.signatureColor
                     })}
-                  </Grid>
-                </Stack>
-              </Box>
-
-              <Grid gap={4} className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {buildableSinners.map((sinner) => {
-                  const selection = squad[sinner.id];
-                  const identityId = selection?.identityId;
-                  const identity = identityId ? allIdentities.find(id => id.id === identityId) : null;
-
-                  return (
-                    <Box 
-                      key={sinner.id}
-                      className={`
-                        glass-v2 group relative h-56 transition-all border-border/20 overflow-hidden
-                        ${identity ? 'border-[#a08a70]/40' : 'border-dashed opacity-50'}
-                      `}
-                    >
-                      {/* Background Art */}
-                      <div 
-                        className="absolute inset-0 z-0 cursor-pointer"
-                        onClick={() => handleIdentityClick(sinner.id, identity)}
-                      >
-                         {identity ? (
-                           <img 
-                            src={identity.image} 
-                            alt="" 
-                            style={{ objectPosition: 'center 35%' }}
-                            className="h-full w-full object-cover grayscale opacity-30 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-50 group-hover:scale-105"
-                           />
-                         ) : (
-                           <div className="h-full w-full bg-muted/5 flex items-center justify-center">
-                              <LayoutGrid className="h-8 w-8 text-muted-foreground/10" />
-                           </div>
-                         )}
-                         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent" />
-                      </div>
-
-                      {/* Content */}
-                      <div className="relative z-10 flex h-full flex-col justify-between p-4 pointer-events-none">
-                        <Flex justify="between" align="start">
-                          <Stack gap={0.5}>
-                            <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#a08a70]/60 leading-none">
-                              {sinner.id.toUpperCase()}
-                            </span>
-                            <h4 className="text-lg font-bold text-[#e8e0d5] leading-none tracking-tight">{sinner.name}</h4>
-                          </Stack>
-                          {identity && (
-                            <div className="h-7 w-7 rounded-full border border-[#f5c518]/20 bg-black/40 flex items-center justify-center p-1.5 shadow-lg overflow-hidden">
-                               <div className="text-[8px] font-bold text-[#f5c518] uppercase">{sinner.id.slice(0, 2)}</div>
-                            </div>
-                          )}
-                        </Flex>
-
-                        <Stack gap={4}>
-                          {identity ? (
-                            <Box className="space-y-2 pointer-events-auto">
-                              <Flex justify="between" align="end">
-                                <Stack gap={1} onClick={() => setDossierOpen(true)} className="cursor-pointer">
-                                  <p className="text-[10px] font-bold uppercase tracking-widest text-primary leading-none flex items-center gap-1.5">
-                                    <span className="h-1 w-1 rounded-full bg-primary animate-pulse" />
-                                    Initialized
-                                  </p>
-                                  <p className="text-xs font-bold text-[#e8e0d5] truncate pr-4">{identity.displayName}</p>
-                                </Stack>
-                                <Button 
-                                  variant="ghost" 
-                                  size="icon" 
-                                  className="h-6 w-6 rounded-full bg-white/5 border border-white/10 hover:bg-white/10"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleOpenPicker(sinner.id);
-                                  }}
-                                >
-                                  <LayoutGrid className="h-3 w-3" />
-                                </Button>
-                              </Flex>
-                              
-                              {/* E.G.O Slots */}
-                              <Flex gap={1.5} align="center" className="pt-2 border-t border-white/5">
-                                <span className="text-[8px] font-bold text-muted-foreground uppercase tracking-widest mr-1">E.G.O</span>
-                                {['ZAYIN', 'TETH', 'HE', 'WAW', 'ALEPH'].map(rarity => {
-                                  const egoId = selection?.egoLoadout[rarity];
-                                  const ego = egoId ? egoById[egoId] : null;
-                                  return (
-                                    <Box 
-                                      key={rarity} 
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        setActiveSinnerId(sinner.id);
-                                        setEgoPickerOpen(true);
-                                      }}
-                                      className={`
-                                        h-6 w-6 rounded-md border border-white/10 flex items-center justify-center cursor-pointer transition-all
-                                        ${ego ? 'bg-primary/20 border-primary/40' : 'bg-black/40 hover:bg-white/10'}
-                                      `}
-                                    >
-                                      {ego ? (
-                                        <img src={ego.image} alt="" className="h-full w-full object-cover rounded-[3px]" />
-                                      ) : (
-                                        <div className="text-[9px] font-black text-muted-foreground/40">{rarity.charAt(0)}</div>
-                                      )}
-                                    </Box>
-                                  );
-                                })}
-                              </Flex>
-                            </Box>
-                          ) : (
-                            <Box 
-                              className="flex items-center gap-2 text-muted-foreground/30 group-hover:text-primary transition-colors cursor-pointer pointer-events-auto"
-                              onClick={() => handleOpenPicker(sinner.id)}
-                            >
-                              <Info className="h-3 w-3" />
-                              <span className="text-[10px] font-bold uppercase tracking-widest leading-none">Awaiting Identity</span>
-                            </Box>
-                          )}
-                        </Stack>
-                      </div>
-                    </Box>
-                  );
-                })}
-              </Grid>
-            </Stack>
-          </Section>
-        </Container>
-      </main>
-
-      {/* Identity Picker Modal */}
-      <Dialog open={pickerOpen} onOpenChange={setPickerOpen}>
-        <DialogContent className="glass-v2 border-[#a08a70]/30 sm:max-w-[600px] max-h-[80vh] flex flex-col p-0">
-          <DialogHeader className="p-6 pb-2">
-            <DialogTitle className="text-xl font-bold text-[#e8e0d5] uppercase tracking-widest chromatic-text">
-              {activeSinner?.name} - Select Identity
-            </DialogTitle>
-            <DialogDescription className="text-muted-foreground text-xs font-medium">
-              Choose the identity to dispatch for this sinner.
-            </DialogDescription>
-          </DialogHeader>
-
-          <ScrollArea className="flex-1 px-6 pb-6">
-            <Grid cols={1} gap={3} className="py-2 sm:grid-cols-2">
-               {filteredIdentities.map((id) => (
-                 <Box 
-                  key={id.id}
-                  onClick={() => handleSelectIdentity(id.id)}
-                  className="glass-v2 group h-24 p-0 cursor-pointer overflow-hidden border-border/20 transition-all hover:border-[#f5c518]/40 hover:bg-[#f5c518]/5"
-                 >
-                   <div className="flex h-full">
-                     <div className="w-24 relative shrink-0">
-                       <img 
-                        src={id.image} 
-                        alt="" 
-                        style={{ objectPosition: 'center 30%' }}
-                        className="h-full w-full object-cover grayscale opacity-60 transition-all group-hover:grayscale-0 group-hover:opacity-100" 
-                       />
-                       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
-                     </div>
-                     <div className="flex-1 p-3 flex flex-col justify-center">
-                       <h5 className="text-sm font-bold text-[#e8e0d5] leading-tight group-hover:text-[#f5c518] transition-colors">{id.displayName}</h5>
-                       <Flex gap={1} className="mt-2">
-                          {id.details?.affinity.map(aff => (
-                            <div key={aff} className={`h-1 w-3 rounded-full bg-affinity-${aff.toLowerCase()}`} title={aff} />
-                          ))}
-                       </Flex>
-                       <p className="text-[9px] text-muted-foreground mt-2 uppercase tracking-tight font-mono">ID: {id.id}</p>
-                     </div>
-                   </div>
-                 </Box>
-               ))}
-            </Grid>
-          </ScrollArea>
-
-          <div className="p-4 bg-muted/10 border-t border-border/20 flex justify-end">
-            <Button variant="ghost" onClick={() => setPickerOpen(false)} className="text-xs uppercase font-bold tracking-widest">Cancel</Button>
+                    className={`flex flex-col items-center gap-2 group transition-all ${isPinned ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+                  >
+                    <div className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all ${isPinned ? 'border-gold shadow-[0_0_15px_rgba(245,197,24,0.3)]' : 'border-bronze/30'}`}>
+                      <span className="text-[10px] font-black">{sinner.name.slice(0, 2).toUpperCase()}</span>
+                    </div>
+                    <span className={`text-[8px] tracking-widest uppercase transition-colors ${isPinned ? 'text-gold' : 'text-bronze/60'}`}>{sinner.name}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </DialogContent>
-      </Dialog>
 
-      <IdentityDossier 
-        isOpen={dossierOpen} 
-        onOpenChange={setDossierOpen} 
-        identity={selectedIdentity} 
-      />
+          {/* Neural Synergy Map */}
+          <div className="relative flex-1 bg-[radial-gradient(circle_at_50%_50%,rgba(160,138,112,0.03),transparent)]">
+            <div className="absolute top-4 left-6 flex items-center gap-2 text-bronze/40">
+              <Activity className="h-3 w-3" />
+              <span className="text-[9px] tracking-[0.2em] uppercase">Neural Synergy Map</span>
+            </div>
+            <canvas ref={canvasRef} className="w-full h-full" />
+            
+            {/* Dock Preview Overlay */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 glass-v2 border-bronze/20 flex items-center gap-6">
+               <div className="flex flex-col gap-1 mr-4">
+                  <span className="text-[8px] text-bronze/40 uppercase tracking-widest">Active Set</span>
+                  <div className="flex gap-2">
+                    {pinnedNodes.filter(n => n.type === 'sinner').map(n => (
+                       <div key={n.id} className="w-8 h-8 rounded-full border border-gold/40 bg-gold/5 flex items-center justify-center text-[8px] font-bold text-gold">
+                         {n.name.slice(0,2).toUpperCase()}
+                       </div>
+                    ))}
+                    {Array.from({ length: 6 - pinnedNodes.filter(n => n.type === 'sinner').length }).map((_, i) => (
+                       <div key={i} className="w-8 h-8 rounded-full border border-dashed border-bronze/20 flex items-center justify-center text-bronze/20 text-xs">
+                         +
+                       </div>
+                    ))}
+                  </div>
+               </div>
+               <div className="h-10 w-[1px] bg-bronze/10" />
+               <div className="flex flex-col gap-1">
+                  <span className="text-[8px] text-bronze/40 uppercase tracking-widest">Current Cohesion</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-20 h-1 bg-bronze/10 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gold transition-all duration-1000" 
+                        style={{ width: `${Math.min(resonance.activeSynergies.length * 20, 100)}%` }} 
+                      />
+                    </div>
+                    <span className="text-[10px] text-gold font-bold">{resonance.activeSynergies.length > 0 ? 'SYNCHRONIZED' : 'CALCULATING...'}</span>
+                  </div>
+               </div>
+            </div>
+          </div>
+        </div>
 
-      <EgoPicker 
-        isOpen={egoPickerOpen} 
-        onOpenChange={setEgoPickerOpen} 
-        sinnerName={activeSinner?.name}
-        activeEgoIds={squad[activeSinnerId || '']?.egoLoadout || {}}
-        onToggleEgo={(egoId, rarity) => toggleEgo(activeSinnerId!, egoId, rarity)}
-      />
+        {/* Right: Analysis Panel */}
+        <div className="w-[320px] bg-black/20 flex flex-col overflow-y-auto scroll-bronze border-l border-bronze/10">
+          {/* Radar Chart */}
+          <div className="p-6 border-b border-bronze/10">
+             <div className="flex items-center gap-2 mb-4">
+                <Brain className="h-3 w-3 text-gold" />
+                <span className="text-[10px] text-gold uppercase tracking-[0.2em]">Sin Affinity Profile</span>
+             </div>
+             <div className="flex justify-center py-2">
+                <canvas ref={radarRef} width={280} height={240} />
+             </div>
+          </div>
+
+          {/* Active Resonances */}
+          <div className="p-6 border-b border-bronze/10">
+             <div className="flex items-center gap-2 mb-6">
+                <Zap className="h-3 w-3 text-gold" />
+                <span className="text-[10px] text-gold uppercase tracking-[0.2em]">Active Resonances</span>
+             </div>
+             <div className="flex flex-col gap-3">
+                {resonance.activeSynergies.length > 0 ? (
+                  resonance.activeSynergies.map((syn, idx) => (
+                    <div key={idx} className="flex items-center justify-between p-3 bg-white/[0.03] border border-bronze/10 hover:border-gold/30 transition-colors group">
+                      <div className="flex items-center gap-3">
+                         <div className={`w-1.5 h-1.5 rounded-full ${syn.type === 'theme' ? 'bg-ivory' : syn.type === 'sin' ? 'bg-gold' : 'bg-crimson'}`} />
+                         <span className="text-[10px] tracking-widest text-ivory/80 group-hover:text-ivory">{syn.label}</span>
+                      </div>
+                      <span className="text-xs font-black text-gold/60">{syn.score}</span>
+                    </div>
+                  ))
+                ) : (
+                  <div className="py-8 text-center border border-dashed border-bronze/10">
+                    <span className="text-[9px] text-bronze/30 uppercase italic tracking-widest">Insufficient Data for Resonance</span>
+                  </div>
+                )}
+             </div>
+          </div>
+
+          {/* Thematic Profile */}
+          <div className="p-6 flex-1 bg-black/10">
+             <div className="flex items-center gap-2 mb-6">
+                <Shield className="h-3 w-3 text-gold" />
+                <span className="text-[10px] text-gold uppercase tracking-[0.2em]">Thematic Density</span>
+             </div>
+             <div className="flex flex-col gap-6">
+                {Object.entries(resonance.themeScores).map(([label, score]) => (
+                  <div key={label} className="flex flex-col gap-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[9px] text-bronze/60 tracking-widest uppercase">{label}</span>
+                      <span className="text-[10px] text-gold font-bold">{score}</span>
+                    </div>
+                    <div className="w-full h-[2px] bg-bronze/10 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gold/60 transition-all duration-1000 ease-out" 
+                        style={{ width: `${Math.min((score / 6) * 100, 100)}%` }} 
+                      />
+                    </div>
+                  </div>
+                ))}
+             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scanline Overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(0deg,transparent,transparent_2px,rgba(0,0,0,0.1)_2px,rgba(0,0,0,0.1)_4px)] z-50 opacity-20" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.4)_100%)] z-40" />
     </div>
   );
 }
