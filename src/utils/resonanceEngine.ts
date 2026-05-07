@@ -1,5 +1,6 @@
 import type { Sinner, Theme } from '../types';
 import { sinners } from '../data/sinners';
+import { literarySources } from '../data/literarySources';
 
 export const SINS = ['Wrath', 'Lust', 'Sloth', 'Gluttony', 'Gloom', 'Pride', 'Envy'] as const;
 export type SinType = typeof SINS[number];
@@ -18,17 +19,16 @@ export interface ResonanceResult {
   activeSynergies: Array<{
     label: string;
     score: number;
-    type: 'theme' | 'sin' | 'faction';
+    type: 'theme' | 'sin' | 'faction' | 'origin' | 'era';
   }>;
 }
 
 /**
  * Extracts the base sin affinity from a Sinner's EGO list.
- * Usually the ZAYIN or base EGO is the primary affinity.
  */
 function getBaseSin(sinner: Sinner): SinType {
   const baseEgo = sinner.egos.find(e => e.rank === 'ZAYIN') || sinner.egos[0];
-  if (!baseEgo) return 'Sloth'; // Fallback
+  if (!baseEgo) return 'Sloth';
 
   const desc = baseEgo.description.toLowerCase();
   for (const sin of SINS) {
@@ -36,7 +36,34 @@ function getBaseSin(sinner: Sinner): SinType {
       return sin;
     }
   }
-  return 'Sloth'; // Fallback
+  return 'Sloth';
+}
+
+/**
+ * Maps languages to broad literary regions.
+ */
+const REGION_MAP: Record<string, string> = {
+  'Korean': 'East Asian',
+  'Japanese': 'East Asian',
+  'Chinese': 'East Asian',
+  'German': 'European',
+  'Spanish': 'European',
+  'French': 'European',
+  'English': 'European',
+  'Russian': 'European',
+  'Ancient Greek': 'Ancient',
+  'Hebrew': 'Ancient'
+};
+
+/**
+ * Maps years to literary eras.
+ */
+function getEra(year?: number): string {
+  if (year === undefined || year === 0) return 'Undated';
+  if (year < 500) return 'Ancient';
+  if (year < 1500) return 'Medieval';
+  if (year < 1800) return 'Early Modern';
+  return 'Modern';
 }
 
 export function calculateResonance(pinnedNodes: any[]): ResonanceResult {
@@ -70,9 +97,9 @@ export function calculateResonance(pinnedNodes: any[]): ResonanceResult {
   });
   
   // 3. Identify Active Synergies
-  const activeSynergies: Array<{ label: string; score: number; type: 'theme' | 'sin' | 'faction' }> = [];
+  const activeSynergies: Array<{ label: string; score: number; type: 'theme' | 'sin' | 'faction' | 'origin' | 'era' }> = [];
   
-  // Theme Synergies (2+ sinners)
+  // Theme Synergies
   Object.entries(CORE_THEMES).forEach(([slug, label]) => {
     const count = activeSinners.filter(s => s.themes.includes(slug as Theme)).length;
     if (count >= 2) {
@@ -80,14 +107,14 @@ export function calculateResonance(pinnedNodes: any[]): ResonanceResult {
     }
   });
   
-  // Sin Synergies (2+ sinners)
+  // Sin Synergies
   SINS.forEach(sin => {
     if (sinAffinities[sin] >= 2) {
       activeSynergies.push({ label: `${sin.toUpperCase()} AFFINITY`, score: sinAffinities[sin], type: 'sin' });
     }
   });
   
-  // Faction Synergies (Checking common Identity groups)
+  // Faction Synergies
   const factionCounts: Record<string, number> = {};
   activeSinners.forEach(s => {
     const factions = new Set(s.identities.map(id => id.wingOrGroup).filter(Boolean));
@@ -97,8 +124,40 @@ export function calculateResonance(pinnedNodes: any[]): ResonanceResult {
   });
   
   Object.entries(factionCounts).forEach(([faction, count]) => {
-    if (count >= 3) { // Higher threshold for factions
+    if (count >= 3) {
       activeSynergies.push({ label: `${faction.toUpperCase()} COHESION`, score: count, type: 'faction' });
+    }
+  });
+
+  // 4. Literary Origin & Era Synergies
+  const regionCounts: Record<string, number> = {};
+  const eraCounts: Record<string, number> = {};
+
+  activeSinners.forEach(s => {
+    const primarySourceRef = s.literarySources.find(ls => ls.role === 'primary');
+    if (primarySourceRef) {
+      const source = literarySources.find(ls => ls.id === primarySourceRef.id);
+      if (source) {
+        const region = REGION_MAP[source.language] || 'Other';
+        regionCounts[region] = (regionCounts[region] || 0) + 1;
+
+        const era = getEra(source.year);
+        if (era !== 'Undated') {
+          eraCounts[era] = (eraCounts[era] || 0) + 1;
+        }
+      }
+    }
+  });
+
+  Object.entries(regionCounts).forEach(([region, count]) => {
+    if (count >= 2) {
+      activeSynergies.push({ label: `${region.toUpperCase()} ORIGIN`, score: count, type: 'origin' });
+    }
+  });
+
+  Object.entries(eraCounts).forEach(([era, count]) => {
+    if (count >= 2) {
+      activeSynergies.push({ label: `${era.toUpperCase()} ERA`, score: count, type: 'era' });
     }
   });
   
