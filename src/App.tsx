@@ -12,6 +12,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import { EntityPanel } from './components/EntityPanel';
 import { GlobalSearch } from './components/GlobalSearch';
 import { LoreGraph } from './components/LoreGraph';
+import { LoreGraph3D } from './components/3d/LoreGraph3D';
 import { LorePanel } from './components/LorePanel';
 import { SourceExplorer } from './components/SourceExplorer';
 import { TeamDock } from './components/TeamDock';
@@ -36,7 +37,8 @@ export default function App() {
   const [expandedNodeIds, setExpandedNodeIds] = useState<Set<string>>(new Set());
   const [pinnedNodes, setPinnedNodes] = useState<any[]>([]);
   const [focusNodeId, setFocusNodeId] = useState<string | null>(null);
-  const [spoilerLevel, setSpoilerLevel] = useState(8); // Default to Canto 8 (pre-M3 default)
+  const [spoilerLevel, setSpoilerLevel] = useState(8);
+  const [view3D, setView3D] = useState(false);
 
 
   const edges = useMemo(() => deriveEdges(sinners), []);
@@ -164,6 +166,16 @@ export default function App() {
                   </kbd>
                 </Button>
 
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setView3D(!view3D)}
+                  className={`h-8 gap-1.5 text-[10px] font-bold uppercase tracking-widest transition-all ${view3D ? 'border-gold text-gold bg-gold/10' : 'border-border text-muted-foreground'}`}
+                >
+                  <div className={`w-1.5 h-1.5 rounded-full ${view3D ? 'bg-gold animate-pulse' : 'bg-muted-foreground'}`} />
+                  {view3D ? '3D_MODE' : '2D_MODE'}
+                </Button>
+
                 {selectedSinner ? (
                   <>
                     <span className="text-xs font-medium text-muted-foreground hidden sm:block">
@@ -252,20 +264,37 @@ export default function App() {
                 className={`relative h-full w-full transition-all duration-300 ease-in-out ${panelOpen ? 'pr-[400px]' : ''
                   } max-md:pr-0`}
               >
-                <LoreGraph
-                  sinners={sinners}
-                  edges={edges}
-                  selectedSinner={selectedSinner}
-                  selectedEntity={selectedEntity}
-                  expandedNodeIds={expandedNodeIds}
-                  focusNodeId={focusNodeId}
-                  onNodeClick={handleNodeClick}
-                  onEntityClick={handleEntityClick}
-                  onSourceClick={setActiveSourceId}
-                  onToggleExpand={toggleExpand}
-                  onPin={handlePin}
-                  onClearFocus={() => setFocusNodeId(null)}
-                />
+                {view3D ? (
+                  <LoreGraph3D
+                    sinners={sinners}
+                    edges={edges}
+                    selectedSinner={selectedSinner}
+                    selectedEntity={selectedEntity}
+                    expandedNodeIds={expandedNodeIds}
+                    focusNodeId={focusNodeId}
+                    onNodeClick={handleNodeClick}
+                    onEntityClick={handleEntityClick}
+                    onSourceClick={setActiveSourceId}
+                    onToggleExpand={toggleExpand}
+                    onPin={handlePin}
+                    onClearFocus={() => setFocusNodeId(null)}
+                  />
+                ) : (
+                  <LoreGraph
+                    sinners={sinners}
+                    edges={edges}
+                    selectedSinner={selectedSinner}
+                    selectedEntity={selectedEntity}
+                    expandedNodeIds={expandedNodeIds}
+                    focusNodeId={focusNodeId}
+                    onNodeClick={handleNodeClick}
+                    onEntityClick={handleEntityClick}
+                    onSourceClick={setActiveSourceId}
+                    onToggleExpand={toggleExpand}
+                    onPin={handlePin}
+                    onClearFocus={() => setFocusNodeId(null)}
+                  />
+                )}
               </div>
 
               {/* Team Dock */}

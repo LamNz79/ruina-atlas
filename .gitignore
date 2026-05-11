@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 .worktrees/
-.obsidian_vault_export/
+obsidian_vault_export/
